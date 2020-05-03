@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>A BUG EQUALS A CHANCE</title>
+  <title>A BUG IS A CHANCE</title>
   <icon>https://www.gravatar.com/avatar/f63e2932402ca598fd6af3eed9f33d56</icon>
   <subtitle>ZM</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="http://zm163.github.io/"/>
   <updated>2020-05-03T04:54:07.116Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>http://zm163.github.io/</id>
   
   <author>
     <name>little ZM</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2020/05/03/hello-world/"/>
-    <id>http://yoursite.com/2020/05/03/hello-world/</id>
+    <link href="http://zm163.github.io/2020/05/03/hello-world/"/>
+    <id>http://zm163.github.io/2020/05/03/hello-world/</id>
     <published>2020-05-03T04:54:07.115Z</published>
     <updated>2020-05-03T04:54:07.116Z</updated>
     
