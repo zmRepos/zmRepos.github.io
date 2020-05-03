@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="代码,技术,生活,思考,博客,人生" />
+   
+  <meta name="description" content="一生努力，一生被爱" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     A BUG IS A CHANCE
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/ayer.png" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="A BUG IS A CHANCE" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      
+<section class="cover">
+    
+      
+      <a class="forkMe" href="https://github.com/Zhu-Ming/Zhu-Ming.github.io"
+        target="_blank"><img width="149" height="149" src="/images/forkme.png"
+          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover2.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">A BUG IS A CHANCE</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+        <img
+          src="/images/ayer.png"
+          class="cover-logo"
+          alt="A BUG IS A CHANCE"
+        />
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+<div id="main">
+  <section class="outer">
+  <article class="articles">
+    
+    
+    
+    
+    <article id="post-LeetCode-23合并多个链表" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/14/LeetCode-23%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E9%93%BE%E8%A1%A8/"
+    >LeetCode-23合并多个链表</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/14/LeetCode-23%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2019-11-14T14:28:18.000Z" itemprop="datePublished">2019-11-14</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<pre><code>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
+示例:
+输入: [   1-&gt;4-&gt;5,   1-&gt;3-&gt;4,   2-&gt;6 ] 输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</code></pre><p>思路一（自写）：递归：效率极低，战胜15%，运行时间：340ms</p>
+<p>每次取出lists的所有链表的第一个元素，找出最小的那个，然后用最小值的那个结点，指着这个结点的指针指向他所在结点后的链表与其他结点继续此操作的返回值。</p>
+<p>代码：</p>
+<pre><code>public ListNode mergeKLists(ListNode[] lists) {
+    int minval=Integer.MAX_VALUE;
+    int minIndex=0;
+    ListNode head=null;
+    for(int i=0;i&lt;lists.length;i++) {
+        if(lists[i]==null) {
+            continue;
+        }
+        if(lists[i].val&lt;=minval) {
+            minval=lists[i].val;
+            minIndex=i;
+        }
+    }
+    if(minval==Integer.MAX_VALUE)
+        return null;
+    head=lists[minIndex];
+    lists[minIndex]=lists[minIndex].next;
+    head.next=mergeKLists(lists);
+    return head;
+}</code></pre><p>思路二：归并：效率高，战胜100%，运行时间：2ms</p>
+<p>将lists不断合并左右元素，然后放入左半边lists，然后继续在左半边继续合并左右元素操作，直到right到达0处。两个链表的合并算法自己想。</p>
+<p>代码：</p>
+<pre><code>public ListNode 自写mergeKLists(ListNode []lists) {
+    if (lists==null||lists.length&lt;=0)
+        return null;
+    ListNode head=new ListNode(0);
+    int left=0;
+    int right=lists.length-1;
+    while(right&gt;0) {
+        while(left&lt;right) {
+            head.next=自写merge(lists[left],lists[right]);
+            left++;
+            right--;
+        }
+        left=0;
+    }
+    return head.next;
+}
+private ListNode 自写merge(ListNode l1, ListNode l2) {
+    if(l1==null)//如果有一个为null，直接返回另一个。
+        return l2;
+    if(l2==null)
+        return l1;
+    ListNode head=new ListNode(0);//建一个头结点不做返回值一部分
+    ListNode currNode=head;//定义一个零时工。
+    while(l1!=null&amp;l2!=null) {
+        if(l1.val&lt;l2.val) {
+            currNode.next=l1;
+            l1=l1.next;
+        }else {
+            currNode.next=l2;
+            l2=l2.next;
+        }
+        currNode=currNode.next;
+    }
+    currNode.next=l1==null?l2:l1;//如果有链表没有结束，直接将其加到后面。
+    return head.next;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-22括号生成" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/13/LeetCode-22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/"
+    >LeetCode-22括号生成</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/13/LeetCode-22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" class="article-date">
+  <time datetime="2019-11-13T05:50:29.000Z" itemprop="datePublished">2019-11-13</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<pre><code>给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
+
+例如，给出 n = 3，生成结果为：
+
+[
+  &quot;((()))&quot;,
+  &quot;(()())&quot;,
+  &quot;(())()&quot;,
+  &quot;()(())&quot;,
+  &quot;()()()&quot;
+]</code></pre><p>思路：回溯算法。<br>直接搬运他人的思路吧。看完之后，我是接连卧槽。</p>
+<p>方法一：回溯算法（深度优先遍历）<br>如果完成一件事情有很多种方法，并且每一种方法分成若干步骤，那多半就可以使用“回溯”算法完成。</p>
+<p>“回溯”算法的基本思想是“尝试搜索”，一条路如果走不通（不能得到想要的结果），就回到上一个“路口”，尝试走另一条路。</p>
+<p>因此，“回溯”算法的时间复杂度一般不低。如果能提前分析出，走这一条路并不能得到想要的结果，可以跳过这个分支，这一步操作叫“剪枝”。</p>
+<p>做“回溯”算法问题的基本套路是：</p>
+<p>1、使用题目中给出的示例，画树形结构图，以便分析出递归结构；</p>
+<p>一般来说，树形图不用画完，就能够分析出递归结构和解题思路。</p>
+<p>2、分析一个结点可以产生枝叶的条件、递归到哪里终止、是否可以剪枝、符合题意的结果在什么地方出现（可能在叶子结点，也可能在中间的结点）；</p>
+<p>3、完成以上两步以后，就要编写代码实现上述分析的过程，使用代码在画出的树形结构上搜索符合题意的结果。</p>
+<p>在树形结构上搜索结果集，使用的方法是执行一次“深度优先遍历”。在遍历的过程中，可能需要使用“状态变量”。</p>
+<p>（“广度优先遍历”当然也是可以的，请参考方法二。）</p>
+<p>我们以 n = 2 为例，画树形结构图。</p>
+<p><img src="https://pic.leetcode-cn.com/7ec04f84e936e95782aba26c4663c5fe7aaf94a2a80986a97d81574467b0c513-LeetCode%20%E7%AC%AC%2022%20%E9%A2%98%EF%BC%9A%E2%80%9C%E6%8B%AC%E5%8F%B7%E7%94%9F%E5%87%BA%E2%80%9D%E9%A2%98%E8%A7%A3%E9%85%8D%E5%9B%BE.png" alt=""></p>
+<p>画图以后，可以分析出的结论：</p>
+<p>左右都有可以使用的括号数量，即严格大于 00 的时候，才产生分支；</p>
+<p>左边不受右边的限制，它只受自己的约束；</p>
+<p>右边除了自己的限制以外，还收到左边的限制，即：右边剩余可以使用的括号数量一定得在严格大于左边剩余的数量的时候，才可以“节外生枝”；</p>
+<p>在左边和右边剩余的括号数都等于 00 的时候结算。</p>
+<p>作者：liweiwei1419<br>链接：<a href="https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/" target="_blank" rel="noopener">https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/</a><br>来源：力扣（LeetCode）<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>代码：</p>
+<pre><code>class Solution {
+    public List&lt;String&gt; generateParenthesis(int n) {
+         List&lt;String&gt;list=new ArrayList&lt;String&gt;();
+         if(n==0)
+             return list;
+         String str=&quot;&quot;;
+         def(n,n,str,list);
+         return list;
+        }
+    public static void def(int left,int right,String str,List&lt;String&gt;list) {
+        if(left==0&amp;&amp;right==0) {
+            list.add(str);
+            return ;
+        }
+        if(left&gt;0)
+        def(left-1,right,str+&quot;(&quot;,list);
+        if(right&gt;0&amp;&amp;right&gt;left)
+        def(left,right-1,str+&quot;)&quot;,list);
+        return ;
+    }
+}</code></pre><p>其他思路：目前我理解不了，可以直接看上面这位大神的讲解。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-21合并两个有序链表" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/"
+    >LeetCode-21合并两个有序链表</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2019-11-12T13:09:38.000Z" itemprop="datePublished">2019-11-12</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<pre><code>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
+
+示例：
+
+输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4
+输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</code></pre><p>思路1：</p>
+<pre><code>新建一个节点，作为头节点，不作为返回值的一部分。然后再定义一个零时工，用于不断扩大头节点的长度，采
+用归并算法，归并两个有序数组。然后返回头节点的下一个节点就可以了。注意：两个有序链表可能为空。还有
+就是归并过程中不必再创建新的节点，直接使用原来链表的结点，将其加到返回值链表中就可以了。创建新的结点会浪费大量的时间。</code></pre><p>代码：</p>
+<pre><code>public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+ListNode headNode=new ListNode(0);
+headNode.next=null;//此处一定要将头节点的下一个节点设为null，不然当两个链表都为空时，会显示异常。
+ListNode p=headNode;
+int val1=0;
+int val2=0;
+while(l1!=null&amp;&amp;l2!=null) {
+    val1=l1.val;
+    val2=l2.val;
+    if(val1&lt;val2) {
+        p.next=l1;
+        l1=l1.next;
+    }else {
+        p.next=l2;
+        l2=l2.next;
+    }
+    p=p.next;
+}
+while(l1!=null) {
+    p.next=l1;
+    l1=l1.next;
+    p=p.next;
+}
+while(l2!=null) {
+    p.next=l2;
+    l2=l2.next;
+    p=p.next;
+}
+return headNode.next;
+}</code></pre><p>思路二：递归算法实现。</p>
+<pre><code>将两个链表的首节点中，小的那一个作为首节点返回，然后将被选中的那个节点的后一个节点以及它后面的节
+点当成新的链表继续与另外一个链表归并。重复次过程直到，某一个节点为null，此时直接将另一个链表加到
+结果链表中返回就可以了。
+
+
+也是将链表归并的过程看成了1选出两个链表中首节点小的那个作为返回链表的首节点，然后剩余部分再归并的
+过程。</code></pre><p>代码：</p>
+<pre><code>public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    if (null == l1) return l2;
+    if (null == l2) return l1;
+    if (l1.val &lt; l2.val) {
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    } else {
+        l2.next = mergeTwoLists(l1, l2.next);
+        return l2;
+    }
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-20有效的括号" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"
+    >LeetCode-20有效的括号</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="article-date">
+  <time datetime="2019-11-11T15:23:33.000Z" itemprop="datePublished">2019-11-11</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<pre><code>给定一个只包括 &apos;(&apos;，&apos;)&apos;，&apos;{&apos;，&apos;}&apos;，&apos;[&apos;，&apos;]&apos; 的字符串，判断字符串是否有效。
+
+有效字符串需满足：
+
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+注意空字符串可被认为是有效字符串。
+
+示例 1:
+
+输入: &quot;()&quot;
+输出: true
+示例 2:
+
+输入: &quot;()[]{}&quot;
+输出: true
+示例 3:
+
+输入: &quot;(]&quot;
+输出: false
+示例 4:
+
+输入: &quot;([)]&quot;
+输出: false
+示例 5:
+
+输入: &quot;{[]}&quot;
+输出: true</code></pre><p>思路：<br>    利用堆栈读取括号遇到左括号’(‘,’{‘,’[‘将其进栈，遇到右括号先取栈顶元素看看是不是与当前元素匹配的括号，不是则说明，括号不匹配，立即输出false，如果匹配，就先出栈，然后继续读取下一个字符。</p>
+<p>代码:</p>
+<pre><code>public boolean isValid(String s) {
+   if(s == null || s.length() % 2 == 1) return false;
+    if(s.length()==0) {
+        return true;
+    }
+    Stack&lt;Character&gt; stack=new Stack&lt;&gt;();
+    for(int i=0;i&lt;s.length();i++) {
+        char ch=s.charAt(i);
+        if(ch==&apos;[&apos;||ch==&apos;(&apos;||ch==&apos;{&apos;) {
+            stack.push(ch);
+        }else {
+            if(stack.isEmpty()) {
+                return false;
+            }
+            if(ch==&apos;]&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;[&apos;) {
+                stack.pop();
+            }else if(ch==&apos;)&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;(&apos;)
+            {
+                stack.pop();
+            }else if(ch==&apos;}&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;{&apos;) {
+                stack.pop();
+            }else {
+                return false;
+            }
+        }
+    }
+    return stack.isEmpty();
+}</code></pre><p>思路：</p>
+<p>自己实现栈然后重复以上操作，基本思路一样。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-19删除链表倒数第N个节点" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/"
+    >LeetCode-19删除链表倒数第N个节点</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="article-date">
+  <time datetime="2019-11-10T11:05:13.000Z" itemprop="datePublished">2019-11-10</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<pre><code>给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+
+示例：
+
+给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.
+
+当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5.
+说明：
+
+给定的 n 保证是有效的。</code></pre><p>思路：</p>
+<pre><code>1计算链表的长度
+2找到长度减去n的节点位置
+3交换节点
+注意：如果n为链表长度时会有错误
+需要补充一下此时直接返回头节点的下一个节点就可以了</code></pre><p>代码：</p>
+<pre><code>public ListNode removeNthFromEnds(ListNode head, int n) {
+        ListNode node=head;
+        int len=0;
+        while(node!=null) {
+            len++;
+            node=node.next;
+        }
+        if(len==n) {
+            return head.next;
+        }
+        node=head;
+        for(int i=1;i&lt;len-n;i++) {
+            node=node.next;
+        }
+        ListNode aNode=node.next;
+        node.next=aNode.next;
+        return head;
+    }</code></pre><p>思路2：递归到达最底层后开始计数，当数字达到n时返回此节点的下一个节点给上一个节点。（佩服佩服，果然时高手，佩服）</p>
+<p>代码：</p>
+<pre><code>private int time;
+public ListNode removeNthFromEnd(ListNode head,int n) {
+    if(head==null) {//当head为null时表明已经达到最后一个节点的下一个指针
+        time=0;
+        return null;
+    }
+    head.next=removeNthFromEnd(head.next,n);//要保证原链表的结构不变
+    time++;//买次递归返回的时候就加1
+    if(time==n) {//当达到第n个的时候返回当前节点的下一个节点
+        return head.next;
+    }
+    return head;//否则返回当前节点保证原链表的结构不变
+}</code></pre><p>大佬就是大佬，我只能佩服了。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-18四数之和" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/09/LeetCode-18%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/"
+    >LeetCode-18四数之和</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/09/LeetCode-18%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/" class="article-date">
+  <time datetime="2019-11-09T04:57:35.000Z" itemprop="datePublished">2019-11-09</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<pre><code>给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 
+d ，使得 a + b + c+ d 的值与 target 相等？找出所有满足条件且不重复的四元组。
+
+ 注意：
+ 答案中不可以包含重复的四元组。
+
+ 示例：
+ 给定数组 nums = [1, 0, -1, 0, -2, 2]，和 target = 0。
+
+ 满足要求的四元组集合为： [ [-1, 0, 0, 1], [-2, -1, 1, 2], [-2, 0, 0, 2] ]
+
+ 来源：力扣（LeetCode） 链接：https://leetcode-cn.com/problems/4sum
+ 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</code></pre><p>思路：<br>    双指针选定法，首先对数组进行排序，然后定义一个指向最左与最右的指针，然后从这两个指针中间选取两个值构造四数数组，看看他们的和合不合适，合适就加到数组列表中，不合适就变换中间的两个值。注意此时可以用一些剪枝方法出去不合适的四个数字。</p>
+<p>代码：</p>
+<pre><code>    public List&lt;List&lt;Integer&gt;&gt; fourSum(int[] nums, int target) {
+        List&lt;List&lt;Integer&gt;&gt; list = new ArrayList&lt;&gt;();
+        if (nums.length &lt; 4) {//剪枝方法
+            return list;
+        } else {
+            Arrays.sort(nums);
+            int l = 0, r = nums.length - 1, lr = 0, rl = 0;
+            for (l = 0; l &lt; nums.length - 3; l++) {
+                if (l &gt; 0 &amp;&amp; nums[l] == nums[l - 1]) {
+                    continue;
+                }
+                for (r = nums.length - 1; r &gt;= l +3; r--) {
+                    if (r &lt; nums.length - 1 &amp;&amp; nums[r] == nums[r + 1]) {//剪枝方法
+                        continue;
+                    }
+                    lr = l + 1;//开始指针的右边一个指针
+                    rl = r - 1;//最右边一个指针的左边一个指针
+                    while (lr &lt; rl) {
+                        int value = nums[l] + nums[r] + nums[lr] + nums[rl];
+                        if (value == target) {
+                            list.add(Arrays.asList(nums[l], nums[lr], nums[rl], nums[r]));
+                            while (lr &lt; rl &amp;&amp; nums[lr] == nums[lr + 1])//剪枝方法
+                                lr++;
+                            while (lr &lt; rl &amp;&amp; nums[rl] == nums[rl - 1])//剪枝方法
+                                rl--;
+                            lr++;
+                            rl--;
+                        } else if (value &gt; target) {
+                            rl--;
+                        } else {
+                            lr++;
+                        }
+                    }
+                }
+            }
+        }
+        return list;
+
+
+}</code></pre><p>思路二：也是默认选定两个是定的，不过此处是将左边两个先选定，然后依照在选定后面两个，不断缩小后面两个的距离，注意这里也要用到跟多的剪枝方法。</p>
+<p>代码：</p>
+<pre><code>public List&lt;List&lt;Integer&gt;&gt; fourSum(int []nums,int target){
+    int len=nums.length;
+    List&lt;List&lt;Integer&gt;&gt;list=new ArrayList&lt;&gt;();
+    if(len&lt;4) 
+    {
+        return list;
+    }
+    int value;
+    Arrays.sort(nums);
+    for(int i=0;i&lt;len-3;i++) 
+    {
+        if(i&gt;0&amp;&amp;nums[i-1]==nums[i])//如果这一个跟上一个一样就没必要再去取这一个了
+        {
+            continue;
+        }
+        value=nums[i]+nums[i+1]+nums[i+2]+nums[i+3];//如果以nums[i]开头的数组的最小的和都大于target，说明i以后的数字之和都大于target。
+        if(value&gt;target)
+        {
+            break;
+        }
+        value=nums[i]+nums[len-1]+nums[len-2]+nums[len-3];
+        if(value&lt;target)//如果以nums[i]开头的数组中的最大值都小于target，则说明i所有的数组之和都小于target
+        {
+            continue;
+        }
+        for(int j=i+1;j&lt;len-2;j++)
+        {
+            if(j&gt;i+1&amp;&amp;nums[j]==nums[j-1])//意义同上一层
+            {
+                continue;
+            }
+            value=nums[i]+nums[j]+nums[j+1]+nums[j+2];
+            if(value&gt;target) {//意义同上一层
+                break;
+            }
+            value=nums[i]+nums[j]+nums[len-1]+nums[len-2];
+            if(value&lt;target) {//意义同上一层
+                continue;
+            }
+            int l=j+1;
+            int r=len-1;
+            while(r&gt;l) {
+                value=nums[i]+nums[j]+nums[l]+nums[r];
+                if(value==target) {
+                    list.add(Arrays.asList(nums[i],nums[j],nums[l],nums[r]));
+                    while(l&lt;r&amp;&amp;nums[l]==nums[l+1])l++;
+                    while(l&lt;r&amp;&amp;nums[r]==nums[r-1])r--;
+                    l++;
+                    r--;
+                }else if(value&gt;target) {
+                    r--;
+                }else {
+                    l++;
+                }
+            }
+        }
+    }
+    return list;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> little ZM
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/avatar.jpg" alt="A BUG IS A CHANCE"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['想要的都拥有 得不到的都释怀', '愿你一生努力 一生被爱', '用代码改变世界'],
+      startDelay: 0,
+      typeSpeed: 300,
+      loop: true,
+      backSpeed: 300,
+      showCursor: false
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1382596189&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"right","width":250,"height":400,"hOffset":0,"vOffset":-30},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
+
+</html>

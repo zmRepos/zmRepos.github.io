@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans">
+
+
+<head>
+  <meta charset="utf-8" />
+   
+  <meta name="keywords" content="代码,技术,生活,思考,博客,人生" />
+   
+  <meta name="description" content="一生努力，一生被爱" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     A BUG IS A CHANCE
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/images/ayer.png" />
+  
+  
+<link rel="stylesheet" href="/dist/main.css">
+
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+  
+  
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+
+  
+  
+
+  
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+<link rel="alternate" href="/atom.xml" title="A BUG IS A CHANCE" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      
+<section class="cover">
+    
+      
+      <a class="forkMe" href="https://github.com/Zhu-Ming/Zhu-Ming.github.io"
+        target="_blank"><img width="149" height="149" src="/images/forkme.png"
+          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover2.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">A BUG IS A CHANCE</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+        <img
+          src="/images/ayer.png"
+          class="cover-logo"
+          alt="A BUG IS A CHANCE"
+        />
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+<div id="main">
+  <section class="outer">
+  <article class="articles">
+    
+    
+    
+    
+    <article id="post-Java-反射机制详解" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/18/Java-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/"
+    >Java-反射机制详解</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/18/Java-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time datetime="2019-11-18T14:29:21.000Z" itemprop="datePublished">2019-11-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>#Java反射机制详解<br>#什么是反射机制？</p>
+<hr>
+<p>###反射机制的定义（来自百度百科）：<br>Java反射机制是指在运行状态时，对于任意一个实体类，都能够直到这个类的所有属性与方法；对于任意一个对<br>象，都能够调用它的任意方法和属性；这种动态获取信息以及动态调用对象方法的功能称为Java语言的反射机制。</p>
+<hr>
+<p>###我的理解：<br>反射机制就是程序在运行时，能够自我反省的功能。</p>
+<hr>
+<p>##反射机制的作用：</p>
+<p>1运行时分析类的能力（指类有哪些属性，方法）</p>
+<p>2在运行时查看对象的内容</p>
+<p>3实现通用的数组操作代码</p>
+<p>4利用Method方法动态调用任意类的方法。</p>
+<hr>
+<p>反射是如何产生的呢？</p>
+<p>在程序运行期间，jvm为每个对象封装被称为运行时的类型标识（所有对象公用一个标识），这些信息封装在Class中，可以通过Class对象，获得对应类的域、方法。</p>
+<p>###如何获得Class对象呢？<br>途径有三：</p>
+<p>1通过类的实例获得如Employee的一个实例：a，那么可以通过a.getClass()方法获得它的类型标识。</p>
+<p>2通过Class.forName(className)获得，注意这里的className(字符串)应该具体指出。</p>
+<p>3通过实例类所属的类直接调用：类名.class获得，如：1中的Employee.class。</p>
+<p>其中最常用的是方法2</p>
+<p>补充：方法中可能要捕获异常</p>
+<p>目前就介绍这么多了。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-27移除元素" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/18/LeetCode-27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/"
+    >LeetCode-27移除元素</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/18/LeetCode-27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/" class="article-date">
+  <time datetime="2019-11-18T07:54:26.000Z" itemprop="datePublished">2019-11-18</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<p>示例 1:</p>
+<p>给定 nums = [3,2,2,3], val = 3,</p>
+<p>函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</p>
+<p>你不需要考虑数组中超出新长度后面的元素。</p>
+<p>示例 2:</p>
+<p>给定 nums = [0,1,2,2,3,0,4,2], val = 2,</p>
+<p>函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</p>
+<p>注意这五个元素可为任意顺序。</p>
+<p>你不需要考虑数组中超出新长度后面的元素。<br>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参作任何拷贝<br>int len = removeElement(nums, val);</p>
+<p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</p>
+<pre><code>for (int i = 0; i &lt; len; i++) {
+    print(nums[i]);
+}</code></pre><p>思路：</p>
+<pre><code>直接对数组元素操作遇到目标值就跳过他，将他后面不是目标值的数字赋值给（数组中，此数组可能是已经改
+变过的数组，即已经有一个目标值被替代了）目标值出现的第1个位置。</code></pre><p>代码：</p>
+<pre><code>public int removeElement(int[] nums, int val) {
+    int k=0;
+    for(int i=0;i&lt;nums.length;i++) {
+        if(nums[i]==val) {
+            continue;
+        }
+        nums[k]=nums[i];
+        k++;
+    }
+    return k;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-26删除排序数组的重复项" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/17/LeetCode-26%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/"
+    >LeetCode-26删除排序数组的重复项</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/17/LeetCode-26%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/" class="article-date">
+  <time datetime="2019-11-17T03:31:51.000Z" itemprop="datePublished">2019-11-17</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。</p>
+<p>示例 1:</p>
+<p>给定数组 nums = [1,1,2], </p>
+<p>函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </p>
+<p>你不需要考虑数组中超出新长度后面的元素。<br>示例 2:</p>
+<p>给定 nums = [0,0,1,1,1,2,2,3,3,4],</p>
+<p>函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</p>
+<p>你不需要考虑数组中超出新长度后面的元素。<br>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以“引用”方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<p>你可以想象内部操作如下:</p>
+<p>// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝<br>int len = removeDuplicates(nums);</p>
+<p>// 在函数里修改输入数组对于调用者是可见的。<br>// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</p>
+<pre><code>for (int i = 0; i &lt; len; i++) {
+    print(nums[i]);
+}</code></pre><p>思路：定义两个指针，一个用来标记没有重复数字的数组的最后一个数字坐标的下一个位置，这个位置用来存放下一个挑出来的数字，另外一个用来比较与当前已经处理的数组的最后一位数字是否重复，如果重复继续读取，如果不重复就将数字放入当前已经挑出来的数组末尾，然后继续此操作。</p>
+<p>代码：</p>
+<pre><code>public int removeDuplicates(int[] nums) {
+    if(nums==null || nums.length == 1){
+        return nums.length;
+    }
+    int i = 0,j = 1;//i用来标记当前没有重复的下一个下标，j用来标记重复数字串的后一个数字
+    while(j&lt;nums.length){
+        if(nums[i]==nums[j]){
+            j++;
+        }else{
+            i++;//保留一个重复数字
+            nums[i]=nums[j];//将她后面的那个重复的数字覆盖为不重复的数字
+            j++;//指向另外一个数字，判断是否与前一个数字重复。
+        }
+    }
+    return i+1;//返回数组中的坐标加1，表示个数。
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-25k个一组翻转链表" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/16/LeetCode-25k%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/"
+    >LeetCode-25k个一组翻转链表</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/16/LeetCode-25k%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2019-11-16T07:41:35.000Z" itemprop="datePublished">2019-11-16</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<p>给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。</p>
+<p>k 是一个正整数，它的值小于或等于链表的长度。</p>
+<p>如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。</p>
+<p>示例 :</p>
+<p>给定这个链表：1-&gt;2-&gt;3-&gt;4-&gt;5</p>
+<p>当 k = 2 时，应当返回: 2-&gt;1-&gt;4-&gt;3-&gt;5</p>
+<p>当 k = 3 时，应当返回: 3-&gt;2-&gt;1-&gt;4-&gt;5</p>
+<p>说明 :</p>
+<p>######你的算法只能使用常数的额外空间。<br>######你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
+<p>思路：递归把一个链表看成n个长度为k的链表（不足的也看成一段），然后从1到n段进行逆序排列，将第i段的next指向第i+1段的逆序结果。</p>
+<p>代码：</p>
+<pre><code>public ListNode reverseKGroup(ListNode head, int k) {
+    if(head==null)//如果恰好就是n段（即每一段都是k个），那么最后向下递归时，head会为null
+        return null;
+    ListNode res=head;
+    ArrayList&lt;ListNode&gt; lists = new ArrayList&lt;ListNode&gt;();
+    for(int i=0;i&lt;k&amp;&amp;head!=null;i++) {//先把k个结点存下来
+        lists.add(head);
+        head=head.next;
+    }
+    int len=lists.size();
+    if(len==k) {//如果刚好是k个结点改变为逆序
+        ListNode result=res=lists.get(len-1);//将此段链表最后一个结点为头结点，用作返回值。
+        for(int i=len-2;i&gt;-1;i--) {
+            res.next=lists.get(i);
+            res=res.next;
+        }
+        res.next=reverseKGroup(head, k);//将此段链表的结尾连接上下一段链表的逆序。
+        return result;
+    }else {//不是k个结点不改变原来的顺序
+        return res;
+    }
+}</code></pre><p>思路：思想与上一个差不多，就是在处理逆序的方式不同。</p>
+<p>代码：</p>
+<pre><code>public ListNode reverseKGroup(ListNode head, int k) {
+    if (head == null) return null;
+    if (k &lt;= 0) return null;
+    if (k == 1) return head;
+    ListNode toHead = new ListNode(0);
+    toHead.next = head;
+    ListNode temp = toHead;
+    while (temp.next != null) {
+        temp = reverseSingleK(temp, k);
+    }
+    return toHead.next;
+}
+
+public ListNode reverseSingleK(ListNode before, int k) {
+    ListNode pre = before.next;
+    ListNode cur = pre.next;
+    int flag = 0;
+    for (int i = 1; i &lt; k; i ++) {
+        if (cur == null) {
+            flag = i;
+            break;
+        }
+        ListNode temp = cur.next;
+        cur.next = pre;
+        pre = cur;
+        cur = temp;
+    }
+    if (flag != 0) {
+        ListNode ret = pre;
+        cur = pre.next;
+        for (int i = 2; i &lt; flag; i ++) {
+            ListNode temp = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = temp;
+        }
+        ret.next = null;
+        return ret;
+    } else {
+        ListNode ret = before.next;
+        before.next = pre;
+        ret.next = cur;
+        return ret;
+    }
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-顺序表" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/15/%E9%A1%BA%E5%BA%8F%E8%A1%A8/"
+    >顺序表</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/15/%E9%A1%BA%E5%BA%8F%E8%A1%A8/" class="article-date">
+  <time datetime="2019-11-15T09:48:39.000Z" itemprop="datePublished">2019-11-15</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>##建议将下面代码单独存储在一个头文件中，使用时调用一下就可以了。<br>#顺序表（静态分配）</p>
+<pre><code>    /*静态分配数组*/
+#define DataType char
+#define MAXSIZE 100
+typedef struct {
+    DataType data[MAXSIZE];
+    int length;
+}SqList;
+void Init_SqList(SqList *s);
+int Length_SqList(SqList *s);
+int LocateElem_SqList(SqList *s,DataType d);
+DataType GetElem(SqList *s,int i);
+int Add_SqList(SqList *s,DataType d);
+int Insert_SqList(SqList *s,int i,DataType d);
+void Delete_SqList(SqList *s,int i,DataType *a);
+void Print_SqList(SqList *s);
+int Empty_SqList(SqList *s);
+void Destroy_SqList(SqList *s);
+void Init_SqList(SqList *s){
+        s-&gt;length=0;
+}
+int Length_SqList(SqList *s){
+    if(s!=NULL){
+        return s-&gt;length;
+    }else{
+        printf(&quot;you should initial the SqList at first.\n&quot;);
+        return -1;
+    }
+}
+int LocateElem_SqList(SqList *s,DataType d){
+    if(s==NULL){
+        printf(&quot;you should initial the SqList at first.\n&quot;);
+        return -1;
+    }
+    for(int i=0;i&lt;s-&gt;length;i++){
+        if(s-&gt;data[i]==d){
+            return i;
+        }
+    }
+    return -1;
+}
+DataType GetElem(SqList *s,int i){
+    if(s!=NULL){
+        if(i&lt;s-&gt;length&amp;&amp;i&gt;0){
+            return s-&gt;data[i-1];
+        }else{
+            printf(&quot;i is illegal index\n&quot;);
+            return NULL;
+        }
+    }else{
+        printf(&quot;you must initial the SqList at first.\n&quot;);
+        return NULL;
+    }
+}
+int Add_SqList(SqList *s,DataType d){
+    return Insert_SqList(s,s-&gt;length+1,d);
+}
+int Insert_SqList(SqList *s,int i,DataType d){//前插
+        if(s!=NULL)
+        {
+            if(s-&gt;length&lt;MAXSIZE){/*插到MAXSIZE时就无法继续插入了。*/
+                if(i&gt;0&amp;&amp;i&lt;=(s-&gt;length+1))//插入在(0,length]之间
+                {
+                    for(int index=s-&gt;length;index&gt;=i;index--)
+                    {
+                        s-&gt;data[index]=s-&gt;data[index-1];
+                    }
+                    s-&gt;data[i-1]=d;
+                    s-&gt;length++;
+                    return 1;
+                }
+                else
+                {
+                    printf(&quot;i is illegal&quot;);
+                    return 0;
+                }
+            }
+            else
+            {
+                printf(&quot;SqLiSt is full ,can not continue insert any more\n&quot;);
+                return 0;
+            }
+
+        }
+        else
+        {
+            printf(&quot;you must initial the SqList at first.\n&quot;);
+            return 0;
+        }
+}
+void Delete_SqList(SqList *s,int i,DataType *a){
+    if(s==NULL){
+        printf(&quot;SqList is null&quot;);
+        return ;
+    }
+    if(i&lt;1||i&gt;s-&gt;length){
+        printf(&quot;position is illegal\n&quot;);
+        return ;
+    }
+    *a=s-&gt;data[i-1];
+    for(int index=i-1;index&lt;s-&gt;length-1;index++){
+        s-&gt;data[index]=s-&gt;data[index+1];
+    }
+    s-&gt;length--;
+}
+void Print_SqList(SqList *s){
+    if(s==NULL)
+    {
+        printf(&quot;SqList is null\n&quot;);
+        return ;
+    }
+    int flag=0;
+    for(int i=0;i&lt;s-&gt;length;i++){
+        if(!flag)
+        {
+            flag=1;
+            printf(&quot;%c&quot;,s-&gt;data[i]);
+        }
+        else
+        {
+            printf(&quot; %c&quot;,s-&gt;data[i]);
+        }
+    }
+}
+int Empty_SqList(SqList *s){
+    if(s==NULL)
+    {
+        printf(&quot;SqList is null\n&quot;);
+        return 0;
+    }
+    return s-&gt;length==0;
+}
+void Destroy_SqList(SqList *s){
+    free(s);
+    s-&gt;length=0;
+}</code></pre><p>#顺序表（动态分配）<br>    #define DataType char<br>    typedef struct{<br>        DataType <em>data;<br>        int MAXSIZE ,length;<br>    }SqList;<br>    void Init_SqList(SqList <em>s,int Size);<br>    int isNULL(SqList *s);<br>    int Length_SqList(SqList *s);<br>    int LocateElem_SqList(SqList *s,DataType d);<br>    DataType GetElem(SqList *s,int i);<br>    int Add_SqList(SqList *s,DataType d);<br>    int Insert_SqList(SqList *s,int i,DataType d);<br>    void Delete_SqList(SqList *s,int i,DataType *a);<br>    void Print_SqList(SqList *s);<br>    int Empty_SqList(SqList *s);<br>    void Destroy_SqList(SqList *s);<br>    void Init_SqList(SqList *s,int Size){<br>        s-&gt;MAXSIZE=Size;<br>        s-&gt;data=(DataType *)malloc(sizeof(DataType)</em>Size);<br>        s-&gt;length=0;<br>    }<br>    int isNULL(SqList <em>s){<br>        return s==NULL;<br>    }<br>    int Length_SqList(SqList *s){<br>        if(!isNULL(s))<br>            return s-&gt;length;<br>        return -1;<br>    }<br>    int LocateElem_SqList(SqList *s,DataType d){<br>        if(!isNULL(s)){<br>            for(int i=0;i<s->length;i++){<br>                if(s-&gt;data[i]==d){<br>                    return i;<br>                }<br>            }<br>        }else{<br>            printf(“you must initial at first”);<br>        }<br>        return -1;<br>    }<br>    DataType GetElem(SqList *s,int i){<br>        if(s!=NULL){<br>            if(i<s->length&amp;&amp;i&gt;0){<br>                return s-&gt;data[i-1];<br>            }else{<br>                printf(“i is illegal index\n”);<br>                return NULL;<br>            }<br>        }else{<br>            printf(“you must initial the SqList at first.\n”);<br>            return NULL;<br>        }<br>    }<br>    int Add_SqList(SqList *s,DataType d){<br>        return Insert_SqList(s,s-&gt;length+1,d);/</em>注意函数一般要声明一下，不然编译的时候可能会发生使用某个函数，而他却还没有通过编译。</em>/<br>    }<br>    int Insert_SqList(SqList <em>s,int i,DataType d){//前插<br>            if(!isNULL(s))<br>            {<br>                if((s-&gt;length)&lt;(s-&gt;MAXSIZE))<br>                {/*插到MAXSIZE时就无法继续插入了。</em>/<br>                    if(i&gt;0&amp;&amp;i&lt;=(s-&gt;length+1))//插入在(0,length]之间<br>                    {<br>                        for(int index=s-&gt;length;index&gt;=i;index–)<br>                        {<br>                            s-&gt;data[index]=s-&gt;data[index-1];<br>                        }<br>                        s-&gt;data[i-1]=d;<br>                        s-&gt;length++;<br>                        return 1;<br>                    }<br>                    else<br>                    {<br>                        printf(“i is illegal”);<br>                        return 0;<br>                    }<br>                }<br>                else<br>                {<br>                    printf(“SqLiSt is full ,can not continue insert any more\n”);<br>                    return 0;<br>                }<br>            }<br>            else<br>            {<br>                printf(“you must initial the SqList at first.\n”);<br>                return 0;<br>            }<br>    }<br>    void Delete_SqList(SqList *s,int i,DataType *a){<br>        if(s==NULL){<br>            printf(“SqList is null”);<br>            return ;<br>        }<br>        if(i&lt;1||i&gt;s-&gt;length){<br>            printf(“position is illegal\n”);<br>            return ;<br>        }<br>        *a=s-&gt;data[i-1];<br>        for(int index=i-1;index<s->length-1;index++){<br>            s-&gt;data[index]=s-&gt;data[index+1];<br>        }<br>        s-&gt;length–;<br>    }<br>    void Print_SqList(SqList *s){<br>        if(s==NULL)<br>        {<br>            printf(“SqList is null\n”);<br>            return ;<br>        }<br>        int flag=0;<br>        for(int i=0;i<s->length;i++){<br>            if(!flag)<br>            {<br>                flag=1;<br>                printf(“%c”,s-&gt;data[i]);<br>            }<br>            else<br>            {<br>                printf(“ %c”,s-&gt;data[i]);<br>            }<br>        }<br>    }<br>    int Empty_SqList(SqList *s){<br>        if(s==NULL)<br>        {<br>            printf(“SqList is null\n”);<br>            return 0;<br>        }<br>        return s-&gt;length==0;<br>    }<br>    void Destroy_SqList(SqList *s){<br>        free(s);<br>        s-&gt;length=0;<br>    }</p>
+<p>两者区别：</p>
+<p>静态分配时就是数组，长度一定，必须在程序运行前指定，而动态分配则不用事先指定长度，但它要使用malloc函数，动态申请一个数组空间，对此空间还是使用下标访问每一个元素。还有动态分配时要指定最大空间长度（应该也可以不用指定，不过如果结构体中有，那么函数中就会用到，所以一定要指定）。其他大致相同。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/" rel="tag">数据结构 C语言</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-24两两交换链表中的结点" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/15/LeetCode-24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%BB%93%E7%82%B9/"
+    >LeetCode-24两两交换链表中的结点</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/15/LeetCode-24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%BB%93%E7%82%B9/" class="article-date">
+  <time datetime="2019-11-15T00:54:41.000Z" itemprop="datePublished">2019-11-15</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<pre><code>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
+
+你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+示例:
+
+给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><p>思路：递归,战胜100%，时间 0ms</p>
+<pre><code>递归公式：
+    首先交换两个结点，然后让后一结点的next指向继续递归后的结果。</code></pre><p>代码：</p>
+<pre><code>public ListNode swapPairs(ListNode head) {
+     if(head==null)//递归结束条件1如果链表中结点个数为偶数，当返回最后一个结点的next时直接返回null
+         return null;
+     ListNode currNode=head;
+     ListNode nextNode=head.next;
+        if(nextNode==null)//如果结点个数为奇数，那么返回前一个结点。
+        {
+            return currNode;
+        }
+        ListNode temp=nextNode.next;
+        nextNode.next=currNode;//将currNode的后一个结点的next设为前一个结点就完成了交换结点的前步。
+        currNode.next=swapPairs(temp);//将前一个结点的next设置为后一个结点的next交换后的变换后的结果
+        return nextNode;//返回nextNode而非currNode.
+    }
+ public static void main(String[] args) {
+        ListNode node=new ListNode(1);
+        node.next=new ListNode(2);
+        node.next.next=new ListNode(3);
+        node.next.next.next=new ListNode(4);
+        node.next.next.next.next=null;
+        ListNode res=new o0024().swapPairs(node);
+        while(res!=null) {
+            System.out.println(res.val);
+            res=res.next;
+        }
+    }</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2020
+        <i class="ri-heart-fill heart_icon"></i> little ZM
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>Visitors:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>Views:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/avatar.jpg" alt="A BUG IS A CHANCE"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="Search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Subtitle -->
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['想要的都拥有 得不到的都释怀', '愿你一生努力 一生被爱', '用代码改变世界'],
+      startDelay: 0,
+      typeSpeed: 300,
+      loop: true,
+      backSpeed: 300,
+      showCursor: false
+    });
+  } catch (err) {
+    console.log(err)
+  }
+</script>
+
+<!-- Tocbot -->
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=1382596189&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"right","width":250,"height":400,"hOffset":0,"vOffset":-30},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
+
+</html>
