@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>A BUG IS A CHANCE</title>
+  <title>A BUG|A CHANCE</title>
   <icon>https://www.gravatar.com/avatar/f63e2932402ca598fd6af3eed9f33d56</icon>
   <subtitle>ZM</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2019-11-18T08:18:25.961Z</updated>
+  <updated>2020-05-04T10:51:57.603Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -17,36 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>c语言字符串处理</title>
-    <link href="http://zm163.github.io/2020/05/04/c%E8%AF%AD%E8%A8%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/"/>
-    <id>http://zm163.github.io/2020/05/04/c%E8%AF%AD%E8%A8%80%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86/</id>
-    <published>2020-05-03T16:02:53.199Z</published>
-    <updated>2019-11-18T08:18:25.961Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;#1.1.1字符串复制&lt;br&gt;函数:char * strcpy (char* destination,const char*
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="C语言" scheme="http://zm163.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Hello World</title>
     <link href="http://zm163.github.io/2020/05/03/hello-world/"/>
     <id>http://zm163.github.io/2020/05/03/hello-world/</id>
     <published>2020-05-03T04:54:07.115Z</published>
-    <updated>2020-05-03T04:54:07.116Z</updated>
+    <updated>2020-05-04T10:51:57.603Z</updated>
     
     <summary type="html">
     
@@ -54,13 +29,41 @@
       
         
         
-          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a
+          &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;
         
       
     
     </summary>
     
     
+    
+  </entry>
+  
+  <entry>
+    <title>GIT移动文件导致任务管理器找不到服务</title>
+    <link href="http://zm163.github.io/2019/12/11/GIT%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%9C%8D%E5%8A%A1/"/>
+    <id>http://zm163.github.io/2019/12/11/GIT%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%9C%8D%E5%8A%A1/</id>
+    <published>2019-12-11T09:45:54.000Z</published>
+    <updated>2020-05-04T13:15:09.777Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;移动GIT默认文件夹导致任务管理其找不到对应的服务。&lt;br&gt;1打开cmd,输入regedit&lt;/p&gt;
+&lt;p&gt;2找到HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory&lt;br&gt;\background\shell\git_gui\comma
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Git" scheme="http://zm163.github.io/categories/Git/"/>
+    
+    
+      <category term="Git" scheme="http://zm163.github.io/tags/Git/"/>
     
   </entry>
   
@@ -69,7 +72,7 @@
     <link href="http://zm163.github.io/2019/11/21/%E4%B8%B2/"/>
     <id>http://zm163.github.io/2019/11/21/%E4%B8%B2/</id>
     <published>2019-11-21T14:21:22.000Z</published>
-    <updated>2019-11-21T14:31:23.360Z</updated>
+    <updated>2020-05-04T13:20:25.644Z</updated>
     
     <summary type="html">
     
@@ -85,8 +88,14 @@
     </summary>
     
     
+      <category term="数据结构" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="数据结构 C语言" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/"/>
+      <category term="C语言" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="数据结构" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="C语言" scheme="http://zm163.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
@@ -95,7 +104,7 @@
     <link href="http://zm163.github.io/2019/11/20/%E5%8F%8C%E9%93%BE%E8%A1%A8/"/>
     <id>http://zm163.github.io/2019/11/20/%E5%8F%8C%E9%93%BE%E8%A1%A8/</id>
     <published>2019-11-20T12:16:54.000Z</published>
-    <updated>2019-11-20T12:21:02.988Z</updated>
+    <updated>2020-05-04T13:20:51.721Z</updated>
     
     <summary type="html">
     
@@ -115,8 +124,14 @@ typedef
     </summary>
     
     
+      <category term="数据结构" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="数据结构 C语言" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/"/>
+      <category term="C语言" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="数据结构" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="C语言" scheme="http://zm163.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
@@ -125,7 +140,7 @@ typedef
     <link href="http://zm163.github.io/2019/11/20/%E5%8D%95%E9%93%BE%E8%A1%A8/"/>
     <id>http://zm163.github.io/2019/11/20/%E5%8D%95%E9%93%BE%E8%A1%A8/</id>
     <published>2019-11-20T12:16:32.000Z</published>
-    <updated>2019-11-20T12:19:23.935Z</updated>
+    <updated>2020-05-04T13:20:41.169Z</updated>
     
     <summary type="html">
     
@@ -145,8 +160,14 @@ typedef
     </summary>
     
     
+      <category term="数据结构" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="数据结构 C语言" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/"/>
+      <category term="C语言" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C%E8%AF%AD%E8%A8%80/"/>
+    
+    
+      <category term="数据结构" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="C语言" scheme="http://zm163.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
@@ -155,7 +176,7 @@ typedef
     <link href="http://zm163.github.io/2019/11/19/LeetCode-28%E5%AE%9E%E7%8E%B0strStr/"/>
     <id>http://zm163.github.io/2019/11/19/LeetCode-28%E5%AE%9E%E7%8E%B0strStr/</id>
     <published>2019-11-19T04:37:13.000Z</published>
-    <updated>2019-11-19T04:40:41.124Z</updated>
+    <updated>2020-05-04T13:09:54.471Z</updated>
     
     <summary type="html">
     
@@ -173,33 +194,10 @@ typedef
     </summary>
     
     
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java-反射机制详解</title>
-    <link href="http://zm163.github.io/2019/11/18/Java-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/"/>
-    <id>http://zm163.github.io/2019/11/18/Java-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E8%AF%A6%E8%A7%A3/</id>
-    <published>2019-11-18T14:29:21.000Z</published>
-    <updated>2019-11-18T15:06:15.058Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;#Java反射机制详解&lt;br&gt;#什么是反射机制？&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;###反射机制的定义（来自百度百科）：&lt;br&gt;Java反射机制是指在运行状态时，对于任意一个实体类，都能够直到这个类的所有属性与方法；对于任意一个对&lt;br&gt;象，都能够调用它的任意方法和属性；这种动态获
-        
-      
-    
-    </summary>
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
     
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
@@ -210,7 +208,7 @@ typedef
     <link href="http://zm163.github.io/2019/11/18/LeetCode-27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/"/>
     <id>http://zm163.github.io/2019/11/18/LeetCode-27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</id>
     <published>2019-11-18T07:54:26.000Z</published>
-    <updated>2019-11-18T07:59:20.687Z</updated>
+    <updated>2020-05-04T13:09:49.609Z</updated>
     
     <summary type="html">
     
@@ -227,8 +225,12 @@ typedef
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -237,7 +239,7 @@ typedef
     <link href="http://zm163.github.io/2019/11/17/LeetCode-26%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/"/>
     <id>http://zm163.github.io/2019/11/17/LeetCode-26%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</id>
     <published>2019-11-17T03:31:51.000Z</published>
-    <updated>2019-11-17T05:47:50.507Z</updated>
+    <updated>2020-05-04T13:10:01.531Z</updated>
     
     <summary type="html">
     
@@ -255,8 +257,12 @@ typedef
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -265,7 +271,7 @@ typedef
     <link href="http://zm163.github.io/2019/11/16/LeetCode-25k%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
     <id>http://zm163.github.io/2019/11/16/LeetCode-25k%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/</id>
     <published>2019-11-16T07:41:35.000Z</published>
-    <updated>2019-11-16T08:01:19.943Z</updated>
+    <updated>2020-05-04T13:10:11.151Z</updated>
     
     <summary type="html">
     
@@ -284,37 +290,12 @@ typedef
     </summary>
     
     
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>顺序表</title>
-    <link href="http://zm163.github.io/2019/11/15/%E9%A1%BA%E5%BA%8F%E8%A1%A8/"/>
-    <id>http://zm163.github.io/2019/11/15/%E9%A1%BA%E5%BA%8F%E8%A1%A8/</id>
-    <published>2019-11-15T09:48:39.000Z</published>
-    <updated>2019-11-20T12:21:16.837Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;##建议将下面代码单独存储在一个头文件中，使用时调用一下就可以了。&lt;br&gt;#顺序表（静态分配）&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    /*静态分配数组*/
-#define DataType char
-#define MAXSIZE 100
-typedef struct
-        
-      
-    
-    </summary>
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
     
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="数据结构 C语言" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-C%E8%AF%AD%E8%A8%80/"/>
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -323,7 +304,7 @@ typedef struct
     <link href="http://zm163.github.io/2019/11/15/LeetCode-24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%BB%93%E7%82%B9/"/>
     <id>http://zm163.github.io/2019/11/15/LeetCode-24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%BB%93%E7%82%B9/</id>
     <published>2019-11-15T00:54:41.000Z</published>
-    <updated>2019-11-18T08:29:13.720Z</updated>
+    <updated>2020-05-04T13:10:25.305Z</updated>
     
     <summary type="html">
     
@@ -344,8 +325,12 @@ typedef struct
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -354,7 +339,7 @@ typedef struct
     <link href="http://zm163.github.io/2019/11/14/LeetCode-23%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E9%93%BE%E8%A1%A8/"/>
     <id>http://zm163.github.io/2019/11/14/LeetCode-23%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E9%93%BE%E8%A1%A8/</id>
     <published>2019-11-14T14:28:18.000Z</published>
-    <updated>2019-11-14T14:47:36.927Z</updated>
+    <updated>2020-05-04T13:10:33.914Z</updated>
     
     <summary type="html">
     
@@ -372,8 +357,12 @@ typedef struct
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -382,7 +371,7 @@ typedef struct
     <link href="http://zm163.github.io/2019/11/13/LeetCode-22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/"/>
     <id>http://zm163.github.io/2019/11/13/LeetCode-22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/</id>
     <published>2019-11-13T05:50:29.000Z</published>
-    <updated>2019-11-18T08:29:51.721Z</updated>
+    <updated>2020-05-04T13:10:42.321Z</updated>
     
     <summary type="html">
     
@@ -405,8 +394,12 @@ typedef struct
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -415,7 +408,7 @@ typedef struct
     <link href="http://zm163.github.io/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/"/>
     <id>http://zm163.github.io/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</id>
     <published>2019-11-12T13:09:38.000Z</published>
-    <updated>2019-11-12T13:23:52.587Z</updated>
+    <updated>2020-05-04T13:10:49.967Z</updated>
     
     <summary type="html">
     
@@ -435,8 +428,12 @@ typedef struct
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -445,7 +442,7 @@ typedef struct
     <link href="http://zm163.github.io/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"/>
     <id>http://zm163.github.io/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/</id>
     <published>2019-11-11T15:23:33.000Z</published>
-    <updated>2019-11-11T15:45:10.123Z</updated>
+    <updated>2020-05-04T13:10:57.397Z</updated>
     
     <summary type="html">
     
@@ -461,8 +458,12 @@ typedef struct
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -471,7 +472,7 @@ typedef struct
     <link href="http://zm163.github.io/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/"/>
     <id>http://zm163.github.io/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/</id>
     <published>2019-11-10T11:05:13.000Z</published>
-    <updated>2019-11-10T11:20:57.396Z</updated>
+    <updated>2020-05-04T13:11:04.794Z</updated>
     
     <summary type="html">
     
@@ -493,8 +494,12 @@ typedef struct
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -503,7 +508,7 @@ typedef struct
     <link href="http://zm163.github.io/2019/11/09/LeetCode-18%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
     <id>http://zm163.github.io/2019/11/09/LeetCode-18%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
     <published>2019-11-09T04:57:35.000Z</published>
-    <updated>2019-11-09T05:12:47.417Z</updated>
+    <updated>2020-05-04T13:11:13.194Z</updated>
     
     <summary type="html">
     
@@ -522,8 +527,12 @@ d ，使得 a + b + c+ d 的值与 target 相等？找出所有满足条件且�
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -532,7 +541,7 @@ d ，使得 a + b + c+ d 的值与 target 相等？找出所有满足条件且�
     <link href="http://zm163.github.io/2019/11/08/LeetCode-17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/"/>
     <id>http://zm163.github.io/2019/11/08/LeetCode-17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</id>
     <published>2019-11-08T15:35:56.000Z</published>
-    <updated>2019-11-08T15:54:03.221Z</updated>
+    <updated>2020-05-04T13:11:20.697Z</updated>
     
     <summary type="html">
     
@@ -550,8 +559,12 @@ d ，使得 a + b + c+ d 的值与 target 相等？找出所有满足条件且�
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   
@@ -560,7 +573,7 @@ d ，使得 a + b + c+ d 的值与 target 相等？找出所有满足条件且�
     <link href="http://zm163.github.io/2019/11/07/LeetCode-16%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
     <id>http://zm163.github.io/2019/11/07/LeetCode-16%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
     <published>2019-11-07T14:08:49.000Z</published>
-    <updated>2019-11-07T14:35:48.302Z</updated>
+    <updated>2020-05-04T13:11:29.058Z</updated>
     
     <summary type="html">
     
@@ -580,8 +593,82 @@ d ，使得 a + b + c+ d 的值与 target 相等？找出所有满足条件且�
     </summary>
     
     
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-15三数之和</title>
+    <link href="http://zm163.github.io/2019/11/06/LeetCode-15%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
+    <id>http://zm163.github.io/2019/11/06/LeetCode-15%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
+    <published>2019-11-06T11:54:29.000Z</published>
+    <updated>2020-05-04T13:11:37.900Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;题目：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
+
+注意：答案中不可以包含重复的三元组。
+
+例如, 给定数组 nums
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-14最长公共前缀</title>
+    <link href="http://zm163.github.io/2019/11/06/LeetCode-14%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/"/>
+    <id>http://zm163.github.io/2019/11/06/LeetCode-14%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/</id>
+    <published>2019-11-06T11:53:55.000Z</published>
+    <updated>2020-05-04T13:11:45.931Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;题目：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;编写一个函数来查找字符串数组中的最长公共前缀。
+
+如果不存在公共前缀，返回空字符串 &amp;quot;&amp;quot;。
+
+示例 1:
+
+输入:
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
     
   </entry>
   

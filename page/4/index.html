@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     A BUG IS A CHANCE
+     A BUG|A CHANCE
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -47,7 +47,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<link rel="alternate" href="/atom.xml" title="A BUG IS A CHANCE" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="A BUG|A CHANCE" type="application/atom+xml">
 </head>
 
 </html>
@@ -68,7 +68,7 @@ var _hmt = _hmt || [];
       <img src="/images/cover2.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/">A BUG IS A CHANCE</a></h1>
+      <h1><a href="/">A BUG|A CHANCE</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
@@ -79,7 +79,7 @@ var _hmt = _hmt || [];
         <img
           src="/images/ayer.png"
           class="cover-logo"
-          alt="A BUG IS A CHANCE"
+          alt="A BUG|A CHANCE"
         />
         
       </div>
@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-LeetCode-17电话号码的字母组合" class="article article-type-post" itemscope
+    <article id="post-LeetCode-24两两交换链表中的结点" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/08/LeetCode-17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/"
-    >LeetCode-17电话号码的字母组合</a> 
+  <a class="article-title" href="/2019/11/15/LeetCode-24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%BB%93%E7%82%B9/"
+    >LeetCode-24两两交换链表中的结点</a> 
 </h2>
  
 
@@ -119,10 +119,14 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/08/LeetCode-17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/" class="article-date">
-  <time datetime="2019-11-08T15:35:56.000Z" itemprop="datePublished">2019-11-08</time>
+      <a href="/2019/11/15/LeetCode-24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%BB%93%E7%82%B9/" class="article-date">
+  <time datetime="2019-11-15T00:54:41.000Z" itemprop="datePublished">2019-11-15</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
       
       
       
@@ -138,79 +142,40 @@ var _hmt = _hmt || [];
 
       
       <p>题目：</p>
-<pre><code>给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
+<pre><code>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
 
-给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</code></pre><p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png" alt=""></p>
-<pre><code>示例:
+你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
+示例:
 
-输入：&quot;23&quot;
-输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].
-说明:
-尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/letter-combinations-of-a-phone-number
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</code></pre><p>思路：我的思路，每次排序都可以看为将上一次的结果与下一次的要找的字符进行排序，注意将上一次产生的每个结果看成一个整体，然后与后面的字符进行排列，比如“23”，情况下可以看成（a,b,c）与（d,e,f）进行排列，而“233”可以先看成（a,,b,c）与(d,e,f)进行排列，然后这一次排列的结果为（ad, ae, af, bd, be, bf, cd, ce, cf）在与（d,e,f）进行排列。</p>
-<p>代码：</p>
-<pre><code>public List&lt;String&gt; letterCombinations(String digits) {
-List&lt;String&gt;list=new ArrayList&lt;&gt;();
-if(digits==null||digits.length()==0)
-    return list;
-    String nums[]=new String[10] ;
-    nums[1]=&quot;&quot;;
-    nums[2]=&quot;abc&quot;;
-    nums[3]=&quot;def&quot;;
-    nums[4]=&quot;ghi&quot;;
-    nums[5]=&quot;jkl&quot;;
-    nums[6]=&quot;mno&quot;;
-    nums[7]=&quot;pqrs&quot;;
-    nums[8]=&quot;tuv&quot;;
-    nums[9]=&quot;wxyz&quot;;
-    int value1=0;
-    int pos=0;//首先要将第一个数字对应的字符串的每一个字符当作这一次的结果，为下一次进行准备。注意此处有特别情况当value1的值不同时初始化列表的长度也不一样。
-    value1=digits.charAt(pos++)-&apos;0&apos;;
-    list.add(nums[value1].charAt(0)+&quot;&quot;);
-    list.add(nums[value1].charAt(1)+&quot;&quot;);
-    list.add(nums[value1].charAt(2)+&quot;&quot;);
-    if(value1==7||value1==9) {
-        list.add(nums[value1].charAt(3)+&quot;&quot;);
-    }
-    for(int i=pos;i&lt;digits.length();i++) {
-        value1=digits.charAt(i)-&apos;0&apos;;
-        List&lt;String&gt;result=new ArrayList&lt;&gt;();
-        for(int j=0;j&lt;list.size();j++) {
-            for(int k=0;k&lt;nums[value1].length();k++) {
-                result.add(list.get(j)+nums[value1].charAt(k));//注意要用中间变量存储结果，不然如果在原变量的基础上，循环条件就一直在改变了。
-            }
-        }
-        list=result;
-    }
-    return list;
-}</code></pre><p>思路二：递归方法。</p>
-<p>代码：</p>
-<pre><code>    class Solution {
-     List&lt;String&gt; list;
-    String[] array={&quot; &quot;,&quot;&quot;,&quot;abc&quot;,&quot;def&quot;,&quot;ghi&quot;,&quot;jkl&quot;,&quot;mno&quot;,&quot;pqrs&quot;,&quot;tuv&quot;,&quot;wxyz&quot;};
-    public List&lt;String&gt; letterCombinations(String digits) {
-      list=new ArrayList&lt;&gt;();
-         if(digits.equals(&quot;&quot;))
-             return list;
-        compose(digits,0,&quot;&quot;);
-        return list;
-    }
-    public void compose(String digits,int index,String str){
-        if(index==digits.length())
+给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</code></pre><p>思路：递归,战胜100%，时间 0ms</p>
+<pre><code>递归公式：
+    首先交换两个结点，然后让后一结点的next指向继续递归后的结果。</code></pre><p>代码：</p>
+<pre><code>public ListNode swapPairs(ListNode head) {
+     if(head==null)//递归结束条件1如果链表中结点个数为偶数，当返回最后一个结点的next时直接返回null
+         return null;
+     ListNode currNode=head;
+     ListNode nextNode=head.next;
+        if(nextNode==null)//如果结点个数为奇数，那么返回前一个结点。
         {
-            list.add(str);
-            return;
+            return currNode;
         }
-        char c=digits.charAt(index);
-        String letter=array[c-&apos;0&apos;];
-        for(int i=0;i&lt;letter.length();i++)
-            compose(digits,index+1,str+letter.charAt(i));
-        return;
+        ListNode temp=nextNode.next;
+        nextNode.next=currNode;//将currNode的后一个结点的next设为前一个结点就完成了交换结点的前步。
+        currNode.next=swapPairs(temp);//将前一个结点的next设置为后一个结点的next交换后的变换后的结果
+        return nextNode;//返回nextNode而非currNode.
     }
-}</code></pre>
+ public static void main(String[] args) {
+        ListNode node=new ListNode(1);
+        node.next=new ListNode(2);
+        node.next.next=new ListNode(3);
+        node.next.next.next=new ListNode(4);
+        node.next.next.next.next=null;
+        ListNode res=new o0024().swapPairs(node);
+        while(res!=null) {
+            System.out.println(res.val);
+            res=res.next;
+        }
+    }</code></pre>
       
       <!-- reward -->
       
@@ -222,7 +187,7 @@ if(digits==null||digits.length()==0)
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -241,7 +206,7 @@ if(digits==null||digits.length()==0)
 
 </article>
     
-    <article id="post-LeetCode-16最接近的三数之和" class="article article-type-post" itemscope
+    <article id="post-LeetCode-23合并多个链表" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -249,8 +214,8 @@ if(digits==null||digits.length()==0)
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/07/LeetCode-16%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-    >LeetCode-16最接近的三数之和</a> 
+  <a class="article-title" href="/2019/11/14/LeetCode-23%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E9%93%BE%E8%A1%A8/"
+    >LeetCode-23合并多个链表</a> 
 </h2>
  
 
@@ -259,10 +224,14 @@ if(digits==null||digits.length()==0)
 
     
     <div class="article-meta">
-      <a href="/2019/11/07/LeetCode-16%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" class="article-date">
-  <time datetime="2019-11-07T14:08:49.000Z" itemprop="datePublished">2019-11-07</time>
+      <a href="/2019/11/14/LeetCode-23%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2019-11-14T14:28:18.000Z" itemprop="datePublished">2019-11-14</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
       
       
       
@@ -278,166 +247,191 @@ if(digits==null||digits.length()==0)
 
       
       <p>题目：</p>
-<pre><code>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找
-出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三
-个数的和。假定每组输入只存在唯一答案。
+<pre><code>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
+示例:
+输入: [   1-&gt;4-&gt;5,   1-&gt;3-&gt;4,   2-&gt;6 ] 输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</code></pre><p>思路一（自写）：递归：效率极低，战胜15%，运行时间：340ms</p>
+<p>每次取出lists的所有链表的第一个元素，找出最小的那个，然后用最小值的那个结点，指着这个结点的指针指向他所在结点后的链表与其他结点继续此操作的返回值。</p>
+<p>代码：</p>
+<pre><code>public ListNode mergeKLists(ListNode[] lists) {
+    int minval=Integer.MAX_VALUE;
+    int minIndex=0;
+    ListNode head=null;
+    for(int i=0;i&lt;lists.length;i++) {
+        if(lists[i]==null) {
+            continue;
+        }
+        if(lists[i].val&lt;=minval) {
+            minval=lists[i].val;
+            minIndex=i;
+        }
+    }
+    if(minval==Integer.MAX_VALUE)
+        return null;
+    head=lists[minIndex];
+    lists[minIndex]=lists[minIndex].next;
+    head.next=mergeKLists(lists);
+    return head;
+}</code></pre><p>思路二：归并：效率高，战胜100%，运行时间：2ms</p>
+<p>将lists不断合并左右元素，然后放入左半边lists，然后继续在左半边继续合并左右元素操作，直到right到达0处。两个链表的合并算法自己想。</p>
+<p>代码：</p>
+<pre><code>public ListNode 自写mergeKLists(ListNode []lists) {
+    if (lists==null||lists.length&lt;=0)
+        return null;
+    ListNode head=new ListNode(0);
+    int left=0;
+    int right=lists.length-1;
+    while(right&gt;0) {
+        while(left&lt;right) {
+            head.next=自写merge(lists[left],lists[right]);
+            left++;
+            right--;
+        }
+        left=0;
+    }
+    return head.next;
+}
+private ListNode 自写merge(ListNode l1, ListNode l2) {
+    if(l1==null)//如果有一个为null，直接返回另一个。
+        return l2;
+    if(l2==null)
+        return l1;
+    ListNode head=new ListNode(0);//建一个头结点不做返回值一部分
+    ListNode currNode=head;//定义一个零时工。
+    while(l1!=null&amp;l2!=null) {
+        if(l1.val&lt;l2.val) {
+            currNode.next=l1;
+            l1=l1.next;
+        }else {
+            currNode.next=l2;
+            l2=l2.next;
+        }
+        currNode=currNode.next;
+    }
+    currNode.next=l1==null?l2:l1;//如果有链表没有结束，直接将其加到后面。
+    return head.next;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.
 
-与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).
+    </footer>
 
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/3sum-closest
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</code></pre><p>思路：这题我是没有想法的，好不容易写的，调试半天，结果竟然位列12%左右，那就直接上大佬的代码；</p>
-<p>分析思路：</p>
-<p>然后依据上一题的双指针算法，对数组排一下序，从当前位置出发，<br>记录下每三个数字的和，然后用它们的和与初始的和对比。如果比初始更接近target，就修改要作为返回结果的和。如果当前的和比target大说明减小一点值可能跟接近target，如果比target小，那么可能大一点的和会更接近target。注意此处要进行下一次的循环时<br>可以优化一下，跳过那些已经出现过的数值。</p>
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-22括号生成" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/11/13/LeetCode-22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/"
+    >LeetCode-22括号生成</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/13/LeetCode-22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/" class="article-date">
+  <time datetime="2019-11-13T05:50:29.000Z" itemprop="datePublished">2019-11-13</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<pre><code>给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
+
+例如，给出 n = 3，生成结果为：
+
+[
+  &quot;((()))&quot;,
+  &quot;(()())&quot;,
+  &quot;(())()&quot;,
+  &quot;()(())&quot;,
+  &quot;()()()&quot;
+]</code></pre><p>思路：回溯算法。<br>直接搬运他人的思路吧。看完之后，我是接连卧槽。</p>
+<p>方法一：回溯算法（深度优先遍历）<br>如果完成一件事情有很多种方法，并且每一种方法分成若干步骤，那多半就可以使用“回溯”算法完成。</p>
+<p>“回溯”算法的基本思想是“尝试搜索”，一条路如果走不通（不能得到想要的结果），就回到上一个“路口”，尝试走另一条路。</p>
+<p>因此，“回溯”算法的时间复杂度一般不低。如果能提前分析出，走这一条路并不能得到想要的结果，可以跳过这个分支，这一步操作叫“剪枝”。</p>
+<p>做“回溯”算法问题的基本套路是：</p>
+<p>1、使用题目中给出的示例，画树形结构图，以便分析出递归结构；</p>
+<p>一般来说，树形图不用画完，就能够分析出递归结构和解题思路。</p>
+<p>2、分析一个结点可以产生枝叶的条件、递归到哪里终止、是否可以剪枝、符合题意的结果在什么地方出现（可能在叶子结点，也可能在中间的结点）；</p>
+<p>3、完成以上两步以后，就要编写代码实现上述分析的过程，使用代码在画出的树形结构上搜索符合题意的结果。</p>
+<p>在树形结构上搜索结果集，使用的方法是执行一次“深度优先遍历”。在遍历的过程中，可能需要使用“状态变量”。</p>
+<p>（“广度优先遍历”当然也是可以的，请参考方法二。）</p>
+<p>我们以 n = 2 为例，画树形结构图。</p>
+<p><img src="https://pic.leetcode-cn.com/7ec04f84e936e95782aba26c4663c5fe7aaf94a2a80986a97d81574467b0c513-LeetCode%20%E7%AC%AC%2022%20%E9%A2%98%EF%BC%9A%E2%80%9C%E6%8B%AC%E5%8F%B7%E7%94%9F%E5%87%BA%E2%80%9D%E9%A2%98%E8%A7%A3%E9%85%8D%E5%9B%BE.png" alt=""></p>
+<p>画图以后，可以分析出的结论：</p>
+<p>左右都有可以使用的括号数量，即严格大于 00 的时候，才产生分支；</p>
+<p>左边不受右边的限制，它只受自己的约束；</p>
+<p>右边除了自己的限制以外，还收到左边的限制，即：右边剩余可以使用的括号数量一定得在严格大于左边剩余的数量的时候，才可以“节外生枝”；</p>
+<p>在左边和右边剩余的括号数都等于 00 的时候结算。</p>
+<p>作者：liweiwei1419<br>链接：<a href="https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/">https://leetcode-cn.com/problems/generate-parentheses/solution/hui-su-suan-fa-by-liweiwei1419/</a><br>来源：力扣（LeetCode）<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 <p>代码：</p>
 <pre><code>class Solution {
-    public int threeSumClosest(int[] nums, int target) {
-        Arrays.sort(nums);
-        int begin,end,currSum,sum=nums[0]+nums[1]+nums[2];
-        for(int i=0;i&lt;nums.length-2;i++){
-            begin=i+1;
-            end=nums.length-1;
-            while(begin&lt;end){
-            currSum=nums[begin]+nums[end]+nums[i];
-            if(Math.abs(target-currSum)&lt;Math.abs(target-sum)){
-                sum=currSum;
-                }
-            if(currSum&gt;target){//如果当前和小于target，那么跳过重复的部分。
-                while(begin&lt;end&amp;&amp;nums[end]==nums[end-1])end--;
-                end--;
-            }else if(currSum&lt;target){//如果当前大于目标值，那么跳过重复的数字，继续下一次循环
-                while(begin&lt;end&amp;&amp;nums[begin]==nums[begin+1])begin++;
-                begin++;
-            }else{
-                    return sum;//最接近了，直接返回
-                }
-            }    
+    public List&lt;String&gt; generateParenthesis(int n) {
+         List&lt;String&gt;list=new ArrayList&lt;String&gt;();
+         if(n==0)
+             return list;
+         String str=&quot;&quot;;
+         def(n,n,str,list);
+         return list;
         }
-    return sum;
+    public static void def(int left,int right,String str,List&lt;String&gt;list) {
+        if(left==0&amp;&amp;right==0) {
+            list.add(str);
+            return ;
+        }
+        if(left&gt;0)
+        def(left-1,right,str+&quot;(&quot;,list);
+        if(right&gt;0&amp;&amp;right&gt;left)
+        def(left,right-1,str+&quot;)&quot;,list);
+        return ;
     }
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-LeetCode-15三数之和" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/11/06/LeetCode-15%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-    >LeetCode-15三数之和</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/11/06/LeetCode-15%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" class="article-date">
-  <time datetime="2019-11-06T11:54:29.000Z" itemprop="datePublished">2019-11-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<pre><code>给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
-
-注意：答案中不可以包含重复的三元组。
-
-例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，
-
-满足要求的三元组集合为：
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]</code></pre><p>思路：</p>
-<p>最优解法：</p>
-<pre><code>先对数组排序，从左向右遍历，并将值存储到一个变量中，然后采用双指针，分别从当前值的位置+1处开始，
-以及从数组为开始相向而行，每次让两个指针指向的值与当前值相加如果等于0，说明可以存入数组列表中，如
-果小于，说明左边指针指向的值过于小了，将其加+1，继续下一的循环，如果大于就说明右边的值过大了，将
-将右边的指针指向前一个，继续循环，如果相等，那么要注意：如果两个指针指向下一个位置的值任然为上一
-个位置一定要让指针跳出具有相同数字的区域，然后继续下一次循环。</code></pre><p>代码：</p>
-<pre><code>public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {
-     List&lt;List&lt;Integer&gt;&gt;lists=new ArrayList&lt;&gt;();
-     if(nums.length&lt;3) {
-         return lists;
-     }
-        Arrays.sort(nums);
-        int currValue=0,a=0,b=0;
-        for(int i=0;i&lt;nums.length;i++) {
-            currValue=nums[i];
-            if(currValue&gt;0) {
-                break;
-            }
-            if(i&gt;0&amp;&amp;nums[i]==nums[i-1]) {
-                continue;
-            }
-            a=i+1;
-            b=nums.length-1;
-            while(a&lt;b) {
-                if(nums[a]+nums[b]==0-currValue) {
-                    lists.add(Arrays.asList(currValue,nums[a],nums[b]));
-                    while(b&gt;a&amp;&amp;nums[a]==nums[a+1])a++;//跳到在数组中与它等值的最后一个数字处
-                    while(b&gt;a&amp;&amp;nums[b]==nums[b-1])b--;
-                    a++;//跳向下一个数字处
-                    b--;//跳向前一个数字处
-                }else if(nums[a]+nums[b]&gt;0-currValue) {
-                    b--;
-                }else {
-                    a++;
-                }
-            }
-        }
-
-            return lists;
-    }</code></pre><p>来源：力扣（LeetCode）</p>
-<p>链接：<a href="https://leetcode-cn.com/problems/3sum" target="_blank" rel="noopener">https://leetcode-cn.com/problems/3sum</a></p>
-<p>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+}</code></pre><p>其他思路：目前我理解不了，可以直接看上面这位大神的讲解。</p>
 
       
       <!-- reward -->
@@ -450,506 +444,7 @@ if(digits==null||digits.length()==0)
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-LeetCode-14最长公共前缀" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/11/06/LeetCode-14%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/"
-    >LeetCode-14最长公共前缀</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/11/06/LeetCode-14%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" class="article-date">
-  <time datetime="2019-11-06T11:53:55.000Z" itemprop="datePublished">2019-11-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<pre><code>编写一个函数来查找字符串数组中的最长公共前缀。
-
-如果不存在公共前缀，返回空字符串 &quot;&quot;。
-
-示例 1:
-
-输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
-输出: &quot;fl&quot;
-示例 2:
-
-输入: [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]
-输出: &quot;&quot;
-解释: 输入不存在公共前缀。
-说明:
-
-所有输入只包含小写字母 a-z 。</code></pre><p>思路:</p>
-<p>最优解法：</p>
-<pre><code>将一个字符串设置为默认的公共前缀，然后遍历剩余的字符串，查看每一个字符串是否是以此字符串开头的，
-如果有一个字符串不是就修改默认的公共前缀的值去掉最后一个字符，再次重复的与上一次不符合的字符串比
-对，如果还是不符合，就继续去除最后一个字符直到符合为止，如果都去掉了就直接返回空字符串，如果符合
-就再与下一个字符串比对，直到都符合为止。</code></pre><p>代码:</p>
-<pre><code>public String longestCommonPrefix(String[] strings) {
-     if(strings.length == 0){
-        return &quot;&quot;;
-    }
-    String prefix = strings[0];
-    for (int i=1;i&lt;strings.length;i++){//第几位
-        while (strings[i].indexOf(prefix) !=0){
-            prefix = prefix.substring(0,prefix.length()-1);
-            if (prefix.isEmpty()){
-                return &quot;&quot;;
-            }
-        }
-    }
-    return prefix;
-}</code></pre><p>我的解法：</p>
-<pre><code>思路：公共字符前缀必定时每个字符串的开头相同的部分，只要选定一个字符串，然后不断遍历它的字符，先
-将字符加到结果字符串上，然后接着用字符去与其它字符串的对应位置的字符比对，如果当前字符对应的位置
-恰好等于某个字符串的长度，那么就返回结果的除最后一个字符外的全部字符，如果其他字符串对应的位置的
-字符恰好就是这个，那么证明没有加错字符就继续遍历，如果其他字符串对应位置的字符不是这个说明加错
-了，就得返回结果字符串除最后一个字符外的全部字符。如果正常退出循环，就直接返回结果；</code></pre><p>代码：</p>
-<pre><code>public String longestCommonPrefix(String[] strs) {
-    if(strs==null||strs.length&lt;1)
-           return &quot;&quot;;
-       char ch=&apos;\0&apos;;
-       String re=&quot;&quot;;
-           for(int i=0;i&lt;strs[0].length();i++) {
-            ch=strs[0].charAt(i);
-            re=re+ch;
-            for(int j=1;j&lt;strs.length;j++) {
-                if(strs[j].length()==i) {
-                    return re.substring(0, re.length()-1);
-                }
-                if(ch==strs[j].charAt(i)) {
-                    continue;
-                }else {
-                    return re.substring(0, re.length()-1);
-                }
-            }
-        }
-        return re;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/longest-common-prefix</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-LeetCode-13罗马数字转整数" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/11/06/LeetCode-13%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0/"
-    >LeetCode-13罗马数字转整数</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/11/06/LeetCode-13%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0/" class="article-date">
-  <time datetime="2019-11-06T11:53:11.000Z" itemprop="datePublished">2019-11-06</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<pre><code>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
-
-字符          数值
-I             1
-V             5
-X             10
-L             50
-C             100
-D             500
-M             1000
-
-例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即
-为 XX + V + II 。
-
-通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1
-在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特
-殊的规则只适用于以下六种情况：
-
-I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。
-X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 
-C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
-给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。
-
-示例 1:
-
-输入: &quot;III&quot;
-输出: 3
-示例 2:
-
-输入: &quot;IV&quot;
-输出: 4
-示例 3:
-
-输入: &quot;IX&quot;
-输出: 9
-示例 4:
-
-输入: &quot;LVIII&quot;
-输出: 58
-解释: L = 50, V= 5, III = 3.
-示例 5:
-
-输入: &quot;MCMXCIV&quot;
-输出: 1994
-解释: M = 1000, CM = 900, XC = 90, IV = 4.</code></pre><p>最优解法：</p>
-<pre><code>依据输入的字符串取出每一个字符，如果如果不是
-一些特殊的字符（比如当前字符为C后面的字符为
-D），直接让返回值加上这个字符对应的数值，否
-则就加上特殊字符串对应的数值（此处应该修改指
-定字符位置的数值）。</code></pre><p>我的解法：</p>
-<pre><code>依照上一题的思路，定义一个字符串数组存储罗马字符，再定义一个数组存储罗马字符串对应的数值，然后从
-头开始，匹配字符串遇到合适的就不断地匹配它，然后修改原字符串使这个位置的罗马字符串丢掉。</code></pre><p>代码：</p>
-<pre><code>public int romanToInt(String s) {
-     String[]romans=new String[] {&quot;M&quot;,&quot;CM&quot;,&quot;D&quot;,&quot;CD&quot;,&quot;C&quot;,&quot;XC&quot;,&quot;L&quot;,&quot;XL&quot;,&quot;X&quot;,&quot;IX&quot;,&quot;V&quot;,&quot;IV&quot;,&quot;I&quot;};
-     int res[]=new int[] {1000,900,500,400,100,90,50,40,10,9,5,4,1};
-     int result=0;
-     int i=0;
-     while(i&lt;13) {//数组中的字符串只有13个
-         while(s.startsWith(romans[i])) {
-             s=s.substring(romans[i].length());
-             result=result+res[i];
-         }
-         i++;
-     }
-     return result;
-}</code></pre><p>来源：<a href="https://leetcode-cn.com/submissions/detail/35520225/" target="_blank" rel="noopener">https://leetcode-cn.com/submissions/detail/35520225/</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-LeetCode-12整数转换罗马数字" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/11/03/LeetCode-12%E6%95%B4%E6%95%B0%E8%BD%AC%E6%8D%A2%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/"
-    >LeetCode-12整数转换罗马数字</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/11/03/LeetCode-12%E6%95%B4%E6%95%B0%E8%BD%AC%E6%8D%A2%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97/" class="article-date">
-  <time datetime="2019-11-03T12:49:08.000Z" itemprop="datePublished">2019-11-03</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<pre><code>罗马数字包含以下七种字符： I， V， X， L，C，D 和 M。
-
-字符          数值
-I             1
-V             5
-X             10
-L             50
-C             100
-D             500
-M             1000
-例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即为 XX + V + II 。
-
-通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1
- 在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特殊的规则只适用于以下六种情况：
-
-I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。
-X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 
-C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
-给定一个整数，将其转为罗马数字。输入确保在 1 到 3999 的范围内。
-
-示例 1:
-
-输入: 3
-输出: &quot;III&quot;
-示例 2:
-
-输入: 4
-输出: &quot;IV&quot;
-示例 3:
-
-输入: 9
-输出: &quot;IX&quot;
-示例 4:
-
-输入: 58
-输出: &quot;LVIII&quot;
-解释: L = 50, V = 5, III = 3.
-示例 5:
-
-输入: 1994
-输出: &quot;MCMXCIV&quot;
-解释: M = 1000, CM = 900, XC = 90, IV = 4.</code></pre><p>思路一：定义一个函数根据每次取余的结果推送相应位数的字符，然后根据余数构建字符串。</p>
-<p>代码：</p>
-<pre><code>public String intToRoman(int num) {
-        String res=&quot;&quot;;
-        int r=0;
-        int time=0;
-        while(num!=0) {
-            time++;
-            r=num%10;
-            num/=10;
-            if(time==1) {
-                res=add(res,&apos;I&apos;,&apos;V&apos;,&apos;X&apos;,r);
-            }else if(time == 2) {
-                res=add(res,&apos;X&apos;,&apos;L&apos;,&apos;C&apos;,r);
-            }else if(time==3) {
-                res=add(res,&apos;C&apos;,&apos;D&apos;,&apos;M&apos;,r);
-            }else {
-                res=add(res,&apos;M&apos;,&apos;\0&apos;,&apos;\0&apos;,r);
-            }
-        }
-        return res;
-    }
- public static String add(String str,char ch1,char ch2,char ch3,int r) {
-     String res=&quot;&quot;;
-     if(r&lt;4) {
-             while(r!=0) {
-                 res=ch1+res;
-                 r--;
-             }
-         }else if(r==4){
-             res=ch1+&quot;&quot;+ch2+res;
-         }else if(r==9){
-             res=ch1+&quot;&quot;+ch3+res;
-         }else {
-             res=ch2+res;
-             r=r-5;
-             while(r!=0) {
-                 res=res+ch1;
-                 r--;
-             }
-         }
-         return res+str;
-     }</code></pre><p>思路二：</p>
-<pre><code>贪心算法，来自百度词条的解释（贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前
-
-来是最好的选择。也就是说，不从整体最优上加以考虑，他所做出的是在某种意义上的局部最优解。
-
-贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择，选择的贪心策略必须具备无后效性，
-
-即某个状态以前的过程不会影响以后的状态，只与当前状态有关。）每一步都使用当前较大的罗马数字作为加法
-
-因子，最后得到罗马数字表示就是长度最少的。做法：将所有特殊的数值以及它们对应的字符串存入数组，然后
-
-根据输入的数值，从高位开始减，一个一个匹配，加入到字符串中。</code></pre><p>代码：</p>
-<pre><code>public String intToRoman(int num) {
-    StringBuilder res=new StringBuilder();
-     int nums[]=new int[] {1000,900,500,400,100,90,50,40,10,9,5,4,1};
-     String[]romans=new String[] {&quot;M&quot;,&quot;CM&quot;,&quot;D&quot;,&quot;CD&quot;,&quot;C&quot;,&quot;XC&quot;,&quot;L&quot;,&quot;XL&quot;,&quot;X&quot;,&quot;IX&quot;,&quot;V&quot;,&quot;IV&quot;,&quot;I&quot;};
-     int index=0;
-     while(index&lt;13) {
-         while(num&gt;=nums[index]) {
-             num=num-nums[index];
-             res.append(romans[index]);
-         }
-         index++;
-     }
-     return res.toString();
-}</code></pre><p>此思路借鉴了他人。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -974,7 +469,7 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
   </nav>
   
 </section>
@@ -1033,7 +528,7 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="A BUG IS A CHANCE"></a>
+    <a href="/"><img src="/images/avatar.jpg" alt="A BUG|A CHANCE"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -1254,6 +749,15 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 
 <!-- Katex -->
 
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
 <!-- busuanzi  -->
 
 
@@ -1330,7 +834,7 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
     
     
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=1382596189&auto=0&height=32"></iframe>
+        src="//music.163.com/outchain/player?type=2&id=1363490517&auto=0&height=32"></iframe>
 </div>
 
 <style>
@@ -1343,6 +847,6 @@ C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
 </style>
     
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"right","width":250,"height":400,"hOffset":0,"vOffset":-30},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"left","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
 
 </html>

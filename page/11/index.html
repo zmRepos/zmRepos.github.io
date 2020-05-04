@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     A BUG IS A CHANCE
+     A BUG|A CHANCE
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -47,7 +47,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<link rel="alternate" href="/atom.xml" title="A BUG IS A CHANCE" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="A BUG|A CHANCE" type="application/atom+xml">
 </head>
 
 </html>
@@ -68,7 +68,7 @@ var _hmt = _hmt || [];
       <img src="/images/cover2.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/">A BUG IS A CHANCE</a></h1>
+      <h1><a href="/">A BUG|A CHANCE</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
@@ -79,7 +79,7 @@ var _hmt = _hmt || [];
         <img
           src="/images/ayer.png"
           class="cover-logo"
-          alt="A BUG IS A CHANCE"
+          alt="A BUG|A CHANCE"
         />
         
       </div>
@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1072" class="article article-type-post" itemscope
+    <article id="post-LeetCode-2两数相加" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/08/PTA-Basic-1072/"
-    >PTA-Basic-1072</a> 
+  <a class="article-title" href="/2019/10/19/LeetCode-2%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/"
+    >LeetCode0002</a> 
 </h2>
  
 
@@ -119,10 +119,14 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/10/08/PTA-Basic-1072/" class="article-date">
-  <time datetime="2019-10-08T13:48:36.000Z" itemprop="datePublished">2019-10-08</time>
+      <a href="/2019/10/19/LeetCode-2%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/" class="article-date">
+  <time datetime="2019-10-19T13:43:46.000Z" itemprop="datePublished">2019-10-19</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
       
       
       
@@ -137,177 +141,409 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：<br>下图是上海某校的新学期开学寄语：天将降大任于斯人也，必先删其微博，卸其 QQ，封其电脑，夺其手机，收其 ipad，断其 wifi，使其百无聊赖，然后，净面、理发、整衣，然后思过、读书、锻炼、明智、开悟、精进。而后必成大器也！</p>
-<p><img src="https://images.ptausercontent.com/3b1d9f4a-778b-4942-a9e2-836262f363aa.JPG" alt="嘿嘿嘿"></p>
-<p>本题要求你写个程序帮助这所学校的老师检查所有学生的物品，以助其成大器。</p>
-<p>输入格式：</p>
-<p>输入第一行给出两个正整数 N（≤ 1000）和 M（≤ 6），分别是学生人数和需要被查缴的物品种类数。第二行<br>给出 M 个需要被查缴的物品编号，其中编号为 4 位数字。随后 N 行，每行给出一位学生的姓名缩写（由 1-4 个大写英文字母组成）、个人物品数量 K（0 ≤ K ≤ 10）、以及 K 个物品的编号。</p>
-<p>输出格式：<br>顺次检查每个学生携带的物品，如果有需要被查缴的物品存在，则按以下格式输出该生的信息和其需要被查缴的物品的信息（注意行末不得有多余空格）：</p>
-<p>姓名缩写: 物品编号1 物品编号2 ……<br>最后一行输出存在问题的学生的总人数和被查缴物品的总数。</p>
-<p>输入样例：</p>
-<pre><code>4 2
-2333 6666
-CYLL 3 1234 2345 3456
-U 4 9966 6666 8888 6666
-GG 2 2333 7777
-JJ 3 0012 6666 2333</code></pre><p>输出样例：</p>
-<pre><code>U: 6666 6666
-GG: 2333
-JJ: 6666 2333
-3 5</code></pre><p>分析：<br>定义一个图，存储被禁止的编号，然后对每一个输入判断，如果有不允许的，就标记一下此人，输入此人的姓名，与违禁品。注意输出格式为4位</p>
+      <p>题目描述：</p>
+<p>给定两个非空链表表示两个非负整数，位数按照逆序存储他们的每个节点只存储单个数字，将两数相加<br>返回一个新的链表。<br>你可以假设除了数字0外，这两个数字都不以0开头.{即数字不为（002）转化为输入就是（2-&gt;0-&gt;0）也告诉我们结果不可能出现2-&gt;1-&gt;0-&gt;0这样的}</p>
+<p>实例：</p>
+<p>输入（2-&gt;4-&gt;3）,(5-&gt;6-&gt;4)</p>
+<p>输出（7-&gt;0-&gt;8）</p>
+<p>原因：342+465=807</p>
+<p>思路：</p>
+<p>一：</p>
+<pre><code>通过Java自带的ArrayList数组列表，存放数值，并进行运算（首先取出两个数组列表上的相同位置处的数
+值，若一个没有另外一个长则长的部分数值就是0，定义一个carry用于存放余数，定义一个sum用于存放和，然后
+根据将sum对10取余的结果放入ArrayList,注意如果结尾余数不为0，那么还要将余数放入ArrayList中，防止进数
+的丢失）</code></pre><p>二：</p>
+<pre><code>使用自定义的ListNode节点类（包含值与指向下一个对象的指针），首先初始化一个头结点，注意此头结点不
+作为返回值的一部分，然后定义对输入的两个链表的两指针（用于取出链表上的每个数值），在定义一指向头
+结点的头指针，用于操作结果链表，定义sum,carry分别用于存放和，与进数之后的操作同思路1。</code></pre><p>代码：</p>
+<pre><code>public class o0002 {
+    public static void main(String[] args) {
+//        ArrayList&lt;Integer&gt;a=new ArrayList&lt;&gt;();
+//        a.add(0);
+//        ArrayList&lt;Integer&gt;b=new ArrayList&lt;&gt;();
+//        b.add(0);
+//        a.add(0);
+//        System.out.println(Arrays.toString(Solution_1(a,b).toArray()));
+        ListNode a=new ListNode(2);
+        ListNode _a=a;
+        _a.next=new ListNode(0);
+        _a=_a.next;
+        _a.next=new ListNode(0);
+        ListNode b=new ListNode(0);
+        ListNode _b=b;
+        _b.next=new ListNode(0);
+        _b=_b.next;
+        _b.next=new ListNode(0);
+        ListNode result=Solution_2(a,b);
+        while(result!=null) {
+            System.out.println(&quot; &quot;+result.getVal());
+            result=result.next;
+        }
+    }
+    public static ArrayList&lt;Integer&gt; Solution_1(ArrayList&lt;Integer&gt;a,ArrayList&lt;Integer&gt;b){
+        int len_a=a.size();
+        int len_b=b.size();
+        int sum=0;
+        int next=0;
+        ArrayList&lt;Integer&gt; result=new ArrayList&lt;&gt;();
+        for(int i=0;i&lt;Math.max(len_a, len_b);i++) {
+            sum=0;
+            if(i&lt;len_a) {
+                sum=sum+a.get(i);
+            }
+            if(i&lt;len_b) {
+                sum=sum+b.get(i);
+            }
+            sum=sum+next;
+            result.add(sum%10);
+            next=sum/10;
+//            if(i==Math.max(len_a,len_b)-1&amp;&amp;next!=0) {//此处防止，最高位的进数丢失。处理最高进项到最高位的算法不好
+//                result.add(next);
+//            }
+        }
+        if(next!=0) {//放在外面判断更容易理解。
+            result.add(next);
+        }
+        while(result.get(result.size()-1)==0&amp;&amp;result.size()&gt;1) {//此处解决当所有位数都是0的情况，只保留一位0.此处是我多想了，题目中明确说不会以0开头
+            result.remove(result.size()-1);
+        }
+        return result;
+    }
+    static class ListNode{//新建一个节点类
+        public int val;//存储当前值
+        public ListNode next;//指向下一个位置
+        public ListNode(int i) {
+            this.val=i;
+        }
+        public int getVal() {
+            return val;
+        }
+    }
+    public static ListNode Solution_2(ListNode a,ListNode b) {
+        ListNode HeadNode=new ListNode(0);//头节点，不做返回值的一部分。
+        ListNode p=a,q=b,curr=HeadNode;
+        int carry=0;
+        while(p!=null||q!=null) {
+            int x=p!=null?p.getVal():0;
+            int y=q!=null?q.getVal():0;
+            int sum=x+y+carry;
+            carry=sum/10;
+            curr.next=new ListNode(sum%10);
+            curr=curr.next;
+            if(p!=null) {
+                p=p.next;
+            }
+            if(q!=null) {
+                q=q.next;
+            }
+        }
+        if(carry!=0) {
+            curr.next=new ListNode(carry);
+        }
+        return HeadNode.next;
+    }
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-LeetCode-1两数之和" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/19/LeetCode-1%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"
+    >LeetCode0001</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/19/LeetCode-1%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/" class="article-date">
+  <time datetime="2019-10-19T13:43:00.000Z" itemprop="datePublished">2019-10-19</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>语言：Java</p>
+<pre><code>/**
+ * 题目描述：
+ * 给定一个数组，找出其中何为目标值的两个数。（你可以假设每种输入只有一种答案，且同样的元素不能被重复利用）
+ * 实例：
+ * 给定nums=[2,7,11,15],target=9;
+ * 因为nums[0]+nums[1]==target=2+7=9
+ * 所以返回[0,1]
+ * @author zhuming
+ *
+ */</code></pre><p>实现思路：<br>一：</p>
+<pre><code>二重循环，找到即输出。</code></pre><p>二：<br>    使用map，将数组存入map中，然后遍历这个数组，在map中查找target-a[i]的值如果有，说明有解，直接输出。<br>三：<br>    使用map，先将一部分数据存储，可以肯定的是，先输入map中的数据中一定没有相加之和位target的两个数字，然后边输入边查找map中是否有target-a[i]的值，如果有那么就直接输出。</p>
 <p>代码：</p>
+<pre><code>import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class o0001 {
+    public static void main(String[] args) {
+        int a[]=new int[] {2,9,11,15};
+        int target=9;
+        int[] b=solution_1(a,target);
+        System.out.println(Arrays.toString(b));
+    }
+    /**
+     * 解题思路1：先对数组排序，然后从第i个位置开始，由后向前找，如果找到与a[i]的和就是target的立即返回，如果找到和小于target的结束此次外层循环，继续下一次外层循环。
+     * @time 时间复杂度：O(n^2)
+     * @param a
+     * @param target
+     * @return
+     */
+    public static int[] solution_1(int a[],int target) {
+        Arrays.sort(a);
+        int[] b=new int[2];
+        for(int i=0;i&lt;a.length;i++) {
+            for(int j=a.length-1;j&gt;i;j--) {
+                if(a[i]+a[j]==target) {
+                b[0]=i;
+                b[1]=j;
+                }
+                if(a[i]+a[j]&lt;target) {
+                    break;
+                }
+            }
+        }
+        return b;
+    }
+    /**
+     * 解题思路2：将数组中的数据放入map中，然后使用一次循环，在map中看有没有target-a[i]的数值的存在，如果有就立即输出，如果到结尾任然没有就抛出异常。
+     * 时间复杂度：O(n)
+     * @param a
+     * @param target
+     * @return
+     */
+    public static int[] solution_2(int a[],int target) {
+        Map&lt; Integer, Integer&gt; map=new HashMap&lt;&gt;();
+        for(int i=0;i&lt;a.length;i++) {
+            map.put(a[i], i);
+        }
+        for(int i=0;i&lt;a.length;i++) {
+            int value=target-a[i];
+            if(map.containsKey(value)) {
+                return new int[] {i,map.get(value)};
+            }
+        }
+        throw new IllegalArgumentException(&quot;No two sum solution&quot;);//可以用抛出异常代替没有返回值的情况。
+    }
+    /**
+     * 思路：先将数组的一部分数值放入map中，然后再剩余的数值中找target-a[i]是否再map中出现的，有出现的说明可以组成解。
+     * @param a
+     * @param target
+     * @return
+     */
+    public static int[] solution_3(int a[],int target) {
+        Map&lt; Integer, Integer&gt; map=new HashMap&lt;&gt;();
+        for(int i=0;i&lt;a.length;i++) {
+            int component=target-a[i];
+            if(map.containsKey(component)) {
+                return new int[] {i,map.get(component)};
+            }
+            map.put(a[i], i);
+        }
+        throw new IllegalArgumentException(&quot;数组不存在解&quot;);
+    }
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1075" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1075/"
+    >PTA-Basic-1075</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1075/" class="article-date">
+  <time datetime="2019-10-16T15:23:44.000Z" itemprop="datePublished">2019-10-16</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<p>给定一个单链表，请编写程序将链表元素进行分类排列，使得所有负值元素都排在非负值元素的前面，而 [0, K] 区间内的元素都排在大于 K 的元素前面。但每一类内部元素的顺序是不能改变的。例如：给定链表为 18→7→-4→0→5→-6→10→11→-2，K 为 10，则输出应该为 -4→-6→-2→7→0→5→10→18→11。</p>
+<p>输入格式：<br>每个输入包含一个测试用例。每个测试用例第 1 行给出：第 1 个结点的地址；结点总个数，即正整数N (≤10^5 )；以及正整数K (≤10^3)。结点的地址是 5 位非负整数，NULL 地址用 −1 表示。</p>
+<p>接下来有 N 行，每行格式为：</p>
+<p>Address Data Next<br>其中 Address 是结点地址；Data 是该结点保存的数据，为 [−10^5​,10^5] 区间内的整数；Next 是下一结点的地址。题目保证给出的链表不为空。</p>
+<p>输出格式：<br>对每个测试用例，按链表从头到尾的顺序输出重排后的结果链表，其上每个结点占一行，格式与输入相同。</p>
+<p>输入样例：</p>
+<pre><code>00100 9 10
+23333 10 27777
+00000 0 99999
+00100 18 12309
+68237 -6 23333
+33218 -4 00000
+48652 -2 -1
+99999 5 68237
+27777 11 48652
+12309 7 33218</code></pre><p>输出样例：</p>
+<pre><code>33218 -4 68237
+68237 -6 48652
+48652 -2 12309
+12309 7 00000
+00000 0 99999
+99999 5 23333
+23333 10 00100
+00100 18 27777
+27777 11 -1</code></pre><p>思路：分三次，每次找合适的数据。<br>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int forbid[10000]={0};
-    int n,m,temp,k;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    for(int i=0;i&lt;m;i++){
-        scanf(&quot;%d&quot;,&amp;temp);
-        forbid[temp]=1;
-    }
-    int sum=0,fsum=0;
-    for(int i=0;i&lt;n;i++){
-        char name[5]={&apos;\0&apos;};
-        scanf(&quot;%s %d&quot;,name,&amp;k);
-        int flag=0;
-        for(int j=0;j&lt;k;j++){
-            scanf(&quot;%d&quot;,&amp;temp);
-            if(forbid[temp]){
-                if(!flag){
-                    flag=1;
-                    printf(&quot;%s:&quot;,name);
-                    sum++;
-                }
-                printf(&quot; %04d&quot;,temp);
-                fsum++;
-            }
-        }
-        if(flag){
-            printf(&quot;\n&quot;);
-        }
-    }
-    printf(&quot;%d %d&quot;,sum,fsum);
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1071" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/08/PTA-Basic-1071/"
-    >PTA-Basic-1071</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/08/PTA-Basic-1071/" class="article-date">
-  <time datetime="2019-10-08T13:47:39.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<p>常言道“小赌怡情”。这是一个很简单的小游戏：首先由计算机给出第一个整数；然后玩家下注赌第二个整数将会比第一个数大还是小；玩家下注 t 个筹码后，计算机给出第二个数。若玩家猜对了，则系统奖励玩家 t 个筹码；否则扣除玩家 t 个筹码。</p>
-<p>注意：玩家下注的筹码数不能超过自己帐户上拥有的筹码数。当玩家输光了全部筹码后，游戏就结束。</p>
-<p>输入格式：<br>输入在第一行给出 2 个正整数 T 和 K（≤ 100），分别是系统在初始状态下赠送给玩家的筹码数、以及需要处理的游戏次数。随后 K 行，每行对应一次游戏，顺序给出 4 个数字：</p>
-<p>n1 b t n2<br>其中 n1 和 n2 是计算机先后给出的两个[0, 9]内的整数，保证两个数字不相等。b 为 0 表示玩家赌小，为 1 表示玩家赌大。t 表示玩家下注的筹码数，保证在整型范围内。</p>
-<p>输出格式：<br>对每一次游戏，根据下列情况对应输出（其中 t 是玩家下注量，x 是玩家当前持有的筹码量）：</p>
-<p>玩家赢，输出 Win t!  Total = x.；<br>玩家输，输出 Lose t.  Total = x.；<br>玩家下注超过持有的筹码量，输出 Not enough tokens.  Total = x.；<br>玩家输光后，输出 Game Over. 并结束程序。<br>输入样例 1：</p>
-<pre><code>100 4
-8 0 100 2
-3 1 50 1
-5 1 200 6
-7 0 200 8</code></pre><p>输出样例 1：</p>
-<pre><code>Win 100!  Total = 200.
-Lose 50.  Total = 150.
-Not enough tokens.  Total = 150.
-Not enough tokens.  Total = 150.</code></pre><p>输入样例 2：</p>
-<pre><code>100 4
-8 0 100 2
-3 1 200 1
-5 1 200 6
-7 0 200 8</code></pre><p>输出样例 2：</p>
-<pre><code>Win 100!  Total = 200.
-Lose 200.  Total = 0.
-Game Over.</code></pre><p>分析：依据题目思考即可。</p>
-<p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
 
 int main()
 {
-    int total,k;
-    int n1,n2,b,t;
-    scanf(&quot;%d %d&quot;,&amp;total,&amp;k);//存储总的筹码数，与游戏可能执行的最大次数
-    for(int i=0;i&lt;k;i++){
-    scanf(&quot;%d %d %d %d&quot;,&amp;n1,&amp;b,&amp;t,&amp;n2);
-    if(t&gt;total){//判断如果此次的下注的筹码数大于自己有的，则跳过，继续下一次游戏。
-        printf(&quot;Not enough tokens.  Total = %d.\n,total);
-        continue;
+  int iNext=0,iN=0,iK=0;//对应的是首地址，节点的个数，K的值
+  int iData[100000][2]={0};//用一个足够大的数组存放数据以及下一个节点的地址，下标就是它的地址
+  scanf(&quot;%d%d%d&quot;,&amp;iNext,&amp;iN,&amp;iK);//输入信息
+  int iAddr=0,iNum=0,iNAddr=0;
+  for(int i=0;i&lt;iN;i++)
+  {
+    scanf(&quot;%d%d%d&quot;,&amp;iAddr,&amp;iNum,&amp;iNAddr);//存放当前地址，数据，下一个节点的地址
+    iData[iAddr][0]=iNum;//存放数据
+    iData[iAddr][1]=iNAddr;//存放下一节点地址
+  }
+  int iOrder[iN];//存放排序好的地址
+  int p=0,next=iNext;
+  //3次遍历筛选排序
+  while(next!=-1)//第一次从首地址出发找出负数的地址。
+  {
+    if(iData[next][0]&lt;0)//当前节点的数据
+    {
+      iOrder[p++]=next;
     }
-    int boolean=(n2&gt;n1);//用boolean存储n2是否大于n1
-        if(boolean==b){//如果boolean 和猜的一样的则赢了此局
-            total+=t;
-            printf(&quot;Win %d!  Total = %d.\n&quot;,t,total);
-        }else{//输了
-            total-=t;//减去筹码，不用担心筹码为负数，因为下注数不可能大于筹码。
-            printf(&quot;Lose %d.  Total = %d.\n&quot;,t,total);
-            if(total==0){//如果扣去下注后的筹码为0，则结束游戏。
-                printf(&quot;Game Over.\n&quot;);
-                break;
-            }
-        }
+    next=iData[next][1];//将地址存放下一个节点的地址
+  }
+  next=iNext;//继续从首地址出发
+  while(next!=-1)//第二次找&lt;=K的非负数
+  {
+    if(iData[next][0]&gt;=0&amp;&amp;iData[next][0]&lt;=iK)
+    {
+      iOrder[p++]=next;
     }
-    return 0;
+    next=iData[next][1];
+  }
+  next=iNext;
+  while(next!=-1)//第三次找大于等于K的数据
+  {
+    if(iData[next][0]&gt;iK)
+    {
+      iOrder[p++]=next;
+    }
+    next=iData[next][1];
+  }
+  //循环输出，注意控制范围
+  for(int i=0;i&lt;p-1;i++)
+  {
+    printf(&quot;%05d %d %05d\n&quot;,iOrder[i],iData[iOrder[i]][0],iOrder[i+1]);//输出地址，地址对应的数据以及下一个地址。
+  }
+  printf(&quot;%05d %d -1&quot;,iOrder[p-1],iData[iOrder[p-1]][0]);//最后一个节点的数据直接输出，并输出-1表示结束。
+  return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -320,518 +556,7 @@ int main()
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1070" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1070/"
-    >PTA-Basic-1070</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1070/" class="article-date">
-  <time datetime="2019-10-07T12:43:17.000Z" itemprop="datePublished">2019-10-07</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<p>给定一段一段的绳子，你需要把它们串成一条绳。每次串连的时候，是把两段绳子对折，再如下图所示套接在一起。这样得到的绳子又被当成是另一段绳子，可以再次对折去跟另一段绳子串连。每次串连后，原来两段绳子的长度就会减半。</p>
-<p><img src="https://images.ptausercontent.com/46293e57-aa0e-414b-b5c3-7c4b2d5201e2.jpg" alt=""></p>
-<p>给定 N 段绳子的长度，你需要找出它们能串成的绳子的最大长度。</p>
-<p>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例第 1 行给出正整数 N (2≤N≤10<br>​4<br>​​ )；第 2 行给出 N 个正整数，即原始绳段的长度，数字间以空格分隔。所有整数都不超过10<br>​4<br>​​ 。</p>
-<p>输出格式：<br>在一行中输出能够串成的绳子的最大长度。结果向下取整，即取为不超过最大长度的最近整数。</p>
-<p>输入样例：</p>
-<pre><code>8
-10 15 12 3 4 13 1 15</code></pre><p>输出样例：</p>
-<pre><code>14</code></pre><p>思路：排序从小到大，不断折半。<br>代码:</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-int cmp(const void *a,const void *b){
-return *(int *)a-*(int *)b;
-}
-int main()
-{
-
-    int n=0;
-
-    scanf(&quot;%d&quot;,&amp;n);
-
-    int nums[n];
-
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%d&quot;,&amp;nums[i]);
-    }
-
-    qsort(nums,n,sizeof(int),cmp);
-
-    int max=nums[0];
-
-    for(int i=1;i&lt;n;i++){
-
-        max=(max+nums[i])/2;
-
-    }
-
-    printf(&quot;%d&quot;,max);
-
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1069" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1069/"
-    >PTA-Basic-1069</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1069/" class="article-date">
-  <time datetime="2019-10-07T12:43:06.000Z" itemprop="datePublished">2019-10-07</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<p>小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
-<p>输入格式：<br>输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。</p>
-<p>注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取</p>
-<p>下一位。</p>
-<p>输出格式：</p>
-<p>按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going…。</p>
-<p>输入样例 1：</p>
-<pre><code>9 3 2
-Imgonnawin!
-PickMe
-PickMeMeMeee
-LookHere
-Imgonnawin!
-TryAgainAgain
-TryAgainAgain
-Imgonnawin!
-TryAgainAgain</code></pre><p>输出样例 1：</p>
-<pre><code>PickMe
-Imgonnawin!
-TryAgainAgain</code></pre><p>输入样例 2：</p>
-<pre><code>2 3 5
-Imgonnawin!
-PickMe</code></pre><p>输出样例 2：</p>
-<pre><code>Keep going...</code></pre><p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-char result[1000][21];
-int check(char *str,int t){
-    for(int j=0;j&lt;t;j++){
-        if(strcmp(str,result[j])==0){//比较人数数组中是否已经有这个人了
-            return 1;
-        }
-    }
-    return 0;
-}
-int main()
-{
-    int m,n,s;
-    scanf(&quot;%d%d%d&quot;,&amp;m,&amp;n,&amp;s);
-    char str[21];
-    int t=0;//用来存储有多少人得奖。
-    for(int i=1;i&lt;=m;i++){
-            scanf(&quot;%s&quot;,str);
-            getchar();
-        if(i==s){
-                if(check(str,t)){//此人已经转发过了
-                    s=s+1;//看看它的下一个人是否合适
-                    continue;
-                }else{
-                    strcpy(result[t++],str);//此人没有转发过，就存入数组。
-                    s=s+n;//并且到下一个相隔n的人。
-                }
-        }
-    }
-    if(t==0){
-        printf(&quot;Keep going...&quot;);
-    }else{
-        for(int i=0;i&lt;t;i++){
-            puts(result[i]);
-        }
-        }
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1068" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1068/"
-    >PTA-Basic-1068</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1068/" class="article-date">
-  <time datetime="2019-10-07T12:42:51.000Z" itemprop="datePublished">2019-10-07</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目:<br>对于计算机而言，颜色不过是像素点对应的一个 24 位的数值。现给定一幅分辨率为 M×N 的画，要求你找出万绿丛中的一点红，即有独一无二颜色的那个像素点，并且该点的颜色与其周围 8 个相邻像素的颜色差充分大。</p>
-<p>输入格式：<br>输入第一行给出三个正整数，分别是 M 和 N（≤ 1000），即图像的分辨率；以及 TOL，是所求像素点与相邻点的颜色差阈值，色差超过 TOL 的点才被考虑。随后 N 行，每行给出 M 个像素的颜色值，范围在 [0,2<br>​24<br>​​ ) 内。所有同行数字间用空格或 TAB 分开。</p>
-<p>输出格式：<br>在一行中按照 (x, y): color 的格式输出所求像素点的位置以及颜色值，其中位置 x 和 y 分别是该像素在图像矩阵中的列、行编号（从 1 开始编号）。如果这样的点不唯一，则输出 Not Unique；如果这样的点不存在，则输出 Not Exist。</p>
-<p>输入样例 1：</p>
-<pre><code>8 6 200
-0      0       0        0        0          0           0        0
-65280      65280    65280    16711479 65280    65280    65280    65280
-16711479 65280    65280    65280    16711680 65280    65280    65280
-65280      65280    65280    65280    65280    65280    165280   165280
-65280      65280       16777015 65280    65280    165280   65480    165280
-16777215 16777215 16777215 16777215 16777215 16777215 16777215 16777215</code></pre><p>输出样例 1：</p>
-<pre><code>(5, 3): 16711680</code></pre><p>输入样例 2：</p>
-<pre><code>4 5 2
-0 0 0 0
-0 0 3 0
-0 0 0 0
-0 5 0 0
-0 0 0 0</code></pre><p>输出样例 2：</p>
-<pre><code>Not Unique</code></pre><p>输入样例 3：</p>
-<pre><code>3 3 5
-1 2 3
-3 4 5
-5 6 7</code></pre><p>输出样例 3：</p>
-<pre><code>Not Exist</code></pre><p>分析：定义一个足够大的数组用来存储像素点的次数，定义一个结构体用来表示像素点（有坐标，数值），每输入一个像素数值，就存入对应的像素点二维数组中，并在记录次数的数组中加1，然后定义一个判断像素点是否合格的函数，对每个像素点判断是否合格，并且是否只有一个。当这样的点超过1个是就可以不用继续找了。<br>此题目的一个坑就是在所有的点中查找独特的点不管它是否合格，再再独特的点中找合格的个数。而我陷入了这个坑认为不合格的像素点不用加到次数数组中。</p>
-<p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include&lt;math.h&gt;
-//定义一个二维数组存储像素点
-//定义结构体存储合格的像素点，与坐标，次数，一共有多少个像素点
-int map[2&lt;&lt;24]={0};
-int pixels[1000][1000]={0};
-typedef struct pixel{
-    int x;
-    int y;
-    int id;
-}pixel;
-int check(int i,int j,int n,int m,int tol);
-int main()
-{
-    int m,n,tol;//仿佛数组数目太大的变量只能声明为 全局变量，否则程序不会执行 
-    scanf(&quot;%d %d %d&quot;,&amp;m,&amp;n,&amp;tol);
-    for(int i=0;i&lt;n;i++){
-        for(int j=0;j&lt;m;j++){
-            scanf(&quot;%d&quot;,&amp;pixels[i][j]);
-            map[pixels[i][j]]++;//将对应的像素点的个数加1.
-        }
-    }
-    int time=0,x=0,y=0,id=0;//time用来记录独特点的个数
-    for(int i=0;i&lt;n;i++){
-        for(int j=0;j&lt;m;j++){
-            if(map[pixels[i][j]]==1&amp;&amp;check(i,j,n,m,tol)){
-                y=j+1;
-                x=i+1;
-                id=pixels[i][j];
-                time++;
-            }
-            if(time==2){//优化当数目超过二是直接跳出循环
-                break;
-            }
-        }
-    }
-        if(time==0){
-            printf(&quot;Not Exist&quot;);
-        }else if(time==1){
-            printf(&quot;(%d, %d): %d&quot;,y,x,id);
-        }else{
-            printf(&quot;Not Unique&quot;);
-        }
-    return 0;
-}
-int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左上就看左上，没有就不看，其他一样。
-            if(i-1&gt;=0&amp;&amp;j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i-1][j-1])&lt;=tol){return 0;}//左上
-            if(j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i][j-1])&lt;=tol){return 0;}//左
-            if(i+1&lt;n&amp;&amp;j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i+1][j-1])&lt;=tol){return 0;}//左下
-            if(i-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i-1][j])&lt;=tol){return 0;}//上
-            if(i+1&lt;n&amp;&amp;abs(pixels[i][j]-pixels[i+1][j])&lt;=tol){return 0;}//下
-            if(i-1&gt;=0&amp;&amp;j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i-1][j+1])&lt;=tol){return 0;}//右上
-            if(j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i][j+1])&lt;=tol){return 0;}//右
-            if(i+1&lt;n&amp;&amp;j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i+1][j+1])&lt;=tol){return 0;}
-            return 1;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1067" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1067/"
-    >PTA-Basic-1067</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1067/" class="article-date">
-  <time datetime="2019-10-07T12:42:40.000Z" itemprop="datePublished">2019-10-07</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<p>当你试图登录某个系统却忘了密码时，系统一般只会允许你尝试有限多次，当超出允许次数时，账号就会被锁死。本题就请你实现这个小功能。</p>
-<p>输入格式：<br>输入在第一行给出一个密码（长度不超过 20 的、不包含空格、Tab、回车的非空字符串）和一个正整数 N（≤ 10），分别是正确的密码和系统允许尝试的次数。随后每行给出一个以回车结束的非空字符串，是用户尝试输入的密码。输入保证至少有一次尝试。当读到一行只有单个 # 字符时，输入结束，并且这一行不是用户的输入。</p>
-<p>输出格式：<br>对用户的每个输入，如果是正确的密码且尝试次数不超过 N，则在一行中输出 Welcome in，并结束程序；如果是错误的，则在一行中按格式输出 Wrong password: 用户输入的错误密码；当错误尝试达到 N 次时，再输出一行 Account locked，并结束程序。</p>
-<p>输入样例 1：</p>
-<pre><code>Correct%pw 3
-correct%pw
-Correct@PW
-whatisthepassword!
-Correct%pw
-#</code></pre><p>输出样例 1：</p>
-<pre><code>Wrong password: correct%pw
-Wrong password: Correct@PW
-Wrong password: whatisthepassword!
-Account locked</code></pre><p>输入样例 2：</p>
-<pre><code>cool@gplt 3
-coolman@gplt
-coollady@gplt
-cool@gplt
-try again
-#</code></pre><p>输出样例 2：</p>
-<pre><code>Wrong password: coolman@gplt
-Wrong password: coollady@gplt
-Welcome in</code></pre><p>分析：</p>
-<pre><code>定义一个字符数组存储正确的密码，定义一个数字存储输入次数。
-用C语言自带的字符串比较函数，如果结果为0，证明两个字符串相同，即密码正确。
-此题目的坑比较多（用户输入密码长度不一定为21以内，且不一定不含空格，如果输入正确或次数已到则禁止输入。）</code></pre><p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-int main(void)
-{
-    char cpw[22]={&apos;\0&apos;};
-    int time=0;
-    scanf(&quot;%s %d&quot;,cpw,&amp;time);//密码中没有空格
-    getchar();//吸取第一行的末尾的回车
-    while(1){
-        char pw[500]={&apos;\0&apos;};//输入密码的长度不一定为20
-        gets(pw);//输入的字符串中可能有空格
-        if(strlen(pw)==1&amp;&amp;pw[0]==&apos;#&apos;){
-            break;
-        }
-        if(time&gt;0){
-            if(!strcmp(cpw,pw)){
-                printf(&quot;Welcome in\n&quot;);
-                break;
-            }else{
-                printf(&quot;Wrong password: %s\n&quot;,pw);
-                time--;
-            }
-        }
-        if(time==0){
-                printf(&quot;Account locked\n&quot;);
-                break;
-            }
-    }
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -856,7 +581,7 @@ int main(void)
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/10/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="page-number" href="/page/10/">10</a><span class="page-number current">11</span><a class="page-number" href="/page/12/">12</a><a class="page-number" href="/page/13/">13</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/12/">下一页</a>
   </nav>
   
 </section>
@@ -915,7 +640,7 @@ int main(void)
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="A BUG IS A CHANCE"></a>
+    <a href="/"><img src="/images/avatar.jpg" alt="A BUG|A CHANCE"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -1136,6 +861,15 @@ int main(void)
 
 <!-- Katex -->
 
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
 <!-- busuanzi  -->
 
 
@@ -1212,7 +946,7 @@ int main(void)
     
     
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=1382596189&auto=0&height=32"></iframe>
+        src="//music.163.com/outchain/player?type=2&id=1363490517&auto=0&height=32"></iframe>
 </div>
 
 <style>
@@ -1225,6 +959,6 @@ int main(void)
 </style>
     
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"right","width":250,"height":400,"hOffset":0,"vOffset":-30},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"left","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
 
 </html>

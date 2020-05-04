@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     A BUG IS A CHANCE
+     A BUG|A CHANCE
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -47,7 +47,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<link rel="alternate" href="/atom.xml" title="A BUG IS A CHANCE" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="A BUG|A CHANCE" type="application/atom+xml">
 </head>
 
 </html>
@@ -68,7 +68,7 @@ var _hmt = _hmt || [];
       <img src="/images/cover2.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/">A BUG IS A CHANCE</a></h1>
+      <h1><a href="/">A BUG|A CHANCE</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
@@ -79,7 +79,7 @@ var _hmt = _hmt || [];
         <img
           src="/images/ayer.png"
           class="cover-logo"
-          alt="A BUG IS A CHANCE"
+          alt="A BUG|A CHANCE"
         />
         
       </div>
@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1010" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1069" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1010/"
-    >PTA-Basic-1010</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1069/"
+    >PTA-Basic-1069</a> 
 </h2>
  
 
@@ -119,116 +119,14 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1010/" class="article-date">
-  <time datetime="2019-09-17T12:46:30.000Z" itemprop="datePublished">2019-09-17</time>
+      <a href="/2019/10/07/PTA-Basic-1069/" class="article-date">
+  <time datetime="2019-10-07T12:43:06.000Z" itemprop="datePublished">2019-10-07</time>
 </a>
       
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>设计函数求一元多项式的导数。（注：x<br>​n<br>​​ （n为整数）的一阶导数为nx<br>​n−1<br>​​ 。）</p>
-<p>输入格式:<br>以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过 1000 的整数）。数字间以空格分隔。</p>
-<p>输出格式:<br>以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。注意“零多项式”的指数和系数都是 0，但是表示为 0 0。</p>
-<p>输入样例:</p>
-<pre><code>3 4 -5 2 6 1 -2 0</code></pre><p>输出样例:</p>
-<pre><code>12 3 -10 1 6 0</code></pre><p>分析：</p>
-<p>一元多项式条件：系数不为0，指数为大于-1的整数即（指数&gt;=0）;</p>
-<p>输入：先输入一个系数再输入一个指数，依此重复，指数递减。</p>
-<p>输出：格式见题目，输出求一次导后的的多项式对应的系数与指数。</p>
-<p>（注意： “零多项式”，最高项指数为0，但是表示为 0 0，除此以外，只要指数不为0，系数为不为无所谓，也要输出。百度解释0多项式就是0）</p>
-<p>因为系数一定不为0，所以如果结果中有“零多项式”，那么一定是输入时的指数为0.一旦指数为0，后面就不会再有输入了。</p>
-<p>思路：</p>
-<p>1读取一对数字再读一个字符。</p>
-<p>2如果指数为0就可以判断后面没有输入了。</p>
-<p>3不为0就输出对应求导后的数值，并标记一下此多项式不是“0多项式”。</p>
-<p>4如果不是0多项式，就不用输出“0 0”了，如果那么前面一定没有输出，那么就要输出此。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-int n,m;
-int flag=0;
-char ch;
-while(1){
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    ch=getchar();
-    if(m!=0){
-        if(flag)//此处用于判断是否为第一个输出，是就不用输出空格。
-            printf(&quot; &quot;);
-        printf(&quot;%d %d&quot;,n*m,m-1);
-        flag=1;
-    }
-    if(ch==&apos;\n&apos;){
-        break;
-    }
-}
-if(!flag){
-    printf(&quot;0 0&quot;);
-}
- return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1009" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1009/"
-    >PTA-Basic-1009</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1009/" class="article-date">
-  <time datetime="2019-09-17T11:35:44.000Z" itemprop="datePublished">2019-09-17</time>
-</a>
-      
       
       
       
@@ -243,144 +141,69 @@ if(!flag){
       
 
       
-      <p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
-<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
-<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
-<p>输入样例：</p>
-<p>Hello World Here I Come</p>
-<p>输出样例：</p>
-<p>Come I Here World Hello</p>
-<p>分析：<br>1给出一句话，要求单词顺序不变，倒序输出所有单词。<br>首先要输出最后一个单词，接着是倒数第二个… ,直到到达首单词。</p>
-<p>思路：双指针算法。<br>1用一个字符数组存储输入的字符串；使用两个字符指针，一个用来指向空格的位置，另一个用来输出空格与空格或者空格与     ‘\0’    之间的单词（字符串的末尾会存放一个‘\0’）,然后继续此操作直到到达第一个单词，第一个单词不输出（因题目格式要求）<br>2另外输出第一个单词。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#define MAX 81
-int main(void){
-char str[MAX];
-char *p,*q;
-gets(str);
-for(p=str+strlen(str)-1;p!=str;p--){//输出到第一个单词停止。
-    if(*p==&apos; &apos;){//如果读到一个空格，说明，一个单词已经结束。
-        for(q=p+1;*q!=&apos; &apos;&amp;&amp;*q;q++){
-            printf(&quot;%c&quot;,*q);
+      <p>题目：</p>
+<p>小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
+<p>输入格式：<br>输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。</p>
+<p>注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取</p>
+<p>下一位。</p>
+<p>输出格式：</p>
+<p>按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going…。</p>
+<p>输入样例 1：</p>
+<pre><code>9 3 2
+Imgonnawin!
+PickMe
+PickMeMeMeee
+LookHere
+Imgonnawin!
+TryAgainAgain
+TryAgainAgain
+Imgonnawin!
+TryAgainAgain</code></pre><p>输出样例 1：</p>
+<pre><code>PickMe
+Imgonnawin!
+TryAgainAgain</code></pre><p>输入样例 2：</p>
+<pre><code>2 3 5
+Imgonnawin!
+PickMe</code></pre><p>输出样例 2：</p>
+<pre><code>Keep going...</code></pre><p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+char result[1000][21];
+int check(char *str,int t){
+    for(int j=0;j&lt;t;j++){
+        if(strcmp(str,result[j])==0){//比较人数数组中是否已经有这个人了
+            return 1;
         }
-        printf(&quot; &quot;);
     }
+    return 0;
 }
-for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
-//此处判定条件中的*p是为了防止输入一个单词时造成死循环。因为只输入一个单词时，也作为字符串末尾也会加上一个&apos;\0&apos;.
-    printf(&quot;%c&quot;,*p);
-}
-return 0;
-}</code></pre><p>######如果有更好的思路欢迎交流。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1008" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/16/PTA-Basic-1008/"
-    >PTA-Basic-1008</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/16/PTA-Basic-1008/" class="article-date">
-  <time datetime="2019-09-16T15:58:39.000Z" itemprop="datePublished">2019-09-16</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>一个数组A中存有N（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（≥0）个位置，即将A中的数据由（A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−1<br>​​ ）变换为（A<br>​N−M<br>​​ ⋯A<br>​N−1<br>​​ A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−M−1<br>​​ ）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p>
-<p>输入格式:</p>
-<pre><code>每个输入包含一个测试用例，第1行输入N（1≤N≤100）和M（≥0）；第2行输入N个整数，之间用空格分隔。</code></pre><p>输出格式:</p>
-<pre><code>在一行中输出循环右移M位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。</code></pre><p>输入样例:</p>
-<pre><code>6 2
-1 2 3 4 5 6</code></pre><p>输出样例:</p>
-<pre><code>5 6 1 2 3 4</code></pre><hr>
-<p>分析：</p>
-<p>题目要求输入一个数组，将数组右移，并输出。</p>
-<p>思路：</p>
-<pre><code>本题并没有按照题目要求的那样改变数组，而是改变数组输出的顺
-
-序，先输出原数组从n-m到n-1的数字，再输出0到n-m-2的数字（为什么不输出到n-m-1,这是为了题目的输出
-
-格式要求。），最后在输出下标为n-m-1的数组中的数字。
-
-
-##注意：
-
-如果右移的位数大于输入数字的个数，就用位数对个数取余，并将余数设置为位移的位数，因为如果唯
-
-一的位数大于数字数目，就会多做一次周期位移（周期位移后数组不变）。</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt; 
-int main(void){
-    int n,m;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    m=m%n;
-    int list[n];
-    int k=0;
-    while(k&lt;n){
-       scanf(&quot;%d&quot;,&amp;list[k++]);
-    }  
-    int i;
-    for(i=n-m;i&lt;n;i++){
-        printf(&quot;%d &quot;,list[i]);
+int main()
+{
+    int m,n,s;
+    scanf(&quot;%d%d%d&quot;,&amp;m,&amp;n,&amp;s);
+    char str[21];
+    int t=0;//用来存储有多少人得奖。
+    for(int i=1;i&lt;=m;i++){
+            scanf(&quot;%s&quot;,str);
+            getchar();
+        if(i==s){
+                if(check(str,t)){//此人已经转发过了
+                    s=s+1;//看看它的下一个人是否合适
+                    continue;
+                }else{
+                    strcpy(result[t++],str);//此人没有转发过，就存入数组。
+                    s=s+n;//并且到下一个相隔n的人。
+                }
+        }
     }
-    for(i=0;i&lt;n-m-1;i++){
-        printf(&quot;%d &quot;,list[i]);
-    }
-    printf(&quot;%d&quot;,list[i]);
+    if(t==0){
+        printf(&quot;Keep going...&quot;);
+    }else{
+        for(int i=0;i&lt;t;i++){
+            puts(result[i]);
+        }
+        }
     return 0;
 }</code></pre>
       
@@ -394,7 +217,7 @@ int main(void){
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -413,7 +236,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1007" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1068" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -421,8 +244,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/16/PTA-Basic-1007/"
-    >PTA-Basic-1007</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1068/"
+    >PTA-Basic-1068</a> 
 </h2>
  
 
@@ -431,10 +254,14 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/16/PTA-Basic-1007/" class="article-date">
-  <time datetime="2019-09-16T15:29:36.000Z" itemprop="datePublished">2019-09-16</time>
+      <a href="/2019/10/07/PTA-Basic-1068/" class="article-date">
+  <time datetime="2019-10-07T12:42:51.000Z" itemprop="datePublished">2019-10-07</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
       
       
       
@@ -449,41 +276,87 @@ int main(void){
       
 
       
-      <p>让我们定义d<br>n<br>​​ 为：d<br>​n<br>​​ =p<br>​n+1<br>​​ −p<br>​n<br>​​ ，其中p<br>​i<br>​​ 是第i个素数。显然有d<br>​1<br>​​ =1，且对于n&gt;1有d<br>​n<br>​​ 是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。</p>
-<p>现给定任意正整数N(&lt;10<br>​5<br>​​ )，请计算不超过N的满足猜想的素数对的个数。</p>
-<p>输入格式:</p>
-<pre><code>输入在一行给出正整数N。</code></pre><p>输出格式:</p>
-<pre><code>在一行中输出不超过N的满足猜想的素数对的个数。</code></pre><p>输入样例:</p>
-<pre><code>20</code></pre><p>输出样例:</p>
-<pre><code>4</code></pre><hr>
-<p>分析：<br>1题目要求给出一个数字要求输出这个数字以内的素数对个数。</p>
-<p>2素数对条件（1为素数，2两个素数相差2）；</p>
-<p>思路：</p>
-<p>1做一个判断是否时素数的函数。</p>
-<p>2因为素数必定不为除2以外的偶数，所以直接从3开始去奇数判断是否为素数，并判断这个数字加2是否也是素数，如果是，则计算素数对个数的变量加1，否则就继续循环，直到超过所给的数字的大小。</p>
+      <p>题目:<br>对于计算机而言，颜色不过是像素点对应的一个 24 位的数值。现给定一幅分辨率为 M×N 的画，要求你找出万绿丛中的一点红，即有独一无二颜色的那个像素点，并且该点的颜色与其周围 8 个相邻像素的颜色差充分大。</p>
+<p>输入格式：<br>输入第一行给出三个正整数，分别是 M 和 N（≤ 1000），即图像的分辨率；以及 TOL，是所求像素点与相邻点的颜色差阈值，色差超过 TOL 的点才被考虑。随后 N 行，每行给出 M 个像素的颜色值，范围在 [0,2<br>​24<br>​​ ) 内。所有同行数字间用空格或 TAB 分开。</p>
+<p>输出格式：<br>在一行中按照 (x, y): color 的格式输出所求像素点的位置以及颜色值，其中位置 x 和 y 分别是该像素在图像矩阵中的列、行编号（从 1 开始编号）。如果这样的点不唯一，则输出 Not Unique；如果这样的点不存在，则输出 Not Exist。</p>
+<p>输入样例 1：</p>
+<pre><code>8 6 200
+0      0       0        0        0          0           0        0
+65280      65280    65280    16711479 65280    65280    65280    65280
+16711479 65280    65280    65280    16711680 65280    65280    65280
+65280      65280    65280    65280    65280    65280    165280   165280
+65280      65280       16777015 65280    65280    165280   65480    165280
+16777215 16777215 16777215 16777215 16777215 16777215 16777215 16777215</code></pre><p>输出样例 1：</p>
+<pre><code>(5, 3): 16711680</code></pre><p>输入样例 2：</p>
+<pre><code>4 5 2
+0 0 0 0
+0 0 3 0
+0 0 0 0
+0 5 0 0
+0 0 0 0</code></pre><p>输出样例 2：</p>
+<pre><code>Not Unique</code></pre><p>输入样例 3：</p>
+<pre><code>3 3 5
+1 2 3
+3 4 5
+5 6 7</code></pre><p>输出样例 3：</p>
+<pre><code>Not Exist</code></pre><p>分析：定义一个足够大的数组用来存储像素点的次数，定义一个结构体用来表示像素点（有坐标，数值），每输入一个像素数值，就存入对应的像素点二维数组中，并在记录次数的数组中加1，然后定义一个判断像素点是否合格的函数，对每个像素点判断是否合格，并且是否只有一个。当这样的点超过1个是就可以不用继续找了。<br>此题目的一个坑就是在所有的点中查找独特的点不管它是否合格，再再独特的点中找合格的个数。而我陷入了这个坑认为不合格的像素点不用加到次数数组中。</p>
 <p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;  
-int isPrime(int n){
-//函数
-    for(int i=3;i&lt;=(int)sqrt(n+1);i+=2){
-        if(n%i==0){
-            return 0;
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include&lt;math.h&gt;
+//定义一个二维数组存储像素点
+//定义结构体存储合格的像素点，与坐标，次数，一共有多少个像素点
+int map[2&lt;&lt;24]={0};
+int pixels[1000][1000]={0};
+typedef struct pixel{
+    int x;
+    int y;
+    int id;
+}pixel;
+int check(int i,int j,int n,int m,int tol);
+int main()
+{
+    int m,n,tol;//仿佛数组数目太大的变量只能声明为 全局变量，否则程序不会执行 
+    scanf(&quot;%d %d %d&quot;,&amp;m,&amp;n,&amp;tol);
+    for(int i=0;i&lt;n;i++){
+        for(int j=0;j&lt;m;j++){
+            scanf(&quot;%d&quot;,&amp;pixels[i][j]);
+            map[pixels[i][j]]++;//将对应的像素点的个数加1.
         }
     }
-    return 1;
-}
-int main(void){
-int n;
-scanf(&quot;%d&quot;,&amp;n);
-int num=0;
-for(int i=3;i&lt;=n;i+=2){
-    if(isPrime(i)&amp;&amp;isPrime(i+2)&amp;&amp;(i+2)&lt;=n){
-        num++;
+    int time=0,x=0,y=0,id=0;//time用来记录独特点的个数
+    for(int i=0;i&lt;n;i++){
+        for(int j=0;j&lt;m;j++){
+            if(map[pixels[i][j]]==1&amp;&amp;check(i,j,n,m,tol)){
+                y=j+1;
+                x=i+1;
+                id=pixels[i][j];
+                time++;
+            }
+            if(time==2){//优化当数目超过二是直接跳出循环
+                break;
+            }
+        }
     }
+        if(time==0){
+            printf(&quot;Not Exist&quot;);
+        }else if(time==1){
+            printf(&quot;(%d, %d): %d&quot;,y,x,id);
+        }else{
+            printf(&quot;Not Unique&quot;);
+        }
+    return 0;
 }
-printf(&quot;%d&quot;,num);
-return 0;
+int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左上就看左上，没有就不看，其他一样。
+            if(i-1&gt;=0&amp;&amp;j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i-1][j-1])&lt;=tol){return 0;}//左上
+            if(j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i][j-1])&lt;=tol){return 0;}//左
+            if(i+1&lt;n&amp;&amp;j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i+1][j-1])&lt;=tol){return 0;}//左下
+            if(i-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i-1][j])&lt;=tol){return 0;}//上
+            if(i+1&lt;n&amp;&amp;abs(pixels[i][j]-pixels[i+1][j])&lt;=tol){return 0;}//下
+            if(i-1&gt;=0&amp;&amp;j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i-1][j+1])&lt;=tol){return 0;}//右上
+            if(j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i][j+1])&lt;=tol){return 0;}//右
+            if(i+1&lt;n&amp;&amp;j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i+1][j+1])&lt;=tol){return 0;}
+            return 1;
 }</code></pre>
       
       <!-- reward -->
@@ -496,7 +369,7 @@ return 0;
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -515,7 +388,7 @@ return 0;
 
 </article>
     
-    <article id="post-feibonaqi" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1067" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -523,8 +396,8 @@ return 0;
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/16/feibonaqi/"
-    >斐波那契数列时间复杂度分析</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1067/"
+    >PTA-Basic-1067</a> 
 </h2>
  
 
@@ -533,103 +406,14 @@ return 0;
 
     
     <div class="article-meta">
-      <a href="/2019/09/16/feibonaqi/" class="article-date">
-  <time datetime="2019-09-16T14:22:56.000Z" itemprop="datePublished">2019-09-16</time>
+      <a href="/2019/10/07/PTA-Basic-1067/" class="article-date">
+  <time datetime="2019-10-07T12:42:40.000Z" itemprop="datePublished">2019-10-07</time>
 </a>
       
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>斐波那契数列的时间复杂度：</p>
-<p>首先讲一下斐波那契数列的实现：</p>
-<p>斐波那契数列：1 1 2 3 5 8 13 21 34 ……</p>
-<p>递归实现：特点易理解，效率低下。</p>
-<p>代码：</p>
-<pre><code>int Fib(int n){
-    if(n&lt;2){2
-    return 1;     
-    }
-    else{
-    return Fib(n-1)+Fib(n-2);    
-    }
-}</code></pre><p>计算斐波那契数列递归算法的时间复杂度实际上就是计算二叉树的子节点个数，可以大致的展开为</p>
-<pre><code>        n
-
-    n-1       n-2
-
- n-2 n-3  n-3 n-4
-............................
-
-................... 1</code></pre><p>语句频度（省略末尾的一些结点）大致为：</p>
-<pre><code>2+2^2+2^3+....2^((n-1)/2);</code></pre><p>大致约为：2^((n+1)/2)-2;</p>
-<p>最坏时间复杂度就是O(2^n);</p>
-<p>循环实现：</p>
-<pre><code>省略</code></pre><p>时间复杂度为：O(n);</p>
-<p>如果有错，请邮我（<a href="mailto:19850830198@163.com">19850830198@163.com</a>）</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li></ul>
-
-
-    </footer>
-
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1006" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/15/PTA-Basic-1006/"
-    >PTA-Basic-1006</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/15/PTA-Basic-1006/" class="article-date">
-  <time datetime="2019-09-15T09:52:41.000Z" itemprop="datePublished">2019-09-15</time>
-</a>
-      
       
       
       
@@ -644,82 +428,64 @@ return 0;
       
 
       
-      <p>#1006 换个格式输出整数<br>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
-<p>输入格式：<br>    每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
-<p>输出格式：<br>    每个测试用例的输出占一行，用规定的格式输出 n。</p>
+      <p>题目：</p>
+<p>当你试图登录某个系统却忘了密码时，系统一般只会允许你尝试有限多次，当超出允许次数时，账号就会被锁死。本题就请你实现这个小功能。</p>
+<p>输入格式：<br>输入在第一行给出一个密码（长度不超过 20 的、不包含空格、Tab、回车的非空字符串）和一个正整数 N（≤ 10），分别是正确的密码和系统允许尝试的次数。随后每行给出一个以回车结束的非空字符串，是用户尝试输入的密码。输入保证至少有一次尝试。当读到一行只有单个 # 字符时，输入结束，并且这一行不是用户的输入。</p>
+<p>输出格式：<br>对用户的每个输入，如果是正确的密码且尝试次数不超过 N，则在一行中输出 Welcome in，并结束程序；如果是错误的，则在一行中按格式输出 Wrong password: 用户输入的错误密码；当错误尝试达到 N 次时，再输出一行 Account locked，并结束程序。</p>
 <p>输入样例 1：</p>
-<pre><code>234</code></pre><p>输出样例 1：</p>
-<pre><code>BBSSS1234</code></pre><p>输入样例 2：</p>
-<pre><code>23</code></pre><p>输出样例 2：</p>
-<pre><code>SS123</code></pre><hr>
-<p>分析：</p>
-<p>1因为输入的数字小于1000，所以定义一个数组长度为3的整型数组，存放数字的个位，十位，百位。</p>
-<p>2再定义一个足够大的数组存放结果。</p>
-<p>3倒叙遍历存放数字的数组，按按百对应下标为2，十位对应的下标为1，个位对应的下标的为0，分别对处理。</p>
-<p>4注意一定要在最后将字符数组的最后置为’\0’,否则会输出错误。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-char result[1000];
-int number;
-scanf(&quot;%d&quot;,&amp;number);
-
-int n=0;
-int num[3]={0};
-while(number){
-    num[n++]=number%10;
-    number=number/10;
-}
-int step=0;
-for(int i=3;i&gt;=0;i--){
-    int time=num[i];
-    if(time==0){
-        continue;
-    }
-    if(i==2)
-        for(int j=0;j&lt;time;j++){
-        result[step++]=&apos;B&apos;;
-    }
-    if(i==1)
-        for(int j=0;j&lt;time;j++){
-        result[step++]=&apos;S&apos;;
-    }
-    if(i==0){
-        for(int j=0;j&lt;time;j++){
-        result[step++]=j+&apos;1&apos;;
-        }
-    }
-
-}
-result[step]=&apos;\0&apos;;
-printf(&quot;%s&quot;,result);
-return 0;
-}</code></pre><p>另一种思路：</p>
-<p>分析：</p>
-<p>利用字符串长度判断输入的是几位数，再利用字符串倒置输出对应的题目要求符号</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-
-int main()
+<pre><code>Correct%pw 3
+correct%pw
+Correct@PW
+whatisthepassword!
+Correct%pw
+#</code></pre><p>输出样例 1：</p>
+<pre><code>Wrong password: correct%pw
+Wrong password: Correct@PW
+Wrong password: whatisthepassword!
+Account locked</code></pre><p>输入样例 2：</p>
+<pre><code>cool@gplt 3
+coolman@gplt
+coollady@gplt
+cool@gplt
+try again
+#</code></pre><p>输出样例 2：</p>
+<pre><code>Wrong password: coolman@gplt
+Wrong password: coollady@gplt
+Welcome in</code></pre><p>分析：</p>
+<pre><code>定义一个字符数组存储正确的密码，定义一个数字存储输入次数。
+用C语言自带的字符串比较函数，如果结果为0，证明两个字符串相同，即密码正确。
+此题目的坑比较多（用户输入密码长度不一定为21以内，且不一定不含空格，如果输入正确或次数已到则禁止输入。）</code></pre><p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+int main(void)
 {
-int i,j;
-char n[4];
-scanf(&quot;%s&quot;,n);
-
-for(i=strlen(n);i&gt;0;i--){
-    for(j=1;j&lt;=(n[strlen(n)-i]-&apos;0&apos;);j++){
-        if(i==3)
-            printf(&quot;B&quot;);
-        if(i==2)
-            printf(&quot;S&quot;);
-        if(i==1)
-            printf(&quot;%d&quot;,j);
+    char cpw[22]={&apos;\0&apos;};
+    int time=0;
+    scanf(&quot;%s %d&quot;,cpw,&amp;time);//密码中没有空格
+    getchar();//吸取第一行的末尾的回车
+    while(1){
+        char pw[500]={&apos;\0&apos;};//输入密码的长度不一定为20
+        gets(pw);//输入的字符串中可能有空格
+        if(strlen(pw)==1&amp;&amp;pw[0]==&apos;#&apos;){
+            break;
+        }
+        if(time&gt;0){
+            if(!strcmp(cpw,pw)){
+                printf(&quot;Welcome in\n&quot;);
+                break;
+            }else{
+                printf(&quot;Wrong password: %s\n&quot;,pw);
+                time--;
+            }
+        }
+        if(time==0){
+                printf(&quot;Account locked\n&quot;);
+                break;
+            }
     }
-}
-printf(&quot;\n&quot;);
-return 0;
-}</code></pre><p><a href="https://blog.csdn.net/huaxuewan/article/details/85778884" target="_blank" rel="noopener" title="参考资料">https://blog.csdn.net/huaxuewan/article/details/85778884</a></p>
-
+    return 0;
+}</code></pre>
       
       <!-- reward -->
       
@@ -731,7 +497,7 @@ return 0;
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -756,7 +522,7 @@ return 0;
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/20/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/22/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/20/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="page-number current">21</span><a class="page-number" href="/page/22/">22</a><a class="page-number" href="/page/23/">23</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/22/">下一页</a>
   </nav>
   
 </section>
@@ -815,7 +581,7 @@ return 0;
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="A BUG IS A CHANCE"></a>
+    <a href="/"><img src="/images/avatar.jpg" alt="A BUG|A CHANCE"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -1036,6 +802,15 @@ return 0;
 
 <!-- Katex -->
 
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
 <!-- busuanzi  -->
 
 
@@ -1112,7 +887,7 @@ return 0;
     
     
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=1382596189&auto=0&height=32"></iframe>
+        src="//music.163.com/outchain/player?type=2&id=1363490517&auto=0&height=32"></iframe>
 </div>
 
 <style>
@@ -1125,6 +900,6 @@ return 0;
 </style>
     
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"right","width":250,"height":400,"hOffset":0,"vOffset":-30},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"left","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
 
 </html>

@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     A BUG IS A CHANCE
+     A BUG|A CHANCE
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -47,7 +47,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<link rel="alternate" href="/atom.xml" title="A BUG IS A CHANCE" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="A BUG|A CHANCE" type="application/atom+xml">
 </head>
 
 </html>
@@ -68,7 +68,7 @@ var _hmt = _hmt || [];
       <img src="/images/cover2.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/">A BUG IS A CHANCE</a></h1>
+      <h1><a href="/">A BUG|A CHANCE</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
@@ -79,7 +79,7 @@ var _hmt = _hmt || [];
         <img
           src="/images/ayer.png"
           class="cover-logo"
-          alt="A BUG IS A CHANCE"
+          alt="A BUG|A CHANCE"
         />
         
       </div>
@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1030" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1076" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1030/"
-    >PTA-Basic-1030</a> 
+  <a class="article-title" href="/2019/10/09/PTA-Basic-1076/"
+    >PTA-Basic-1076</a> 
 </h2>
  
 
@@ -119,131 +119,14 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1030/" class="article-date">
-  <time datetime="2019-09-20T12:06:46.000Z" itemprop="datePublished">2019-09-20</time>
+      <a href="/2019/10/09/PTA-Basic-1076/" class="article-date">
+  <time datetime="2019-10-09T14:14:57.000Z" itemprop="datePublished">2019-10-09</time>
 </a>
       
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>给定一个正整数数列，和正整数 p，设这个数列中的最大值是 M，最小值是 m，如果 M≤mp，则称这个数列是完美数列。</p>
-<p>现在给定参数 p 和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</p>
-<p>输入格式：<br>输入第一行给出两个正整数 N 和 p，其中 N（≤10^5）是输入的正整数的个数，p（≤10^9）是给定的参数。第二行给出 N 个正整数，每个数不超过10^9。</p>
-<p>输出格式：<br>在一行中输出最多可以选择多少个数可以用它们组成一个完美数列。</p>
-<p>输入样例：</p>
-<pre><code>10 8
-2 3 20 4 5 1 6 7 8 9</code></pre><p>输出样例：</p>
-<pre><code>8</code></pre><p>分析:</p>
-<p>将输入的数字存入数组，对数组进行排序。从第i个开始向后找,每当有值与第i个元素之比小于p时，就看看要不要改变sum的值，下一次进行第i+1此比较时，就从i+1+sum处向后遍历。只有这样，其可能有的sum值才可能大于上一次循环得到的sum值。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-int compare(const void * a,const void *b){
-    long A=*(long *)a;
-    long B=*(long *)b;
-    if(A&gt;B){
-        return 1;
-    }else{
-        if(A==B){
-            return 0; 
-        }else{
-            return -1;
-        }
-    }
-}
-int main(void){
-    int N;
-    double p;
-    scanf(&quot;%ld %lf&quot;,&amp;N,&amp;p);
-    long nums[N];
-    long x=0;
-    int i=0;
-    while(N--){
-        scanf(&quot;%d&quot;,&amp;x);
-        nums[i++]=x;
-    } 
-    int MAX=0;
-    qsort(nums,i,sizeof(long),compare);
-        for(int j=0;j&lt;i;j++){//外层遍历，从0开始，
-            for(int k=j+MAX;k&lt;i;k++){
-                if(nums[k]*1.0/nums[j]&gt;p){
-                    break;
-                }
-                else{
-                    if(k-j+1&gt;MAX){
-                        MAX=k-j+1;
-                    }
-                }
-            }
-        }
-    printf(&quot;%d&quot;,MAX);
-    return 0;
-}</code></pre><p>注意：</p>
-<p>此处存储数值建议使用long存储数字，double存储p的值。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1029" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1029/"
-    >PTA-Basic-1029</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1029/" class="article-date">
-  <time datetime="2019-09-20T12:06:29.000Z" itemprop="datePublished">2019-09-20</time>
-</a>
-      
       
       
       
@@ -258,37 +141,47 @@ int main(void){
       
 
       
-      <p>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及实际被输入的文字，请你列出肯定坏掉的那些键。</p>
-<p>输入格式：<br>输入在 2 行中分别给出应该输入的文字、以及实际被输入的文字。每段文字是不超过 80 个字符的串，由字母 A-Z（包括大、小写）、数字 0-9、以及下划线 _（代表空格）组成。题目保证 2 个字符串均非空。</p>
-<p>输出格式：<br>按照发现顺序，在一行中输出坏掉的键。其中英文字母只输出大写，每个坏键只输出一次。题目保证至少有 1 个坏键。</p>
+      <p>题目：</p>
+<p>下面是微博上流传的一张照片：“各位亲爱的同学们，鉴于大家有时需要使用 wifi，又怕耽误亲们的学习，现将 wifi 密码设置为下列数学题答案：A-1；B-2；C-3；D-4；请同学们自己作答，每两日一换。谢谢合作！！~”—— 老师们为了促进学生学习也是拼了…… 本题就要求你写程序把一系列题目的答案按照卷子上给出的对应关系翻译成 wifi 的密码。这里简单假设每道选择题都有 4 个选项，有且只有 1 个正确答案。</p>
+<p><img src="https://images.ptausercontent.com/7e56be3f-caba-45f1-b9cb-38a96d44de76.jpg" alt=""></p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行按照 编号-答案 的格式给出一道题的 4 个选项，T 表示正确选项，F 表示错误选项。选项间用空格分隔。</p>
+<p>输出格式：<br>在一行中输出 wifi 密码。</p>
 <p>输入样例：</p>
-<pre><code>7_This_is_a_test
-_hs_s_a_es</code></pre><p>输出样例：</p>
-<pre><code>7TI</code></pre><p>分析：</p>
-<p>存储两个字符串，遍历第一个字符串每个字符，如果字符串二中没有，且其对应的大写字母用来存放结果字符的字符数组中也没有就将其存入数组中并数字加1。跳出循环，最后要在末尾加上‘\0’。</p>
+<pre><code>8
+A-T B-F C-F D-F
+C-T B-F A-F D-F
+A-F D-F C-F B-T
+B-T A-F C-F D-F
+B-F D-T A-F C-F
+A-T C-F B-F D-F
+D-T B-F C-F A-F
+C-T A-F B-F D-F</code></pre><p>输出样例：</p>
+<pre><code>13224143</code></pre><p>直接对每对字符判断因为输入的一个题目的答案只有一个所有直接判断并输出对应的数字。</p>
 <p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;ctype.h&gt;
-int main(void){
-    char str[100]={&quot;\0&quot;};
-    gets(str);
-    char str2[100]={&quot;\0&quot;};
-    gets(str2);
-    int i=0;
-    char result[80]={&quot;\0&quot;};
-    int num=0;
-    while(str[i]!=&apos;\0&apos;){
-        if(!strchr(str2,str[i])){
-            char ch=toupper(str[i]);
-            if(!strchr(result,ch)){
-                result[num++]=ch;
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int main()
+{
+    int n=0;
+    scanf(&quot;%d&quot;,&amp;n);
+    char ch1,ch2;
+    getchar();//吸收换行符
+    for(int i=0;i&lt;n;i++){
+        for(int j=0;j&lt;4;j++){
+            scanf(&quot;%c-%c&quot;,&amp;ch1,&amp;ch2);
+            getchar();//吸收空格与换行符
+            if(ch2==&apos;T&apos;){
+                    int re=0;
+                switch(ch1){
+                    case &apos;A&apos;:re=1;break;
+                    case &apos;B&apos;:re=2;break;
+                    case &apos;C&apos;:re=3;break;
+                    case &apos;D&apos;:re=4;break;
+                }
+                printf(&quot;%d&quot;,re);
             }
         }
-        i++;
     }
-    result[num]=&apos;\0&apos;;
-    printf(&quot;%s&quot;,result);
     return 0;
 }</code></pre>
       
@@ -302,7 +195,7 @@ int main(void){
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -321,7 +214,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1028" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1074" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -329,8 +222,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1028/"
-    >PTA-Basic-1028</a> 
+  <a class="article-title" href="/2019/10/09/PTA-Basic-1074/"
+    >PTA-Basic-1074</a> 
 </h2>
  
 
@@ -339,10 +232,14 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1028/" class="article-date">
-  <time datetime="2019-09-20T12:06:06.000Z" itemprop="datePublished">2019-09-20</time>
+      <a href="/2019/10/09/PTA-Basic-1074/" class="article-date">
+  <time datetime="2019-10-09T14:14:27.000Z" itemprop="datePublished">2019-10-09</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
       
       
       
@@ -357,78 +254,247 @@ int main(void){
       
 
       
-      <p>某城镇进行人口普查，得到了全体居民的生日。现请你写个程序，找出镇上最年长和最年轻的人。</p>
-<p>这里确保每个输入的日期都是合法的，但不一定是合理的——假设已知镇上没有超过 200 岁的老人，而今天是 2014 年 9 月 6 日，所以超过 200 岁的生日和未出生的生日都是不合理的，应该被过滤掉。</p>
-<p>输入格式：<br>输入在第一行给出正整数 N，取值在(0,10^5]；随后 N 行，每行给出 1 个人的姓名（由不超过 5 个英文字母组成的字符串）、以及按 yyyy/mm/dd（即年/月/日）格式给出的生日。题目保证最年长和最年轻的人没有并列。</p>
-<p>输出格式：<br>在一行中顺序输出有效生日的个数、最年长人和最年轻人的姓名，其间以空格分隔。</p>
+      <p>分析：<br>地球人习惯使用十进制数，并且默认一个数字的每一位都是十进制的。而在 PAT 星人开挂的世界里，每个数字的每一位都是不同进制的，这种神奇的数字称为“PAT数”。每个 PAT 星人都必须熟记各位数字的进制表，例如“……0527”就表示最低位是 7 进制数、第 2 位是 2 进制数、第 3 位是 5 进制数、第 4 位是 10 进制数，等等。每一位的进制 d 或者是 0（表示十进制）、或者是 [2，9] 区间内的整数。理论上这个进制表应该包含无穷多位数字，但从实际应用出发，PAT 星人通常只需要记住前 20 位就够用了，以后各位默认为 10 进制。</p>
+<p>在这样的数字系统中，即使是简单的加法运算也变得不简单。例如对应进制表“0527”，该如何计算“6203 + 415”呢？我们得首先计算最低位：3 + 5 = 8；因为最低位是 7 进制的，所以我们得到 1 和 1 个进位。第 2 位是：0 + 1 + 1（进位）= 2；因为此位是 2 进制的，所以我们得到 0 和 1 个进位。第 3 位是：2 + 4 + 1（进位）= 7；因为此位是 5 进制的，所以我们得到 2 和 1 个进位。第 4 位是：6 + 1（进位）= 7；因为此位是 10 进制的，所以我们就得到 7。最后我们得到：6203 + 415 = 7201。</p>
+<p>输入格式：<br>输入首先在第一行给出一个 N 位的进制表（0 &lt; N ≤ 20），以回车结束。 随后两行，每行给出一个不超过 N 位的非负的 PAT 数。</p>
+<p>输出格式：<br>在一行中输出两个 PAT 数之和。</p>
 <p>输入样例：</p>
-<pre><code>5
-John 2001/05/12
-Tom 1814/09/06
-Ann 2121/01/30
-James 1814/09/05
-Steve 1967/11/20</code></pre><p>输出样例：</p>
-<pre><code>3 Tom John</code></pre><p>分析：</p>
-<p>定义一个结构体，首先日期一定都是合法的，但是不一定合理。定义一个在<br>最早的可能的年份出生的人，与今天出生的人，然后输入的每个人的数据与这两个人对比，合格的就存入person数组中。然后对此数组进行快排，输出第一个元素，与最后一个元素。注意：当没有人时，只输出一个0.</p>
+<pre><code>30527
+06203
+415</code></pre><p>输出样例：</p>
+<pre><code>7201</code></pre><p>分析：<br>将输入的字符串存入字符数组，定义一个逆转字符串的函数，将每个字符串逆转，然后从头取对应的数字加起来在加上上一次运算的进数，然后对进制取余存入结果数组，取整作为下一次的进数，注意循环的次数，应该比进制字符串的长度大1，为了防止最高项加后超过进制数而导致进项丢失。</p>
 <p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-typedef struct person{
-    char name[6];
-    int birthyear;
-    int birthmonth;
-    int birthday;
-}person;
-int compare(const void * a,const void * b){
-    person A=*(person *)a;
-    person B=*(person *)b;
-    if(A.birthyear&gt;B.birthyear){
-        return 1;
-    }else if(A.birthyear&lt;B.birthyear){
-        return -1;
-    }else{
-        if(A.birthmonth&gt;B.birthmonth){
-            return 1;
-        }else if(A.birthmonth&lt;B.birthmonth){
-            return -1;
-        }else{
-                if(A.birthday&gt;B.birthday){
-                return 1;
-            }else if(A.birthday&lt;B.birthday){
-                return -1;
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+char decimal[21];
+char str1[21];
+char str2[21];
+char result[22];
+char* strrev(char *str){//字符逆置函数。
+    char *cs1=str;
+    char *cs2=str+(strlen(str)-1);
+    while(cs1&lt;cs2){
+        char ch=*cs1;
+        *cs1=*cs2;
+        *cs2=ch;
+        cs1++;
+        cs2--;
+    }
+    return str;
+}
+int main()
+{
+    gets(decimal);//输入进制
+    gets(str1);//输入数字1
+    gets(str2);//输入数字2
+    char *pdecimal=strrev(decimal);//逆置进制
+    char *pstr1=strrev(str1);//逆置数字1
+    char *pstr2=strrev(str2);//逆置数字2
+    int max=strlen(decimal);//存储最大的字符长度。
+    int next=0;
+    for(int i=0;i&lt;max+1;i++){
+            int n=0,m=0,k=0;
+            if(pstr1[i]!=&apos;\0&apos;){//第一个数字的一位
+                n=pstr1[i]-&apos;0&apos;;
+            }
+            if(pstr2[i]!=&apos;\0&apos;){//第二个数字的一位
+                m=pstr2[i]-&apos;0&apos;;
+            }
+            if(pdecimal[i]==&apos;0&apos;){//当i达到max时k变为‘\0’-&apos;0&apos;=-48，而其他数字（不小于-48）对其取还是其他数字任何数字对负数取余的结果是那个数字对对应的整数取余的结果。
+                k=10;
             }else{
-                return 0;
+                k=pdecimal[i]-&apos;0&apos;;
             }
-        }
+            result[i]=(n+m+next)%k+&apos;0&apos;;
+            next=(n+m+next)/k;
     }
-}
-int main(void){
-    long num;
-    scanf(&quot;%ld&quot;,&amp;num);
-    long i=0;
-    person persons[num],oldperson,p,lastperson;  
-    oldperson.birthyear=1814;
-    oldperson.birthmonth=9;
-    oldperson.birthday=6;
-    lastperson.birthyear=2014;
-    lastperson.birthmonth=9;
-    lastperson.birthday=7;
-    while(num--){
-        scanf(&quot;%s %d/%d/%d&quot;,p.name,&amp;p.birthyear,&amp;p.birthmonth,&amp;p.birthday);
-        if(compare(&amp;p,&amp;oldperson)&gt;=0 &amp;&amp; compare(&amp;p,&amp;lastperson)&lt;0){
-            strcpy(persons[i].name,p.name);
-            persons[i].birthyear=p.birthyear;
-            persons[i].birthmonth=p.birthmonth;
-            persons[i].birthday=p.birthday;
-            i++;
-        }
+    char *presult=strrev(result);
+        while(*presult==&apos;0&apos;){//将开头的0都去掉，直到找到不为0的数字
+        presult++;
     }
-    qsort(persons,i,sizeof(person),compare);
-    if(i!=0)
-    printf(&quot;%d %s %s&quot;,i,persons[0].name,persons[i-1].name);
-    else{
+    if(strlen(presult)&gt;0)
+     printf(&quot;%s&quot;,presult);
+    else//测试点5为所有位数都是0，这是会去掉所有位数上的0，而导致字符串为0.长度为0，此时只需输出一个0即可。
         printf(&quot;0&quot;);
+    return 0;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1073" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/08/PTA-Basic-1073/"
+    >PTA-Basic-1073</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/08/PTA-Basic-1073/" class="article-date">
+  <time datetime="2019-10-08T13:48:49.000Z" itemprop="datePublished">2019-10-08</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：<br>批改多选题是比较麻烦的事情，有很多不同的计分方法。有一种最常见的计分方法是：如果考生选择了部分正确选项，并且没有选择任何错误选项，则得到 50% 分数；如果考生选择了任何一个错误的选项，则不能得分。本题就请你写个程序帮助老师批改多选题，并且指出哪道题的哪个选项错的人最多。</p>
+<p>输入格式：<br>输入在第一行给出两个正整数 N（≤1000）和 M（≤100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
+<p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行，输出小数点后 1 位。最后输出错得最多的题目选项的信息，格式为：错误次数 题目编号（题目按照输入的顺序从1开始编号）-选项号。如果有并列，则每行一个选项，按题目编号递增顺序输出；再并列则按选项号递增顺序输出。行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
+<p>输入样例 1：</p>
+<pre><code>3 4 
+3 4 2 a c
+2 5 1 b
+5 3 2 b c
+1 5 4 a b d e
+(2 a c) (3 b d e) (2 a c) (3 a b e)
+(2 a c) (1 b) (2 a b) (4 a b d e)
+(2 b d) (1 e) (1 c) (4 a b c d)</code></pre><p>输出样例 1：</p>
+<pre><code>3.5
+6.0
+2.5
+2 2-e
+2 3-a
+2 3-b</code></pre><p>输入样例 2：</p>
+<pre><code>2 2 
+3 4 2 a c
+2 5 1 b
+(2 a c) (1 b)
+(2 a c) (1 b)</code></pre><p>输出样例 2：</p>
+<pre><code>5.0
+5.0
+Too simple</code></pre><p>分析：<br>定义一个非常大的二维数组，一维用来表示题目号，二维用来存储答案，用0位表示a，1位表示b,2位表示c,…其存储的数值0-表示正确的选项中没有，1表示正确的选项中有。<br>定义一个非常大的浮点数数组存储每位学生的成绩，再定义一个非常大的二维数组用来存储每个题目每个选项的出错次数，然后找出最大的次数。对于每一个学生的每一题，统计其输入中的对的项数，如果与总的输入次数相同则这题没有错，但是不保证全对，如果此题的step相同则全对。不管某个选项对不对，在flag中记录下此题此人选择的搜友选项，然后与题目一开始输入正确选项对比，找找有没有没选的正确选项，有则在对应的错误次数上加1，题目中不是值统计出错最多的选项还要统计没选的正确选项最多的选项。</p>
+<p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+double stu[1000];//存储每个学生的成绩
+int score[100];//存储每题目的分数
+int step[100];//存储每题目的正确的选项数目。
+int map[100][5];//存储每个题目正确的选项
+int flag[5];//统计每个人每个题目输入的选项
+int time[100][5];//用来计算每道题目，每个选项的出错次数,与总的出错次数
+int main()
+{   int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=0;i&lt;m;i++){
+        scanf(&quot;%d %*d %d&quot;,&amp;score[i],&amp;step[i]);
+        char ch;
+        while((ch=getchar())!=&apos;\n&apos;){
+            if(ch&lt;=&apos;f&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
+            int k=ch-&apos;a&apos;;
+            map[i][k]=1;
+            }
+        }
+    }
+    int max=0;
+    for(int i=0;i&lt;n;i++){
+        char ch;
+        int step1=0;
+        int totalstep=0;
+        int t=-1;
+        while((ch=getchar())!=&apos;\n&apos;){
+            if(ch==&apos; &apos;){
+                continue;
+            }else if(ch==&apos;(&apos;){
+                    t++;
+                    step1=0;
+                    totalstep=0;
+            }else if(ch==&apos;)&apos;){
+                    if(totalstep==step1){
+                            if(step1==step[t]){
+                                stu[i]+=score[t]*1.0;
+                            }else{
+                                stu[i]+=score[t]*0.5;
+                            }
+                    }
+                    for(int i=0;i&lt;5;i++){
+                        if(flag[i]==0&amp;&amp;map[t][i]==1){//选的最多的和没选最多的，此处统计没选的且为正确的最多的选项。
+                            time[t][i]++;
+                            if(time[t][i]&gt;max){
+                                max=time[t][i];
+                            }
+                        }else{
+                            flag[i]=0;
+                        }
+                    }
+            }else if(ch&lt;=&apos;5&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                totalstep=ch-&apos;0&apos;;
+            }else{
+                int k=ch-&apos;a&apos;;
+               if(map[t][k]==0){
+                   time[t][k]++;
+                   if(time[t][k]&gt;max){
+                        max=time[t][k];
+                    }
+                }else{//选对的话将对应下标的数值-1
+                    step1++;
+                }
+                flag[k]=1;
+            }
+        }
+    }
+    for(int i=0;i&lt;n;i++){
+        printf(&quot;%.1f\n&quot;,stu[i]);
+    }
+    if(max&gt;0){
+        for(int i=0;i&lt;m;i++)
+                for(int j=0;j&lt;5;j++){
+                    if(time[i][j]==max)
+                        printf(&quot;%d %d-%c\n&quot;,max,i+1,j+&apos;a&apos;);
+                }
+    }else{//如果最大值则都是满分
+        printf(&quot;Too simple&quot;);
     }
     return 0;
 }</code></pre>
@@ -443,387 +509,7 @@ int main(void){
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1024" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/19/PTA-Basic-1024/"
-    >PTA-Basic-1024</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/19/PTA-Basic-1024/" class="article-date">
-  <time datetime="2019-09-19T13:35:29.000Z" itemprop="datePublished">2019-09-19</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>科学计数法是科学家用来表示很大或很小的数字的一种方便的方法，其满足正则表达式 [+-][1-9].[0-9]+E[+-][0-9]+，即数字的整数部分只有 1 位，小数部分至少有 1 位，该数字及其指数部分的正负号即使对正</p>
-<p>数也必定明确给出。</p>
-<p>现以科学计数法的格式给出实数 A，请编写程序按普通数字表示法输出 A，并保证所有有效位都被保留。</p>
-<p>输入格式：</p>
-<pre><code>每个输入包含 1 个测试用例，即一个以科学计数法表示的实数 A。该数字的存储长度不超过 9999 字节，且其指数的绝对值不超过 9999。</code></pre><p>输出格式：</p>
-<pre><code>对每个测试用例，在一行中按普通数字表示法输出 A，并保证所有有效位都被保留，包括末尾的 0。</code></pre><p>输入样例 1：</p>
-<pre><code>+1.23400E-03</code></pre><p>输出样例 1：</p>
-<pre><code>0.00123400</code></pre><p>输入样例 2：</p>
-<pre><code>-1.2E+10</code></pre><p>输出样例 2：</p>
-<pre><code>-12000000000</code></pre><p>分析：</p>
-<p>输入： “[+-][1-9].[0-9]+E[+-][0-9]+” 格式如图，数值正负号，一位1到9之间的整数，小数点，小数部分（长度不定且结果要求保留所有小数部分即小数部分有什么样的数字，结果就得含有这个字符串，可以在不同的位置放小数点），指数部分正负号，指数（0-正无穷）。</p>
-<p>处理：首先保留一定是位于第一位的正负号，接着将数字部分的小数点去掉，依次存入到字符数组中，当读到‘E’时就可以保留另一个正负号，与其后面数字代表小数点要移动的位数了，</p>
-<p>输出：</p>
-<pre><code>根据第一个正负号决定是否输出‘-’号。如果移动的位数为0，直接输出元数字字符；否则 根据第二个正负号判断是左移小数点（符号为负号）还是右移（+）</code></pre><p>1左移：</p>
-<pre><code>因为位数为0的情况已经讨论过了，所以剩下的都是位数不为0的。
-先输出‘0.’在根据要移动的位数，输出位数-1个0，接着输出字符数组。</code></pre><p>2右移：</p>
-<pre><code>先输出第一个字符，根据移动位数是否小于剩余字符串的长度决定是否输出小数点，小于：读到指定位数后输出小数点，接着输出剩余字符数组。
-大于等于：不输出小数点可能会输出‘0’，输出移动的位数减去除去第一个字符剩余字符数组的长度个‘0’.
-
-
-
-
-#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-int main(void){
-    char str[10003]={&apos;\0&apos;};//存放输入字符数组
-    scanf(&quot;%s&quot;,str);
-    int flag=1;//用来标识是否已经读取过小数部分了。
-    int f1,f2;//用来记住两个正负号
-    char result[10000]={&apos;\0&apos;};//用来存放小数部分除去小数点。
-    int j=0;
-    int num=0;
-    for(int i=0;i&lt;strlen(str);i++){
-//判断输入的小数部分的符号
-        if(i==0){
-            switch(str[i]){
-                case &apos;+&apos;:f1=1;break;
-                case &apos;-&apos;:f1=-1;
-            }
-            continue;
-        }
-
-//表示小数部分已经读取完毕。
-        if(str[i]==&apos;E&apos;){
-            flag=0;
-            continue;
-        }
-
-//将小数部分的数字存放到数组中。
-        if(flag&amp;&amp;str[i]&lt;=&apos;9&apos;&amp;&amp;str[i]&gt;=&apos;0&apos;){
-            result[j++]=str[i];
-        }
-
-//判断输入的指数部分的符号
-        if(str[i]==&apos;+&apos;||str[i]==&apos;-&apos;){
-            switch(str[i]){
-                case &apos;+&apos;:f2=1;break;
-                case &apos;-&apos;:f2=-1;
-            }
-            continue;
-        }
-
-//计算指数部分要移动的位数
-        if(!flag){
-            num=num*10+(str[i]-&apos;0&apos;);
-        }
-    }
-//输出符号（+对应‘’负数对应‘-’）
-    if(f1&gt;0){
-        printf(&quot;&quot;);
-    }else{
-        printf(&quot;-&quot;);
-    }移动位数为0直接输出原小数
-//如果
-    if(num==0){
-            printf(&quot;%c.%s&quot;,result[0],result+1);
-        return 0;
-        }
-//根据指数部分判断移动方向。大于表示右移。
-    if(f2&gt;0){//右移时：
-        printf(&quot;%c&quot;,result[0]);//首先输出第一个数字
-//根据移动位数判断是否要补0
-        if(num&lt;strlen(result+1)){//然后根据要移动位数的长度输出0
-        for(int j=1;j&lt;=strlen(result+1);j++){
-                    if(j&lt;=num){
-                    printf(&quot;%c&quot;,result[j]);
-                }
-                else{
-                    printf(&quot;.%s&quot;,result+j);
-                    break;//不要忘了跳出去
-                }
-            }    
-        }else{
-                printf(&quot;%s&quot;,result+1);
-                for(int j=0;j&lt;num-strlen(result+1);j++){
-                    printf(&quot;0&quot;);
-                }
-            }
-    }else{//左移第一个肯定为0.几
-            printf(&quot;0.&quot;);
-            for(int j=1;j&lt;num;j++){
-                printf(&quot;0&quot;);
-            }
-            printf(&quot;%s&quot;,result);
-    }
-    return 0;
-} </code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1027" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/19/PTA-Basic-1027/"
-    >PTA-Basic-1027</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/19/PTA-Basic-1027/" class="article-date">
-  <time datetime="2019-09-19T13:34:04.000Z" itemprop="datePublished">2019-09-19</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>本题要求你写个程序把给定的符号打印成沙漏的形状。例如给定17个“*”，要求按下列格式打印</p>
-<pre><code>*****
-  ***
-    *
-  ***
-*****</code></pre><p>所谓“沙漏形状”，是指每行输出奇数个符号；各行符号中心对齐；相邻两行符号数差2；符号数先从大到小顺序递减到1，再从小到大顺序递增；首尾符号数相等。</p>
-<p>给定任意N个符号，不一定能正好组成一个沙漏。要求打印出的沙漏能用掉尽可能多的符号。</p>
-<p>输入格式:<br>输入在一行给出1个正整数N（≤1000）和一个符号，中间以空格分隔。</p>
-<p>输出格式:<br>首先打印出由给定符号组成的最大的沙漏形状，最后在一行中输出剩下没用掉的符号数。</p>
-<p>输入样例:</p>
-<pre><code>19 *</code></pre><p>输出样例:</p>
-<pre><code>*****
- ***
-  *
- ***
-*****
-2</code></pre><p>分析：</p>
-<p>此题先根据输入的数字计算出一半+1的行数（2<em>n</em>n-1，其中n为行数）然后每一行输出，空格与2*n-1个字符。然后再进行另一半的操作。<br>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int num;
-    char ch;
-    scanf(&quot;%d %c&quot;,&amp;num,&amp;ch);
-    int i=1; 
-    for(;;i++){
-        if(2*i*i-1&gt;num){//计算一共有多少层。
-            break;
-        }
-    }
-    i=i-1;//行数,去掉对称的哪一行。
-    num=num-2*i*i+1;//剩余没有用到的个数。
-    int n=i;
-    int nums=0;
-    for(;n&gt;0;n--){//打印一行
-        for(int k=0;k&lt;nums;k++){//这一行的空格从0开始计算。
-            printf(&quot; &quot;);
-        }
-        for(int j=0;j&lt;2*n-2;j++){//
-            printf(&quot;%c&quot;,ch);
-        }
-        printf(&quot;%c\n&quot;,ch);
-        nums++;
-    }
-    nums--;
-    for(int j=2;j&lt;=i;j++){
-        nums--;
-        for(int k=0;k&lt;nums;k++){
-            printf(&quot; &quot;);
-        }
-        for(n=0;n&lt;2*j-2;n++){
-            printf(&quot;%c&quot;,ch);
-        }
-        printf(&quot;%c\n&quot;,ch);
-    }
-    printf(&quot;%d&quot;,num);
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1026" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/19/PTA-Basic-1026/"
-    >PTA-Basic-1026</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/19/PTA-Basic-1026/" class="article-date">
-  <time datetime="2019-09-19T13:33:50.000Z" itemprop="datePublished">2019-09-19</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>要获得一个 C 语言程序的运行时间，常用的方法是调用头文件 time.h，其中提供了 clock() 函数，可以捕捉从程序开始运行到 clock() 被调用时所耗费的时间。这个时间单位是 clock tick，即“时钟打点”。同时还有一个常数 CLK_TCK，给出了机器时钟每秒所走的时钟打点数。于是为了获得一个函数 f 的运行时间，我们只要在调用 f 之前先调用 clock()，获得一个时钟打点数 C1；在 f 执行完成后再调用 clock()，获得另一个时钟打点数 C2；两次获得的时钟打点数之差 (C2-C1) 就是 f 运行所消耗的时钟打点数，再除以常数 CLK_TCK，就得到了以秒为单位的运行时间。</p>
-<p>这里不妨简单假设常数 CLK_TCK 为 100。现给定被测函数前后两次获得的时钟打点数，请你给出被测函数运行的时间。</p>
-<p>输入格式：<br>输入在一行中顺序给出 2 个整数 C1 和 C2。注意两次获得的时钟打点数肯定不相同，即 C1 &lt; C2，并且取值在 [0,10<br>​7<br>​​ ]。</p>
-<p>输出格式：<br>在一行中输出被测函数运行的时间。运行时间必须按照 hh:mm:ss（即2位的 时:分:秒）格式输出；不足 1 秒的时间四舍五入到秒。</p>
-<p>输入样例：</p>
-<pre><code>123 4577973</code></pre><p>输出样例：</p>
-<pre><code>12:42:59</code></pre><p>分析：<br>此题简单不做赘述，注意一点，转型时注意语言自带的转型功能。</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int number1;
-    int number2;
-
-    scanf(&quot;%d %d&quot;,&amp;number1,&amp;number2);
-    int h=(int)((number2-number1)/360000);
-    printf(&quot;%02d:&quot;,h);
-    int m=(int)(((number2-number1)/100 -h * 3600)/60);
-    printf(&quot;%02d:&quot;,m);</code></pre><p>#####//此处强制转型一定要在除过后就进行否则会导致数字丢失。<br>        int s=(((int)((number2-number1)<em>1.0/100+0.5)-h</em>3600-m*60));<br>        printf(“%02d”,s);<br>        return 0;<br>    }</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">PTA-Basic</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -848,7 +534,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/18/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/20/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/18/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/20/">下一页</a>
   </nav>
   
 </section>
@@ -907,7 +593,7 @@ int main(void){
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="A BUG IS A CHANCE"></a>
+    <a href="/"><img src="/images/avatar.jpg" alt="A BUG|A CHANCE"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -1128,6 +814,15 @@ int main(void){
 
 <!-- Katex -->
 
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
 <!-- busuanzi  -->
 
 
@@ -1204,7 +899,7 @@ int main(void){
     
     
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=1382596189&auto=0&height=32"></iframe>
+        src="//music.163.com/outchain/player?type=2&id=1363490517&auto=0&height=32"></iframe>
 </div>
 
 <style>
@@ -1217,6 +912,6 @@ int main(void){
 </style>
     
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"right","width":250,"height":400,"hOffset":0,"vOffset":-30},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"left","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
 
 </html>

@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     A BUG IS A CHANCE
+     A BUG|A CHANCE
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -47,7 +47,7 @@ var _hmt = _hmt || [];
 </script>
 
 
-<link rel="alternate" href="/atom.xml" title="A BUG IS A CHANCE" type="application/atom+xml">
+<link rel="alternate" href="/atom.xml" title="A BUG|A CHANCE" type="application/atom+xml">
 </head>
 
 </html>
@@ -68,7 +68,7 @@ var _hmt = _hmt || [];
       <img src="/images/cover2.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
-      <h1><a href="/">A BUG IS A CHANCE</a></h1>
+      <h1><a href="/">A BUG|A CHANCE</a></h1>
       <div id="subtitle-box">
         
         <span id="subtitle"></span>
@@ -79,7 +79,7 @@ var _hmt = _hmt || [];
         <img
           src="/images/ayer.png"
           class="cover-logo"
-          alt="A BUG IS A CHANCE"
+          alt="A BUG|A CHANCE"
         />
         
       </div>
@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-LeetCode-11盛水最多的容器" class="article article-type-post" itemscope
+    <article id="post-LeetCode-21合并两个有序链表" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/03/LeetCode-11%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AE%B9%E5%99%A8/"
-    >LeetCode-11盛水最多的容器</a> 
+  <a class="article-title" href="/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/"
+    >LeetCode-21合并两个有序链表</a> 
 </h2>
  
 
@@ -119,10 +119,14 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/03/LeetCode-11%E7%9B%9B%E6%B0%B4%E6%9C%80%E5%A4%9A%E7%9A%84%E5%AE%B9%E5%99%A8/" class="article-date">
-  <time datetime="2019-11-03T03:52:33.000Z" itemprop="datePublished">2019-11-03</time>
+      <a href="/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="article-date">
+  <time datetime="2019-11-12T13:09:38.000Z" itemprop="datePublished">2019-11-12</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
       
       
       
@@ -138,73 +142,63 @@ var _hmt = _hmt || [];
 
       
       <p>题目：</p>
-<pre><code>给定 n 个非负整数 a1，a2，...，an，每个数代表坐标中的一个点 (i, ai) 。在坐标内画 n 条垂直线，垂
+<pre><code>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
 
-直线 i 的两个端点分别为 (i, ai) 和 (i, 0)。找出其中的两条线，使得它们与 x 轴共同构成的容器可以
+示例：
 
-容纳最多的水。
-
-说明：你不能倾斜容器，且 n 的值至少为 2。
-
-图中垂直线代表输入数组 [1,8,6,2,5,4,8,3,7]。在此情况下，容器能够容纳水（表示为蓝色部分）的最大
-
-值为 49。
-
-
-示例:
-
-输入: [1,8,6,2,5,4,8,3,7]
-
-输出: 49
-
-下图是此数组对应的图形，以及它的最大面积。</code></pre><p><img src="https://aliyun-lc-upload.oss-cn-hangzhou.aliyuncs.com/aliyun-lc-upload/uploads/2018/07/25/question_11.jpg" alt=""></p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/container-with-most-water" target="_blank" rel="noopener">https://leetcode-cn.com/problems/container-with-most-water</a></p>
-<p>##思路1：<br>###暴力解法（优化后的）</p>
-<pre><code>选定长方形的长，然后依据长来从头开始找数组中的相距长度为此的两个数值，取出它们的最小值，然后求面
-
-积，如果面积比上一个值大，就修改上一个面积值，使得面积永远是最大值。</code></pre><p>代码块：</p>
-<pre><code>public int maxArea(int[] height) {
-    int area=0;
-    int h=0;
-    for(int i=1;i&lt;height.length;i++) {//根据不同的长来查找
-        for(int a=0;a&lt;height.length;a++) {
-            int b=a+i;
-            if(b&gt;height.length-1) {
-                break;
-            }else {
-                h=height[a]&gt;height[b]?height[b]:height[a];
-                if(h*i&gt;area) {
-                    area=h*i;
-                }
-            }
-        }
-
+输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4
+输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</code></pre><p>思路1：</p>
+<pre><code>新建一个节点，作为头节点，不作为返回值的一部分。然后再定义一个零时工，用于不断扩大头节点的长度，采
+用归并算法，归并两个有序数组。然后返回头节点的下一个节点就可以了。注意：两个有序链表可能为空。还有
+就是归并过程中不必再创建新的节点，直接使用原来链表的结点，将其加到返回值链表中就可以了。创建新的结点会浪费大量的时间。</code></pre><p>代码：</p>
+<pre><code>public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+ListNode headNode=new ListNode(0);
+headNode.next=null;//此处一定要将头节点的下一个节点设为null，不然当两个链表都为空时，会显示异常。
+ListNode p=headNode;
+int val1=0;
+int val2=0;
+while(l1!=null&amp;&amp;l2!=null) {
+    val1=l1.val;
+    val2=l2.val;
+    if(val1&lt;val2) {
+        p.next=l1;
+        l1=l1.next;
+    }else {
+        p.next=l2;
+        l2=l2.next;
     }
-    return area;
-}</code></pre><p>复杂度分析</p>
-<p>时间复杂度：O(n^2)，计算所有 n(n−1)/2种高度组合的面积。</p>
-<p>空间复杂度：O(1)，使用恒定的额外空间。</p>
-<p>##思路二<br>###双指针法（最优解法）</p>
-<pre><code>首先，定义两个变量分别指向数组的头和尾下标，然后比较它们对应的数组中的值，取小的数值与它们之间的
-距离相乘，这就是当前的面积，如果当前面积比上一个面积大就修改面积变量值，使其永远存放最大面积值。</code></pre><p>####分析双指针法：</p>
-<pre><code>因为此思路是根据长方形的面积始终由它的最小的宽决定的，所以从两头开始遍历，改变指向小数值的那个变
-量使其指向下一个（对于前面的来说是后一个，对于后面的来说是前一个），（为什么这么做呢?因为改变了小
-的那个变量的数值使两个变量之间对应的数组值中即使有比它还要小的，那么这个值与其他数组值形成的面积
-也绝对不会比上一个大）</code></pre><p>代码块：</p>
-<pre><code>public int maxArea(int[] height) {
-    int area=0;
-    int head=0,last=height.length-1;
-    int h=0;
-        while(head&lt;last) {
-            h=height[head]&gt;height[last]?height[last--]:height[head++];
-            if(h*(last-head+1)&gt;area) {
-                area=h*(last-head+1);
-            }
-        }
-    return area;
-}</code></pre><p>时间复杂度：O(n)</p>
-<p>空间复杂度：O(1)</p>
+    p=p.next;
+}
+while(l1!=null) {
+    p.next=l1;
+    l1=l1.next;
+    p=p.next;
+}
+while(l2!=null) {
+    p.next=l2;
+    l2=l2.next;
+    p=p.next;
+}
+return headNode.next;
+}</code></pre><p>思路二：递归算法实现。</p>
+<pre><code>将两个链表的首节点中，小的那一个作为首节点返回，然后将被选中的那个节点的后一个节点以及它后面的节
+点当成新的链表继续与另外一个链表归并。重复次过程直到，某一个节点为null，此时直接将另一个链表加到
+结果链表中返回就可以了。
 
+
+也是将链表归并的过程看成了1选出两个链表中首节点小的那个作为返回链表的首节点，然后剩余部分再归并的
+过程。</code></pre><p>代码：</p>
+<pre><code>public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+    if (null == l1) return l2;
+    if (null == l2) return l1;
+    if (l1.val &lt; l2.val) {
+        l1.next = mergeTwoLists(l1.next, l2);
+        return l1;
+    } else {
+        l2.next = mergeTwoLists(l1, l2.next);
+        return l2;
+    }
+}</code></pre>
       
       <!-- reward -->
       
@@ -216,7 +210,7 @@ var _hmt = _hmt || [];
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -235,7 +229,7 @@ var _hmt = _hmt || [];
 
 </article>
     
-    <article id="post-LeetCode-9回文数" class="article article-type-post" itemscope
+    <article id="post-LeetCode-20有效的括号" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -243,8 +237,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/02/LeetCode-9%E5%9B%9E%E6%96%87%E6%95%B0/"
-    >LeetCode-9回文数</a> 
+  <a class="article-title" href="/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"
+    >LeetCode-20有效的括号</a> 
 </h2>
  
 
@@ -253,10 +247,14 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/02/LeetCode-9%E5%9B%9E%E6%96%87%E6%95%B0/" class="article-date">
-  <time datetime="2019-11-02T03:11:40.000Z" itemprop="datePublished">2019-11-02</time>
+      <a href="/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="article-date">
+  <time datetime="2019-11-11T15:23:33.000Z" itemprop="datePublished">2019-11-11</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
       
       
       
@@ -272,51 +270,64 @@ var _hmt = _hmt || [];
 
       
       <p>题目：</p>
-<pre><code>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
+<pre><code>给定一个只包括 &apos;(&apos;，&apos;)&apos;，&apos;{&apos;，&apos;}&apos;，&apos;[&apos;，&apos;]&apos; 的字符串，判断字符串是否有效。
+
+有效字符串需满足：
+
+左括号必须用相同类型的右括号闭合。
+左括号必须以正确的顺序闭合。
+注意空字符串可被认为是有效字符串。
 
 示例 1:
 
-输入: 121
+输入: &quot;()&quot;
 输出: true
 示例 2:
 
-输入: -121
-输出: false
-解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。
+输入: &quot;()[]{}&quot;
+输出: true
 示例 3:
 
-输入: 10
+输入: &quot;(]&quot;
 输出: false
-解释: 从右向左读, 为 01 。因此它不是一个回文数。</code></pre><p>最优解法：将首先可以肯定数字为负数或者（末尾有0且不等于0）情况下其反转后一定是错的。0一定是对的。下面讨论数为正数，（正数的长度为偶数）只要正数的前一半的数值等于后一半的数值就可以了（正数的长度为奇数的话）只要后一半的数值等于前一半对10取整即可（因为中间的那一个不需要有对称的位置）。不过我这里将其改了一下使代码更加简单（运行时间与原代码相差不大）</p>
-<p>代码：</p>
-<pre><code>public boolean isPalindrome(int x) {
-    if (x &lt; 0 || (x % 10 == 0 &amp;&amp; x != 0)) return false;
-        int reverseNum=0;
-        int y=x;
-        while(x!=0) {
-            reverseNum=reverseNum*10+x%10;
-            x=x/10;
-        }
-        return y==reverseNum;
-}</code></pre><p>我的解法：将一个字符串，数字小于0返回false，为0返回true，对于正数将他赋值到一个字符串里，然后分别定义两个变量从头，尾开始向中间遍历，如果他们所在位置的字符不同说明不对称（即无法成为回文结构）。</p>
-<p>代码：</p>
-<pre><code>public boolean isPalindrome(int x) {
-    if(x&lt;0)
-        return false;
-    if(x==0)
+示例 4:
+
+输入: &quot;([)]&quot;
+输出: false
+示例 5:
+
+输入: &quot;{[]}&quot;
+输出: true</code></pre><p>思路：<br>    利用堆栈读取括号遇到左括号’(‘,’{‘,’[‘将其进栈，遇到右括号先取栈顶元素看看是不是与当前元素匹配的括号，不是则说明，括号不匹配，立即输出false，如果匹配，就先出栈，然后继续读取下一个字符。</p>
+<p>代码:</p>
+<pre><code>public boolean isValid(String s) {
+   if(s == null || s.length() % 2 == 1) return false;
+    if(s.length()==0) {
         return true;
-        String str=&quot;&quot;+x;
-        int i=0,j=str.length()-1;
-        while(i&lt;j) {
-            if(str.charAt(i)!=str.charAt(j)) {
+    }
+    Stack&lt;Character&gt; stack=new Stack&lt;&gt;();
+    for(int i=0;i&lt;s.length();i++) {
+        char ch=s.charAt(i);
+        if(ch==&apos;[&apos;||ch==&apos;(&apos;||ch==&apos;{&apos;) {
+            stack.push(ch);
+        }else {
+            if(stack.isEmpty()) {
                 return false;
+            }
+            if(ch==&apos;]&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;[&apos;) {
+                stack.pop();
+            }else if(ch==&apos;)&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;(&apos;)
+            {
+                stack.pop();
+            }else if(ch==&apos;}&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;{&apos;) {
+                stack.pop();
             }else {
-                i++;
-                j--;
+                return false;
             }
         }
-        return true;
-}</code></pre><p>总结：字符串的操作运行时间要多余直接对数值进行操作的时间，应尽量采用操作数值。</p>
+    }
+    return stack.isEmpty();
+}</code></pre><p>思路：</p>
+<p>自己实现栈然后重复以上操作，基本思路一样。</p>
 
       
       <!-- reward -->
@@ -329,7 +340,7 @@ var _hmt = _hmt || [];
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -348,7 +359,7 @@ var _hmt = _hmt || [];
 
 </article>
     
-    <article id="post-LeetCode-8字符串转换整数" class="article article-type-post" itemscope
+    <article id="post-LeetCode-19删除链表倒数第N个节点" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -356,8 +367,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/01/LeetCode-8%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0/"
-    >LeetCodeo0008</a> 
+  <a class="article-title" href="/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/"
+    >LeetCode-19删除链表倒数第N个节点</a> 
 </h2>
  
 
@@ -366,10 +377,14 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/01/LeetCode-8%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BD%AC%E6%8D%A2%E6%95%B4%E6%95%B0/" class="article-date">
-  <time datetime="2019-11-01T13:44:08.000Z" itemprop="datePublished">2019-11-01</time>
+      <a href="/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="article-date">
+  <time datetime="2019-11-10T11:05:13.000Z" itemprop="datePublished">2019-11-10</time>
 </a>
       
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+  </div>
+
       
       
       
@@ -385,381 +400,54 @@ var _hmt = _hmt || [];
 
       
       <p>题目：</p>
-<p>请你来实现一个 atoi 函数，使其能将字符串转换成整数。</p>
-<p>首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。//去除开头空格</p>
-<p>当我们寻找到的第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字组合起来，作为该整数</p>
-<p>的正负号；//第一个字符是+-或非空字符，则取接在符号后的连续数字假如第一个非空字符是数字，则直接将其与</p>
-<p>之后连续的数字字符组合起来，形成整数。该字符串除了有效的整数部分之后也可能会存在多余的字符，这些字符可</p>
-<p>以被忽略，它们对于函数不应该造成影响。</p>
-<p>注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的</p>
-<p>函数不需要进行转换。</p>
-<p>在任何情况下，若函数不能进行有效的转换时，请返回 0。 说明： 假设我们的环境只能存储 32 位大小的有符号</p>
-<p>整数，那么其数值范围为 [−2^31, 2^31 − 1]。如果数值超过这个范围，请返回  INT_MAX (2^31 − 1) 或 INT_MIN (−231) 。 </p>
-<p>示例 1: 输入: “42”输出: 42 </p>
-<p>示例 2: 输入: “ -42” 输出: -42 </p>
-<p>解释: 第一个非空白字符为 ‘-‘, 它是一个负号。  </p>
-<p>我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。 </p>
-<p>示例 3: 输入: “4193 with words” 输出: 4193 解释:</p>
-<p>转换截止于数字 ‘3’ ，因为它的下一个字符不为数字。 </p>
-<p>示例 4: 输入: “words and 987” 输出: 0 </p>
-<p>解释: 第一个非空字符是 ‘w’,</p>
-<p>但它不是数字或正、负号。 因此无法执行有效的转换。</p>
-<p>示例 5: 输入: “-91283472332” 输出: -2147483648 </p>
-<p>解释: 数字</p>
-<p>“-91283472332” 超过 32 位有符号整数范围。   因此返回 INT_MIN (−2^31) 。</p>
-<p>思路：</p>
-<p>一：检查输入的字符是否是空是返回0，首先对其去空，然后根据第一个字符的符号决定接下来的操作，如果不是非法字符就继续操作后面的字符找到为连续的数值的个数,然后调用函数将字符串转化为数值，如果发生了异常，且字符串中靠前的子字符串不能转化为数值就说明是非法字符导致的异常，如果靠前面的子字符串可以转化为数值就说明发生了越界，根据符号决定它是向上越界还是向下越界，如果是向上越界就返回整型的最大值，反之就返回整型的最小值。如果没有发生异常，那么最终返回字符串转化后的数值。</p>
-<p>代码：</p>
-<pre><code>public int myAtoi(String str){
-           if(str==null)
-            {
-                return 0;
-            }else {
-                str=str.trim();//如果此处不主动将str赋值为str.trim();leetCode上显示通不过去？不知道为什么？
-                if(str.length()==0) {
-                    return 0;
-                }
-                int index=0;
-                for(int i=1;i&lt;str.length();i++) {
-                    if(str.charAt(i)&lt;=&apos;9&apos;&amp;&amp;str.charAt(i)&gt;=&apos;0&apos;) {
-                        index++;
-                    }else {
-                        break;
-                    }
-                }
-                try {
-                    return Integer.valueOf(str.substring(0, index+1));
-                }catch(Exception e) {
-                    int a;
-                    try {
-                        a=Integer.valueOf(str.substring(0, 3));
-                    }catch(Exception e1){
-                        return 0;
-                    }
-                    return a&gt;0?Integer.MAX_VALUE:Integer.MIN_VALUE;
-                }
-            }
-}</code></pre><p>思路二：</p>
-<p>将整个字符串当成一个字符数组，然后遍历，判断第一个字符是否合格，如果第一个字符是‘ ’那么继续向后取字符，如果为不合格字符就返回0，合格继续向后读取字符，并判断读取到的每个字符是否是数值，是就先判断如果加上去是否可能会越界，会就返回相应的整型顶值，如果不会越界，就将上一个结果*10+此字符表示的数值。如果读到了不是数值的字符且还没有发生越界，那么就带符号的它的值。</p>
-<p>代码：</p>
-<pre><code>public static int Mytoai_2(String s) {
-        int flag=1;
-        boolean start=true;
-        int result=0;
-        for(int i=0;i&lt;s.length();i++){
-            if(start) {
-                if(s.charAt(i)==&apos; &apos;) {
-                    continue;
-                }
-                if(s.charAt(i)==&apos;-&apos;) {
-                    flag=-1;
-                }else if(s.charAt(i)==&apos;+&apos;) {
-                    flag=1;
-                }else if(Character.isDigit(s.charAt(i))) {
-                    result=s.charAt(i)-&apos;0&apos;;
-                }else {
-                    break;
-                }
-                start=false;//标记一下已读过第一个不是空格字符了，后就不在进入此判断体内。
-            }else {
-                if(Character.isDigit(s.charAt(i))) {
-                    if(flag==1&amp;&amp;(result&gt;Integer.MAX_VALUE/10||(result==Integer.MAX_VALUE/10&amp;&amp;s.charAt(i)&gt;&apos;7&apos;))) {//整型的上限是2^31-1
-                        return Integer.MAX_VALUE;
-                    }
-                    if((flag==-1)&amp;&amp;(result&gt;Integer.MAX_VALUE/10||(result==Integer.MAX_VALUE/10&amp;&amp;s.charAt(i)&gt;&apos;8&apos;))) {//此处任然使用正数判断只是范围变化了而已。
-                        return Integer.MIN_VALUE;
-                    }
-                    result=result*10+s.charAt(i)-&apos;0&apos;;
-                }else {
-                    return flag*result;
-                }
-            }
+<pre><code>给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+
+示例：
+
+给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.
+
+当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5.
+说明：
+
+给定的 n 保证是有效的。</code></pre><p>思路：</p>
+<pre><code>1计算链表的长度
+2找到长度减去n的节点位置
+3交换节点
+注意：如果n为链表长度时会有错误
+需要补充一下此时直接返回头节点的下一个节点就可以了</code></pre><p>代码：</p>
+<pre><code>public ListNode removeNthFromEnds(ListNode head, int n) {
+        ListNode node=head;
+        int len=0;
+        while(node!=null) {
+            len++;
+            node=node.next;
         }
-        return flag*result;
-    }</code></pre><p>经验谈：</p>
-<p>算法这一块不要贪图方便而滥用语言自带的许多功能，这样会导致算法的运行时间的大大增长。</p>
-<p>所以以后我的算法尽量采用c++或C语言实现。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-Java-码点与代码单元" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/31/Java-%E7%A0%81%E7%82%B9%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83/"
-    >码点与代码单元</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/31/Java-%E7%A0%81%E7%82%B9%E4%B8%8E%E4%BB%A3%E7%A0%81%E5%8D%95%E5%85%83/" class="article-date">
-  <time datetime="2019-10-30T23:48:29.000Z" itemprop="datePublished">2019-10-31</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>Java中<br>码点：一个字符在某个编码表中对应的代码值（表示它的数值），Java中指某个字符对应的Unicode值。<br>代码单元：在UTF-16采用16位来存储基本的多语言级别的某个Unicode字符。此即称为代码单元。<br>UTF-16中对Unicode中基本的多语言级别采用的是一个码点表示一个字符，而对于其他级别（包含辅助字符…）则是采用两个码点表示一个字符。<br>例如：<br>Java中<br>String greeting=”\uD835\uDD46”;<br>然后使用<br>int n=greeting.length();//n==2<br>返回的就是代码点的数目<br>而<br>int m=greeting.codePointCount(0, greeting.length());//n==1<br>返回的才是真正的Unicode中字符的个数。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-LeetCode-7整数反转" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/23/LeetCode-7%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/"
-    >LeetCodeo0007</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/23/LeetCode-7%E6%95%B4%E6%95%B0%E5%8F%8D%E8%BD%AC/" class="article-date">
-  <time datetime="2019-10-23T14:21:18.000Z" itemprop="datePublished">2019-10-23</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：<br>给出一个 32 位的有符号整数，你需要将这个整数中每位上的数字进行反转。</p>
-<p>示例 1:</p>
-<p>输入: 123</p>
-<p>输出: 321</p>
-<p>示例 2:</p>
-<p>输入: -123</p>
-<p>输出: -321</p>
-<p>示例 3:</p>
-<p>输入: 120</p>
-<p>输出: 21</p>
-<p>注意:</p>
-<p>假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−2^31,  2^31 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。</p>
-<p>思路：<br>1<br>此题算法非常容易想出，不断对整数取余并将余数放入另一个数字。<br>此处思路的难处是：正如题目提示的那样，肯定会有数字超出范围的，所以就应该判断数字在何时会超出表示范围。整数：</p>
-<p>代码：</p>
-<pre><code>class Solution {
-    public int reverse(int x) {
-        int ans = 0;
-        x=Math.abs(x);
-        while (x != 0) {
-            int pop = x % 10;
-            if (ans &gt; Integer.MAX_VALUE / 10 || (ans == Integer.MAX_VALUE / 10 &amp;&amp; pop &gt; 7)) /*此处如果上一次的整数大于Integer.MAX_VALUE/10那么这次乘以10肯定会超过范围，如果刚好相等，如果余数还大于7的化加上余数后也会超出范围，Integer.MAX_VALUE是2147483647（2^31-1）*/
-                return 0;
-            if (ans &lt; Integer.MIN_VALUE / 10 || (ans == Integer.MIN_VALUE / 10 &amp;&amp; pop &lt; -8)) /*此处如果上一次的整数小于Integer.MAX_VALUE/10那么这次乘以10肯定比最小还要小（即超出表示范围）。如果刚好相等，如果余数还小于-8的话，加上余数后也会超出范围，Integer.MIN_VALUE是-2147483648（-1*2^31）*/
-                return 0;
-            ans = ans * 10 + pop;
-            x /= 10;
+        if(len==n) {
+            return head.next;
         }
-        return ans;
-    }
-}</code></pre><p>2.<br>利用字符串的反转方法，以及Integer类的VauleOf（）方法</p>
-<p>来源：力扣（LeetCode）<br>链接：<a href="https://leetcode-cn.com/problems/reverse-integer" target="_blank" rel="noopener">https://leetcode-cn.com/problems/reverse-integer</a><br>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-LeetCode-6Z字型变换" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/20/LeetCode-6Z%E5%AD%97%E5%9E%8B%E5%8F%98%E6%8D%A2/"
-    >LeetCodeo0006</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/20/LeetCode-6Z%E5%AD%97%E5%9E%8B%E5%8F%98%E6%8D%A2/" class="article-date">
-  <time datetime="2019-10-20T11:05:32.000Z" itemprop="datePublished">2019-10-20</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：<br>将字符串 <code>&quot;PAYPALISHIRING&quot;</code> 以Z字形排列成给定的行数：</p>
-<pre><code>P   A   H   N
-A P L S I I G
-Y   I   R</code></pre><p>之后从左往右，逐行读取字符： <code>&quot;PAHNAPLSIIGYIR&quot;</code></p>
-<p>实现一个将字符串进行指定行数变换的函数:</p>
-<p>string convert(string s, int numRows);</p>
-<p>示例 1:</p>
-<p>输入: s = “PAYPALISHIRING”, numRows = 3<br>输出: “PAHNAPLSIIGYIR”</p>
-<p>示例 2:</p>
-<p>输入: s = “PAYPALISHIRING”, numRows = 4<br>输出: “PINALSIGYAHRPI”<br>解释:</p>
-<pre><code>P     I    N
-A   L S  I G
-Y A   H R
-P     I</code></pre><p>思路：规律是：首先取出第一个字符，如果是第一行与倒数第一行继续以2<em>nrows-1的间隔取下一个字符。如果不是第一与倒数第一行，首先取出第一个字符，然后重复间隔以2</em>norws-1取与间隔为1取下一个字符（注意这个周期的起点字符是一样的）注意取过的字符</p>
-<p>代码：</p>
-<pre><code>import java.util.Scanner;
-
-public class o0006 {
-    public static void main(String[] args) {
-        Scanner in=new Scanner(System.in);
-        String str=in.nextLine();
-        in.close();
-        System.out.println(convert(str, 4));
-    }
-    public static String convert(String s,int numRows) {
-        if(numRows==1) {
-            return s;
-        }else {
-            StringBuilder ret=new StringBuilder();
-            int n=s.length();//获取字符串的长度
-            int cyclen=2*numRows-2;//初始取字符的的下一坐标比上一字符多2*行数-2
-            for(int i=0;i&lt;numRows;i++) {
-                for(int j=0;j+i&lt;n;j+=cyclen) {//
-                    ret.append(s.charAt(i+j));//每行的元素总是两个两个加入到字符串中，起始字符是，第一行与代数第一行除外。
-                    if(i!=0&amp;&amp;i!=numRows-1&amp;&amp;j+cyclen-i&lt;n) {
-                        ret.append(s.charAt(j+cyclen-i));
-                    }
-                }
-            }
-            return ret.toString();
+        node=head;
+        for(int i=1;i&lt;len-n;i++) {
+            node=node.next;
         }
+        ListNode aNode=node.next;
+        node.next=aNode.next;
+        return head;
+    }</code></pre><p>思路2：递归到达最底层后开始计数，当数字达到n时返回此节点的下一个节点给上一个节点。（佩服佩服，果然时高手，佩服）</p>
+<p>代码：</p>
+<pre><code>private int time;
+public ListNode removeNthFromEnd(ListNode head,int n) {
+    if(head==null) {//当head为null时表明已经达到最后一个节点的下一个指针
+        time=0;
+        return null;
     }
-}
-/**
- * 对于每个字符串，首先去行首元素，如果是第一行与最后一行就以间隔2*nrows-1的间隔不断取下去，
- * 如果不是这两行每次取两个字符，首先以间隔2*nrows-1取一个字符，然后再以间隔1取一个字符。
- * 如果下表超出长度则结束此次循环，进行下一次循环的字符输入。
- */</code></pre>
+    head.next=removeNthFromEnd(head.next,n);//要保证原链表的结构不变
+    time++;//买次递归返回的时候就加1
+    if(time==n) {//当达到第n个的时候返回当前节点的下一个节点
+        return head.next;
+    }
+    return head;//否则返回当前节点保证原链表的结构不变
+}</code></pre><p>大佬就是大佬，我只能佩服了。</p>
+
       
       <!-- reward -->
       
@@ -771,7 +459,7 @@ public class o0006 {
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -796,7 +484,7 @@ public class o0006 {
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/22/">22</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
   </nav>
   
 </section>
@@ -855,7 +543,7 @@ public class o0006 {
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="A BUG IS A CHANCE"></a>
+    <a href="/"><img src="/images/avatar.jpg" alt="A BUG|A CHANCE"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -1076,6 +764,15 @@ public class o0006 {
 
 <!-- Katex -->
 
+
+    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
+        
+    
+
+
 <!-- busuanzi  -->
 
 
@@ -1152,7 +849,7 @@ public class o0006 {
     
     
     <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
-        src="//music.163.com/outchain/player?type=2&id=1382596189&auto=0&height=32"></iframe>
+        src="//music.163.com/outchain/player?type=2&id=1363490517&auto=0&height=32"></iframe>
 </div>
 
 <style>
@@ -1165,6 +862,6 @@ public class o0006 {
 </style>
     
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"right","width":250,"height":400,"hOffset":0,"vOffset":-30},"mobile":{"show":true,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"/live2dw/assets/izumi.model.json"},"display":{"superSample":2,"position":"left","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
 
 </html>
