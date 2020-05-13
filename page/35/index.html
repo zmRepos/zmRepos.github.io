@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1033" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1007" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1033/"
-    >PTA-Basic-1033</a> 
+  <a class="article-title" href="/2019/09/16/PTA-Basic-1007/"
+    >PTA-Basic-1007</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1033/" class="article-date">
-  <time datetime="2019-09-22T12:38:37.000Z" itemprop="datePublished">2019-09-22</time>
+      <a href="/2019/09/16/PTA-Basic-1007/" class="article-date">
+  <time datetime="2019-09-16T15:29:36.000Z" itemprop="datePublished">2019-09-16</time>
 </a>
       
   <div class="article-category">
@@ -141,67 +141,41 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<p>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及坏掉的那些键，打出的结果文字会是怎样？</p>
-<p>输入格式：<br>输入在 2 行中分别给出坏掉的那些键、以及应该输入的文字。其中对应英文字母的坏键以大写给出；每段文字是不超过 10<br>^5<br>​​  个字符的串。可用的字符包括字母 [a-z, A-Z]、数字 0-9、以及下划线 _（代表空格）、,、.、-、+（代表上档键）。题目保证第 2 行输入的文字串非空。</p>
-<p>注意：如果上档键坏掉了，那么大写的英文字母无法被打出。</p>
-<p>输出格式：<br>在一行中输出能够被打出的结果文字。如果没有一个字符能被打出，则输出空行。</p>
-<p>输入样例：</p>
-<pre><code>7+IE.
-7_This_is_a_test.</code></pre><p>输出样例：</p>
-<pre><code>_hs_s_a_tst</code></pre><p>分析:</p>
-<pre><code>输入：第一行输入坏掉的字符（如果有字母则对应
-的字母不能出现，如果有下划线则不下划线，有加号大写字母甭能出现）</code></pre><hr>
-<pre><code>处理：
-先定义两个尽可能大的字符数组一个用来存储坏键，一个用来存储要输入的字符串。
-
-定义一个删除字符的函数，然后遍历第一个字符串分别在第二个字符串中删去相应的字符。
-
-输出：处理后的字符串如果字符串长度为0则输出空行。</code></pre><p>代码：</p>
+      <p>让我们定义d<br>n<br>​​ 为：d<br>​n<br>​​ =p<br>​n+1<br>​​ −p<br>​n<br>​​ ，其中p<br>​i<br>​​ 是第i个素数。显然有d<br>​1<br>​​ =1，且对于n&gt;1有d<br>​n<br>​​ 是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。</p>
+<p>现给定任意正整数N(&lt;10<br>​5<br>​​ )，请计算不超过N的满足猜想的素数对的个数。</p>
+<p>输入格式:</p>
+<pre><code>输入在一行给出正整数N。</code></pre><p>输出格式:</p>
+<pre><code>在一行中输出不超过N的满足猜想的素数对的个数。</code></pre><p>输入样例:</p>
+<pre><code>20</code></pre><p>输出样例:</p>
+<pre><code>4</code></pre><hr>
+<p>分析：<br>1题目要求给出一个数字要求输出这个数字以内的素数对个数。</p>
+<p>2素数对条件（1为素数，2两个素数相差2）；</p>
+<p>思路：</p>
+<p>1做一个判断是否时素数的函数。</p>
+<p>2因为素数必定不为除2以外的偶数，所以直接从3开始去奇数判断是否为素数，并判断这个数字加2是否也是素数，如果是，则计算素数对个数的变量加1，否则就继续循环，直到超过所给的数字的大小。</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;ctype.h&gt;
-char * Remove(char*a,char b){
-    char * src,*dst;
-    src=a;
-    dst=a;
-    while(*src!=&apos;\0&apos;){
-        *dst=*src;
-        src++;
-        if(*dst!=b){
-            dst++;
+#include&lt;math.h&gt;  
+int isPrime(int n){
+//函数
+    for(int i=3;i&lt;=(int)sqrt(n+1);i+=2){
+        if(n%i==0){
+            return 0;
         }
     }
-    *dst=&apos;\0&apos;;
-    return a;
+    return 1;
 }
 int main(void){
-    char a[110000]={},b[110000]={};
-    gets(a);
-    gets(b);
-    int i=0;
-    while(a[i]!=&apos;\0&apos;){
-                if(a[i]!=&apos;+&apos;){//shang dang jian mei hua
-                            if(a[i]&gt;=&apos;A&apos;&amp;&amp;a[i]&lt;=&apos;Z&apos;){
-                                Remove(b,tolower(a[i]));
-                                Remove(b,toupper(a[i]));
-                            }else{
-                                Remove(b,a[i]);
-                            }
-                }else{
-                    for(char j=&apos;A&apos;;j&lt;(&apos;Z&apos;+1);j++){
-                        Remove(b,j);
-                    }
-            }
-        i++;
+int n;
+scanf(&quot;%d&quot;,&amp;n);
+int num=0;
+for(int i=3;i&lt;=n;i+=2){
+    if(isPrime(i)&amp;&amp;isPrime(i+2)&amp;&amp;(i+2)&lt;=n){
+        num++;
     }
-
-    if(strlen(b)!=0){
-        printf(&quot;%s&quot;,b);
-    }else{
-        printf(&quot;\n&quot;);
-    }
-    return 0;
+}
+printf(&quot;%d&quot;,num);
+return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -233,7 +207,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1032" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1006" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -241,8 +215,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1032/"
-    >PTA-Basic-1032</a> 
+  <a class="article-title" href="/2019/09/15/PTA-Basic-1006/"
+    >PTA-Basic-1006</a> 
 </h2>
  
 
@@ -251,8 +225,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1032/" class="article-date">
-  <time datetime="2019-09-22T12:38:23.000Z" itemprop="datePublished">2019-09-22</time>
+      <a href="/2019/09/15/PTA-Basic-1006/" class="article-date">
+  <time datetime="2019-09-15T09:52:41.000Z" itemprop="datePublished">2019-09-15</time>
 </a>
       
   <div class="article-category">
@@ -273,183 +247,222 @@ int main(void){
       
 
       
-      <p>题目：</p>
-<p>为了用事实说明挖掘机技术到底哪家强，PAT 组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。</p>
-<p>输入格式：<br>输入在第 1 行给出不超过 10<br>​5<br>​​  的正整数 N，即参赛人数。随后 N 行，每行给出一位参赛者的信息和成绩，包括其所代表的学校的编号（从 1 开始连续编号）、及其比赛成绩（百分制），中间以空格分隔。</p>
-<p>输出格式：<br>在一行中给出总得分最高的学校的编号、及其总分，中间以空格分隔。题目保证答案唯一，没有并列。</p>
-<p>输入样例：</p>
-<pre><code>6
-3 65
-2 80
-1 100
-2 70
-3 40
-3 0</code></pre><p>输出样例：</p>
-<pre><code>2 150</code></pre><p>分析：</p>
-<p>输入：第一行给出要输入的数目，随后每一行给出一个学校的得分。<br>处理：<br>先定义一个学校编号的数组越大越好（其数组下标就是输入的学校的编号），定义一个得分最大的学校的编号，与对应的分数，然后输入n次一个学校的编号与得分，如果输入的分数加到对应的学校后比当前最高的学校搞，就改变两个量，最后输入结束时就得到了，最大的学校的编号与分数了。<br>输出：学校的编号 学校的总分数。<br>注意：此题如果采用排序的话可能会运行超时。</p>
+      <p>#1006 换个格式输出整数<br>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
+<p>输入格式：<br>    每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
+<p>输出格式：<br>    每个测试用例的输出占一行，用规定的格式输出 n。</p>
+<p>输入样例 1：</p>
+<pre><code>234</code></pre><p>输出样例 1：</p>
+<pre><code>BBSSS1234</code></pre><p>输入样例 2：</p>
+<pre><code>23</code></pre><p>输出样例 2：</p>
+<pre><code>SS123</code></pre><hr>
+<p>分析：</p>
+<p>1因为输入的数字小于1000，所以定义一个数组长度为3的整型数组，存放数字的个位，十位，百位。</p>
+<p>2再定义一个足够大的数组存放结果。</p>
+<p>3倒叙遍历存放数字的数组，按按百对应下标为2，十位对应的下标为1，个位对应的下标的为0，分别对处理。</p>
+<p>4注意一定要在最后将字符数组的最后置为’\0’,否则会输出错误。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 int main(void){
-    int schools[100001]={0};
-    int max=0;
-    int max_school=0;
-    int n,a,b;
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
-        schools[a]=schools[a]+b;
-        if(schools[a]&gt;max){
-            max=schools[a];
-            max_school=a;
-        }
-    }
-    printf(&quot;%d %d&quot;,max_school,max);
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+char result[1000];
+int number;
+scanf(&quot;%d&quot;,&amp;number);
 
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1031" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1031/"
-    >PTA-Basic-1031</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1031/" class="article-date">
-  <time datetime="2019-09-22T12:38:08.000Z" itemprop="datePublished">2019-09-22</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：<br>一个合法的身份证号码由17位地区、日期编号和顺序编号加1位校验码组成。校验码的计算规则如下：</p>
-<p>首先对前17位数字加权求和，权重分配为：{7，9，10，5，8，4，2，1，6，3，7，9，10，5，8，4，2}；然后将计算的和对11取模得到值Z；最后按照以下关系对应Z值与校验码M的值：</p>
-<p>Z：0 1 2 3 4 5 6 7 8 9 10<br>M：1 0 X 9 8 7 6 5 4 3 2<br>现在给定一些身份证号码，请你验证校验码的有效性，并输出有问题的号码。</p>
-<p>输入格式：<br>输入第一行给出正整数N（≤100）是输入的身份证号码的个数。随后N行，每行给出1个18位身份证号码。</p>
-<p>输出格式：<br>按照输入的顺序每行输出1个有问题的身份证号码。这里并不检验前17位是否合理，只检查前17位是否全为数字且最后1位校验码计算准确。如果所有号码都正常，则输出All passed。</p>
-<p>输入样例1：</p>
-<pre><code>4
-320124198808240056
-12010X198901011234
-110108196711301866
-37070419881216001X</code></pre><p>输出样例1：</p>
-<pre><code>12010X198901011234
-110108196711301866
-37070419881216001X</code></pre><p>输入样例2：</p>
-<pre><code>2
-320124198808240056
-110108196711301862</code></pre><p>输出样例2：</p>
-<pre><code>All passed</code></pre><p>分析：<br>输入:第一行给出要输入的身份证的个数。<br>以下输入n行身份证信息。<br>处理：<br>定义一个判断身份证是否合格的函数，判断每一个输入进的身份证是否合格，不合格的存入二维数组，并且数目加1用一个二维字符数组存储不符合条件的身份证号。<br>身份证处理函数：首先检验前17个字符是否都是数字范围内的，然后用前十七个字符分别减去‘0’然后加到总和上去，然后用总和对11取余数，根据对应的余数找到对应的检验码。<br>输出：<br>如果全部合格输出:All passed<br>否则输出不合格的身份证号一行一个。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-int check(char * a){
-    int i=0;
-    for(;i&lt;17;i++){
-        if(!(a[i]&lt;=&apos;9&apos;&amp;&amp;a[i]&gt;=&apos;0&apos;)){
-            break;
-        }
-    }
-    if(i&lt;17){
-        return 0;
-    }
-    int sum=0;
-    sum=(a[0]-&apos;0&apos;)*7+(a[1]-&apos;0&apos;)*9+(a[2]-&apos;0&apos;)*10+(a[3]-&apos;0&apos;)*5+(a[4]-&apos;0&apos;)*8+
-    (a[5]-&apos;0&apos;)*4+(a[6]-&apos;0&apos;)*2+(a[7]-&apos;0&apos;)*1+(a[8]-&apos;0&apos;)*6+(a[9]-&apos;0&apos;)*3+
-    (a[10]-&apos;0&apos;)*7+(a[11]-&apos;0&apos;)*9+(a[12]-&apos;0&apos;)*10+(a[13]-&apos;0&apos;)*5+(a[14]-&apos;0&apos;)*8+
-    (a[15]-&apos;0&apos;)*4+(a[16]-&apos;0&apos;)*2;
-    sum=sum%11;
-    int flag=0;
-    switch(sum){
-        case 0:flag=(a[17]==&apos;1&apos;);break;
-        case 1:flag=(a[17]==&apos;0&apos;);break;
-        case 2:flag=(a[17]==&apos;X&apos;);break;
-        case 3:flag=(a[17]==&apos;9&apos;);break;
-        case 4:flag=(a[17]==&apos;8&apos;);break;
-        case 5:flag=(a[17]==&apos;7&apos;);break;
-        case 6:flag=(a[17]==&apos;6&apos;);break;
-        case 7:flag=(a[17]==&apos;5&apos;);break;
-        case 8:flag=(a[17]==&apos;4&apos;);break;
-        case 9:flag=(a[17]==&apos;3&apos;);break;
-        case 10:flag=(a[17]==&apos;2&apos;);break;
-    }
-     return flag;
+int n=0;
+int num[3]={0};
+while(number){
+    num[n++]=number%10;
+    number=number/10;
 }
-int main(void){
-    int num;
-    scanf(&quot;%d&quot;,&amp;num);
-    char res[num][19];
-    int i=0;
-    char ch[19];
-    while(num--){
-        scanf(&quot;%s&quot;,ch);
-        if(!check(ch)){
-            strcpy(res[i++],ch);
-        }
+int step=0;
+for(int i=3;i&gt;=0;i--){
+    int time=num[i];
+    if(time==0){
+        continue;
+    }
+    if(i==2)
+        for(int j=0;j&lt;time;j++){
+        result[step++]=&apos;B&apos;;
+    }
+    if(i==1)
+        for(int j=0;j&lt;time;j++){
+        result[step++]=&apos;S&apos;;
     }
     if(i==0){
-        printf(&quot;All passed&quot;); 
-    }else{
-        for(int j=0;j&lt;i;j++){
-            printf(&quot;%s\n&quot;,res[j]);
+        for(int j=0;j&lt;time;j++){
+        result[step++]=j+&apos;1&apos;;
         }
     }
-    return 0;
-} </code></pre>
+
+}
+result[step]=&apos;\0&apos;;
+printf(&quot;%s&quot;,result);
+return 0;
+}</code></pre><p>另一种思路：</p>
+<p>分析：</p>
+<p>利用字符串长度判断输入的是几位数，再利用字符串倒置输出对应的题目要求符号</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+
+int main()
+{
+int i,j;
+char n[4];
+scanf(&quot;%s&quot;,n);
+
+for(i=strlen(n);i&gt;0;i--){
+    for(j=1;j&lt;=(n[strlen(n)-i]-&apos;0&apos;);j++){
+        if(i==3)
+            printf(&quot;B&quot;);
+        if(i==2)
+            printf(&quot;S&quot;);
+        if(i==1)
+            printf(&quot;%d&quot;,j);
+    }
+}
+printf(&quot;\n&quot;);
+return 0;
+}</code></pre><p><a href="https://blog.csdn.net/huaxuewan/article/details/85778884" title="参考资料">https://blog.csdn.net/huaxuewan/article/details/85778884</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1005" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/15/PTA-Basic-1005/"
+    >PTA-Basic-1005</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/15/PTA-Basic-1005/" class="article-date">
+  <time datetime="2019-09-15T09:14:58.000Z" itemprop="datePublished">2019-09-15</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>卡拉兹(Callatz)猜想已经在1001中给出了描述。在这个题目里，情况稍微有些复杂。</p>
+<p>当我们验证卡拉兹猜想的时候，为了避免重复计算，可以记录下递推过程中遇到的每一个数。例如对 n=3 进行验证的时候，我们需要计算 3、5、8、4、2、1，则当我们对 n=5、8、4、2 进行验证的时候，就可以直接判定卡拉兹猜想的真伪，而不需要重复计算，因为这 4 个数已经在验证3的时候遇到过了，我们称 5、8、4、2 是被 3“覆盖”的数。我们称一个数列中的某个数 n 为“关键数”，如果 n 不能被数列中的其他数字所覆盖。</p>
+<p>现在给定一系列待验证的数字，我们只需要验证其中的几个关键数，就可以不必再重复验证余下的数字。你的任务就是找出这些关键数字，并按从大到小的顺序输出它们。</p>
+<p>输入格式：<br>    每个测试输入包含 1 个测试用例，第 1 行给出一个正整数 K (&lt;100)，第 2 行给出 K 个互不相同的待验证的正整数 n (1&lt;n≤100)的值，数字间用空格隔开。</p>
+<p>输出格式：<br>    每个测试用例的输出占一行，按从大到小的顺序输出关键数字。数字间用 1 个空格隔开，但一行中最后一个数字后没有空格。</p>
+<p>输入样例：</p>
+<pre><code>6
+3 5 6 7 8 11</code></pre><p>输出样例：</p>
+<pre><code>7 6</code></pre><hr>
+<p>分析：</p>
+<p>1定义一个数组存储输入的数字。</p>
+<p>2遍历数组的每一个数字，对它们每个数字求其覆盖的数字，对被覆盖的每个数字一一与输入的数组对比，如果有相同的就将处于该位置的数字置为1，因为题目中提到数字在（1&lt;n&lt;=100）之间，所以便利该数组时可以遇到一就跳过去。</p>
+<p>3最后数组中只剩下不能被数组中的其他元素所覆盖的数字了，这就是要求的关键数的数组。</p>
+<p>4对这个数组进行排序，直到第一个为1的下标。</p>
+<p>5按要求输出下标前面的数字。</p>
+<hr>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+//此处是比较函数，用于对处理后的数组排序。
+int compare(const void *a,const void *b){
+if(*(int *)a&gt;*(int *)b)
+return -1;
+if(*(int *)a&lt;*(int *)b)
+return 1;
+return 0;
+}
+int main(void){
+int number;
+scanf(&quot;%d&quot;,&amp;number);
+int num[number];
+int i=0;
+while(i&lt;number){ 
+    scanf(&quot;%d&quot;,&amp;num[i++]);
+}
+for(i=0;i&lt;number;i++){
+    int n=num[i];
+    if(n==1){
+        continue;
+    }
+    while(1){
+     if(n==1){
+        break;
+    }
+    if(n%2==0){
+        n=n/2;
+    }else{
+        n=(3*n+1)/2;
+    }
+    for(int m=0;m&lt;number;m++){
+        if(n==num[m]){
+            num[m]=1;// 因为数组的数字各不相同，找到被覆盖的即可跳出循环
+            break;
+        }
+      }
+    }
+}
+qsort(num,sizeof(num)/sizeof(int),sizeof(int),compare);
+int flag=1;
+for(int i=0;i&lt;number;i++）{
+    if(num[i]==1)break;
+    if(flag){
+        flag=0;
+        printf(&quot;%d&quot;,num[i]);
+    }else{
+        printf(&quot; %d&quot;,num[i]);
+    }
+}
+return 0;
+}</code></pre>
       
       <!-- reward -->
       
@@ -486,7 +499,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/34/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/36/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/34/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/36/">下一页</a>
   </nav>
   
 </section>

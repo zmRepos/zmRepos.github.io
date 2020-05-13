@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-05-04T10:51:57.603Z</updated>
+  <updated>2020-05-13T15:09:01.824Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,207 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-9</title>
+    <link href="http://zm163.github.io/2020/05/13/LeetCode-9/"/>
+    <id>http://zm163.github.io/2020/05/13/LeetCode-9/</id>
+    <published>2020-05-13T12:32:27.000Z</published>
+    <updated>2020-05-13T15:09:01.824Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-简单" scheme="http://zm163.github.io/categories/LeetCode-%E7%AE%80%E5%8D%95/"/>
+    
+      <category term="数学" scheme="http://zm163.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-8</title>
+    <link href="http://zm163.github.io/2020/05/13/LeetCode-8/"/>
+    <id>http://zm163.github.io/2020/05/13/LeetCode-8/</id>
+    <published>2020-05-13T12:32:22.000Z</published>
+    <updated>2020-05-13T15:03:23.339Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-7</title>
+    <link href="http://zm163.github.io/2020/05/13/LeetCode-7/"/>
+    <id>http://zm163.github.io/2020/05/13/LeetCode-7/</id>
+    <published>2020-05-13T12:32:15.000Z</published>
+    <updated>2020-05-13T13:13:07.181Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-简单" scheme="http://zm163.github.io/categories/LeetCode-%E7%AE%80%E5%8D%95/"/>
+    
+      <category term="数学" scheme="http://zm163.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-6</title>
+    <link href="http://zm163.github.io/2020/05/10/LeetCode-6/"/>
+    <id>http://zm163.github.io/2020/05/10/LeetCode-6/</id>
+    <published>2020-05-10T12:44:30.000Z</published>
+    <updated>2020-05-13T12:31:06.267Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="算法类型" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E7%B1%BB%E5%9E%8B/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-5</title>
+    <link href="http://zm163.github.io/2020/05/10/LeetCode-5/"/>
+    <id>http://zm163.github.io/2020/05/10/LeetCode-5/</id>
+    <published>2020-05-10T12:44:25.000Z</published>
+    <updated>2020-05-13T12:20:58.714Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;#最长回文子串&lt;br&gt;##题目&lt;br&gt;    给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。&lt;br&gt;##示例&lt;br&gt;    ###示例 1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;输入: &amp;quot;babad&amp;quot;
+输出:
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-4</title>
+    <link href="http://zm163.github.io/2020/05/10/LeetCode-4/"/>
+    <id>http://zm163.github.io/2020/05/10/LeetCode-4/</id>
+    <published>2020-05-10T12:43:52.000Z</published>
+    <updated>2020-05-10T13:02:38.380Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;###4. 寻找两个正序数组的中位数&lt;br&gt;##题目：&lt;br&gt;    给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m +
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-困难" scheme="http://zm163.github.io/categories/LeetCode-%E5%9B%B0%E9%9A%BE/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
@@ -172,11 +373,11 @@ typedef
   </entry>
   
   <entry>
-    <title>LeetCode-28实现strStr()</title>
-    <link href="http://zm163.github.io/2019/11/19/LeetCode-28%E5%AE%9E%E7%8E%B0strStr/"/>
-    <id>http://zm163.github.io/2019/11/19/LeetCode-28%E5%AE%9E%E7%8E%B0strStr/</id>
-    <published>2019-11-19T04:37:13.000Z</published>
-    <updated>2020-05-04T13:09:54.471Z</updated>
+    <title>LeetCode-3</title>
+    <link href="http://zm163.github.io/2019/10/20/LeetCode-3/"/>
+    <id>http://zm163.github.io/2019/10/20/LeetCode-3/</id>
+    <published>2019-10-20T01:30:52.000Z</published>
+    <updated>2020-05-10T10:14:36.718Z</updated>
     
     <summary type="html">
     
@@ -184,10 +385,12 @@ typedef
       
         
         
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;实现 strStr() 函数。&lt;/p&gt;
-&lt;p&gt;给定一个 haystack 字符串和一个 needle 字符串，在 haystack 字符串中找出 needle 字符串出现的第一个位置 (从0开始)。如果不存在，则返回  -1。&lt;/p&gt;
-&lt;p&gt;示例
+          &lt;p&gt;实现语言：Java&lt;/p&gt;
+&lt;p&gt;题目：&lt;/p&gt;
+&lt;p&gt;给定一个字符串，找出不含重复字符的最长字串的长度。&lt;/p&gt;
+&lt;p&gt;实例：&lt;/p&gt;
+&lt;p&gt;给定字符串“abcabcbb”,没有重复字符的最长字串是“abc”，那么长度就是3.&lt;/p&gt;
+&lt;p&gt;给定字符串“bbbbb”,最长
         
       
     
@@ -204,11 +407,11 @@ typedef
   </entry>
   
   <entry>
-    <title>LeetCode-27移除元素</title>
-    <link href="http://zm163.github.io/2019/11/18/LeetCode-27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/"/>
-    <id>http://zm163.github.io/2019/11/18/LeetCode-27%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0/</id>
-    <published>2019-11-18T07:54:26.000Z</published>
-    <updated>2020-05-04T13:09:49.609Z</updated>
+    <title>LeetCode-2</title>
+    <link href="http://zm163.github.io/2019/10/19/LeetCode-2/"/>
+    <id>http://zm163.github.io/2019/10/19/LeetCode-2/</id>
+    <published>2019-10-19T13:43:46.000Z</published>
+    <updated>2020-05-10T10:14:55.796Z</updated>
     
     <summary type="html">
     
@@ -216,9 +419,8 @@ typedef
       
         
         
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。&lt;/p&gt;
-&lt;p&gt;不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1)
+          &lt;p&gt;题目描述：&lt;/p&gt;
+&lt;p&gt;给定两个非空链表表示两个非负整数，位数按照逆序存储他们的每个节点只存储单个数字，将两数相加&lt;br&gt;返回一个新的链表。&lt;br&gt;你可以假设除了数字0外，这两个数字都不以0开头.{即数字不为（002）转化为输入就是（2-&amp;gt;0-&amp;gt;0）也告诉我们
         
       
     
@@ -235,11 +437,11 @@ typedef
   </entry>
   
   <entry>
-    <title>LeetCode-26删除排序数组的重复项</title>
-    <link href="http://zm163.github.io/2019/11/17/LeetCode-26%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/"/>
-    <id>http://zm163.github.io/2019/11/17/LeetCode-26%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9/</id>
-    <published>2019-11-17T03:31:51.000Z</published>
-    <updated>2020-05-04T13:10:01.531Z</updated>
+    <title>LeetCode-1</title>
+    <link href="http://zm163.github.io/2019/10/19/LeetCode-1/"/>
+    <id>http://zm163.github.io/2019/10/19/LeetCode-1/</id>
+    <published>2019-10-19T13:43:00.000Z</published>
+    <updated>2020-05-10T10:19:48.043Z</updated>
     
     <summary type="html">
     
@@ -247,10 +449,8 @@ typedef
       
         
         
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。&lt;/p&gt;
-&lt;p&gt;不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。&lt;/p&gt;
-&lt;p&gt;示例
+          &lt;p&gt;语言：Java&lt;/p&gt;
+&lt;p&gt;题目描述：&lt;br&gt;    给定一个数组，找出其中何为目标值的两个数。（你可以假设每种输入只有一种答案，且同样的元素不能被重复利用）&lt;br&gt;    实例：&lt;br&gt;     给定nums=[2,7,11,15],target=9;&lt;br&gt;    
         
       
     
@@ -267,11 +467,11 @@ typedef
   </entry>
   
   <entry>
-    <title>LeetCode-25k个一组翻转链表</title>
-    <link href="http://zm163.github.io/2019/11/16/LeetCode-25k%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/"/>
-    <id>http://zm163.github.io/2019/11/16/LeetCode-25k%E4%B8%AA%E4%B8%80%E7%BB%84%E7%BF%BB%E8%BD%AC%E9%93%BE%E8%A1%A8/</id>
-    <published>2019-11-16T07:41:35.000Z</published>
-    <updated>2020-05-04T13:10:11.151Z</updated>
+    <title>PTA-Basic-1075</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1075/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1075/</id>
+    <published>2019-10-16T15:23:44.000Z</published>
+    <updated>2020-05-04T12:59:42.861Z</updated>
     
     <summary type="html">
     
@@ -280,31 +480,30 @@ typedef
         
         
           &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。&lt;/p&gt;
-&lt;p&gt;k 是一个正整数，它的值小于或等于链表的长度。&lt;/p&gt;
-&lt;p&gt;如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。&lt;/p&gt;
-&lt;p&gt;示例
+&lt;p&gt;给定一个单链表，请编写程序将链表元素进行分类排列，使得所有负值元素都排在非负值元素的前面，而 [0, K] 区间内的元素都排在大于 K 的元素前面。但每一类内部元素的顺序是不能改变的。例如：给定链表为
         
       
     
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
+    
+      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
-    <title>LeetCode-24两两交换链表中的结点</title>
-    <link href="http://zm163.github.io/2019/11/15/LeetCode-24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%BB%93%E7%82%B9/"/>
-    <id>http://zm163.github.io/2019/11/15/LeetCode-24%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E7%BB%93%E7%82%B9/</id>
-    <published>2019-11-15T00:54:41.000Z</published>
-    <updated>2020-05-04T13:10:25.305Z</updated>
+    <title>PTA-Basic-1035</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1035/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1035/</id>
+    <published>2019-10-16T15:23:22.000Z</published>
+    <updated>2020-05-04T12:56:25.367Z</updated>
     
     <summary type="html">
     
@@ -313,33 +512,32 @@ typedef
         
         
           &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。
-
-你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。
-示例:
-
-给定 1-&amp;gt;2-&amp;gt;3-&amp;gt;4, 你应该返回
+&lt;p&gt;根据维基百科的定义：&lt;/p&gt;
+&lt;p&gt;插入排序是迭代算法，逐一获得输入数据，逐步产生有序的输出序列。每步迭代中，算法从输入序列中取出一元素，将之插入有序序列中正确的位置。如此迭代直到全部元素有序。&lt;/p&gt;
+&lt;p&gt;归并排序进行如下迭代操作：首先将原始序列看
         
       
     
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
+    
+      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
-    <title>LeetCode-23合并多个链表</title>
-    <link href="http://zm163.github.io/2019/11/14/LeetCode-23%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E9%93%BE%E8%A1%A8/"/>
-    <id>http://zm163.github.io/2019/11/14/LeetCode-23%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AA%E9%93%BE%E8%A1%A8/</id>
-    <published>2019-11-14T14:28:18.000Z</published>
-    <updated>2020-05-04T13:10:33.914Z</updated>
+    <title>PTA-Basic-1025</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1025/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1025/</id>
+    <published>2019-10-16T15:23:01.000Z</published>
+    <updated>2020-05-04T10:51:30.203Z</updated>
     
     <summary type="html">
     
@@ -348,30 +546,24 @@ typedef
         
         
           &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
-示例:
-输入: [   1-&amp;gt;4-&amp;gt;5,   1-&amp;gt;3-&amp;gt;4,   2-&amp;gt;6 ] 输出:
+&lt;p&gt;给定一个常数 K 以及一个单链表 L，请编写程序将 L 中每 K 个结点反转。例如：给定 L 为 1→2→3→4→5→6，K 为 3，则输出应该为 3→2→1→6→5→4；如果 K 为 4，则输出应该为 4→3→2→1→5→6，即最后不到 K
         
       
     
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+      <category term="-PTA-Basic" scheme="http://zm163.github.io/tags/PTA-Basic/"/>
     
   </entry>
   
   <entry>
-    <title>LeetCode-22括号生成</title>
-    <link href="http://zm163.github.io/2019/11/13/LeetCode-22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/"/>
-    <id>http://zm163.github.io/2019/11/13/LeetCode-22%E6%8B%AC%E5%8F%B7%E7%94%9F%E6%88%90/</id>
-    <published>2019-11-13T05:50:29.000Z</published>
-    <updated>2020-05-04T13:10:42.321Z</updated>
+    <title>PTA-Basic-1095</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1095/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1095/</id>
+    <published>2019-10-16T13:30:26.000Z</published>
+    <updated>2020-05-04T13:00:12.052Z</updated>
     
     <summary type="html">
     
@@ -380,35 +572,31 @@ typedef
         
         
           &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给出 n 代表生成括号的对数，请你写出一个函数，使其能够生成所有可能的并且有效的括号组合。
-
-例如，给出 n = 3，生成结果为：
-
-[
-  &amp;quot;((()))&amp;quot;,
-  &amp;quot;(()())&amp;quot;,
- 
+&lt;p&gt;PAT 准考证号由 4 部分组成：&lt;/p&gt;
+&lt;p&gt;第 1 位是级别，即 T 代表顶级；A 代表甲级；B 代表乙级；&lt;br&gt;第 2&lt;del&gt;4 位是考场编号，范围从 101 到 999；&lt;br&gt;第 5&lt;/del&gt;10
         
       
     
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
+    
+      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
-    <title>LeetCode-21合并两个有序链表</title>
-    <link href="http://zm163.github.io/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/"/>
-    <id>http://zm163.github.io/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/</id>
-    <published>2019-11-12T13:09:38.000Z</published>
-    <updated>2020-05-04T13:10:49.967Z</updated>
+    <title>PTA-Basic-1094</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1094/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1094/</id>
+    <published>2019-10-16T13:30:22.000Z</published>
+    <updated>2020-05-04T12:37:35.510Z</updated>
     
     <summary type="html">
     
@@ -416,33 +604,31 @@ typedef
       
         
         
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
-
-示例：
-
-输入：1-&amp;gt;2-&amp;gt;4,
+          &lt;p&gt;###题目描述&lt;/p&gt;
+&lt;p&gt;2004 年 7 月，谷歌在硅谷的 101 号公路边竖立了一块巨大的广告牌（如下图）用于招聘。内容超级简单，就是一个以 .com 结尾的网址，而前面的网址是一个 10 位素数，这个素数是自然常数 e 中最早出现的 10
         
       
     
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
+    
+      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
   <entry>
-    <title>LeetCode-20有效的括号</title>
-    <link href="http://zm163.github.io/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"/>
-    <id>http://zm163.github.io/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/</id>
-    <published>2019-11-11T15:23:33.000Z</published>
-    <updated>2020-05-04T13:10:57.397Z</updated>
+    <title>PTA-Basic-1093</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1093/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1093/</id>
+    <published>2019-10-16T13:30:17.000Z</published>
+    <updated>2020-05-04T13:00:23.828Z</updated>
     
     <summary type="html">
     
@@ -450,225 +636,22 @@ typedef
       
         
         
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给定一个只包括 &amp;apos;(&amp;apos;，&amp;apos;)&amp;apos;，&amp;apos;{&amp;apos;，&amp;apos;}&amp;apos;，&amp;apos;[&amp;apos;，&amp;apos;]&amp;apos;
+          &lt;p&gt;题目：&lt;br&gt;给定两个字符串 A 和 B，本题要求你输出 A+B，即两个字符串的并集。要求先输出 A，再输出 B，但重复的字符必须被剔除。&lt;/p&gt;
+&lt;p&gt;输入格式：&lt;br&gt;输入在两行中分别给出 A 和 B，均为长度不超过 10&lt;br&gt;​6&lt;br&gt;​​ 的、由可见
         
       
     
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
+    
+      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-19删除链表倒数第N个节点</title>
-    <link href="http://zm163.github.io/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/"/>
-    <id>http://zm163.github.io/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/</id>
-    <published>2019-11-10T11:05:13.000Z</published>
-    <updated>2020-05-04T13:11:04.794Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
-
-示例：
-
-给定一个链表: 1-&amp;gt;2-&amp;gt;3-&amp;gt;4-&amp;gt;5, 和 n = 2.
-
-当删除了倒数第二个节点后，链表变为
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-18四数之和</title>
-    <link href="http://zm163.github.io/2019/11/09/LeetCode-18%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
-    <id>http://zm163.github.io/2019/11/09/LeetCode-18%E5%9B%9B%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
-    <published>2019-11-09T04:57:35.000Z</published>
-    <updated>2020-05-04T13:11:13.194Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 
-d ，使得 a + b + c+ d 的值与 target 相等？找出所有满足条件且不重复的四元组。
-
-
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-17电话号码的字母组合</title>
-    <link href="http://zm163.github.io/2019/11/08/LeetCode-17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/"/>
-    <id>http://zm163.github.io/2019/11/08/LeetCode-17%E7%94%B5%E8%AF%9D%E5%8F%B7%E7%A0%81%E7%9A%84%E5%AD%97%E6%AF%8D%E7%BB%84%E5%90%88/</id>
-    <published>2019-11-08T15:35:56.000Z</published>
-    <updated>2020-05-04T13:11:20.697Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。
-
-给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-16最接近的三数之和</title>
-    <link href="http://zm163.github.io/2019/11/07/LeetCode-16%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
-    <id>http://zm163.github.io/2019/11/07/LeetCode-16%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
-    <published>2019-11-07T14:08:49.000Z</published>
-    <updated>2020-05-04T13:11:29.058Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找
-出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三
-个数的和。假定每组输入只存在唯一答案。
-
-例如，给定数组 nums =
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-15三数之和</title>
-    <link href="http://zm163.github.io/2019/11/06/LeetCode-15%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"/>
-    <id>http://zm163.github.io/2019/11/06/LeetCode-15%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/</id>
-    <published>2019-11-06T11:54:29.000Z</published>
-    <updated>2020-05-04T13:11:37.900Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
-
-注意：答案中不可以包含重复的三元组。
-
-例如, 给定数组 nums
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-14最长公共前缀</title>
-    <link href="http://zm163.github.io/2019/11/06/LeetCode-14%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/"/>
-    <id>http://zm163.github.io/2019/11/06/LeetCode-14%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/</id>
-    <published>2019-11-06T11:53:55.000Z</published>
-    <updated>2020-05-04T13:11:45.931Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;编写一个函数来查找字符串数组中的最长公共前缀。
-
-如果不存在公共前缀，返回空字符串 &amp;quot;&amp;quot;。
-
-示例 1:
-
-输入:
-        
-      
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   

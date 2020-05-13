@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-LeetCode-15三数之和" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1094" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/06/LeetCode-15%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-    >LeetCode-15三数之和</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1094/"
+    >PTA-Basic-1094</a> 
 </h2>
  
 
@@ -119,12 +119,12 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/06/LeetCode-15%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/" class="article-date">
-  <time datetime="2019-11-06T11:54:29.000Z" itemprop="datePublished">2019-11-06</time>
+      <a href="/2019/10/16/PTA-Basic-1094/" class="article-date">
+  <time datetime="2019-10-16T13:30:22.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
       
@@ -141,60 +141,19 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<pre><code>给定一个包含 n 个整数的数组 nums，判断 nums 中是否存在三个元素 a，b，c ，使得 a + b + c = 0 ？找出所有满足条件且不重复的三元组。
+      <p>###题目描述</p>
+<p>2004 年 7 月，谷歌在硅谷的 101 号公路边竖立了一块巨大的广告牌（如下图）用于招聘。内容超级简单，就是一个以 .com 结尾的网址，而前面的网址是一个 10 位素数，这个素数是自然常数 e 中最早出现的 10 位连续数字。能找出这个素数的人，就可以通过访问谷歌的这个网站进入招聘流程的下一步。</p>
+<p><img src="https://images.ptausercontent.com/57148679-d574-4f49-b048-775c6c07791c.jpg" alt=""></p>
+<p>自然常数 e 是一个著名的超越数，前面若干位写出来是这样的：e = 2.718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427427466391932003059921… 其中粗体标出的 10 位数就是答案。</p>
+<p>本题要求你编程解决一个更通用的问题：从任一给定的长度为 L 的数字中，找出最早出现的 K 位连续数字所组成的素数。</p>
+<p>输入格式：<br>输入在第一行给出 2 个正整数，分别是 L（不超过 1000 的正整数，为数字长度）和 K（小于 10 的正整数）。接下来一行给出一个长度为 L 的正整数 N。<br>###格式<br>输出格式：<br>在一行中输出 N 中最早出现的 K 位连续数字所组成的素数。如果这样的素数不存在，则输出 404。注意，原始数字中的前导零也计算在位数之内。例如在 200236 中找 4 位素数，0023 算是解；但第一位 2 不能被当成 0002 输出，因为在原始数字中不存在这个 2 的前导零。<br>###样例<br>输入样例 1：</p>
+<pre><code>20 5
+23654987725541023819</code></pre><p>输出样例 1：</p>
+<pre><code>49877</code></pre><p>输入样例 2：</p>
+<pre><code>10 3
 
-注意：答案中不可以包含重复的三元组。
-
-例如, 给定数组 nums = [-1, 0, 1, 2, -1, -4]，
-
-满足要求的三元组集合为：
-[
-  [-1, 0, 1],
-  [-1, -1, 2]
-]</code></pre><p>思路：</p>
-<p>最优解法：</p>
-<pre><code>先对数组排序，从左向右遍历，并将值存储到一个变量中，然后采用双指针，分别从当前值的位置+1处开始，
-以及从数组为开始相向而行，每次让两个指针指向的值与当前值相加如果等于0，说明可以存入数组列表中，如
-果小于，说明左边指针指向的值过于小了，将其加+1，继续下一的循环，如果大于就说明右边的值过大了，将
-将右边的指针指向前一个，继续循环，如果相等，那么要注意：如果两个指针指向下一个位置的值任然为上一
-个位置一定要让指针跳出具有相同数字的区域，然后继续下一次循环。</code></pre><p>代码：</p>
-<pre><code>public List&lt;List&lt;Integer&gt;&gt; threeSum(int[] nums) {
-     List&lt;List&lt;Integer&gt;&gt;lists=new ArrayList&lt;&gt;();
-     if(nums.length&lt;3) {
-         return lists;
-     }
-        Arrays.sort(nums);
-        int currValue=0,a=0,b=0;
-        for(int i=0;i&lt;nums.length;i++) {
-            currValue=nums[i];
-            if(currValue&gt;0) {
-                break;
-            }
-            if(i&gt;0&amp;&amp;nums[i]==nums[i-1]) {
-                continue;
-            }
-            a=i+1;
-            b=nums.length-1;
-            while(a&lt;b) {
-                if(nums[a]+nums[b]==0-currValue) {
-                    lists.add(Arrays.asList(currValue,nums[a],nums[b]));
-                    while(b&gt;a&amp;&amp;nums[a]==nums[a+1])a++;//跳到在数组中与它等值的最后一个数字处
-                    while(b&gt;a&amp;&amp;nums[b]==nums[b-1])b--;
-                    a++;//跳向下一个数字处
-                    b--;//跳向前一个数字处
-                }else if(nums[a]+nums[b]&gt;0-currValue) {
-                    b--;
-                }else {
-                    a++;
-                }
-            }
-        }
-
-            return lists;
-    }</code></pre><p>来源：力扣（LeetCode）</p>
-<p>链接：<a href="https://leetcode-cn.com/problems/3sum">https://leetcode-cn.com/problems/3sum</a></p>
-<p>著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。</p>
+2468024680</code></pre><p>输出样例 2：</p>
+<pre><code>404</code></pre><p>代码：</p>
 
       
       <!-- reward -->
@@ -207,7 +166,7 @@ var _hmt = _hmt || [];
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -226,7 +185,7 @@ var _hmt = _hmt || [];
 
 </article>
     
-    <article id="post-LeetCode-14最长公共前缀" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1093" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -234,8 +193,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/06/LeetCode-14%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/"
-    >LeetCode-14最长公共前缀</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1093/"
+    >PTA-Basic-1093</a> 
 </h2>
  
 
@@ -244,12 +203,12 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/06/LeetCode-14%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%89%8D%E7%BC%80/" class="article-date">
-  <time datetime="2019-11-06T11:53:55.000Z" itemprop="datePublished">2019-11-06</time>
+      <a href="/2019/10/16/PTA-Basic-1093/" class="article-date">
+  <time datetime="2019-10-16T13:30:17.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
       
@@ -266,128 +225,49 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<pre><code>编写一个函数来查找字符串数组中的最长公共前缀。
-
-如果不存在公共前缀，返回空字符串 &quot;&quot;。
-
-示例 1:
-
-输入: [&quot;flower&quot;,&quot;flow&quot;,&quot;flight&quot;]
-输出: &quot;fl&quot;
-示例 2:
-
-输入: [&quot;dog&quot;,&quot;racecar&quot;,&quot;car&quot;]
-输出: &quot;&quot;
-解释: 输入不存在公共前缀。
-说明:
-
-所有输入只包含小写字母 a-z 。</code></pre><p>思路:</p>
-<p>最优解法：</p>
-<pre><code>将一个字符串设置为默认的公共前缀，然后遍历剩余的字符串，查看每一个字符串是否是以此字符串开头的，
-如果有一个字符串不是就修改默认的公共前缀的值去掉最后一个字符，再次重复的与上一次不符合的字符串比
-对，如果还是不符合，就继续去除最后一个字符直到符合为止，如果都去掉了就直接返回空字符串，如果符合
-就再与下一个字符串比对，直到都符合为止。</code></pre><p>代码:</p>
-<pre><code>public String longestCommonPrefix(String[] strings) {
-     if(strings.length == 0){
-        return &quot;&quot;;
+      <p>题目：<br>给定两个字符串 A 和 B，本题要求你输出 A+B，即两个字符串的并集。要求先输出 A，再输出 B，但重复的字符必须被剔除。</p>
+<p>输入格式：<br>输入在两行中分别给出 A 和 B，均为长度不超过 10<br>​6<br>​​ 的、由可见 ASCII 字符 (即码值为32~126)和空格组成的、由回车标识结束的非空字符串。</p>
+<p>输出格式：<br>在一行中输出题面要求的 A 和 B 的和。</p>
+<p>输入样例：</p>
+<pre><code>This is a sample test
+to show you_How it works</code></pre><p>输出样例：</p>
+<pre><code>This ampletowyu_Hrk</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+char a[2000002];
+char b[1000001];
+char *del(char *s,char c){
+    char *src,*dst;
+    for(src=dst=s;*src!=&apos;\0&apos;;src++){
+        *dst=*src;
+        if(*dst!=c)
+            dst++;
     }
-    String prefix = strings[0];
-    for (int i=1;i&lt;strings.length;i++){//第几位
-        while (strings[i].indexOf(prefix) !=0){
-            prefix = prefix.substring(0,prefix.length()-1);
-            if (prefix.isEmpty()){
-                return &quot;&quot;;
-            }
-        }
+    *dst=&apos;\0&apos;;
+    return dst;
+} 
+int main(void){
+    gets(a);
+    char *s=a;//如果先先连接再去重复的话操作时间比对每个先去重再连接再去重用的时间长。
+    while(*s){
+        del(s+1,*s);
+        s++;
     }
-    return prefix;
-}</code></pre><p>我的解法：</p>
-<pre><code>思路：公共字符前缀必定时每个字符串的开头相同的部分，只要选定一个字符串，然后不断遍历它的字符，先
-将字符加到结果字符串上，然后接着用字符去与其它字符串的对应位置的字符比对，如果当前字符对应的位置
-恰好等于某个字符串的长度，那么就返回结果的除最后一个字符外的全部字符，如果其他字符串对应的位置的
-字符恰好就是这个，那么证明没有加错字符就继续遍历，如果其他字符串对应位置的字符不是这个说明加错
-了，就得返回结果字符串除最后一个字符外的全部字符。如果正常退出循环，就直接返回结果；</code></pre><p>代码：</p>
-<pre><code>public String longestCommonPrefix(String[] strs) {
-    if(strs==null||strs.length&lt;1)
-           return &quot;&quot;;
-       char ch=&apos;\0&apos;;
-       String re=&quot;&quot;;
-           for(int i=0;i&lt;strs[0].length();i++) {
-            ch=strs[0].charAt(i);
-            re=re+ch;
-            for(int j=1;j&lt;strs.length;j++) {
-                if(strs[j].length()==i) {
-                    return re.substring(0, re.length()-1);
-                }
-                if(ch==strs[j].charAt(i)) {
-                    continue;
-                }else {
-                    return re.substring(0, re.length()-1);
-                }
-            }
-        }
-        return re;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-来源：力扣（LeetCode）
-链接：https://leetcode-cn.com/problems/longest-common-prefix</code></pre>
+    gets(b);
+    s=b;
+    while(*s){
+        del(s+1,*s);
+        s++;
+    }
+    strcat(a,b);
+    s=a;
+    while(*s){
+        del(s+1,*s);
+        s++;
+    }
+    puts(a);
+    return 0;
+}</code></pre>
       
       <!-- reward -->
       
@@ -399,7 +279,7 @@ var _hmt = _hmt || [];
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -418,7 +298,7 @@ var _hmt = _hmt || [];
 
 </article>
     
-    <article id="post-LeetCode-13罗马数字转整数" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1092" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -426,8 +306,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/06/LeetCode-13%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0/"
-    >LeetCode-13罗马数字转整数</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1092/"
+    >PTA-Basic-1092</a> 
 </h2>
  
 
@@ -436,12 +316,12 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/06/LeetCode-13%E7%BD%97%E9%A9%AC%E6%95%B0%E5%AD%97%E8%BD%AC%E6%95%B4%E6%95%B0/" class="article-date">
-  <time datetime="2019-11-06T11:53:11.000Z" itemprop="datePublished">2019-11-06</time>
+      <a href="/2019/10/16/PTA-Basic-1092/" class="article-date">
+  <time datetime="2019-10-16T13:30:13.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
       
@@ -459,73 +339,49 @@ var _hmt = _hmt || [];
 
       
       <p>题目：</p>
-<pre><code>罗马数字包含以下七种字符: I， V， X， L，C，D 和 M。
-
-字符          数值
-I             1
-V             5
-X             10
-L             50
-C             100
-D             500
-M             1000
-
-例如， 罗马数字 2 写做 II ，即为两个并列的 1。12 写做 XII ，即为 X + II 。 27 写做  XXVII, 即
-为 XX + V + II 。
-
-通常情况下，罗马数字中小的数字在大的数字的右边。但也存在特例，例如 4 不写做 IIII，而是 IV。数字 1
-在数字 5 的左边，所表示的数等于大数 5 减小数 1 得到的数值 4 。同样地，数字 9 表示为 IX。这个特
-殊的规则只适用于以下六种情况：
-
-I 可以放在 V (5) 和 X (10) 的左边，来表示 4 和 9。
-X 可以放在 L (50) 和 C (100) 的左边，来表示 40 和 90。 
-C 可以放在 D (500) 和 M (1000) 的左边，来表示 400 和 900。
-给定一个罗马数字，将其转换成整数。输入确保在 1 到 3999 的范围内。
-
-示例 1:
-
-输入: &quot;III&quot;
-输出: 3
-示例 2:
-
-输入: &quot;IV&quot;
-输出: 4
-示例 3:
-
-输入: &quot;IX&quot;
-输出: 9
-示例 4:
-
-输入: &quot;LVIII&quot;
-输出: 58
-解释: L = 50, V= 5, III = 3.
-示例 5:
-
-输入: &quot;MCMXCIV&quot;
-输出: 1994
-解释: M = 1000, CM = 900, XC = 90, IV = 4.</code></pre><p>最优解法：</p>
-<pre><code>依据输入的字符串取出每一个字符，如果如果不是
-一些特殊的字符（比如当前字符为C后面的字符为
-D），直接让返回值加上这个字符对应的数值，否
-则就加上特殊字符串对应的数值（此处应该修改指
-定字符位置的数值）。</code></pre><p>我的解法：</p>
-<pre><code>依照上一题的思路，定义一个字符串数组存储罗马字符，再定义一个数组存储罗马字符串对应的数值，然后从
-头开始，匹配字符串遇到合适的就不断地匹配它，然后修改原字符串使这个位置的罗马字符串丢掉。</code></pre><p>代码：</p>
-<pre><code>public int romanToInt(String s) {
-     String[]romans=new String[] {&quot;M&quot;,&quot;CM&quot;,&quot;D&quot;,&quot;CD&quot;,&quot;C&quot;,&quot;XC&quot;,&quot;L&quot;,&quot;XL&quot;,&quot;X&quot;,&quot;IX&quot;,&quot;V&quot;,&quot;IV&quot;,&quot;I&quot;};
-     int res[]=new int[] {1000,900,500,400,100,90,50,40,10,9,5,4,1};
-     int result=0;
-     int i=0;
-     while(i&lt;13) {//数组中的字符串只有13个
-         while(s.startsWith(romans[i])) {
-             s=s.substring(romans[i].length());
-             result=result+res[i];
-         }
-         i++;
-     }
-     return result;
-}</code></pre><p>来源：<a href="https://leetcode-cn.com/submissions/detail/35520225/">https://leetcode-cn.com/submissions/detail/35520225/</a></p>
-
+<p>月饼是久负盛名的中国传统糕点之一，自唐朝以来，已经发展出几百品种。</p>
+<p>mk.jpg</p>
+<p>若想评比出一种“最好吃”的月饼，那势必在吃货界引发一场腥风血雨…… 在这里我们用数字说话，给出全国各地各种月饼的销量，要求你从中找出销量冠军，认定为最好吃的月饼。</p>
+<p>输入格式：<br>输入首先给出两个正整数 N（≤1000）和 M（≤100），分别为月饼的种类数（于是默认月饼种类从 1 到 N 编号）和参与统计的城市数量。</p>
+<p>接下来 M 行，每行给出 N 个非负整数（均不超过 1 百万），其中第 i 个整数为第 i 种月饼的销量（块）。数字间以空格分隔。</p>
+<p>输出格式：<br>在第一行中输出最大销量，第二行输出销量最大的月饼的种类编号。如果冠军不唯一，则按编号递增顺序输出并列冠军。数字间以 1 个空格分隔，行首尾不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>5 3
+1001 992 0 233 6
+8 0 2018 0 2008
+36 18 0 1024 4</code></pre><p>输出样例：</p>
+<pre><code>2018
+3 5</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+long long moonBin[1000];
+int main(void){
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    long val;
+    long long maxsale=0;
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            scanf(&quot;%ld&quot;,&amp;val);
+            moonBin[j]=moonBin[j]+val;
+            if(moonBin[j]&gt;maxsale){
+                maxsale=moonBin[j];
+            }
+        }
+    }
+    printf(&quot;%ld\n&quot;,maxsale);
+    int flag=0;
+    for(int i=0;i&lt;n;i++){
+        if(maxsale==moonBin[i]){
+            if(flag){
+                printf(&quot; &quot;);
+            }else{
+                flag=1;
+            }
+            printf(&quot;%d&quot;,i+1);
+        }
+    }
+    return 0;
+}</code></pre>
       
       <!-- reward -->
       
@@ -537,7 +393,7 @@ D），直接让返回值加上这个字符对应的数值，否
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -562,7 +418,7 @@ D），直接让返回值加上这个字符对应的数值，否
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/6/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/8/">下一页</a>
   </nav>
   
 </section>

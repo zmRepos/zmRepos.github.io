@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-LeetCode-21合并两个有序链表" class="article article-type-post" itemscope
+    <article id="post-LeetCode-2" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/"
-    >LeetCode-21合并两个有序链表</a> 
+  <a class="article-title" href="/2019/10/19/LeetCode-2/"
+    >LeetCode-2</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/12/LeetCode-21%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/" class="article-date">
-  <time datetime="2019-11-12T13:09:38.000Z" itemprop="datePublished">2019-11-12</time>
+      <a href="/2019/10/19/LeetCode-2/" class="article-date">
+  <time datetime="2019-10-19T13:43:46.000Z" itemprop="datePublished">2019-10-19</time>
 </a>
       
   <div class="article-category">
@@ -141,62 +141,106 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<pre><code>将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
-
-示例：
-
-输入：1-&gt;2-&gt;4, 1-&gt;3-&gt;4
-输出：1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4</code></pre><p>思路1：</p>
-<pre><code>新建一个节点，作为头节点，不作为返回值的一部分。然后再定义一个零时工，用于不断扩大头节点的长度，采
-用归并算法，归并两个有序数组。然后返回头节点的下一个节点就可以了。注意：两个有序链表可能为空。还有
-就是归并过程中不必再创建新的节点，直接使用原来链表的结点，将其加到返回值链表中就可以了。创建新的结点会浪费大量的时间。</code></pre><p>代码：</p>
-<pre><code>public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-ListNode headNode=new ListNode(0);
-headNode.next=null;//此处一定要将头节点的下一个节点设为null，不然当两个链表都为空时，会显示异常。
-ListNode p=headNode;
-int val1=0;
-int val2=0;
-while(l1!=null&amp;&amp;l2!=null) {
-    val1=l1.val;
-    val2=l2.val;
-    if(val1&lt;val2) {
-        p.next=l1;
-        l1=l1.next;
-    }else {
-        p.next=l2;
-        l2=l2.next;
+      <p>题目描述：</p>
+<p>给定两个非空链表表示两个非负整数，位数按照逆序存储他们的每个节点只存储单个数字，将两数相加<br>返回一个新的链表。<br>你可以假设除了数字0外，这两个数字都不以0开头.{即数字不为（002）转化为输入就是（2-&gt;0-&gt;0）也告诉我们结果不可能出现2-&gt;1-&gt;0-&gt;0这样的}</p>
+<p>实例：</p>
+<p>输入（2-&gt;4-&gt;3）,(5-&gt;6-&gt;4)</p>
+<p>输出（7-&gt;0-&gt;8）</p>
+<p>原因：342+465=807</p>
+<p>思路：</p>
+<p>一：</p>
+<pre><code>通过Java自带的ArrayList数组列表，存放数值，并进行运算（首先取出两个数组列表上的相同位置处的数
+值，若一个没有另外一个长则长的部分数值就是0，定义一个carry用于存放余数，定义一个sum用于存放和，然后
+根据将sum对10取余的结果放入ArrayList,注意如果结尾余数不为0，那么还要将余数放入ArrayList中，防止进数
+的丢失）</code></pre><p>二：</p>
+<pre><code>使用自定义的ListNode节点类（包含值与指向下一个对象的指针），首先初始化一个头结点，注意此头结点不
+作为返回值的一部分，然后定义对输入的两个链表的两指针（用于取出链表上的每个数值），在定义一指向头
+结点的头指针，用于操作结果链表，定义sum,carry分别用于存放和，与进数之后的操作同思路1。</code></pre><p>代码：</p>
+<pre><code>public class o0002 {
+    public static void main(String[] args) {
+//        ArrayList&lt;Integer&gt;a=new ArrayList&lt;&gt;();
+//        a.add(0);
+//        ArrayList&lt;Integer&gt;b=new ArrayList&lt;&gt;();
+//        b.add(0);
+//        a.add(0);
+//        System.out.println(Arrays.toString(Solution_1(a,b).toArray()));
+        ListNode a=new ListNode(2);
+        ListNode _a=a;
+        _a.next=new ListNode(0);
+        _a=_a.next;
+        _a.next=new ListNode(0);
+        ListNode b=new ListNode(0);
+        ListNode _b=b;
+        _b.next=new ListNode(0);
+        _b=_b.next;
+        _b.next=new ListNode(0);
+        ListNode result=Solution_2(a,b);
+        while(result!=null) {
+            System.out.println(&quot; &quot;+result.getVal());
+            result=result.next;
+        }
     }
-    p=p.next;
-}
-while(l1!=null) {
-    p.next=l1;
-    l1=l1.next;
-    p=p.next;
-}
-while(l2!=null) {
-    p.next=l2;
-    l2=l2.next;
-    p=p.next;
-}
-return headNode.next;
-}</code></pre><p>思路二：递归算法实现。</p>
-<pre><code>将两个链表的首节点中，小的那一个作为首节点返回，然后将被选中的那个节点的后一个节点以及它后面的节
-点当成新的链表继续与另外一个链表归并。重复次过程直到，某一个节点为null，此时直接将另一个链表加到
-结果链表中返回就可以了。
-
-
-也是将链表归并的过程看成了1选出两个链表中首节点小的那个作为返回链表的首节点，然后剩余部分再归并的
-过程。</code></pre><p>代码：</p>
-<pre><code>public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-    if (null == l1) return l2;
-    if (null == l2) return l1;
-    if (l1.val &lt; l2.val) {
-        l1.next = mergeTwoLists(l1.next, l2);
-        return l1;
-    } else {
-        l2.next = mergeTwoLists(l1, l2.next);
-        return l2;
+    public static ArrayList&lt;Integer&gt; Solution_1(ArrayList&lt;Integer&gt;a,ArrayList&lt;Integer&gt;b){
+        int len_a=a.size();
+        int len_b=b.size();
+        int sum=0;
+        int next=0;
+        ArrayList&lt;Integer&gt; result=new ArrayList&lt;&gt;();
+        for(int i=0;i&lt;Math.max(len_a, len_b);i++) {
+            sum=0;
+            if(i&lt;len_a) {
+                sum=sum+a.get(i);
+            }
+            if(i&lt;len_b) {
+                sum=sum+b.get(i);
+            }
+            sum=sum+next;
+            result.add(sum%10);
+            next=sum/10;
+//            if(i==Math.max(len_a,len_b)-1&amp;&amp;next!=0) {//此处防止，最高位的进数丢失。处理最高进项到最高位的算法不好
+//                result.add(next);
+//            }
+        }
+        if(next!=0) {//放在外面判断更容易理解。
+            result.add(next);
+        }
+        while(result.get(result.size()-1)==0&amp;&amp;result.size()&gt;1) {//此处解决当所有位数都是0的情况，只保留一位0.此处是我多想了，题目中明确说不会以0开头
+            result.remove(result.size()-1);
+        }
+        return result;
+    }
+    static class ListNode{//新建一个节点类
+        public int val;//存储当前值
+        public ListNode next;//指向下一个位置
+        public ListNode(int i) {
+            this.val=i;
+        }
+        public int getVal() {
+            return val;
+        }
+    }
+    public static ListNode Solution_2(ListNode a,ListNode b) {
+        ListNode HeadNode=new ListNode(0);//头节点，不做返回值的一部分。
+        ListNode p=a,q=b,curr=HeadNode;
+        int carry=0;
+        while(p!=null||q!=null) {
+            int x=p!=null?p.getVal():0;
+            int y=q!=null?q.getVal():0;
+            int sum=x+y+carry;
+            carry=sum/10;
+            curr.next=new ListNode(sum%10);
+            curr=curr.next;
+            if(p!=null) {
+                p=p.next;
+            }
+            if(q!=null) {
+                q=q.next;
+            }
+        }
+        if(carry!=0) {
+            curr.next=new ListNode(carry);
+        }
+        return HeadNode.next;
     }
 }</code></pre>
       
@@ -229,7 +273,7 @@ return headNode.next;
 
 </article>
     
-    <article id="post-LeetCode-20有效的括号" class="article article-type-post" itemscope
+    <article id="post-LeetCode-1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -237,8 +281,8 @@ return headNode.next;
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"
-    >LeetCode-20有效的括号</a> 
+  <a class="article-title" href="/2019/10/19/LeetCode-1/"
+    >LeetCode-1</a> 
 </h2>
  
 
@@ -247,8 +291,8 @@ return headNode.next;
 
     
     <div class="article-meta">
-      <a href="/2019/11/11/LeetCode-20%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/" class="article-date">
-  <time datetime="2019-11-11T15:23:33.000Z" itemprop="datePublished">2019-11-11</time>
+      <a href="/2019/10/19/LeetCode-1/" class="article-date">
+  <time datetime="2019-10-19T13:43:00.000Z" itemprop="datePublished">2019-10-19</time>
 </a>
       
   <div class="article-category">
@@ -269,66 +313,82 @@ return headNode.next;
       
 
       
-      <p>题目：</p>
-<pre><code>给定一个只包括 &apos;(&apos;，&apos;)&apos;，&apos;{&apos;，&apos;}&apos;，&apos;[&apos;，&apos;]&apos; 的字符串，判断字符串是否有效。
+      <p>语言：Java</p>
+<p>题目描述：<br>    给定一个数组，找出其中何为目标值的两个数。（你可以假设每种输入只有一种答案，且同样的元素不能被重复利用）<br>    实例：<br>     给定nums=[2,7,11,15],target=9;<br>     因为nums[0]+nums[1]==target=2+7=9<br>     所以返回[0,1]<br>     @author zm<br>实现思路：<br>一：</p>
+<pre><code>二重循环，找到即输出。</code></pre><p>二：<br>    使用map，将数组存入map中，然后遍历这个数组，在map中查找target-a[i]的值如果有，说明有解，直接输出。<br>三：<br>    使用map，先将一部分数据存储，可以肯定的是，先输入map中的数据中一定没有相加之和位target的两个数字，然后边输入边查找map中是否有target-a[i]的值，如果有那么就直接输出。</p>
+<p>代码：</p>
+<pre><code>import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
-有效字符串需满足：
-
-左括号必须用相同类型的右括号闭合。
-左括号必须以正确的顺序闭合。
-注意空字符串可被认为是有效字符串。
-
-示例 1:
-
-输入: &quot;()&quot;
-输出: true
-示例 2:
-
-输入: &quot;()[]{}&quot;
-输出: true
-示例 3:
-
-输入: &quot;(]&quot;
-输出: false
-示例 4:
-
-输入: &quot;([)]&quot;
-输出: false
-示例 5:
-
-输入: &quot;{[]}&quot;
-输出: true</code></pre><p>思路：<br>    利用堆栈读取括号遇到左括号’(‘,’{‘,’[‘将其进栈，遇到右括号先取栈顶元素看看是不是与当前元素匹配的括号，不是则说明，括号不匹配，立即输出false，如果匹配，就先出栈，然后继续读取下一个字符。</p>
-<p>代码:</p>
-<pre><code>public boolean isValid(String s) {
-   if(s == null || s.length() % 2 == 1) return false;
-    if(s.length()==0) {
-        return true;
+public class o0001 {
+    public static void main(String[] args) {
+        int a[]=new int[] {2,9,11,15};
+        int target=9;
+        int[] b=solution_1(a,target);
+        System.out.println(Arrays.toString(b));
     }
-    Stack&lt;Character&gt; stack=new Stack&lt;&gt;();
-    for(int i=0;i&lt;s.length();i++) {
-        char ch=s.charAt(i);
-        if(ch==&apos;[&apos;||ch==&apos;(&apos;||ch==&apos;{&apos;) {
-            stack.push(ch);
-        }else {
-            if(stack.isEmpty()) {
-                return false;
-            }
-            if(ch==&apos;]&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;[&apos;) {
-                stack.pop();
-            }else if(ch==&apos;)&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;(&apos;)
-            {
-                stack.pop();
-            }else if(ch==&apos;}&apos;&amp;&amp;stack.elementAt(stack.size()-1)==&apos;{&apos;) {
-                stack.pop();
-            }else {
-                return false;
+    /**
+     * 解题思路1：先对数组排序，然后从第i个位置开始，由后向前找，如果找到与a[i]的和就是target的立即返回，如果找到和小于target的结束此次外层循环，继续下一次外层循环。
+     * @time 时间复杂度：O(n^2)
+     * @param a
+     * @param target
+     * @return
+     */
+    public static int[] solution_1(int a[],int target) {
+        Arrays.sort(a);
+        int[] b=new int[2];
+        for(int i=0;i&lt;a.length;i++) {
+            for(int j=a.length-1;j&gt;i;j--) {
+                if(a[i]+a[j]==target) {
+                    b[0]=i;
+                    b[1]=j;
+                }
+                if(a[i]+a[j]&lt;target) {
+                        break;
+                }
             }
         }
+        return b;
     }
-    return stack.isEmpty();
-}</code></pre><p>思路：</p>
-<p>自己实现栈然后重复以上操作，基本思路一样。</p>
-
+    /**
+     * 解题思路2：将数组中的数据放入map中，然后使用一次循环，在map中看有没有target-a[i]的数值的存在，如果有就立即输出，如果到结尾任然没有就抛出异常。
+     * 时间复杂度：O(n)
+     * @param a
+     * @param target
+     * @return
+     */
+    public static int[] solution_2(int a[],int target) {
+        Map&lt; Integer, Integer&gt; map=new HashMap&lt;&gt;();
+        for(int i=0;i&lt;a.length;i++) {
+            map.put(a[i], i);
+        }
+        for(int i=0;i&lt;a.length;i++) {
+            int value=target-a[i];
+            if(map.containsKey(value)) {
+                return new int[] {i,map.get(value)};
+            }
+        }
+        throw new IllegalArgumentException(&quot;No two sum solution&quot;);//可以用抛出异常代替没有返回值的情况。
+    }
+    /**
+     * 思路：先将数组的一部分数值放入map中，然后再剩余的数值中找target-a[i]是否再map中出现的，有出现的说明可以组成解。
+     * @param a
+     * @param target
+     * @return
+     */
+    public static int[] solution_3(int a[],int target) {
+        Map&lt; Integer, Integer&gt; map=new HashMap&lt;&gt;();
+        for(int i=0;i&lt;a.length;i++) {
+            int component=target-a[i];
+            if(map.containsKey(component)) {
+                return new int[] {i,map.get(component)};
+            }
+            map.put(a[i], i);
+        }
+        throw new IllegalArgumentException(&quot;数组不存在解&quot;);
+    }
+}</code></pre>
       
       <!-- reward -->
       
@@ -359,7 +419,7 @@ return headNode.next;
 
 </article>
     
-    <article id="post-LeetCode-19删除链表倒数第N个节点" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1075" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -367,8 +427,8 @@ return headNode.next;
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/"
-    >LeetCode-19删除链表倒数第N个节点</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1075/"
+    >PTA-Basic-1075</a> 
 </h2>
  
 
@@ -377,12 +437,12 @@ return headNode.next;
 
     
     <div class="article-meta">
-      <a href="/2019/11/10/LeetCode-19%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E8%8A%82%E7%82%B9/" class="article-date">
-  <time datetime="2019-11-10T11:05:13.000Z" itemprop="datePublished">2019-11-10</time>
+      <a href="/2019/10/16/PTA-Basic-1075/" class="article-date">
+  <time datetime="2019-10-16T15:23:44.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
       
@@ -400,54 +460,82 @@ return headNode.next;
 
       
       <p>题目：</p>
-<pre><code>给定一个链表，删除链表的倒数第 n 个节点，并且返回链表的头结点。
+<p>给定一个单链表，请编写程序将链表元素进行分类排列，使得所有负值元素都排在非负值元素的前面，而 [0, K] 区间内的元素都排在大于 K 的元素前面。但每一类内部元素的顺序是不能改变的。例如：给定链表为 18→7→-4→0→5→-6→10→11→-2，K 为 10，则输出应该为 -4→-6→-2→7→0→5→10→18→11。</p>
+<p>输入格式：<br>每个输入包含一个测试用例。每个测试用例第 1 行给出：第 1 个结点的地址；结点总个数，即正整数N (≤10^5 )；以及正整数K (≤10^3)。结点的地址是 5 位非负整数，NULL 地址用 −1 表示。</p>
+<p>接下来有 N 行，每行格式为：</p>
+<p>Address Data Next<br>其中 Address 是结点地址；Data 是该结点保存的数据，为 [−10^5​,10^5] 区间内的整数；Next 是下一结点的地址。题目保证给出的链表不为空。</p>
+<p>输出格式：<br>对每个测试用例，按链表从头到尾的顺序输出重排后的结果链表，其上每个结点占一行，格式与输入相同。</p>
+<p>输入样例：</p>
+<pre><code>00100 9 10
+23333 10 27777
+00000 0 99999
+00100 18 12309
+68237 -6 23333
+33218 -4 00000
+48652 -2 -1
+99999 5 68237
+27777 11 48652
+12309 7 33218</code></pre><p>输出样例：</p>
+<pre><code>33218 -4 68237
+68237 -6 48652
+48652 -2 12309
+12309 7 00000
+00000 0 99999
+99999 5 23333
+23333 10 00100
+00100 18 27777
+27777 11 -1</code></pre><p>思路：分三次，每次找合适的数据。<br>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
 
-示例：
-
-给定一个链表: 1-&gt;2-&gt;3-&gt;4-&gt;5, 和 n = 2.
-
-当删除了倒数第二个节点后，链表变为 1-&gt;2-&gt;3-&gt;5.
-说明：
-
-给定的 n 保证是有效的。</code></pre><p>思路：</p>
-<pre><code>1计算链表的长度
-2找到长度减去n的节点位置
-3交换节点
-注意：如果n为链表长度时会有错误
-需要补充一下此时直接返回头节点的下一个节点就可以了</code></pre><p>代码：</p>
-<pre><code>public ListNode removeNthFromEnds(ListNode head, int n) {
-        ListNode node=head;
-        int len=0;
-        while(node!=null) {
-            len++;
-            node=node.next;
-        }
-        if(len==n) {
-            return head.next;
-        }
-        node=head;
-        for(int i=1;i&lt;len-n;i++) {
-            node=node.next;
-        }
-        ListNode aNode=node.next;
-        node.next=aNode.next;
-        return head;
-    }</code></pre><p>思路2：递归到达最底层后开始计数，当数字达到n时返回此节点的下一个节点给上一个节点。（佩服佩服，果然时高手，佩服）</p>
-<p>代码：</p>
-<pre><code>private int time;
-public ListNode removeNthFromEnd(ListNode head,int n) {
-    if(head==null) {//当head为null时表明已经达到最后一个节点的下一个指针
-        time=0;
-        return null;
+int main()
+{
+  int iNext=0,iN=0,iK=0;//对应的是首地址，节点的个数，K的值
+  int iData[100000][2]={0};//用一个足够大的数组存放数据以及下一个节点的地址，下标就是它的地址
+  scanf(&quot;%d%d%d&quot;,&amp;iNext,&amp;iN,&amp;iK);//输入信息
+  int iAddr=0,iNum=0,iNAddr=0;
+  for(int i=0;i&lt;iN;i++)
+  {
+    scanf(&quot;%d%d%d&quot;,&amp;iAddr,&amp;iNum,&amp;iNAddr);//存放当前地址，数据，下一个节点的地址
+    iData[iAddr][0]=iNum;//存放数据
+    iData[iAddr][1]=iNAddr;//存放下一节点地址
+  }
+  int iOrder[iN];//存放排序好的地址
+  int p=0,next=iNext;
+  //3次遍历筛选排序
+  while(next!=-1)//第一次从首地址出发找出负数的地址。
+  {
+    if(iData[next][0]&lt;0)//当前节点的数据
+    {
+      iOrder[p++]=next;
     }
-    head.next=removeNthFromEnd(head.next,n);//要保证原链表的结构不变
-    time++;//买次递归返回的时候就加1
-    if(time==n) {//当达到第n个的时候返回当前节点的下一个节点
-        return head.next;
+    next=iData[next][1];//将地址存放下一个节点的地址
+  }
+  next=iNext;//继续从首地址出发
+  while(next!=-1)//第二次找&lt;=K的非负数
+  {
+    if(iData[next][0]&gt;=0&amp;&amp;iData[next][0]&lt;=iK)
+    {
+      iOrder[p++]=next;
     }
-    return head;//否则返回当前节点保证原链表的结构不变
-}</code></pre><p>大佬就是大佬，我只能佩服了。</p>
-
+    next=iData[next][1];
+  }
+  next=iNext;
+  while(next!=-1)//第三次找大于等于K的数据
+  {
+    if(iData[next][0]&gt;iK)
+    {
+      iOrder[p++]=next;
+    }
+    next=iData[next][1];
+  }
+  //循环输出，注意控制范围
+  for(int i=0;i&lt;p-1;i++)
+  {
+    printf(&quot;%05d %d %05d\n&quot;,iOrder[i],iData[iOrder[i]][0],iOrder[i+1]);//输出地址，地址对应的数据以及下一个地址。
+  }
+  printf(&quot;%05d %d -1&quot;,iOrder[p-1],iData[iOrder[p-1]][0]);//最后一个节点的数据直接输出，并输出-1表示结束。
+  return 0;
+}</code></pre>
       
       <!-- reward -->
       
@@ -459,7 +547,7 @@ public ListNode removeNthFromEnd(ListNode head,int n) {
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -484,7 +572,7 @@ public ListNode removeNthFromEnd(ListNode head,int n) {
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/4/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/6/">下一页</a>
   </nav>
   
 </section>

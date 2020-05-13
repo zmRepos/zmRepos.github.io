@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-LeetCode-5最长回文子串" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1085" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/20/LeetCode-5%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"
-    >LeetCodeo0005</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1085/"
+    >PTA-Basic-1085</a> 
 </h2>
  
 
@@ -119,12 +119,12 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/10/20/LeetCode-5%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/" class="article-date">
-  <time datetime="2019-10-20T11:05:22.000Z" itemprop="datePublished">2019-10-20</time>
+      <a href="/2019/10/16/PTA-Basic-1085/" class="article-date">
+  <time datetime="2019-10-16T13:29:24.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
       
@@ -141,75 +141,237 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<p>给定一个字符串，找出字符串中的最长回文子字符串。你可以假设s的最大长度为1000.</p>
-<p>实例：</p>
-<p>输入：“babad”</p>
-<p>输出：“bab”</p>
-<p>注意：aba也是一个有效答案。</p>
-<p>实例：</p>
-<p>输入:“cbbd”</p>
-<p>输出：“bb”</p>
-<p>思路：</p>
-<p>一：</p>
-<p>三重循环，遍历字符串，在下标为i到j之间判断其是否是回文字符串，是与目前最大长度相比，大的就赋值，小的舍弃。</p>
-<p>二：</p>
-<p>循环遍历字符串，检查每个字母的左右是否是回文字符串，以及它自身是否与其他字符构成回文字符串（比如“abba”）有记录下他们的起始位置，并与目前最大的长度相比，而后同上。</p>
-<p>代码：</p>
-<pre><code>import java.util.ArrayList;
-
-public class o0005 {
-    public static void main(String[] args) {
-        System.out.println(Solution_2(&quot;babad&quot;).toString());
+      <p>题目：<br>每次 PAT 考试结束后，考试中心都会发布一个考生单位排行榜。本题就请你实现这个功能。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​5<br>​​ ），即考生人数。随后 N 行，每行按下列格式给出一个考生的信息：</p>
+<p>准考证号 得分 学校<br>其中准考证号是由 6 个字符组成的字符串，其首字母表示考试的级别：B代表乙级，A代表甲级，T代表顶级；得分是 [0, 100] 区间内的整数；学校是由不超过 6 个英文字母组成的单位码（大小写无关）。注意：题目保证每个考生的准考证号是不同的。</p>
+<p>输出格式：<br>首先在一行中输出单位个数。随后按以下格式非降序输出单位的排行榜：</p>
+<p>排名 学校 加权总分 考生人数<br>其中排名是该单位的排名（从 1 开始）；学校是全部按小写字母输出的单位码；加权总分定义为乙级总分/1.5 + 甲级总分 + 顶级总分*1.5的整数部分；考生人数是该属于单位的考生的总人数。</p>
+<p>学校首先按加权总分排行。如有并列，则应对应相同的排名，并按考生人数升序输出。如果仍然并列，则按单位码的字典序输出。</p>
+<p>输入样例：</p>
+<pre><code>10
+A57908 85 Au
+B57908 54 LanX
+A37487 60 au
+T28374 67 CMU
+T32486 24 hypu
+A66734 92 cmu
+B76378 71 AU
+A47780 45 lanx
+A72809 100 pku
+A03274 45 hypu</code></pre><p>输出样例：</p>
+<pre><code>5
+1 cmu 192 2
+1 au 192 3
+3 pku 100 1
+4 hypu 81 2
+4 lanx 81 2</code></pre><p>分析：<br>定义一个结构体（包含学校名字（不分大小写），学校出席人数，学校总分（浮点数）），定义两个数组一个用来存储所有学校的（包含重复的内容）信息，然后再利用快排对第一个数组进行排序，再定义另一个数组用来合并名字相同的学校信息，然后每行输出一个学校的信息，排名从1开始，如果遇到不同的就+1。实话实说，这个代码是我抄的，我的思路固化了。<br>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+typedef struct{
+  char szSchool[7];
+  double fScore;
+  int iNumofStu;
+} SCHOOL;
+int cmp_sch(const void *a, const void *b)//利用学校的名字进行的排序
+{
+  SCHOOL *p=(SCHOOL *)a;//将a转化为结构体的指针，同样对b也是这样做。
+  SCHOOL *q=(SCHOOL *)b;
+  return strcmp(p-&gt;szSchool,q-&gt;szSchool);//对数组进行名字升序排序
+}
+int cmp(const void *a, const void *b)//依据题目排序，先对成绩降序，再对人数升序，再对学校名字升序。
+{
+  SCHOOL *p=(SCHOOL *)a;
+  SCHOOL *q=(SCHOOL *)b;
+  int flag=0;
+  int iscorep=(int)p-&gt;fScore,iscoreq=(int)q-&gt;fScore;
+  if(iscorep&lt;iscoreq)
+  {
+    flag=1;
+  }
+  else if(iscorep==iscoreq)
+  {
+    if(p-&gt;iNumofStu&gt;q-&gt;iNumofStu)
+    {
+      flag=1;
     }
-
-    public static ArrayList&lt;String&gt; Solution_1(String str) {
-        ArrayList&lt;String&gt; list=new ArrayList&lt;String&gt;();
-        int max=0;
-        for(int i=0;i&lt;str.length();i++) {
-            for(int j=str.length();j&gt;i;j--) {
-                int flag=0;
-                    for(int m=0,n=str.substring(i, j).length()-1;m&lt;n;m++,n--) {
-                        if(str.substring(i, j).charAt(m)!=str.substring(i, j).charAt(n)) {
-                            flag=1;
-                            break;
-                        }
-                    }
-                    if(str.substring(i, j).length()&gt;=max&amp;&amp;flag==0) {
-                        if(str.substring(i, j).length()&gt;max) {
-                            list.clear();
-                        }
-                        max=str.substring(i, j).length();
-                        list.add(str.substring(i,j));
-                    }
-            }
-        }
-        return list;
+    else if(p-&gt;iNumofStu==q-&gt;iNumofStu)
+    {
+      if(strcmp(p-&gt;szSchool,q-&gt;szSchool)&gt;0)
+      {
+        flag=1;
+      }
     }
-    public static String Solution_2(String str) {
-        if(str==null||str.length()&lt;1) {
-            return &quot;&quot;;
-        }
-        int start=0,end=0;
-        for(int i=0;i&lt;str.length();i++) {
-            int len1=expandAroundCenter(str,i,i);//首先检查该字符两侧有没有反转的字符
-            int len2=expandAroundCenter(str,i,i+1);//然后检测该字符是否与周围的字符反转
-            int len=Math.max(len1, len2);
-            if(len&gt;end-start) {//记录最大值处的字符串的位置
-                start=i-(len-1)/2;
-                end=i+len/2;
-            }
-        }
-        return str.substring(start,end+1);
+  }
+  return flag;
+}
+int main()
+{
+  int iN=0,iNumofSchool=0;
+  scanf(&quot;%d&quot;,&amp;iN);
+  SCHOOL school[iN],result[iN];
+  memset(school,0,iN*sizeof(SCHOOL));//初始化含重复数据数组。
+  memset(result,0,iN*sizeof(SCHOOL));//初始化存储无重复数据的数组
+  int pos=0;
+  char szTempID[7]={0},szTempSch[7]={0};
+  double fTempScore=0;
+  for(int i=0;i&lt;iN;i++)
+  {
+    getchar();
+    scanf(&quot;%s %lf %s&quot;,szTempID,&amp;fTempScore,szTempSch);
+    if(szTempID[0]==&apos;B&apos;)//依据考试的等级进行分数统计。
+    {
+      fTempScore/=1.5;
     }
-    private static int expandAroundCenter(String str, int left, int right) {
-        int L=left,R=right;
-        while(L&gt;=0&amp;&amp;R&lt;str.length()&amp;&amp;str.charAt(L)==str.charAt(R)) {
-            R++;
-            L--;
-        }
-        return R-L-1;
+    else if(szTempID[0]==&apos;T&apos;)
+    {
+      fTempScore*=1.5;
     }
+    for(int j=0;j&lt;strlen(szTempSch);j++)//将名字变为小写
+    {
+      if(szTempSch[j]&gt;=&apos;A&apos;&amp;&amp;szTempSch[j]&lt;=&apos;Z&apos;)
+      {
+        szTempSch[j]+=&apos;a&apos;-&apos;A&apos;;
+      }
+    }
+    strcpy(school[i].szSchool,szTempSch);
+    school[i].fScore=fTempScore;
+    school[i].iNumofStu=1;//存储到数组中去。
+  }
+  qsort(school,iN,sizeof(SCHOOL),cmp_sch);
+  result[0]=school[0];//首先将第一个学校数据给宁外一个数组
+  for(int i=1;i&lt;iN;i++)//从第一个开始，第0个已经给了另一个数组了，
+  {
+    if(strcmp(school[i].szSchool,school[i-1].szSchool)==0)
+    {//用后面的跟前面的比较，姓名一样就说明与前一个相同学校。
+      result[pos].fScore+=school[i].fScore;
+      result[pos].iNumofStu++;
+    }
+    else//不一样就说明另外一个学校，那么另一个数组的下标就要加1.
+    {
+      pos++;
+      result[pos]=school[i];
+    }
+  }
+  qsort(result,pos+1,sizeof(SCHOOL),cmp);//用题目条件排序。
+  int cnt=1;
+  printf(&quot;%d\n&quot;,pos+1);
+  printf(&quot;%d %s %d %d&quot;,cnt,result[0].szSchool,(int)result[0].fScore,result[0].iNumofStu);
+  for(int i=1;i&lt;=pos;i++)
+  {
+    if((int)result[i].fScore!=(int)result[i-1].fScore)
+    {
+      cnt=i+1;
+    }
+    printf(&quot;\n%d %s %d %d&quot;,cnt,result[i].szSchool,(int)result[i].fScore,result[i].iNumofStu);
+  }
+  return 0;
+}</code></pre><p>原来代码的错误分析：首先说一下运行结果，前三个测试点过去了，后两个运行超时，说明思路是对的，就是解决方法补恰当。</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+typedef struct school{//学校结构体
+    char name[8];//名字
+    double score;//学校分数
+    int time;//出席人数
+};
+struct school schools[100001];
+int cmp(const void *a,const void *b);
+int cnmp(const void *a,const void *b);
+void toLowerCase(char *s);
+int search(int nn,char *n);
+int main()
+{
+    char name[8]={&apos;\0&apos;};
+    int scor=0;
+    char id[8]={&apos;\0&apos;};
+    int n;
+    int time=0;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        getchar();
+        scanf(&quot;%s %d %s&quot;,id,&amp;scor,name);
+        toLowerCase(name);//变为小写
+        int index=search(time,name);//这里甚至采用了二人分查找依然没有逃过运行超时的命运，遍历已有的数组看看有没有这个名字有就返回下标没有返回-1。
+        if(index==-1){//返回-1，表示数组中要加一个新的学校了。
+            strcpy(schools[time].name,name);
+            index=time;//将已经有几个学校的数目给index，index就是新加进来的学校在数组中的位置
+            time++;//time加1，表示有加了一个新的学校
+        }
+        schools[index].time++;//出席人数加一
+        if(id[0]==&apos;A&apos;){//根据等级对分数计算
+            schools[index].score=schools[index].score+scor;
+        }else if(id[0]==&apos;B&apos;){
+            schools[index].score=schools[index].score+scor*1.0*2/3;
+        }else{
+            schools[index].score=schools[index].score+scor*1.0*3/2;
+        }
+        qsort(schools,time,sizeof(struct school),cnmp);//快速排序
+    }
+    qsort(schools,time,sizeof(struct school),cmp);
+    int max=-1;
+    int paiming=0;
+    int lastpaiming;
+    printf(&quot;%d\n&quot;,time);
+    for(int i=0;i&lt;time;i++){
+        paiming++;
+        if((int)(schools[i].score)==max){
+            printf(&quot;%d %s %d %d\n&quot;,lastpaiming,schools[i].name,(int)schools[i].score,schools[i].time);
+            continue;
+        }else{
+            max=(int)schools[i].score;
+            printf(&quot;%d %s %d %d\n&quot;,paiming,schools[i].name,(int)schools[i].score,schools[i].time);
+        }
+        lastpaiming=paiming;
+    }
+    return 0;
+}
+int search(int time,char *name){
+    int start=0,end=time;
+    while(start&lt;=end){
+        int mid=(start+end)/2;
+        int n=strcmp(schools[mid].name,name);
+        if(n==0){
+            return mid;
+        }else if(n&gt;0){
+            end=mid-1;
+        }else{
+            start=mid+1;
+        }
+    }
+    return -1;
+}
+int cmp(const void *a1,const void *b1){
+    struct school sc1=*(struct school *)a1;
+    struct school sc2=*(struct school *)b1;
+    int a=(int)sc1.score;
+    int b=(int)sc2.score;
+    if(a&gt;b){
+        return -1;
+    }else if(a&lt;b){
+        return 1;
+    }else{
+        if(sc1.time&gt;sc2.time){
+            return 1;
+        }else if(sc1.time&lt;sc2.time){
+        return -1;
+        }else{
+            return strcmp(sc1.name,sc2.name);
+        }
+    }
+}
+void toLowerCase(char *s){//将名字变为小写的函数
+    while((*s)!=&apos;\0&apos;){
+        if(*s&lt;=&apos;Z&apos;&amp;&amp;*s&gt;=&apos;A&apos;){
+            *s=(*s)-&apos;A&apos;+&apos;a&apos;;
+        }
+        s++;
+    }
+}
+int cnmp(const void *a,const void *b){
+    struct school sch1=*(struct school*)a;
+    struct school sch2=*(struct school*)b;
+    return strcmp(sch1.name,sch2.name);
 }</code></pre>
       
       <!-- reward -->
@@ -222,7 +384,7 @@ public class o0005 {
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -241,7 +403,7 @@ public class o0005 {
 
 </article>
     
-    <article id="post-LeetCode-4寻找两个有序数组的中位数" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1084" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -249,8 +411,8 @@ public class o0005 {
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/20/LeetCode-4%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/"
-    >LeetCodeo0004</a> 
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1084/"
+    >PTA-Basic-1084</a> 
 </h2>
  
 
@@ -259,12 +421,12 @@ public class o0005 {
 
     
     <div class="article-meta">
-      <a href="/2019/10/20/LeetCode-4%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/" class="article-date">
-  <time datetime="2019-10-20T01:30:57.000Z" itemprop="datePublished">2019-10-20</time>
+      <a href="/2019/10/11/PTA-Basic-1084/" class="article-date">
+  <time datetime="2019-10-11T14:19:24.000Z" itemprop="datePublished">2019-10-11</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
       
@@ -281,97 +443,42 @@ public class o0005 {
       
 
       
-      <p>题目：</p>
-<p>给定两个大小位n,m的两个有序数组nums1,nums2.请找出这两个有序数组的中位数，要求时间复杂度位O(log(m+n))。</p>
-<p>实例:</p>
-<p>nums1[1,3]</p>
-<p>nums2[2]</p>
-<p>中位数是：2.0</p>
-<p>实例：<br>nums1[1,2]</p>
-<p>nums2[3,4]</p>
-<p>中位数是：（2+3）/2=2.5</p>
-<p>思路：</p>
-<p>一：</p>
-<p>归并排序，查找中间的两个数字或一个数字，并求它们或它的平均值。</p>
-<p>二：<br>理解不了日后补上</p>
+      <p>题目：<br>外观数列是指具有以下特点的整数序列：</p>
+<p>d, d1, d111, d113, d11231, d112213111, …<br>它从不等于 1 的数字 d 开始，序列的第 n+1 项是对第 n 项的描述。比如第 2 项表示第 1 项有 1 个 d，所以就是 d1；第 2 项是 1 个 d（对应 d1）和 1 个 1（对应 11），所以第 3 项就是 d111。又比如第 4 项是 d113，其描述就是 1 个 d，2 个 1，1 个 3，所以下一项就是 d11231。当然这个定义对 d = 1 也成立。本题要求你推算任意给定数字 d 的外观数列的第 N 项。</p>
+<p>输入格式：<br>输入第一行给出 [0,9] 范围内的一个整数 d、以及一个正整数 N（≤ 40），用空格分隔。</p>
+<p>输出格式：<br>在一行中给出数字 d 的外观数列的第 N 项。</p>
+<p>输入样例：</p>
+<pre><code>1 8</code></pre><p>输出样例：</p>
+<pre><code>1123123111</code></pre><p>分析：做此题时，一定要在旁边自己演算一边推算过程，不要只看不动手。对于i-1项，从左边到右边读取，如果有连续的（n个）’d’就记作dn，第一个字符不算它是个特殊字符，不要把他与后面混为一谈，他始终是一个记作d1。<br>处理：</p>
+<p>对于一个给定的字符，对其进行从1到n之间的推演，首先将此字符存储入数组，然后对此数组进行n次的推演。</p>
 <p>代码：</p>
-<pre><code>public class o0004 {
-    public static void main(String[] args) {
-        int []a=new int[] {1,2};
-        int []b=new int[] {3,5};
-        System.out.println(Solution_2(a,b));
-    }
-    public static double Solution_1(int[] nums1,int []nums2) {
-        double res=0.0;
-        int n=nums1.length,m=nums2.length,i=0,j=0,curr=0;
-        int[] result=new int[n+m];
-        while(i&lt;n&amp;&amp;j&lt;m) {
-            if(nums1[i]&lt;nums2[j]) {
-                result[curr]=nums1[i];
-                i++;
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+int main(void){
+    int n;
+    char ch;
+    scanf(&quot;%c %d&quot;,&amp;ch,&amp;n);
+    char res[100000]={0};//这个会非常大非常非常大。 
+    char crs[100000]={0};
+    res[0]=ch;
+    for(int i=1;i&lt;n;i++){
+        int time=0;
+        int begin=0;
+        for(int len=0;len&lt;strlen(res);len++){
+            time++;
+            if(res[len+1]==res[len]){//如果下一个字符还等于当前字符，继续数个数
+                continue;
             }else{
-                result[curr]=nums2[j];
-                j++;
+                crs[begin++]=res[len];//首先存入字符再存入数字
+                crs[begin++]=&apos;0&apos;+time;//这边我一开始担心有次数超过10的情况，但是那种处理起来有点麻烦，而且根据题目要求没看出来有大于10可能性的存在，就没考虑。
+                time=0;//time赋值为0用于下一次的计算有多少个
             }
-            curr++;
         }
-            while(i&lt;n) {
-                result[curr]=nums1[i];
-                curr++;
-                i++;
-            }
-            while(j&lt;m) {
-                result[curr]=nums2[j];
-                curr++;
-                j++;
-            }
-        if(curr%2==0) {
-            res=(result[curr/2+1-1]*1.0+result[curr/2-1]*1.0)/2;
-        }else {
-            res=result[curr/2+1-1]*1.0;//加1是后面的一个数，减去1代表数组下标。
-        }
-        return res;
+        strcpy(res,crs);//将此次推演的结果存入res中用于下一次的推演。
     }
-    public static double Solution_2(int[] A,int []B) {
-        int m=A.length;
-        int n=B.length;
-        if(m&gt;n) {//确保m&lt;=n
-            int[] temp=A;A=B;B=temp;
-            int k=m;m=n;n=k;
-        }
-        int iMin=0,iMax=m,halfLen=(m+n+1)/2;
-        while(iMin&lt;=iMax) {
-            int i=(iMin+iMax)/2;
-            int j=halfLen-i;
-            if(i&lt;iMax&amp;&amp;B[j-1]&gt;A[i]) {
-                iMin=iMin+1;//i太小了
-            }else if(i&gt;iMin&amp;&amp;A[i-1]&gt;B[j]) {
-                iMax=iMax-1;//i太大了
-            }else {//i是合适的
-                int maxLeft=0;
-                if(i==0) {
-                    maxLeft=B[j-1];
-                }else if(j==0) {
-                    maxLeft=A[i-1];
-                }else {
-                    maxLeft=Math.max(A[i-1],B[j-1]);
-                }
-                if((n+m)%2==1) {
-                    return maxLeft;
-                }
-                int minRight=0;
-                if(i==m) {
-                    minRight=B[j];
-                }else if(j==n) {
-                    minRight=A[i];
-                }else {
-                    minRight=Math.min(A[i], B[j]);
-                }
-                return (maxLeft+minRight)/2.0;
-            }
-        }
-        return 0.0;
-    }
+    printf(&quot;%s&quot;,res);
+    return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -384,7 +491,7 @@ public class o0005 {
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -403,7 +510,7 @@ public class o0005 {
 
 </article>
     
-    <article id="post-LeetCode-3无重复字符的最长字串" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1083" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -411,8 +518,8 @@ public class o0005 {
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/20/LeetCode-3%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%97%E4%B8%B2/"
-    >LeetCodeo0003</a> 
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1083/"
+    >PTA-Basic-1083</a> 
 </h2>
  
 
@@ -421,12 +528,12 @@ public class o0005 {
 
     
     <div class="article-meta">
-      <a href="/2019/10/20/LeetCode-3%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%97%E4%B8%B2/" class="article-date">
-  <time datetime="2019-10-20T01:30:52.000Z" itemprop="datePublished">2019-10-20</time>
+      <a href="/2019/10/11/PTA-Basic-1083/" class="article-date">
+  <time datetime="2019-10-11T14:19:18.000Z" itemprop="datePublished">2019-10-11</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
 
       
@@ -443,79 +550,35 @@ public class o0005 {
       
 
       
-      <p>实现语言：Java</p>
-<p>题目：</p>
-<p>给定一个字符串，找出不含重复字符的最长字串的长度。</p>
-<p>实例：</p>
-<p>给定字符串“abcabcbb”,没有重复字符的最长字串是“abc”，那么长度就是3.</p>
-<p>给定字符串“bbbbb”,最长的字串就是”b”,长度是1.</p>
-<p>给定”pwwkew”,最长字串是“wke”,长度是3。</p>
-<p>注意：答案必须是一个字串，“pwke”是子序列，而不是子字符串。</p>
-<p>思路：</p>
-<p>大体上就是一种思路，只是使用的工具不同罢了。</p>
-<p>一：</p>
-<p>将输入的字符串一个一个存入集合中，如果集合中已经含有有某个字符了，说明在此处已经达到了一个符合题目要求的字串，如果它的长度比上一个大，就将它的长度赋值给max.只要已经找到重复的字符了，就应该将集合清空，并将这个重复的字符输入到集合中，用于下一次的计算。如果字符集合中没有这个字符也应该输入字符集合，用于下一次的计算。</p>
-<p>二：</p>
-<p>首先定义两个坐标一个用于定位当前字符的位置，另一个用于定位重复字符在字符串中的位置，然后用每个长度与最大值比较（并决定是否改变最大值）。</p>
-<p>三：</p>
-<p>定义一个map用于存放字符与其相应的位置，然后边加入，边查找有没有重复的字符，如果有，取出当前重复字符的位置（与上一个重复字符的位置比较，防止其坐标比上一个重复的字符坐标小）。然后求长度并用当前对打长度与目前所求长度比对。加入这个字符，与对应的位置。</p>
-<p>代码：</p>
-<pre><code>import java.util.*;
-
-public class o0003 {
-    public static void main(String[] args) {
-        System.out.println(Solution_3(&quot;pwwkew&quot;));
+      <p>题目：<br>给定 N 张卡片，正面分别写上 1、2、……、N，然后全部翻面，洗牌，在背面分别写上 1、2、……、N。将每张牌的正反两面数字相减（大减小），得到 N 个非负差值，其中是否存在相等的差？</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（2 ≤ N ≤ 10 000），随后一行给出 1 到 N 的一个洗牌后的排列，第 i 个数表示正面写了 i 的那张卡片背面的数字。</p>
+<p>输出格式：<br>按照“差值 重复次数”的格式从大到小输出重复的差值及其重复的次数，每行输出一个结果。</p>
+<p>输入样例：</p>
+<pre><code>8
+3 5 8 6 2 1 4 7</code></pre><p>输出样例：</p>
+<pre><code>5 2
+3 3
+2 2</code></pre><p>分析：定义一个非常大的数组就命名为差值数组，用数组下标存储差值，数组元素值存储此差值出现了多少次，<br>对第i个输入的数字，将其与其i值做差，取绝对值，存入差值数组中。最后倒序遍历输出数组下标与对应的值（大于1的）。<br>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+//而全局变量则可以全部自动初始化为0
+int main(void){
+    int n;
+    scanf(&quot;%d&quot;,&amp;n);
+    int time[10002]={0};//如果不手动初始化数组，那么最大初始化为0的长度是7921
+    int x,y;
+    int z;
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d&quot;,&amp;x);
+        z=abs(x-i-1);
+        time[z]++;
     }
-    /**
-     * @param sub 输入的字符串
-     * @param max 用于存储最长字串的长度
-     * @return max 最长字串的长度
-     */
-    public static int Solution_1(String sub) {
-        int max=0;
-        Set&lt;Character&gt; coll=new HashSet&lt;Character&gt;();
-        for(int i=0;i&lt;sub.length();i++) {
-            if(coll.contains(sub.charAt(i))) {//就算此处集合中已经有了这个字符，也应该清空集合，加入这个字符以便下一次的计算。
-                if(coll.size()&gt;max) {
-                    max=coll.size();
-                }
-                coll.clear();//如果有重复的就清空集合
-            }
-            coll.add(sub.charAt(i));
+    for(int i=n-1;i&gt;=0;i--){
+        if(time[i]&gt;1){
+            printf(&quot;%d %d\n&quot;,i,time[i]);
         }
-        return max;
     }
-    /**
-     * @param i 用于记录重复字符的位置。
-     * @param sub
-     * @return
-     */
-    public static int Solution_2(String sub) {
-        int max=0,len=sub.length();
-        int i=0,j=0;
-        Set &lt;Character&gt; set=new HashSet&lt;&gt;();
-        while(i&lt;len&amp;&amp;j&lt;len) {
-            if(!set.contains(sub.charAt(j))) {//如果集合中没有这个字符，就将其加入集合，并将集合的长度与目前为止的最大长度比较，然后决定是否改变它。
-                set.add(sub.charAt(j++));//首先将其加入集合中。
-                max=Math.max(max, j-i);//比较。
-            }else {
-                set.remove(sub.charAt(i++));//如果有这个字符了，就一直删除字符，直到找到重复的那个字符,重复的那个字符也会被删除。
-            }
-        }
-        return max;
-    }
-    public static int Solution_3(String sub) {
-        int len=sub.length(),max=0;
-        Map&lt;Character,Integer&gt;map=new HashMap&lt;&gt;();
-        for(int i=0,j=0;j&lt;len;j++) {
-            if(map.containsKey(sub.charAt(j))) {
-                i=Math.max(i, map.get(sub.charAt(j)));//i用来存储当前已有字符在字符串中的位置。为什么要与上一个i比较呢？因为上一个i代表的是上一个重复的字符在字符串中的位置，而这一个字的位置可能在上一个字符的后面所以因该取他们的最大值。
-            }
-            max=Math.max(max, j+1-i);//j+1代表当前字符在字符串中的位置，i代表上一个重复字符在字符串中的位置。
-            map.put(sub.charAt(j), j+1);//将字符放入hash表中，如果已经有就覆盖它。
-        }
-        return max;
-    }
+    return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -528,7 +591,7 @@ public class o0003 {
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -553,7 +616,7 @@ public class o0003 {
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/11/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/9/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/11/">下一页</a>
   </nav>
   
 </section>

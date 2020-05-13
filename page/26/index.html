@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1054" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1023" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/28/PTA-Basic-1054/"
-    >PTA-Basic-1054</a> 
+  <a class="article-title" href="/2019/09/22/PTA-Basic-1023/"
+    >PTA-Basic-1023</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/28/PTA-Basic-1054/" class="article-date">
-  <time datetime="2019-09-28T14:28:50.000Z" itemprop="datePublished">2019-09-28</time>
+      <a href="/2019/09/22/PTA-Basic-1023/" class="article-date">
+  <time datetime="2019-09-22T13:48:42.000Z" itemprop="datePublished">2019-09-22</time>
 </a>
       
   <div class="article-category">
@@ -142,205 +142,54 @@ var _hmt = _hmt || [];
 
       
       <p>题目：</p>
-<p>本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
-<p>输入格式：<br>输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
-<p>输出格式：<br>对每个非法输入，在一行中输出 ERROR: X is not a legal number，其中 X 是输入。最后在一行中输出结果：The average of K numbers is Y，其中 K 是合法输入的个数，Y 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 Undefined 替换 Y。如果 K 为 1，则输出 The average of 1 number is Y。</p>
-<p>输入样例 1：</p>
-<pre><code>7
-5 -3.2 aaa 9999 2.3.4 7.123 2.35</code></pre><p>输出样例 1：</p>
-<pre><code>ERROR: aaa is not a legal number
-ERROR: 9999 is not a legal number
-ERROR: 2.3.4 is not a legal number
-ERROR: 7.123 is not a legal number
-The average of 3 numbers is 1.38</code></pre><p>输入样例 2：</p>
-<pre><code>2
-
-aaa -9999</code></pre><p>输出样例 2：</p>
-<pre><code>ERROR: aaa is not a legal number
-ERROR: -9999 is not a legal number
-The average of 0 numbers is Undefined</code></pre><p>分析：</p>
-<p>定义一个判断数字是否合法的函数（数字以数字或‘-’开头，不能只有‘-’，‘.’后面的数字长度不能大于2），注意如果输入数字中只有一个合法，不要不要用总和去除以1计算结果，而是直接输出The average of 1 number is ？。还有就是字符串赋值并不是想Java中的那样直接给就可以了，而是要调用函数复制。</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-int check(char* s);
-int main(void){
-    int n=0;
-    scanf(&quot;%d&quot;,&amp;n);
-    char str[n][10000];
-    char s[10000];
-    int i=0;
-    double sum=0;
-    int m=n;
-    while(n--){
-        scanf(&quot;%s&quot;,s);
-        if(check(s)){
-            sum+=atof(s);//函数atof将数字字符串转化为数字。
-        }else{
-            strcpy(str[i++],s);
-        }
-    }
-    m=m-i;
-    for(int k=0;k&lt;i;k++){
-        printf(&quot;ERROR: %s is not a legal number\n&quot;,str[k]); 
-    }
-    if(m&gt;1)
-    printf(&quot;The average of %d numbers is %.2lf\n&quot;,m,sum/m);
-    if(m==0)
-    printf(&quot;The average of 0 numbers is Undefined\n&quot;);
-    if(m==1)
-    printf(&quot;The average of 1 number is %.2lf&quot;,sum);
-    return 0;
-}
-int  check(char* s){
-    int sum=0;
-    int n=0;
-    for(int i=0;i&lt;strlen(s);i++){
-        if(i==0){
-            if(!(s[i]==&apos;-&apos;||(s[i]&lt;=&apos;9&apos;&amp;&amp;s[i]&gt;=&apos;0&apos;))){
-                return 0;
-            }else{
-                if(strlen(s)==1&amp;&amp;s[i]==&apos;-&apos;){
-                    return 0;
-                }
-            }
-        }else{
-            if(sum&gt;0){
-                n++;
-                if(n&gt;2){
-                    return 0;
-                }
-            }
-            if(s[i]==&apos;.&apos;){
-                sum++;
-                if(sum&gt;=2){
-                    return 0;
-                }
-            }
-        }
-    }
-    double res=atof(s);
-    if(res&gt;1000||res&lt;-1000){
-        return 0;
-    }
-    return 1;
-} </code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1053" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/28/PTA-Basic-1053/"
-    >PTA-Basic-1053</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/28/PTA-Basic-1053/" class="article-date">
-  <time datetime="2019-09-28T14:28:35.000Z" itemprop="datePublished">2019-09-28</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>在不打扰居民的前提下，统计住房空置率的一种方法是根据每户用电量的连续变化规律进行判断。判断方法如下：</p>
-<p>在观察期内，若存在超过一半的日子用电量低于某给定的阈值 e，则该住房为“可能空置”；</p>
-<p>若观察期超过某给定阈值 D 天，且满足上一个条件，则该住房为“空置”。</p>
-<p>现给定某居民区的住户用电量数据，请你统计“可能空置”的比率和“空置”比率，即以上两种状态的住房占居民区住房总套数的百分比。</p>
-<p>输入格式：<br>输入第一行给出正整数 N（≤1000），为居民区住房总套数；正实数 e，即低电量阈值；正整数 D，即观察期阈值。随后 N 行，每行按以下格式给出一套住房的用电量数据：</p>
-<p>K E<br>​1<br>​​  E<br>​2<br>​​  … E<br>​K<br>​​ </p>
-<p>其中 K 为观察的天数，E<br>​i<br>​​  为第 i 天的用电量。</p>
-<p>输出格式：<br>在一行中输出“可能空置”的比率和“空置”比率的百分比值，其间以一个空格分隔，保留小数点后 1 位。</p>
-<p>输入样例：</p>
-<pre><code>5 0.5 10
-6 0.3 0.4 0.5 0.2 0.8 0.6
-10 0.0 0.1 0.2 0.3 0.0 0.8 0.6 0.7 0.0 0.5
-5 0.4 0.3 0.5 0.1 0.7
-11 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1
-11 2 2 2 1 1 0.1 1 0.1 0.1 0.1 0.1</code></pre><p>输出样例：</p>
-<pre><code>40.0% 20.0%</code></pre><p>（样例解释：第2、3户为“可能空置”，第4户为“空置”，其他户不是空置。）</p>
-<p>分析：<br>按题目走。</p>
+<p>给定数字 0-9 各若干个。你可以以任意顺序排列这些数字，但必须全部使用。目标是使得最后得到的数尽可能小（注意 0 不能做首位）。例如：给定两个 0，两个 1，三个 5，一个 8，我们得到的最小的数就是 10015558。</p>
+<p>现给定数字，请编写程序输出能够组成的最小的数。</p>
+<p>输入格式：</p>
+<pre><code>输入在一行中给出 10 个非负整数，顺序表示我们拥有数字 0、数字 
+1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不
+超过 50，且至少拥有 1 个非 0 的数字。</code></pre><p>输出格式：</p>
+<pre><code>在一行中输出能够组成的最小的数。</code></pre><p>输入样例：</p>
+<pre><code>2 2 0 0 0 3 0 0 1 0</code></pre><p>输出样例：</p>
+<pre><code>10015558</code></pre><p>输入：</p>
+<p>遍历数字，将相应的整型数组加1（下标代表数字，值代表次数）。优先输出0但是首字符不能为0然后依次输出小的。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 int main(void){
+    static int number[2][10]={{0,1,2,3,4,5,6,7,8,9},{0}};
+    int n=0;
     int sum=0;
-    double e,d;
-    scanf(&quot;%d %lf %lf&quot;,&amp;sum,&amp;e,&amp;d);
-    int maybe=0,must=0;
-    for(int i=0;i&lt;sum;i++){
-        int days=0;
-        int sum=0;
-        scanf(&quot;%d&quot;,&amp;days);
-        for(int j=0;j&lt;days;j++){
-            double en;
-            scanf(&quot;%lf&quot;,&amp;en);
-            if(en&lt;e){
-                sum++;
+    char result[1000];
+    int i=0;
+    for(i=0;i&lt;10;i++){
+        scanf(&quot;%d&quot;,&amp;n);
+        number[1][i]=n;
+        sum+=n;
+    }
+    i=0;
+    while(sum){//当剩余的总个数为0时说明所有数字都用上了。
+        if(i==0){
+            for(int j=1;j&lt;10;j++){//首先将1-9的数字次数用掉一次，放在字符串首。
+                if(number[1][j]!=0){
+                    result[i]=number[0][j]+&apos;0&apos;;
+                    number[1][j]--;
+                    sum--;
+                    break;
+                }
+            }
+        }else{
+            for(int j=0;j&lt;10;j++){
+                if(number[1][j]!=0){
+                    result[i]=number[0][j]+&apos;0&apos;;
+                    number[1][j]--;
+                    sum--;
+                    break;
+                }
             }
         }
-        if(days&gt;d&amp;&amp;sum&gt;(int)(days/2)){
-            must++;
-        }else if(sum&gt;(int)(days/2)){
-            maybe++;
-        }else{    
-        }
+        i++;
     }
-    printf(&quot;%.1f&quot;,100*(maybe*1.0/sum));
-    printf(&quot;%c &quot;,&apos;%&apos;);
-    printf(&quot;%.1f&quot;,100*(must*1.0/sum));
-    printf(&quot;%c&quot;,&apos;%&apos;);
+    result[i]=&apos;\0&apos;;
+    printf(&quot;%s&quot;,result);
     return 0;
 }</code></pre>
       
@@ -373,7 +222,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1052" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1022" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -381,8 +230,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/28/PTA-Basic-1052/"
-    >PTA-Basic-1052</a> 
+  <a class="article-title" href="/2019/09/22/PTA-Basic-1022/"
+    >PTA-Basic-1022</a> 
 </h2>
  
 
@@ -391,8 +240,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/28/PTA-Basic-1052/" class="article-date">
-  <time datetime="2019-09-28T14:27:44.000Z" itemprop="datePublished">2019-09-28</time>
+      <a href="/2019/09/22/PTA-Basic-1022/" class="article-date">
+  <time datetime="2019-09-22T13:48:18.000Z" itemprop="datePublished">2019-09-22</time>
 </a>
       
   <div class="article-category">
@@ -413,85 +262,167 @@ int main(void){
       
 
       
-      <p>题目：</p>
-<p>萌萌哒表情符号通常由“手”、“眼”、“口”三个主要部分组成。简单起见，我们假设一个表情符号是按下列格式输出的：</p>
-<pre><code>[左手]([左眼][口][右眼])[右手]</code></pre><p>现给出可选用的符号集合，请你按用户的要求输出表情。</p>
-<p>输入格式：<br>输入首先在前三行顺序对应给出手、眼、口的可选符号集。每个符号括在一对方括号 []内。题目保证每个集合都至少有一个符号，并不超过 10 个符号；每个符号包含 1 到 4 个非空字符。</p>
-<p>之后一行给出一个正整数 K，为用户请求的个数。随后 K 行，每行给出一个用户的符号选择，顺序为左手、左眼、口、右眼、右手——这里只给出符号在相应集合中的序号（从 1 开始），数字间以空格分隔。</p>
-<p>输出格式：<br>对每个用户请求，在一行中输出生成的表情。若用户选择的序号不存在，则输出 Are you kidding me? @/@。</p>
+      <p>输入两个非负 10 进制整数 A 和 B (≤2<br>​30<br>​​ −1)，输出 A+B 的 D (1&lt;D≤10)进制数。</p>
+<p>输入格式：<br>输入在一行中依次给出 3 个整数 A、B 和 D。</p>
+<p>输出格式：<br>输出 A+B 的 D 进制数。</p>
 <p>输入样例：</p>
-<pre><code>[╮][╭][o][~\][/~]  [&lt;][&gt;]
- [╯][╰][^][-][=][&gt;][&lt;][@][⊙]
-[Д][▽][_][ε][^]  ...
-4
-1 1 2 2 2
-6 8 1 5 5
-3 3 4 3 3
-2 10 3 9 3</code></pre><p>输出样例：</p>
-<pre><code>╮(╯▽╰)╭
-&lt;(@Д=)/~
-o(^ε^)o
-Are you kidding me? @\/@</code></pre><p>思路：<br>第一行给出手的符号库，<br>第二行给出眼的符号库，<br>第三行给出口的符号库。<br>定义三个二维数组，每一行存储字符串。<br>然后存储输入进的数字，<br>根据每一行对手，眼，口的坐标选择，输出相应的字符串符号。若没有，则输出Are you kidding me? @/@<br>代码：</p>
+<pre><code>123 456 8</code></pre><p>输出样例：</p>
+<pre><code>1103</code></pre><p>输入：因为数字范围（&lt;=2^31-1）所以用long类型。<br>处理：先计算两数字和，再对其进行不断的取余，并存入字符数组。最后加入一个‘\0’<br>输出：逆序输出。</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-int main()
-{
-  char Hand[10][5]={0};
-  char Eye[10][5]={0};
-  char Mouth[10][5]={0};
-  char temp=0;
-  int iHand=0,iEye=0,iMouth=0;//字符计数
-  while((temp=getchar())!=&apos;\n&apos;)
-  {
-    if(temp==&apos;[&apos;)
-    {
-      scanf(&quot;%[^]]&quot;,szHand[iHand++]);
+#include&lt;string.h&gt;
+int main(void){
+    int a,b,D;
+    scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;D);
+    int d=a+b;
+    char result[1000];
+    int i;
+    for(i=0;;i++){
+        result[i]=d%D+&apos;0&apos;;
+        d=d/D;
+        if(d==0){
+            break;
+        }
     }
-  }
-  while((temp=getchar())!=&apos;\n&apos;)
-  {
-    if(temp==&apos;[&apos;)
-    {
-      scanf(&quot;%[^]]&quot;,szEye[iEye++]);
-    }
-  }
-  while((temp=getchar())!=&apos;\n&apos;)
-  {
-    if(temp==&apos;[&apos;)
-    {
-      scanf(&quot;%[^]]&quot;,szMouth[iMouth++]);
-    }
-  }
-  int iNum=0,iMood[5]={0};
-  scanf(&quot;%d&quot;,&amp;iNum);
-  for(int i=0;i&lt;iNum;i++)
-  {
-    for(int j=0;j&lt;5;j++)
-    {
-      scanf(&quot;%d&quot;,iMood+j);
-    }
-    //选择输出，注意表情是从1开始，数组是从0开始
-    if(iMood[0]&gt;0&amp;&amp;iMood[0]&lt;=iHand
-     &amp;&amp;iMood[1]&gt;0&amp;&amp;iMood[1]&lt;=iEye
-     &amp;&amp;iMood[2]&gt;0&amp;&amp;iMood[2]&lt;=iMouth
-     &amp;&amp;iMood[3]&gt;0&amp;&amp;iMood[3]&lt;=iEye
-     &amp;&amp;iMood[4]&gt;0&amp;&amp;iMood[4]&lt;=iHand)
-     {
-       printf(&quot;%s(%s%s%s)%s&quot;,szHand[iMood[0]-1],szEye[iMood[1]-1],
-           szMouth[iMood[2]-1],szEye[iMood[3]-1],szHand[iMood[4]-1]);
-     }
-     else
-     {
-       printf(&quot;Are you kidding me? @\\/@&quot;);
-     }
-     if(i!=iNum-1)
-     {
-       printf(&quot;\n&quot;);
-     }
-  }
-  return 0;
+    result[++i]=&apos;\0&apos;;//便于计算长度
+    for(i=strlen(result)-1;i&gt;-1;i--)
+    printf(&quot;%c&quot;,result[i]);
+    return 0;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-}</code></pre><p>注意：<br>scanf函数有一种格式控制可以输入指定符号前的字符串，即%[^…]，其中…可以是任意字符，之前的任意多个字符会被输入，如果加上<em>，即%</em>[^…]，就是忽略…前的任意多字符。因为有[]两个字符作为数据的前后标记，因此可以用getchar试探读入，读入回车则结束，读入[则接收数据。<br>参考链接：<a href="https://blog.csdn.net/bawangtu/article/details/81287293">https://blog.csdn.net/bawangtu/article/details/81287293</a></p>
 
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1020" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/PTA-Basic-1020/"
+    >PTA-Basic-1020</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/22/PTA-Basic-1020/" class="article-date">
+  <time datetime="2019-09-22T13:48:02.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>月饼是中国人在中秋佳节时吃的一种传统食品，不同地区有许多不同风味的月饼。现给定所有种类月饼的库存量、总售价、以及市场的最大需求量，请你计算可以获得的最大收益是多少。</p>
+<p>注意：销售时允许取出一部分库存。样例给出的情形是这样的：假如我们有 3 种月饼，其库存量分别为 18、15、10 万吨，总售价分别为 75、72、45 亿元。如果市场的最大需求量只有 20 万吨，那么我们最大收益策略应该是卖出全部 15 万吨第 2 种月饼、以及 5 万吨第 3 种月饼，获得 72 + 45/2 = 94.5（亿元）。</p>
+<p>输入格式：</p>
+<pre><code>每个输入包含一个测试用例。每个测试用例先给出一个不超过 
+1000 的正整数 N 表示月饼的种类数、以及不超过 500（以万吨为
+单位）的正整数 D 表示市场最大需求量。随后一行给出 N 个正数
+表示每种月饼的库存量（以万吨为单位）；最后一行给出 N 个正
+数表示每种月饼的总售价（以亿元为单位）。数字间以空格分隔。</code></pre><p>输出格式：</p>
+<pre><code>对每组测试用例，在一行中输出最大收益，以亿元为单位并精确到
+
+小数点后 2 位。</code></pre><p>输入样例：</p>
+<pre><code>3 20
+18 15 10
+75 72 45</code></pre><p>输出样例：</p>
+<pre><code>94.50</code></pre><p>分析：</p>
+<pre><code>定义一个结构体:月饼的库存，与月饼的单价。对月饼数组按单价进行快排（降序）。优先用库存卖出贵的月饼。</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+struct Moon{
+    double store;
+    double simple_price;
+}Moon;
+int compare(const void *a,const void *b){
+    if((*(struct Moon *)a).simple_price&gt;(*(struct Moon *)b).simple_price)
+        return -1;
+    if((*(struct Moon *)a).simple_price&lt;(*(struct Moon *)b).simple_price)
+        return 1;
+    return 0;
+}
+int main(void){
+    int n;
+    double max;
+    scanf(&quot;%d %lf&quot;,&amp;n,&amp;max);//输入数目，销量。
+    struct Moon moon[n];
+    int i=0;
+    while(n-i){
+        scanf(&quot;%lf&quot;,&amp;moon[i].store);//存入库存。
+        i++;
+    }
+    i=0;
+    while(n-i){//故弄玄虚
+        double sum_price;
+        scanf(&quot;%lf&quot;,&amp;sum_price);
+        moon[i].simple_price=sum_price/moon[i].store;//通过单个月饼的库存与总价计算单价存入数组。
+        i++;
+    }
+    qsort(moon,sizeof(moon)/sizeof(Moon),sizeof(Moon),compare);//降序排列月饼有限卖出贵的。
+    double sum=0;
+    for(i=0;i&lt;n;i++){
+        if(moon[i].store&gt;=max){
+            sum=sum+moon[i].simple_price*max;
+            max=0;
+            break;
+        }else{
+            sum+=moon[i].simple_price*moon[i].store;
+            max=max-moon[i].store;
+        }
+        if((max-0)&lt;0.01){//如果剩余销量几乎为0跳出循环。
+            break;
+        }
+    }
+    printf(&quot;%.2f&quot;,sum);//保留两位小数。
+    return 0;
+}</code></pre>
       
       <!-- reward -->
       
@@ -528,7 +459,7 @@ int main()
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/25/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/27/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/25/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/27/">下一页</a>
   </nav>
   
 </section>

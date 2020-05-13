@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1030" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1004" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1030/"
-    >PTA-Basic-1030</a> 
+  <a class="article-title" href="/2019/09/15/PTA-Basic-1004/"
+    >PAT_Basic-1004</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1030/" class="article-date">
-  <time datetime="2019-09-20T12:06:46.000Z" itemprop="datePublished">2019-09-20</time>
+      <a href="/2019/09/15/PTA-Basic-1004/" class="article-date">
+  <time datetime="2019-09-15T08:02:01.000Z" itemprop="datePublished">2019-09-15</time>
 </a>
       
   <div class="article-category">
@@ -141,61 +141,62 @@ var _hmt = _hmt || [];
       
 
       
-      <p>给定一个正整数数列，和正整数 p，设这个数列中的最大值是 M，最小值是 m，如果 M≤mp，则称这个数列是完美数列。</p>
-<p>现在给定参数 p 和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</p>
-<p>输入格式：<br>输入第一行给出两个正整数 N 和 p，其中 N（≤10^5）是输入的正整数的个数，p（≤10^9）是给定的参数。第二行给出 N 个正整数，每个数不超过10^9。</p>
-<p>输出格式：<br>在一行中输出最多可以选择多少个数可以用它们组成一个完美数列。</p>
+      <p>读入 n（&gt;0）名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。</p>
+<p>输入格式：<br>每个测试输入包含 1 个测试用例，格式为</p>
+<p>第 1 行：正整数 n</p>
+<p>第 2 行：第 1 个学生的姓名 学号 成绩</p>
+<p>第 3 行：第 2 个学生的姓名 学号 成绩<br>  … … …<br>第 n+1 行：第 n 个学生的姓名 学号 成绩</p>
+<p>其中姓名和学号均为不超过 10 个字符的字符串，成绩为 0 到 100 之间的一个整数，这里保证在一组测试用例中没有两个学生的成绩是相同的。</p>
+<p>输出格式：<br>对每个测试用例输出 2 行，第 1 行是成绩最高学生的姓名和学号，第 2 行是成绩最低学生的姓名和学号，字符串间有 1 空格。</p>
 <p>输入样例：</p>
-<pre><code>10 8
-2 3 20 4 5 1 6 7 8 9</code></pre><p>输出样例：</p>
-<pre><code>8</code></pre><p>分析:</p>
-<p>将输入的数字存入数组，对数组进行排序。从第i个开始向后找,每当有值与第i个元素之比小于p时，就看看要不要改变sum的值，下一次进行第i+1此比较时，就从i+1+sum处向后遍历。只有这样，其可能有的sum值才可能大于上一次循环得到的sum值。</p>
-<p>代码：</p>
+<p>3</p>
+<p>Joe Math990112 89</p>
+<p>Mike CS991301 100</p>
+<p>Mary EE990830 95</p>
+<p>输出样例：</p>
+<p>Mike CS991301</p>
+<p>Joe Math990112</p>
+<hr>
+<p>分析：</p>
+<p>1直接使用结构体的两个对象存储最大和最小分数对应的学生。<br>2在输入时比较分数的大小，比最大的的的就将最大的重新赋值，比最小的小的就将最小的重新赋值。</p>
+<p>##代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-int compare(const void * a,const void *b){
-    long A=*(long *)a;
-    long B=*(long *)b;
-    if(A&gt;B){
-        return 1;
-    }else{
-        if(A==B){
-            return 0; 
-        }else{
-            return -1;
-        }
+#include&lt;string.h&gt;
+typedef struct student{
+char name[11];
+char id[11];
+int score;
+};
+int main(void){
+int number;
+scanf(&quot;%d&quot;,&amp;number);
+getchar();
+struct student max,min;
+number--;
+scanf(&quot;%s %s %d&quot;,max.name,max.id,&amp;max.score);
+min=max;
+while(number--){
+    getchar();
+    char name[11];
+    char id[11];
+    int score;
+    scanf(&quot;%s %s %d&quot;,name,id,&amp;score);
+    if(max.score&lt;score){
+        strcpy(max.name,name);
+        strcpy(max.id,i
+        max.score=score;
+    }
+    if(min.score&gt;score){
+        strcpy(min.name,name);
+        strcpy(min.id,id);
+        min.score=score;
     }
 }
-int main(void){
-    int N;
-    double p;
-    scanf(&quot;%ld %lf&quot;,&amp;N,&amp;p);
-    long nums[N];
-    long x=0;
-    int i=0;
-    while(N--){
-        scanf(&quot;%d&quot;,&amp;x);
-        nums[i++]=x;
-    } 
-    int MAX=0;
-    qsort(nums,i,sizeof(long),compare);
-        for(int j=0;j&lt;i;j++){//外层遍历，从0开始，
-            for(int k=j+MAX;k&lt;i;k++){
-                if(nums[k]*1.0/nums[j]&gt;p){
-                    break;
-                }
-                else{
-                    if(k-j+1&gt;MAX){
-                        MAX=k-j+1;
-                    }
-                }
-            }
-        }
-    printf(&quot;%d&quot;,MAX);
-    return 0;
-}</code></pre><p>注意：</p>
-<p>此处存储数值建议使用long存储数字，double存储p的值。</p>
-
+printf(&quot;%s %s\n&quot;,max.name,max.id);
+printf(&quot;%s %s&quot;,min.name,min.id);
+return 0;
+}
+``</code></pre>
       
       <!-- reward -->
       
@@ -226,7 +227,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1029" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1003" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -234,8 +235,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1029/"
-    >PTA-Basic-1029</a> 
+  <a class="article-title" href="/2019/09/15/PTA-Basic-1003/"
+    >PTA-Basic-1003</a> 
 </h2>
  
 
@@ -244,8 +245,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1029/" class="article-date">
-  <time datetime="2019-09-20T12:06:29.000Z" itemprop="datePublished">2019-09-20</time>
+      <a href="/2019/09/15/PTA-Basic-1003/" class="article-date">
+  <time datetime="2019-09-15T07:35:57.000Z" itemprop="datePublished">2019-09-15</time>
 </a>
       
   <div class="article-category">
@@ -266,39 +267,93 @@ int main(void){
       
 
       
-      <p>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及实际被输入的文字，请你列出肯定坏掉的那些键。</p>
-<p>输入格式：<br>输入在 2 行中分别给出应该输入的文字、以及实际被输入的文字。每段文字是不超过 80 个字符的串，由字母 A-Z（包括大、小写）、数字 0-9、以及下划线 _（代表空格）组成。题目保证 2 个字符串均非空。</p>
-<p>输出格式：<br>按照发现顺序，在一行中输出坏掉的键。其中英文字母只输出大写，每个坏键只输出一次。题目保证至少有 1 个坏键。</p>
+      <p>“答案正确”是自动判题系统给出的最令人欢喜的回复。本题属于 PAT 的“答案正确”大派送 —— 只要读入的字符串满足下列条件，系统就输出“答案正确”，否则输出“答案错误”。</p>
+<p>得到“答案正确”的条件是：</p>
+<p>字符串中必须仅有 P、 A、 T这三种字符，不可以包含其它字符；]<br>任意形如 xPATx 的字符串都可以获得“答案正确”，其中 x 或者是空字符串，或者是仅由字母 A 组成的字符串;</p>
+<p>如果 aPbTc 是正确的，那么 aPbATca 也是正确的，其中 a、 b、 c 均或者是空字符串，或者是仅由字母 A 组成</p>
+<p>的字符串。</p>
+<p>现在就请你为 PAT 写一个自动裁判程序，判定哪些字符串是可以获得“答案正确”的。</p>
+<p>输入格式：<br>每个测试输入包含 1 个测试用例。第 1 行给出一个正整数 n (&lt;10)，是需要检测的字符串个数。接下来每个字符串占一行，字符串长度不超过 100，且不包含空格。</p>
+<p>输出格式：<br>每个字符串的检测结果占一行，如果该字符串可以获得“答案正确”，则输出 YES，否则输出 NO。</p>
 <p>输入样例：</p>
-<pre><code>7_This_is_a_test
-_hs_s_a_es</code></pre><p>输出样例：</p>
-<pre><code>7TI</code></pre><p>分析：</p>
-<p>存储两个字符串，遍历第一个字符串每个字符，如果字符串二中没有，且其对应的大写字母用来存放结果字符的字符数组中也没有就将其存入数组中并数字加1。跳出循环，最后要在末尾加上‘\0’。</p>
+<p>8</p>
+<p>PAT</p>
+<p>PAAT</p>
+<p>AAPATAA</p>
+<p>AAPAATAAAA</p>
+<p>xPATx</p>
+<p>PT</p>
+<p>Whatever</p>
+<p>APAAATAA</p>
+<p>输出样例：</p>
+<p>YES</p>
+<p>YES</p>
+<p>YES</p>
+<p>YES</p>
+<p>NO</p>
+<p>NO</p>
+<p>NO</p>
+<p>NO<br>题目分析：</p>
+<p>1必须含有P,A,T这三个字符，且不含其他字符。<br>2字符P ,T 的数目必须为1；<br>3字符P与T之间的字符数*P字符前A的个数必须等于字符T后的A的数目。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
+
 #include&lt;string.h&gt;
-#include&lt;ctype.h&gt;
+
 int main(void){
-    char str[100]={&quot;\0&quot;};
-    gets(str);
-    char str2[100]={&quot;\0&quot;};
-    gets(str2);
-    int i=0;
-    char result[80]={&quot;\0&quot;};
-    int num=0;
-    while(str[i]!=&apos;\0&apos;){
-        if(!strchr(str2,str[i])){
-            char ch=toupper(str[i]);
-            if(!strchr(result,ch)){
-                result[num++]=ch;
+
+int number;
+scanf(&quot;%d&quot;,&amp;number);
+char str[100];
+int i=0;
+char* result[number];
+while(i&lt;number){
+    int number_p=0;
+    int number_t=0;
+    int flag1=0,flag2=0,flag3=0;
+    int index_p=0,index_t=0;
+    scanf(&quot;%s&quot;,str);
+    getchar();
+    for(int j=0;j&lt;strlen(str);j++){
+        if(str[j]==&apos;A&apos;){
+            flag1=1
+        }
+        if(str[j]==&apos;P&apos;){
+            flag2=1;
+            number_p++;
+        }
+        if(str[j]==&apos;T&apos;){
+            flag3=1;
+            number_t++;
+        }
+        if(str[j]!=&apos;A&apos;&amp;&amp;str[j]!
+=&apos;T&apos;&amp;&amp;str[j]!=&apos;P&apos;){
+            break;
+        }else{
+            if(str[j]==&apos;P&apos;){
+                index_p=j;
+            }
+            if(str[j]==&apos;T&apos;){
+                index_t=j;
+                break;
             }
         }
-        i++;
     }
-    result[num]=&apos;\0&apos;;
-    printf(&quot;%s&quot;,result);
-    return 0;
-}</code></pre>
+    if(index_p!=index_t&amp;&amp;(index_p*(index_t-index_p-1)==(strlen(str)-index_t-1))
+
+&amp;&amp;flag1&amp;&amp;flag2&amp;&amp;flag3&amp;&amp;number_p==1&amp;&amp;number_t==1){
+        result[i]=&quot;YES&quot;;
+    }else{
+        result[i]=&quot;NO&quot;;
+    }
+    i++;
+}
+for(int i=0;i&lt;number;i++){
+    printf(&quot;%s\n&quot;,result[i]);
+}
+return 0;
+
+} </code></pre>
       
       <!-- reward -->
       
@@ -329,7 +384,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1028" class="article article-type-post" itemscope
+    <article id="n-Oracle学习" class="article article-type-n" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -337,8 +392,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1028/"
-    >PTA-Basic-1028</a> 
+  <a class="article-title" href="/2019/09/14/Oracle%E5%AD%A6%E4%B9%A0/"
+    >Oracle学习</a> 
 </h2>
  
 
@@ -347,12 +402,12 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1028/" class="article-date">
-  <time datetime="2019-09-20T12:06:06.000Z" itemprop="datePublished">2019-09-20</time>
+      <a href="/2019/09/14/Oracle%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2019-09-14T10:07:35.000Z" itemprop="datePublished">2019-09-14</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/Oracle/">Oracle</a>
   </div>
 
       
@@ -369,81 +424,15 @@ int main(void){
       
 
       
-      <p>某城镇进行人口普查，得到了全体居民的生日。现请你写个程序，找出镇上最年长和最年轻的人。</p>
-<p>这里确保每个输入的日期都是合法的，但不一定是合理的——假设已知镇上没有超过 200 岁的老人，而今天是 2014 年 9 月 6 日，所以超过 200 岁的生日和未出生的生日都是不合理的，应该被过滤掉。</p>
-<p>输入格式：<br>输入在第一行给出正整数 N，取值在(0,10^5]；随后 N 行，每行给出 1 个人的姓名（由不超过 5 个英文字母组成的字符串）、以及按 yyyy/mm/dd（即年/月/日）格式给出的生日。题目保证最年长和最年轻的人没有并列。</p>
-<p>输出格式：<br>在一行中顺序输出有效生日的个数、最年长人和最年轻人的姓名，其间以空格分隔。</p>
-<p>输入样例：</p>
-<pre><code>5
-John 2001/05/12
-Tom 1814/09/06
-Ann 2121/01/30
-James 1814/09/05
-Steve 1967/11/20</code></pre><p>输出样例：</p>
-<pre><code>3 Tom John</code></pre><p>分析：</p>
-<p>定义一个结构体，首先日期一定都是合法的，但是不一定合理。定义一个在<br>最早的可能的年份出生的人，与今天出生的人，然后输入的每个人的数据与这两个人对比，合格的就存入person数组中。然后对此数组进行快排，输出第一个元素，与最后一个元素。注意：当没有人时，只输出一个0.</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-typedef struct person{
-    char name[6];
-    int birthyear;
-    int birthmonth;
-    int birthday;
-}person;
-int compare(const void * a,const void * b){
-    person A=*(person *)a;
-    person B=*(person *)b;
-    if(A.birthyear&gt;B.birthyear){
-        return 1;
-    }else if(A.birthyear&lt;B.birthyear){
-        return -1;
-    }else{
-        if(A.birthmonth&gt;B.birthmonth){
-            return 1;
-        }else if(A.birthmonth&lt;B.birthmonth){
-            return -1;
-        }else{
-                if(A.birthday&gt;B.birthday){
-                return 1;
-            }else if(A.birthday&lt;B.birthday){
-                return -1;
-            }else{
-                return 0;
-            }
-        }
-    }
-}
-int main(void){
-    long num;
-    scanf(&quot;%ld&quot;,&amp;num);
-    long i=0;
-    person persons[num],oldperson,p,lastperson;  
-    oldperson.birthyear=1814;
-    oldperson.birthmonth=9;
-    oldperson.birthday=6;
-    lastperson.birthyear=2014;
-    lastperson.birthmonth=9;
-    lastperson.birthday=7;
-    while(num--){
-        scanf(&quot;%s %d/%d/%d&quot;,p.name,&amp;p.birthyear,&amp;p.birthmonth,&amp;p.birthday);
-        if(compare(&amp;p,&amp;oldperson)&gt;=0 &amp;&amp; compare(&amp;p,&amp;lastperson)&lt;0){
-            strcpy(persons[i].name,p.name);
-            persons[i].birthyear=p.birthyear;
-            persons[i].birthmonth=p.birthmonth;
-            persons[i].birthday=p.birthday;
-            i++;
-        }
-    }
-    qsort(persons,i,sizeof(person),compare);
-    if(i!=0)
-    printf(&quot;%d %s %s&quot;,i,persons[0].name,persons[i-1].name);
-    else{
-        printf(&quot;0&quot;);
-    }
-    return 0;
-}</code></pre>
+      <p>#####为什么要使用数据库？<br>Java中的数据储存：通过变量（基本了类型：存储少量数据，引用类型存储：存储数据，保证数据的完整性）<br>Java中的数据源：1声明变量直接赋值，2io流从硬盘中读取。<br>Java在处理数据时，需要从硬盘中读取数据，如果数据存放的非常凌乱的话，就会造成数据读取效率的大大降低，还有可能带来数据的冗余。<br>#####解决方法：<br>使用数据库存储数据，数据库时帮助我们更合理的存储数据到硬盘。</p>
+<hr>
+<p>数据库相关概念：<br>数据：描述事物，且能在计算机中表示的符号集合。<br>数据库：包括数据库管理系统，真正的数据库。<br>数据库管理系统：用户直接用来操作数据库的软件。<br>数据库系统：包括用户，数据库应用系统，数据库管理系统，与数据库。<br>开发人员使用数据库管理系统，普通人使用数据库应用系统。</p>
+<hr>
+<p>数据库发展阶段：<br>1网状数据库阶段，2层次数据库阶段，3关系数据库阶段。<br>4对象数据库阶段，5NOSQL数据库。</p>
+<p>关系数据库特点：A:采用关系结构存与管理数据，B采用结构化语言查询（SQL）作为客户端数据库与服务器之间沟通的桥梁。C此时目前的主流的数据库技术。D采用二维表存储，存储数据，数据的表示，数据之间的关系，常见的有<em>Oracle，MySQL</em>，sqlserver DB2，Access.</p>
+<p>对象数据库特点：吧面向对象的方法和数据库技术结合到一起，可以使数据库系统的分析与设计最大程度地与人们对客观世界的认知相符合。</p>
+<p>NOSQL数据库特点:<br>A:not only SQL 数据库，如MongoDB，B关系数据库在超大规模和高并发的web2.0的纯动态网站已经显得力不从心，暴露了很多难以克服的问题，NOSQL数据库的产生就是为了解决大规模数据集合和多重数据带来的挑战。</p>
+
       
       <!-- reward -->
       
@@ -455,7 +444,7 @@ int main(void){
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SQL/" rel="tag">SQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
 
 
     </footer>
@@ -480,7 +469,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/35/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><a class="page-number" href="/page/38/">38</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/37/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/35/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span>
   </nav>
   
 </section>
