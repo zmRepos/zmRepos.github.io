@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1069" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1066" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1069/"
-    >PTA-Basic-1069</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1066/"
+    >PTA-Basic-1066</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1069/" class="article-date">
-  <time datetime="2019-10-07T12:43:06.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/07/PTA-Basic-1066/" class="article-date">
+  <time datetime="2019-10-07T12:42:25.000Z" itemprop="datePublished">2019-10-07</time>
 </a>
       
   <div class="article-category">
@@ -141,69 +141,43 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<p>小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
-<p>输入格式：<br>输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。</p>
-<p>注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取</p>
-<p>下一位。</p>
-<p>输出格式：</p>
-<p>按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going…。</p>
-<p>输入样例 1：</p>
-<pre><code>9 3 2
-Imgonnawin!
-PickMe
-PickMeMeMeee
-LookHere
-Imgonnawin!
-TryAgainAgain
-TryAgainAgain
-Imgonnawin!
-TryAgainAgain</code></pre><p>输出样例 1：</p>
-<pre><code>PickMe
-Imgonnawin!
-TryAgainAgain</code></pre><p>输入样例 2：</p>
-<pre><code>2 3 5
-Imgonnawin!
-PickMe</code></pre><p>输出样例 2：</p>
-<pre><code>Keep going...</code></pre><p>代码：</p>
+      <p>题目：<br>图像过滤是把图像中不重要的像素都染成背景色，使得重要部分被凸显出来。现给定一幅黑白图像，要求你将灰度值位于某指定区间内的所有像素颜色都用一种指定的颜色替换。</p>
+<p>输入格式：<br>输入在第一行给出一幅图像的分辨率，即两个正整数 M 和 N（0&lt;M,N≤500），另外是待过滤的灰度值区间端点 A 和 B（0≤A&lt;B≤255）、以及指定的替换灰度值。随后 M 行，每行给出 N 个像素点的灰度值，其间以空格分隔。所有灰度值都在 [0, 255] 区间内。</p>
+<p>输出格式：<br>输出按要求过滤后的图像。即输出 M 行，每行 N 个像素灰度值，每个灰度值占 3 位（例如黑色要显示为 000），其间以一个空格分隔。行首尾不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>3 5 100 150 0
+3 189 254 101 119
+150 233 151 99 100
+88 123 149 0 255</code></pre><p>输出样例：</p>
+<pre><code>003 189 254 000 000
+000 233 151 099 000
+088 000 000 000 255</code></pre><p>代码：</p>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-char result[1000][21];
-int check(char *str,int t){
-    for(int j=0;j&lt;t;j++){
-        if(strcmp(str,result[j])==0){//比较人数数组中是否已经有这个人了
-            return 1;
-        }
-    }
-    return 0;
-}
+
 int main()
 {
-    int m,n,s;
-    scanf(&quot;%d%d%d&quot;,&amp;m,&amp;n,&amp;s);
-    char str[21];
-    int t=0;//用来存储有多少人得奖。
-    for(int i=1;i&lt;=m;i++){
-            scanf(&quot;%s&quot;,str);
-            getchar();
-        if(i==s){
-                if(check(str,t)){//此人已经转发过了
-                    s=s+1;//看看它的下一个人是否合适
-                    continue;
-                }else{
-                    strcpy(result[t++],str);//此人没有转发过，就存入数组。
-                    s=s+n;//并且到下一个相隔n的人。
-                }
+    int n=0,m=0,a=0,b=0,replace=0,h=0;
+    scanf(&quot;%d %d %d %d %d&quot;,&amp;m,&amp;n,&amp;a,&amp;b,&amp;replace);
+    int dlex[m][n];
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            scanf(&quot;%d&quot;,&amp;h);
+            if(h&lt;=b&amp;&amp;h&gt;=a){
+                h=replace;
+            }
+            dlex[i][j]=h;
         }
     }
-    if(t==0){
-        printf(&quot;Keep going...&quot;);
-    }else{
-        for(int i=0;i&lt;t;i++){
-            puts(result[i]);
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            printf(&quot;%03d&quot;,dlex[i][j]);
+            if(j!=n-1){
+                printf(&quot; &quot;);
+            }
         }
-        }
+        printf(&quot;\n&quot;);
+    }
     return 0;
 }</code></pre>
       
@@ -236,7 +210,7 @@ int main()
 
 </article>
     
-    <article id="post-PTA-Basic-1068" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1065" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -244,8 +218,8 @@ int main()
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1068/"
-    >PTA-Basic-1068</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1065/"
+    >PTA-Basic-1065</a> 
 </h2>
  
 
@@ -254,8 +228,8 @@ int main()
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1068/" class="article-date">
-  <time datetime="2019-10-07T12:42:51.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/07/PTA-Basic-1065/" class="article-date">
+  <time datetime="2019-10-07T12:42:14.000Z" itemprop="datePublished">2019-10-07</time>
 </a>
       
   <div class="article-category">
@@ -276,87 +250,67 @@ int main()
       
 
       
-      <p>题目:<br>对于计算机而言，颜色不过是像素点对应的一个 24 位的数值。现给定一幅分辨率为 M×N 的画，要求你找出万绿丛中的一点红，即有独一无二颜色的那个像素点，并且该点的颜色与其周围 8 个相邻像素的颜色差充分大。</p>
-<p>输入格式：<br>输入第一行给出三个正整数，分别是 M 和 N（≤ 1000），即图像的分辨率；以及 TOL，是所求像素点与相邻点的颜色差阈值，色差超过 TOL 的点才被考虑。随后 N 行，每行给出 M 个像素的颜色值，范围在 [0,2<br>​24<br>​​ ) 内。所有同行数字间用空格或 TAB 分开。</p>
-<p>输出格式：<br>在一行中按照 (x, y): color 的格式输出所求像素点的位置以及颜色值，其中位置 x 和 y 分别是该像素在图像矩阵中的列、行编号（从 1 开始编号）。如果这样的点不唯一，则输出 Not Unique；如果这样的点不存在，则输出 Not Exist。</p>
-<p>输入样例 1：</p>
-<pre><code>8 6 200
-0      0       0        0        0          0           0        0
-65280      65280    65280    16711479 65280    65280    65280    65280
-16711479 65280    65280    65280    16711680 65280    65280    65280
-65280      65280    65280    65280    65280    65280    165280   165280
-65280      65280       16777015 65280    65280    165280   65480    165280
-16777215 16777215 16777215 16777215 16777215 16777215 16777215 16777215</code></pre><p>输出样例 1：</p>
-<pre><code>(5, 3): 16711680</code></pre><p>输入样例 2：</p>
-<pre><code>4 5 2
-0 0 0 0
-0 0 3 0
-0 0 0 0
-0 5 0 0
-0 0 0 0</code></pre><p>输出样例 2：</p>
-<pre><code>Not Unique</code></pre><p>输入样例 3：</p>
-<pre><code>3 3 5
-1 2 3
-3 4 5
-5 6 7</code></pre><p>输出样例 3：</p>
-<pre><code>Not Exist</code></pre><p>分析：定义一个足够大的数组用来存储像素点的次数，定义一个结构体用来表示像素点（有坐标，数值），每输入一个像素数值，就存入对应的像素点二维数组中，并在记录次数的数组中加1，然后定义一个判断像素点是否合格的函数，对每个像素点判断是否合格，并且是否只有一个。当这样的点超过1个是就可以不用继续找了。<br>此题目的一个坑就是在所有的点中查找独特的点不管它是否合格，再再独特的点中找合格的个数。而我陷入了这个坑认为不合格的像素点不用加到次数数组中。</p>
+      <p>“单身狗”是中文对于单身人士的一种爱称。本题请你从上万人的大型派对中找出落单的客人，以便给予特殊关爱。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 50 000），是已知夫妻/伴侣的对数；随后 N 行，每行给出一对夫妻/伴侣——为方便起见，每人对应一个 ID 号，为 5 位数字（从 00000 到 99999），ID 间以空格分隔；之后给出一个正整数 M（≤ 10 000），为参加派对的总人数；随后一行给出这 M 位客人的 ID，以空格分隔。题目保证无人重婚或脚踩两条船。</p>
+<p>输出格式：<br>首先第一行输出落单客人的总人数；随后第二行按 ID 递增顺序列出落单的客人。ID 间用 1 个空格分隔，行的首尾不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>3
+11111 22222
+33333 44444
+55555 66666
+7
+55555 44444 10000 88888 22222 11111 23333</code></pre><p>输出样例：</p>
+<pre><code>5
+10000 23333 44444 55555 88888</code></pre><p>分析：<br>定义一个情侣数组，男方存储女方的编号，女方存放男方的编号，这样就可以通过一个人找到另一个人，并判断另一个人是否到场。定义一个flag数组用于标记某个人是否到场，定义一个数组用于存放单生狗。</p>
 <p>代码：</p>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-#include&lt;math.h&gt;
-//定义一个二维数组存储像素点
-//定义结构体存储合格的像素点，与坐标，次数，一共有多少个像素点
-int map[2&lt;&lt;24]={0};
-int pixels[1000][1000]={0};
-typedef struct pixel{
-    int x;
-    int y;
-    int id;
-}pixel;
-int check(int i,int j,int n,int m,int tol);
-int main()
-{
-    int m,n,tol;//仿佛数组数目太大的变量只能声明为 全局变量，否则程序不会执行 
-    scanf(&quot;%d %d %d&quot;,&amp;m,&amp;n,&amp;tol);
-    for(int i=0;i&lt;n;i++){
-        for(int j=0;j&lt;m;j++){
-            scanf(&quot;%d&quot;,&amp;pixels[i][j]);
-            map[pixels[i][j]]++;//将对应的像素点的个数加1.
-        }
-    }
-    int time=0,x=0,y=0,id=0;//time用来记录独特点的个数
-    for(int i=0;i&lt;n;i++){
-        for(int j=0;j&lt;m;j++){
-            if(map[pixels[i][j]]==1&amp;&amp;check(i,j,n,m,tol)){
-                y=j+1;
-                x=i+1;
-                id=pixels[i][j];
-                time++;
-            }
-            if(time==2){//优化当数目超过二是直接跳出循环
-                break;
-            }
-        }
-    }
-        if(time==0){
-            printf(&quot;Not Exist&quot;);
-        }else if(time==1){
-            printf(&quot;(%d, %d): %d&quot;,y,x,id);
-        }else{
-            printf(&quot;Not Unique&quot;);
-        }
-    return 0;
+int cmp(const void *a,const void *b){
+return *(int *)a-*(int *)b;
 }
-int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左上就看左上，没有就不看，其他一样。
-            if(i-1&gt;=0&amp;&amp;j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i-1][j-1])&lt;=tol){return 0;}//左上
-            if(j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i][j-1])&lt;=tol){return 0;}//左
-            if(i+1&lt;n&amp;&amp;j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i+1][j-1])&lt;=tol){return 0;}//左下
-            if(i-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i-1][j])&lt;=tol){return 0;}//上
-            if(i+1&lt;n&amp;&amp;abs(pixels[i][j]-pixels[i+1][j])&lt;=tol){return 0;}//下
-            if(i-1&gt;=0&amp;&amp;j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i-1][j+1])&lt;=tol){return 0;}//右上
-            if(j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i][j+1])&lt;=tol){return 0;}//右
-            if(i+1&lt;n&amp;&amp;j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i+1][j+1])&lt;=tol){return 0;}
-            return 1;
+int main()
+{//测试点一是关于对象为0的情况
+    int n=0,m=0,x=0,time=0;
+    int pops[100000]={-1};/初始化数组，-1表示没有情侣，不能为0，如果为0，那么所有单身狗的情侣都是0.
+    int flag[100000]={0};
+    scanf(&quot;%d&quot;,&amp;n);
+    int n1,n2;
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d %d&quot;,&amp;n1,&amp;n2);
+        pops[n1]=n2;
+        pops[n2]=n1;
+    }
+    scanf(&quot;%d&quot;,&amp;m);
+    int result[m];
+    int res[m];
+    for(int i=0;i&lt;m;i++){
+        scanf(&quot;%d&quot;,&amp;x);
+        if(pops[x]!=-1){//此处如果将输入的每一个元对应的人都标记的话可能会导致下面去对应值时取到0的人头下标不为0可能会导致数据缺失。
+            flag[x]=1;//如果有情侣，才有必要标记到场。
+        }
+        res[i]=x;
+    }
+    for(int i=0;i&lt;m;i++){
+            x=res[i];
+        if(pops[x]==-1){//如果对应的人没有情侣
+                result[time]=x;
+                time++;
+        }else if(flag[x]+flag[pops[x]]!=2){//如果情侣的某一方到场二另一方没有到场，也为单身狗。
+                result[time]=x;
+                time++;
+        }else{
+
+        }
+    }
+    qsort(result,time,sizeof(int),cmp);//对单身狗进行排序
+    printf(&quot;%d\n&quot;,time);
+    for(int i=0;i&lt;time;i++){
+        printf(&quot;%05d&quot;,result[i]);
+        if(i!=time-1){
+            printf(&quot; &quot;);
+        }
+    }
+    return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -388,7 +342,7 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
 
 </article>
     
-    <article id="post-PTA-Basic-1067" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1064" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -396,8 +350,8 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1067/"
-    >PTA-Basic-1067</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1064/"
+    >PTA-Basic-1064</a> 
 </h2>
  
 
@@ -406,8 +360,8 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1067/" class="article-date">
-  <time datetime="2019-10-07T12:42:40.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/07/PTA-Basic-1064/" class="article-date">
+  <time datetime="2019-10-07T12:42:02.000Z" itemprop="datePublished">2019-10-07</time>
 </a>
       
   <div class="article-category">
@@ -428,61 +382,47 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
       
 
       
-      <p>题目：</p>
-<p>当你试图登录某个系统却忘了密码时，系统一般只会允许你尝试有限多次，当超出允许次数时，账号就会被锁死。本题就请你实现这个小功能。</p>
-<p>输入格式：<br>输入在第一行给出一个密码（长度不超过 20 的、不包含空格、Tab、回车的非空字符串）和一个正整数 N（≤ 10），分别是正确的密码和系统允许尝试的次数。随后每行给出一个以回车结束的非空字符串，是用户尝试输入的密码。输入保证至少有一次尝试。当读到一行只有单个 # 字符时，输入结束，并且这一行不是用户的输入。</p>
-<p>输出格式：<br>对用户的每个输入，如果是正确的密码且尝试次数不超过 N，则在一行中输出 Welcome in，并结束程序；如果是错误的，则在一行中按格式输出 Wrong password: 用户输入的错误密码；当错误尝试达到 N 次时，再输出一行 Account locked，并结束程序。</p>
-<p>输入样例 1：</p>
-<pre><code>Correct%pw 3
-correct%pw
-Correct@PW
-whatisthepassword!
-Correct%pw
-#</code></pre><p>输出样例 1：</p>
-<pre><code>Wrong password: correct%pw
-Wrong password: Correct@PW
-Wrong password: whatisthepassword!
-Account locked</code></pre><p>输入样例 2：</p>
-<pre><code>cool@gplt 3
-coolman@gplt
-coollady@gplt
-cool@gplt
-try again
-#</code></pre><p>输出样例 2：</p>
-<pre><code>Wrong password: coolman@gplt
-Wrong password: coollady@gplt
-Welcome in</code></pre><p>分析：</p>
-<pre><code>定义一个字符数组存储正确的密码，定义一个数字存储输入次数。
-用C语言自带的字符串比较函数，如果结果为0，证明两个字符串相同，即密码正确。
-此题目的坑比较多（用户输入密码长度不一定为21以内，且不一定不含空格，如果输入正确或次数已到则禁止输入。）</code></pre><p>代码：</p>
+      <p>题目：<br>如果两个整数各位数字的和是一样的，则被称为是“朋友数”，而那个公共的和就是它们的“朋友证号”。例如 123 和 51 就是朋友数，因为 1+2+3 = 5+1 = 6，而 6 就是它们的朋友证号。给定一些整数，要求你统计一下它们中有多少个不同的朋友证号。</p>
+<p>输入格式：<br>输入第一行给出正整数 N。随后一行给出 N 个正整数，数字间以空格分隔。题目保证所有数字小于 10<br>​4<br>​​ 。</p>
+<p>输出格式：<br>首先第一行输出给定数字中不同的朋友证号的个数；随后一行按递增顺序输出这些朋友证号，数字间隔一个空格，且行末不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>8
+123 899 51 998 27 33 36 12</code></pre><p>输出样例：</p>
+<pre><code>4
+3 6 9 26</code></pre><p>分析：<br>因为题目说小于10^4所以所有朋友数最大为36，定义一个数组用下标表示朋友数，存储的数字代表是否出现此朋友数（0为没有出现其他为出现），遍历数组存储的数字依次输出下标。</p>
+<p>代码：</p>
 <pre><code>#include &lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-int main(void)
+#include &lt;stdlib.h&gt;
+int main()
 {
-    char cpw[22]={&apos;\0&apos;};
+    int n=0;
+    scanf(&quot;%d&quot;,&amp;n);
+    int m=0;
+    int friends[37]={0};
     int time=0;
-    scanf(&quot;%s %d&quot;,cpw,&amp;time);//密码中没有空格
-    getchar();//吸取第一行的末尾的回车
-    while(1){
-        char pw[500]={&apos;\0&apos;};//输入密码的长度不一定为20
-        gets(pw);//输入的字符串中可能有空格
-        if(strlen(pw)==1&amp;&amp;pw[0]==&apos;#&apos;){
-            break;
+    for(int i=0;i&lt;n;i++){
+        int total=0;
+        scanf(&quot;%d&quot;,&amp;m);
+        while(m!=0){
+            total+=m%10;
+            m=m/10;
         }
-        if(time&gt;0){
-            if(!strcmp(cpw,pw)){
-                printf(&quot;Welcome in\n&quot;);
-                break;
-            }else{
-                printf(&quot;Wrong password: %s\n&quot;,pw);
-                time--;
-            }
+        if(friends[total]==0){
+            time++;
         }
-        if(time==0){
-                printf(&quot;Account locked\n&quot;);
-                break;
+        friends[total]++;
+    }
+    printf(&quot;%d\n&quot;,time);
+    int i=0;
+    for(i=0;i&lt;37;i++){
+        if(friends[i]&gt;=1){
+            printf(&quot;%d&quot;,i);
+                if(time&gt;1){
+                printf(&quot;%c&quot;,&apos; &apos;);
             }
+        time--;
+        }
+
     }
     return 0;
 }</code></pre>
@@ -522,7 +462,7 @@ int main(void)
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
   </nav>
   
 </section>

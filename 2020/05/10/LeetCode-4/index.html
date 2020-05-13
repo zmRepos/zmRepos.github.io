@@ -88,7 +88,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">253</span>
+            <span class="post-count">286</span>
         </span>
     </span>
 
@@ -108,6 +108,8 @@ var _hmt = _hmt || [];
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -120,45 +122,13 @@ var _hmt = _hmt || [];
       
 
       
-      <p>###4. 寻找两个正序数组的中位数<br>##题目：<br>    给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。</p>
-<pre><code>请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。
-
-你可以假设 nums1 和 nums2 不会同时为空。</code></pre><p>##示例 1</p>
-<pre><code>nums1 = [1, 3]
-nums2 = [2]
-
-则中位数是 2.0</code></pre><p>##示例 2</p>
-<pre><code>nums1 = [1, 2]
-nums2 = [3, 4]
-
-则中位数是 (2 + 3)/2 = 2.5</code></pre><p>##思路<br>    将所有数字存储到一个数组中，然后根据中位数的求法求中位数。<br>##代码</p>
-<pre><code>public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int i=0,j=0,time=0;
-        int totalNum=nums1.length+nums2.length;
-        int[] nums=new int[totalNum];
-        while(i&lt;nums1.length&amp;&amp;j&lt;nums2.length){
-            if(i==nums1.length||j==nums2.length){
-                break;
-            }else{
-                if(nums1[i]&lt;=nums2[j]){
-                    nums[time++]=nums1[i++];
-                }else{
-                    nums[time++]=nums2[j++];
-                }
-            }
-        }
-        while(i&lt;nums1.length){
-            nums[time++]=nums1[i++];
-        }
-        while(j&lt;nums2.length){
-            nums[time++]=nums2[j++];
-        }
-        if(totalNum%2==0){
-            return (nums[totalNum&gt;&gt;1]+nums[(totalNum&gt;&gt;1)-1])/2.0;
-        }else{
-            return nums[totalNum&gt;&gt;1]/1.0;
-        }
-}</code></pre>
+      <h1 id="4-寻找两个正序数组的中位数"><a href="#4-寻找两个正序数组的中位数" class="headerlink" title="4. 寻找两个正序数组的中位数"></a>4. 寻找两个正序数组的中位数</h1><a id="more"></a>
+<h2 id="题目："><a href="#题目：" class="headerlink" title="题目："></a>题目：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。</span><br><span class="line"></span><br><span class="line">请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m + n))。</span><br><span class="line"></span><br><span class="line">你可以假设 nums1 和 nums2 不会同时为空。</span><br></pre></td></tr></table></figure>
+<h2 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">nums1 &#x3D; [1, 3]</span><br><span class="line">nums2 &#x3D; [2]</span><br><span class="line"></span><br><span class="line">则中位数是 2.0</span><br></pre></td></tr></table></figure>
+<h2 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">nums1 &#x3D; [1, 2]</span><br><span class="line">nums2 &#x3D; [3, 4]</span><br><span class="line"></span><br><span class="line">则中位数是 (2 + 3)&#x2F;2 &#x3D; 2.5</span><br></pre></td></tr></table></figure>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将所有数字存储到一个数组中，然后根据中位数的求法求中位数。</span><br></pre></td></tr></table></figure>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">findMedianSortedArrays</span><span class="params">(<span class="keyword">int</span>[] nums1, <span class="keyword">int</span>[] nums2)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">0</span>,time=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> totalNum=nums1.length+nums2.length;</span><br><span class="line">		<span class="keyword">int</span>[] nums=<span class="keyword">new</span> <span class="keyword">int</span>[totalNum];</span><br><span class="line">		<span class="keyword">while</span>(i&lt;nums1.length&amp;&amp;j&lt;nums2.length)&#123;</span><br><span class="line">			<span class="keyword">if</span>(i==nums1.length||j==nums2.length)&#123;</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				<span class="keyword">if</span>(nums1[i]&lt;=nums2[j])&#123;</span><br><span class="line">					nums[time++]=nums1[i++];</span><br><span class="line">				&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">					nums[time++]=nums2[j++];</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(i&lt;nums1.length)&#123;</span><br><span class="line">			nums[time++]=nums1[i++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(j&lt;nums2.length)&#123;</span><br><span class="line">			nums[time++]=nums2[j++];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(totalNum%<span class="number">2</span>==<span class="number">0</span>)&#123;</span><br><span class="line">			<span class="keyword">return</span> (nums[totalNum&gt;&gt;<span class="number">1</span>]+nums[(totalNum&gt;&gt;<span class="number">1</span>)-<span class="number">1</span>])/<span class="number">2.0</span>;</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			<span class="keyword">return</span> nums[totalNum&gt;&gt;<span class="number">1</span>]/<span class="number">1.0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度O-n"><a href="#时间复杂度O-n" class="headerlink" title="时间复杂度O(n)"></a>时间复杂度O(n)</h3>
       
       <!-- reward -->
       

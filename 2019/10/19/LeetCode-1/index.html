@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode-%E4%B8%AD%E7%AD%89/">LeetCode-中等</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E7%BB%84/">数组</a>
   </div>
 
       
@@ -88,7 +88,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">658</span>
+            <span class="post-count">697</span>
         </span>
     </span>
 
@@ -108,6 +108,8 @@ var _hmt = _hmt || [];
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -120,82 +122,13 @@ var _hmt = _hmt || [];
       
 
       
-      <p>语言：Java</p>
-<p>题目描述：<br>    给定一个数组，找出其中何为目标值的两个数。（你可以假设每种输入只有一种答案，且同样的元素不能被重复利用）<br>    实例：<br>     给定nums=[2,7,11,15],target=9;<br>     因为nums[0]+nums[1]==target=2+7=9<br>     所以返回[0,1]<br>     @author zm<br>实现思路：<br>一：</p>
-<pre><code>二重循环，找到即输出。</code></pre><p>二：<br>    使用map，将数组存入map中，然后遍历这个数组，在map中查找target-a[i]的值如果有，说明有解，直接输出。<br>三：<br>    使用map，先将一部分数据存储，可以肯定的是，先输入map中的数据中一定没有相加之和位target的两个数字，然后边输入边查找map中是否有target-a[i]的值，如果有那么就直接输出。</p>
-<p>代码：</p>
-<pre><code>import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+      <h1 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">题目描述：</span><br><span class="line">	给定一个数组，找出其中何为目标值的两个数。（你可以假设每种输入只有一种答案，且同样的元素不能被重复利用）</span><br><span class="line">	实例：</span><br><span class="line">	 给定nums&#x3D;[2,7,11,15],target&#x3D;9;</span><br><span class="line">	 因为nums[0]+nums[1]&#x3D;&#x3D;target&#x3D;2+7&#x3D;9</span><br><span class="line">	 所以返回[0,1]</span><br><span class="line">	 @author zm</span><br></pre></td></tr></table></figure>
+<h3 id="实现思路："><a href="#实现思路：" class="headerlink" title="实现思路："></a>实现思路：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">一：</span><br><span class="line"></span><br><span class="line">	二重循环，找到即输出。</span><br><span class="line">二：</span><br><span class="line">	使用map，将数组存入map中，然后遍历这个数组，在map中查找target-a[i]的值如果有，说明有解，直接输出。</span><br><span class="line">三：</span><br><span class="line">	使用map，先将一部分数据存储，可以肯定的是，先输入map中的数据中一定没有相加之和位target的两个数字，然后边输入边查找map中是否有target-a[i]的值，如果有那么就直接输出。</span><br></pre></td></tr></table></figure>
 
-public class o0001 {
-    public static void main(String[] args) {
-        int a[]=new int[] {2,9,11,15};
-        int target=9;
-        int[] b=solution_1(a,target);
-        System.out.println(Arrays.toString(b));
-    }
-    /**
-     * 解题思路1：先对数组排序，然后从第i个位置开始，由后向前找，如果找到与a[i]的和就是target的立即返回，如果找到和小于target的结束此次外层循环，继续下一次外层循环。
-     * @time 时间复杂度：O(n^2)
-     * @param a
-     * @param target
-     * @return
-     */
-    public static int[] solution_1(int a[],int target) {
-        Arrays.sort(a);
-        int[] b=new int[2];
-        for(int i=0;i&lt;a.length;i++) {
-            for(int j=a.length-1;j&gt;i;j--) {
-                if(a[i]+a[j]==target) {
-                    b[0]=i;
-                    b[1]=j;
-                }
-                if(a[i]+a[j]&lt;target) {
-                        break;
-                }
-            }
-        }
-        return b;
-    }
-    /**
-     * 解题思路2：将数组中的数据放入map中，然后使用一次循环，在map中看有没有target-a[i]的数值的存在，如果有就立即输出，如果到结尾任然没有就抛出异常。
-     * 时间复杂度：O(n)
-     * @param a
-     * @param target
-     * @return
-     */
-    public static int[] solution_2(int a[],int target) {
-        Map&lt; Integer, Integer&gt; map=new HashMap&lt;&gt;();
-        for(int i=0;i&lt;a.length;i++) {
-            map.put(a[i], i);
-        }
-        for(int i=0;i&lt;a.length;i++) {
-            int value=target-a[i];
-            if(map.containsKey(value)) {
-                return new int[] {i,map.get(value)};
-            }
-        }
-        throw new IllegalArgumentException(&quot;No two sum solution&quot;);//可以用抛出异常代替没有返回值的情况。
-    }
-    /**
-     * 思路：先将数组的一部分数值放入map中，然后再剩余的数值中找target-a[i]是否再map中出现的，有出现的说明可以组成解。
-     * @param a
-     * @param target
-     * @return
-     */
-    public static int[] solution_3(int a[],int target) {
-        Map&lt; Integer, Integer&gt; map=new HashMap&lt;&gt;();
-        for(int i=0;i&lt;a.length;i++) {
-            int component=target-a[i];
-            if(map.containsKey(component)) {
-                return new int[] {i,map.get(component)};
-            }
-            map.put(a[i], i);
-        }
-        throw new IllegalArgumentException(&quot;数组不存在解&quot;);
-    }
-}</code></pre>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">o0001</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> a[]=<span class="keyword">new</span> <span class="keyword">int</span>[] &#123;<span class="number">2</span>,<span class="number">9</span>,<span class="number">11</span>,<span class="number">15</span>&#125;;</span><br><span class="line">		<span class="keyword">int</span> target=<span class="number">9</span>;</span><br><span class="line">		<span class="keyword">int</span>[] b=solution_1(a,target);</span><br><span class="line">		System.out.println(Arrays.toString(b));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 解题思路1：先对数组排序，然后从第i个位置开始，由后向前找，如果找到与a[i]的和就是target的立即返回，如果找到和小于target的结束此次外层循环，继续下一次外层循环。</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@time</span> 时间复杂度：O(n^2)</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] solution_1(<span class="keyword">int</span> a[],<span class="keyword">int</span> target) &#123;</span><br><span class="line">		Arrays.sort(a);</span><br><span class="line">		<span class="keyword">int</span>[] b=<span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">2</span>];</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.length;i++) &#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=a.length-<span class="number">1</span>;j&gt;i;j--) &#123;</span><br><span class="line">				<span class="keyword">if</span>(a[i]+a[j]==target) &#123;</span><br><span class="line">					b[<span class="number">0</span>]=i;</span><br><span class="line">					b[<span class="number">1</span>]=j;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(a[i]+a[j]&lt;target) &#123;</span><br><span class="line">						<span class="keyword">break</span>;</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> b;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 解题思路2：将数组中的数据放入map中，然后使用一次循环，在map中看有没有target-a[i]的数值的存在，如果有就立即输出，如果到结尾任然没有就抛出异常。</span></span><br><span class="line"><span class="comment">	 * 时间复杂度：O(n)</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] solution_2(<span class="keyword">int</span> a[],<span class="keyword">int</span> target) &#123;</span><br><span class="line">		Map&lt; Integer, Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.length;i++) &#123;</span><br><span class="line">			map.put(a[i], i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.length;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> value=target-a[i];</span><br><span class="line">			<span class="keyword">if</span>(map.containsKey(value)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;i,map.get(value)&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"No two sum solution"</span>);<span class="comment">//可以用抛出异常代替没有返回值的情况。</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * 思路：先将数组的一部分数值放入map中，然后再剩余的数值中找target-a[i]是否再map中出现的，有出现的说明可以组成解。</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> a</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@param</span> target</span></span><br><span class="line"><span class="comment">	 * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] solution_3(<span class="keyword">int</span> a[],<span class="keyword">int</span> target) &#123;</span><br><span class="line">		Map&lt; Integer, Integer&gt; map=<span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;a.length;i++) &#123;</span><br><span class="line">			<span class="keyword">int</span> component=target-a[i];</span><br><span class="line">			<span class="keyword">if</span>(map.containsKey(component)) &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">int</span>[] &#123;i,map.get(component)&#125;;</span><br><span class="line">			&#125;</span><br><span class="line">			map.put(a[i], i);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> IllegalArgumentException(<span class="string">"数组不存在解"</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
       <!-- reward -->
       

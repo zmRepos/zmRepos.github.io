@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a>
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode-%E7%AE%80%E5%8D%95/">LeetCode-简单</a> / <a class="article-category-link" href="/categories/%E9%93%BE%E8%A1%A8/">链表</a>
   </div>
 
       
@@ -88,7 +88,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">832</span>
+            <span class="post-count">876</span>
         </span>
     </span>
 
@@ -97,7 +97,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">3 min</span>
+            <span class="post-count">4 min</span>
         </span>
     </span>
 </div>
@@ -108,6 +108,8 @@ var _hmt = _hmt || [];
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -120,108 +122,11 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目描述：</p>
-<p>给定两个非空链表表示两个非负整数，位数按照逆序存储他们的每个节点只存储单个数字，将两数相加<br>返回一个新的链表。<br>你可以假设除了数字0外，这两个数字都不以0开头.{即数字不为（002）转化为输入就是（2-&gt;0-&gt;0）也告诉我们结果不可能出现2-&gt;1-&gt;0-&gt;0这样的}</p>
-<p>实例：</p>
-<p>输入（2-&gt;4-&gt;3）,(5-&gt;6-&gt;4)</p>
-<p>输出（7-&gt;0-&gt;8）</p>
-<p>原因：342+465=807</p>
-<p>思路：</p>
-<p>一：</p>
-<pre><code>通过Java自带的ArrayList数组列表，存放数值，并进行运算（首先取出两个数组列表上的相同位置处的数
-值，若一个没有另外一个长则长的部分数值就是0，定义一个carry用于存放余数，定义一个sum用于存放和，然后
-根据将sum对10取余的结果放入ArrayList,注意如果结尾余数不为0，那么还要将余数放入ArrayList中，防止进数
-的丢失）</code></pre><p>二：</p>
-<pre><code>使用自定义的ListNode节点类（包含值与指向下一个对象的指针），首先初始化一个头结点，注意此头结点不
-作为返回值的一部分，然后定义对输入的两个链表的两指针（用于取出链表上的每个数值），在定义一指向头
-结点的头指针，用于操作结果链表，定义sum,carry分别用于存放和，与进数之后的操作同思路1。</code></pre><p>代码：</p>
-<pre><code>public class o0002 {
-    public static void main(String[] args) {
-//        ArrayList&lt;Integer&gt;a=new ArrayList&lt;&gt;();
-//        a.add(0);
-//        ArrayList&lt;Integer&gt;b=new ArrayList&lt;&gt;();
-//        b.add(0);
-//        a.add(0);
-//        System.out.println(Arrays.toString(Solution_1(a,b).toArray()));
-        ListNode a=new ListNode(2);
-        ListNode _a=a;
-        _a.next=new ListNode(0);
-        _a=_a.next;
-        _a.next=new ListNode(0);
-        ListNode b=new ListNode(0);
-        ListNode _b=b;
-        _b.next=new ListNode(0);
-        _b=_b.next;
-        _b.next=new ListNode(0);
-        ListNode result=Solution_2(a,b);
-        while(result!=null) {
-            System.out.println(&quot; &quot;+result.getVal());
-            result=result.next;
-        }
-    }
-    public static ArrayList&lt;Integer&gt; Solution_1(ArrayList&lt;Integer&gt;a,ArrayList&lt;Integer&gt;b){
-        int len_a=a.size();
-        int len_b=b.size();
-        int sum=0;
-        int next=0;
-        ArrayList&lt;Integer&gt; result=new ArrayList&lt;&gt;();
-        for(int i=0;i&lt;Math.max(len_a, len_b);i++) {
-            sum=0;
-            if(i&lt;len_a) {
-                sum=sum+a.get(i);
-            }
-            if(i&lt;len_b) {
-                sum=sum+b.get(i);
-            }
-            sum=sum+next;
-            result.add(sum%10);
-            next=sum/10;
-//            if(i==Math.max(len_a,len_b)-1&amp;&amp;next!=0) {//此处防止，最高位的进数丢失。处理最高进项到最高位的算法不好
-//                result.add(next);
-//            }
-        }
-        if(next!=0) {//放在外面判断更容易理解。
-            result.add(next);
-        }
-        while(result.get(result.size()-1)==0&amp;&amp;result.size()&gt;1) {//此处解决当所有位数都是0的情况，只保留一位0.此处是我多想了，题目中明确说不会以0开头
-            result.remove(result.size()-1);
-        }
-        return result;
-    }
-    static class ListNode{//新建一个节点类
-        public int val;//存储当前值
-        public ListNode next;//指向下一个位置
-        public ListNode(int i) {
-            this.val=i;
-        }
-        public int getVal() {
-            return val;
-        }
-    }
-    public static ListNode Solution_2(ListNode a,ListNode b) {
-        ListNode HeadNode=new ListNode(0);//头节点，不做返回值的一部分。
-        ListNode p=a,q=b,curr=HeadNode;
-        int carry=0;
-        while(p!=null||q!=null) {
-            int x=p!=null?p.getVal():0;
-            int y=q!=null?q.getVal():0;
-            int sum=x+y+carry;
-            carry=sum/10;
-            curr.next=new ListNode(sum%10);
-            curr=curr.next;
-            if(p!=null) {
-                p=p.next;
-            }
-            if(q!=null) {
-                q=q.next;
-            }
-        }
-        if(carry!=0) {
-            curr.next=new ListNode(carry);
-        }
-        return HeadNode.next;
-    }
-}</code></pre>
+      <h1 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a>两数相加</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">题目描述：</span><br><span class="line"></span><br><span class="line">给定两个非空链表表示两个非负整数，位数按照逆序存储他们的每个节点只存储单个数字，将两数相加</span><br><span class="line">返回一个新的链表。</span><br><span class="line">你可以假设除了数字0外，这两个数字都不以0开头.&#123;即数字不为（002）转化为输入就是（2-&gt;0-&gt;0）也告诉我们结果不可能出现2-&gt;1-&gt;0-&gt;0这样的&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">输入（2-&gt;4-&gt;3）,(5-&gt;6-&gt;4)</span><br><span class="line"></span><br><span class="line">输出（7-&gt;0-&gt;8）</span><br><span class="line"></span><br><span class="line">原因：342+465&#x3D;807</span><br></pre></td></tr></table></figure>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">一：</span><br><span class="line"></span><br><span class="line">	通过Java自带的ArrayList数组列表，存放数值，并进行运算（首先取出两个数组列表上的相同位置处的数</span><br><span class="line">	值，若一个没有另外一个长则长的部分数值就是0，定义一个carry用于存放余数，定义一个sum用于存放和，然后</span><br><span class="line">	根据将sum对10取余的结果放入ArrayList,注意如果结尾余数不为0，那么还要将余数放入ArrayList中，防止进数</span><br><span class="line">	的丢失）</span><br><span class="line"></span><br><span class="line">二：</span><br><span class="line"></span><br><span class="line">	使用自定义的ListNode节点类（包含值与指向下一个对象的指针），首先初始化一个头结点，注意此头结点不</span><br><span class="line">	作为返回值的一部分，然后定义对输入的两个链表的两指针（用于取出链表上的每个数值），在定义一指向头</span><br><span class="line">	结点的头指针，用于操作结果链表，定义sum,carry分别用于存放和，与进数之后的操作同思路1。</span><br></pre></td></tr></table></figure>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">o0002</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//		ArrayList&lt;Integer&gt;a=new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment">//		a.add(0);</span></span><br><span class="line"><span class="comment">//		ArrayList&lt;Integer&gt;b=new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment">//		b.add(0);</span></span><br><span class="line"><span class="comment">//		a.add(0);</span></span><br><span class="line"><span class="comment">//		System.out.println(Arrays.toString(Solution_1(a,b).toArray()));</span></span><br><span class="line">		ListNode a=<span class="keyword">new</span> ListNode(<span class="number">2</span>);</span><br><span class="line">		ListNode _a=a;</span><br><span class="line">		_a.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		_a=_a.next;</span><br><span class="line">		_a.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode b=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode _b=b;</span><br><span class="line">		_b.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		_b=_b.next;</span><br><span class="line">		_b.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode result=Solution_2(a,b);</span><br><span class="line">		<span class="keyword">while</span>(result!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">" "</span>+result.getVal());</span><br><span class="line">			result=result.next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Integer&gt; <span class="title">Solution_1</span><span class="params">(ArrayList&lt;Integer&gt;a,ArrayList&lt;Integer&gt;b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len_a=a.size();</span><br><span class="line">		<span class="keyword">int</span> len_b=b.size();</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> next=<span class="number">0</span>;</span><br><span class="line">		ArrayList&lt;Integer&gt; result=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Math.max(len_a, len_b);i++) &#123;</span><br><span class="line">			sum=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;len_a) &#123;</span><br><span class="line">				sum=sum+a.get(i);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;len_b) &#123;</span><br><span class="line">				sum=sum+b.get(i);</span><br><span class="line">			&#125;</span><br><span class="line">			sum=sum+next;</span><br><span class="line">			result.add(sum%<span class="number">10</span>);</span><br><span class="line">			next=sum/<span class="number">10</span>;</span><br><span class="line"><span class="comment">//			if(i==Math.max(len_a,len_b)-1&amp;&amp;next!=0) &#123;//此处防止，最高位的进数丢失。处理最高进项到最高位的算法不好</span></span><br><span class="line"><span class="comment">//				result.add(next);</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(next!=<span class="number">0</span>) &#123;<span class="comment">//放在外面判断更容易理解。</span></span><br><span class="line">			result.add(next);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(result.get(result.size()-<span class="number">1</span>)==<span class="number">0</span>&amp;&amp;result.size()&gt;<span class="number">1</span>) &#123;<span class="comment">//此处解决当所有位数都是0的情况，只保留一位0.此处是我多想了，题目中明确说不会以0开头</span></span><br><span class="line">			result.remove(result.size()-<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;<span class="comment">//新建一个节点类</span></span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">int</span> val;<span class="comment">//存储当前值</span></span><br><span class="line">		<span class="keyword">public</span> ListNode next;<span class="comment">//指向下一个位置</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.val=i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getVal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> val;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">Solution_2</span><span class="params">(ListNode a,ListNode b)</span> </span>&#123;</span><br><span class="line">		ListNode HeadNode=<span class="keyword">new</span> ListNode(<span class="number">0</span>);<span class="comment">//头节点，不做返回值的一部分。</span></span><br><span class="line">		ListNode p=a,q=b,curr=HeadNode;</span><br><span class="line">		<span class="keyword">int</span> carry=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(p!=<span class="keyword">null</span>||q!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> x=p!=<span class="keyword">null</span>?p.getVal():<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> y=q!=<span class="keyword">null</span>?q.getVal():<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> sum=x+y+carry;</span><br><span class="line">			carry=sum/<span class="number">10</span>;</span><br><span class="line">			curr.next=<span class="keyword">new</span> ListNode(sum%<span class="number">10</span>);</span><br><span class="line">			curr=curr.next;</span><br><span class="line">			<span class="keyword">if</span>(p!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				p=p.next;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(q!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				q=q.next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(carry!=<span class="number">0</span>) &#123;</span><br><span class="line">			curr.next=<span class="keyword">new</span> ListNode(carry);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> HeadNode.next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
       <!-- reward -->
       

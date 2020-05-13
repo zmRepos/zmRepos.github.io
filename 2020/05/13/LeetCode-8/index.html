@@ -88,7 +88,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">615</span>
+            <span class="post-count">639</span>
         </span>
     </span>
 
@@ -108,6 +108,8 @@ var _hmt = _hmt || [];
 
     
     
+    <div class="tocbot"></div>
+
 
 
 
@@ -120,14 +122,28 @@ var _hmt = _hmt || [];
       
 
       
-      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
-<p>#字符串转整数<br>##题目内容<br>请你来实现一个 atoi 函数，使其能将字符串转换成整数。</p>
+      <h1 id="字符串转整数"><a href="#字符串转整数" class="headerlink" title="字符串转整数"></a>字符串转整数</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><blockquote>
+<p>请你来实现一个 atoi 函数，使其能将字符串转换成整数。</p>
+</blockquote>
+<blockquote>
 <p>首先，该函数会根据需要丢弃无用的开头空格字符，直到寻找到第一个非空格的字符为止。接下来的转化规则如下：</p>
-<p>如果第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字字符组合起来，形成一个有符号整数。<br>假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成一个整数。<br>该字符串在有效的整数部分之后也可能会存在多余的字符，那么这些字符可以被忽略，它们对函数不应该造成影响。<br>注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换，即无法进行有效转换。</p>
+</blockquote>
+<blockquote>
+<p>如果第一个非空字符为正或者负号时，则将该符号与之后面尽可能多的连续数字字符组合起来，形成一个有符号整数。<br>假如第一个非空字符是数字，则直接将其与之后连续的数字字符组合起来，形成一个整数。<br>该字符串在有效的整数部分之后也可能会存在多余的字符，那么这些字符可以被忽略，它们对函数不应该造成影响。<br>注意：假如该字符串中的第一个非空格字符不是一个有效整数字符、字符串为空或字符串仅包含空白字符时，则你的函数不需要进行转换，即无法&gt;进行有效转换。</p>
+</blockquote>
+<blockquote>
 <p>在任何情况下，若函数不能进行有效的转换时，请返回 0 。</p>
-<p>提示：<br>本题中的空白字符只包括空格字符 ‘ ‘ 。<br>假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。如果数值超过这个范围，请返回  INT_MAX (231 − 1) 或 INT_MIN (−231) 。</p>
-<p>##示例<br>###示例 1<br>    输入: “42”<br>    输出: 42<br>###示例 2<br>    输入: “   -42”<br>    输出: -42<br>    解释: 第一个非空白字符为 ‘-‘, 它是一个负号。<br>        我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。</p>
-<p>##思路1-逻辑覆盖<br>##代码1<br>    public int myAtoi(String str) {<br>            str=str.trim();<br>            if(str.length()==0)return 0;<br>            char ch;<br>            int flag=1,result=0;<br>            for(int i=0;i&lt;str.length();i++){<br>                ch=str.charAt(i);<br>                if(i==0){<br>                   if(ch==’+’)flag=1;<br>                   else if(ch==’-‘)flag=-1;<br>                   else if(ch&gt;=’0’&amp;ch&lt;=’9’)result=ch-‘0’;<br>                   else return 0;<br>                }else{<br>                    if(ch&gt;=’0’&amp;&amp;ch&lt;=’9’){<br>                        if(result&gt;214748364){<br>                            return flag==1?2147483647:-2147483648;<br>                        }else if(result==214748364){<br>                            if(flag==1&amp;&amp;ch&gt;’7’)return 2147483647;<br>                            if(flag==-1&amp;&amp;ch&gt;’8’)return -2147483648;<br>                        }<br>                        result=result<em>10+ch-‘0’;<br>                    }else{<br>                        break;<br>                    }<br>                }<br>            }<br>            return flag</em>result;<br>        }<br>###时间复杂度：O(n)<br>##思路2-自动机<br>暂时未理解<br><a href="https://leetcode-cn.com/problems/string-to-integer-atoi/solution/zi-fu-chuan-zhuan-huan-zheng-shu-atoi-by-leetcode-/" title="自动机">https://leetcode-cn.com/problems/string-to-integer-atoi/solution/zi-fu-chuan-zhuan-huan-zheng-shu-atoi-by-leetcode-/</a></p>
+</blockquote>
+<blockquote>
+<p>提示：<br>本题中的空白字符只包括空格字符 ‘ ‘ 。<br>假设我们的环境只能存储 32 位大小的有符号整数，那么其数值范围为 [−231,  231 − 1]。如果数值超过这个范围，请返回  INT_MAX<br>(231 − 1) 或 INT_MIN (−231) 。</p>
+</blockquote>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: &quot;42&quot;</span><br><span class="line">输出: 42</span><br></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">输入: &quot;   -42&quot;</span><br><span class="line">输出: -42</span><br><span class="line">解释:第一个非空白字符为 &#39;-&#39;, 它是一个负号。</span><br><span class="line">	我们尽可能将负号与后面所有连续出现的数字组合起来，最后得到 -42 。</span><br></pre></td></tr></table></figure>
+
+<h2 id="思路1-逻辑覆盖"><a href="#思路1-逻辑覆盖" class="headerlink" title="思路1-逻辑覆盖"></a>思路1-逻辑覆盖</h2><h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">myAtoi</span><span class="params">(String str)</span> </span>&#123;</span><br><span class="line">           str=str.trim();</span><br><span class="line">           <span class="keyword">if</span>(str.length()==<span class="number">0</span>)<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">           <span class="keyword">char</span> ch;</span><br><span class="line">           <span class="keyword">int</span> flag=<span class="number">1</span>,result=<span class="number">0</span>;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;str.length();i++)&#123;</span><br><span class="line">               ch=str.charAt(i);</span><br><span class="line">               <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">                  <span class="keyword">if</span>(ch==<span class="string">'+'</span>)flag=<span class="number">1</span>;</span><br><span class="line">                  <span class="keyword">else</span> <span class="keyword">if</span>(ch==<span class="string">'-'</span>)flag=-<span class="number">1</span>;</span><br><span class="line">                  <span class="keyword">else</span> <span class="keyword">if</span>(ch&gt;=<span class="string">'0'</span>&amp;ch&lt;=<span class="string">'9'</span>)result=ch-<span class="string">'0'</span>;</span><br><span class="line">                  <span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">               &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                   <span class="keyword">if</span>(ch&gt;=<span class="string">'0'</span>&amp;&amp;ch&lt;=<span class="string">'9'</span>)&#123;</span><br><span class="line">                       <span class="keyword">if</span>(result&gt;<span class="number">214748364</span>)&#123;</span><br><span class="line">                           <span class="keyword">return</span> flag==<span class="number">1</span>?<span class="number">2147483647</span>:-<span class="number">2147483648</span>;</span><br><span class="line">                       &#125;<span class="keyword">else</span> <span class="keyword">if</span>(result==<span class="number">214748364</span>)&#123;</span><br><span class="line">                           <span class="keyword">if</span>(flag==<span class="number">1</span>&amp;&amp;ch&gt;<span class="string">'7'</span>)<span class="keyword">return</span> <span class="number">2147483647</span>;</span><br><span class="line">                           <span class="keyword">if</span>(flag==-<span class="number">1</span>&amp;&amp;ch&gt;<span class="string">'8'</span>)<span class="keyword">return</span> -<span class="number">2147483648</span>;</span><br><span class="line">                       &#125;</span><br><span class="line">                       result=result*<span class="number">10</span>+ch-<span class="string">'0'</span>;</span><br><span class="line">                   &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                       <span class="keyword">break</span>;</span><br><span class="line">                   &#125;</span><br><span class="line">               &#125;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">return</span> flag*result;</span><br><span class="line">       &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><h2 id="思路2-自动机"><a href="#思路2-自动机" class="headerlink" title="思路2-自动机"></a>思路2-自动机</h2><p><code>暂时未理解</code><br><a href="https://leetcode-cn.com/problems/string-to-integer-atoi/solution/zi-fu-chuan-zhuan-huan-zheng-shu-atoi-by-leetcode-/" title="自动机">https://leetcode-cn.com/problems/string-to-integer-atoi/solution/zi-fu-chuan-zhuan-huan-zheng-shu-atoi-by-leetcode-/</a></p>
 
       
       <!-- reward -->

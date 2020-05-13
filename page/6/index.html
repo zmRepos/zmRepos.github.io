@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1035" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1094" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1035/"
-    >PTA-Basic-1035</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1094/"
+    >PTA-Basic-1094</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1035/" class="article-date">
-  <time datetime="2019-10-16T15:23:22.000Z" itemprop="datePublished">2019-10-16</time>
+      <a href="/2019/10/16/PTA-Basic-1094/" class="article-date">
+  <time datetime="2019-10-16T13:30:22.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
@@ -141,78 +141,131 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<p>根据维基百科的定义：</p>
-<p>插入排序是迭代算法，逐一获得输入数据，逐步产生有序的输出序列。每步迭代中，算法从输入序列中取出一元素，将之插入有序序列中正确的位置。如此迭代直到全部元素有序。</p>
-<p>归并排序进行如下迭代操作：首先将原始序列看成 N 个只包含 1 个元素的有序子序列，然后每次迭代归并两个相邻的有序子序列，直到最后只剩下 1 个有序的序列。</p>
-<p>现给定原始序列和由某排序算法产生的中间序列，请你判断该算法究竟是哪种排序算法？</p>
-<p>输入格式：<br>输入在第一行给出正整数 N (≤100)；随后一行给出原始序列的 N 个整数；最后一行给出由某排序算法产生的中间序列。这里假设排序的目标序列是升序。数字间以空格分隔。</p>
-<p>输出格式：<br>首先在第 1 行中输出Insertion Sort表示插入排序、或Merge Sort表示归并排序；然后在第 2 行中输出用该排序算法再迭代一轮的结果序列。题目保证每组测试的结果是唯一的。数字间以空格分隔，且行首尾不得有多余空格。</p>
-<p>输入样例 1：</p>
-<pre><code>10
-3 1 2 8 7 5 9 4 6 0
-1 2 3 7 8 5 9 4 6 0</code></pre><p>输出样例 1：</p>
-<pre><code>Insertion Sort
-1 2 3 5 7 8 9 4 6 0</code></pre><p>输入样例 2：</p>
-<pre><code>10
-3 1 2 8 7 5 9 4 0 6
-1 3 2 8 5 7 4 9 0 6</code></pre><p>输出样例 2：</p>
-<pre><code>Merge Sort
-1 2 3 8 4 5 7 9 0 6</code></pre><p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
+      <p>###题目描述</p>
+<p>2004 年 7 月，谷歌在硅谷的 101 号公路边竖立了一块巨大的广告牌（如下图）用于招聘。内容超级简单，就是一个以 .com 结尾的网址，而前面的网址是一个 10 位素数，这个素数是自然常数 e 中最早出现的 10 位连续数字。能找出这个素数的人，就可以通过访问谷歌的这个网站进入招聘流程的下一步。</p>
+<p><img src="https://images.ptausercontent.com/57148679-d574-4f49-b048-775c6c07791c.jpg" alt=""></p>
+<p>自然常数 e 是一个著名的超越数，前面若干位写出来是这样的：e = 2.718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427427466391932003059921… 其中粗体标出的 10 位数就是答案。</p>
+<p>本题要求你编程解决一个更通用的问题：从任一给定的长度为 L 的数字中，找出最早出现的 K 位连续数字所组成的素数。</p>
+<p>输入格式：<br>输入在第一行给出 2 个正整数，分别是 L（不超过 1000 的正整数，为数字长度）和 K（小于 10 的正整数）。接下来一行给出一个长度为 L 的正整数 N。<br>###格式<br>输出格式：<br>在一行中输出 N 中最早出现的 K 位连续数字所组成的素数。如果这样的素数不存在，则输出 404。注意，原始数字中的前导零也计算在位数之内。例如在 200236 中找 4 位素数，0023 算是解；但第一位 2 不能被当成 0002 输出，因为在原始数字中不存在这个 2 的前导零。<br>###样例<br>输入样例 1：</p>
+<pre><code>20 5
+23654987725541023819</code></pre><p>输出样例 1：</p>
+<pre><code>49877</code></pre><p>输入样例 2：</p>
+<pre><code>10 3
 
-int isinsertion(int n, int num[], int half[]);
-int nextmerge(int n, int num[], int half[]);
+2468024680</code></pre><p>输出样例 2：</p>
+<pre><code>404</code></pre><p>代码：</p>
 
-int comp(const void *a, const void *b)
-{
-    return *(int *)a - *(int *)b;
-}
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-int main()
-{
-    int n, num[100], half[100];
-    int i;
-    scanf(&quot;%d&quot;, &amp;n);
-    for(i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;num[i]);
-    for(i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;half[i]);
 
-    if(isinsertion(n, num, half)) nextmerge(n, num, half);。//既然不是插入排序，那就一定是归并排序，直接进行下一次排序。
+    </footer>
 
-    for(i = 0; i &lt; n; i++){//另一种解决末尾不能有空格的方式。
-        printf(&quot;%d%c&quot;, num[i], i == n - 1 ? &apos;\n&apos; : &apos; &apos;);
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1093" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1093/"
+    >PTA-Basic-1093</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1093/" class="article-date">
+  <time datetime="2019-10-16T13:30:17.000Z" itemprop="datePublished">2019-10-16</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：<br>给定两个字符串 A 和 B，本题要求你输出 A+B，即两个字符串的并集。要求先输出 A，再输出 B，但重复的字符必须被剔除。</p>
+<p>输入格式：<br>输入在两行中分别给出 A 和 B，均为长度不超过 10<br>​6<br>​​ 的、由可见 ASCII 字符 (即码值为32~126)和空格组成的、由回车标识结束的非空字符串。</p>
+<p>输出格式：<br>在一行中输出题面要求的 A 和 B 的和。</p>
+<p>输入样例：</p>
+<pre><code>This is a sample test
+to show you_How it works</code></pre><p>输出样例：</p>
+<pre><code>This ampletowyu_Hrk</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+char a[2000002];
+char b[1000001];
+char *del(char *s,char c){
+    char *src,*dst;
+    for(src=dst=s;*src!=&apos;\0&apos;;src++){
+        *dst=*src;
+        if(*dst!=c)
+            dst++;
     }
-    return 0;
-}
-
-int isinsertion(int n, int num[], int half[])
-{
-    int i, lenth;
-    for(i = 0; i &lt; n - 1 &amp;&amp; half[i] &lt;= half[i + 1]; i++){//先判段排好序的结果是否符合插入排序的判断条件。即开始到某一下标处都是有序的其他的与元素组一样排列。不用担心length处的数字与后一个相同，题目保证了结果唯一，所以你直接取相同数字的后一个。
-        continue;
+    *dst=&apos;\0&apos;;
+    return dst;
+} 
+int main(void){
+    gets(a);
+    char *s=a;//如果先先连接再去重复的话操作时间比对每个先去重再连接再去重用的时间长。
+    while(*s){
+        del(s+1,*s);
+        s++;
     }
-    for(i++, lenth = i; i &lt; n &amp;&amp; half[i] == num[i]; i++){//length代表目前有序的最后一个。然后i继续遍历判断与数组是否相等。
-        continue;
+    gets(b);
+    s=b;
+    while(*s){
+        del(s+1,*s);
+        s++;
     }
-    if(i &lt; n)//不是的情况下。
-        return 1;
-    printf(&quot;Insertion Sort\n&quot;);//此处已经可以判断是插入排序了，因此只需在进行一次排序就可以了。
-    lenth++;
-    qsort(num, lenth, sizeof(int), comp);
-    return 0;
-}
-
-int nextmerge(int n, int num[], int half[])
-{
-    int i, j, lenth;
-    printf(&quot;Merge Sort\n&quot;);
-    for(lenth = 1, i = 0; i &lt; n &amp;&amp; lenth &lt;= n; lenth *=2){//分n/2次，第一次排序每一个，第二次每两个拍一次顺序，只需要调用qsort函数并改变数组的起始位置就可以了。每次的长度为上一次的2倍
-        for(i = 0; i &lt; n &amp;&amp; num[i] == half[i]; i++) ;//判断是否与结果数组完全相同，如果已经完全相同了就没有必要进行下一次排序了。即i已经不符合条件了。
-        for(j = 1; j &lt; = n / lenth; j++){//数组依据每一段的长度可以分为n/length段，对每一段排序就饿可以了。
-            qsort(num + j * lenth/*每一次排序的起始位置*/, lenth, sizeof(int), comp);
-        }
-        qsort(num + j * lenth, n % lenth, sizeof(int), comp);//排序剩余的部分数字
+    strcat(a,b);
+    s=a;
+    while(*s){
+        del(s+1,*s);
+        s++;
     }
+    puts(a);
     return 0;
 }</code></pre>
       
@@ -245,7 +298,7 @@ int nextmerge(int n, int num[], int half[])
 
 </article>
     
-    <article id="post-PTA-Basic-1025" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1092" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -253,8 +306,8 @@ int nextmerge(int n, int num[], int half[])
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1025/"
-    >PTA-Basic-1025</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1092/"
+    >PTA-Basic-1092</a> 
 </h2>
  
 
@@ -263,143 +316,8 @@ int nextmerge(int n, int num[], int half[])
 
     
     <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1025/" class="article-date">
-  <time datetime="2019-10-16T15:23:01.000Z" itemprop="datePublished">2019-10-16</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<p>给定一个常数 K 以及一个单链表 L，请编写程序将 L 中每 K 个结点反转。例如：给定 L 为 1→2→3→4→5→6，K 为 3，则输出应该为 3→2→1→6→5→4；如果 K 为 4，则输出应该为 4→3→2→1→5→6，即最后不到 K 个元素不反转。</p>
-<p>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例第 1 行给出第 1 个结点的地址、结点总个数正整数 N (≤10<br>​5<br>​​ )、以及正整数 K (≤N)，即要求反转的子链结点的个数。结点的地址是 5 位非负整数，NULL 地址用 −1 表示。</p>
-<p>接下来有 N 行，每行格式为：</p>
-<p>Address Data Next<br>其中 Address 是结点地址，Data 是该结点保存的整数数据，Next 是下一结点的地址。</p>
-<p>输出格式：<br>对每个测试用例，顺序输出反转后的链表，其上每个结点占一行，格式与输入相同。</p>
-<p>输入样例：</p>
-<pre><code>00100 6 4
-00000 4 99999
-00100 1 12309
-68237 6 -1
-33218 3 00000
-99999 5 68237
-12309 2 33218</code></pre><p>输出样例：</p>
-<pre><code>00000 4 33218
-33218 3 12309
-12309 2 00100
-00100 1 99999
-99999 5 68237
-68237 6 -1</code></pre><p>思路：<br>定义一个结构体存储节点的地址数据下一个地址，定义一个数组存放结点，在定义一个数组存放从第一个结点出发的有序的结点，然后对有序的结点数组进行反转，交换每k个结点，并将每一个结点的下一个地址设置为下一个结点的地址。</p>
-<p>坑：可能输入的结点中有些不在链表中应该舍去它们。<br>代码：</p>
-<pre><code>/** 
- * (涉及反转，可回顾一下 1008. 数组元素循环右移问题)
- * 1. 通过数组下标来表示地址，便于链接各个节点
- * 2. 考虑存在无效节点的情况
- */
-#include &lt;stdio.h&gt;
-
-typedef struct {
-    int address;//节点地址
-    int data; //整数数据
-    int next;//下一节点的地址  
-} Node; 
-int main() {
-    int addr, N, K;//读取首地址，节点数量，反转个数 
-    scanf(&quot;%d %d %d&quot;, &amp;addr, &amp;N, &amp;K);
-    Node origin[100001], sort[100001];//创建初始单链表,反转后的单链表 
-    for (int i = 0; i &lt; N; i++) {//读取节点
-        Node temp; 
-        scanf(&quot;%d %d %d&quot;, &amp;temp.address, &amp;temp.data, &amp;temp.next);
-        origin[temp.address] = temp;
-    }
-    for (int i = 0; i &lt; N; i++) {//链接节点 //将链表有序存入sorted数组
-        sort[i] = origin[addr];
-        addr = sort[i].next;//获取下一个节点的地址 
-        if (addr == -1) {
-            N = i + 1;//可能有无效的节点，需要更新链表中节点的数量 
-            break;
-        }
-    }   
-    for (int i = 0; i &lt; N / K; i++) {//反转的次数 
-        for (int j = 0; j &lt; K / 2; j++) {//反转 
-            Node temp;
-            temp = sort[j + i * K];
-            sort[j + i * K] = sort[K - 1 - j + i * K];//数组下标确认好 
-            sort[K - 1 - j + i * K] = temp;
-        }
-    }
-    for (int i = 0; i &lt; N; i++) {
-        if(i != N - 1) {
-            sort[i].next = sort[i+1].address;
-            printf(&quot;%05d %d %05d\n&quot;, sort[i].address, sort[i].data, sort[i].next);
-        } else {
-            sort[i].next = -1;
-            printf(&quot;%05d %d %d\n&quot;, sort[i].address, sort[i].data, sort[i].next);
-        }
-    } 
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PTA-Basic/" rel="tag">-PTA-Basic</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1095" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1095/"
-    >PTA-Basic-1095</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1095/" class="article-date">
-  <time datetime="2019-10-16T13:30:26.000Z" itemprop="datePublished">2019-10-16</time>
+      <a href="/2019/10/16/PTA-Basic-1092/" class="article-date">
+  <time datetime="2019-10-16T13:30:13.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
@@ -421,153 +339,48 @@ int main() {
 
       
       <p>题目：</p>
-<p>PAT 准考证号由 4 部分组成：</p>
-<p>第 1 位是级别，即 T 代表顶级；A 代表甲级；B 代表乙级；<br>第 2<del>4 位是考场编号，范围从 101 到 999；<br>第 5</del>10 位是考试日期，格式为年、月、日顺次各占 2 位；<br>最后 11~13 位是考生编号，范围从 000 到 999。<br>现给定一系列考生的准考证号和他们的成绩，请你按照要求输出各种统计信息。</p>
-<p>输入格式：<br>输入首先在一行中给出两个正整数 N（≤10<br>​4<br>​​ ）和 M（≤100），分别为考生人数和统计要求的个数。</p>
-<p>接下来 N 行，每行给出一个考生的准考证号和其分数（在区间 [0,100] 内的整数），其间以空格分隔。</p>
-<p>考生信息之后，再给出 M 行，每行给出一个统计要求，格式为：类型 指令，其中</p>
-<p>类型 为 1 表示要求按分数非升序输出某个指定级别的考生的成绩，对应的 指令 则给出代表指定级别的字母；<br>类型 为 2 表示要求将某指定考场的考生人数和总分统计输出，对应的 指令 则给出指定考场的编号；<br>类型 为 3 表示要求将某指定日期的考生人数分考场统计输出，对应的 指令 则给出指定日期，格式与准考证上日期相同。<br>输出格式：<br>对每项统计要求，首先在一行中输出 Case #: 要求，其中 # 是该项要求的编号，从 1 开始；要求 即复制输入给出的要求。随后输出相应的统计结果：</p>
-<p>类型 为 1 的指令，输出格式与输入的考生信息格式相同，即 准考证号 成绩。对于分数并列的考生，按其准考证号的字典序递增输出（题目保证无重复准考证号）；<br>类型 为 2 的指令，按 人数 总分 的格式输出；<br>类型 为 3 的指令，输出按人数非递增顺序，格式为 考场编号 总人数。若人数并列则按考场编号递增顺序输出。<br>如果查询结果为空，则输出 NA。</p>
+<p>月饼是久负盛名的中国传统糕点之一，自唐朝以来，已经发展出几百品种。</p>
+<p>mk.jpg</p>
+<p>若想评比出一种“最好吃”的月饼，那势必在吃货界引发一场腥风血雨…… 在这里我们用数字说话，给出全国各地各种月饼的销量，要求你从中找出销量冠军，认定为最好吃的月饼。</p>
+<p>输入格式：<br>输入首先给出两个正整数 N（≤1000）和 M（≤100），分别为月饼的种类数（于是默认月饼种类从 1 到 N 编号）和参与统计的城市数量。</p>
+<p>接下来 M 行，每行给出 N 个非负整数（均不超过 1 百万），其中第 i 个整数为第 i 种月饼的销量（块）。数字间以空格分隔。</p>
+<p>输出格式：<br>在第一行中输出最大销量，第二行输出销量最大的月饼的种类编号。如果冠军不唯一，则按编号递增顺序输出并列冠军。数字间以 1 个空格分隔，行首尾不得有多余空格。</p>
 <p>输入样例：</p>
-<pre><code>8 4
-B123180908127 99
-B102180908003 86
-A112180318002 98
-T107150310127 62
-A107180908108 100
-T123180908010 78
-B112160918035 88
-A107180908021 98
-1 A
-2 107
-3 180908
-2 999</code></pre><p>输出样例：</p>
-<pre><code>Case 1: 1 A
-A107180908108 100
-A107180908021 98
-A112180318002 98
-Case 2: 2 107
-3 260
-Case 3: 3 180908
-107 2
-123 2
-102 1
-Case 4: 2 999
-NA</code></pre><p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-
-struct id{
-        char str[14];
-        char level[2];
-        int room;
-        int date;
-        int num;
-        int score;
-};
-
-int cmp(const void *a, const void *b)
-{
-        struct id *ida = (struct id*)a, *idb = (struct id*)b;
-        if (ida-&gt;score != idb-&gt;score)
-                return idb-&gt;score - ida-&gt;score;
-        return strcmp(ida-&gt;str, idb-&gt;str);
-}
-
-int type1(struct id ids[], int n, int i);
-int type2(struct id ids[], int n, int i);
-int type3(struct id ids[], int n, int i);
-
-int main()
-{
-        struct id ids[10000];
-        int n, m, type;
-        int i;
-        char level[2];
-
-        scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
-        for (i = 0; i &lt; n; i++) {
-                scanf(&quot;%s %d&quot;, ids[i].str, &amp;ids[i].score);
-                sscanf(ids[i].str, &quot;%1s%3d%6d%3d&quot;, ids[i].level,
-                                &amp;ids[i].room, &amp;ids[i].date, &amp;ids[i].num);
+<pre><code>5 3
+1001 992 0 233 6
+8 0 2018 0 2008
+36 18 0 1024 4</code></pre><p>输出样例：</p>
+<pre><code>2018
+3 5</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+long long moonBin[1000];
+int main(void){
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    long val;
+    long long maxsale=0;
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            scanf(&quot;%ld&quot;,&amp;val);
+            moonBin[j]=moonBin[j]+val;
+            if(moonBin[j]&gt;maxsale){
+                maxsale=moonBin[j];
+            }
         }
-
-        qsort(ids, n, sizeof(ids[0]), cmp);
-
-        for (i = 0; i &lt; m; i++) {
-                scanf(&quot;%d&quot;, &amp;type);
-                if (type == 1)
-                        type1(ids, n, i);
-                else if (type == 2)
-                        type2(ids, n, i);
-                else if (type == 3)
-                        type3(ids, n, i);
+    }
+    printf(&quot;%ld\n&quot;,maxsale);
+    int flag=0;
+    for(int i=0;i&lt;n;i++){
+        if(maxsale==moonBin[i]){
+            if(flag){
+                printf(&quot; &quot;);
+            }else{
+                flag=1;
+            }
+            printf(&quot;%d&quot;,i+1);
         }
-
-        return 0;
-}
-
-int type1(struct id ids[], int n, int i)
-{
-        char level[2];
-        int f = 1, j;
-        scanf(&quot;%1s&quot;, level);
-        printf(&quot;Case %d: %d %c\n&quot;, i + 1, 1, level[0]);
-        for (j = 0; j &lt; n; j++)
-                if (ids[j].level[0] == level[0]) {
-                        f = 0;
-                        printf(&quot;%s %d\n&quot;, ids[j].str,ids[j].score);
-                }
-        if (f)
-                puts(&quot;NA&quot;);
-        return 0;
-}
-
-int type2(struct id ids[], int n, int i)
-{
-        int room, sum = 0, count = 0;
-        int j, f = 1;
-
-        scanf(&quot;%d&quot;, &amp;room);
-        printf(&quot;Case %d: %d %d\n&quot;, i + 1, 2, room);
-        for (j = 0; j &lt; n; j++)
-                if (ids[j].room == room) {
-                        f = 0;
-                        count++;
-                        sum += ids[j].score;
-                }
-        if (f)
-                puts(&quot;NA&quot;);
-        else
-                printf(&quot;%d %d\n&quot;, count, sum);
-
-        return 0;
-}
-
-int type3(struct id ids[], int n, int i)
-{
-        int date, max = 0, rooms[1000] = {0};
-        int f = 1, j;
-
-        scanf(&quot;%d&quot;, &amp;date);
-        printf(&quot;Case %d: %d %06d\n&quot;, i + 1, 3, date);
-        for (j = 0; j &lt; n; j++)
-                if (ids[j].date == date) {
-                        f = 0;
-                        rooms[ids[j].room]++;
-                        if (max &lt; rooms[ids[j].room])
-                                max = rooms[ids[j].room];
-                }
-        if (f)
-                puts(&quot;NA&quot;);
-        else
-                for (; max &gt; 0; max--)
-                        for (j = 101; j &lt; 1000; j++)
-                                if (rooms[j] == max)
-                                        printf(&quot;%d %d\n&quot;, j, max);
-
-        return 0;
+    }
+    return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -605,7 +418,7 @@ int type3(struct id ids[], int n, int i)
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/5/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/7/">下一页</a>
   </nav>
   
 </section>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-05-13T16:16:05.116Z</updated>
+  <updated>2020-05-13T16:28:13.475Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -21,12 +21,11 @@
     <link href="http://zm163.github.io/2020/05/13/LeetCode-9/"/>
     <id>http://zm163.github.io/2020/05/13/LeetCode-9/</id>
     <published>2020-05-13T12:32:27.000Z</published>
-    <updated>2020-05-13T16:16:05.116Z</updated>
+    <updated>2020-05-13T16:28:13.475Z</updated>
     
     <summary type="html">
     
-      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;来源：力扣（LeetCode）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;链接：https:&amp;#x2F;&amp;#x2F;leetcode-cn.com&amp;#x2F;problems&amp;#x2F;zigzag-conversion&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;回文数&quot;&gt;&lt;a href=&quot;#回文数&quot; class=&quot;headerlink&quot; title=&quot;回文数&quot;&gt;&lt;/a&gt;回文数&lt;/h1&gt;
+      &lt;h1 id=&quot;回文数&quot;&gt;&lt;a href=&quot;#回文数&quot; class=&quot;headerlink&quot; title=&quot;回文数&quot;&gt;&lt;/a&gt;回文数&lt;/h1&gt;
     
     </summary>
     
@@ -49,17 +48,11 @@
     <link href="http://zm163.github.io/2020/05/13/LeetCode-8/"/>
     <id>http://zm163.github.io/2020/05/13/LeetCode-8/</id>
     <published>2020-05-13T12:32:22.000Z</published>
-    <updated>2020-05-13T15:03:23.339Z</updated>
+    <updated>2020-05-13T16:35:26.970Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
+      &lt;h1 id=&quot;字符串转整数&quot;&gt;&lt;a href=&quot;#字符串转整数&quot; class=&quot;headerlink&quot; title=&quot;字符串转整数&quot;&gt;&lt;/a&gt;字符串转整数&lt;/h1&gt;
     
     </summary>
     
@@ -82,17 +75,12 @@
     <link href="http://zm163.github.io/2020/05/13/LeetCode-7/"/>
     <id>http://zm163.github.io/2020/05/13/LeetCode-7/</id>
     <published>2020-05-13T12:32:15.000Z</published>
-    <updated>2020-05-13T13:13:07.181Z</updated>
+    <updated>2020-05-13T16:37:14.757Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
+      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;来源：力扣（LeetCode）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;链接：https:&amp;#x2F;&amp;#x2F;leetcode-cn.com&amp;#x2F;problems&amp;#x2F;zigzag-conversion&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;整数反转&quot;&gt;&lt;a href=&quot;#整数反转&quot; class=&quot;headerlink&quot; title=&quot;整数反转&quot;&gt;&lt;/a&gt;整数反转&lt;/h1&gt;
     
     </summary>
     
@@ -115,17 +103,11 @@
     <link href="http://zm163.github.io/2020/05/10/LeetCode-6/"/>
     <id>http://zm163.github.io/2020/05/10/LeetCode-6/</id>
     <published>2020-05-10T12:44:30.000Z</published>
-    <updated>2020-05-13T12:31:06.267Z</updated>
+    <updated>2020-05-13T16:45:40.185Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span
-        
-      
+      &lt;h1 id=&quot;Z字形变换&quot;&gt;&lt;a href=&quot;#Z字形变换&quot; class=&quot;headerlink&quot; title=&quot;Z字形变换&quot;&gt;&lt;/a&gt;Z字形变换&lt;/h1&gt;
     
     </summary>
     
@@ -134,7 +116,7 @@
     
       <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
     
-      <category term="算法类型" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E7%B1%BB%E5%9E%8B/"/>
+      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
@@ -148,19 +130,11 @@
     <link href="http://zm163.github.io/2020/05/10/LeetCode-5/"/>
     <id>http://zm163.github.io/2020/05/10/LeetCode-5/</id>
     <published>2020-05-10T12:44:25.000Z</published>
-    <updated>2020-05-13T12:20:58.714Z</updated>
+    <updated>2020-05-13T16:42:11.519Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;#最长回文子串&lt;br&gt;##题目&lt;br&gt;    给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。&lt;br&gt;##示例&lt;br&gt;    ###示例 1&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;输入: &amp;quot;babad&amp;quot;
-输出:
-        
-      
+      &lt;h1 id=&quot;最长回文子串&quot;&gt;&lt;a href=&quot;#最长回文子串&quot; class=&quot;headerlink&quot; title=&quot;最长回文子串&quot;&gt;&lt;/a&gt;最长回文子串&lt;/h1&gt;
     
     </summary>
     
@@ -183,18 +157,11 @@
     <link href="http://zm163.github.io/2020/05/10/LeetCode-4/"/>
     <id>http://zm163.github.io/2020/05/10/LeetCode-4/</id>
     <published>2020-05-10T12:43:52.000Z</published>
-    <updated>2020-05-10T13:02:38.380Z</updated>
+    <updated>2020-05-13T16:39:41.862Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;###4. 寻找两个正序数组的中位数&lt;br&gt;##题目：&lt;br&gt;    给定两个大小为 m 和 n 的正序（从小到大）数组 nums1 和 nums2。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;请你找出这两个正序数组的中位数，并且要求算法的时间复杂度为 O(log(m +
-        
-      
+      &lt;h1 id=&quot;4-寻找两个正序数组的中位数&quot;&gt;&lt;a href=&quot;#4-寻找两个正序数组的中位数&quot; class=&quot;headerlink&quot; title=&quot;4. 寻找两个正序数组的中位数&quot;&gt;&lt;/a&gt;4. 寻找两个正序数组的中位数&lt;/h1&gt;
     
     </summary>
     
@@ -235,7 +202,7 @@
     <link href="http://zm163.github.io/2019/12/11/GIT%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%9C%8D%E5%8A%A1/"/>
     <id>http://zm163.github.io/2019/12/11/GIT%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%9C%8D%E5%8A%A1/</id>
     <published>2019-12-11T09:45:54.000Z</published>
-    <updated>2020-05-04T13:15:09.777Z</updated>
+    <updated>2020-05-13T16:54:58.884Z</updated>
     
     <summary type="html">
     
@@ -243,8 +210,11 @@
       
         
         
-          &lt;p&gt;移动GIT默认文件夹导致任务管理其找不到对应的服务。&lt;br&gt;1打开cmd,输入regedit&lt;/p&gt;
-&lt;p&gt;2找到HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory&lt;br&gt;\background\shell\git_gui\comma
+          &lt;blockquote&gt;
+&lt;p&gt;移动GIT默认文件夹导致任务管理其找不到对应的服务。&lt;br&gt;1打开cmd,输入regedit&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;2找到HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Dire
         
       
     
@@ -259,135 +229,24 @@
   </entry>
   
   <entry>
-    <title>串</title>
-    <link href="http://zm163.github.io/2019/11/21/%E4%B8%B2/"/>
-    <id>http://zm163.github.io/2019/11/21/%E4%B8%B2/</id>
-    <published>2019-11-21T14:21:22.000Z</published>
-    <updated>2020-05-04T13:20:25.644Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;注意此处的串的实现中的模式匹配，并不是最优解法（使用KMP算法）。建议直接放入头文件。此外，但凡程序中涉及的位置皆为位序（从1开始），在某些部分，如果使用坐标作为参数，可能会产生错误，不过基本上这些错误，程序中都有所应对。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#ifndef
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="C语言" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C%E8%AF%AD%E8%A8%80/"/>
-    
-    
-      <category term="数据结构" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="C语言" scheme="http://zm163.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>双链表</title>
-    <link href="http://zm163.github.io/2019/11/20/%E5%8F%8C%E9%93%BE%E8%A1%A8/"/>
-    <id>http://zm163.github.io/2019/11/20/%E5%8F%8C%E9%93%BE%E8%A1%A8/</id>
-    <published>2019-11-20T12:16:54.000Z</published>
-    <updated>2020-05-04T13:20:51.721Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;在单链表的基础上添加了一个指向前面结点的指针。&lt;/p&gt;
-&lt;p&gt;代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#include&amp;lt;stdlib.h&amp;gt;
-#include&amp;lt;stdio.h&amp;gt;
-#define ElementType char
-typedef
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="C语言" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C%E8%AF%AD%E8%A8%80/"/>
-    
-    
-      <category term="数据结构" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="C语言" scheme="http://zm163.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>单链表</title>
-    <link href="http://zm163.github.io/2019/11/20/%E5%8D%95%E9%93%BE%E8%A1%A8/"/>
-    <id>http://zm163.github.io/2019/11/20/%E5%8D%95%E9%93%BE%E8%A1%A8/</id>
-    <published>2019-11-20T12:16:32.000Z</published>
-    <updated>2020-05-04T13:20:41.169Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;单链表：顺序表的链表实现。&lt;/p&gt;
-&lt;p&gt;建议放入头文件。&lt;/p&gt;
-&lt;p&gt;代码：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#include&amp;lt;stdio.h&amp;gt;
-#include&amp;lt;stdlib.h&amp;gt;
-#define ElementType
-        
-      
-    
-    </summary>
-    
-    
-      <category term="数据结构" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="C语言" scheme="http://zm163.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C%E8%AF%AD%E8%A8%80/"/>
-    
-    
-      <category term="数据结构" scheme="http://zm163.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="C语言" scheme="http://zm163.github.io/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
     <title>LeetCode-3</title>
     <link href="http://zm163.github.io/2019/10/20/LeetCode-3/"/>
     <id>http://zm163.github.io/2019/10/20/LeetCode-3/</id>
     <published>2019-10-20T01:30:52.000Z</published>
-    <updated>2020-05-10T10:14:36.718Z</updated>
+    <updated>2020-05-13T16:54:06.455Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;实现语言：Java&lt;/p&gt;
-&lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;给定一个字符串，找出不含重复字符的最长字串的长度。&lt;/p&gt;
-&lt;p&gt;实例：&lt;/p&gt;
-&lt;p&gt;给定字符串“abcabcbb”,没有重复字符的最长字串是“abc”，那么长度就是3.&lt;/p&gt;
-&lt;p&gt;给定字符串“bbbbb”,最长
-        
-      
+      &lt;h1 id=&quot;最长无重字符串&quot;&gt;&lt;a href=&quot;#最长无重字符串&quot; class=&quot;headerlink&quot; title=&quot;最长无重字符串&quot;&gt;&lt;/a&gt;最长无重字符串&lt;/h1&gt;
     
     </summary>
     
     
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-困难" scheme="http://zm163.github.io/categories/LeetCode-%E5%9B%B0%E9%9A%BE/"/>
+    
+      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
@@ -401,23 +260,20 @@ typedef
     <link href="http://zm163.github.io/2019/10/19/LeetCode-2/"/>
     <id>http://zm163.github.io/2019/10/19/LeetCode-2/</id>
     <published>2019-10-19T13:43:46.000Z</published>
-    <updated>2020-05-10T10:14:55.796Z</updated>
+    <updated>2020-05-13T16:52:26.446Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;题目描述：&lt;/p&gt;
-&lt;p&gt;给定两个非空链表表示两个非负整数，位数按照逆序存储他们的每个节点只存储单个数字，将两数相加&lt;br&gt;返回一个新的链表。&lt;br&gt;你可以假设除了数字0外，这两个数字都不以0开头.{即数字不为（002）转化为输入就是（2-&amp;gt;0-&amp;gt;0）也告诉我们
-        
-      
+      &lt;h1 id=&quot;两数相加&quot;&gt;&lt;a href=&quot;#两数相加&quot; class=&quot;headerlink&quot; title=&quot;两数相加&quot;&gt;&lt;/a&gt;两数相加&lt;/h1&gt;
     
     </summary>
     
     
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-简单" scheme="http://zm163.github.io/categories/LeetCode-%E7%AE%80%E5%8D%95/"/>
+    
+      <category term="链表" scheme="http://zm163.github.io/categories/%E9%93%BE%E8%A1%A8/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
@@ -431,23 +287,20 @@ typedef
     <link href="http://zm163.github.io/2019/10/19/LeetCode-1/"/>
     <id>http://zm163.github.io/2019/10/19/LeetCode-1/</id>
     <published>2019-10-19T13:43:00.000Z</published>
-    <updated>2020-05-10T10:19:48.043Z</updated>
+    <updated>2020-05-13T16:48:55.242Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;语言：Java&lt;/p&gt;
-&lt;p&gt;题目描述：&lt;br&gt;    给定一个数组，找出其中何为目标值的两个数。（你可以假设每种输入只有一种答案，且同样的元素不能被重复利用）&lt;br&gt;    实例：&lt;br&gt;     给定nums=[2,7,11,15],target=9;&lt;br&gt;    
-        
-      
+      &lt;h1 id=&quot;两数之和&quot;&gt;&lt;a href=&quot;#两数之和&quot; class=&quot;headerlink&quot; title=&quot;两数之和&quot;&gt;&lt;/a&gt;两数之和&lt;/h1&gt;
     
     </summary>
     
     
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
@@ -628,6 +481,105 @@ typedef
         
           &lt;p&gt;题目：&lt;br&gt;给定两个字符串 A 和 B，本题要求你输出 A+B，即两个字符串的并集。要求先输出 A，再输出 B，但重复的字符必须被剔除。&lt;/p&gt;
 &lt;p&gt;输入格式：&lt;br&gt;输入在两行中分别给出 A 和 B，均为长度不超过 10&lt;br&gt;​6&lt;br&gt;​​ 的、由可见
+        
+      
+    
+    </summary>
+    
+    
+      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
+    
+      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PTA-Basic-1092</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1092/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1092/</id>
+    <published>2019-10-16T13:30:13.000Z</published>
+    <updated>2020-05-04T13:00:32.055Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;题目：&lt;/p&gt;
+&lt;p&gt;月饼是久负盛名的中国传统糕点之一，自唐朝以来，已经发展出几百品种。&lt;/p&gt;
+&lt;p&gt;mk.jpg&lt;/p&gt;
+&lt;p&gt;若想评比出一种“最好吃”的月饼，那势必在吃货界引发一场腥风血雨……
+        
+      
+    
+    </summary>
+    
+    
+      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
+    
+      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PTA-Basic-1091</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1091/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1091/</id>
+    <published>2019-10-16T13:30:08.000Z</published>
+    <updated>2020-05-04T12:38:11.446Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;题目：&lt;br&gt;如果某个数 K 的平方乘以 N 以后，结果的末尾几位数等于 K，那么就称这个数为“N-自守数”。例如 3×92&lt;br&gt;​2&lt;br&gt;​​ =25392，而 25392 的末尾两位正好是 92，所以 92 是一个
+        
+      
+    
+    </summary>
+    
+    
+      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
+    
+      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>PTA-Basic-1090</title>
+    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1090/"/>
+    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1090/</id>
+    <published>2019-10-16T13:30:03.000Z</published>
+    <updated>2020-05-04T13:00:40.955Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;题目：&lt;/p&gt;
+&lt;p&gt;集装箱运输货物时，我们必须特别小心，不能把不相容的货物装在一只箱子里。比如氧化剂绝对不能跟易燃液体同箱，否则很容易造成爆炸。&lt;/p&gt;
+&lt;p&gt;本题给定一张不相容物品的清单，需要你检查每一张集装箱货品清单，判断它们是否能装在同一只箱子里。&lt;/p&gt;
+&lt;p&gt;输
         
       
     

@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1013" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1010" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1013/"
-    >PTA-Basic-1013</a> 
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1010/"
+    >PTA-Basic-1010</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1013/" class="article-date">
-  <time datetime="2019-09-17T15:05:34.000Z" itemprop="datePublished">2019-09-17</time>
+      <a href="/2019/09/17/PTA-Basic-1010/" class="article-date">
+  <time datetime="2019-09-17T12:46:30.000Z" itemprop="datePublished">2019-09-17</time>
 </a>
       
   <div class="article-category">
@@ -141,210 +141,45 @@ var _hmt = _hmt || [];
       
 
       
-      <p>令 P<br>​<br>​​  表示第 i 个素数。现任给两个正整数 M≤N≤10<br>​4<br>​​ ，请输出 P<br>​M<br>​​  到 P<br>​N<br>​​  的所有素数。</p>
-<p>输入格式：<br>输入在一行中给出 M 和 N，其间以空格分隔。</p>
-<p>输出格式：<br>输出从 P<br>​M<br>​​  到 P<br>​N<br>​​  的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。</p>
-<p>输入样例：</p>
-<pre><code>5 27</code></pre><p>输出样例：</p>
-<pre><code>11 13 17 19 23 29 31 37 41 43
-47 53 59 61 67 71 73 79 83 89
-97 101 103</code></pre><p>分析：</p>
-<p>输入：整型数字n,m;<br>输出：从第n个素数（包含在内）到第m个素数之间的所有素数.十个换一行。</p>
+      <p>设计函数求一元多项式的导数。（注：x<br>​n<br>​​ （n为整数）的一阶导数为nx<br>​n−1<br>​​ 。）</p>
+<p>输入格式:<br>以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过 1000 的整数）。数字间以空格分隔。</p>
+<p>输出格式:<br>以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。注意“零多项式”的指数和系数都是 0，但是表示为 0 0。</p>
+<p>输入样例:</p>
+<pre><code>3 4 -5 2 6 1 -2 0</code></pre><p>输出样例:</p>
+<pre><code>12 3 -10 1 6 0</code></pre><p>分析：</p>
+<p>一元多项式条件：系数不为0，指数为大于-1的整数即（指数&gt;=0）;</p>
+<p>输入：先输入一个系数再输入一个指数，依此重复，指数递减。</p>
+<p>输出：格式见题目，输出求一次导后的的多项式对应的系数与指数。</p>
+<p>（注意： “零多项式”，最高项指数为0，但是表示为 0 0，除此以外，只要指数不为0，系数为不为无所谓，也要输出。百度解释0多项式就是0）</p>
+<p>因为系数一定不为0，所以如果结果中有“零多项式”，那么一定是输入时的指数为0.一旦指数为0，后面就不会再有输入了。</p>
 <p>思路：</p>
-<p>1写一个判定素数的函数。<br>2for循环从2开始数每当是素数计算素数的变量num就加一，当变量大于等于n时开始输出，大于m时停止输出。<br>3变量num-n+1就是从n开始第几个素数，每当此数字为十的倍数时，就换行。</p>
+<p>1读取一对数字再读一个字符。</p>
+<p>2如果指数为0就可以判断后面没有输入了。</p>
+<p>3不为0就输出对应求导后的数值，并标记一下此多项式不是“0多项式”。</p>
+<p>4如果不是0多项式，就不用输出“0 0”了，如果那么前面一定没有输出，那么就要输出此。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-int isPrime(int n){
-if(n==1)
-return 0;
-if(n==2)
-return 1;
-if(n%2==0){
-    return 0;
-}
-for(int i=3;i&lt;sqrt(n+1);i+=2){
-    if(n%i==0){
-        return 0;
-    }
-}
-return 1;
-}
 int main(void){
 int n,m;
-scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-int num=0;
-for(int i=2;i&lt;=1000000;i++){
-    if(isPrime(i)){
-        num++;
-        if(num&gt;m){
-            break;
-        }
-        if(num&gt;=n){
-            if((num-n+1)%10==0){
-            printf(&quot;%d\n&quot;,i);
-            continue;
-        }
-        if(num!=m) 
-            printf(&quot;%d &quot;,i);
-        else
-            printf(&quot;%d&quot;,i);
-        } 
+int flag=0;
+char ch;
+while(1){
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    ch=getchar();
+    if(m!=0){
+        if(flag)//此处用于判断是否为第一个输出，是就不用输出空格。
+            printf(&quot; &quot;);
+        printf(&quot;%d %d&quot;,n*m,m-1);
+        flag=1;
+    }
+    if(ch==&apos;\n&apos;){
+        break;
     }
 }
-return 0;
-}</code></pre><p>###注意：此算法还可以在进一步优化，这里就不加赘述了。</p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1012" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1012/"
-    >PTA-Basic-1012</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1012/" class="article-date">
-  <time datetime="2019-09-17T15:05:09.000Z" itemprop="datePublished">2019-09-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>给定一系列正整数，请按要求对数字进行分类，并输出以下 5 个数字：</p>
-<p>A<br>​1<br>​​  = 能被 5 整除的数字中所有偶数的和；<br>A<br>​2<br>​​  = 将被 5 除后余 1 的数字按给出顺序进行交错求和，即计算 n<br>​1<br>​​ −n<br>​2<br>​​ +n<br>​3<br>​​ −n<br>​4<br>​​ ⋯；<br>A<br>​3<br>​​  = 被 5 除后余 2 的数字的个数；<br>A<br>​4<br>​​  = 被 5 除后余 3 的数字的平均数，精确到小数点后 1 位；<br>A<br>​5<br>​​  = 被 5 除后余 4 的数字中最大数字。<br>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例先给出一个不超过 1000 的正整数 N，随后给出 N 个不超过 1000 的待分类的正整数。数字间以空格分隔。</p>
-<p>输出格式：<br>对给定的 N 个正整数，按题目要求计算 A<br>​1<br>​​ ~A<br>​5<br>​​  并在一行中顺序输出。数字间以空格分隔，但行末不得有多余空格。</p>
-<p>若其中某一类数字不存在，则在相应位置输出 N。</p>
-<p>输入样例 1：</p>
-<p>13 1 2 3 4 5 6 7 8 9 10 20 16 18</p>
-<p>输出样例 1：</p>
-<p>30 11 2 9.7 9</p>
-<p>输入样例 2：</p>
-<p>8 1 2 4 5 6 7 9 16</p>
-<p>输出样例 2：</p>
-<p>N 11 2 N 9</p>
-<p>分析：<br>输入：一个代表个数的数字，后面跟着相应个数的数字。<br>输出：</p>
-<p>1number%2==0&amp;&amp;number%5==0的数字的和</p>
-<p>2number%5==1的差项和a1-a2+a3-a4…</p>
-<p>3number%5==2的个数</p>
-<p>4number%5==3的数字的平均数，保留一位小数。</p>
-<p>5number%5==4的所有数字中的最大数。</p>
-<p>以上所有输出如果不存在时，输出‘N’;</p>
-<p>思路：</p>
-<p>1输入时就处理数字，对每个数字判断，存放在二维数组，第一行存储个数，第二行存储结果。</p>
-<p>2输出时一定要注意，当输出平均数时，要注意到我们使用的时整型数组，因此就要进行相应的处理。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-static int result[2][5];
-int num=0;
-scanf(&quot;%d&quot;,&amp;nu2m);
-int number;
-int i=0;
-int flag=1;
-while(i&lt;num){
-    scanf(&quot;%d&quot;,&amp;number);
-    if(number%2==0&amp;&amp;number%5==0){
-        result[0][0]++;
-        result[1][0]=result[1][0]+number;
-    }
-    if(number%5==1){
-        result[0][1]++;
-        result[1][1]=result[1][1]+flag*number;
-        flag=-flag;
-    }
-    if(number%5==2){
-        result[0][2]++;
-        result[1][2]++;
-    }
-    if(number%5==3){
-        result[0][3]++;
-        result[1][3]=result[1][3]+number;
-    }
-    if(number%5==4){
-        result[0][4]++;
-        result[1][4]=result[1][4]&gt;=number?result[1][4]:number;
-    }
-    i++;
+if(!flag){
+    printf(&quot;0 0&quot;);
 }
-
-for(i=0;i&lt;4;i++){
-    if(i==3){
-        if(result[0][i]==0){
-            printf(&quot;N &quot;);
-        }else{
-            printf(&quot;%.1f &quot;,result[1][i]*1.0/result[0][i]);
-        }
-        continue;
-    }
-    if(result[0][i]==0){
-        printf(&quot;N &quot;);
-    }
-    else{
-        printf(&quot;%d &quot;,result[1][i]);
-    }
-}
-if(result[0][i]==0){
-        printf(&quot;N&quot;);
-    }
-    else{
-        printf(&quot;%d&quot;,result[1][i]);
-    }
-return 0; 
+ return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -376,7 +211,7 @@ return 0;
 
 </article>
     
-    <article id="post-PTA-Basic-1011" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1009" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -384,8 +219,8 @@ return 0;
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1011/"
-    >PTA-Basic-1011</a> 
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1009/"
+    >PTA-Basic-1009</a> 
 </h2>
  
 
@@ -394,8 +229,8 @@ return 0;
 
     
     <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1011/" class="article-date">
-  <time datetime="2019-09-17T13:46:10.000Z" itemprop="datePublished">2019-09-17</time>
+      <a href="/2019/09/17/PTA-Basic-1009/" class="article-date">
+  <time datetime="2019-09-17T11:35:44.000Z" itemprop="datePublished">2019-09-17</time>
 </a>
       
   <div class="article-category">
@@ -416,44 +251,148 @@ return 0;
       
 
       
-      <p>给定区间 [−2^31,2^31] 内的 3 个整数 A、B 和 C，请判断 A+B 是否大于 C。</p>
-<p>输入格式：</p>
-<p>输入第 1 行给出正整数 T (≤10)，是测试用例的个数。随后给出 T 组测试用例，每组占一行，顺序给出 A、B 和 C。整数间以空格分隔。</p>
-<p>输出格式：</p>
-<p>对每组测试用例，在一行中输出 Case #X: true 如果 A+B&gt;C，否则输出 Case #X: false，其中 X 是测试用例的编号（从 1 开始）。</p>
+      <p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
+<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
+<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
 <p>输入样例：</p>
-<p>4</p>
-<p>1 2 3</p>
-<p>2 3 4</p>
-<p>2147483647 0 2147483646</p>
-<p>0 -2147483648 -2147483647</p>
+<p>Hello World Here I Come</p>
 <p>输出样例：</p>
-<p>Case #1: false</p>
-<p>Case #2: true</p>
-<p>Case #3: true</p>
-<p>Case #4: false</p>
-<p>分析：</p>
-<p>输入：个数，每一行一一组数据。<br>输出：判定结果。</p>
-<p>难点：<br>数字的长度过大，使用long long 类型，long long对应的长度为（-2^63,2^63 -1）足够存储数据，与加后的数据了;</p>
-<p>对定义后的字符数组赋值时，必须使用strcpy（）函数</p>
-<p>思路：输入一组比较一组，结果存放在字符数组中。</p>
+<p>Come I Here World Hello</p>
+<p>分析：<br>1给出一句话，要求单词顺序不变，倒序输出所有单词。<br>首先要输出最后一个单词，接着是倒数第二个… ,直到到达首单词。</p>
+<p>思路：双指针算法。<br>1用一个字符数组存储输入的字符串；使用两个字符指针，一个用来指向空格的位置，另一个用来输出空格与空格或者空格与     ‘\0’    之间的单词（字符串的末尾会存放一个‘\0’）,然后继续此操作直到到达第一个单词，第一个单词不输出（因题目格式要求）<br>2另外输出第一个单词。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
+#define MAX 81
 int main(void){
-    int n;
-    scanf(&quot;%d&quot;,&amp;n);
-    long long number1,number2,number3;
-    char result[n][8];
-    int i=0;
-    while(i&lt;n){
-        scanf(&quot;%ld %ld %ld&quot;,&amp;number1,&amp;number2,&amp;number3);
-        strcpy(result[i],(number1+number2&gt;number3)?&quot;true&quot;:&quot;false&quot;);
-        i++;
+char str[MAX];
+char *p,*q;
+gets(str);
+for(p=str+strlen(str)-1;p!=str;p--){//输出到第一个单词停止。
+    if(*p==&apos; &apos;){//如果读到一个空格，说明，一个单词已经结束。
+        for(q=p+1;*q!=&apos; &apos;&amp;&amp;*q;q++){
+            printf(&quot;%c&quot;,*q);
+        }
+        printf(&quot; &quot;);
     }
-    for(i=0;i&lt;n;i++){
-        printf(&quot;Case #%d: %s\n&quot;,i+1,result[i]);
+}
+for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
+//此处判定条件中的*p是为了防止输入一个单词时造成死循环。因为只输入一个单词时，也作为字符串末尾也会加上一个&apos;\0&apos;.
+    printf(&quot;%c&quot;,*p);
+}
+return 0;
+}</code></pre><p>######如果有更好的思路欢迎交流。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1008" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/16/PTA-Basic-1008/"
+    >PTA-Basic-1008</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/16/PTA-Basic-1008/" class="article-date">
+  <time datetime="2019-09-16T15:58:39.000Z" itemprop="datePublished">2019-09-16</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>一个数组A中存有N（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（≥0）个位置，即将A中的数据由（A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−1<br>​​ ）变换为（A<br>​N−M<br>​​ ⋯A<br>​N−1<br>​​ A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−M−1<br>​​ ）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p>
+<p>输入格式:</p>
+<pre><code>每个输入包含一个测试用例，第1行输入N（1≤N≤100）和M（≥0）；第2行输入N个整数，之间用空格分隔。</code></pre><p>输出格式:</p>
+<pre><code>在一行中输出循环右移M位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。</code></pre><p>输入样例:</p>
+<pre><code>6 2
+1 2 3 4 5 6</code></pre><p>输出样例:</p>
+<pre><code>5 6 1 2 3 4</code></pre><hr>
+<p>分析：</p>
+<p>题目要求输入一个数组，将数组右移，并输出。</p>
+<p>思路：</p>
+<pre><code>本题并没有按照题目要求的那样改变数组，而是改变数组输出的顺
+
+序，先输出原数组从n-m到n-1的数字，再输出0到n-m-2的数字（为什么不输出到n-m-1,这是为了题目的输出
+
+格式要求。），最后在输出下标为n-m-1的数组中的数字。
+
+
+##注意：
+
+如果右移的位数大于输入数字的个数，就用位数对个数取余，并将余数设置为位移的位数，因为如果唯
+
+一的位数大于数字数目，就会多做一次周期位移（周期位移后数组不变）。</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt; 
+int main(void){
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    m=m%n;
+    int list[n];
+    int k=0;
+    while(k&lt;n){
+       scanf(&quot;%d&quot;,&amp;list[k++]);
+    }  
+    int i;
+    for(i=n-m;i&lt;n;i++){
+        printf(&quot;%d &quot;,list[i]);
     }
+    for(i=0;i&lt;n-m-1;i++){
+        printf(&quot;%d &quot;,list[i]);
+    }
+    printf(&quot;%d&quot;,list[i]);
     return 0;
 }</code></pre>
       
@@ -492,7 +431,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/32/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/34/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/32/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/34/">下一页</a>
   </nav>
   
 </section>

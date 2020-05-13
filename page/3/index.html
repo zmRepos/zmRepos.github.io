@@ -212,10 +212,18 @@ var _hmt = _hmt || [];
       
 
       
-      <p>移动GIT默认文件夹导致任务管理其找不到对应的服务。<br>1打开cmd,输入regedit</p>
+      <blockquote>
+<p>移动GIT默认文件夹导致任务管理其找不到对应的服务。<br>1打开cmd,输入regedit</p>
+</blockquote>
+<blockquote>
 <p>2找到HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory<br>\background\shell\git_gui\command，修改它的路径为现在的<br>git-gui.exe程序所在的路径。</p>
+</blockquote>
+<blockquote>
 <p>3找到HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\git_shell\command修改路径为现在的git-<br>bash.exe所在的路径。</p>
+</blockquote>
+<blockquote>
 <p>完成</p>
+</blockquote>
 
       
       <!-- reward -->
@@ -247,7 +255,7 @@ var _hmt = _hmt || [];
 
 </article>
     
-    <article id="post-串" class="article article-type-post" itemscope
+    <article id="post-LeetCode-3" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -255,8 +263,10 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/11/21/%E4%B8%B2/"
-    >串</a> 
+  <a class="article-title" href="/2019/10/20/LeetCode-3/"
+    >LeetCode-3
+  <i class="article-topping">Sticky</i>
+</a> 
 </h2>
  
 
@@ -265,12 +275,12 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/11/21/%E4%B8%B2/" class="article-date">
-  <time datetime="2019-11-21T14:21:22.000Z" itemprop="datePublished">2019-11-21</time>
+      <a href="/2019/10/20/LeetCode-3/" class="article-date">
+  <time datetime="2019-10-20T01:30:52.000Z" itemprop="datePublished">2019-10-20</time>
 </a>
       
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">数据结构</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/C%E8%AF%AD%E8%A8%80/">C语言</a>
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode-%E5%9B%B0%E9%9A%BE/">LeetCode-困难</a> / <a class="article-category-link" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
   </div>
 
       
@@ -287,173 +297,10 @@ var _hmt = _hmt || [];
       
 
       
-      <p>注意此处的串的实现中的模式匹配，并不是最优解法（使用KMP算法）。建议直接放入头文件。此外，但凡程序中涉及的位置皆为位序（从1开始），在某些部分，如果使用坐标作为参数，可能会产生错误，不过基本上这些错误，程序中都有所应对。</p>
-<pre><code>#ifndef STRING_H_INCLUDED
-#define STRING_H_INCLUDED
-#define MAXSIZE 255//默认最大长度设置为255
-typedef struct{
-    char strs[MAXSIZE];
-    int len;
-}String;
-String* StrInit(String *s){//串的初始化
-    s=(String *)malloc(sizeof(String));
-    s-&gt;len=0;
-    return s;
-}
-void StrAppend(String *s,char ch){//将字符追加到串上
-    if(s-&gt;len&lt;MAXSIZE){
-        s-&gt;strs[(s-&gt;len)++]=ch;
-    }else{
-        printf(&quot;string is filled\n&quot;);
-    }
-}
-void StrAssign(String *s,char *p){//将指向的字符串赋值链接到s后面
-    while(*p!=&apos;\0&apos;){
-        StrAppend(s,*p);
-        p++;
-    }
-}
-void StrCopy(String *s1,String *s2){//将s2复制给s1
-    if(s2-&gt;len==0){
-            return;
-    }
-        s1-&gt;len=0;
-    for(int i=0;i&lt;(s2-&gt;len);i++){
-        StrAppend(s1,s2-&gt;strs[i]);
-    }
-}
-int StrEmpty(String *s){//判断串是否为空
-    if(s==NULL)
-        return 1;
-    if(s!=NULL)
-        return s-&gt;len==0;
-
-        printf(&quot;must initial\n&quot;);
-    return 1;
-}
-int StrLength(String *s){//求串长度
-    if(s!=NULL)
-    {
-        return s-&gt;len;
-    }
-    else
-    {
-        printf(&quot;must initial\n&quot;);
-        return 0;
-    }
-}
-String * SubString(String *s,int pos,int len){//求子串
-    if(pos-1+len&gt;(s-&gt;len)){
-        printf(&quot;the length of the string is over MAXSIZE\n&quot;);
-        return NULL;
-    }else{
-        String *temp;
-        temp=StrInit(temp);
-        for(int i=pos-1;i&lt;len;i++){
-            StrAppend(temp,s-&gt;strs[i]);
-        }
-        return temp;
-    }
-}
-String * Conact(String *s1,String *s2){//连接两个字符串，这里并不是最好的解法。
-    String *result;
-    if(StrLength(s1)+StrLength(s2)&gt;MAXSIZE){
-        printf(&quot;the length of the string is over MAXSIZE\n&quot;);
-        result=NULL;
-    }else{
-        result=StrInit(result);
-        for(int i=0;i&lt;StrLength(s1);i++){
-            StrAppend(result,s1-&gt;strs[i]);
-        }
-
-        for(int i=0;i&lt;StrLength(s2);i++){
-            StrAppend(result,s2-&gt;strs[i]);
-        }
-    }
-        return result;
-}
-int Index(String *s,int pos,String *sub){//求某个字符串在串中的起始位置
-    if((pos+StrLength(sub)&gt;=MAXSIZE)){
-        printf(&quot;not suitable\n&quot;);
-        return 0;
-    }
-    int i=pos-1,j=0;
-    while(i&lt;(s-&gt;len)&amp;&amp;j&lt;(sub-&gt;len)){
-        if(s-&gt;strs[i]==sub-&gt;strs[j]){
-            ++i;
-            ++j;
-        }else{
-            i=i-j+1;
-            j=0;
-        }
-    }
-    if(j&gt;=sub-&gt;len)
-        return i-sub-&gt;len+1;
-    else
-        return 0;
-}
-String * StrInsert(String *s,String *r,int pos){/将r插入到s的第pos个位置处
-    String *result;
-    if(s-&gt;len+r-&gt;len&gt;=MAXSIZE){
-        printf(&quot;the length of the result is over MAXSIZE\n&quot;);
-        result=NULL;
-    }else{
-        result=StrInit(result);
-        for(int i=0;i&lt;pos-1;i++){
-            StrAppend(result,s-&gt;strs[i]);
-        }
-        for(int i=0;i&lt;r-&gt;len;i++){
-            StrAppend(result,r-&gt;strs[i]);
-        }
-        for(int i=pos-1;i&lt;s-&gt;len;i++){
-            StrAppend(result,s-&gt;strs[i]);
-        }
-    }
-        return result;
-}
-void ClearString(String *s){//清空串
-    s-&gt;len=0;
-}
-String * StrDelete(String *s,int pos,int len){//删除串中指定位置开始，长度为len的字符串。
-    String *result;
-    result=StrInit(result);
-    for(int i=0;i&lt;pos-1;i++){
-        StrAppend(result,s-&gt;strs[i]);
-    }
-    for(int i=pos+len-1;i&lt;s-&gt;len;i++){
-        StrAppend(result,s-&gt;strs[i]);
-    }
-    return result;
-}
-String * StrReplace(String *s,String *target,String *r){//将s中的所有target子串替换为r
-    if(target-&gt;len==0){
-        return s;
-    }
-    int index=Index(s,1,target);
-    while(index){
-        s=StrDelete(s,index,target-&gt;len);
-        s=StrInsert(s,r,index);
-        index=Index(s,1,target);
-    }
-    return s;
-}
-void StrPrint(String *s){//打印字符串
-    if(s==NULL)
-    {
-        printf(&quot;must initial\n&quot;);
-    }
-    else
-    {
-        for(int i=0;i&lt;s-&gt;len;i++){
-            printf(&quot;%c&quot;,s-&gt;strs[i]);
-        }
-    }
-}
-void DestroyString(String *s){//销毁字符串
-    s-&gt;len=0;
-    free(s);
-}
-#endif // STRING_H_INCLUDED</code></pre>
+      <h1 id="最长无重字符串"><a href="#最长无重字符串" class="headerlink" title="最长无重字符串"></a>最长无重字符串</h1>
+      
+      <a class="article-more-link" href="/2019/10/20/LeetCode-3/">阅读更多...</a>
+      
       
       <!-- reward -->
       
@@ -465,7 +312,7 @@ void DestroyString(String *s){//销毁字符串
     <footer class="article-footer">
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
 
     </footer>
@@ -490,7 +337,7 @@ void DestroyString(String *s){//销毁字符串
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>
