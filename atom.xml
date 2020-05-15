@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-05-13T16:28:13.475Z</updated>
+  <updated>2020-05-15T12:23:50.884Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,111 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-12</title>
+    <link href="http://zm163.github.io/2020/05/15/LeetCode-12/"/>
+    <id>http://zm163.github.io/2020/05/15/LeetCode-12/</id>
+    <published>2020-05-15T11:51:44.000Z</published>
+    <updated>2020-05-15T12:23:50.884Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;整数转罗马数字&quot;&gt;&lt;a href=&quot;#整数转罗马数字&quot; class=&quot;headerlink&quot; title=&quot;整数转罗马数字&quot;&gt;&lt;/a&gt;整数转罗马数字&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;!--more--&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="贪心算法" scheme="http://zm163.github.io/categories/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-11</title>
+    <link href="http://zm163.github.io/2020/05/15/LeetCode-11/"/>
+    <id>http://zm163.github.io/2020/05/15/LeetCode-11/</id>
+    <published>2020-05-15T11:51:39.000Z</published>
+    <updated>2020-05-15T12:16:19.203Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;盛水最多的容器&quot;&gt;&lt;a href=&quot;#盛水最多的容器&quot; class=&quot;headerlink&quot; title=&quot;盛水最多的容器&quot;&gt;&lt;/a&gt;盛水最多的容器&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;!--more--&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="双指针" scheme="http://zm163.github.io/categories/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-10</title>
+    <link href="http://zm163.github.io/2020/05/15/LeetCode-10/"/>
+    <id>http://zm163.github.io/2020/05/15/LeetCode-10/</id>
+    <published>2020-05-15T11:51:34.000Z</published>
+    <updated>2020-05-15T12:25:07.961Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;正则表达式匹配&quot;&gt;&lt;a href=&quot;#正则表达式匹配&quot; class=&quot;headerlink&quot; title=&quot;正则表达式匹配&quot;&gt;&lt;/a&gt;正则表达式匹配&lt;/h1&gt;&lt;pre&gt;&lt;code&gt;&amp;lt;!--more--&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;figure
+        
+      
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="回溯" scheme="http://zm163.github.io/categories/%E5%9B%9E%E6%BA%AF/"/>
+    
+      <category term="动态规划" scheme="http://zm163.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+      <category term="未理解" scheme="http://zm163.github.io/tags/%E6%9C%AA%E7%90%86%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-9</title>
@@ -481,105 +586,6 @@
         
           &lt;p&gt;题目：&lt;br&gt;给定两个字符串 A 和 B，本题要求你输出 A+B，即两个字符串的并集。要求先输出 A，再输出 B，但重复的字符必须被剔除。&lt;/p&gt;
 &lt;p&gt;输入格式：&lt;br&gt;输入在两行中分别给出 A 和 B，均为长度不超过 10&lt;br&gt;​6&lt;br&gt;​​ 的、由可见
-        
-      
-    
-    </summary>
-    
-    
-      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
-    
-      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1092</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1092/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1092/</id>
-    <published>2019-10-16T13:30:13.000Z</published>
-    <updated>2020-05-04T13:00:32.055Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;月饼是久负盛名的中国传统糕点之一，自唐朝以来，已经发展出几百品种。&lt;/p&gt;
-&lt;p&gt;mk.jpg&lt;/p&gt;
-&lt;p&gt;若想评比出一种“最好吃”的月饼，那势必在吃货界引发一场腥风血雨……
-        
-      
-    
-    </summary>
-    
-    
-      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
-    
-      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1091</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1091/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1091/</id>
-    <published>2019-10-16T13:30:08.000Z</published>
-    <updated>2020-05-04T12:38:11.446Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;br&gt;如果某个数 K 的平方乘以 N 以后，结果的末尾几位数等于 K，那么就称这个数为“N-自守数”。例如 3×92&lt;br&gt;​2&lt;br&gt;​​ =25392，而 25392 的末尾两位正好是 92，所以 92 是一个
-        
-      
-    
-    </summary>
-    
-    
-      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
-    
-      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1090</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1090/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1090/</id>
-    <published>2019-10-16T13:30:03.000Z</published>
-    <updated>2020-05-04T13:00:40.955Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;集装箱运输货物时，我们必须特别小心，不能把不相容的货物装在一只箱子里。比如氧化剂绝对不能跟易燃液体同箱，否则很容易造成爆炸。&lt;/p&gt;
-&lt;p&gt;本题给定一张不相容物品的清单，需要你检查每一张集装箱货品清单，判断它们是否能装在同一只箱子里。&lt;/p&gt;
-&lt;p&gt;输
         
       
     
