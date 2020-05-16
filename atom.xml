@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-05-15T12:31:47.015Z</updated>
+  <updated>2020-05-16T05:17:26.934Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,91 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-15</title>
+    <link href="http://zm163.github.io/2020/05/16/LeetCode-15/"/>
+    <id>http://zm163.github.io/2020/05/16/LeetCode-15/</id>
+    <published>2020-05-16T04:41:51.000Z</published>
+    <updated>2020-05-16T05:17:26.934Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;三数之和&quot;&gt;&lt;a href=&quot;#三数之和&quot; class=&quot;headerlink&quot; title=&quot;三数之和&quot;&gt;&lt;/a&gt;三数之和&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="双指针" scheme="http://zm163.github.io/categories/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-14</title>
+    <link href="http://zm163.github.io/2020/05/16/LeetCode-14/"/>
+    <id>http://zm163.github.io/2020/05/16/LeetCode-14/</id>
+    <published>2020-05-16T04:41:45.000Z</published>
+    <updated>2020-05-16T05:08:38.250Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;最长公共前缀&quot;&gt;&lt;a href=&quot;#最长公共前缀&quot; class=&quot;headerlink&quot; title=&quot;最长公共前缀&quot;&gt;&lt;/a&gt;最长公共前缀&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-13</title>
+    <link href="http://zm163.github.io/2020/05/16/LeetCode-13/"/>
+    <id>http://zm163.github.io/2020/05/16/LeetCode-13/</id>
+    <published>2020-05-16T04:41:20.000Z</published>
+    <updated>2020-05-16T04:59:54.017Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;罗马数字转整数&quot;&gt;&lt;a href=&quot;#罗马数字转整数&quot; class=&quot;headerlink&quot; title=&quot;罗马数字转整数&quot;&gt;&lt;/a&gt;罗马数字转整数&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-简单" scheme="http://zm163.github.io/categories/LeetCode-%E7%AE%80%E5%8D%95/"/>
+    
+      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-12</title>
@@ -485,103 +570,6 @@
     
     
       <category term="-PTA-Basic" scheme="http://zm163.github.io/tags/PTA-Basic/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1095</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1095/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1095/</id>
-    <published>2019-10-16T13:30:26.000Z</published>
-    <updated>2020-05-04T13:00:12.052Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;PAT 准考证号由 4 部分组成：&lt;/p&gt;
-&lt;p&gt;第 1 位是级别，即 T 代表顶级；A 代表甲级；B 代表乙级；&lt;br&gt;第 2&lt;del&gt;4 位是考场编号，范围从 101 到 999；&lt;br&gt;第 5&lt;/del&gt;10
-        
-      
-    
-    </summary>
-    
-    
-      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
-    
-      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1094</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1094/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1094/</id>
-    <published>2019-10-16T13:30:22.000Z</published>
-    <updated>2020-05-04T12:37:35.510Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;###题目描述&lt;/p&gt;
-&lt;p&gt;2004 年 7 月，谷歌在硅谷的 101 号公路边竖立了一块巨大的广告牌（如下图）用于招聘。内容超级简单，就是一个以 .com 结尾的网址，而前面的网址是一个 10 位素数，这个素数是自然常数 e 中最早出现的 10
-        
-      
-    
-    </summary>
-    
-    
-      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
-    
-      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1093</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1093/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1093/</id>
-    <published>2019-10-16T13:30:17.000Z</published>
-    <updated>2020-05-04T13:00:23.828Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;br&gt;给定两个字符串 A 和 B，本题要求你输出 A+B，即两个字符串的并集。要求先输出 A，再输出 B，但重复的字符必须被剔除。&lt;/p&gt;
-&lt;p&gt;输入格式：&lt;br&gt;输入在两行中分别给出 A 和 B，均为长度不超过 10&lt;br&gt;​6&lt;br&gt;​​ 的、由可见
-        
-      
-    
-    </summary>
-    
-    
-      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
-    
-      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   

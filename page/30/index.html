@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1030" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1033" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1030/"
-    >PTA-Basic-1030</a> 
+  <a class="article-title" href="/2019/09/22/PTA-Basic-1033/"
+    >PTA-Basic-1033</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1030/" class="article-date">
-  <time datetime="2019-09-20T12:06:46.000Z" itemprop="datePublished">2019-09-20</time>
+      <a href="/2019/09/22/PTA-Basic-1033/" class="article-date">
+  <time datetime="2019-09-22T12:38:37.000Z" itemprop="datePublished">2019-09-22</time>
 </a>
       
   <div class="article-category">
@@ -141,162 +141,66 @@ var _hmt = _hmt || [];
       
 
       
-      <p>给定一个正整数数列，和正整数 p，设这个数列中的最大值是 M，最小值是 m，如果 M≤mp，则称这个数列是完美数列。</p>
-<p>现在给定参数 p 和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</p>
-<p>输入格式：<br>输入第一行给出两个正整数 N 和 p，其中 N（≤10^5）是输入的正整数的个数，p（≤10^9）是给定的参数。第二行给出 N 个正整数，每个数不超过10^9。</p>
-<p>输出格式：<br>在一行中输出最多可以选择多少个数可以用它们组成一个完美数列。</p>
+      <p>题目：</p>
+<p>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及坏掉的那些键，打出的结果文字会是怎样？</p>
+<p>输入格式：<br>输入在 2 行中分别给出坏掉的那些键、以及应该输入的文字。其中对应英文字母的坏键以大写给出；每段文字是不超过 10<br>^5<br>​​  个字符的串。可用的字符包括字母 [a-z, A-Z]、数字 0-9、以及下划线 _（代表空格）、,、.、-、+（代表上档键）。题目保证第 2 行输入的文字串非空。</p>
+<p>注意：如果上档键坏掉了，那么大写的英文字母无法被打出。</p>
+<p>输出格式：<br>在一行中输出能够被打出的结果文字。如果没有一个字符能被打出，则输出空行。</p>
 <p>输入样例：</p>
-<pre><code>10 8
-2 3 20 4 5 1 6 7 8 9</code></pre><p>输出样例：</p>
-<pre><code>8</code></pre><p>分析:</p>
-<p>将输入的数字存入数组，对数组进行排序。从第i个开始向后找,每当有值与第i个元素之比小于p时，就看看要不要改变sum的值，下一次进行第i+1此比较时，就从i+1+sum处向后遍历。只有这样，其可能有的sum值才可能大于上一次循环得到的sum值。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-int compare(const void * a,const void *b){
-    long A=*(long *)a;
-    long B=*(long *)b;
-    if(A&gt;B){
-        return 1;
-    }else{
-        if(A==B){
-            return 0; 
-        }else{
-            return -1;
-        }
-    }
-}
-int main(void){
-    int N;
-    double p;
-    scanf(&quot;%ld %lf&quot;,&amp;N,&amp;p);
-    long nums[N];
-    long x=0;
-    int i=0;
-    while(N--){
-        scanf(&quot;%d&quot;,&amp;x);
-        nums[i++]=x;
-    } 
-    int MAX=0;
-    qsort(nums,i,sizeof(long),compare);
-        for(int j=0;j&lt;i;j++){//外层遍历，从0开始，
-            for(int k=j+MAX;k&lt;i;k++){
-                if(nums[k]*1.0/nums[j]&gt;p){
-                    break;
-                }
-                else{
-                    if(k-j+1&gt;MAX){
-                        MAX=k-j+1;
-                    }
-                }
-            }
-        }
-    printf(&quot;%d&quot;,MAX);
-    return 0;
-}</code></pre><p>注意：</p>
-<p>此处存储数值建议使用long存储数字，double存储p的值。</p>
+<pre><code>7+IE.
+7_This_is_a_test.</code></pre><p>输出样例：</p>
+<pre><code>_hs_s_a_tst</code></pre><p>分析:</p>
+<pre><code>输入：第一行输入坏掉的字符（如果有字母则对应
+的字母不能出现，如果有下划线则不下划线，有加号大写字母甭能出现）</code></pre><hr>
+<pre><code>处理：
+先定义两个尽可能大的字符数组一个用来存储坏键，一个用来存储要输入的字符串。
 
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+定义一个删除字符的函数，然后遍历第一个字符串分别在第二个字符串中删去相应的字符。
 
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1029" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1029/"
-    >PTA-Basic-1029</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1029/" class="article-date">
-  <time datetime="2019-09-20T12:06:29.000Z" itemprop="datePublished">2019-09-20</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及实际被输入的文字，请你列出肯定坏掉的那些键。</p>
-<p>输入格式：<br>输入在 2 行中分别给出应该输入的文字、以及实际被输入的文字。每段文字是不超过 80 个字符的串，由字母 A-Z（包括大、小写）、数字 0-9、以及下划线 _（代表空格）组成。题目保证 2 个字符串均非空。</p>
-<p>输出格式：<br>按照发现顺序，在一行中输出坏掉的键。其中英文字母只输出大写，每个坏键只输出一次。题目保证至少有 1 个坏键。</p>
-<p>输入样例：</p>
-<pre><code>7_This_is_a_test
-_hs_s_a_es</code></pre><p>输出样例：</p>
-<pre><code>7TI</code></pre><p>分析：</p>
-<p>存储两个字符串，遍历第一个字符串每个字符，如果字符串二中没有，且其对应的大写字母用来存放结果字符的字符数组中也没有就将其存入数组中并数字加1。跳出循环，最后要在末尾加上‘\0’。</p>
-<p>代码：</p>
+输出：处理后的字符串如果字符串长度为0则输出空行。</code></pre><p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
 #include&lt;ctype.h&gt;
-int main(void){
-    char str[100]={&quot;\0&quot;};
-    gets(str);
-    char str2[100]={&quot;\0&quot;};
-    gets(str2);
-    int i=0;
-    char result[80]={&quot;\0&quot;};
-    int num=0;
-    while(str[i]!=&apos;\0&apos;){
-        if(!strchr(str2,str[i])){
-            char ch=toupper(str[i]);
-            if(!strchr(result,ch)){
-                result[num++]=ch;
-            }
+char * Remove(char*a,char b){
+    char * src,*dst;
+    src=a;
+    dst=a;
+    while(*src!=&apos;\0&apos;){
+        *dst=*src;
+        src++;
+        if(*dst!=b){
+            dst++;
         }
+    }
+    *dst=&apos;\0&apos;;
+    return a;
+}
+int main(void){
+    char a[110000]={},b[110000]={};
+    gets(a);
+    gets(b);
+    int i=0;
+    while(a[i]!=&apos;\0&apos;){
+                if(a[i]!=&apos;+&apos;){//shang dang jian mei hua
+                            if(a[i]&gt;=&apos;A&apos;&amp;&amp;a[i]&lt;=&apos;Z&apos;){
+                                Remove(b,tolower(a[i]));
+                                Remove(b,toupper(a[i]));
+                            }else{
+                                Remove(b,a[i]);
+                            }
+                }else{
+                    for(char j=&apos;A&apos;;j&lt;(&apos;Z&apos;+1);j++){
+                        Remove(b,j);
+                    }
+            }
         i++;
     }
-    result[num]=&apos;\0&apos;;
-    printf(&quot;%s&quot;,result);
+
+    if(strlen(b)!=0){
+        printf(&quot;%s&quot;,b);
+    }else{
+        printf(&quot;\n&quot;);
+    }
     return 0;
 }</code></pre>
       
@@ -329,7 +233,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1028" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1032" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -337,8 +241,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/20/PTA-Basic-1028/"
-    >PTA-Basic-1028</a> 
+  <a class="article-title" href="/2019/09/22/PTA-Basic-1032/"
+    >PTA-Basic-1032</a> 
 </h2>
  
 
@@ -347,8 +251,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/20/PTA-Basic-1028/" class="article-date">
-  <time datetime="2019-09-20T12:06:06.000Z" itemprop="datePublished">2019-09-20</time>
+      <a href="/2019/09/22/PTA-Basic-1032/" class="article-date">
+  <time datetime="2019-09-22T12:38:23.000Z" itemprop="datePublished">2019-09-22</time>
 </a>
       
   <div class="article-category">
@@ -369,81 +273,183 @@ int main(void){
       
 
       
-      <p>某城镇进行人口普查，得到了全体居民的生日。现请你写个程序，找出镇上最年长和最年轻的人。</p>
-<p>这里确保每个输入的日期都是合法的，但不一定是合理的——假设已知镇上没有超过 200 岁的老人，而今天是 2014 年 9 月 6 日，所以超过 200 岁的生日和未出生的生日都是不合理的，应该被过滤掉。</p>
-<p>输入格式：<br>输入在第一行给出正整数 N，取值在(0,10^5]；随后 N 行，每行给出 1 个人的姓名（由不超过 5 个英文字母组成的字符串）、以及按 yyyy/mm/dd（即年/月/日）格式给出的生日。题目保证最年长和最年轻的人没有并列。</p>
-<p>输出格式：<br>在一行中顺序输出有效生日的个数、最年长人和最年轻人的姓名，其间以空格分隔。</p>
+      <p>题目：</p>
+<p>为了用事实说明挖掘机技术到底哪家强，PAT 组织了一场挖掘机技能大赛。现请你根据比赛结果统计出技术最强的那个学校。</p>
+<p>输入格式：<br>输入在第 1 行给出不超过 10<br>​5<br>​​  的正整数 N，即参赛人数。随后 N 行，每行给出一位参赛者的信息和成绩，包括其所代表的学校的编号（从 1 开始连续编号）、及其比赛成绩（百分制），中间以空格分隔。</p>
+<p>输出格式：<br>在一行中给出总得分最高的学校的编号、及其总分，中间以空格分隔。题目保证答案唯一，没有并列。</p>
 <p>输入样例：</p>
-<pre><code>5
-John 2001/05/12
-Tom 1814/09/06
-Ann 2121/01/30
-James 1814/09/05
-Steve 1967/11/20</code></pre><p>输出样例：</p>
-<pre><code>3 Tom John</code></pre><p>分析：</p>
-<p>定义一个结构体，首先日期一定都是合法的，但是不一定合理。定义一个在<br>最早的可能的年份出生的人，与今天出生的人，然后输入的每个人的数据与这两个人对比，合格的就存入person数组中。然后对此数组进行快排，输出第一个元素，与最后一个元素。注意：当没有人时，只输出一个0.</p>
+<pre><code>6
+3 65
+2 80
+1 100
+2 70
+3 40
+3 0</code></pre><p>输出样例：</p>
+<pre><code>2 150</code></pre><p>分析：</p>
+<p>输入：第一行给出要输入的数目，随后每一行给出一个学校的得分。<br>处理：<br>先定义一个学校编号的数组越大越好（其数组下标就是输入的学校的编号），定义一个得分最大的学校的编号，与对应的分数，然后输入n次一个学校的编号与得分，如果输入的分数加到对应的学校后比当前最高的学校搞，就改变两个量，最后输入结束时就得到了，最大的学校的编号与分数了。<br>输出：学校的编号 学校的总分数。<br>注意：此题如果采用排序的话可能会运行超时。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int schools[100001]={0};
+    int max=0;
+    int max_school=0;
+    int n,a,b;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d %d&quot;,&amp;a,&amp;b);
+        schools[a]=schools[a]+b;
+        if(schools[a]&gt;max){
+            max=schools[a];
+            max_school=a;
+        }
+    }
+    printf(&quot;%d %d&quot;,max_school,max);
+    return 0;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1031" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/PTA-Basic-1031/"
+    >PTA-Basic-1031</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/22/PTA-Basic-1031/" class="article-date">
+  <time datetime="2019-09-22T12:38:08.000Z" itemprop="datePublished">2019-09-22</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：<br>一个合法的身份证号码由17位地区、日期编号和顺序编号加1位校验码组成。校验码的计算规则如下：</p>
+<p>首先对前17位数字加权求和，权重分配为：{7，9，10，5，8，4，2，1，6，3，7，9，10，5，8，4，2}；然后将计算的和对11取模得到值Z；最后按照以下关系对应Z值与校验码M的值：</p>
+<p>Z：0 1 2 3 4 5 6 7 8 9 10<br>M：1 0 X 9 8 7 6 5 4 3 2<br>现在给定一些身份证号码，请你验证校验码的有效性，并输出有问题的号码。</p>
+<p>输入格式：<br>输入第一行给出正整数N（≤100）是输入的身份证号码的个数。随后N行，每行给出1个18位身份证号码。</p>
+<p>输出格式：<br>按照输入的顺序每行输出1个有问题的身份证号码。这里并不检验前17位是否合理，只检查前17位是否全为数字且最后1位校验码计算准确。如果所有号码都正常，则输出All passed。</p>
+<p>输入样例1：</p>
+<pre><code>4
+320124198808240056
+12010X198901011234
+110108196711301866
+37070419881216001X</code></pre><p>输出样例1：</p>
+<pre><code>12010X198901011234
+110108196711301866
+37070419881216001X</code></pre><p>输入样例2：</p>
+<pre><code>2
+320124198808240056
+110108196711301862</code></pre><p>输出样例2：</p>
+<pre><code>All passed</code></pre><p>分析：<br>输入:第一行给出要输入的身份证的个数。<br>以下输入n行身份证信息。<br>处理：<br>定义一个判断身份证是否合格的函数，判断每一个输入进的身份证是否合格，不合格的存入二维数组，并且数目加1用一个二维字符数组存储不符合条件的身份证号。<br>身份证处理函数：首先检验前17个字符是否都是数字范围内的，然后用前十七个字符分别减去‘0’然后加到总和上去，然后用总和对11取余数，根据对应的余数找到对应的检验码。<br>输出：<br>如果全部合格输出:All passed<br>否则输出不合格的身份证号一行一个。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-typedef struct person{
-    char name[6];
-    int birthyear;
-    int birthmonth;
-    int birthday;
-}person;
-int compare(const void * a,const void * b){
-    person A=*(person *)a;
-    person B=*(person *)b;
-    if(A.birthyear&gt;B.birthyear){
-        return 1;
-    }else if(A.birthyear&lt;B.birthyear){
-        return -1;
-    }else{
-        if(A.birthmonth&gt;B.birthmonth){
-            return 1;
-        }else if(A.birthmonth&lt;B.birthmonth){
-            return -1;
-        }else{
-                if(A.birthday&gt;B.birthday){
-                return 1;
-            }else if(A.birthday&lt;B.birthday){
-                return -1;
-            }else{
-                return 0;
-            }
+int check(char * a){
+    int i=0;
+    for(;i&lt;17;i++){
+        if(!(a[i]&lt;=&apos;9&apos;&amp;&amp;a[i]&gt;=&apos;0&apos;)){
+            break;
         }
     }
+    if(i&lt;17){
+        return 0;
+    }
+    int sum=0;
+    sum=(a[0]-&apos;0&apos;)*7+(a[1]-&apos;0&apos;)*9+(a[2]-&apos;0&apos;)*10+(a[3]-&apos;0&apos;)*5+(a[4]-&apos;0&apos;)*8+
+    (a[5]-&apos;0&apos;)*4+(a[6]-&apos;0&apos;)*2+(a[7]-&apos;0&apos;)*1+(a[8]-&apos;0&apos;)*6+(a[9]-&apos;0&apos;)*3+
+    (a[10]-&apos;0&apos;)*7+(a[11]-&apos;0&apos;)*9+(a[12]-&apos;0&apos;)*10+(a[13]-&apos;0&apos;)*5+(a[14]-&apos;0&apos;)*8+
+    (a[15]-&apos;0&apos;)*4+(a[16]-&apos;0&apos;)*2;
+    sum=sum%11;
+    int flag=0;
+    switch(sum){
+        case 0:flag=(a[17]==&apos;1&apos;);break;
+        case 1:flag=(a[17]==&apos;0&apos;);break;
+        case 2:flag=(a[17]==&apos;X&apos;);break;
+        case 3:flag=(a[17]==&apos;9&apos;);break;
+        case 4:flag=(a[17]==&apos;8&apos;);break;
+        case 5:flag=(a[17]==&apos;7&apos;);break;
+        case 6:flag=(a[17]==&apos;6&apos;);break;
+        case 7:flag=(a[17]==&apos;5&apos;);break;
+        case 8:flag=(a[17]==&apos;4&apos;);break;
+        case 9:flag=(a[17]==&apos;3&apos;);break;
+        case 10:flag=(a[17]==&apos;2&apos;);break;
+    }
+     return flag;
 }
 int main(void){
-    long num;
-    scanf(&quot;%ld&quot;,&amp;num);
-    long i=0;
-    person persons[num],oldperson,p,lastperson;  
-    oldperson.birthyear=1814;
-    oldperson.birthmonth=9;
-    oldperson.birthday=6;
-    lastperson.birthyear=2014;
-    lastperson.birthmonth=9;
-    lastperson.birthday=7;
+    int num;
+    scanf(&quot;%d&quot;,&amp;num);
+    char res[num][19];
+    int i=0;
+    char ch[19];
     while(num--){
-        scanf(&quot;%s %d/%d/%d&quot;,p.name,&amp;p.birthyear,&amp;p.birthmonth,&amp;p.birthday);
-        if(compare(&amp;p,&amp;oldperson)&gt;=0 &amp;&amp; compare(&amp;p,&amp;lastperson)&lt;0){
-            strcpy(persons[i].name,p.name);
-            persons[i].birthyear=p.birthyear;
-            persons[i].birthmonth=p.birthmonth;
-            persons[i].birthday=p.birthday;
-            i++;
+        scanf(&quot;%s&quot;,ch);
+        if(!check(ch)){
+            strcpy(res[i++],ch);
         }
     }
-    qsort(persons,i,sizeof(person),compare);
-    if(i!=0)
-    printf(&quot;%d %s %s&quot;,i,persons[0].name,persons[i-1].name);
-    else{
-        printf(&quot;0&quot;);
+    if(i==0){
+        printf(&quot;All passed&quot;); 
+    }else{
+        for(int j=0;j&lt;i;j++){
+            printf(&quot;%s\n&quot;,res[j]);
+        }
     }
     return 0;
-}</code></pre>
+} </code></pre>
       
       <!-- reward -->
       
@@ -480,7 +486,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/29/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/36/">36</a><a class="extend next" rel="next" href="/page/31/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/29/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/37/">37</a><a class="extend next" rel="next" href="/page/31/">下一页</a>
   </nav>
   
 </section>
