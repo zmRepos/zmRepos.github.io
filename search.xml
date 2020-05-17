@@ -7114,4 +7114,84 @@ int main(void){
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode-16</title>
+    <url>/2020/05/17/LeetCode-16/</url>
+    <content><![CDATA[<h1 id="最接近的三数之和"><a href="#最接近的三数之和" class="headerlink" title="最接近的三数之和"></a>最接近的三数之和</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给定一个包括 n 个整数的数组 nums 和 一个目标值 target。找出 nums 中的三个整数，使得它们的和与 target 最接近。返回这三个数的和。假定每组输入只存在唯一答案。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><blockquote>
+<p>例如，给定数组 nums = [-1，2，1，-4], 和 target = 1.</p>
+<p>与 target 最接近的三个数的和为 2. (-1 + 2 + 1 = 2).</p>
+</blockquote>
+<h2 id="思路1-双指针法"><a href="#思路1-双指针法" class="headerlink" title="思路1-双指针法"></a>思路1-双指针法</h2><p>选定一个位置，从此位置出发，定义两个指针指向此位置之后的数组两端，然后不断的缩进，不断的判断距离。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">threeSumClosest</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target)</span> </span>&#123;</span><br><span class="line">        Arrays.sort(nums);</span><br><span class="line">        <span class="keyword">int</span> currSum=<span class="number">0</span>,left=<span class="number">0</span>,right=<span class="number">0</span>,minLength=<span class="number">2147483624</span>,resultSum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=nums.length-<span class="number">3</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i!=<span class="number">0</span>&amp;&amp;nums[i-<span class="number">1</span>]==nums[i])<span class="keyword">continue</span>;</span><br><span class="line">            left=i+<span class="number">1</span>;</span><br><span class="line">            right=nums.length-<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">                currSum=nums[i]+nums[left]+nums[right];</span><br><span class="line">                    <span class="keyword">if</span>(currSum&gt;target)&#123;</span><br><span class="line">                        right--;</span><br><span class="line">                        <span class="keyword">if</span>(currSum-target&lt;minLength)&#123;</span><br><span class="line">                            minLength=currSum-target;</span><br><span class="line">                            resultSum=currSum;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(currSum&lt;target)&#123;</span><br><span class="line">                        left++;</span><br><span class="line">                        <span class="keyword">if</span>(target-currSum&lt;minLength)&#123;</span><br><span class="line">                            minLength=target-currSum;</span><br><span class="line">                            resultSum=currSum;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="keyword">return</span> currSum;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">return</span> resultSum;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-nlogn-O-n-2-O-n-2"><a href="#时间复杂度：O-nlogn-O-n-2-O-n-2" class="headerlink" title="时间复杂度：O(nlogn)+O(n^2 )=O(n^2 )"></a>时间复杂度：O(nlogn)+O(n^2 )=O(n^2 )</h3>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-中等</category>
+        <category>数组</category>
+        <category>双指针</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-17</title>
+    <url>/2020/05/17/LeetCode-17/</url>
+    <content><![CDATA[<h1 id="电话号码的字母组合"><a href="#电话号码的字母组合" class="headerlink" title="电话号码的字母组合"></a>电话号码的字母组合</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。</p>
+<p>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png" alt=""><br>说明:<br>尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br></pre></td></tr></table></figure>
+<h2 id="思路1-回溯法"><a href="#思路1-回溯法" class="headerlink" title="思路1-回溯法"></a>思路1-回溯法</h2><p>操作公共列表，保存结果。太聪明了这种算法，代码理解更好。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> String map[]=&#123;<span class="string">""</span>,<span class="string">""</span>,<span class="string">"abc"</span>,<span class="string">"def"</span>,<span class="string">"ghi"</span>,<span class="string">"jkl"</span>,<span class="string">"mno"</span>,<span class="string">"pqrs"</span>,<span class="string">"tuv"</span>,<span class="string">"wxyz"</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line">List&lt;String&gt;result=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] digitsArray=digits.toCharArray();<span class="comment">//将"12"转化为【'1'、'2'】</span></span><br><span class="line">        len=digitsArray.length;<span class="comment">//此处保存长度，用于递归的结束条件</span></span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span>)<span class="keyword">return</span> result;<span class="comment">//如果为空串直接返回空列表</span></span><br><span class="line">        <span class="keyword">char</span>[]temp=<span class="keyword">new</span> <span class="keyword">char</span>[len];<span class="comment">//定义一个字符数组用于存储如['a','d']、或者['a','e']，这样的中间结果</span></span><br><span class="line">        letterCombinations(digitsArray,<span class="number">0</span>,temp);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">letterCombinations</span><span class="params">(<span class="keyword">char</span>[] digitsArray,<span class="keyword">int</span> index,<span class="keyword">char</span>[] temp)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index==len)&#123;<span class="comment">//结束条件，如果达到len表明到达digits的末尾之后，此时temp的每一位都有了字符</span></span><br><span class="line">            result.add(String.valueOf(temp));<span class="comment">//将temp数组直接转化为字符串，并存入字符串列表，每一个temp代表一个结果字符串</span></span><br><span class="line">               <span class="keyword">return</span> ;<span class="comment">//返回避免递归无法终止</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span> chs[]=map[digitsArray[index]-<span class="string">'0'</span>].toCharArray();<span class="comment">//获得当前索引映射到的字母数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> ch:chs)&#123;<span class="comment">//将此索引的每一个字母先存入到temp中，然后进行下一位temp索引位置处字母的搭配</span></span><br><span class="line">            temp[index]=ch;</span><br><span class="line">            letterCombinations(digitsArray,index+<span class="number">1</span>,temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-3-N-×4-M"><a href="#时间复杂度：O-3-N-×4-M" class="headerlink" title="时间复杂度：O(3^N ×4^M )"></a>时间复杂度：O(3^N ×4^M )</h3>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-中等</category>
+        <category>字符串</category>
+        <category>回溯算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-18</title>
+    <url>/2020/05/17/LeetCode-18/</url>
+    <content><![CDATA[<h1 id="四数之和"><a href="#四数之和" class="headerlink" title="四数之和"></a>四数之和</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给定一个包含 n 个整数的数组 nums 和一个目标值 target，判断 nums 中是否存在四个元素 a，b，c 和 d ，使得 a + b + c + d 的值与 target 相等？找出所有满足条件且不重复的四元组。</p>
+<p>注意：</p>
+<p>答案中不可以包含重复的四元组。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><blockquote>
+<p>给定数组 nums = [1, 0, -1, 0, -2, 2]，和 target = 0。</p>
+</blockquote>
+<blockquote>
+<p>满足要求的四元组集合为：</p>
+<p>[</p>
+<p> [-1,  0, 0, 1],</p>
+<p> [-2, -1, 1, 2],</p>
+<p> [-2,  0, 0, 2]</p>
+<p>]</p>
+</blockquote>
+<h2 id="思路1-双指针法"><a href="#思路1-双指针法" class="headerlink" title="思路1-双指针法"></a>思路1-双指针法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">首先选定两个位置作为出发点，然后在这两个位置后面再选定位置作为指针初始位置，进行求和判断，根据求和结果进行指针的移动。此处已经完成了整个算法，但是还需要进行优化，不然可能重复的操作太多。剔除：如果已经确定一个起始位置，那么它的最小值大于target，那么就没有必要继续向后读取数字了，如果最大值小于target，也没必要进行此次循环...</span><br></pre></td></tr></table></figure>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> List&lt;List&lt;Integer&gt;&gt; fourSum(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> target) &#123;</span><br><span class="line">	            List&lt;List&lt;Integer&gt;&gt; result= <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	            <span class="keyword">if</span>(nums.length&lt;<span class="number">4</span>)&#123;</span><br><span class="line">	                <span class="keyword">return</span> result;</span><br><span class="line">	            &#125;</span><br><span class="line">	            Arrays.sort(nums);</span><br><span class="line">	            <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nums.length-<span class="number">3</span>;i++)&#123;</span><br><span class="line">	                <span class="keyword">if</span>(nums[i]+nums[i+<span class="number">1</span>]+nums[i+<span class="number">2</span>]+nums[i+<span class="number">3</span>]&gt;target)&#123;<span class="comment">//最小的四个数和小于target，结束所有循环</span></span><br><span class="line">	                    <span class="keyword">break</span>;</span><br><span class="line">	                &#125;</span><br><span class="line">	         <span class="keyword">if</span>(nums[i] +nums[nums.length-<span class="number">3</span>]+nums[nums.length-<span class="number">2</span>]+nums[nums.length-<span class="number">1</span>]&lt;target)&#123;<span class="comment">//起始位处所能你达到最大的四个数之和大于target</span></span><br><span class="line">	                    <span class="keyword">continue</span>;</span><br><span class="line">	                &#125;</span><br><span class="line">	               <span class="keyword">if</span>(i&gt;<span class="number">0</span>&amp;&amp;nums[i]==nums[i-<span class="number">1</span>])<span class="keyword">continue</span>;<span class="comment">//如果此处为true表示表示此处数字已经被考虑过了</span></span><br><span class="line">	                <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;nums.length-<span class="number">2</span>;j++)&#123;</span><br><span class="line">                         <span class="keyword">if</span>(nums[i] +nums[j]+nums[j+<span class="number">1</span>]+nums[j+<span class="number">2</span>]&gt;target)&#123;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                         &#125;</span><br><span class="line"></span><br><span class="line">                        <span class="keyword">if</span>(nums[i] +nums[j]+nums[nums.length-<span class="number">2</span>]+nums[nums.length-<span class="number">1</span>]&lt;target)&#123;</span><br><span class="line">                            <span class="keyword">continue</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">	                  <span class="keyword">if</span>(j&gt;i+<span class="number">1</span>&amp;&amp;nums[j]==nums[j-<span class="number">1</span>])<span class="keyword">continue</span>;<span class="comment">//如果此处为true表示此处数字已经被考虑过了</span></span><br><span class="line">	                    <span class="keyword">int</span> left=j+<span class="number">1</span>,right=nums.length-<span class="number">1</span>;</span><br><span class="line">	                    <span class="keyword">while</span>(left&lt;right)&#123;</span><br><span class="line">	                        <span class="keyword">int</span> tempSum=nums[i]+nums[j]+nums[left]+nums[right];</span><br><span class="line">	                        <span class="keyword">if</span>(tempSum==target)&#123;</span><br><span class="line">	                            result.add(Arrays.asList(nums[i],nums[j],nums[left],nums[right]));</span><br><span class="line">	                            <span class="keyword">while</span>(left&lt;right&amp;&amp;nums[left]==nums[left+<span class="number">1</span>])left++;</span><br><span class="line">	                            <span class="keyword">while</span>(left&lt;right&amp;&amp;nums[right]==nums[right-<span class="number">1</span>])right--;</span><br><span class="line">	                            left++;</span><br><span class="line">	                            right--;</span><br><span class="line">	                        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(tempSum&gt;target)&#123;</span><br><span class="line">	                            right--;</span><br><span class="line">	                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">	                            left++;</span><br><span class="line">	                        &#125;</span><br><span class="line">	                    &#125;</span><br><span class="line">	                &#125;</span><br><span class="line">	            &#125;</span><br><span class="line">	            <span class="keyword">return</span> result;</span><br><span class="line">	        &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-NlogN"><a href="#时间复杂度：O-NlogN" class="headerlink" title="时间复杂度：O(NlogN)"></a>时间复杂度：O(NlogN)</h3>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-中等</category>
+        <category>数组</category>
+        <category>双指针</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
 </search>

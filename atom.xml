@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-05-16T05:17:26.934Z</updated>
+  <updated>2020-05-17T04:26:43.876Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,93 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-16</title>
+    <link href="http://zm163.github.io/2020/05/17/LeetCode-16/"/>
+    <id>http://zm163.github.io/2020/05/17/LeetCode-16/</id>
+    <published>2020-05-17T03:54:46.000Z</published>
+    <updated>2020-05-17T04:26:43.876Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;最接近的三数之和&quot;&gt;&lt;a href=&quot;#最接近的三数之和&quot; class=&quot;headerlink&quot; title=&quot;最接近的三数之和&quot;&gt;&lt;/a&gt;最接近的三数之和&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="双指针" scheme="http://zm163.github.io/categories/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-17</title>
+    <link href="http://zm163.github.io/2020/05/17/LeetCode-17/"/>
+    <id>http://zm163.github.io/2020/05/17/LeetCode-17/</id>
+    <published>2020-05-17T03:54:39.000Z</published>
+    <updated>2020-05-17T04:19:37.494Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;电话号码的字母组合&quot;&gt;&lt;a href=&quot;#电话号码的字母组合&quot; class=&quot;headerlink&quot; title=&quot;电话号码的字母组合&quot;&gt;&lt;/a&gt;电话号码的字母组合&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+      <category term="回溯算法" scheme="http://zm163.github.io/categories/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-18</title>
+    <link href="http://zm163.github.io/2020/05/17/LeetCode-18/"/>
+    <id>http://zm163.github.io/2020/05/17/LeetCode-18/</id>
+    <published>2020-05-17T03:54:16.000Z</published>
+    <updated>2020-05-17T04:12:57.171Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;四数之和&quot;&gt;&lt;a href=&quot;#四数之和&quot; class=&quot;headerlink&quot; title=&quot;四数之和&quot;&gt;&lt;/a&gt;四数之和&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="双指针" scheme="http://zm163.github.io/categories/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-15</title>
@@ -478,98 +565,6 @@
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
       <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1075</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1075/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1075/</id>
-    <published>2019-10-16T15:23:44.000Z</published>
-    <updated>2020-05-04T12:59:42.861Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;给定一个单链表，请编写程序将链表元素进行分类排列，使得所有负值元素都排在非负值元素的前面，而 [0, K] 区间内的元素都排在大于 K 的元素前面。但每一类内部元素的顺序是不能改变的。例如：给定链表为
-        
-      
-    
-    </summary>
-    
-    
-      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
-    
-      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1035</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1035/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1035/</id>
-    <published>2019-10-16T15:23:22.000Z</published>
-    <updated>2020-05-04T12:56:25.367Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;根据维基百科的定义：&lt;/p&gt;
-&lt;p&gt;插入排序是迭代算法，逐一获得输入数据，逐步产生有序的输出序列。每步迭代中，算法从输入序列中取出一元素，将之插入有序序列中正确的位置。如此迭代直到全部元素有序。&lt;/p&gt;
-&lt;p&gt;归并排序进行如下迭代操作：首先将原始序列看
-        
-      
-    
-    </summary>
-    
-    
-      <category term="PTA" scheme="http://zm163.github.io/categories/PTA/"/>
-    
-      <category term="Basic" scheme="http://zm163.github.io/categories/PTA/Basic/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="c语言" scheme="http://zm163.github.io/tags/c%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>PTA-Basic-1025</title>
-    <link href="http://zm163.github.io/2019/10/16/PTA-Basic-1025/"/>
-    <id>http://zm163.github.io/2019/10/16/PTA-Basic-1025/</id>
-    <published>2019-10-16T15:23:01.000Z</published>
-    <updated>2020-05-04T10:51:30.203Z</updated>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;p&gt;题目：&lt;/p&gt;
-&lt;p&gt;给定一个常数 K 以及一个单链表 L，请编写程序将 L 中每 K 个结点反转。例如：给定 L 为 1→2→3→4→5→6，K 为 3，则输出应该为 3→2→1→6→5→4；如果 K 为 4，则输出应该为 4→3→2→1→5→6，即最后不到 K
-        
-      
-    
-    </summary>
-    
-    
-    
-      <category term="-PTA-Basic" scheme="http://zm163.github.io/tags/PTA-Basic/"/>
     
   </entry>
   
