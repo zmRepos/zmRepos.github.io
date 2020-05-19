@@ -7269,4 +7269,71 @@ int main(void){
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode-23</title>
+    <url>/2020/05/19/LeetCode-23/</url>
+    <content><![CDATA[<h1 id="合并k个排序链表"><a href="#合并k个排序链表" class="headerlink" title="合并k个排序链表"></a>合并k个排序链表</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  1-&gt;4-&gt;5,</span><br><span class="line">  1-&gt;3-&gt;4,</span><br><span class="line">  2-&gt;6</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">输出: 1-&gt;1-&gt;2-&gt;3-&gt;4-&gt;4-&gt;5-&gt;6</span><br></pre></td></tr></table></figure>
+<h2 id="思路1-分治合并"><a href="#思路1-分治合并" class="headerlink" title="思路1-分治合并"></a>思路1-分治合并</h2><p>将数组分为两个部分，然后不断分割，直到分割成一个一个单独的链表，然后相邻两个进行合并，（总共进行了k/2+k/4+..+k/2^…i.次合并），每次合并使用2^i*n</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeKLists</span><span class="params">(ListNode[] lists)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> merge(lists, <span class="number">0</span>, lists.length - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function">ListNode <span class="title">merge</span><span class="params">(ListNode[] lists, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (l == r) <span class="keyword">return</span> lists[l];</span><br><span class="line">        <span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">return</span> mergeTwoLists(merge(lists, l, mid), merge(lists, mid + <span class="number">1</span>, r));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">mergeTwoLists</span><span class="params">(ListNode l1, ListNode l2)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(l1==<span class="keyword">null</span>)<span class="keyword">return</span> l2;</span><br><span class="line">        <span class="keyword">if</span>(l2==<span class="keyword">null</span>)<span class="keyword">return</span> l1;</span><br><span class="line">        <span class="keyword">if</span>(l1.val&lt;l2.val)</span><br><span class="line">        &#123;</span><br><span class="line">            l1.next=mergeTwoLists(l1.next, l2);</span><br><span class="line">            <span class="keyword">return</span> l1;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            l2.next=mergeTwoLists(l1, l2.next);</span><br><span class="line">            <span class="keyword">return</span> l2;</span><br><span class="line">        &#125;            </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-kn×logk"><a href="#时间复杂度：O-kn×logk" class="headerlink" title="时间复杂度：O(kn×logk)"></a>时间复杂度：O(kn×logk)</h3>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-困难</category>
+        <category>链表</category>
+        <category>堆</category>
+        <category>分治算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-24</title>
+    <url>/2020/05/19/LeetCode-24/</url>
+    <content><![CDATA[<h1 id="两两交换链表中的节点"><a href="#两两交换链表中的节点" class="headerlink" title="两两交换链表中的节点"></a>两两交换链表中的节点</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
+<p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><blockquote>
+<p>给定 1-&gt;2-&gt;3-&gt;4, 你应该返回 2-&gt;1-&gt;4-&gt;3.</p>
+</blockquote>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><h2 id="思路1-递归"><a href="#思路1-递归" class="headerlink" title="思路1-递归"></a>思路1-递归</h2><p>两两交换可以看成，先对前两个节点，交换，再对后面的链表进行此操作，然后将前两个节点加到已经完成交换后的链表前面。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode cur=head;</span><br><span class="line">        ListNode next=<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(cur!=<span class="keyword">null</span>)</span><br><span class="line">        	next=cur.next;</span><br><span class="line">        <span class="keyword">if</span>(cur!=<span class="keyword">null</span>&amp;&amp;next!=<span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        	cur.next=next.next;</span><br><span class="line">        	next.next=cur;</span><br><span class="line">        	head=next;</span><br><span class="line">        	cur.next=swapPairs(cur.next);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><h2 id="思路2-迭代"><a href="#思路2-迭代" class="headerlink" title="思路2-迭代"></a>思路2-迭代</h2><p>首先设置一个哑节点，然后在一个for循环里面不断的每次取两个节点进行交换，并修改哑节点的指向，这样每次修改三个节点，并执行循环。</p>
+<h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Dummy node acts as the prevNode for the head node</span></span><br><span class="line">        <span class="comment">// of the list and hence stores pointer to the head node.</span></span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line"></span><br><span class="line">        ListNode prevNode = dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ((head != <span class="keyword">null</span>) &amp;&amp; (head.next != <span class="keyword">null</span>)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Nodes to be swapped</span></span><br><span class="line">            ListNode firstNode = head;</span><br><span class="line">            ListNode secondNode = head.next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Swapping</span></span><br><span class="line">            prevNode.next = secondNode;</span><br><span class="line">            firstNode.next = secondNode.next;</span><br><span class="line">            secondNode.next = firstNode;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Reinitializing the head and prevNode for next swap</span></span><br><span class="line">            prevNode = firstNode;</span><br><span class="line">            head = firstNode.next; <span class="comment">// jump</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Return the new head node.</span></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-n-1"><a href="#时间复杂度：O-n-1" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-中等</category>
+        <category>链表</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-22</title>
+    <url>/2020/05/19/LeetCode-22/</url>
+    <content><![CDATA[<h1 id="括号生成"><a href="#括号生成" class="headerlink" title="括号生成"></a>括号生成</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>数字 n 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 有效的 括号组合。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：n &#x3D; 3</span><br><span class="line">输出：[</span><br><span class="line">       &quot;((()))&quot;,</span><br><span class="line">       &quot;(()())&quot;,</span><br><span class="line">       &quot;(())()&quot;,</span><br><span class="line">       &quot;()(())&quot;,</span><br><span class="line">       &quot;()()()&quot;</span><br><span class="line">     ]</span><br></pre></td></tr></table></figure>
+<h2 id="思路1-回溯法"><a href="#思路1-回溯法" class="headerlink" title="思路1-回溯法"></a>思路1-回溯法</h2><p>可以看成初始只有一个左括号，然后有两种情况（添加一个左括号，添加一个右括号），就这样不断添加下去直到所有的括号书娘达到2*n时，就达到最大值（注意组成的括号字符串中，如果右括号的数目大于左括号的数目就可以不继续此种情况的回溯了）</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> List&lt;String&gt; result= <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">	<span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">generateParenthesis</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">char</span> [] temp = <span class="keyword">new</span> <span class="keyword">char</span>[<span class="number">2</span>*n];</span><br><span class="line">		generateParenthesis(<span class="number">0</span>,<span class="number">0</span>,n,<span class="number">0</span>,temp);</span><br><span class="line">	    <span class="keyword">return</span> result;</span><br><span class="line">	    &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span>  <span class="title">generateParenthesis</span><span class="params">(<span class="keyword">int</span> left,<span class="keyword">int</span> right,<span class="keyword">int</span> total,<span class="keyword">int</span> currentPos,<span class="keyword">char</span> [] temp)</span></span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(left&gt;=right&amp;&amp;left&lt;=total)&#123;<span class="comment">//此处证明目前字符串使合格的</span></span><br><span class="line">				<span class="keyword">if</span>(currentPos&lt;<span class="number">2</span>*total)&#123;</span><br><span class="line">					temp[currentPos]=<span class="string">'('</span>;</span><br><span class="line">					generateParenthesis(left+<span class="number">1</span>,right,total,currentPos+<span class="number">1</span>,temp);<span class="comment">//此处加一个左括号</span></span><br><span class="line">					temp[currentPos]=<span class="string">')'</span>;</span><br><span class="line">					generateParenthesis(left,right+<span class="number">1</span>,total,currentPos+<span class="number">1</span>,temp);<span class="comment">//此处加一个右括号</span></span><br><span class="line">				&#125;</span><br><span class="line">				<span class="keyword">if</span>(left==total&amp;&amp;right==total)&#123;<span class="comment">//此处为最终的结果了</span></span><br><span class="line">					result.add(<span class="keyword">new</span> String(temp));</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-中等</category>
+        <category>字符串</category>
+        <category>回溯</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
 </search>
