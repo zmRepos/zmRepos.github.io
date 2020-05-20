@@ -7336,4 +7336,83 @@ int main(void){
         <tag>Java</tag>
       </tags>
   </entry>
+  <entry>
+    <title>LeetCode-25</title>
+    <url>/2020/05/20/LeetCode-25/</url>
+    <content><![CDATA[<h1 id="k个一组翻转链表"><a href="#k个一组翻转链表" class="headerlink" title="k个一组翻转链表"></a>k个一组翻转链表</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给你一个链表，每 k 个节点一组进行翻转，请你返回翻转后的链表。</span><br><span class="line"></span><br><span class="line">k 是一个正整数，它的值小于或等于链表的长度。</span><br><span class="line"></span><br><span class="line">如果节点总数不是 k 的整数倍，那么请将最后剩余的节点保持原有顺序。</span><br><span class="line">说明：</span><br><span class="line">你的算法只能使用常数的额外空间。</span><br><span class="line">你不能只是单纯的改变节点内部的值，而是需要实际进行节点交换。</span><br></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">给你这个链表：1-&gt;2-&gt;3-&gt;4-&gt;5</span><br><span class="line"></span><br><span class="line">当 k = 2 时，应当返回: 2-&gt;1-&gt;4-&gt;3-&gt;5</span><br><span class="line"></span><br><span class="line">当 k = 3 时，应当返回: 3-&gt;2-&gt;1-&gt;4-&gt;5</span><br></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><h2 id="思路1-模拟法（递归版本）"><a href="#思路1-模拟法（递归版本）" class="headerlink" title="思路1-模拟法（递归版本）"></a>思路1-模拟法（递归版本）</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">首先，将链表分为?个长度为k的链表（可能有一个链表的长度不是k），</span><br><span class="line">然后将第i个子链表翻转（注意此处要保留其第一个节点，用于指向下一个子链表），</span><br><span class="line">如此，不断递归，直到某个子链表的长度不是k，那么直接将此子链表接到上一个完</span><br><span class="line">成翻转的子链表的后面。最终就完成了全部链表的反转。注意：移动你链表时移动的步数为k-1是因为第一个节点就是长度为k的子链表的首节点，因此</span><br><span class="line">只要移动k-1个节点就到了第k个节点处。</span><br></pre></td></tr></table></figure>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">reverseKGroup</span><span class="params">(ListNode head, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (k==<span class="number">1</span>||head==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        <span class="keyword">return</span> helper(head,k-<span class="number">1</span>);<span class="comment">//传入k-1是因为默认的head节点指向的是链表的第一个节点，所以只要移动k-1次就到了，第k个节点上</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">helper</span><span class="params">(ListNode head,<span class="keyword">int</span> k)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (head==<span class="keyword">null</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        ListNode start=head,end=start;</span><br><span class="line">        <span class="keyword">int</span> index;</span><br><span class="line">        <span class="keyword">for</span> (index=<span class="number">0</span>;index&lt;k&amp;&amp;end!=<span class="keyword">null</span>;++index)&#123;<span class="comment">//让end移动到第k个节点上</span></span><br><span class="line">            end=end.next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (index!=k||end==<span class="keyword">null</span>)<span class="comment">//这种情况下，说明不够k个，直接返回head，即不翻转</span></span><br><span class="line">            <span class="keyword">return</span> head;</span><br><span class="line">        ListNode node=end.next;<span class="comment">//保留此k个节点之后的哪一个节点</span></span><br><span class="line">        end.next=<span class="keyword">null</span>;<span class="comment">//这里先将k个节点与后面的连接断开，方便翻转链表</span></span><br><span class="line">        reverse(start);<span class="comment">//翻转这k个节点</span></span><br><span class="line">        start.next=helper(node,k);<span class="comment">//让前k个节点的头节点的next指向后k个节点的尾节点</span></span><br><span class="line">        <span class="keyword">return</span> end;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 翻转链表</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> head</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ListNode <span class="title">reverse</span><span class="params">(ListNode head)</span></span>&#123;</span><br><span class="line">        ListNode pre=head,next=pre.next;</span><br><span class="line">        <span class="keyword">while</span> (next!=<span class="keyword">null</span>)&#123;</span><br><span class="line">            ListNode tmp=next.next;</span><br><span class="line">            next.next=pre;</span><br><span class="line">            pre=next;</span><br><span class="line">            next=tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>由于有<strong>n/k向下取整</strong>个个要翻转的子链表，每个子链表的翻转的时间为k，所以时间复杂度为O(n)</p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-困难</category>
+        <category>链表</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-26</title>
+    <url>/2020/05/20/LeetCode-26/</url>
+    <content><![CDATA[<h1 id="删除数组中的重复项"><a href="#删除数组中的重复项" class="headerlink" title="删除数组中的重复项"></a>删除数组中的重复项</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 原地 修改输入数组 并在使用 O(1) 额外空间的条件下完成。<br>说明:</p>
+<p>为什么返回数值是整数，但输出的答案是数组呢?</p>
+<p>请注意，输入数组是以「引用」方式传递的，这意味着在函数里修改输入数组对于调用者是可见的。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// nums 是以“引用”方式传递的。也就是说，不对实参做任何拷贝</span><br><span class="line">int len = removeDuplicates(nums);</span><br><span class="line"></span><br><span class="line">// 在函数里修改输入数组对于调用者是可见的。</span><br><span class="line">// 根据你的函数返回的长度, 它会打印出数组中该长度范围内的所有元素。</span><br><span class="line"><span class="keyword">for</span> (int i = 0; i &lt; len; i++) &#123;</span><br><span class="line">    <span class="built_in">print</span>(nums[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给定数组 nums &#x3D; [1,1,2], </span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给定 nums &#x3D; [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<h2 id="思路1-双指针"><a href="#思路1-双指针" class="headerlink" title="思路1-双指针"></a>思路1-双指针</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">首先，数组是已经排过序的，所以用两个间隔为1的指针，指向数组的开头两个元素，然后先移动后面一个指针，找到与第一个指针指向的数值不同的数字，然后先将第一个指针移动一位，然后将那个值存放在第一个指针处，然后继续移动后一个指针继续寻找不同的数值，最后返回的是第一个指针的位置加1，因为第一个指针的索引总是结果数组的最后一位，所以其加1就是数组长度。</span><br></pre></td></tr></table></figure>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeDuplicates</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (nums.length == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; nums.length; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums[j] != nums[i]) &#123;</span><br><span class="line">            i++;</span><br><span class="line">            nums[i] = nums[j];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>此处时间复杂度主要看的是后一个指针的移动步数（因为其总是大于等于前一个指针的移动步数的），任何情况下都是n(n为数组长度).<br>######感想</p>
+<blockquote>
+<p>我还是太菜了，瞅瞅别人这双指针多优雅。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-中等</category>
+        <category>数组</category>
+        <category>双执政</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-27</title>
+    <url>/2020/05/20/LeetCode-27/</url>
+    <content><![CDATA[<h1 id="移除元素"><a href="#移除元素" class="headerlink" title="移除元素"></a>移除元素</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须仅使用 O(1) 额外空间并 原地 修改输入数组。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">给定 nums = [3,2,2,3], val = 3,</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">给定 nums &#x3D; [0,1,2,2,3,0,4,2], val &#x3D; 2,</span><br><span class="line"></span><br><span class="line">函数应该返回新的长度 5, 并且 nums 中的前五个元素为 0, 1, 3, 0, 4。</span><br><span class="line"></span><br><span class="line">注意这五个元素可为任意顺序。</span><br><span class="line"></span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<h2 id="思路1-双指针法"><a href="#思路1-双指针法" class="headerlink" title="思路1-双指针法"></a>思路1-双指针法</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">首先，使用两个指针分别指向数组的开头与结尾，然后判断第一个指针指向的元素是否与target一致，一致的话将后一个指针指向的元素移动到前面来（注意此处不要移动第一个元素，可以下一次循环时判断上一次移动过来的元素是否等于target）然后移动后一个指针的位置，如此循环。</span><br></pre></td></tr></table></figure>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">removeElement</span><span class="params">(<span class="keyword">int</span>[] nums, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> i=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> n=nums.length-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=n)&#123;<span class="comment">//此处等于因为i移动到n位置时也要判断是否与val一致，如果一致n--，不一致n++,但最终结果总是n+1</span></span><br><span class="line">        <span class="keyword">if</span>(nums[i]==val)&#123;</span><br><span class="line">            nums[i]=nums[n];</span><br><span class="line">            n--;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            i++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n+<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><p>最坏的情况下结果数组中的元素可能为空，即原数组中全是目标值，那么移动次数总是n次（n为数组长度）。<br>####感想</p>
+<blockquote>
+<p>算法真的是一件很神奇的东西</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+        <category>LeetCode-中等</category>
+        <category>数组</category>
+        <category>双指针</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
 </search>

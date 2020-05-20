@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1069" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1072" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1069/"
-    >PTA-Basic-1069</a> 
+  <a class="article-title" href="/2019/10/08/PTA-Basic-1072/"
+    >PTA-Basic-1072</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1069/" class="article-date">
-  <time datetime="2019-10-07T12:43:06.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/08/PTA-Basic-1072/" class="article-date">
+  <time datetime="2019-10-08T13:48:36.000Z" itemprop="datePublished">2019-10-08</time>
 </a>
       
   <div class="article-category">
@@ -141,69 +141,56 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<p>小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
-<p>输入格式：<br>输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。</p>
-<p>注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取</p>
-<p>下一位。</p>
-<p>输出格式：</p>
-<p>按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going…。</p>
-<p>输入样例 1：</p>
-<pre><code>9 3 2
-Imgonnawin!
-PickMe
-PickMeMeMeee
-LookHere
-Imgonnawin!
-TryAgainAgain
-TryAgainAgain
-Imgonnawin!
-TryAgainAgain</code></pre><p>输出样例 1：</p>
-<pre><code>PickMe
-Imgonnawin!
-TryAgainAgain</code></pre><p>输入样例 2：</p>
-<pre><code>2 3 5
-Imgonnawin!
-PickMe</code></pre><p>输出样例 2：</p>
-<pre><code>Keep going...</code></pre><p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-char result[1000][21];
-int check(char *str,int t){
-    for(int j=0;j&lt;t;j++){
-        if(strcmp(str,result[j])==0){//比较人数数组中是否已经有这个人了
-            return 1;
-        }
+      <p>题目：<br>下图是上海某校的新学期开学寄语：天将降大任于斯人也，必先删其微博，卸其 QQ，封其电脑，夺其手机，收其 ipad，断其 wifi，使其百无聊赖，然后，净面、理发、整衣，然后思过、读书、锻炼、明智、开悟、精进。而后必成大器也！</p>
+<p><img src="https://images.ptausercontent.com/3b1d9f4a-778b-4942-a9e2-836262f363aa.JPG" alt="嘿嘿嘿"></p>
+<p>本题要求你写个程序帮助这所学校的老师检查所有学生的物品，以助其成大器。</p>
+<p>输入格式：</p>
+<p>输入第一行给出两个正整数 N（≤ 1000）和 M（≤ 6），分别是学生人数和需要被查缴的物品种类数。第二行<br>给出 M 个需要被查缴的物品编号，其中编号为 4 位数字。随后 N 行，每行给出一位学生的姓名缩写（由 1-4 个大写英文字母组成）、个人物品数量 K（0 ≤ K ≤ 10）、以及 K 个物品的编号。</p>
+<p>输出格式：<br>顺次检查每个学生携带的物品，如果有需要被查缴的物品存在，则按以下格式输出该生的信息和其需要被查缴的物品的信息（注意行末不得有多余空格）：</p>
+<p>姓名缩写: 物品编号1 物品编号2 ……<br>最后一行输出存在问题的学生的总人数和被查缴物品的总数。</p>
+<p>输入样例：</p>
+<pre><code>4 2
+2333 6666
+CYLL 3 1234 2345 3456
+U 4 9966 6666 8888 6666
+GG 2 2333 7777
+JJ 3 0012 6666 2333</code></pre><p>输出样例：</p>
+<pre><code>U: 6666 6666
+GG: 2333
+JJ: 6666 2333
+3 5</code></pre><p>分析：<br>定义一个图，存储被禁止的编号，然后对每一个输入判断，如果有不允许的，就标记一下此人，输入此人的姓名，与违禁品。注意输出格式为4位</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int forbid[10000]={0};
+    int n,m,temp,k;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=0;i&lt;m;i++){
+        scanf(&quot;%d&quot;,&amp;temp);
+        forbid[temp]=1;
     }
-    return 0;
-}
-int main()
-{
-    int m,n,s;
-    scanf(&quot;%d%d%d&quot;,&amp;m,&amp;n,&amp;s);
-    char str[21];
-    int t=0;//用来存储有多少人得奖。
-    for(int i=1;i&lt;=m;i++){
-            scanf(&quot;%s&quot;,str);
-            getchar();
-        if(i==s){
-                if(check(str,t)){//此人已经转发过了
-                    s=s+1;//看看它的下一个人是否合适
-                    continue;
-                }else{
-                    strcpy(result[t++],str);//此人没有转发过，就存入数组。
-                    s=s+n;//并且到下一个相隔n的人。
+    int sum=0,fsum=0;
+    for(int i=0;i&lt;n;i++){
+        char name[5]={&apos;\0&apos;};
+        scanf(&quot;%s %d&quot;,name,&amp;k);
+        int flag=0;
+        for(int j=0;j&lt;k;j++){
+            scanf(&quot;%d&quot;,&amp;temp);
+            if(forbid[temp]){
+                if(!flag){
+                    flag=1;
+                    printf(&quot;%s:&quot;,name);
+                    sum++;
                 }
+                printf(&quot; %04d&quot;,temp);
+                fsum++;
+            }
+        }
+        if(flag){
+            printf(&quot;\n&quot;);
         }
     }
-    if(t==0){
-        printf(&quot;Keep going...&quot;);
-    }else{
-        for(int i=0;i&lt;t;i++){
-            puts(result[i]);
-        }
-        }
+    printf(&quot;%d %d&quot;,sum,fsum);
     return 0;
 }</code></pre>
       
@@ -236,7 +223,7 @@ int main()
 
 </article>
     
-    <article id="post-PTA-Basic-1068" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1071" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -244,8 +231,8 @@ int main()
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1068/"
-    >PTA-Basic-1068</a> 
+  <a class="article-title" href="/2019/10/08/PTA-Basic-1071/"
+    >PTA-Basic-1071</a> 
 </h2>
  
 
@@ -254,8 +241,8 @@ int main()
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1068/" class="article-date">
-  <time datetime="2019-10-07T12:42:51.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/08/PTA-Basic-1071/" class="article-date">
+  <time datetime="2019-10-08T13:47:39.000Z" itemprop="datePublished">2019-10-08</time>
 </a>
       
   <div class="article-category">
@@ -276,87 +263,59 @@ int main()
       
 
       
-      <p>题目:<br>对于计算机而言，颜色不过是像素点对应的一个 24 位的数值。现给定一幅分辨率为 M×N 的画，要求你找出万绿丛中的一点红，即有独一无二颜色的那个像素点，并且该点的颜色与其周围 8 个相邻像素的颜色差充分大。</p>
-<p>输入格式：<br>输入第一行给出三个正整数，分别是 M 和 N（≤ 1000），即图像的分辨率；以及 TOL，是所求像素点与相邻点的颜色差阈值，色差超过 TOL 的点才被考虑。随后 N 行，每行给出 M 个像素的颜色值，范围在 [0,2<br>​24<br>​​ ) 内。所有同行数字间用空格或 TAB 分开。</p>
-<p>输出格式：<br>在一行中按照 (x, y): color 的格式输出所求像素点的位置以及颜色值，其中位置 x 和 y 分别是该像素在图像矩阵中的列、行编号（从 1 开始编号）。如果这样的点不唯一，则输出 Not Unique；如果这样的点不存在，则输出 Not Exist。</p>
-<p>输入样例 1：</p>
-<pre><code>8 6 200
-0      0       0        0        0          0           0        0
-65280      65280    65280    16711479 65280    65280    65280    65280
-16711479 65280    65280    65280    16711680 65280    65280    65280
-65280      65280    65280    65280    65280    65280    165280   165280
-65280      65280       16777015 65280    65280    165280   65480    165280
-16777215 16777215 16777215 16777215 16777215 16777215 16777215 16777215</code></pre><p>输出样例 1：</p>
-<pre><code>(5, 3): 16711680</code></pre><p>输入样例 2：</p>
-<pre><code>4 5 2
-0 0 0 0
-0 0 3 0
-0 0 0 0
-0 5 0 0
-0 0 0 0</code></pre><p>输出样例 2：</p>
-<pre><code>Not Unique</code></pre><p>输入样例 3：</p>
-<pre><code>3 3 5
-1 2 3
-3 4 5
-5 6 7</code></pre><p>输出样例 3：</p>
-<pre><code>Not Exist</code></pre><p>分析：定义一个足够大的数组用来存储像素点的次数，定义一个结构体用来表示像素点（有坐标，数值），每输入一个像素数值，就存入对应的像素点二维数组中，并在记录次数的数组中加1，然后定义一个判断像素点是否合格的函数，对每个像素点判断是否合格，并且是否只有一个。当这样的点超过1个是就可以不用继续找了。<br>此题目的一个坑就是在所有的点中查找独特的点不管它是否合格，再再独特的点中找合格的个数。而我陷入了这个坑认为不合格的像素点不用加到次数数组中。</p>
+      <p>题目：</p>
+<p>常言道“小赌怡情”。这是一个很简单的小游戏：首先由计算机给出第一个整数；然后玩家下注赌第二个整数将会比第一个数大还是小；玩家下注 t 个筹码后，计算机给出第二个数。若玩家猜对了，则系统奖励玩家 t 个筹码；否则扣除玩家 t 个筹码。</p>
+<p>注意：玩家下注的筹码数不能超过自己帐户上拥有的筹码数。当玩家输光了全部筹码后，游戏就结束。</p>
+<p>输入格式：<br>输入在第一行给出 2 个正整数 T 和 K（≤ 100），分别是系统在初始状态下赠送给玩家的筹码数、以及需要处理的游戏次数。随后 K 行，每行对应一次游戏，顺序给出 4 个数字：</p>
+<p>n1 b t n2<br>其中 n1 和 n2 是计算机先后给出的两个[0, 9]内的整数，保证两个数字不相等。b 为 0 表示玩家赌小，为 1 表示玩家赌大。t 表示玩家下注的筹码数，保证在整型范围内。</p>
+<p>输出格式：<br>对每一次游戏，根据下列情况对应输出（其中 t 是玩家下注量，x 是玩家当前持有的筹码量）：</p>
+<p>玩家赢，输出 Win t!  Total = x.；<br>玩家输，输出 Lose t.  Total = x.；<br>玩家下注超过持有的筹码量，输出 Not enough tokens.  Total = x.；<br>玩家输光后，输出 Game Over. 并结束程序。<br>输入样例 1：</p>
+<pre><code>100 4
+8 0 100 2
+3 1 50 1
+5 1 200 6
+7 0 200 8</code></pre><p>输出样例 1：</p>
+<pre><code>Win 100!  Total = 200.
+Lose 50.  Total = 150.
+Not enough tokens.  Total = 150.
+Not enough tokens.  Total = 150.</code></pre><p>输入样例 2：</p>
+<pre><code>100 4
+8 0 100 2
+3 1 200 1
+5 1 200 6
+7 0 200 8</code></pre><p>输出样例 2：</p>
+<pre><code>Win 100!  Total = 200.
+Lose 200.  Total = 0.
+Game Over.</code></pre><p>分析：依据题目思考即可。</p>
 <p>代码：</p>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-#include&lt;math.h&gt;
-//定义一个二维数组存储像素点
-//定义结构体存储合格的像素点，与坐标，次数，一共有多少个像素点
-int map[2&lt;&lt;24]={0};
-int pixels[1000][1000]={0};
-typedef struct pixel{
-    int x;
-    int y;
-    int id;
-}pixel;
-int check(int i,int j,int n,int m,int tol);
+
 int main()
 {
-    int m,n,tol;//仿佛数组数目太大的变量只能声明为 全局变量，否则程序不会执行 
-    scanf(&quot;%d %d %d&quot;,&amp;m,&amp;n,&amp;tol);
-    for(int i=0;i&lt;n;i++){
-        for(int j=0;j&lt;m;j++){
-            scanf(&quot;%d&quot;,&amp;pixels[i][j]);
-            map[pixels[i][j]]++;//将对应的像素点的个数加1.
-        }
+    int total,k;
+    int n1,n2,b,t;
+    scanf(&quot;%d %d&quot;,&amp;total,&amp;k);//存储总的筹码数，与游戏可能执行的最大次数
+    for(int i=0;i&lt;k;i++){
+    scanf(&quot;%d %d %d %d&quot;,&amp;n1,&amp;b,&amp;t,&amp;n2);
+    if(t&gt;total){//判断如果此次的下注的筹码数大于自己有的，则跳过，继续下一次游戏。
+        printf(&quot;Not enough tokens.  Total = %d.\n,total);
+        continue;
     }
-    int time=0,x=0,y=0,id=0;//time用来记录独特点的个数
-    for(int i=0;i&lt;n;i++){
-        for(int j=0;j&lt;m;j++){
-            if(map[pixels[i][j]]==1&amp;&amp;check(i,j,n,m,tol)){
-                y=j+1;
-                x=i+1;
-                id=pixels[i][j];
-                time++;
-            }
-            if(time==2){//优化当数目超过二是直接跳出循环
+    int boolean=(n2&gt;n1);//用boolean存储n2是否大于n1
+        if(boolean==b){//如果boolean 和猜的一样的则赢了此局
+            total+=t;
+            printf(&quot;Win %d!  Total = %d.\n&quot;,t,total);
+        }else{//输了
+            total-=t;//减去筹码，不用担心筹码为负数，因为下注数不可能大于筹码。
+            printf(&quot;Lose %d.  Total = %d.\n&quot;,t,total);
+            if(total==0){//如果扣去下注后的筹码为0，则结束游戏。
+                printf(&quot;Game Over.\n&quot;);
                 break;
             }
         }
     }
-        if(time==0){
-            printf(&quot;Not Exist&quot;);
-        }else if(time==1){
-            printf(&quot;(%d, %d): %d&quot;,y,x,id);
-        }else{
-            printf(&quot;Not Unique&quot;);
-        }
     return 0;
-}
-int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左上就看左上，没有就不看，其他一样。
-            if(i-1&gt;=0&amp;&amp;j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i-1][j-1])&lt;=tol){return 0;}//左上
-            if(j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i][j-1])&lt;=tol){return 0;}//左
-            if(i+1&lt;n&amp;&amp;j-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i+1][j-1])&lt;=tol){return 0;}//左下
-            if(i-1&gt;=0&amp;&amp;abs(pixels[i][j]-pixels[i-1][j])&lt;=tol){return 0;}//上
-            if(i+1&lt;n&amp;&amp;abs(pixels[i][j]-pixels[i+1][j])&lt;=tol){return 0;}//下
-            if(i-1&gt;=0&amp;&amp;j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i-1][j+1])&lt;=tol){return 0;}//右上
-            if(j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i][j+1])&lt;=tol){return 0;}//右
-            if(i+1&lt;n&amp;&amp;j+1&lt;m&amp;&amp;abs(pixels[i][j]-pixels[i+1][j+1])&lt;=tol){return 0;}
-            return 1;
 }</code></pre>
       
       <!-- reward -->
@@ -388,7 +347,7 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
 
 </article>
     
-    <article id="post-PTA-Basic-1067" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1070" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -396,8 +355,8 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1067/"
-    >PTA-Basic-1067</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1070/"
+    >PTA-Basic-1070</a> 
 </h2>
  
 
@@ -406,8 +365,8 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1067/" class="article-date">
-  <time datetime="2019-10-07T12:42:40.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/07/PTA-Basic-1070/" class="article-date">
+  <time datetime="2019-10-07T12:43:17.000Z" itemprop="datePublished">2019-10-07</time>
 </a>
       
   <div class="article-category">
@@ -429,61 +388,45 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
 
       
       <p>题目：</p>
-<p>当你试图登录某个系统却忘了密码时，系统一般只会允许你尝试有限多次，当超出允许次数时，账号就会被锁死。本题就请你实现这个小功能。</p>
-<p>输入格式：<br>输入在第一行给出一个密码（长度不超过 20 的、不包含空格、Tab、回车的非空字符串）和一个正整数 N（≤ 10），分别是正确的密码和系统允许尝试的次数。随后每行给出一个以回车结束的非空字符串，是用户尝试输入的密码。输入保证至少有一次尝试。当读到一行只有单个 # 字符时，输入结束，并且这一行不是用户的输入。</p>
-<p>输出格式：<br>对用户的每个输入，如果是正确的密码且尝试次数不超过 N，则在一行中输出 Welcome in，并结束程序；如果是错误的，则在一行中按格式输出 Wrong password: 用户输入的错误密码；当错误尝试达到 N 次时，再输出一行 Account locked，并结束程序。</p>
-<p>输入样例 1：</p>
-<pre><code>Correct%pw 3
-correct%pw
-Correct@PW
-whatisthepassword!
-Correct%pw
-#</code></pre><p>输出样例 1：</p>
-<pre><code>Wrong password: correct%pw
-Wrong password: Correct@PW
-Wrong password: whatisthepassword!
-Account locked</code></pre><p>输入样例 2：</p>
-<pre><code>cool@gplt 3
-coolman@gplt
-coollady@gplt
-cool@gplt
-try again
-#</code></pre><p>输出样例 2：</p>
-<pre><code>Wrong password: coolman@gplt
-Wrong password: coollady@gplt
-Welcome in</code></pre><p>分析：</p>
-<pre><code>定义一个字符数组存储正确的密码，定义一个数字存储输入次数。
-用C语言自带的字符串比较函数，如果结果为0，证明两个字符串相同，即密码正确。
-此题目的坑比较多（用户输入密码长度不一定为21以内，且不一定不含空格，如果输入正确或次数已到则禁止输入。）</code></pre><p>代码：</p>
+<p>给定一段一段的绳子，你需要把它们串成一条绳。每次串连的时候，是把两段绳子对折，再如下图所示套接在一起。这样得到的绳子又被当成是另一段绳子，可以再次对折去跟另一段绳子串连。每次串连后，原来两段绳子的长度就会减半。</p>
+<p><img src="https://images.ptausercontent.com/46293e57-aa0e-414b-b5c3-7c4b2d5201e2.jpg" alt=""></p>
+<p>给定 N 段绳子的长度，你需要找出它们能串成的绳子的最大长度。</p>
+<p>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例第 1 行给出正整数 N (2≤N≤10<br>​4<br>​​ )；第 2 行给出 N 个正整数，即原始绳段的长度，数字间以空格分隔。所有整数都不超过10<br>​4<br>​​ 。</p>
+<p>输出格式：<br>在一行中输出能够串成的绳子的最大长度。结果向下取整，即取为不超过最大长度的最近整数。</p>
+<p>输入样例：</p>
+<pre><code>8
+10 15 12 3 4 13 1 15</code></pre><p>输出样例：</p>
+<pre><code>14</code></pre><p>思路：排序从小到大，不断折半。<br>代码:</p>
 <pre><code>#include &lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-int main(void)
+#include &lt;stdlib.h&gt;
+int cmp(const void *a,const void *b){
+return *(int *)a-*(int *)b;
+}
+int main()
 {
-    char cpw[22]={&apos;\0&apos;};
-    int time=0;
-    scanf(&quot;%s %d&quot;,cpw,&amp;time);//密码中没有空格
-    getchar();//吸取第一行的末尾的回车
-    while(1){
-        char pw[500]={&apos;\0&apos;};//输入密码的长度不一定为20
-        gets(pw);//输入的字符串中可能有空格
-        if(strlen(pw)==1&amp;&amp;pw[0]==&apos;#&apos;){
-            break;
-        }
-        if(time&gt;0){
-            if(!strcmp(cpw,pw)){
-                printf(&quot;Welcome in\n&quot;);
-                break;
-            }else{
-                printf(&quot;Wrong password: %s\n&quot;,pw);
-                time--;
-            }
-        }
-        if(time==0){
-                printf(&quot;Account locked\n&quot;);
-                break;
-            }
+
+    int n=0;
+
+    scanf(&quot;%d&quot;,&amp;n);
+
+    int nums[n];
+
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d&quot;,&amp;nums[i]);
     }
+
+    qsort(nums,n,sizeof(int),cmp);
+
+    int max=nums[0];
+
+    for(int i=1;i&lt;n;i++){
+
+        max=(max+nums[i])/2;
+
+    }
+
+    printf(&quot;%d&quot;,max);
+
     return 0;
 }</code></pre>
       
@@ -522,7 +465,7 @@ int main(void)
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/18/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/20/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/18/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/17/">17</a><a class="page-number" href="/page/18/">18</a><span class="page-number current">19</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/20/">下一页</a>
   </nav>
   
 </section>

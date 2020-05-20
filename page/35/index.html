@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1024" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1030" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/19/PTA-Basic-1024/"
-    >PTA-Basic-1024</a> 
+  <a class="article-title" href="/2019/09/20/PTA-Basic-1030/"
+    >PTA-Basic-1030</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/19/PTA-Basic-1024/" class="article-date">
-  <time datetime="2019-09-19T13:35:29.000Z" itemprop="datePublished">2019-09-19</time>
+      <a href="/2019/09/20/PTA-Basic-1030/" class="article-date">
+  <time datetime="2019-09-20T12:06:46.000Z" itemprop="datePublished">2019-09-20</time>
 </a>
       
   <div class="article-category">
@@ -141,113 +141,61 @@ var _hmt = _hmt || [];
       
 
       
-      <p>科学计数法是科学家用来表示很大或很小的数字的一种方便的方法，其满足正则表达式 [+-][1-9].[0-9]+E[+-][0-9]+，即数字的整数部分只有 1 位，小数部分至少有 1 位，该数字及其指数部分的正负号即使对正</p>
-<p>数也必定明确给出。</p>
-<p>现以科学计数法的格式给出实数 A，请编写程序按普通数字表示法输出 A，并保证所有有效位都被保留。</p>
-<p>输入格式：</p>
-<pre><code>每个输入包含 1 个测试用例，即一个以科学计数法表示的实数 A。该数字的存储长度不超过 9999 字节，且其指数的绝对值不超过 9999。</code></pre><p>输出格式：</p>
-<pre><code>对每个测试用例，在一行中按普通数字表示法输出 A，并保证所有有效位都被保留，包括末尾的 0。</code></pre><p>输入样例 1：</p>
-<pre><code>+1.23400E-03</code></pre><p>输出样例 1：</p>
-<pre><code>0.00123400</code></pre><p>输入样例 2：</p>
-<pre><code>-1.2E+10</code></pre><p>输出样例 2：</p>
-<pre><code>-12000000000</code></pre><p>分析：</p>
-<p>输入： “[+-][1-9].[0-9]+E[+-][0-9]+” 格式如图，数值正负号，一位1到9之间的整数，小数点，小数部分（长度不定且结果要求保留所有小数部分即小数部分有什么样的数字，结果就得含有这个字符串，可以在不同的位置放小数点），指数部分正负号，指数（0-正无穷）。</p>
-<p>处理：首先保留一定是位于第一位的正负号，接着将数字部分的小数点去掉，依次存入到字符数组中，当读到‘E’时就可以保留另一个正负号，与其后面数字代表小数点要移动的位数了，</p>
-<p>输出：</p>
-<pre><code>根据第一个正负号决定是否输出‘-’号。如果移动的位数为0，直接输出元数字字符；否则 根据第二个正负号判断是左移小数点（符号为负号）还是右移（+）</code></pre><p>1左移：</p>
-<pre><code>因为位数为0的情况已经讨论过了，所以剩下的都是位数不为0的。
-先输出‘0.’在根据要移动的位数，输出位数-1个0，接着输出字符数组。</code></pre><p>2右移：</p>
-<pre><code>先输出第一个字符，根据移动位数是否小于剩余字符串的长度决定是否输出小数点，小于：读到指定位数后输出小数点，接着输出剩余字符数组。
-大于等于：不输出小数点可能会输出‘0’，输出移动的位数减去除去第一个字符剩余字符数组的长度个‘0’.
-
-
-
-
-#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-int main(void){
-    char str[10003]={&apos;\0&apos;};//存放输入字符数组
-    scanf(&quot;%s&quot;,str);
-    int flag=1;//用来标识是否已经读取过小数部分了。
-    int f1,f2;//用来记住两个正负号
-    char result[10000]={&apos;\0&apos;};//用来存放小数部分除去小数点。
-    int j=0;
-    int num=0;
-    for(int i=0;i&lt;strlen(str);i++){
-//判断输入的小数部分的符号
-        if(i==0){
-            switch(str[i]){
-                case &apos;+&apos;:f1=1;break;
-                case &apos;-&apos;:f1=-1;
-            }
-            continue;
-        }
-
-//表示小数部分已经读取完毕。
-        if(str[i]==&apos;E&apos;){
-            flag=0;
-            continue;
-        }
-
-//将小数部分的数字存放到数组中。
-        if(flag&amp;&amp;str[i]&lt;=&apos;9&apos;&amp;&amp;str[i]&gt;=&apos;0&apos;){
-            result[j++]=str[i];
-        }
-
-//判断输入的指数部分的符号
-        if(str[i]==&apos;+&apos;||str[i]==&apos;-&apos;){
-            switch(str[i]){
-                case &apos;+&apos;:f2=1;break;
-                case &apos;-&apos;:f2=-1;
-            }
-            continue;
-        }
-
-//计算指数部分要移动的位数
-        if(!flag){
-            num=num*10+(str[i]-&apos;0&apos;);
+      <p>给定一个正整数数列，和正整数 p，设这个数列中的最大值是 M，最小值是 m，如果 M≤mp，则称这个数列是完美数列。</p>
+<p>现在给定参数 p 和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</p>
+<p>输入格式：<br>输入第一行给出两个正整数 N 和 p，其中 N（≤10^5）是输入的正整数的个数，p（≤10^9）是给定的参数。第二行给出 N 个正整数，每个数不超过10^9。</p>
+<p>输出格式：<br>在一行中输出最多可以选择多少个数可以用它们组成一个完美数列。</p>
+<p>输入样例：</p>
+<pre><code>10 8
+2 3 20 4 5 1 6 7 8 9</code></pre><p>输出样例：</p>
+<pre><code>8</code></pre><p>分析:</p>
+<p>将输入的数字存入数组，对数组进行排序。从第i个开始向后找,每当有值与第i个元素之比小于p时，就看看要不要改变sum的值，下一次进行第i+1此比较时，就从i+1+sum处向后遍历。只有这样，其可能有的sum值才可能大于上一次循环得到的sum值。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int compare(const void * a,const void *b){
+    long A=*(long *)a;
+    long B=*(long *)b;
+    if(A&gt;B){
+        return 1;
+    }else{
+        if(A==B){
+            return 0; 
+        }else{
+            return -1;
         }
     }
-//输出符号（+对应‘’负数对应‘-’）
-    if(f1&gt;0){
-        printf(&quot;&quot;);
-    }else{
-        printf(&quot;-&quot;);
-    }移动位数为0直接输出原小数
-//如果
-    if(num==0){
-            printf(&quot;%c.%s&quot;,result[0],result+1);
-        return 0;
-        }
-//根据指数部分判断移动方向。大于表示右移。
-    if(f2&gt;0){//右移时：
-        printf(&quot;%c&quot;,result[0]);//首先输出第一个数字
-//根据移动位数判断是否要补0
-        if(num&lt;strlen(result+1)){//然后根据要移动位数的长度输出0
-        for(int j=1;j&lt;=strlen(result+1);j++){
-                    if(j&lt;=num){
-                    printf(&quot;%c&quot;,result[j]);
+}
+int main(void){
+    int N;
+    double p;
+    scanf(&quot;%ld %lf&quot;,&amp;N,&amp;p);
+    long nums[N];
+    long x=0;
+    int i=0;
+    while(N--){
+        scanf(&quot;%d&quot;,&amp;x);
+        nums[i++]=x;
+    } 
+    int MAX=0;
+    qsort(nums,i,sizeof(long),compare);
+        for(int j=0;j&lt;i;j++){//外层遍历，从0开始，
+            for(int k=j+MAX;k&lt;i;k++){
+                if(nums[k]*1.0/nums[j]&gt;p){
+                    break;
                 }
                 else{
-                    printf(&quot;.%s&quot;,result+j);
-                    break;//不要忘了跳出去
-                }
-            }    
-        }else{
-                printf(&quot;%s&quot;,result+1);
-                for(int j=0;j&lt;num-strlen(result+1);j++){
-                    printf(&quot;0&quot;);
+                    if(k-j+1&gt;MAX){
+                        MAX=k-j+1;
+                    }
                 }
             }
-    }else{//左移第一个肯定为0.几
-            printf(&quot;0.&quot;);
-            for(int j=1;j&lt;num;j++){
-                printf(&quot;0&quot;);
-            }
-            printf(&quot;%s&quot;,result);
-    }
+        }
+    printf(&quot;%d&quot;,MAX);
     return 0;
-} </code></pre>
+}</code></pre><p>注意：</p>
+<p>此处存储数值建议使用long存储数字，double存储p的值。</p>
+
       
       <!-- reward -->
       
@@ -278,7 +226,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1027" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1029" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -286,8 +234,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/19/PTA-Basic-1027/"
-    >PTA-Basic-1027</a> 
+  <a class="article-title" href="/2019/09/20/PTA-Basic-1029/"
+    >PTA-Basic-1029</a> 
 </h2>
  
 
@@ -296,8 +244,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/19/PTA-Basic-1027/" class="article-date">
-  <time datetime="2019-09-19T13:34:04.000Z" itemprop="datePublished">2019-09-19</time>
+      <a href="/2019/09/20/PTA-Basic-1029/" class="article-date">
+  <time datetime="2019-09-20T12:06:29.000Z" itemprop="datePublished">2019-09-20</time>
 </a>
       
   <div class="article-category">
@@ -318,61 +266,37 @@ int main(void){
       
 
       
-      <p>本题要求你写个程序把给定的符号打印成沙漏的形状。例如给定17个“*”，要求按下列格式打印</p>
-<pre><code>*****
-  ***
-    *
-  ***
-*****</code></pre><p>所谓“沙漏形状”，是指每行输出奇数个符号；各行符号中心对齐；相邻两行符号数差2；符号数先从大到小顺序递减到1，再从小到大顺序递增；首尾符号数相等。</p>
-<p>给定任意N个符号，不一定能正好组成一个沙漏。要求打印出的沙漏能用掉尽可能多的符号。</p>
-<p>输入格式:<br>输入在一行给出1个正整数N（≤1000）和一个符号，中间以空格分隔。</p>
-<p>输出格式:<br>首先打印出由给定符号组成的最大的沙漏形状，最后在一行中输出剩下没用掉的符号数。</p>
-<p>输入样例:</p>
-<pre><code>19 *</code></pre><p>输出样例:</p>
-<pre><code>*****
- ***
-  *
- ***
-*****
-2</code></pre><p>分析：</p>
-<p>此题先根据输入的数字计算出一半+1的行数（2<em>n</em>n-1，其中n为行数）然后每一行输出，空格与2*n-1个字符。然后再进行另一半的操作。<br>代码：</p>
+      <p>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及实际被输入的文字，请你列出肯定坏掉的那些键。</p>
+<p>输入格式：<br>输入在 2 行中分别给出应该输入的文字、以及实际被输入的文字。每段文字是不超过 80 个字符的串，由字母 A-Z（包括大、小写）、数字 0-9、以及下划线 _（代表空格）组成。题目保证 2 个字符串均非空。</p>
+<p>输出格式：<br>按照发现顺序，在一行中输出坏掉的键。其中英文字母只输出大写，每个坏键只输出一次。题目保证至少有 1 个坏键。</p>
+<p>输入样例：</p>
+<pre><code>7_This_is_a_test
+_hs_s_a_es</code></pre><p>输出样例：</p>
+<pre><code>7TI</code></pre><p>分析：</p>
+<p>存储两个字符串，遍历第一个字符串每个字符，如果字符串二中没有，且其对应的大写字母用来存放结果字符的字符数组中也没有就将其存入数组中并数字加1。跳出循环，最后要在末尾加上‘\0’。</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;ctype.h&gt;
 int main(void){
-    int num;
-    char ch;
-    scanf(&quot;%d %c&quot;,&amp;num,&amp;ch);
-    int i=1; 
-    for(;;i++){
-        if(2*i*i-1&gt;num){//计算一共有多少层。
-            break;
+    char str[100]={&quot;\0&quot;};
+    gets(str);
+    char str2[100]={&quot;\0&quot;};
+    gets(str2);
+    int i=0;
+    char result[80]={&quot;\0&quot;};
+    int num=0;
+    while(str[i]!=&apos;\0&apos;){
+        if(!strchr(str2,str[i])){
+            char ch=toupper(str[i]);
+            if(!strchr(result,ch)){
+                result[num++]=ch;
+            }
         }
+        i++;
     }
-    i=i-1;//行数,去掉对称的哪一行。
-    num=num-2*i*i+1;//剩余没有用到的个数。
-    int n=i;
-    int nums=0;
-    for(;n&gt;0;n--){//打印一行
-        for(int k=0;k&lt;nums;k++){//这一行的空格从0开始计算。
-            printf(&quot; &quot;);
-        }
-        for(int j=0;j&lt;2*n-2;j++){//
-            printf(&quot;%c&quot;,ch);
-        }
-        printf(&quot;%c\n&quot;,ch);
-        nums++;
-    }
-    nums--;
-    for(int j=2;j&lt;=i;j++){
-        nums--;
-        for(int k=0;k&lt;nums;k++){
-            printf(&quot; &quot;);
-        }
-        for(n=0;n&lt;2*j-2;n++){
-            printf(&quot;%c&quot;,ch);
-        }
-        printf(&quot;%c\n&quot;,ch);
-    }
-    printf(&quot;%d&quot;,num);
+    result[num]=&apos;\0&apos;;
+    printf(&quot;%s&quot;,result);
     return 0;
 }</code></pre>
       
@@ -405,7 +329,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1026" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1028" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -413,8 +337,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/19/PTA-Basic-1026/"
-    >PTA-Basic-1026</a> 
+  <a class="article-title" href="/2019/09/20/PTA-Basic-1028/"
+    >PTA-Basic-1028</a> 
 </h2>
  
 
@@ -423,8 +347,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/19/PTA-Basic-1026/" class="article-date">
-  <time datetime="2019-09-19T13:33:50.000Z" itemprop="datePublished">2019-09-19</time>
+      <a href="/2019/09/20/PTA-Basic-1028/" class="article-date">
+  <time datetime="2019-09-20T12:06:06.000Z" itemprop="datePublished">2019-09-20</time>
 </a>
       
   <div class="article-category">
@@ -445,24 +369,81 @@ int main(void){
       
 
       
-      <p>要获得一个 C 语言程序的运行时间，常用的方法是调用头文件 time.h，其中提供了 clock() 函数，可以捕捉从程序开始运行到 clock() 被调用时所耗费的时间。这个时间单位是 clock tick，即“时钟打点”。同时还有一个常数 CLK_TCK，给出了机器时钟每秒所走的时钟打点数。于是为了获得一个函数 f 的运行时间，我们只要在调用 f 之前先调用 clock()，获得一个时钟打点数 C1；在 f 执行完成后再调用 clock()，获得另一个时钟打点数 C2；两次获得的时钟打点数之差 (C2-C1) 就是 f 运行所消耗的时钟打点数，再除以常数 CLK_TCK，就得到了以秒为单位的运行时间。</p>
-<p>这里不妨简单假设常数 CLK_TCK 为 100。现给定被测函数前后两次获得的时钟打点数，请你给出被测函数运行的时间。</p>
-<p>输入格式：<br>输入在一行中顺序给出 2 个整数 C1 和 C2。注意两次获得的时钟打点数肯定不相同，即 C1 &lt; C2，并且取值在 [0,10<br>​7<br>​​ ]。</p>
-<p>输出格式：<br>在一行中输出被测函数运行的时间。运行时间必须按照 hh:mm:ss（即2位的 时:分:秒）格式输出；不足 1 秒的时间四舍五入到秒。</p>
+      <p>某城镇进行人口普查，得到了全体居民的生日。现请你写个程序，找出镇上最年长和最年轻的人。</p>
+<p>这里确保每个输入的日期都是合法的，但不一定是合理的——假设已知镇上没有超过 200 岁的老人，而今天是 2014 年 9 月 6 日，所以超过 200 岁的生日和未出生的生日都是不合理的，应该被过滤掉。</p>
+<p>输入格式：<br>输入在第一行给出正整数 N，取值在(0,10^5]；随后 N 行，每行给出 1 个人的姓名（由不超过 5 个英文字母组成的字符串）、以及按 yyyy/mm/dd（即年/月/日）格式给出的生日。题目保证最年长和最年轻的人没有并列。</p>
+<p>输出格式：<br>在一行中顺序输出有效生日的个数、最年长人和最年轻人的姓名，其间以空格分隔。</p>
 <p>输入样例：</p>
-<pre><code>123 4577973</code></pre><p>输出样例：</p>
-<pre><code>12:42:59</code></pre><p>分析：<br>此题简单不做赘述，注意一点，转型时注意语言自带的转型功能。</p>
+<pre><code>5
+John 2001/05/12
+Tom 1814/09/06
+Ann 2121/01/30
+James 1814/09/05
+Steve 1967/11/20</code></pre><p>输出样例：</p>
+<pre><code>3 Tom John</code></pre><p>分析：</p>
+<p>定义一个结构体，首先日期一定都是合法的，但是不一定合理。定义一个在<br>最早的可能的年份出生的人，与今天出生的人，然后输入的每个人的数据与这两个人对比，合格的就存入person数组中。然后对此数组进行快排，输出第一个元素，与最后一个元素。注意：当没有人时，只输出一个0.</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+typedef struct person{
+    char name[6];
+    int birthyear;
+    int birthmonth;
+    int birthday;
+}person;
+int compare(const void * a,const void * b){
+    person A=*(person *)a;
+    person B=*(person *)b;
+    if(A.birthyear&gt;B.birthyear){
+        return 1;
+    }else if(A.birthyear&lt;B.birthyear){
+        return -1;
+    }else{
+        if(A.birthmonth&gt;B.birthmonth){
+            return 1;
+        }else if(A.birthmonth&lt;B.birthmonth){
+            return -1;
+        }else{
+                if(A.birthday&gt;B.birthday){
+                return 1;
+            }else if(A.birthday&lt;B.birthday){
+                return -1;
+            }else{
+                return 0;
+            }
+        }
+    }
+}
 int main(void){
-    int number1;
-    int number2;
-
-    scanf(&quot;%d %d&quot;,&amp;number1,&amp;number2);
-    int h=(int)((number2-number1)/360000);
-    printf(&quot;%02d:&quot;,h);
-    int m=(int)(((number2-number1)/100 -h * 3600)/60);
-    printf(&quot;%02d:&quot;,m);</code></pre><p>#####//此处强制转型一定要在除过后就进行否则会导致数字丢失。<br>        int s=(((int)((number2-number1)<em>1.0/100+0.5)-h</em>3600-m*60));<br>        printf(“%02d”,s);<br>        return 0;<br>    }</p>
-
+    long num;
+    scanf(&quot;%ld&quot;,&amp;num);
+    long i=0;
+    person persons[num],oldperson,p,lastperson;  
+    oldperson.birthyear=1814;
+    oldperson.birthmonth=9;
+    oldperson.birthday=6;
+    lastperson.birthyear=2014;
+    lastperson.birthmonth=9;
+    lastperson.birthday=7;
+    while(num--){
+        scanf(&quot;%s %d/%d/%d&quot;,p.name,&amp;p.birthyear,&amp;p.birthmonth,&amp;p.birthday);
+        if(compare(&amp;p,&amp;oldperson)&gt;=0 &amp;&amp; compare(&amp;p,&amp;lastperson)&lt;0){
+            strcpy(persons[i].name,p.name);
+            persons[i].birthyear=p.birthyear;
+            persons[i].birthmonth=p.birthmonth;
+            persons[i].birthday=p.birthday;
+            i++;
+        }
+    }
+    qsort(persons,i,sizeof(person),compare);
+    if(i!=0)
+    printf(&quot;%d %s %s&quot;,i,persons[0].name,persons[i-1].name);
+    else{
+        printf(&quot;0&quot;);
+    }
+    return 0;
+}</code></pre>
       
       <!-- reward -->
       
@@ -499,7 +480,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/34/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/36/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/34/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/36/">下一页</a>
   </nav>
   
 </section>

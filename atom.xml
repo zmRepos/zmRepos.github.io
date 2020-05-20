@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-05-19T07:34:13.201Z</updated>
+  <updated>2020-05-20T11:36:38.187Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,91 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-27</title>
+    <link href="http://zm163.github.io/2020/05/20/LeetCode-27/"/>
+    <id>http://zm163.github.io/2020/05/20/LeetCode-27/</id>
+    <published>2020-05-20T10:40:15.000Z</published>
+    <updated>2020-05-20T11:36:38.187Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;移除元素&quot;&gt;&lt;a href=&quot;#移除元素&quot; class=&quot;headerlink&quot; title=&quot;移除元素&quot;&gt;&lt;/a&gt;移除元素&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="双指针" scheme="http://zm163.github.io/categories/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-26</title>
+    <link href="http://zm163.github.io/2020/05/20/LeetCode-26/"/>
+    <id>http://zm163.github.io/2020/05/20/LeetCode-26/</id>
+    <published>2020-05-20T10:40:11.000Z</published>
+    <updated>2020-05-20T11:10:15.832Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;删除数组中的重复项&quot;&gt;&lt;a href=&quot;#删除数组中的重复项&quot; class=&quot;headerlink&quot; title=&quot;删除数组中的重复项&quot;&gt;&lt;/a&gt;删除数组中的重复项&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E6%95%B0%E7%BB%84/"/>
+    
+      <category term="双执政" scheme="http://zm163.github.io/categories/%E5%8F%8C%E6%89%A7%E6%94%BF/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-25</title>
+    <link href="http://zm163.github.io/2020/05/20/LeetCode-25/"/>
+    <id>http://zm163.github.io/2020/05/20/LeetCode-25/</id>
+    <published>2020-05-20T10:40:01.000Z</published>
+    <updated>2020-05-20T10:56:11.821Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;k个一组翻转链表&quot;&gt;&lt;a href=&quot;#k个一组翻转链表&quot; class=&quot;headerlink&quot; title=&quot;k个一组翻转链表&quot;&gt;&lt;/a&gt;k个一组翻转链表&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="LeetCode-困难" scheme="http://zm163.github.io/categories/LeetCode-%E5%9B%B0%E9%9A%BE/"/>
+    
+      <category term="链表" scheme="http://zm163.github.io/categories/%E9%93%BE%E8%A1%A8/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-24</title>
@@ -484,88 +569,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;字符串转整数&quot;&gt;&lt;a href=&quot;#字符串转整数&quot; class=&quot;headerlink&quot; title=&quot;字符串转整数&quot;&gt;&lt;/a&gt;字符串转整数&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-7</title>
-    <link href="http://zm163.github.io/2020/05/13/LeetCode-7/"/>
-    <id>http://zm163.github.io/2020/05/13/LeetCode-7/</id>
-    <published>2020-05-13T12:32:15.000Z</published>
-    <updated>2020-05-13T16:37:14.757Z</updated>
-    
-    <summary type="html">
-    
-      &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;来源：力扣（LeetCode）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;链接：https:&amp;#x2F;&amp;#x2F;leetcode-cn.com&amp;#x2F;problems&amp;#x2F;zigzag-conversion&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;整数反转&quot;&gt;&lt;a href=&quot;#整数反转&quot; class=&quot;headerlink&quot; title=&quot;整数反转&quot;&gt;&lt;/a&gt;整数反转&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="LeetCode-简单" scheme="http://zm163.github.io/categories/LeetCode-%E7%AE%80%E5%8D%95/"/>
-    
-      <category term="数学" scheme="http://zm163.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-6</title>
-    <link href="http://zm163.github.io/2020/05/10/LeetCode-6/"/>
-    <id>http://zm163.github.io/2020/05/10/LeetCode-6/</id>
-    <published>2020-05-10T12:44:30.000Z</published>
-    <updated>2020-05-13T16:45:40.185Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;Z字形变换&quot;&gt;&lt;a href=&quot;#Z字形变换&quot; class=&quot;headerlink&quot; title=&quot;Z字形变换&quot;&gt;&lt;/a&gt;Z字形变换&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="LeetCode-中等" scheme="http://zm163.github.io/categories/LeetCode-%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="字符串" scheme="http://zm163.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-5</title>
-    <link href="http://zm163.github.io/2020/05/10/LeetCode-5/"/>
-    <id>http://zm163.github.io/2020/05/10/LeetCode-5/</id>
-    <published>2020-05-10T12:44:25.000Z</published>
-    <updated>2020-05-13T16:42:11.519Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;最长回文子串&quot;&gt;&lt;a href=&quot;#最长回文子串&quot; class=&quot;headerlink&quot; title=&quot;最长回文子串&quot;&gt;&lt;/a&gt;最长回文子串&lt;/h1&gt;
     
     </summary>
     

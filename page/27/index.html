@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1045" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1048" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/25/PTA-Basic-1045/"
-    >PTA-Basic-1045</a> 
+  <a class="article-title" href="/2019/09/26/PTA-Basic-1048/"
+    >PTA-Basic-1048</a> 
 </h2>
  
 
@@ -119,179 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/25/PTA-Basic-1045/" class="article-date">
-  <time datetime="2019-09-25T13:46:30.000Z" itemprop="datePublished">2019-09-25</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>著名的快速排序算法里有一个经典的划分过程：我们通常采用某种方法取一个元素作为主元，通过交换，把比主元小的元素放到它的左边，比主元大的元素放到它的右边。 给定划分后的 N 个互不相同的正整数的排列，请问有多少个元素可能是划分前选取的主元？</p>
-<p>例如给定 $N = 5$, 排列是1、3、2、4、5。则：</p>
-<p>1 的左边没有元素，右边的元素都比它大，所以它可能是主元；<br>尽管 3 的左边元素都比它小，但其右边的 2 比它小，所以它不能是主元；<br>尽管 2 的右边元素都比它大，但其左边的 3 比它大，所以它不能是主元；<br>类似原因，4 和 5 都可能是主元。<br>因此，有 3 个元素可能是主元。</p>
-<p>输入格式：<br>输入在第 1 行中给出一个正整数 N（≤10<br>​5<br>​​ ）； 第 2 行是空格分隔的 N 个不同的正整数，每个数不超过 10<br>​9<br>​​ 。</p>
-<p>输出格式：<br>在第 1 行中输出有可能是主元的元素个数；在第 2 行中按递增顺序输出这些元素，其间以 1 个空格分隔，行首尾不得有多余空格。</p>
-<p>输入样例：<br>5<br>1 3 2 4 5<br>输出样例：<br>3<br>1 4 5</p>
-<p>我的思路：<br>使用for循环，从左边开始遍历如果有比它大的就标记它自己与那个数字，但是不跳出循环继续遍历，继续标识不合格的数字，如果一次循环下来没有找到比它大的数字那么说明他是合格的，合格的就存入另外一个数组。如果不是合格的那么后面比它小的都不合格了，所以不用遍历这些，最后最后得出一个主元的递增数列。但是这个方发还是有一个测试点1超时了。我还是可以的能把别人一半运行超时的思路减到一个。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-int main(void){
-    unsigned int num;
-    scanf(&quot;%d&quot;,&amp;num);
-    int res[num];
-    memset(res,0,sizeof(res));
-
-    int  nums[2][num];
-    memset(nums,0,sizeof(nums));
-    int i=0;
-    while(i&lt;num){
-        scanf(&quot;%d&quot;,&amp;nums[0][i++]);
-    }
-    int time=0;
-    for(i=0;i&lt;num;i++){
-        int key=nums[0][i];
-            if(nums[1][i]!=1){
-                int j=i+1;
-                int flag=0;
-                for(;j&lt;num;j++){
-                    if(nums[0][j]&lt;key){
-                        nums[1][j]=1;
-                        nums[1][i]=1;
-                        flag=1;
-                    }
-                }
-                if(!flag){
-                    res[time]=key;
-                    time++;
-                }
-        }
-    }
-    printf(&quot;%d\n&quot;,time);
-    for(int j=0;j&lt;time;j++){
-        if(j==0){
-            printf(&quot;%d&quot;,res[j]);
-        }else{
-            printf(&quot; %d&quot;,res[j]);
-        }
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}</code></pre><p>思路二：<br>定义两个数组一个用来存储原数组，另一个用来存储对原数组排序后的数组。<br>遍历原数组，如果对应已经排好序的数组的相同位置也为那么这个数可能为主元（特例：3 2 1，1 2 3）还要保证他是原数组前面最大的哪一个，这又符合这两条件他才是主元，存入数组。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;string.h&gt;
-
-int cmp(const void *a, const void *b)
-{
-  return *((int *)a)-*((int *)b);
-}
-
-int main()
-{
-  int iNum=0;
-  scanf(&quot;%d&quot;,&amp;iNum);
-  int iData[iNum],iData_s[iNum];
-  for(int i=0;i&lt;iNum;i++)
-  {
-    scanf(&quot;%d&quot;,&amp;iData[i]);
-    iData_s[i]=iData[i];
-  }
-  qsort(iData_s,iNum,sizeof(int),cmp);//快速排序
-  int iZY[iNum];
-  int iCnt=0,iMax=0;
-  for(int i=0;i&lt;iNum;i++)
-  {
-    if(iMax&lt;iData[i])//iMax就是前i-1个数字中最大的哪一个。
-    {
-      iMax=iData[i];
-      if(iData[i]==iData_s[i])   //如果是前i个最大的数字，且对应排好序的数组数字也是它，那么它就是主元。
-      {
-        iZY[iCnt++]=iData[i];
-      }
-    }
-  }
-  printf(&quot;%d\n&quot;,iCnt);//下面两种输出方法，区别在于icnt=0的情况
-  for(int i=0;i&lt;iCnt;i++)
-  {
-    if(i==0)
-    {
-      printf(&quot;%d&quot;,iZY[i]);
-    }
-    else
-    {
-      printf(&quot; %d&quot;,iZY[i]);
-    }
-  }
-  printf(&quot;\n&quot;);//一个测试点好像有毛病，当主元数目为0时，还要要输出个换行。
- return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1044" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/25/PTA-Basic-1044/"
-    >PTA-Basic-1044</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/25/PTA-Basic-1044/" class="article-date">
-  <time datetime="2019-09-25T13:46:17.000Z" itemprop="datePublished">2019-09-25</time>
+      <a href="/2019/09/26/PTA-Basic-1048/" class="article-date">
+  <time datetime="2019-09-26T13:00:38.000Z" itemprop="datePublished">2019-09-26</time>
 </a>
       
   <div class="article-category">
@@ -313,110 +142,171 @@ int main()
 
       
       <p>题目：</p>
-<p>火星人是以 13 进制计数的：</p>
-<p>地球人的 0 被火星人称为 tret。<br>地球人数字 1 到 12 的火星文分别为：jan, feb, mar, apr, may, jun, jly, aug, sep, oct, nov, dec。<br>火星人将进位以后的 12 个高位数字分别称为：tam, hel, maa, huh, tou, kes, hei, elo, syy, lok, mer, jou。<br>例如地球人的数字 29 翻译成火星文就是 hel mar；而火星文 elo nov 对应地球数字 115。为了方便交流，请你编写程序实现地球和火星数字之间的互译。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（&lt;100），随后 N 行，每行给出一个 [0, 169) 区间内的数字 —— 或者是地球文，或者是火星文。</p>
-<p>输出格式：<br>对应输入的每一行，在一行中输出翻译后的另一种语言的数字。</p>
+<p>本题要求实现一种数字加密方法。首先固定一个加密用正整数 A，对任一正整数 B，将其每 1 位数字与 A 的对应位置上的数字进行以下运算：对奇数位，对应位的数字相加后对 13 取余——这里用 J 代表 10、Q 代表 11、K 代表 12；对偶数位，用 B 的数字减去 A 的数字，若结果为负数，则再加 10。这里令个位为第 1 位。</p>
+<p>输入格式：<br>输入在一行中依次给出 A 和 B，均为不超过 100 位的正整数，其间以空格分隔。</p>
+<p>输出格式：<br>在一行中输出加密后的结果。</p>
 <p>输入样例：</p>
-<pre><code>4
-29
-5
-elo nov
-tam</code></pre><p>输出样例：</p>
-<pre><code>hel mar
-may
-115
-13</code></pre><p>分析：<br>    定义一个字符串数组，用来存储n个字符串，然后对每个字符串判断是数字还是字母，分别调用不同的函数。<br>数字》字符串：<br>因为数字范围是【0-169），所以火星文只有两位。用数字对13取整得到高位，然后再对13取余，得到低位。如果高位有数，而低位为0则不用输出低位对应的火星文，如果高位低位都不为0，就正常输出。<br>字符串到数字：<br>在函数中定义两个字符串数组分别对应高位与低位的字符串，然后对传入的字符串查找是否包含某一个火星文，包含高位上的火星文就拿对应的下标<em>13，低位布用</em>13，为了减少运行时间可以添加变量控制循环。</p>
-<p>代码：</p>
+<pre><code>1234567 368782971</code></pre><p>输出样例：</p>
+<pre><code>3695Q8118</code></pre><p>分析：<br>定义三个字符串数组分别用来存储输入的两个字符串与处理后的结果，先定义一个反转字符串的函数。然后将两个字符串都反转一下然后对应开始遍历字符串，取长度最大的那个为上限，长度不够时那个位置对应的数字就是0相应的处理就可以了。<br>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
-void changeToNumber(char *a);
-void changeToString(int num);
-int main(void){
-    int num=0;
-    scanf(&quot;%d&quot;,&amp;num);
-    getchar();
-    char str[num][10];
-    int i=0;
-    while(i&lt;num){
-        gets(str[i++]);
+char * strrev(char *a){//反转字符串。
+    char *b=a;
+    int i=strlen(a)-1,j=0;
+    char ch;
+    while(i&gt;j){
+        ch=a[i];
+        a[i]=a[j];
+        a[j]=ch;
+        i--;
+        j++;
     }
-    i=0;
-    for(;i&lt;num;i++){
-        if(str[i][0]&lt;=&apos;9&apos;&amp;&amp;str[i][0]&gt;=&apos;0&apos;){
-            int sum=0;
-            for(int j=0;j&lt;strlen(str[i]);j++){
-                sum=sum*10+(str[i][j]-&apos;0&apos;);
-            }
-            changeToString(sum);
-        }else{
-            changeToNumber(str[i]);
-        }
-    }
-    return 0;
+    return a;
 }
-void changeToString(int num){
-    int n=num/13;
-    int m=num%13;
-    if(n&gt;0){
-        switch(n){
-            case 1:printf(&quot;tam&quot;);break;
-            case 2:printf(&quot;hel&quot;);break;
-            case 3:printf(&quot;maa&quot;);break;
-            case 4:printf(&quot;huh&quot;);break;
-            case 5:printf(&quot;tou&quot;);break;
-            case 6:printf(&quot;kes&quot;);break;
-            case 7:printf(&quot;hei&quot;);break;
-            case 8:printf(&quot;elo&quot;);break;
-            case 9:printf(&quot;syy&quot;);break;
-            case 10:printf(&quot;lok&quot;);break;
-            case 11:printf(&quot;mer&quot;);break;
-            case 12:printf(&quot;jou&quot;);break;
+int main(void){
+    char strs1[101];
+    char strs2[101];
+    char result[101];
+    memset(strs1,&apos;\0&apos;,101);
+    memset(strs2,&apos;\0&apos;,101);
+    memset(result,&apos;\0&apos;,101);
+    scanf(&quot;%s %s&quot;,strs1,strs2);
+    strrev(strs1);
+    strrev(strs2);
+    int i=0;
+    int len=(strlen(strs1)&gt;strlen(strs2)?strlen(strs1):strlen(strs2));//取最长的那个为上限。
+    while(len--){
+        i++;
+        if(i%2!=0){//为奇数
+            int x=(strs1[i-1]-&apos;0&apos;)&gt;-1?(strs1[i-1]-&apos;0&apos;):0;
+            int y=(strs2[i-1]-&apos;0&apos;)&gt;-1?(strs2[i-1]-&apos;0&apos;):0;
+            y=(y+x)%13;
+            if(y&lt;10){
+                result[i-1]=y+&apos;0&apos;;
+            }else{
+                switch(y){
+                    case 10:result[i-1]=&apos;J&apos;;break;
+                    case 11:result[i-1]=&apos;Q&apos;;break;
+                    case 12:result[i-1]=&apos;K&apos;;break;
+                }
+            }
+        }else{
+            int x=(strs1[i-1]-&apos;0&apos;)&gt;-1?(strs1[i-1]-&apos;0&apos;):0;
+            int y=(strs2[i-1]-&apos;0&apos;)&gt;-1?(strs2[i-1]-&apos;0&apos;):0;
+            y=y-x;
+            if(y&lt;0){
+                y=y+10;
+            }
+            result[i-1]=y+&apos;0&apos;;
         }
     }
-    if(n&gt;0&amp;&amp;m&gt;0){
-        printf(&quot; &quot;);
-    }
-    if(n&gt;0&amp;&amp;m==0){
-        printf(&quot;\n&quot;);
-        return;
-    }
-        switch(m){
-            case 0:printf(&quot;tret\n&quot;);break;
-            case 1:printf(&quot;jan\n&quot;);break;
-            case 2:printf(&quot;feb\n&quot;);break;
-            case 3:printf(&quot;mar\n&quot;);break;
-            case 4:printf(&quot;apr\n&quot;);break;
-            case 5:printf(&quot;may\n&quot;);break;
-            case 6:printf(&quot;jun\n&quot;);break;
-            case 7:printf(&quot;jly\n&quot;);break;
-            case 8:printf(&quot;aug\n&quot;);break;
-            case 9:printf(&quot;sep\n&quot;);break;
-            case 10:printf(&quot;oct\n&quot;);break;
-            case 11:printf(&quot;nov\n&quot;);break;
-            case 12:printf(&quot;dec\n&quot;);break;
-        }
-} 
+    strrev(result);//最后要将数组反转一下。
+    printf(&quot;%s&quot;,result);
+    return 0;
+}</code></pre><p>###总结：做任何算法包括事情前都要有一个大致思路，不然就会在做的过程中迷失方向。</p>
 
-void changeToNumber(char *a){
-    static char chrs1[13][5]={&quot;##&quot;,&quot;tam&quot;, &quot;hel&quot;, &quot;maa&quot;, &quot;huh&quot;, &quot;tou&quot;, &quot;kes&quot;, &quot;hei&quot;, &quot;elo&quot;, &quot;syy&quot;, &quot;lok&quot;, &quot;mer&quot;, &quot;jou&quot;};
-    static char chrs2[13][5]={&quot;tret&quot;,&quot;jan&quot;, &quot;feb&quot;, &quot;mar&quot;, &quot;apr&quot;, &quot;may&quot;, &quot;jun&quot;, &quot;jly&quot;, &quot;aug&quot;, &quot;sep&quot;, &quot;oct&quot;, &quot;nov&quot;, &quot;dec&quot;};
-    int sum=0;
-    int flag1=1,flag2=1;
-    for(int i=0;i&lt;13;i++){
-        if(strstr(a,chrs1[i])&amp;&amp;flag1){
-            sum=sum+(i)*13;
-            flag1=0;
-        }
-        if(strstr(a,chrs2[i])&amp;&amp;flag2){
-            sum=sum+i;
-            flag2=0;
-        }
-        if(!flag1&amp;&amp;!flag2){
-            break;
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1047" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/26/PTA-Basic-1047/"
+    >PTA-Basic-1047</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/26/PTA-Basic-1047/" class="article-date">
+  <time datetime="2019-09-26T13:00:38.000Z" itemprop="datePublished">2019-09-26</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<p>编程团体赛的规则为：每个参赛队由若干队员组成；所有队员独立比赛；参赛队的成绩为所有队员的成绩和；成绩最高的队获胜。</p>
+<p>现给定所有队员的比赛成绩，请你编写程序找出冠军队。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​4<br>​​ ），即所有参赛队员总数。随后 N 行，每行给出一位队员的成绩，格式为：队伍编号-队员编号 成绩，其中队伍编号为 1 到 1000 的正整数，队员编号为 1 到 10 的正整数，成绩为 0 到 100 的整数。</p>
+<p>输出格式：<br>在一行中输出冠军队的编号和总成绩，其间以一个空格分隔。注意：题目保证冠军队是唯一的。</p>
+<p>输入样例：</p>
+<pre><code>6
+3-10 99
+11-5 87
+102-1 0
+102-3 100
+11-9 89
+3-2 61</code></pre><p>输出样例：</p>
+<pre><code>11 176</code></pre><p>分析：此题与前面的挖掘机那题完全一样。<br>定义一个足够大的数组要把队伍编号都包含在内，然后把输输入一个队伍的相关信息，可以跳过中间一个数字的读取，队伍编号就是对应其在数组的位置，每次就<br>把输入的分数加到对应的位置，然后跟目前位置最大的比，如果比它大就把它存储下来，最后直接输出队伍编号，与分数。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int schools[10001];
+    int max=0;
+    int max_school=0;
+    int n,a,b;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d-%*d %d&quot;,&amp;a,&amp;b);//%*d代表不接受此输入。
+        schools[a]=schools[a]+b;
+        if(schools[a]&gt;max){
+            max=schools[a];
+            max_school=a;
         }
     }
-    printf(&quot;%d\n&quot;,sum);
+    printf(&quot;%d %d&quot;,max_school,max);
+    return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -448,7 +338,7 @@ void changeToNumber(char *a){
 
 </article>
     
-    <article id="post-PTA-Basic-1043" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1046" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -456,8 +346,8 @@ void changeToNumber(char *a){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/25/PTA-Basic-1043/"
-    >PTA-Basic-1043</a> 
+  <a class="article-title" href="/2019/09/26/PTA-Basic-1046/"
+    >PTA-Basic-1046</a> 
 </h2>
  
 
@@ -466,8 +356,8 @@ void changeToNumber(char *a){
 
     
     <div class="article-meta">
-      <a href="/2019/09/25/PTA-Basic-1043/" class="article-date">
-  <time datetime="2019-09-25T13:46:02.000Z" itemprop="datePublished">2019-09-25</time>
+      <a href="/2019/09/26/PTA-Basic-1046/" class="article-date">
+  <time datetime="2019-09-26T12:59:45.000Z" itemprop="datePublished">2019-09-26</time>
 </a>
       
   <div class="article-category">
@@ -488,68 +378,39 @@ void changeToNumber(char *a){
       
 
       
-      <p>题目：<br>给定一个长度不超过 10<br>​4<br>​​  的、仅由英文字母构成的字符串。请将字符重新调整顺序，按 PATestPATest…. 这样的顺序输出，并忽略其它字符。当然，六种字符的个数不一定是一样多的，若某种字符已经输出完，则余下的字符仍按 PATest 的顺序打印，直到所有字符都被输出。</p>
-<p>输入格式：<br>输入在一行中给出一个长度不超过 10<br>​4<br>​​  的、仅由英文字母构成的非空字符串。</p>
-<p>输出格式：<br>在一行中按题目要求输出排序后的字符串。题目保证输出非空。</p>
+      <p>题目：</p>
+<p>划拳是古老中国酒文化的一个有趣的组成部分。酒桌上两人划拳的方法为：每人口中喊出一个数字，同时用手比划出一个数字。如果谁比划出的数字正好等于两人喊出的数字之和，谁就赢了，输家罚一杯酒。两人同赢或两人同输则继续下一轮，直到唯一的赢家出现。</p>
+<p>下面给出甲、乙两人的划拳记录，请你统计他们最后分别喝了多少杯酒。</p>
+<p>输入格式：<br>输入第一行先给出一个正整数 N（≤100），随后 N 行，每行给出一轮划拳的记录，格式为：</p>
+<p>甲喊 甲划 乙喊 乙划<br>其中喊是喊出的数字，划是划出的数字，均为不超过 100 的正整数（两只手一起划）。</p>
+<p>输出格式：<br>在一行中先后输出甲、乙两人喝酒的杯数，其间以一个空格分隔。</p>
 <p>输入样例：</p>
-<pre><code>redlesPayBestPATTopTeePHPereatitAPPT</code></pre><p>输出样例：</p>
-<pre><code>PATestPATestPTetPTePePee</code></pre><p>分析：<br>定义一个整型数组用下标对应字母，数值对应个数。另外用一个变量存储符合条件的字符总数，然后进行输出，每次查找对应的字母是否还有数目，如果有就输出并字符总数减去1没有就跳过字母。</p>
+<pre><code>5
+8 10 9 12
+5 10 5 10
+3 8 5 12
+12 18 1 13
+4 16 12 15</code></pre><p>输出样例：</p>
+<pre><code>1 2</code></pre><p>分析：<br>定义变量存储甲乙败的次数，对每次输入的数字判断即可。</p>
 <p>代码：</p>
-<p>c++实现：</p>
-<pre><code>#include &lt;iostream&gt;
-#include&lt;stdio.h&gt;
-using namespace std;
-
-int main()
-{
-    int chars[6]={0};
-    string str;
-    cin&gt;&gt;str;
-    int len=str.length();
-    int sum=0;
-    for(int i=0;i&lt;len;i++){
-        switch(str.at(i)){
-            case &apos;P&apos;:chars[0]++;sum++;break;
-            case &apos;A&apos;:chars[1]++;sum++;break;
-            case &apos;T&apos;:chars[2]++;sum++;break;
-            case &apos;e&apos;:chars[3]++;sum++;break;
-            case &apos;s&apos;:chars[4]++;sum++;break;
-            case &apos;t&apos;:chars[5]++;sum++;break;
-            default:break;
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int num;
+    scanf(&quot;%d&quot;,&amp;num);
+    int i=0,j=0;
+    int a,b,c,d;
+    while(num--){
+        scanf(&quot;%d %d %d %d&quot;,&amp;a,&amp;b,&amp;c,&amp;d);
+        int res=a+c;
+        if(b==res&amp;&amp;d!=res){
+            j++;
+        }else if(b!=res&amp;&amp;d==res){
+            i++;
+        }else{
+            continue;
         }
     }
-    while(sum){
-        if(chars[0]){
-            chars[0]--;
-            sum--;
-            cout&lt;&lt;&apos;P&apos;;
-        }
-        if(chars[1]){
-            chars[1]--;
-            sum--;
-            cout&lt;&lt;&apos;A&apos;;
-        }
-        if(chars[2]){
-            chars[2]--;
-            sum--;
-            cout&lt;&lt;&apos;T&apos;;
-        }
-        if(chars[3]){
-            chars[3]--;
-            sum--;
-            cout&lt;&lt;&apos;e&apos;;
-        }
-        if(chars[4]){
-            chars[4]--;
-            sum--;
-            cout&lt;&lt;&apos;s&apos;;
-        }
-        if(chars[5]){
-            chars[5]--;
-            sum--;
-            cout&lt;&lt;&apos;t&apos;;
-        }
-    }
+    printf(&quot;%d %d&quot;,i,j);
     return 0;
 }</code></pre>
       
@@ -588,7 +449,7 @@ int main()
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/26/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="extend next" rel="next" href="/page/28/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/26/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/28/">下一页</a>
   </nav>
   
 </section>
