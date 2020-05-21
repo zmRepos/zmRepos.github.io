@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1076" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1079" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/09/PTA-Basic-1076/"
-    >PTA-Basic-1076</a> 
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1079/"
+    >PTA-Basic-1079</a> 
 </h2>
  
 
@@ -119,8 +119,316 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/10/09/PTA-Basic-1076/" class="article-date">
-  <time datetime="2019-10-09T14:14:57.000Z" itemprop="datePublished">2019-10-09</time>
+      <a href="/2019/10/11/PTA-Basic-1079/" class="article-date">
+  <time datetime="2019-10-11T14:18:23.000Z" itemprop="datePublished">2019-10-11</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>给定一个 k+1 位的正整数 N，写成 a<br>​k<br>​​ ⋯a<br>​1<br>​​ a<br>​0<br>​​  的形式，其中对所有 i 有 0≤a<br>​i<br>​​ &lt;10 且 a<br>​k<br>​​ &gt;0。N 被称为一个回文数，当且仅当对所有 i 有 a<br>​i<br>​​ =a<br>​k−i<br>​​ 。零也被定义为一个回文数。</p>
+<p>非回文数也可以通过一系列操作变出回文数。首先将该数字逆转，再将逆转数与该数相加，如果和还不是一个回文数，就重复这个逆转再相加的操作，直到一个回文数出现。如果一个非回文数可以变出回文数，就称这个数为延迟的回文数。（定义翻译自 <a href="https://en.wikipedia.org/wiki/Palindromic_number">https://en.wikipedia.org/wiki/Palindromic_number</a> ）</p>
+<p>给定任意一个正整数，本题要求你找到其变出的那个回文数。</p>
+<p>输入格式：<br>输入在一行中给出一个不超过1000位的正整数。</p>
+<p>输出格式：<br>对给定的整数，一行一行输出其变出回文数的过程。每行格式如下</p>
+<p>A + B = C<br>其中 A 是原始的数字，B 是 A 的逆转数，C 是它们的和。A 从输入的整数开始。重复操作直到 C 在 10 步以内变成回文数，这时在一行中输出 C is a palindromic number.；或者如果 10 步都没能得到回文数，最后就在一行中输出 Not found in 10 iterations.。</p>
+<p>输入样例 1：</p>
+<pre><code>97152</code></pre><p>输出样例 1：</p>
+<pre><code>97152 + 25179 = 122331
+122331 + 133221 = 255552
+255552 is a palindromic number.</code></pre><p>输入样例 2：</p>
+<pre><code>196</code></pre><p>输出样例 2：</p>
+<pre><code>196 + 691 = 887
+887 + 788 = 1675
+1675 + 5761 = 7436
+7436 + 6347 = 13783
+13783 + 38731 = 52514
+52514 + 41525 = 94039
+94039 + 93049 = 187088
+187088 + 880781 = 1067869
+1067869 + 9687601 = 10755470
+10755470 + 07455701 = 18211171
+Not found in 10 iterations.</code></pre><p>分析：<br>定一个判断字符串是否回文字符串的函数，定义一个反转字符串的函数。<br>首先对输入的字符串判断是否是回文字符串，然后定义一个比它长1的字符数组，防止最高位进位，将当前字符串复制到另一个，然后用复制后的字符串与反转字符串相加。然后将结果输出，赋值给第一个字符串重复此操作，直到找到或达到10次。<br>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include &lt;stdlib.h&gt;//虽然题目说字符串的长度在0-1000之间但是他们相加后的长度就可能大于1000了所以要定义比1001大的
+int isReserve(char* s){//判断是否是回文字符串的函数。
+    int i=0;
+    int j=strlen(s)-1;
+    while(i&lt;j){
+        if(s[i]!=s[j]){
+            return 0;
+        }
+        i++;
+        j--;
+    }
+    return 1;
+}
+char * strrev(char *str){
+    int i=0,j=strlen(str)-1;//对源字符串直接操作，
+    char ch;
+    while(i&lt;j){
+        ch=str[j];
+        str[j]=str[i];
+        str[i]=ch;
+        i++;
+        j--;
+    }
+    return str;
+}
+int main()
+{
+    char str[1050];
+    gets(str);
+    int i=0;
+    for(;i&lt;10;i++){
+        if(isReserve(str)){
+            printf(&quot;%s is a palindromic number.&quot;,str);
+            break;
+        }else{
+            char strcopy[1050];//保留反转前的字符串
+            strcpy(strcopy,str);
+            strrev(str);//反转str中的字符串
+            printf(&quot;%s + %s = &quot;,strcopy,str);
+            char res[1050]={&apos;\0&apos;};//定义结果数组。
+            int k=0;
+            int max=strlen(str);
+            for(int j=0;j&lt;max;j++){//因为字符串是与反转字符串相加，唯一不同的就是如果最高位有进位，进位就存在右边了，此时需要反转一下。
+                int sum=0;
+                if(strcopy[j]){
+                    sum=sum+strcopy[j]-&apos;0&apos;;
+                }
+                if(str[j]){
+                    sum=sum+str[j]-&apos;0&apos;;
+                }
+                sum=sum+k;
+                res[j]=sum%10+&apos;0&apos;;
+                k=sum/10;
+                if(j==max-1&amp;&amp;k!=0){//如果高位有进位，就要存下他。
+                    res[j+1]=k+&apos;0&apos;;//
+                }
+            }
+            strrev(res);//反转结果数组
+            puts(res);//输出
+            strcpy(str,res);//将结果赋值给str继续操作。
+        }
+    }
+    if(i==10){
+        printf(&quot;Not found in 10 iterations.&quot;);
+    }
+    return 0;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1078" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1078/"
+    >PTA-Basic-1078</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/11/PTA-Basic-1078/" class="article-date">
+  <time datetime="2019-10-11T14:18:16.000Z" itemprop="datePublished">2019-10-11</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：<br>文本压缩有很多种方法，这里我们只考虑最简单的一种：把由相同字符组成的一个连续的片段用这个字符和片段中含有这个字符的个数来表示。例如 ccccc 就用 5c 来表示。如果字符没有重复，就原样输出。例如 aba 压缩后仍然是 aba。</p>
+<p>解压方法就是反过来，把形如 5c 这样的表示恢复为 ccccc。</p>
+<p>本题需要你根据压缩或解压的要求，对给定字符串进行处理。这里我们简单地假设原始字符串是完全由英文字母和空格组成的非空字符串。</p>
+<p>输入格式：<br>输入第一行给出一个字符，如果是 C 就表示下面的字符串需要被压缩；如果是 D 就表示下面的字符串需要被解压。第二行给出需要被压缩或解压的不超过 1000 个字符的字符串，以回车结尾。题目保证字符重复个数在整型范围内，且输出文件不超过 1MB。</p>
+<p>输出格式：<br>根据要求压缩或解压字符串，并在一行中输出结果。</p>
+<p>输入样例 1：</p>
+<pre><code>C
+
+TTTTThhiiiis isssss a   tesssst CAaaa as</code></pre><p>输出样例 1：</p>
+<pre><code>5T2h4is i5s a3 te4st CA3a as</code></pre><p>输入样例 2：</p>
+<pre><code>D
+
+5T2h4is i5s a3 te4st CA3a as10Z</code></pre><p>输出样例 2：</p>
+<pre><code>TTTTThhiiiis isssss a   tesssst CAaaa asZZZZZZZZZZ</code></pre><p>分析：</p>
+<p>首先根据题目要求知道要求我们解压与压缩，解压-&gt;将字符串中的数字转换成其后面紧跟的字符的个数，注</p>
+<p>意，此处数字可能大于10。然后输出n个字符。</p>
+<p>压缩过程：将连续的n个字符（n&gt;1）表达成‘n字符’的形式。</p>
+<p>注意：此题的一个坑，输入中可能会有空格。</p>
+<p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+void c(char *s){//压缩函数
+    char *p=s;
+    char cur=*p;//保存当前的字符
+    p++;
+    int time=1;//默认的字符长度为1
+    while(cur){
+        char ch=*p;//存储下一个字符
+        if(cur==ch){//当前字符与下一个字符比较
+            time++;
+        }else{//不同时，表示连续的已经断开
+            if(time&gt;1){
+                printf(&quot;%d%c&quot;,time,cur);
+            }else{
+                printf(&quot;%c&quot;,cur);
+            }
+            time=1;//重新将字符设置为1
+            cur=ch;//将后一个字符给当前字符。
+        }
+        p++;//指针指向后面一个字符。
+    }
+}
+void d(char *s){//解压
+    char *p=s;
+    int time=0;
+    while(*p){
+        if((*p)&lt;=&apos;9&apos;&amp;&amp;(*p)&gt;=&apos;0&apos;){//将字符串中的数字转化为int型。
+            time=time*10+(*p)-&apos;0&apos;;//
+        }else
+        {
+            if(time==0){//如果此处不给time赋值为1，且time==0，那么字母前面没有数字的就会被丢掉。
+                time=1;
+            }
+            for(int i=0;i&lt;time;i++){
+                printf(&quot;%c&quot;,*p);
+            }
+            time=0;//防止遇到数字为两位或更高位的。
+        }
+        p++;
+    }
+}
+int main()
+{
+    char ch;
+    scanf(&quot;%c&quot;,&amp;ch);
+    getchar();
+    char str[1001];
+    gets(str);
+    switch(ch){
+    case &apos;C&apos;:c(str);break;
+    case &apos;D&apos;:d(str);break;
+    default:break;
+    }
+    return 0;
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1077" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/09/PTA-Basic-1077/"
+    >PTA-Basic-1077</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/10/09/PTA-Basic-1077/" class="article-date">
+  <time datetime="2019-10-09T14:15:10.000Z" itemprop="datePublished">2019-10-09</time>
 </a>
       
   <div class="article-category">
@@ -142,359 +450,66 @@ var _hmt = _hmt || [];
 
       
       <p>题目：</p>
-<p>下面是微博上流传的一张照片：“各位亲爱的同学们，鉴于大家有时需要使用 wifi，又怕耽误亲们的学习，现将 wifi 密码设置为下列数学题答案：A-1；B-2；C-3；D-4；请同学们自己作答，每两日一换。谢谢合作！！~”—— 老师们为了促进学生学习也是拼了…… 本题就要求你写程序把一系列题目的答案按照卷子上给出的对应关系翻译成 wifi 的密码。这里简单假设每道选择题都有 4 个选项，有且只有 1 个正确答案。</p>
-<p><img src="https://images.ptausercontent.com/7e56be3f-caba-45f1-b9cb-38a96d44de76.jpg" alt=""></p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行按照 编号-答案 的格式给出一道题的 4 个选项，T 表示正确选项，F 表示错误选项。选项间用空格分隔。</p>
-<p>输出格式：<br>在一行中输出 wifi 密码。</p>
+<p>在浙大的计算机专业课中，经常有互评分组报告这个环节。一个组上台介绍自己的工作，其他组在台下为其表现评分。最后这个组的互评成绩是这样计算的：所有其他组的评分中，去掉一个最高分和一个最低分，剩下的分数取平均分记为 G<br>​1<br>​​ ；老师给这个组的评分记为 G<br>​2<br>​​ 。该组得分为 (G<br>​1<br>​​ +G<br>​2<br>​​ )/2，最后结果四舍五入后保留整数分。本题就要求你写个程序帮助老师计算每个组的互评成绩。</p>
+<p>输入格式：<br>输入第一行给出两个正整数 N（&gt; 3）和 M，分别是分组数和满分，均不超过 100。随后 N 行，每行给出该组得到的 N 个分数（均保证为整型范围内的整数），其中第 1 个是老师给出的评分，后面 N−1 个是其他组给的评分。合法的输入应该是 [0,M] 区间内的整数，若不在合法区间内，则该分数须被忽略。题目保证老师的评分都是合法的，并且每个组至少会有 3 个来自同学的合法评分。</p>
+<p>输出格式：<br>为每个组输出其最终得分。每个得分占一行。</p>
 <p>输入样例：</p>
-<pre><code>8
-A-T B-F C-F D-F
-C-T B-F A-F D-F
-A-F D-F C-F B-T
-B-T A-F C-F D-F
-B-F D-T A-F C-F
-A-T C-F B-F D-F
-D-T B-F C-F A-F
-C-T A-F B-F D-F</code></pre><p>输出样例：</p>
-<pre><code>13224143</code></pre><p>直接对每对字符判断因为输入的一个题目的答案只有一个所有直接判断并输出对应的数字。</p>
+<pre><code>6 50
+42 
+36 51 50 28 -1 3049 49 35 38 41
+40 36 41 33 47 49
+30 250 -25 27 45 31
+48 0 0 50 50 1234
+43 41 36 29 42 29</code></pre><p>输出样例：</p>
+<pre><code>42
+33
+41
+31
+37
+39</code></pre><p>分析：<br>先存储行数（亦是列数），再存储总分，定义一个判断函数，然后对于每一行每一个数据进行判断，合适的第一个数赋值给老师，剩余存储到数组中去，对数组排序，从第二个元素开始，到倒数第二个元素求平均值，然后再与老师的分数值取平均值，对此品均值进行四舍五入，注意整型与整型除法的结果为整型。继续下一行的数据的输入与处理。</p>
 <p>代码：</p>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-int main()
-{
-    int n=0;
-    scanf(&quot;%d&quot;,&amp;n);
-    char ch1,ch2;
-    getchar();//吸收换行符
-    for(int i=0;i&lt;n;i++){
-        for(int j=0;j&lt;4;j++){
-            scanf(&quot;%c-%c&quot;,&amp;ch1,&amp;ch2);
-            getchar();//吸收空格与换行符
-            if(ch2==&apos;T&apos;){
-                    int re=0;
-                switch(ch1){
-                    case &apos;A&apos;:re=1;break;
-                    case &apos;B&apos;:re=2;break;
-                    case &apos;C&apos;:re=3;break;
-                    case &apos;D&apos;:re=4;break;
-                }
-                printf(&quot;%d&quot;,re);
-            }
+int cmp(const void *a,const void *b){
+    return *(int *)a-*(int *)b;
+}
+int check(int n,int m){
+        if(n&lt;=m&amp;&amp;n&gt;=0){
+            return 1;
         }
-    }
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1074" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/09/PTA-Basic-1074/"
-    >PTA-Basic-1074</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/09/PTA-Basic-1074/" class="article-date">
-  <time datetime="2019-10-09T14:14:27.000Z" itemprop="datePublished">2019-10-09</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>分析：<br>地球人习惯使用十进制数，并且默认一个数字的每一位都是十进制的。而在 PAT 星人开挂的世界里，每个数字的每一位都是不同进制的，这种神奇的数字称为“PAT数”。每个 PAT 星人都必须熟记各位数字的进制表，例如“……0527”就表示最低位是 7 进制数、第 2 位是 2 进制数、第 3 位是 5 进制数、第 4 位是 10 进制数，等等。每一位的进制 d 或者是 0（表示十进制）、或者是 [2，9] 区间内的整数。理论上这个进制表应该包含无穷多位数字，但从实际应用出发，PAT 星人通常只需要记住前 20 位就够用了，以后各位默认为 10 进制。</p>
-<p>在这样的数字系统中，即使是简单的加法运算也变得不简单。例如对应进制表“0527”，该如何计算“6203 + 415”呢？我们得首先计算最低位：3 + 5 = 8；因为最低位是 7 进制的，所以我们得到 1 和 1 个进位。第 2 位是：0 + 1 + 1（进位）= 2；因为此位是 2 进制的，所以我们得到 0 和 1 个进位。第 3 位是：2 + 4 + 1（进位）= 7；因为此位是 5 进制的，所以我们得到 2 和 1 个进位。第 4 位是：6 + 1（进位）= 7；因为此位是 10 进制的，所以我们就得到 7。最后我们得到：6203 + 415 = 7201。</p>
-<p>输入格式：<br>输入首先在第一行给出一个 N 位的进制表（0 &lt; N ≤ 20），以回车结束。 随后两行，每行给出一个不超过 N 位的非负的 PAT 数。</p>
-<p>输出格式：<br>在一行中输出两个 PAT 数之和。</p>
-<p>输入样例：</p>
-<pre><code>30527
-06203
-415</code></pre><p>输出样例：</p>
-<pre><code>7201</code></pre><p>分析：<br>将输入的字符串存入字符数组，定义一个逆转字符串的函数，将每个字符串逆转，然后从头取对应的数字加起来在加上上一次运算的进数，然后对进制取余存入结果数组，取整作为下一次的进数，注意循环的次数，应该比进制字符串的长度大1，为了防止最高项加后超过进制数而导致进项丢失。</p>
-<p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-char decimal[21];
-char str1[21];
-char str2[21];
-char result[22];
-char* strrev(char *str){//字符逆置函数。
-    char *cs1=str;
-    char *cs2=str+(strlen(str)-1);
-    while(cs1&lt;cs2){
-        char ch=*cs1;
-        *cs1=*cs2;
-        *cs2=ch;
-        cs1++;
-        cs2--;
-    }
-    return str;
+        return 0;
 }
 int main()
 {
-    gets(decimal);//输入进制
-    gets(str1);//输入数字1
-    gets(str2);//输入数字2
-    char *pdecimal=strrev(decimal);//逆置进制
-    char *pstr1=strrev(str1);//逆置数字1
-    char *pstr2=strrev(str2);//逆置数字2
-    int max=strlen(decimal);//存储最大的字符长度。
-    int next=0;
-    for(int i=0;i&lt;max+1;i++){
-            int n=0,m=0,k=0;
-            if(pstr1[i]!=&apos;\0&apos;){//第一个数字的一位
-                n=pstr1[i]-&apos;0&apos;;
-            }
-            if(pstr2[i]!=&apos;\0&apos;){//第二个数字的一位
-                m=pstr2[i]-&apos;0&apos;;
-            }
-            if(pdecimal[i]==&apos;0&apos;){//当i达到max时k变为‘\0’-&apos;0&apos;=-48，而其他数字（不小于-48）对其取还是其他数字任何数字对负数取余的结果是那个数字对对应的整数取余的结果。
-                k=10;
-            }else{
-                k=pdecimal[i]-&apos;0&apos;;
-            }
-            result[i]=(n+m+next)%k+&apos;0&apos;;
-            next=(n+m+next)/k;
-    }
-    char *presult=strrev(result);
-        while(*presult==&apos;0&apos;){//将开头的0都去掉，直到找到不为0的数字
-        presult++;
-    }
-    if(strlen(presult)&gt;0)
-     printf(&quot;%s&quot;,presult);
-    else//测试点5为所有位数都是0，这是会去掉所有位数上的0，而导致字符串为0.长度为0，此时只需输出一个0即可。
-        printf(&quot;0&quot;);
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1073" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/08/PTA-Basic-1073/"
-    >PTA-Basic-1073</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/10/08/PTA-Basic-1073/" class="article-date">
-  <time datetime="2019-10-08T13:48:49.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：<br>批改多选题是比较麻烦的事情，有很多不同的计分方法。有一种最常见的计分方法是：如果考生选择了部分正确选项，并且没有选择任何错误选项，则得到 50% 分数；如果考生选择了任何一个错误的选项，则不能得分。本题就请你写个程序帮助老师批改多选题，并且指出哪道题的哪个选项错的人最多。</p>
-<p>输入格式：<br>输入在第一行给出两个正整数 N（≤1000）和 M（≤100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
-<p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行，输出小数点后 1 位。最后输出错得最多的题目选项的信息，格式为：错误次数 题目编号（题目按照输入的顺序从1开始编号）-选项号。如果有并列，则每行一个选项，按题目编号递增顺序输出；再并列则按选项号递增顺序输出。行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
-<p>输入样例 1：</p>
-<pre><code>3 4 
-3 4 2 a c
-2 5 1 b
-5 3 2 b c
-1 5 4 a b d e
-(2 a c) (3 b d e) (2 a c) (3 a b e)
-(2 a c) (1 b) (2 a b) (4 a b d e)
-(2 b d) (1 e) (1 c) (4 a b c d)</code></pre><p>输出样例 1：</p>
-<pre><code>3.5
-6.0
-2.5
-2 2-e
-2 3-a
-2 3-b</code></pre><p>输入样例 2：</p>
-<pre><code>2 2 
-3 4 2 a c
-2 5 1 b
-(2 a c) (1 b)
-(2 a c) (1 b)</code></pre><p>输出样例 2：</p>
-<pre><code>5.0
-5.0
-Too simple</code></pre><p>分析：<br>定义一个非常大的二维数组，一维用来表示题目号，二维用来存储答案，用0位表示a，1位表示b,2位表示c,…其存储的数值0-表示正确的选项中没有，1表示正确的选项中有。<br>定义一个非常大的浮点数数组存储每位学生的成绩，再定义一个非常大的二维数组用来存储每个题目每个选项的出错次数，然后找出最大的次数。对于每一个学生的每一题，统计其输入中的对的项数，如果与总的输入次数相同则这题没有错，但是不保证全对，如果此题的step相同则全对。不管某个选项对不对，在flag中记录下此题此人选择的搜友选项，然后与题目一开始输入正确选项对比，找找有没有没选的正确选项，有则在对应的错误次数上加1，题目中不是值统计出错最多的选项还要统计没选的正确选项最多的选项。</p>
-<p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-double stu[1000];//存储每个学生的成绩
-int score[100];//存储每题目的分数
-int step[100];//存储每题目的正确的选项数目。
-int map[100][5];//存储每个题目正确的选项
-int flag[5];//统计每个人每个题目输入的选项
-int time[100][5];//用来计算每道题目，每个选项的出错次数,与总的出错次数
-int main()
-{   int n,m;
+    int n,m;
     scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    for(int i=0;i&lt;m;i++){
-        scanf(&quot;%d %*d %d&quot;,&amp;score[i],&amp;step[i]);
-        char ch;
-        while((ch=getchar())!=&apos;\n&apos;){
-            if(ch&lt;=&apos;f&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
-            int k=ch-&apos;a&apos;;
-            map[i][k]=1;
-            }
-        }
-    }
-    int max=0;
     for(int i=0;i&lt;n;i++){
-        char ch;
-        int step1=0;
-        int totalstep=0;
-        int t=-1;
-        while((ch=getchar())!=&apos;\n&apos;){
-            if(ch==&apos; &apos;){
-                continue;
-            }else if(ch==&apos;(&apos;){
-                    t++;
-                    step1=0;
-                    totalstep=0;
-            }else if(ch==&apos;)&apos;){
-                    if(totalstep==step1){
-                            if(step1==step[t]){
-                                stu[i]+=score[t]*1.0;
-                            }else{
-                                stu[i]+=score[t]*0.5;
-                            }
-                    }
-                    for(int i=0;i&lt;5;i++){
-                        if(flag[i]==0&amp;&amp;map[t][i]==1){//选的最多的和没选最多的，此处统计没选的且为正确的最多的选项。
-                            time[t][i]++;
-                            if(time[t][i]&gt;max){
-                                max=time[t][i];
-                            }
-                        }else{
-                            flag[i]=0;
-                        }
-                    }
-            }else if(ch&lt;=&apos;5&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
-                totalstep=ch-&apos;0&apos;;
+            int n0=0;
+            int time=-1;
+            int a[n-1];
+        for(int j=0;j&lt;n;j++){
+                int k;
+            scanf(&quot;%d&quot;,&amp;k);
+            if(check(k,m)){
+                if(time==-1){
+                    n0=k;
+                }else{
+                    a[time]=k;
+                }
+                time++;
             }else{
-                int k=ch-&apos;a&apos;;
-               if(map[t][k]==0){
-                   time[t][k]++;
-                   if(time[t][k]&gt;max){
-                        max=time[t][k];
-                    }
-                }else{//选对的话将对应下标的数值-1
-                    step1++;
-                }
-                flag[k]=1;
+                continue;
             }
         }
-    }
-    for(int i=0;i&lt;n;i++){
-        printf(&quot;%.1f\n&quot;,stu[i]);
-    }
-    if(max&gt;0){
-        for(int i=0;i&lt;m;i++)
-                for(int j=0;j&lt;5;j++){
-                    if(time[i][j]==max)
-                        printf(&quot;%d %d-%c\n&quot;,max,i+1,j+&apos;a&apos;);
-                }
-    }else{//如果最大值则都是满分
-        printf(&quot;Too simple&quot;);
+        qsort(a,time,sizeof(int),cmp);
+        int sum=0;
+        for(int j=1;j&lt;time-1;j++){
+            sum=sum+a[j];
+        }
+        if(sum!=0){
+            sum=sum/(time-2);
+        }
+        printf(&quot;%d\n&quot;,(int)((sum+n0)*1.0/2+0.5));//必须*1.0，防止整形运算的区别
     }
     return 0;
 }</code></pre>
@@ -534,7 +549,7 @@ int main()
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/17/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/41/">41</a><a class="extend next" rel="next" href="/page/19/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/17/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="page-number current">18</span><a class="page-number" href="/page/19/">19</a><a class="page-number" href="/page/20/">20</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/19/">下一页</a>
   </nav>
   
 </section>
