@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1066" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1073" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1066/"
-    >PTA-Basic-1066</a> 
+  <a class="article-title" href="/2019/10/08/PTA-Basic-1073/"
+    >PTA-Basic-1073</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1066/" class="article-date">
-  <time datetime="2019-10-07T12:42:25.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/08/PTA-Basic-1073/" class="article-date">
+  <time datetime="2019-10-08T13:48:49.000Z" itemprop="datePublished">2019-10-08</time>
 </a>
       
   <div class="article-category">
@@ -141,42 +141,112 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：<br>图像过滤是把图像中不重要的像素都染成背景色，使得重要部分被凸显出来。现给定一幅黑白图像，要求你将灰度值位于某指定区间内的所有像素颜色都用一种指定的颜色替换。</p>
-<p>输入格式：<br>输入在第一行给出一幅图像的分辨率，即两个正整数 M 和 N（0&lt;M,N≤500），另外是待过滤的灰度值区间端点 A 和 B（0≤A&lt;B≤255）、以及指定的替换灰度值。随后 M 行，每行给出 N 个像素点的灰度值，其间以空格分隔。所有灰度值都在 [0, 255] 区间内。</p>
-<p>输出格式：<br>输出按要求过滤后的图像。即输出 M 行，每行 N 个像素灰度值，每个灰度值占 3 位（例如黑色要显示为 000），其间以一个空格分隔。行首尾不得有多余空格。</p>
-<p>输入样例：</p>
-<pre><code>3 5 100 150 0
-3 189 254 101 119
-150 233 151 99 100
-88 123 149 0 255</code></pre><p>输出样例：</p>
-<pre><code>003 189 254 000 000
-000 233 151 099 000
-088 000 000 000 255</code></pre><p>代码：</p>
+      <p>题目：<br>批改多选题是比较麻烦的事情，有很多不同的计分方法。有一种最常见的计分方法是：如果考生选择了部分正确选项，并且没有选择任何错误选项，则得到 50% 分数；如果考生选择了任何一个错误的选项，则不能得分。本题就请你写个程序帮助老师批改多选题，并且指出哪道题的哪个选项错的人最多。</p>
+<p>输入格式：<br>输入在第一行给出两个正整数 N（≤1000）和 M（≤100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
+<p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行，输出小数点后 1 位。最后输出错得最多的题目选项的信息，格式为：错误次数 题目编号（题目按照输入的顺序从1开始编号）-选项号。如果有并列，则每行一个选项，按题目编号递增顺序输出；再并列则按选项号递增顺序输出。行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
+<p>输入样例 1：</p>
+<pre><code>3 4 
+3 4 2 a c
+2 5 1 b
+5 3 2 b c
+1 5 4 a b d e
+(2 a c) (3 b d e) (2 a c) (3 a b e)
+(2 a c) (1 b) (2 a b) (4 a b d e)
+(2 b d) (1 e) (1 c) (4 a b c d)</code></pre><p>输出样例 1：</p>
+<pre><code>3.5
+6.0
+2.5
+2 2-e
+2 3-a
+2 3-b</code></pre><p>输入样例 2：</p>
+<pre><code>2 2 
+3 4 2 a c
+2 5 1 b
+(2 a c) (1 b)
+(2 a c) (1 b)</code></pre><p>输出样例 2：</p>
+<pre><code>5.0
+5.0
+Too simple</code></pre><p>分析：<br>定义一个非常大的二维数组，一维用来表示题目号，二维用来存储答案，用0位表示a，1位表示b,2位表示c,…其存储的数值0-表示正确的选项中没有，1表示正确的选项中有。<br>定义一个非常大的浮点数数组存储每位学生的成绩，再定义一个非常大的二维数组用来存储每个题目每个选项的出错次数，然后找出最大的次数。对于每一个学生的每一题，统计其输入中的对的项数，如果与总的输入次数相同则这题没有错，但是不保证全对，如果此题的step相同则全对。不管某个选项对不对，在flag中记录下此题此人选择的搜友选项，然后与题目一开始输入正确选项对比，找找有没有没选的正确选项，有则在对应的错误次数上加1，题目中不是值统计出错最多的选项还要统计没选的正确选项最多的选项。</p>
+<p>代码：</p>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
-
+double stu[1000];//存储每个学生的成绩
+int score[100];//存储每题目的分数
+int step[100];//存储每题目的正确的选项数目。
+int map[100][5];//存储每个题目正确的选项
+int flag[5];//统计每个人每个题目输入的选项
+int time[100][5];//用来计算每道题目，每个选项的出错次数,与总的出错次数
 int main()
-{
-    int n=0,m=0,a=0,b=0,replace=0,h=0;
-    scanf(&quot;%d %d %d %d %d&quot;,&amp;m,&amp;n,&amp;a,&amp;b,&amp;replace);
-    int dlex[m][n];
+{   int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
     for(int i=0;i&lt;m;i++){
-        for(int j=0;j&lt;n;j++){
-            scanf(&quot;%d&quot;,&amp;h);
-            if(h&lt;=b&amp;&amp;h&gt;=a){
-                h=replace;
+        scanf(&quot;%d %*d %d&quot;,&amp;score[i],&amp;step[i]);
+        char ch;
+        while((ch=getchar())!=&apos;\n&apos;){
+            if(ch&lt;=&apos;f&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
+            int k=ch-&apos;a&apos;;
+            map[i][k]=1;
             }
-            dlex[i][j]=h;
         }
     }
-    for(int i=0;i&lt;m;i++){
-        for(int j=0;j&lt;n;j++){
-            printf(&quot;%03d&quot;,dlex[i][j]);
-            if(j!=n-1){
-                printf(&quot; &quot;);
+    int max=0;
+    for(int i=0;i&lt;n;i++){
+        char ch;
+        int step1=0;
+        int totalstep=0;
+        int t=-1;
+        while((ch=getchar())!=&apos;\n&apos;){
+            if(ch==&apos; &apos;){
+                continue;
+            }else if(ch==&apos;(&apos;){
+                    t++;
+                    step1=0;
+                    totalstep=0;
+            }else if(ch==&apos;)&apos;){
+                    if(totalstep==step1){
+                            if(step1==step[t]){
+                                stu[i]+=score[t]*1.0;
+                            }else{
+                                stu[i]+=score[t]*0.5;
+                            }
+                    }
+                    for(int i=0;i&lt;5;i++){
+                        if(flag[i]==0&amp;&amp;map[t][i]==1){//选的最多的和没选最多的，此处统计没选的且为正确的最多的选项。
+                            time[t][i]++;
+                            if(time[t][i]&gt;max){
+                                max=time[t][i];
+                            }
+                        }else{
+                            flag[i]=0;
+                        }
+                    }
+            }else if(ch&lt;=&apos;5&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                totalstep=ch-&apos;0&apos;;
+            }else{
+                int k=ch-&apos;a&apos;;
+               if(map[t][k]==0){
+                   time[t][k]++;
+                   if(time[t][k]&gt;max){
+                        max=time[t][k];
+                    }
+                }else{//选对的话将对应下标的数值-1
+                    step1++;
+                }
+                flag[k]=1;
             }
         }
-        printf(&quot;\n&quot;);
+    }
+    for(int i=0;i&lt;n;i++){
+        printf(&quot;%.1f\n&quot;,stu[i]);
+    }
+    if(max&gt;0){
+        for(int i=0;i&lt;m;i++)
+                for(int j=0;j&lt;5;j++){
+                    if(time[i][j]==max)
+                        printf(&quot;%d %d-%c\n&quot;,max,i+1,j+&apos;a&apos;);
+                }
+    }else{//如果最大值则都是满分
+        printf(&quot;Too simple&quot;);
     }
     return 0;
 }</code></pre>
@@ -210,7 +280,7 @@ int main()
 
 </article>
     
-    <article id="post-PTA-Basic-1065" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1072" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -218,8 +288,8 @@ int main()
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1065/"
-    >PTA-Basic-1065</a> 
+  <a class="article-title" href="/2019/10/08/PTA-Basic-1072/"
+    >PTA-Basic-1072</a> 
 </h2>
  
 
@@ -228,8 +298,8 @@ int main()
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1065/" class="article-date">
-  <time datetime="2019-10-07T12:42:14.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/08/PTA-Basic-1072/" class="article-date">
+  <time datetime="2019-10-08T13:48:36.000Z" itemprop="datePublished">2019-10-08</time>
 </a>
       
   <div class="article-category">
@@ -250,66 +320,56 @@ int main()
       
 
       
-      <p>“单身狗”是中文对于单身人士的一种爱称。本题请你从上万人的大型派对中找出落单的客人，以便给予特殊关爱。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 50 000），是已知夫妻/伴侣的对数；随后 N 行，每行给出一对夫妻/伴侣——为方便起见，每人对应一个 ID 号，为 5 位数字（从 00000 到 99999），ID 间以空格分隔；之后给出一个正整数 M（≤ 10 000），为参加派对的总人数；随后一行给出这 M 位客人的 ID，以空格分隔。题目保证无人重婚或脚踩两条船。</p>
-<p>输出格式：<br>首先第一行输出落单客人的总人数；随后第二行按 ID 递增顺序列出落单的客人。ID 间用 1 个空格分隔，行的首尾不得有多余空格。</p>
+      <p>题目：<br>下图是上海某校的新学期开学寄语：天将降大任于斯人也，必先删其微博，卸其 QQ，封其电脑，夺其手机，收其 ipad，断其 wifi，使其百无聊赖，然后，净面、理发、整衣，然后思过、读书、锻炼、明智、开悟、精进。而后必成大器也！</p>
+<p><img src="https://images.ptausercontent.com/3b1d9f4a-778b-4942-a9e2-836262f363aa.JPG" alt="嘿嘿嘿"></p>
+<p>本题要求你写个程序帮助这所学校的老师检查所有学生的物品，以助其成大器。</p>
+<p>输入格式：</p>
+<p>输入第一行给出两个正整数 N（≤ 1000）和 M（≤ 6），分别是学生人数和需要被查缴的物品种类数。第二行<br>给出 M 个需要被查缴的物品编号，其中编号为 4 位数字。随后 N 行，每行给出一位学生的姓名缩写（由 1-4 个大写英文字母组成）、个人物品数量 K（0 ≤ K ≤ 10）、以及 K 个物品的编号。</p>
+<p>输出格式：<br>顺次检查每个学生携带的物品，如果有需要被查缴的物品存在，则按以下格式输出该生的信息和其需要被查缴的物品的信息（注意行末不得有多余空格）：</p>
+<p>姓名缩写: 物品编号1 物品编号2 ……<br>最后一行输出存在问题的学生的总人数和被查缴物品的总数。</p>
 <p>输入样例：</p>
-<pre><code>3
-11111 22222
-33333 44444
-55555 66666
-7
-55555 44444 10000 88888 22222 11111 23333</code></pre><p>输出样例：</p>
-<pre><code>5
-10000 23333 44444 55555 88888</code></pre><p>分析：<br>定义一个情侣数组，男方存储女方的编号，女方存放男方的编号，这样就可以通过一个人找到另一个人，并判断另一个人是否到场。定义一个flag数组用于标记某个人是否到场，定义一个数组用于存放单生狗。</p>
+<pre><code>4 2
+2333 6666
+CYLL 3 1234 2345 3456
+U 4 9966 6666 8888 6666
+GG 2 2333 7777
+JJ 3 0012 6666 2333</code></pre><p>输出样例：</p>
+<pre><code>U: 6666 6666
+GG: 2333
+JJ: 6666 2333
+3 5</code></pre><p>分析：<br>定义一个图，存储被禁止的编号，然后对每一个输入判断，如果有不允许的，就标记一下此人，输入此人的姓名，与违禁品。注意输出格式为4位</p>
 <p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-int cmp(const void *a,const void *b){
-return *(int *)a-*(int *)b;
-}
-int main()
-{//测试点一是关于对象为0的情况
-    int n=0,m=0,x=0,time=0;
-    int pops[100000]={-1};/初始化数组，-1表示没有情侣，不能为0，如果为0，那么所有单身狗的情侣都是0.
-    int flag[100000]={0};
-    scanf(&quot;%d&quot;,&amp;n);
-    int n1,n2;
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int forbid[10000]={0};
+    int n,m,temp,k;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=0;i&lt;m;i++){
+        scanf(&quot;%d&quot;,&amp;temp);
+        forbid[temp]=1;
+    }
+    int sum=0,fsum=0;
     for(int i=0;i&lt;n;i++){
-        scanf(&quot;%d %d&quot;,&amp;n1,&amp;n2);
-        pops[n1]=n2;
-        pops[n2]=n1;
-    }
-    scanf(&quot;%d&quot;,&amp;m);
-    int result[m];
-    int res[m];
-    for(int i=0;i&lt;m;i++){
-        scanf(&quot;%d&quot;,&amp;x);
-        if(pops[x]!=-1){//此处如果将输入的每一个元对应的人都标记的话可能会导致下面去对应值时取到0的人头下标不为0可能会导致数据缺失。
-            flag[x]=1;//如果有情侣，才有必要标记到场。
+        char name[5]={&apos;\0&apos;};
+        scanf(&quot;%s %d&quot;,name,&amp;k);
+        int flag=0;
+        for(int j=0;j&lt;k;j++){
+            scanf(&quot;%d&quot;,&amp;temp);
+            if(forbid[temp]){
+                if(!flag){
+                    flag=1;
+                    printf(&quot;%s:&quot;,name);
+                    sum++;
+                }
+                printf(&quot; %04d&quot;,temp);
+                fsum++;
+            }
         }
-        res[i]=x;
-    }
-    for(int i=0;i&lt;m;i++){
-            x=res[i];
-        if(pops[x]==-1){//如果对应的人没有情侣
-                result[time]=x;
-                time++;
-        }else if(flag[x]+flag[pops[x]]!=2){//如果情侣的某一方到场二另一方没有到场，也为单身狗。
-                result[time]=x;
-                time++;
-        }else{
-
+        if(flag){
+            printf(&quot;\n&quot;);
         }
     }
-    qsort(result,time,sizeof(int),cmp);//对单身狗进行排序
-    printf(&quot;%d\n&quot;,time);
-    for(int i=0;i&lt;time;i++){
-        printf(&quot;%05d&quot;,result[i]);
-        if(i!=time-1){
-            printf(&quot; &quot;);
-        }
-    }
+    printf(&quot;%d %d&quot;,sum,fsum);
     return 0;
 }</code></pre>
       
@@ -342,7 +402,7 @@ int main()
 
 </article>
     
-    <article id="post-PTA-Basic-1064" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1071" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -350,8 +410,8 @@ int main()
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1064/"
-    >PTA-Basic-1064</a> 
+  <a class="article-title" href="/2019/10/08/PTA-Basic-1071/"
+    >PTA-Basic-1071</a> 
 </h2>
  
 
@@ -360,8 +420,8 @@ int main()
 
     
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1064/" class="article-date">
-  <time datetime="2019-10-07T12:42:02.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/08/PTA-Basic-1071/" class="article-date">
+  <time datetime="2019-10-08T13:47:39.000Z" itemprop="datePublished">2019-10-08</time>
 </a>
       
   <div class="article-category">
@@ -382,47 +442,57 @@ int main()
       
 
       
-      <p>题目：<br>如果两个整数各位数字的和是一样的，则被称为是“朋友数”，而那个公共的和就是它们的“朋友证号”。例如 123 和 51 就是朋友数，因为 1+2+3 = 5+1 = 6，而 6 就是它们的朋友证号。给定一些整数，要求你统计一下它们中有多少个不同的朋友证号。</p>
-<p>输入格式：<br>输入第一行给出正整数 N。随后一行给出 N 个正整数，数字间以空格分隔。题目保证所有数字小于 10<br>​4<br>​​ 。</p>
-<p>输出格式：<br>首先第一行输出给定数字中不同的朋友证号的个数；随后一行按递增顺序输出这些朋友证号，数字间隔一个空格，且行末不得有多余空格。</p>
-<p>输入样例：</p>
-<pre><code>8
-123 899 51 998 27 33 36 12</code></pre><p>输出样例：</p>
-<pre><code>4
-3 6 9 26</code></pre><p>分析：<br>因为题目说小于10^4所以所有朋友数最大为36，定义一个数组用下标表示朋友数，存储的数字代表是否出现此朋友数（0为没有出现其他为出现），遍历数组存储的数字依次输出下标。</p>
+      <p>题目：</p>
+<p>常言道“小赌怡情”。这是一个很简单的小游戏：首先由计算机给出第一个整数；然后玩家下注赌第二个整数将会比第一个数大还是小；玩家下注 t 个筹码后，计算机给出第二个数。若玩家猜对了，则系统奖励玩家 t 个筹码；否则扣除玩家 t 个筹码。</p>
+<p>注意：玩家下注的筹码数不能超过自己帐户上拥有的筹码数。当玩家输光了全部筹码后，游戏就结束。</p>
+<p>输入格式：<br>输入在第一行给出 2 个正整数 T 和 K（≤ 100），分别是系统在初始状态下赠送给玩家的筹码数、以及需要处理的游戏次数。随后 K 行，每行对应一次游戏，顺序给出 4 个数字：</p>
+<p>n1 b t n2<br>其中 n1 和 n2 是计算机先后给出的两个[0, 9]内的整数，保证两个数字不相等。b 为 0 表示玩家赌小，为 1 表示玩家赌大。t 表示玩家下注的筹码数，保证在整型范围内。</p>
+<p>输出格式：<br>对每一次游戏，根据下列情况对应输出（其中 t 是玩家下注量，x 是玩家当前持有的筹码量）：</p>
+<p>玩家赢，输出 Win t!  Total = x.；<br>玩家输，输出 Lose t.  Total = x.；<br>玩家下注超过持有的筹码量，输出 Not enough tokens.  Total = x.；<br>玩家输光后，输出 Game Over. 并结束程序。<br>输入样例 1：</p>
+<pre><code>100 4
+8 0 100 2
+3 1 50 1
+5 1 200 6
+7 0 200 8</code></pre><p>输出样例 1：</p>
+<pre><code>Win 100!  Total = 200.
+Lose 50.  Total = 150.
+Not enough tokens.  Total = 150.
+Not enough tokens.  Total = 150.</code></pre><p>输入样例 2：</p>
+<pre><code>100 4
+8 0 100 2
+3 1 200 1
+5 1 200 6
+7 0 200 8</code></pre><p>输出样例 2：</p>
+<pre><code>Win 100!  Total = 200.
+Lose 200.  Total = 0.
+Game Over.</code></pre><p>分析：依据题目思考即可。</p>
 <p>代码：</p>
 <pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
+
 int main()
 {
-    int n=0;
-    scanf(&quot;%d&quot;,&amp;n);
-    int m=0;
-    int friends[37]={0};
-    int time=0;
-    for(int i=0;i&lt;n;i++){
-        int total=0;
-        scanf(&quot;%d&quot;,&amp;m);
-        while(m!=0){
-            total+=m%10;
-            m=m/10;
-        }
-        if(friends[total]==0){
-            time++;
-        }
-        friends[total]++;
+    int total,k;
+    int n1,n2,b,t;
+    scanf(&quot;%d %d&quot;,&amp;total,&amp;k);//存储总的筹码数，与游戏可能执行的最大次数
+    for(int i=0;i&lt;k;i++){
+    scanf(&quot;%d %d %d %d&quot;,&amp;n1,&amp;b,&amp;t,&amp;n2);
+    if(t&gt;total){//判断如果此次的下注的筹码数大于自己有的，则跳过，继续下一次游戏。
+        printf(&quot;Not enough tokens.  Total = %d.\n,total);
+        continue;
     }
-    printf(&quot;%d\n&quot;,time);
-    int i=0;
-    for(i=0;i&lt;37;i++){
-        if(friends[i]&gt;=1){
-            printf(&quot;%d&quot;,i);
-                if(time&gt;1){
-                printf(&quot;%c&quot;,&apos; &apos;);
+    int boolean=(n2&gt;n1);//用boolean存储n2是否大于n1
+        if(boolean==b){//如果boolean 和猜的一样的则赢了此局
+            total+=t;
+            printf(&quot;Win %d!  Total = %d.\n&quot;,t,total);
+        }else{//输了
+            total-=t;//减去筹码，不用担心筹码为负数，因为下注数不可能大于筹码。
+            printf(&quot;Lose %d.  Total = %d.\n&quot;,t,total);
+            if(total==0){//如果扣去下注后的筹码为0，则结束游戏。
+                printf(&quot;Game Over.\n&quot;);
+                break;
             }
-        time--;
         }
-
     }
     return 0;
 }</code></pre>
@@ -462,7 +532,7 @@ int main()
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/21/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/23/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/21/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/20/">20</a><a class="page-number" href="/page/21/">21</a><span class="page-number current">22</span><a class="page-number" href="/page/23/">23</a><a class="page-number" href="/page/24/">24</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/23/">下一页</a>
   </nav>
   
 </section>

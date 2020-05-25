@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1010" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1026" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1010/"
-    >PTA-Basic-1010</a> 
+  <a class="article-title" href="/2019/09/19/PTA-Basic-1026/"
+    >PTA-Basic-1026</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1010/" class="article-date">
-  <time datetime="2019-09-17T12:46:30.000Z" itemprop="datePublished">2019-09-17</time>
+      <a href="/2019/09/19/PTA-Basic-1026/" class="article-date">
+  <time datetime="2019-09-19T13:33:50.000Z" itemprop="datePublished">2019-09-19</time>
 </a>
       
   <div class="article-category">
@@ -141,147 +141,23 @@ var _hmt = _hmt || [];
       
 
       
-      <p>设计函数求一元多项式的导数。（注：x<br>​n<br>​​ （n为整数）的一阶导数为nx<br>​n−1<br>​​ 。）</p>
-<p>输入格式:<br>以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过 1000 的整数）。数字间以空格分隔。</p>
-<p>输出格式:<br>以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。注意“零多项式”的指数和系数都是 0，但是表示为 0 0。</p>
-<p>输入样例:</p>
-<pre><code>3 4 -5 2 6 1 -2 0</code></pre><p>输出样例:</p>
-<pre><code>12 3 -10 1 6 0</code></pre><p>分析：</p>
-<p>一元多项式条件：系数不为0，指数为大于-1的整数即（指数&gt;=0）;</p>
-<p>输入：先输入一个系数再输入一个指数，依此重复，指数递减。</p>
-<p>输出：格式见题目，输出求一次导后的的多项式对应的系数与指数。</p>
-<p>（注意： “零多项式”，最高项指数为0，但是表示为 0 0，除此以外，只要指数不为0，系数为不为无所谓，也要输出。百度解释0多项式就是0）</p>
-<p>因为系数一定不为0，所以如果结果中有“零多项式”，那么一定是输入时的指数为0.一旦指数为0，后面就不会再有输入了。</p>
-<p>思路：</p>
-<p>1读取一对数字再读一个字符。</p>
-<p>2如果指数为0就可以判断后面没有输入了。</p>
-<p>3不为0就输出对应求导后的数值，并标记一下此多项式不是“0多项式”。</p>
-<p>4如果不是0多项式，就不用输出“0 0”了，如果那么前面一定没有输出，那么就要输出此。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-int n,m;
-int flag=0;
-char ch;
-while(1){
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    ch=getchar();
-    if(m!=0){
-        if(flag)//此处用于判断是否为第一个输出，是就不用输出空格。
-            printf(&quot; &quot;);
-        printf(&quot;%d %d&quot;,n*m,m-1);
-        flag=1;
-    }
-    if(ch==&apos;\n&apos;){
-        break;
-    }
-}
-if(!flag){
-    printf(&quot;0 0&quot;);
-}
- return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1009" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1009/"
-    >PTA-Basic-1009</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1009/" class="article-date">
-  <time datetime="2019-09-17T11:35:44.000Z" itemprop="datePublished">2019-09-17</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
-<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
-<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
+      <p>要获得一个 C 语言程序的运行时间，常用的方法是调用头文件 time.h，其中提供了 clock() 函数，可以捕捉从程序开始运行到 clock() 被调用时所耗费的时间。这个时间单位是 clock tick，即“时钟打点”。同时还有一个常数 CLK_TCK，给出了机器时钟每秒所走的时钟打点数。于是为了获得一个函数 f 的运行时间，我们只要在调用 f 之前先调用 clock()，获得一个时钟打点数 C1；在 f 执行完成后再调用 clock()，获得另一个时钟打点数 C2；两次获得的时钟打点数之差 (C2-C1) 就是 f 运行所消耗的时钟打点数，再除以常数 CLK_TCK，就得到了以秒为单位的运行时间。</p>
+<p>这里不妨简单假设常数 CLK_TCK 为 100。现给定被测函数前后两次获得的时钟打点数，请你给出被测函数运行的时间。</p>
+<p>输入格式：<br>输入在一行中顺序给出 2 个整数 C1 和 C2。注意两次获得的时钟打点数肯定不相同，即 C1 &lt; C2，并且取值在 [0,10<br>​7<br>​​ ]。</p>
+<p>输出格式：<br>在一行中输出被测函数运行的时间。运行时间必须按照 hh:mm:ss（即2位的 时:分:秒）格式输出；不足 1 秒的时间四舍五入到秒。</p>
 <p>输入样例：</p>
-<p>Hello World Here I Come</p>
-<p>输出样例：</p>
-<p>Come I Here World Hello</p>
-<p>分析：<br>1给出一句话，要求单词顺序不变，倒序输出所有单词。<br>首先要输出最后一个单词，接着是倒数第二个… ,直到到达首单词。</p>
-<p>思路：双指针算法。<br>1用一个字符数组存储输入的字符串；使用两个字符指针，一个用来指向空格的位置，另一个用来输出空格与空格或者空格与     ‘\0’    之间的单词（字符串的末尾会存放一个‘\0’）,然后继续此操作直到到达第一个单词，第一个单词不输出（因题目格式要求）<br>2另外输出第一个单词。</p>
-<p>代码：</p>
+<pre><code>123 4577973</code></pre><p>输出样例：</p>
+<pre><code>12:42:59</code></pre><p>分析：<br>此题简单不做赘述，注意一点，转型时注意语言自带的转型功能。</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#define MAX 81
 int main(void){
-char str[MAX];
-char *p,*q;
-gets(str);
-for(p=str+strlen(str)-1;p!=str;p--){//输出到第一个单词停止。
-    if(*p==&apos; &apos;){//如果读到一个空格，说明，一个单词已经结束。
-        for(q=p+1;*q!=&apos; &apos;&amp;&amp;*q;q++){
-            printf(&quot;%c&quot;,*q);
-        }
-        printf(&quot; &quot;);
-    }
-}
-for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
-//此处判定条件中的*p是为了防止输入一个单词时造成死循环。因为只输入一个单词时，也作为字符串末尾也会加上一个&apos;\0&apos;.
-    printf(&quot;%c&quot;,*p);
-}
-return 0;
-}</code></pre><p>######如果有更好的思路欢迎交流。</p>
+    int number1;
+    int number2;
+
+    scanf(&quot;%d %d&quot;,&amp;number1,&amp;number2);
+    int h=(int)((number2-number1)/360000);
+    printf(&quot;%02d:&quot;,h);
+    int m=(int)(((number2-number1)/100 -h * 3600)/60);
+    printf(&quot;%02d:&quot;,m);</code></pre><p>#####//此处强制转型一定要在除过后就进行否则会导致数字丢失。<br>        int s=(((int)((number2-number1)<em>1.0/100+0.5)-h</em>3600-m*60));<br>        printf(“%02d”,s);<br>        return 0;<br>    }</p>
 
       
       <!-- reward -->
@@ -313,7 +189,7 @@ return 0;
 
 </article>
     
-    <article id="post-PTA-Basic-1008" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1016" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -321,8 +197,8 @@ return 0;
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/16/PTA-Basic-1008/"
-    >PTA-Basic-1008</a> 
+  <a class="article-title" href="/2019/09/18/PTA-Basic-1016/"
+    >PTA-Basic-1016</a> 
 </h2>
  
 
@@ -331,8 +207,8 @@ return 0;
 
     
     <div class="article-meta">
-      <a href="/2019/09/16/PTA-Basic-1008/" class="article-date">
-  <time datetime="2019-09-16T15:58:39.000Z" itemprop="datePublished">2019-09-16</time>
+      <a href="/2019/09/18/PTA-Basic-1016/" class="article-date">
+  <time datetime="2019-09-18T14:08:03.000Z" itemprop="datePublished">2019-09-18</time>
 </a>
       
   <div class="article-category">
@@ -353,48 +229,235 @@ return 0;
       
 
       
-      <p>一个数组A中存有N（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（≥0）个位置，即将A中的数据由（A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−1<br>​​ ）变换为（A<br>​N−M<br>​​ ⋯A<br>​N−1<br>​​ A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−M−1<br>​​ ）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p>
-<p>输入格式:</p>
-<pre><code>每个输入包含一个测试用例，第1行输入N（1≤N≤100）和M（≥0）；第2行输入N个整数，之间用空格分隔。</code></pre><p>输出格式:</p>
-<pre><code>在一行中输出循环右移M位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。</code></pre><p>输入样例:</p>
-<pre><code>6 2
-1 2 3 4 5 6</code></pre><p>输出样例:</p>
-<pre><code>5 6 1 2 3 4</code></pre><hr>
-<p>分析：</p>
-<p>题目要求输入一个数组，将数组右移，并输出。</p>
-<p>思路：</p>
-<pre><code>本题并没有按照题目要求的那样改变数组，而是改变数组输出的顺
-
-序，先输出原数组从n-m到n-1的数字，再输出0到n-m-2的数字（为什么不输出到n-m-1,这是为了题目的输出
-
-格式要求。），最后在输出下标为n-m-1的数组中的数字。
-
-
-##注意：
-
-如果右移的位数大于输入数字的个数，就用位数对个数取余，并将余数设置为位移的位数，因为如果唯
-
-一的位数大于数字数目，就会多做一次周期位移（周期位移后数组不变）。</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt; 
+      <p>正整数 A 的“D<br>​A<br>​​ （为 1 位整数）部分”定义为由 A 中所有 D<br>​A<br>​​  组成的新整数 P<br>​A<br>​​ 。例如：给定 A=3862767，D<br>​A<br>​​ =6，则 A 的“6 部分”P<br>​A<br>​​  是 66，因为 A 中有 2 个 6。</p>
+<p>现给定 A、D<br>​A<br>​​ 、B、D<br>​B<br>​​ ，请编写程序计算 P<br>​A<br>​​ +P<br>​B<br>​​ 。</p>
+<p>输入格式：<br>输入在一行中依次给出 A、D<br>​A<br>​​ 、B、D<br>​B<br>​​ ，中间以空格分隔，其中 0&lt;A,B&lt;10<br>​10<br>​​ 。</p>
+<p>输出格式：</p>
+<p>在一行中输出 P<br>​A<br>​​ +P<br>​B<br>​​  的值。</p>
+<p>输入样例 1：</p>
+<pre><code>3862767 6 13530293 3</code></pre><p>输出样例 1：</p>
+<pre><code>399</code></pre><p>输入样例 2：</p>
+<pre><code>3862767 1 13530293 8</code></pre><p>输出样例 2：</p>
+<pre><code>0</code></pre><p>分析：</p>
+<p>输入：数字1 包含的数1 数字2 包含的数2；<br>处理：<br>对数字1不断取余数，判断是否等于包含的数字1，是的话就在和基础上*10+包含的数字一。<br>对数字2的处理同1；<br>输出：<br>输出上述两个操作过后得到的两个数字的和。</p>
+<pre><code>#include&lt;stdio.h&gt;
 int main(void){
-    int n,m;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    m=m%n;
-    int list[n];
-    int k=0;
-    while(k&lt;n){
-       scanf(&quot;%d&quot;,&amp;list[k++]);
-    }  
-    int i;
-    for(i=n-m;i&lt;n;i++){
-        printf(&quot;%d &quot;,list[i]);
+    int num1,num2;
+    int d1,d2;
+    int sum1=0,sum2=0;
+    scanf(&quot;%d %d %d %d&quot;,&amp;num1,&amp;d1,&amp;num2,&amp;d2);
+    while(num1){
+        int n=num1%10;
+        num1=num1/10;
+        if(n==d1){
+            sum1=sum1*10+d1;
+        }
     }
-    for(i=0;i&lt;n-m-1;i++){
-        printf(&quot;%d &quot;,list[i]);
+    while(num2){
+        int n=num2%10;
+        num2=num2/10;
+        if(n==d2){
+            sum2=sum2*10+d2;
+        }
     }
-    printf(&quot;%d&quot;,list[i]);
+    printf(&quot;%d&quot;,sum1+sum2);
     return 0;
 }</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1015" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/18/PTA-Basic-1015/"
+    >PTA-Basic-1015</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/18/PTA-Basic-1015/" class="article-date">
+  <time datetime="2019-09-18T14:07:50.000Z" itemprop="datePublished">2019-09-18</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>##1015 德才论</p>
+<p>宋代史学家司马光在《资治通鉴》中有一段著名的“德才论”：“是故才德全尽谓之圣人，才德兼亡谓之愚人，德胜才谓之君子，才胜德谓之小人。凡取人之术，苟不得圣人，君子而与之，与其得小人，不若得愚人。”</p>
+<p>现给出一批考生的德才分数，请根据司马光的理论给出录取排名。</p>
+<p>输入格式：<br>输入第一行给出 3 个正整数，分别为：N（≤10<br>​5<br>​​ ），即考生总数；L（≥60），为录取最低分数线，即德分和才分均不低于 L 的考生才有资格被考虑录取；H（&lt;100），为优先录取线——德分和才分均不低于此线的被定义为“才德全尽”，此类考生按德才总分从高到低排序；才分不到但德分到线的一类考生属于“德胜才”，也按总分排序，但排在第一类考生之后；德才分均低于 H，但是德分不低于才分的考生属于“才德兼亡”但尚有“德胜才”者，按总分排序，但排在第二类考生之后；其他达到最低线 L 的考生也按总分排序，但排在第三类考生之后。</p>
+<p>随后 N 行，每行给出一位考生的信息，包括：准考证号 德分 才分，其中准考证号为 8 位整数，德才分为区间 [0, 100] 内的整数。数字间以空格分隔。</p>
+<p>输出格式：<br>输出第一行首先给出达到最低分数线的考生人数 M，随后 M 行，每行按照输入格式输出一位考生的信息，考生按输入中说明的规则从高到低排序。当某类考生中有多人总分相同时，按其德分降序排列；若德分也并列，则按准考证号的升序输出。</p>
+<p>输入样例：</p>
+<pre><code>14 60 80
+10000001 64 90
+10000002 90 60
+10000011 85 80
+10000003 85 80
+10000004 80 85
+10000005 82 77
+10000006 83 76
+10000007 90 78
+10000008 75 79
+10000009 59 90
+10000010 88 45
+10000012 80 100
+10000013 90 99
+10000014 66 60</code></pre><p>输出样例：<br>    12<br>    10000013 90 99<br>    10000012 80 100<br>    10000003 85 80<br>    10000011 85 80<br>    10000004 80 85<br>    10000007 90 78<br>    10000006 83 76<br>    10000005 82 77<br>    10000002 90 60<br>    10000014 66 60<br>    10000008 75 79<br>    10000001 64 90</p>
+<p>分析：</p>
+<pre><code>输入：
+第一行：学生数 最低分 优秀线
+第二行：学生id 学生道德分 学生专业分。
+.....
+
+处理:
+定义一个学生结构包括id score1 score2 sum(分数和)
+在输入时进行分析符合条件的就存储到相应等级的学生数组。
+
+对每个等级的学生数组进行快排。
+
+输出：
+遍历每个等级数组并输出。</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+typedef struct student{
+    int id;
+    int score_psy;
+    int score_pro;
+    int sum;
+}student;
+int compare(const void *a,const void *b){
+    student stu1=*((student *)a);
+    student stu2=*((student *)b);
+    if(stu1.sum&gt;stu2.sum){
+        return -1;
+    }
+    if(stu1.sum&lt;stu2.sum){
+        return 1;
+    }else{
+        if(stu1.score_psy&gt;stu2.score_psy){
+            return -1;
+        }else if(stu1.score_psy&lt;stu2.score_psy){
+            return 1;
+        }else{
+            if(stu1.id&gt;stu2.id){
+                return 1;
+            }
+            return -1;
+        }
+    }
+}
+int main(void){
+    int id;
+    int score_pro;
+    int score_psy;
+    int num,s1,s2;
+    scanf(&quot;%d %d %d&quot;,&amp;num,&amp;s1,&amp;s2);
+    struct student students1[num],students2[num],students3[num],students4[num];
+    int n1=0,n2=0,n3=0,n4=0;
+    int i=0;
+    while(num--){
+        scanf(&quot;%d %d %d&quot;,&amp;id,&amp;score_psy,&amp;score_pro);
+        if(score_pro&gt;=s1&amp;&amp;score_psy&gt;=s1){
+            i++;
+            if(score_psy&gt;=s2&amp;&amp;score_pro&gt;=s2){
+            students1[n1].id=id;
+            students1[n1].score_pro=score_pro;
+            students1[n1].score_psy=score_psy;
+            students1[n1].sum=score_pro+score_psy;
+            n1++;
+            }else if(score_pro &lt; s2 &amp;&amp; score_psy &gt;= s2){
+            students2[n2].id=id;
+            students2[n2].score_pro=score_pro;
+            students2[n2].score_psy=score_psy;
+            students2[n2].sum=score_pro+score_psy;
+            n2++;
+            }else if(score_pro &lt; s2 &amp;&amp; score_psy &lt; s2 &amp;&amp;score_psy&gt;=score_pro){
+            students3[n3].id=id;
+            students3[n3].score_pro=score_pro;
+            students3[n3].score_psy=score_psy;
+            students3[n3].sum=score_pro+score_psy;
+            n3++;
+            }else{
+            students4[n4].id=id;
+            students4[n4].score_pro=score_pro;
+            students4[n4].score_psy=score_psy;
+            students4[n4].sum=score_pro+score_psy;
+            n4++; 
+            }
+        }
+    }
+    printf(&quot;%d\n&quot;,i);
+    qsort(students1,n1,sizeof(student),compare);
+    qsort(students2,n2,sizeof(student),compare);
+    qsort(students3,n3,sizeof(student),compare);
+    qsort(students4,n4,sizeof(student),compare);
+    for(int j=0;j&lt;n1;j++){
+        printf(&quot;%d %d %d\n&quot;,students1[j].id,students1[j].score_psy,students1[j].score_pro);
+    }
+    for(int j=0;j&lt;n2;j++){
+        printf(&quot;%d %d %d\n&quot;,students2[j].id,students2[j].score_psy,students2[j].score_pro);
+    }
+    for(int j=0;j&lt;n3;j++){
+        printf(&quot;%d %d %d\n&quot;,students3[j].id,students3[j].score_psy,students3[j].score_pro);
+    }
+    for(int j=0;j&lt;n4;j++){
+        printf(&quot;%d %d %d\n&quot;,students4[j].id,students4[j].score_psy,students4[j].score_pro);
+    }
+    return 0;
+}</code></pre><p>####注意：排序条件：先按总分降序，如果总分相同，就按道德分数降序，如果还相等就按学号升序排。</p>
+
       
       <!-- reward -->
       
@@ -431,7 +494,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/39/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/41/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/39/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/42/">42</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/41/">下一页</a>
   </nav>
   
 </section>

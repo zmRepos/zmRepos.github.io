@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1023" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1043" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1023/"
-    >PTA-Basic-1023</a> 
+  <a class="article-title" href="/2019/09/25/PTA-Basic-1043/"
+    >PTA-Basic-1043</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1023/" class="article-date">
-  <time datetime="2019-09-22T13:48:42.000Z" itemprop="datePublished">2019-09-22</time>
+      <a href="/2019/09/25/PTA-Basic-1043/" class="article-date">
+  <time datetime="2019-09-25T13:46:02.000Z" itemprop="datePublished">2019-09-25</time>
 </a>
       
   <div class="article-category">
@@ -141,152 +141,68 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<p>给定数字 0-9 各若干个。你可以以任意顺序排列这些数字，但必须全部使用。目标是使得最后得到的数尽可能小（注意 0 不能做首位）。例如：给定两个 0，两个 1，三个 5，一个 8，我们得到的最小的数就是 10015558。</p>
-<p>现给定数字，请编写程序输出能够组成的最小的数。</p>
-<p>输入格式：</p>
-<pre><code>输入在一行中给出 10 个非负整数，顺序表示我们拥有数字 0、数字 
-1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不
-超过 50，且至少拥有 1 个非 0 的数字。</code></pre><p>输出格式：</p>
-<pre><code>在一行中输出能够组成的最小的数。</code></pre><p>输入样例：</p>
-<pre><code>2 2 0 0 0 3 0 0 1 0</code></pre><p>输出样例：</p>
-<pre><code>10015558</code></pre><p>输入：</p>
-<p>遍历数字，将相应的整型数组加1（下标代表数字，值代表次数）。优先输出0但是首字符不能为0然后依次输出小的。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    static int number[2][10]={{0,1,2,3,4,5,6,7,8,9},{0}};
-    int n=0;
-    int sum=0;
-    char result[1000];
-    int i=0;
-    for(i=0;i&lt;10;i++){
-        scanf(&quot;%d&quot;,&amp;n);
-        number[1][i]=n;
-        sum+=n;
-    }
-    i=0;
-    while(sum){//当剩余的总个数为0时说明所有数字都用上了。
-        if(i==0){
-            for(int j=1;j&lt;10;j++){//首先将1-9的数字次数用掉一次，放在字符串首。
-                if(number[1][j]!=0){
-                    result[i]=number[0][j]+&apos;0&apos;;
-                    number[1][j]--;
-                    sum--;
-                    break;
-                }
-            }
-        }else{
-            for(int j=0;j&lt;10;j++){
-                if(number[1][j]!=0){
-                    result[i]=number[0][j]+&apos;0&apos;;
-                    number[1][j]--;
-                    sum--;
-                    break;
-                }
-            }
-        }
-        i++;
-    }
-    result[i]=&apos;\0&apos;;
-    printf(&quot;%s&quot;,result);
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1022" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1022/"
-    >PTA-Basic-1022</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1022/" class="article-date">
-  <time datetime="2019-09-22T13:48:18.000Z" itemprop="datePublished">2019-09-22</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>输入两个非负 10 进制整数 A 和 B (≤2<br>​30<br>​​ −1)，输出 A+B 的 D (1&lt;D≤10)进制数。</p>
-<p>输入格式：<br>输入在一行中依次给出 3 个整数 A、B 和 D。</p>
-<p>输出格式：<br>输出 A+B 的 D 进制数。</p>
+      <p>题目：<br>给定一个长度不超过 10<br>​4<br>​​  的、仅由英文字母构成的字符串。请将字符重新调整顺序，按 PATestPATest…. 这样的顺序输出，并忽略其它字符。当然，六种字符的个数不一定是一样多的，若某种字符已经输出完，则余下的字符仍按 PATest 的顺序打印，直到所有字符都被输出。</p>
+<p>输入格式：<br>输入在一行中给出一个长度不超过 10<br>​4<br>​​  的、仅由英文字母构成的非空字符串。</p>
+<p>输出格式：<br>在一行中按题目要求输出排序后的字符串。题目保证输出非空。</p>
 <p>输入样例：</p>
-<pre><code>123 456 8</code></pre><p>输出样例：</p>
-<pre><code>1103</code></pre><p>输入：因为数字范围（&lt;=2^31-1）所以用long类型。<br>处理：先计算两数字和，再对其进行不断的取余，并存入字符数组。最后加入一个‘\0’<br>输出：逆序输出。</p>
+<pre><code>redlesPayBestPATTopTeePHPereatitAPPT</code></pre><p>输出样例：</p>
+<pre><code>PATestPATestPTetPTePePee</code></pre><p>分析：<br>定义一个整型数组用下标对应字母，数值对应个数。另外用一个变量存储符合条件的字符总数，然后进行输出，每次查找对应的字母是否还有数目，如果有就输出并字符总数减去1没有就跳过字母。</p>
 <p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-int main(void){
-    int a,b,D;
-    scanf(&quot;%d %d %d&quot;,&amp;a,&amp;b,&amp;D);
-    int d=a+b;
-    char result[1000];
-    int i;
-    for(i=0;;i++){
-        result[i]=d%D+&apos;0&apos;;
-        d=d/D;
-        if(d==0){
-            break;
+<p>c++实现：</p>
+<pre><code>#include &lt;iostream&gt;
+#include&lt;stdio.h&gt;
+using namespace std;
+
+int main()
+{
+    int chars[6]={0};
+    string str;
+    cin&gt;&gt;str;
+    int len=str.length();
+    int sum=0;
+    for(int i=0;i&lt;len;i++){
+        switch(str.at(i)){
+            case &apos;P&apos;:chars[0]++;sum++;break;
+            case &apos;A&apos;:chars[1]++;sum++;break;
+            case &apos;T&apos;:chars[2]++;sum++;break;
+            case &apos;e&apos;:chars[3]++;sum++;break;
+            case &apos;s&apos;:chars[4]++;sum++;break;
+            case &apos;t&apos;:chars[5]++;sum++;break;
+            default:break;
         }
     }
-    result[++i]=&apos;\0&apos;;//便于计算长度
-    for(i=strlen(result)-1;i&gt;-1;i--)
-    printf(&quot;%c&quot;,result[i]);
+    while(sum){
+        if(chars[0]){
+            chars[0]--;
+            sum--;
+            cout&lt;&lt;&apos;P&apos;;
+        }
+        if(chars[1]){
+            chars[1]--;
+            sum--;
+            cout&lt;&lt;&apos;A&apos;;
+        }
+        if(chars[2]){
+            chars[2]--;
+            sum--;
+            cout&lt;&lt;&apos;T&apos;;
+        }
+        if(chars[3]){
+            chars[3]--;
+            sum--;
+            cout&lt;&lt;&apos;e&apos;;
+        }
+        if(chars[4]){
+            chars[4]--;
+            sum--;
+            cout&lt;&lt;&apos;s&apos;;
+        }
+        if(chars[5]){
+            chars[5]--;
+            sum--;
+            cout&lt;&lt;&apos;t&apos;;
+        }
+    }
     return 0;
 }</code></pre>
       
@@ -319,7 +235,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1020" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1042" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -327,8 +243,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1020/"
-    >PTA-Basic-1020</a> 
+  <a class="article-title" href="/2019/09/24/PTA-Basic-1042/"
+    >PTA-Basic-1042</a> 
 </h2>
  
 
@@ -337,8 +253,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1020/" class="article-date">
-  <time datetime="2019-09-22T13:48:02.000Z" itemprop="datePublished">2019-09-22</time>
+      <a href="/2019/09/24/PTA-Basic-1042/" class="article-date">
+  <time datetime="2019-09-24T14:26:41.000Z" itemprop="datePublished">2019-09-24</time>
 </a>
       
   <div class="article-category">
@@ -359,68 +275,168 @@ int main(void){
       
 
       
-      <p>月饼是中国人在中秋佳节时吃的一种传统食品，不同地区有许多不同风味的月饼。现给定所有种类月饼的库存量、总售价、以及市场的最大需求量，请你计算可以获得的最大收益是多少。</p>
-<p>注意：销售时允许取出一部分库存。样例给出的情形是这样的：假如我们有 3 种月饼，其库存量分别为 18、15、10 万吨，总售价分别为 75、72、45 亿元。如果市场的最大需求量只有 20 万吨，那么我们最大收益策略应该是卖出全部 15 万吨第 2 种月饼、以及 5 万吨第 3 种月饼，获得 72 + 45/2 = 94.5（亿元）。</p>
-<p>输入格式：</p>
-<pre><code>每个输入包含一个测试用例。每个测试用例先给出一个不超过 
-1000 的正整数 N 表示月饼的种类数、以及不超过 500（以万吨为
-单位）的正整数 D 表示市场最大需求量。随后一行给出 N 个正数
-表示每种月饼的库存量（以万吨为单位）；最后一行给出 N 个正
-数表示每种月饼的总售价（以亿元为单位）。数字间以空格分隔。</code></pre><p>输出格式：</p>
-<pre><code>对每组测试用例，在一行中输出最大收益，以亿元为单位并精确到
-
-小数点后 2 位。</code></pre><p>输入样例：</p>
-<pre><code>3 20
-18 15 10
-75 72 45</code></pre><p>输出样例：</p>
-<pre><code>94.50</code></pre><p>分析：</p>
-<pre><code>定义一个结构体:月饼的库存，与月饼的单价。对月饼数组按单价进行快排（降序）。优先用库存卖出贵的月饼。</code></pre><p>代码：</p>
+      <p>请编写程序，找出一段给定文字中出现最频繁的那个英文字母。</p>
+<p>输入格式：<br>输入在一行中给出一个长度不超过 1000 的字符串。字符串由 ASCII 码表中任意可见字符及空格组成，至少包含 1 个英文字母，以回车结束（回车不算在内）。</p>
+<p>输出格式：<br>在一行中输出出现频率最高的那个英文字母及其出现次数，其间以空格分隔。如果有并列，则输出按字母序最小的那个字母。统计时不区分大小写，输出小写字母。</p>
+<p>输入样例：</p>
+<pre><code>This is a simple TEST.  There ARE numbers and other symbols 1&amp;2&amp;3...........</code></pre><p>输出样例：</p>
+<pre><code>e 7</code></pre><p>分析：定义一个26个字母（小写）的整型数组，每次遇到字母（如果大写就将其化为小写）存储到字母-97（‘a’对应的ascall码值）下标的位置。最后遍历数组找出最大数字的下标，并将其转为字符输出。</p>
+<p>代码:</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-struct Moon{
-    double store;
-    double simple_price;
-}Moon;
-int compare(const void *a,const void *b){
-    if((*(struct Moon *)a).simple_price&gt;(*(struct Moon *)b).simple_price)
-        return -1;
-    if((*(struct Moon *)a).simple_price&lt;(*(struct Moon *)b).simple_price)
-        return 1;
-    return 0;
-}
 int main(void){
-    int n;
-    double max;
-    scanf(&quot;%d %lf&quot;,&amp;n,&amp;max);//输入数目，销量。
-    struct Moon moon[n];
+    int strs[26]={0};
+    char ch;
+    while((ch=getchar())!=&apos;\n&apos;){
+        if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&gt;=&apos;A&apos;&amp;&amp;ch&lt;=&apos;Z&apos;)){
+            if(ch&lt;97){
+                ch=ch-&apos;A&apos;+&apos;a&apos;;
+            }
+            strs[ch-97]++;
+        }
+    }
+    int a=0;
+    for(int i=1;i&lt;26;i++){
+        if(strs[i]&gt;strs[a]){
+            a=i;
+        }
+    }
+    printf(&quot;%c %d&quot;,a+97,strs[a]);
+    return 0;
+}</code></pre><p>思路二：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;ctype.h&gt;
+int map[255]={0};
+int main(void){
+    int maxNum=0;
+    char  maxChar=&apos;a&apos;;
+    char ch;
+    while((ch=getchar())!=&apos;\n&apos;){
+        if((ch&gt;=&apos;a&apos;&amp;&amp;ch&lt;=&apos;z&apos;)||(ch&gt;=&apos;A&apos;&amp;&amp;ch&lt;=&apos;Z&apos;)){
+            ch=tolower(ch);
+            map[ch]++;
+            if(map[ch]&gt;=map[maxChar]){
+                if(map[ch]==map[maxChar]){
+                    if(maxChar&gt;ch)
+                        maxChar=ch;
+                }else{
+                    maxChar=ch;
+                }
+            }
+        }
+
+    }
+    printf(&quot;%c %d&quot;,maxChar,map[maxChar]);
+}</code></pre>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1041" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/24/PTA-Basic-1041/"
+    >PTA-Basic-1041</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/24/PTA-Basic-1041/" class="article-date">
+  <time datetime="2019-09-24T14:26:25.000Z" itemprop="datePublished">2019-09-24</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>每个 PAT 考生在参加考试时都会被分配两个座位号，一个是试机座位，一个是考试座位。正常情况下，考生在入场时先得到试机座位号码，入座进入试机状态后，系统会显示该考生的考试座位号码，考试时考生需要换到考试座位就座。但有些考生迟到了，试机已经结束，他们只能拿着领到的试机座位号码求助于你，从后台查出他们的考试座位号码。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤1000），随后 N 行，每行给出一个考生的信息：准考证号 试机座位号 考试座位号。其中准考证号由 16 位数字组成，座位从 1 到 N 编号。输入保证每个人的准考证号都不同，并且任何时候都不会把两个人分配到同一个座位上。</p>
+<p>考生信息之后，给出一个正整数 M（≤N），随后一行中给出 M 个待查询的试机座位号码，以空格分隔。</p>
+<p>输出格式：<br>对应每个需要查询的试机座位号码，在一行中输出对应考生的准考证号和考试座位号码，中间用 1 个空格分隔。</p>
+<p>输入样例：</p>
+<pre><code>4
+3310120150912233 2 4
+3310120150912119 4 1
+3310120150912126 1 3
+3310120150912002 3 2
+2
+3 4</code></pre><p>输出样例：</p>
+<pre><code>3310120150912002 2
+3310120150912119 1</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+typedef struct stu{
+    char id[17];
+    int sitNum;
+    int examNum;
+}stu;
+int main(void){
+    int num;
+    scanf(&quot;%d&quot;,&amp;num);
+    stu stus[num];
     int i=0;
-    while(n-i){
-        scanf(&quot;%lf&quot;,&amp;moon[i].store);//存入库存。
+    while(i&lt;num){
+        scanf(&quot;%s %d %d&quot;,(stus[i].id),&amp;(stus[i].sitNum),&amp;(stus[i].examNum));
         i++;
     }
-    i=0;
-    while(n-i){//故弄玄虚
-        double sum_price;
-        scanf(&quot;%lf&quot;,&amp;sum_price);
-        moon[i].simple_price=sum_price/moon[i].store;//通过单个月饼的库存与总价计算单价存入数组。
-        i++;
-    }
-    qsort(moon,sizeof(moon)/sizeof(Moon),sizeof(Moon),compare);//降序排列月饼有限卖出贵的。
-    double sum=0;
-    for(i=0;i&lt;n;i++){
-        if(moon[i].store&gt;=max){
-            sum=sum+moon[i].simple_price*max;
-            max=0;
-            break;
-        }else{
-            sum+=moon[i].simple_price*moon[i].store;
-            max=max-moon[i].store;
-        }
-        if((max-0)&lt;0.01){//如果剩余销量几乎为0跳出循环。
-            break;
+    int num1=0;
+    scanf(&quot;%d&quot;,&amp;num1);
+    while(num1--){
+        int n;
+        scanf(&quot;%d&quot;,&amp;n);
+        for(int i=0;i&lt;num;i++){
+            if(stus[i].sitNum==n){
+                printf(&quot;%s %d\n&quot;,stus[i].id,stus[i].examNum);
+            }
         }
     }
-    printf(&quot;%.2f&quot;,sum);//保留两位小数。
     return 0;
 }</code></pre>
       
@@ -459,7 +475,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/31/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/33/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/31/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="page-number current">32</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/33/">下一页</a>
   </nav>
   
 </section>

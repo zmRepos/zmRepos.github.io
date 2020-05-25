@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1088" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1095" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1088/"
-    >PTA-Basic-1088</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1095/"
+    >PTA-Basic-1095</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1088/" class="article-date">
-  <time datetime="2019-10-16T13:29:51.000Z" itemprop="datePublished">2019-10-16</time>
+      <a href="/2019/10/16/PTA-Basic-1095/" class="article-date">
+  <time datetime="2019-10-16T13:30:26.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
@@ -141,29 +141,154 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：<br>当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）</p>
-<p>输入格式：<br>输入给出一个正整数 N（2≤N≤10<br>​4<br>​​ ）。</p>
-<p>输出格式：<br>在一行中输出题面中算式取到的不同值的个数。</p>
+      <p>题目：</p>
+<p>PAT 准考证号由 4 部分组成：</p>
+<p>第 1 位是级别，即 T 代表顶级；A 代表甲级；B 代表乙级；<br>第 2<del>4 位是考场编号，范围从 101 到 999；<br>第 5</del>10 位是考试日期，格式为年、月、日顺次各占 2 位；<br>最后 11~13 位是考生编号，范围从 000 到 999。<br>现给定一系列考生的准考证号和他们的成绩，请你按照要求输出各种统计信息。</p>
+<p>输入格式：<br>输入首先在一行中给出两个正整数 N（≤10<br>​4<br>​​ ）和 M（≤100），分别为考生人数和统计要求的个数。</p>
+<p>接下来 N 行，每行给出一个考生的准考证号和其分数（在区间 [0,100] 内的整数），其间以空格分隔。</p>
+<p>考生信息之后，再给出 M 行，每行给出一个统计要求，格式为：类型 指令，其中</p>
+<p>类型 为 1 表示要求按分数非升序输出某个指定级别的考生的成绩，对应的 指令 则给出代表指定级别的字母；<br>类型 为 2 表示要求将某指定考场的考生人数和总分统计输出，对应的 指令 则给出指定考场的编号；<br>类型 为 3 表示要求将某指定日期的考生人数分考场统计输出，对应的 指令 则给出指定日期，格式与准考证上日期相同。<br>输出格式：<br>对每项统计要求，首先在一行中输出 Case #: 要求，其中 # 是该项要求的编号，从 1 开始；要求 即复制输入给出的要求。随后输出相应的统计结果：</p>
+<p>类型 为 1 的指令，输出格式与输入的考生信息格式相同，即 准考证号 成绩。对于分数并列的考生，按其准考证号的字典序递增输出（题目保证无重复准考证号）；<br>类型 为 2 的指令，按 人数 总分 的格式输出；<br>类型 为 3 的指令，输出按人数非递增顺序，格式为 考场编号 总人数。若人数并列则按考场编号递增顺序输出。<br>如果查询结果为空，则输出 NA。</p>
 <p>输入样例：</p>
-<pre><code>2017</code></pre><p>输出样例：</p>
-<pre><code>1480</code></pre><p>思路：利用此函数的递增性。<br>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int n;
-    int time=0;
-    int last=-1;//初始一个数为-1，因为n为任何正数，值都不可能为-1
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++){
-        int k=i/2+i/3+i/5;
-        if(k==last){//如果与上一个相同就跳过此次
-            continue;
-        }else{
-            time++;
-            last=k;
+<pre><code>8 4
+B123180908127 99
+B102180908003 86
+A112180318002 98
+T107150310127 62
+A107180908108 100
+T123180908010 78
+B112160918035 88
+A107180908021 98
+1 A
+2 107
+3 180908
+2 999</code></pre><p>输出样例：</p>
+<pre><code>Case 1: 1 A
+A107180908108 100
+A107180908021 98
+A112180318002 98
+Case 2: 2 107
+3 260
+Case 3: 3 180908
+107 2
+123 2
+102 1
+Case 4: 2 999
+NA</code></pre><p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+
+struct id{
+        char str[14];
+        char level[2];
+        int room;
+        int date;
+        int num;
+        int score;
+};
+
+int cmp(const void *a, const void *b)
+{
+        struct id *ida = (struct id*)a, *idb = (struct id*)b;
+        if (ida-&gt;score != idb-&gt;score)
+                return idb-&gt;score - ida-&gt;score;
+        return strcmp(ida-&gt;str, idb-&gt;str);
+}
+
+int type1(struct id ids[], int n, int i);
+int type2(struct id ids[], int n, int i);
+int type3(struct id ids[], int n, int i);
+
+int main()
+{
+        struct id ids[10000];
+        int n, m, type;
+        int i;
+        char level[2];
+
+        scanf(&quot;%d %d&quot;, &amp;n, &amp;m);
+        for (i = 0; i &lt; n; i++) {
+                scanf(&quot;%s %d&quot;, ids[i].str, &amp;ids[i].score);
+                sscanf(ids[i].str, &quot;%1s%3d%6d%3d&quot;, ids[i].level,
+                                &amp;ids[i].room, &amp;ids[i].date, &amp;ids[i].num);
         }
-    }
-    printf(&quot;%d&quot;,time);
-    return 0;
+
+        qsort(ids, n, sizeof(ids[0]), cmp);
+
+        for (i = 0; i &lt; m; i++) {
+                scanf(&quot;%d&quot;, &amp;type);
+                if (type == 1)
+                        type1(ids, n, i);
+                else if (type == 2)
+                        type2(ids, n, i);
+                else if (type == 3)
+                        type3(ids, n, i);
+        }
+
+        return 0;
+}
+
+int type1(struct id ids[], int n, int i)
+{
+        char level[2];
+        int f = 1, j;
+        scanf(&quot;%1s&quot;, level);
+        printf(&quot;Case %d: %d %c\n&quot;, i + 1, 1, level[0]);
+        for (j = 0; j &lt; n; j++)
+                if (ids[j].level[0] == level[0]) {
+                        f = 0;
+                        printf(&quot;%s %d\n&quot;, ids[j].str,ids[j].score);
+                }
+        if (f)
+                puts(&quot;NA&quot;);
+        return 0;
+}
+
+int type2(struct id ids[], int n, int i)
+{
+        int room, sum = 0, count = 0;
+        int j, f = 1;
+
+        scanf(&quot;%d&quot;, &amp;room);
+        printf(&quot;Case %d: %d %d\n&quot;, i + 1, 2, room);
+        for (j = 0; j &lt; n; j++)
+                if (ids[j].room == room) {
+                        f = 0;
+                        count++;
+                        sum += ids[j].score;
+                }
+        if (f)
+                puts(&quot;NA&quot;);
+        else
+                printf(&quot;%d %d\n&quot;, count, sum);
+
+        return 0;
+}
+
+int type3(struct id ids[], int n, int i)
+{
+        int date, max = 0, rooms[1000] = {0};
+        int f = 1, j;
+
+        scanf(&quot;%d&quot;, &amp;date);
+        printf(&quot;Case %d: %d %06d\n&quot;, i + 1, 3, date);
+        for (j = 0; j &lt; n; j++)
+                if (ids[j].date == date) {
+                        f = 0;
+                        rooms[ids[j].room]++;
+                        if (max &lt; rooms[ids[j].room])
+                                max = rooms[ids[j].room];
+                }
+        if (f)
+                puts(&quot;NA&quot;);
+        else
+                for (; max &gt; 0; max--)
+                        for (j = 101; j &lt; 1000; j++)
+                                if (rooms[j] == max)
+                                        printf(&quot;%d %d\n&quot;, j, max);
+
+        return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -195,7 +320,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1087" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1094" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -203,8 +328,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1087/"
-    >PTA-Basic-1087</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1094/"
+    >PTA-Basic-1094</a> 
 </h2>
  
 
@@ -213,8 +338,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1087/" class="article-date">
-  <time datetime="2019-10-16T13:29:41.000Z" itemprop="datePublished">2019-10-16</time>
+      <a href="/2019/10/16/PTA-Basic-1094/" class="article-date">
+  <time datetime="2019-10-16T13:30:22.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
@@ -235,57 +360,20 @@ int main(void){
       
 
       
-      <p>题目：</p>
-<p>子曰：“三人行，必有我师焉。择其善者而从之，其不善者而改之。”</p>
-<p>本题给定甲、乙、丙三个人的能力值关系为：甲的能力值确定是 2 位正整数；把甲的能力值的 2 个数字调换位置就是乙的能力值；甲乙两人能力差是丙的能力值的 X 倍；乙的能力值是丙的 Y 倍。请你指出谁比你强应“从之”，谁比你弱应“改之”。</p>
-<p>输入格式：<br>输入在一行中给出三个数，依次为：M（你自己的能力值）、X 和 Y。三个数字均为不超过 1000 的正整数。</p>
-<p>输出格式：<br>在一行中首先输出甲的能力值，随后依次输出甲、乙、丙三人与你的关系：如果其比你强，输出 Cong；平等则输出 Ping；比你弱则输出 Gai。其间以 1 个空格分隔，行首尾不得有多余空格。</p>
-<p>注意：如果解不唯一，则以甲的最大解为准进行判断；如果解不存在，则输出 No Solution。</p>
-<p>输入样例 1：</p>
-<pre><code>48 3 7</code></pre><p>输出样例 1：</p>
-<pre><code>48 Ping Cong Gai</code></pre><p>输入样例 2：</p>
-<pre><code>48 11 6</code></pre><p>输出样例 2：</p>
-<pre><code>No Solution</code></pre><p>分析：<br>输入的是自己的分数，x,y.<br>处理：从99到10假设甲的成绩，利用甲的成绩计算乙的成绩，看看这两个数是否符合条件，符合就计算丙的成绩，之后进行对比。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-int main(void){
-    int n,x,y;
-    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;x,&amp;y);
-    int a=10,b=0;//甲乙成绩肯定是整数
-    double c=0;//丙的成绩不一定为整数。即（10-99）
-    for(a=99;a&gt;9;a--){//因为甲是两位数，又以甲的最大值为唯一答案，所以要倒序。
-        b=(a/10)+(a%10)*10;//利用甲的成绩计算乙的成绩
-        if(abs(a-b)*y==x*b){//如果符合此条件那么丙的成绩就可以算出来了。
-            c=abs(a-b)*1.0/x;//计算丙的成绩
-            printf(&quot;%d &quot;,a);//先输出a的成绩
-            if(a==n){//输出对比结果
-                printf(&quot;Ping &quot;);
-            }else if(a&gt;n){
-                printf(&quot;Cong &quot;);
-            }else{
-                printf(&quot;Gai &quot;);
-            }
-            if(b==n){
-                printf(&quot;Ping &quot;);
-            }else if(b&gt;n){
-                printf(&quot;Cong &quot;);
-            }else{
-                printf(&quot;Gai &quot;);
-            }
-            if(c==n*1.0){//c的成绩可能为浮点数，所以左右多应该为浮点数
-                printf(&quot;Ping&quot;);
-            }else if(c&gt;n*1.0){
-                printf(&quot;Cong&quot;);
-            }else{
-                printf(&quot;Gai&quot;);
-            }
-            return 0;//找到即可退出程序。
-        }
-    }
-    printf(&quot;No Solution&quot;);
-    return 0;
-}</code></pre>
+      <p>###题目描述</p>
+<p>2004 年 7 月，谷歌在硅谷的 101 号公路边竖立了一块巨大的广告牌（如下图）用于招聘。内容超级简单，就是一个以 .com 结尾的网址，而前面的网址是一个 10 位素数，这个素数是自然常数 e 中最早出现的 10 位连续数字。能找出这个素数的人，就可以通过访问谷歌的这个网站进入招聘流程的下一步。</p>
+<p><img src="https://images.ptausercontent.com/57148679-d574-4f49-b048-775c6c07791c.jpg" alt=""></p>
+<p>自然常数 e 是一个著名的超越数，前面若干位写出来是这样的：e = 2.718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427427466391932003059921… 其中粗体标出的 10 位数就是答案。</p>
+<p>本题要求你编程解决一个更通用的问题：从任一给定的长度为 L 的数字中，找出最早出现的 K 位连续数字所组成的素数。</p>
+<p>输入格式：<br>输入在第一行给出 2 个正整数，分别是 L（不超过 1000 的正整数，为数字长度）和 K（小于 10 的正整数）。接下来一行给出一个长度为 L 的正整数 N。<br>###格式<br>输出格式：<br>在一行中输出 N 中最早出现的 K 位连续数字所组成的素数。如果这样的素数不存在，则输出 404。注意，原始数字中的前导零也计算在位数之内。例如在 200236 中找 4 位素数，0023 算是解；但第一位 2 不能被当成 0002 输出，因为在原始数字中不存在这个 2 的前导零。<br>###样例<br>输入样例 1：</p>
+<pre><code>20 5
+23654987725541023819</code></pre><p>输出样例 1：</p>
+<pre><code>49877</code></pre><p>输入样例 2：</p>
+<pre><code>10 3
+
+2468024680</code></pre><p>输出样例 2：</p>
+<pre><code>404</code></pre><p>代码：</p>
+
       
       <!-- reward -->
       
@@ -316,7 +404,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1086" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1093" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -324,8 +412,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1086/"
-    >PTA-Basic-1086</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1093/"
+    >PTA-Basic-1093</a> 
 </h2>
  
 
@@ -334,8 +422,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1086/" class="article-date">
-  <time datetime="2019-10-16T13:29:31.000Z" itemprop="datePublished">2019-10-16</time>
+      <a href="/2019/10/16/PTA-Basic-1093/" class="article-date">
+  <time datetime="2019-10-16T13:30:17.000Z" itemprop="datePublished">2019-10-16</time>
 </a>
       
   <div class="article-category">
@@ -356,36 +444,47 @@ int main(void){
       
 
       
-      <p>题目：</p>
-<p>做作业的时候，邻座的小盆友问你：“五乘以七等于多少？”你应该不失礼貌地围笑着告诉他：“五十三。”本题就要求你，对任何一对给定的正整数，倒着输出它们的乘积。</p>
-<p><img src="https://images.ptausercontent.com/0c3a4497-27c3-45ea-9c8e-5a1ab2df48af.jpg" alt=""></p>
-<p>输入格式：<br>输入在第一行给出两个不超过 1000 的正整数 A 和 B，其间以空格分隔。</p>
-<p>输出格式：<br>在一行中倒着输出 A 和 B 的乘积。</p>
+      <p>题目：<br>给定两个字符串 A 和 B，本题要求你输出 A+B，即两个字符串的并集。要求先输出 A，再输出 B，但重复的字符必须被剔除。</p>
+<p>输入格式：<br>输入在两行中分别给出 A 和 B，均为长度不超过 10<br>​6<br>​​ 的、由可见 ASCII 字符 (即码值为32~126)和空格组成的、由回车标识结束的非空字符串。</p>
+<p>输出格式：<br>在一行中输出题面要求的 A 和 B 的和。</p>
 <p>输入样例：</p>
-<pre><code>5 7</code></pre><p>输出样例：</p>
-<pre><code>53</code></pre><p>分析：不超过1000，那么乘积就不会超过1000000，int足够了。计算乘积存入数组，对结果不断取余，不断存入数组，直到为0，最后倒着输出数组。</p>
-<p>代码：</p>
+<pre><code>This is a sample test
+to show you_How it works</code></pre><p>输出样例：</p>
+<pre><code>This ampletowyu_Hrk</code></pre><p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
+char a[2000002];
+char b[1000001];
+char *del(char *s,char c){
+    char *src,*dst;
+    for(src=dst=s;*src!=&apos;\0&apos;;src++){
+        *dst=*src;
+        if(*dst!=c)
+            dst++;
+    }
+    *dst=&apos;\0&apos;;
+    return dst;
+} 
 int main(void){
-    int n,m;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    int c=n*m;
-    int i=0;
-    int result[20];
-    int re=0;
-    if(c==0){//注意为0是，直接输，出有一个测试点对应这个。
-        printf(&quot;%d&quot;,c);
-        return 0;
+    gets(a);
+    char *s=a;//如果先先连接再去重复的话操作时间比对每个先去重再连接再去重用的时间长。
+    while(*s){
+        del(s+1,*s);
+        s++;
     }
-    while(c!=0){
-        result[i++]=c%10; 
-        c=c/10;
+    gets(b);
+    s=b;
+    while(*s){
+        del(s+1,*s);
+        s++;
     }
-    for(int j=0;j&lt;i;j++){
-        re=re*10+result[j];
+    strcat(a,b);
+    s=a;
+    while(*s){
+        del(s+1,*s);
+        s++;
     }
-    printf(&quot;%d&quot;,re);
+    puts(a);
     return 0;
 }</code></pre>
       
@@ -424,7 +523,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/14/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="page-number" href="/page/14/">14</a><span class="page-number current">15</span><a class="page-number" href="/page/16/">16</a><a class="page-number" href="/page/17/">17</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/16/">下一页</a>
   </nav>
   
 </section>

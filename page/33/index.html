@@ -101,7 +101,7 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1021" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1040" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -109,8 +109,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1021/"
-    >PTA-Basic-1021</a> 
+  <a class="article-title" href="/2019/09/24/PTA-Basic-1040/"
+    >PTA-Basic-1040</a> 
 </h2>
  
 
@@ -119,8 +119,8 @@ var _hmt = _hmt || [];
 
     
     <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1021/" class="article-date">
-  <time datetime="2019-09-22T13:47:46.000Z" itemprop="datePublished">2019-09-22</time>
+      <a href="/2019/09/24/PTA-Basic-1040/" class="article-date">
+  <time datetime="2019-09-24T14:26:07.000Z" itemprop="datePublished">2019-09-24</time>
 </a>
       
   <div class="article-category">
@@ -141,32 +141,174 @@ var _hmt = _hmt || [];
       
 
       
-      <p>题目：</p>
-<p>给定一个 k 位整数 N=d<br>​k−1<br>​​ 10<br>​k−1<br>​​ +⋯+d<br>​1<br>​​ 10<br>​1<br>​​ +d<br>​0<br>​​  (0≤d<br>​i<br>​​ ≤9, i=0,⋯,k−1, d<br>​k−1<br>​​ &gt;0)，请编写程序统计每种不同的个位数字出现的次数。例如：给定 N=100311，则有 2 个 0，3 个 1，和 1 个 3。</p>
-<p>输入格式：<br>每个输入包含 1 个测试用例，即一个不超过 1000 位的正整数 N。</p>
-<p>输出格式：<br>对 N 中每一种不同的个位数字，以 D:M 的格式在一行中输出该位数字 D 及其在 N 中出现的次数 M。要求按 D 的升序输出。</p>
+      <p>字符串 APPAPT 中包含了两个单词 PAT，其中第一个 PAT 是第 2 位(P)，第 4 位(A)，第 6 位(T)；第二个 PAT 是第 3 位(P)，第 4 位(A)，第 6 位(T)。</p>
+<p>现给定字符串，问一共可以形成多少个 PAT？</p>
+<p>输入格式：</p>
+<p>输入只有一行，包含一个字符串，长度不超过10^5，只包含 P、A、T 三种字母。</p>
+<p>输出格式：</p>
+<p>在一行中输出给定字符串中包含多少个 PAT。由于结果可能比较大，只输出对 1000000007 取余数的结果。</p>
 <p>输入样例：</p>
-<pre><code>100311</code></pre><p>输出样例：</p>
-<pre><code>0:2
-1:3
-3:1</code></pre><p>分析：<br>输入：因为数字的长度不定，所以用字符数组存储。<br>处理：定义一个二维数组，第一行存储0-9，第二存储出现的次数（初始化为0）。遍历字符数组对应数字加1即可。<br>输出：一行一个，输出出现次数不为0的数字以及次数。</p>
+<pre><code>APPAPT</code></pre><p>输出样例：</p>
+<pre><code>2</code></pre><p>思路：输入一个字符串。<br>处理：定义三个变量，分别用来计算p，pa,pat的总数。<br>从前向后数，计算p的个数，如果遇到a就说明已经有了(已数p的数目)个pa，如果有遇到a,则将已经有的pa数加上已经有的p数（a前有多少个p代表有多少个pa）,如果遇到T就说明有了pa个数个pat,再遇到t时就将已经有的pat个数加上以前有的pa数。<br>输出：输出结果对1000000007 取余的结果。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
 int main(void){
-    char n[1000];
-    scanf(&quot;%s&quot;,&amp;n);
-    int number[10]={0};
-    for(int i=0;i&lt;strlen(n);i++){
-        number[n[i]-&apos;0&apos;]++;
+    int p=0,pa=0,pat=0;
+    char ch;
+    while((ch=getchar())!=&apos;\n&apos;){
+    if(ch==&apos;P&apos;)p++;
+    if(ch==&apos;A&apos;)pa=pa+p;
+    if(ch==&apos;T&apos;)pat=(pat+pa)%1000000007;//为什么在这里要对其取余，而不在输出时？
+
+    /*因为pat存储的就是结果数目，如果在加的过程中超出了范围
+    会导致内存溢出，数据就会存储出错，对结果取余也就不对了，
+    在求总数的过程中对其进行取余一旦超过1000000007但是其还
+    在整型范围内所以一旦超出就对其进行取余。*/
     }
-   for(int j=0;j&lt;10;j++){
-            if(number[j]!=0){
-                printf(&quot;%d:%d\n&quot;,j,number[j]);
+    printf(&quot;%d&quot;,pat);
+    return 0;
+}</code></pre><p>思路二：<br>思路分析：先数出一共有多少T，然再遍历字符串，遇到一个T就减去一个，遇到一个p就将P的个数加1，遇到一个a就说明后面有剩余T个数个T,那么就有T的个数个pat,每遇到一个A就用已有的pat个数加上后面剩余的T的个数。最后得出总数，同样这里也要取余。</p>
+<pre><code>#include &lt;iostream&gt;
+#include &lt;string&gt;
+using namespace std;
+int main() {
+    string s;
+    cin &gt;&gt; s;
+    int len = s.length(), result = 0, countp = 0, countt = 0;
+    //先输出一共有有多少T;
+    for (int i = 0; i &lt; len; i++) {
+        if (s[i] == &apos;T&apos;)
+            countt++;
+    }
+    for (int i = 0; i &lt; len; i++) {
+        if (s[i] == &apos;P&apos;) countp++;
+        if (s[i] == &apos;T&apos;) countt--;
+        if (s[i] == &apos;A&apos;) result = (result + countp * countt) % 1000000007;
+    }
+    cout &lt;&lt; result;
+    return 0;
+}</code></pre><p>参考文章：<br><a href="https://blog.csdn.net/zhanshen112/article/details/83629587">https://blog.csdn.net/zhanshen112/article/details/83629587</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+  
+  
+
+</article>
+    
+    <article id="post-PTA-Basic-1039" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/23/PTA-Basic-1039/"
+    >PTA-Basic-1039</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/09/23/PTA-Basic-1039/" class="article-date">
+  <time datetime="2019-09-23T12:02:07.000Z" itemprop="datePublished">2019-09-23</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>题目：</p>
+<p>小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。</p>
+<p>为方便起见，我们用[0-9]、[a-z]、[A-Z]范围内的字符来表示颜色。例如在图1中，第3串是小红想做的珠串；那么第1串可以买，因为包含了全部她想要的珠子，还多了8颗不需要的珠子；第2串不能买，因为没有黑色珠子，并且少了一颗红色的珠子。</p>
+<p><img src="https://images.ptausercontent.com/b7e2ffa6-8819-436d-ad79-a41263abe914.jpg" alt="串串"></p>
+<p>图 1</p>
+<p>输入格式：</p>
+<pre><code>每个输入包含 1 个测试用例。每个测试用例分别在 2 行中先后给出
+摊主的珠串和小红想做的珠串，两串都不超过 1000 个珠子。</code></pre><p>输出格式：</p>
+<pre><code>如果可以买，则在一行中输出 Yes 以及有多少多余的珠子；如果不
+可以买，则在一行中输出 No 以及缺了多少珠子。其间以 1 个空格
+分隔。</code></pre><p>输入样例 1：</p>
+<pre><code>ppRYYGrrYBR2258
+YrR8RrY</code></pre><p>输出样例 1：</p>
+<pre><code>Yes 8</code></pre><p>输入样例 2：</p>
+<pre><code>ppRYYGrrYB225
+YrR8RrY</code></pre><p>输出样例 2：</p>
+<pre><code>No 2</code></pre><p>分析：此题与上一题采用相同的思路，先定义一个整型数组（范围要能把字母与数字的ascall码值包含在内），然后输入字符，如果字符符合条件就将字符对应的ascall码对应的数组下标所对应的数组+1，表示此种字符输入一次。输入要查找的字符串时，字符对应的数目-1.最后遍历数组将所有符数加到一起，所以正数加到一起，负数表示缺少的字符数目，正数表示多余的字符数目，如果有负数优先输出：No 缺少的数目（&gt;0）。反之 就输出Yes 多余的数目。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+        int chars[250]={0};
+        char ch;
+        while((ch=getchar())!=&apos;\n&apos;){
+            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                chars[ch]++;
             }
         }
+        while((ch=getchar())!=&apos;\n&apos;){
+            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                chars[ch]--;
+            }
+        }
+        int sum1=0;
+        int sum2=0;
+        int i=0;
+        while(i&lt;250){
+            if(chars[i]&lt;0){
+                sum2+=chars[i];
+            }else{
+                sum1+=chars[i];
+                }
+                i++;
+        }
+        if(sum2&lt;0){
+            printf(&quot;No %d&quot;,-sum2);
+        }else{
+            printf(&quot;Yes %d&quot;,sum1);
+            }
         return 0;
-}</code></pre>
+    }</code></pre>
       
       <!-- reward -->
       
@@ -197,7 +339,7 @@ int main(void){
 
 </article>
     
-    <article id="post-PTA-Basic-1019" class="article article-type-post" itemscope
+    <article id="post-PTA-Basic-1038" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -205,8 +347,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1019/"
-    >PTA-Basic-1019</a> 
+  <a class="article-title" href="/2019/09/23/PTA-Basic-1038/"
+    >PTA-Basic-1038</a> 
 </h2>
  
 
@@ -215,8 +357,8 @@ int main(void){
 
     
     <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1019/" class="article-date">
-  <time datetime="2019-09-22T13:47:30.000Z" itemprop="datePublished">2019-09-22</time>
+      <a href="/2019/09/23/PTA-Basic-1038/" class="article-date">
+  <time datetime="2019-09-23T12:01:54.000Z" itemprop="datePublished">2019-09-23</time>
 </a>
       
   <div class="article-category">
@@ -237,201 +379,38 @@ int main(void){
       
 
       
-      <p>题目：</p>
-<p>给定任一个各位数字不完全相同的 4 位正整数，如果我们先把 4 个数字按非递增排序，再按非递减排序，然后用第 1 个数字减第 2 个数字，将得到一个新的数字。一直重复这样做，我们很快会停在有“数字黑洞”之称的 6174，这个神奇的数字也叫 Kaprekar 常数。</p>
-<p>例如，我们从6767开始，将得到</p>
-<p>7766 - 6677 = 1089<br>9810 - 0189 = 9621<br>9621 - 1269 = 8352<br>8532 - 2358 = 6174<br>7641 - 1467 = 6174<br>… …<br>现给定任意 4 位正整数，请编写程序演示到达黑洞的过程。</p>
-<p>输入格式：<br>输入给出一个 (0,10<br>​4<br>​​ ) 区间内的正整数 N。</p>
-<p>输出格式：</p>
-<pre><code>如果 N 的 4 位数字全相等，则在一行内输出 N - N = 0000；否
-则将计算的每一步在一行内输出，直到 6174 作为差出现，输出格式
-见样例。注意每个数字按 4 位数格式输出。</code></pre><p>输入样例 1：</p>
-<pre><code>6767</code></pre><p>输出样例 1：</p>
-<pre><code>7766 - 6677 = 1089
-9810 - 0189 = 9621
-9621 - 1269 = 8352
-8532 - 2358 = 6174</code></pre><p>输入样例 2：</p>
-<pre><code>2222</code></pre><p>输出样例 2：</p>
-<pre><code>2222 - 2222 = 0000</code></pre><p>分析：</p>
-<pre><code>输入：将输入的数字取余存到数组中去然后快排数组，正序逆序生
-成两个数字大的减去小的，如果大数与小数相等只输出相减结束循
-环或结果为6174结束循环。否则继续循环。</code></pre><p>输出：</p>
-<pre><code>计算过程。</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-int compare(const void *a,const void *b){
-    if(*(int *)a&gt;*(int *)b){
-        return -1;
-    }else if(*(int *)a&lt;*(int *)b){
-        return 1;
-    }else{
-        return 0;
-    }
-}
-int print(int * p){
-    int number1=(*p)*1000+*(p+1)*100+*(p+2)*10+*(p+3);
-    int number2=(*p)+*(p+1)*10+*(p+2)*100+*(p+3)*1000;
-    int n=number1-number2;
-    printf(&quot;%04d - %04d = %04d\n&quot;,number1,number2,n);
-    return n;
-}
-int main(void){
-    int n;
-    scanf(&quot;%d&quot;,&amp;n);
-    int flag=1;
-    int result[4];
-    while(1){
-        for(int i=0;i&lt;4;i++){
-        result[i]=n%10;
-        n=n/10;
-    }
-    qsort(result,sizeof(result)/sizeof(int),sizeof(int),compare);
-       n=print(result);
-       if(n==0||n==6174){
-           break;
-       }
-    }
-    return 0;
-}</code></pre>
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
-    
-    <article id="post-PTA-Basic-1018" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1018/"
-    >PTA-Basic-1018</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1018/" class="article-date">
-  <time datetime="2019-09-22T13:47:15.000Z" itemprop="datePublished">2019-09-22</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
-<p>大家应该都会玩“锤子剪刀布”的游戏：两人同时给出手势，胜负规则如图所示：</p>
-<p><img src="https://images.ptausercontent.com/724da598-b37f-4f1f-99b4-71459654ce3a.jpg" alt="剪刀石头布"><br>现给出两人的交锋记录，请统计双方的胜、平、负次数，并且给出双方分别出什么手势的胜算最大。</p>
-<p>输入格式：<br>输入第 1 行给出正整数 N（≤10<br>​5<br>​​ ），即双方交锋的次数。随后 N 行，每行给出一次交锋的信息，即甲、乙双方同时给出的的手势。C 代表“锤子”、J 代表“剪刀”、B 代表“布”，第 1 个字母代表甲方，第 2 个代表乙方，中间有 1 个空格。</p>
-<p>输出格式：<br>输出第 1、2 行分别给出甲、乙的胜、平、负次数，数字间以 1 个空格分隔。第 3 行给出两个字母，分别代表甲、乙获胜次数最多的手势，中间有 1 个空格。如果解不唯一，则输出按字母序最小的解。</p>
+      <p>题目：<br>本题要求读入 N 名学生的成绩，将获得某一给定分数的学生人数输出。</p>
+<p>输入格式：<br>输入在第 1 行给出不超过 10<br>​^5<br>​​  的正整数 N，即学生总人数。随后一行给出 N 名学生的百分制整数成绩，中间以空格分隔。最后一行给出要查询的分数个数 K（不超过 N 的正整数），随后是 K 个分数，中间以空格分隔。</p>
+<p>输出格式：<br>在一行中按查询顺序给出得分等于指定分数的学生人数，中间以空格分隔，但行末不得有多余空格。</p>
 <p>输入样例：</p>
 <pre><code>10
-C J
-J B
-C B
-B B
-B C
-C C
-C B
-J B
-B C
-J J</code></pre><p>输出样例：</p>
-<pre><code>5 3 2
-2 3 5
-B B</code></pre><p>分析：</p>
-<pre><code>输入：第一行各处要输入的次数，以下接着放置n行的数据。
-
-处理：
-定义两个二维整型数组（第一行存储字符，第二行存储对应的数目，以字符‘0’为起点每符合一个就再对应的第二行加一）存储字符对应的Ascall码值（为什么不用字符型？能因为字符型数组的如果加的范围超出字符型就会报错）定义两个变量用来存储甲胜利的次数，与平局的次数。
-
-输出：最后遍历两个二维数组找出字符数最大的下标并记录。</code></pre><p>代码：</p>
+60 75 90 55 75 99 82 90 75 50
+3 75 90 88</code></pre><p>输出样例：</p>
+<pre><code>3 2 0</code></pre><p>分析：</p>
+<p>输入：数目 与 得分。<br>处理：此题不好用循环去一个一个遍历，查找比对。<br>因为题目说了数字范围是1-100的整数，所以直接定义一个长度为101的数组，每输入一个分数时，就再分数对应的下标所在的数组存储的数目加1.输入要查找的得分时通过得分直接找到相应的次数，并输出，如果输出最后一个数字时，不用输出空格。</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int time;
-    scanf(&quot;%d&quot;,&amp;time);
-    int A[2][3]={{'B','C','J'},{0,0,0}};//第一层代表可以出的手势，第二层代表此手势获胜的次数。
-    int B[2][3]={{'B','C','J'},{0,0,0}};
-    char a,b;
-    int number=time;
-    int N=0,M=0;
-    while(time--){
-        getchar();
-        scanf(&quot;%c %c&quot;,&amp;a,&amp;b);
-        if((a==&apos;C&apos;&amp;&amp;b==&apos;J&apos;)||(a==&apos;J&apos;&amp;&amp;b==&apos;B&apos;)||(a==&apos;B&apos;&amp;&amp;b==&apos;C&apos;)){
-            N++;
-            switch(a){
-                case &apos;B&apos;:  A[1][0]=A[1][0]+1;break;
-                case &apos;C&apos;:  A[1][1]=A[1][1]+1;break;
-                case &apos;J&apos;:  A[1][2]=A[1][2]+1;break;
-            }
-        }else if((b==&apos;C&apos;&amp;&amp;a==&apos;J&apos;)||(b==&apos;J&apos;&amp;&amp;a==&apos;B&apos;)||(b==&apos;B&apos;&amp;&amp;a==&apos;C&apos;)){
-            M++;
-            switch(b){
-                case &apos;B&apos;:  B[1][0]=B[1][0]+1;break;
-                case &apos;C&apos;:  B[1][1]=B[1][1]+1;break;
-                case &apos;J&apos;:  B[1][2]=B[1][2]+1;break;
-            }
-        }else{
-        }
-            }
-        printf(&quot;%d %d %d\n&quot;,N,number-N-M,M);
-        printf(&quot;%d %d %d\n&quot;,M,number-N-M,N);
-        int indexN=0;
-        int indexM=0;
-        for(int i=1;i&lt;3;i++){
-            if((A[1][i]-&apos;0&apos;)&gt;(A[1][indexN]-&apos;0&apos;)){
-                indexN=i;
-            }
-            if((B[1][i]-&apos;0&apos;)&gt;(B[1][indexM]-&apos;0&apos;)){
-                indexM=i;
-            }
-        }
-        printf(&quot;%c %c&quot;,A[0][indexN],B[0][indexM]);
-        return 0;
+int main()
+{
+    int n,m;
+    scanf(&quot;%d&quot;,&amp;n);
+    int score1[101]={0};
+    int score2;
+    while(n--)
+    {
+        scanf(&quot;%d&quot;,&amp;score2);
+        score1[score2]++;
+    }
+    scanf(&quot;%d&quot;,&amp;m);
+    int score3;
+    while(m--)
+    {
+        scanf(&quot;%d&quot;,&amp;score3);
+        printf(&quot;%d&quot;,score1[score3]);
+        if(m!=0)
+            printf(&quot; &quot;);
+    }
+    return 0;
 }</code></pre>
       
       <!-- reward -->
@@ -469,7 +448,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/32/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="extend next" rel="next" href="/page/34/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/32/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/34/">下一页</a>
   </nav>
   
 </section>
