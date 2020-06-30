@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>A BUG|A CHANCE</title>
+  <title>Technology blog</title>
   <icon>https://www.gravatar.com/avatar/f63e2932402ca598fd6af3eed9f33d56</icon>
-  <subtitle>ZM</subtitle>
+  <subtitle>CANNOT FIND OBJECT!</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
@@ -10,7 +10,7 @@
   <id>http://zm163.github.io/</id>
   
   <author>
-    <name>little ZM</name>
+    <name>ZM</name>
     <email>19850830198@163.com</email>
   </author>
   
