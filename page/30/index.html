@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['诗酒趁年华 ——苏轼', '今日事，今日毕', '有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅'],
+        strings: ['休对故人思故国，且将新火试新茶。诗酒趁年华! ——苏轼', '今日事，今日毕', '有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅'],
         startDelay: 0,
         typeSpeed: 300,
         loop: true,
@@ -117,6 +117,139 @@ var _hmt = _hmt || [];
     
     
     
+    
+    <article
+  id="post-PTA-Basic-1050"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/27/PTA-Basic-1050/"
+    >PTA-Basic-1050</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/27/PTA-Basic-1050/" class="article-date">
+  <time datetime="2019-09-27T09:27:45.000Z" itemprop="datePublished">2019-09-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>本题要求将给定的 N 个正整数按非递增的顺序，填入“螺旋矩阵”。所谓“螺旋矩阵”，是指从左上角第 1 个格子开始，按顺时针螺旋方向填充。要求矩阵的规模为 m 行 n 列，满足条件：m×n 等于 N；m≥n；且 m−n 取所有可能值中的最小值。</p>
+<p>输入格式：<br>输入在第 1 行中给出一个正整数 N，第 2 行给出 N 个待填充的正整数。所有数字不超过 10<br>​4<br>​​ ，相邻数字以空格分隔。</p>
+<p>输出格式：<br>输出螺旋矩阵。每行 n 个数字，共 m 行。相邻数字以 1 个空格分隔，行末不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>12
+37 76 20 98 76 42 53 95 60 81 58 93</code></pre><p>输出样例：</p>
+<pre><code>98 95 93
+42 37 81
+53 20 76
+58 60 76</code></pre><p>分析：<br>    难点：</p>
+<pre><code>1.求一个数字最接近的两个约数。//用于求行数与列数
+2.每一层输出时可能会位置出错。</code></pre><p>思路：</p>
+<pre><code>对一个数开平方，然后从它的根向下（包含跟）找
+
+到的第一个能把它整除的数就是最接近的两个数字
+
+中的小的哪一个，大的哪一个只要原数取整即可。且大的哪一个为行数，小的哪一个为列数。
+
+对输入进来的数组进行排序，然后定义一个二维数组存储螺旋矩阵（从最外面一层开始，分为上部赋值，
+
+右部赋值，下部赋值，左部赋值，然后进行第二层的赋值。。。）
+
+把螺旋矩阵看成一个不断重复相同操作的过程。</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;math.h&gt;
+//求一个数字最接近平方根的数字，就是其接近的约数。
+int func(int n){
+    int m=sqrt(n);
+    while(m!=1){
+        if(n%m==0){
+            return m;
+        }
+        m--;
+    }
+    return 1;
+}
+int cmp(const void *a,const void *b){
+    return *(int *)b-*(int *)a;
+}
+int main(){
+    int N,n,m,t=0;
+    scanf(&quot;%d&quot;,&amp;N);
+    int a[N];
+    while(t&lt;N){
+        scanf(&quot;%d&quot;,&amp;a[t++]);
+    }
+    qsort(a,N,sizeof(int),cmp);//对数组排序从大到小
+    n=func(N); //列数
+    m=N/n;//获得行数，行数一定大于等于列数
+    int b[m][n]; //定义一个二维矩阵
+    int level=n/2+n%2; //一共有几层螺旋圈
+    t=0;
+    int j=0;
+    for(int i=1;i&lt;=level;i++){
+        //实现第i层的上面部分.
+         for( j=i-1;j&lt;=n-i&amp;&amp;t&lt;N;j++){//行数为[i-1]列数为[i-1,n-i]
+             b[i-1][j]=a[t++];
+         }
+         //实现第i层的右边
+         for( j=i;j&lt;=(m-i)&amp;&amp;t&lt;N;j++){//行数为[i,m-i][n-i]
+             b[j][n-i]=a[t++];
+         }
+         //实现第i层的下面
+         for( j=n-i-1;j&gt;=(i-1)&amp;&amp;t&lt;N;j--){//行数为[m-i]列数为[n-i,i-1]
+             b[m-i][j]=a[t++];
+         }
+         //实现第i层的左面
+         for( j=m-i-1;j&gt;(i-1)&amp;&amp;t&lt;N;j--){//行数为[m-i-1，i]列数为[i-1]
+             b[j][i-1]=a[t++];
+         }
+    }
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            if(j!=0)
+                printf(&quot; &quot;);
+            printf(&quot;%d&quot;,b[i][j]);
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
     
     <article
   id="post-PTA-Basic-1049"
@@ -187,7 +320,7 @@ int main(void){
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -302,91 +435,7 @@ int main(void){
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1047"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/26/PTA-Basic-1047/"
-    >PTA-Basic-1047</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/26/PTA-Basic-1047/" class="article-date">
-  <time datetime="2019-09-26T13:00:38.000Z" itemprop="datePublished">2019-09-26</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>编程团体赛的规则为：每个参赛队由若干队员组成；所有队员独立比赛；参赛队的成绩为所有队员的成绩和；成绩最高的队获胜。</p>
-<p>现给定所有队员的比赛成绩，请你编写程序找出冠军队。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​4<br>​​ ），即所有参赛队员总数。随后 N 行，每行给出一位队员的成绩，格式为：队伍编号-队员编号 成绩，其中队伍编号为 1 到 1000 的正整数，队员编号为 1 到 10 的正整数，成绩为 0 到 100 的整数。</p>
-<p>输出格式：<br>在一行中输出冠军队的编号和总成绩，其间以一个空格分隔。注意：题目保证冠军队是唯一的。</p>
-<p>输入样例：</p>
-<pre><code>6
-3-10 99
-11-5 87
-102-1 0
-102-3 100
-11-9 89
-3-2 61</code></pre><p>输出样例：</p>
-<pre><code>11 176</code></pre><p>分析：此题与前面的挖掘机那题完全一样。<br>定义一个足够大的数组要把队伍编号都包含在内，然后把输输入一个队伍的相关信息，可以跳过中间一个数字的读取，队伍编号就是对应其在数组的位置，每次就<br>把输入的分数加到对应的位置，然后跟目前位置最大的比，如果比它大就把它存储下来，最后直接输出队伍编号，与分数。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int schools[10001];
-    int max=0;
-    int max_school=0;
-    int n,a,b;
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%d-%*d %d&quot;,&amp;a,&amp;b);//%*d代表不接受此输入。
-        schools[a]=schools[a]+b;
-        if(schools[a]&gt;max){
-            max=schools[a];
-            max_school=a;
-        }
-    }
-    printf(&quot;%d %d&quot;,max_school,max);
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -403,7 +452,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/29/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/31/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/29/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><a class="extend next" rel="next" href="/page/31/">下一页</a>
   </nav>
   
 </section>

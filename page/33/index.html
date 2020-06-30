@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['诗酒趁年华 ——苏轼', '今日事，今日毕', '有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅'],
+        strings: ['休对故人思故国，且将新火试新茶。诗酒趁年华! ——苏轼', '今日事，今日毕', '有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅'],
         startDelay: 0,
         typeSpeed: 300,
         loop: true,
@@ -117,6 +117,99 @@ var _hmt = _hmt || [];
     
     
     
+    
+    <article
+  id="post-PTA-Basic-1041"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/24/PTA-Basic-1041/"
+    >PTA-Basic-1041</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/24/PTA-Basic-1041/" class="article-date">
+  <time datetime="2019-09-24T14:26:25.000Z" itemprop="datePublished">2019-09-24</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>每个 PAT 考生在参加考试时都会被分配两个座位号，一个是试机座位，一个是考试座位。正常情况下，考生在入场时先得到试机座位号码，入座进入试机状态后，系统会显示该考生的考试座位号码，考试时考生需要换到考试座位就座。但有些考生迟到了，试机已经结束，他们只能拿着领到的试机座位号码求助于你，从后台查出他们的考试座位号码。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤1000），随后 N 行，每行给出一个考生的信息：准考证号 试机座位号 考试座位号。其中准考证号由 16 位数字组成，座位从 1 到 N 编号。输入保证每个人的准考证号都不同，并且任何时候都不会把两个人分配到同一个座位上。</p>
+<p>考生信息之后，给出一个正整数 M（≤N），随后一行中给出 M 个待查询的试机座位号码，以空格分隔。</p>
+<p>输出格式：<br>对应每个需要查询的试机座位号码，在一行中输出对应考生的准考证号和考试座位号码，中间用 1 个空格分隔。</p>
+<p>输入样例：</p>
+<pre><code>4
+3310120150912233 2 4
+3310120150912119 4 1
+3310120150912126 1 3
+3310120150912002 3 2
+2
+3 4</code></pre><p>输出样例：</p>
+<pre><code>3310120150912002 2
+3310120150912119 1</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+typedef struct stu{
+    char id[17];
+    int sitNum;
+    int examNum;
+}stu;
+int main(void){
+    int num;
+    scanf(&quot;%d&quot;,&amp;num);
+    stu stus[num];
+    int i=0;
+    while(i&lt;num){
+        scanf(&quot;%s %d %d&quot;,(stus[i].id),&amp;(stus[i].sitNum),&amp;(stus[i].examNum));
+        i++;
+    }
+    int num1=0;
+    scanf(&quot;%d&quot;,&amp;num1);
+    while(num1--){
+        int n;
+        scanf(&quot;%d&quot;,&amp;n);
+        for(int i=0;i&lt;num;i++){
+            if(stus[i].sitNum==n){
+                printf(&quot;%s %d\n&quot;,stus[i].id,stus[i].examNum);
+            }
+        }
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
     
     <article
   id="post-PTA-Basic-1040"
@@ -206,7 +299,7 @@ int main() {
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -307,91 +400,7 @@ int main(void){
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1038"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/23/PTA-Basic-1038/"
-    >PTA-Basic-1038</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/23/PTA-Basic-1038/" class="article-date">
-  <time datetime="2019-09-23T12:01:54.000Z" itemprop="datePublished">2019-09-23</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>本题要求读入 N 名学生的成绩，将获得某一给定分数的学生人数输出。</p>
-<p>输入格式：<br>输入在第 1 行给出不超过 10<br>​^5<br>​​  的正整数 N，即学生总人数。随后一行给出 N 名学生的百分制整数成绩，中间以空格分隔。最后一行给出要查询的分数个数 K（不超过 N 的正整数），随后是 K 个分数，中间以空格分隔。</p>
-<p>输出格式：<br>在一行中按查询顺序给出得分等于指定分数的学生人数，中间以空格分隔，但行末不得有多余空格。</p>
-<p>输入样例：</p>
-<pre><code>10
-60 75 90 55 75 99 82 90 75 50
-3 75 90 88</code></pre><p>输出样例：</p>
-<pre><code>3 2 0</code></pre><p>分析：</p>
-<p>输入：数目 与 得分。<br>处理：此题不好用循环去一个一个遍历，查找比对。<br>因为题目说了数字范围是1-100的整数，所以直接定义一个长度为101的数组，每输入一个分数时，就再分数对应的下标所在的数组存储的数目加1.输入要查找的得分时通过得分直接找到相应的次数，并输出，如果输出最后一个数字时，不用输出空格。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main()
-{
-    int n,m;
-    scanf(&quot;%d&quot;,&amp;n);
-    int score1[101]={0};
-    int score2;
-    while(n--)
-    {
-        scanf(&quot;%d&quot;,&amp;score2);
-        score1[score2]++;
-    }
-    scanf(&quot;%d&quot;,&amp;m);
-    int score3;
-    while(m--)
-    {
-        scanf(&quot;%d&quot;,&amp;score3);
-        printf(&quot;%d&quot;,score1[score3]);
-        if(m!=0)
-            printf(&quot; &quot;);
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -408,7 +417,7 @@ int main()
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/32/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/34/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/32/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="page-number current">33</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><a class="extend next" rel="next" href="/page/34/">下一页</a>
   </nav>
   
 </section>

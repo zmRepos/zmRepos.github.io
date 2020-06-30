@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['诗酒趁年华 ——苏轼', '今日事，今日毕', '有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅'],
+        strings: ['休对故人思故国，且将新火试新茶。诗酒趁年华! ——苏轼', '今日事，今日毕', '有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅'],
         startDelay: 0,
         typeSpeed: 300,
         loop: true,
@@ -117,6 +117,74 @@ var _hmt = _hmt || [];
     
     
     
+    
+    <article
+  id="post-PTA-Basic-1081"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1081/"
+    >PTA-Basic-1081</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/11/PTA-Basic-1081/" class="article-date">
+  <time datetime="2019-10-11T14:18:55.000Z" itemprop="datePublished">2019-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>本题要求你帮助某网站的用户注册模块写一个密码合法性检查的小功能。该网站要求用户设置的密码必须由不少于6个字符组成，并且只能有英文字母、数字和小数点 .，还必须既有字母也有数字。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行给出一个用户设置的密码，为不超过 80 个字符的非空字符串，以回车结束。</p>
+<p>输出格式：<br>对每个用户的密码，在一行中输出系统反馈信息，分以下5种：</p>
+<p>如果密码合法，输出Your password is wan mei.；<br>如果密码太短，不论合法与否，都输出Your password is tai duan le.；<br>如果密码长度合法，但存在不合法字符，则输出Your password is tai luan le.；<br>如果密码长度合法，但只有字母没有数字，则输出Your password needs shu zi.；<br>如果密码长度合法，但只有数字没有字母，则输出Your password needs zi mu.。<br>输入样例：</p>
+<pre><code>5
+123s
+zheshi.wodepw
+1234.5678
+WanMei23333
+pass*word.6</code></pre><p>输出样例：</p>
+<pre><code>Your password is tai duan le.
+Your password needs shu zi.
+Your password needs zi mu.
+Your password is wan mei.
+Your password is tai luan le.</code></pre><p>代码：<br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>int main(void){<br>    int n;<br>    scanf(“%d”,&amp;n);//测试点二，是第一行的末尾的空格输入下一个。<br>    //scanf()函数则会保留换行符所以必须用getchar()吸收，防止作为一个输入行。<br>    getchar();<br>    char password[85];<br>    for(int i=0;i&lt;n;i++){<br>        int zifuflag=0;<br>        int zimuflag=0;<br>        int shuziflag=0;<br>        gets(password);//gets()函数会将换行符转换为‘\0’输入字符数组。<br>        int len=strlen(password);<br>        if(len&lt;6){<br>            printf(“Your password is tai duan le.\n”);<br>            continue;<br>        }<br>        for(int j=0;j&lt;len;j++){<br>            char ch=password[j];<br>            if((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’)){<br>                zimuflag=1;<br>            }<br>            if(ch&gt;=’0’&amp;&amp;ch&lt;=’9’){<br>                shuziflag=1;<br>            }<br>            if(ch!=’.’&amp;&amp;!(ch&lt;=’9’&amp;&amp;ch&gt;=’0’)&amp;&amp;!((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’))){<br>                zifuflag=1;<br>                break;<br>            }<br>        }<br>        if(zifuflag){<br>            printf(“Your password is tai luan le.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;!shuziflag){<br>            printf(“Your password needs shu zi.\n”);<br>            continue;<br>        }<br>        if(!zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password needs zi mu.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password is wan mei.\n”);<br>        }<br>    }<br>}</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
     
     <article
   id="post-PTA-Basic-1080"
@@ -349,7 +417,7 @@ int main(void){
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -492,134 +560,7 @@ int main()
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1078"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1078/"
-    >PTA-Basic-1078</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1078/" class="article-date">
-  <time datetime="2019-10-11T14:18:16.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>文本压缩有很多种方法，这里我们只考虑最简单的一种：把由相同字符组成的一个连续的片段用这个字符和片段中含有这个字符的个数来表示。例如 ccccc 就用 5c 来表示。如果字符没有重复，就原样输出。例如 aba 压缩后仍然是 aba。</p>
-<p>解压方法就是反过来，把形如 5c 这样的表示恢复为 ccccc。</p>
-<p>本题需要你根据压缩或解压的要求，对给定字符串进行处理。这里我们简单地假设原始字符串是完全由英文字母和空格组成的非空字符串。</p>
-<p>输入格式：<br>输入第一行给出一个字符，如果是 C 就表示下面的字符串需要被压缩；如果是 D 就表示下面的字符串需要被解压。第二行给出需要被压缩或解压的不超过 1000 个字符的字符串，以回车结尾。题目保证字符重复个数在整型范围内，且输出文件不超过 1MB。</p>
-<p>输出格式：<br>根据要求压缩或解压字符串，并在一行中输出结果。</p>
-<p>输入样例 1：</p>
-<pre><code>C
-
-TTTTThhiiiis isssss a   tesssst CAaaa as</code></pre><p>输出样例 1：</p>
-<pre><code>5T2h4is i5s a3 te4st CA3a as</code></pre><p>输入样例 2：</p>
-<pre><code>D
-
-5T2h4is i5s a3 te4st CA3a as10Z</code></pre><p>输出样例 2：</p>
-<pre><code>TTTTThhiiiis isssss a   tesssst CAaaa asZZZZZZZZZZ</code></pre><p>分析：</p>
-<p>首先根据题目要求知道要求我们解压与压缩，解压-&gt;将字符串中的数字转换成其后面紧跟的字符的个数，注</p>
-<p>意，此处数字可能大于10。然后输出n个字符。</p>
-<p>压缩过程：将连续的n个字符（n&gt;1）表达成‘n字符’的形式。</p>
-<p>注意：此题的一个坑，输入中可能会有空格。</p>
-<p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include &lt;stdlib.h&gt;
-void c(char *s){//压缩函数
-    char *p=s;
-    char cur=*p;//保存当前的字符
-    p++;
-    int time=1;//默认的字符长度为1
-    while(cur){
-        char ch=*p;//存储下一个字符
-        if(cur==ch){//当前字符与下一个字符比较
-            time++;
-        }else{//不同时，表示连续的已经断开
-            if(time&gt;1){
-                printf(&quot;%d%c&quot;,time,cur);
-            }else{
-                printf(&quot;%c&quot;,cur);
-            }
-            time=1;//重新将字符设置为1
-            cur=ch;//将后一个字符给当前字符。
-        }
-        p++;//指针指向后面一个字符。
-    }
-}
-void d(char *s){//解压
-    char *p=s;
-    int time=0;
-    while(*p){
-        if((*p)&lt;=&apos;9&apos;&amp;&amp;(*p)&gt;=&apos;0&apos;){//将字符串中的数字转化为int型。
-            time=time*10+(*p)-&apos;0&apos;;//
-        }else
-        {
-            if(time==0){//如果此处不给time赋值为1，且time==0，那么字母前面没有数字的就会被丢掉。
-                time=1;
-            }
-            for(int i=0;i&lt;time;i++){
-                printf(&quot;%c&quot;,*p);
-            }
-            time=0;//防止遇到数字为两位或更高位的。
-        }
-        p++;
-    }
-}
-int main()
-{
-    char ch;
-    scanf(&quot;%c&quot;,&amp;ch);
-    getchar();
-    char str[1001];
-    gets(str);
-    switch(ch){
-    case &apos;C&apos;:c(str);break;
-    case &apos;D&apos;:d(str);break;
-    default:break;
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -636,7 +577,7 @@ int main()
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/19/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/21/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/19/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/18/">18</a><a class="page-number" href="/page/19/">19</a><span class="page-number current">20</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><a class="extend next" rel="next" href="/page/21/">下一页</a>
   </nav>
   
 </section>

@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['诗酒趁年华 ——苏轼', '今日事，今日毕', '有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅'],
+        strings: ['休对故人思故国，且将新火试新茶。诗酒趁年华! ——苏轼', '今日事，今日毕', '有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅'],
         startDelay: 0,
         typeSpeed: 300,
         loop: true,
@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-LeetCode-3"
+  id="post-GIT移动文件导致任务管理器找不到服务"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,7 +130,71 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/20/LeetCode-3/"
+  <a class="article-title" href="/2019/12/11/GIT%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%9C%8D%E5%8A%A1/"
+    >GIT移动文件导致任务管理器找不到服务</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/12/11/GIT%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E5%AF%BC%E8%87%B4%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%99%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%9C%8D%E5%8A%A1/" class="article-date">
+  <time datetime="2019-12-11T09:45:54.000Z" itemprop="datePublished">2019-12-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Git/">Git</a> / <a class="article-category-link" href="/categories/Git/bugs/">bugs</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <blockquote>
+<p>移动GIT默认文件夹导致任务管理其找不到对应的服务。<br>1打开cmd,输入regedit</p>
+</blockquote>
+<blockquote>
+<p>2找到HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory<br>\background\shell\git_gui\command，修改它的路径为现在的<br>git-gui.exe程序所在的路径。</p>
+</blockquote>
+<blockquote>
+<p>3找到HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Directory\background\shell\git_shell\command修改路径为现在的git-<br>bash.exe所在的路径。</p>
+</blockquote>
+<blockquote>
+<p>完成</p>
+</blockquote>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/" rel="tag">bug</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-LeetCode-3/LeetCode-3"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/20/LeetCode-3/LeetCode-3/"
     >LeetCode-3
   <i class="article-topping">置顶</i>
 </a> 
@@ -140,11 +204,11 @@ var _hmt = _hmt || [];
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/20/LeetCode-3/" class="article-date">
+      <a href="/2019/10/20/LeetCode-3/LeetCode-3/" class="article-date">
   <time datetime="2019-10-20T01:30:52.000Z" itemprop="datePublished">2019-10-20</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode-%E5%9B%B0%E9%9A%BE/">LeetCode-困难</a> / <a class="article-category-link" href="/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode/%E5%9B%B0%E9%9A%BE/">困难</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
   </div>
    
     </div>
@@ -152,7 +216,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
        
   <h1 id="最长无重字符串"><a href="#最长无重字符串" class="headerlink" title="最长无重字符串"></a>最长无重字符串</h1> 
-      <a class="article-more-link" href="/2019/10/20/LeetCode-3/"
+      <a class="article-more-link" href="/2019/10/20/LeetCode-3/LeetCode-3/"
         >阅读更多...</a
       >
        
@@ -177,7 +241,7 @@ var _hmt = _hmt || [];
 
     
     <article
-  id="post-LeetCode-2"
+  id="post-LeetCode-2/LeetCode-2"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -188,7 +252,7 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/19/LeetCode-2/"
+  <a class="article-title" href="/2019/10/19/LeetCode-2/LeetCode-2/"
     >LeetCode-2</a> 
 </h2>
  
@@ -196,11 +260,11 @@ var _hmt = _hmt || [];
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/19/LeetCode-2/" class="article-date">
+      <a href="/2019/10/19/LeetCode-2/LeetCode-2/" class="article-date">
   <time datetime="2019-10-19T13:43:46.000Z" itemprop="datePublished">2019-10-19</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode-%E7%AE%80%E5%8D%95/">LeetCode-简单</a> / <a class="article-category-link" href="/categories/%E9%93%BE%E8%A1%A8/">链表</a>
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode/%E7%AE%80%E5%8D%95/">简单</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/">链表</a>
   </div>
    
     </div>
@@ -208,63 +272,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
        
   <h1 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a>两数相加</h1> 
-      <a class="article-more-link" href="/2019/10/19/LeetCode-2/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-LeetCode-1"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/19/LeetCode-1/"
-    >LeetCode-1</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/19/LeetCode-1/" class="article-date">
-  <time datetime="2019-10-19T13:43:00.000Z" itemprop="datePublished">2019-10-19</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode-%E4%B8%AD%E7%AD%89/">LeetCode-中等</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E7%BB%84/">数组</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h1> 
-      <a class="article-more-link" href="/2019/10/19/LeetCode-1/"
+      <a class="article-more-link" href="/2019/10/19/LeetCode-2/LeetCode-2/"
         >阅读更多...</a
       >
        
@@ -294,7 +302,7 @@ var _hmt = _hmt || [];
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/12/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="extend next" rel="next" href="/page/14/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/12/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><span class="page-number current">13</span><a class="page-number" href="/page/14/">14</a><a class="page-number" href="/page/15/">15</a><span class="space">&hellip;</span><a class="page-number" href="/page/45/">45</a><a class="extend next" rel="next" href="/page/14/">下一页</a>
   </nav>
   
 </section>
