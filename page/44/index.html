@@ -17,7 +17,7 @@
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
-  <link rel="shortcut icon" href="/images/ayer.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   
   
 <link rel="stylesheet" href="/dist/main.css">
@@ -36,16 +36,6 @@
   
 
   
-<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 
 <link rel="alternate" href="/atom.xml" title="Technology blog" type="application/atom+xml">
 </head>
@@ -54,18 +44,20 @@ var _hmt = _hmt || [];
 
 <body>
   <div id="app">
+    
+      
     <main class="content on">
       
 <section class="cover">
     
       
-      <a class="forkMe" href="https://github.com/Zhu-Ming/Zhu-Ming.github.io"
+      <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer"
         target="_blank"><img width="149" height="149" src="/images/forkme.png"
           class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover2.jpg" alt="image frame" />
+      <img src="/images/cover1.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">Technology blog</a></h1>
@@ -75,12 +67,6 @@ var _hmt = _hmt || [];
         
       </div>
       <div>
-        
-        <img
-          src="/images/ayer.png"
-          class="cover-logo"
-          alt="Technology blog"
-        />
         
       </div>
     </div>
@@ -94,6 +80,24 @@ var _hmt = _hmt || [];
 
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
 
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
 <div id="main">
   <section class="outer">
   <article class="articles">
@@ -101,9 +105,13 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1005" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
+    <article
+  id="post-PTA-Basic-1005"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -115,33 +123,20 @@ var _hmt = _hmt || [];
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/09/15/PTA-Basic-1005/" class="article-date">
   <time datetime="2019-09-15T09:14:58.000Z" itemprop="datePublished">2019-09-15</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>卡拉兹(Callatz)猜想已经在1001中给出了描述。在这个题目里，情况稍微有些复杂。</p>
+       
+  <p>卡拉兹(Callatz)猜想已经在1001中给出了描述。在这个题目里，情况稍微有些复杂。</p>
 <p>当我们验证卡拉兹猜想的时候，为了避免重复计算，可以记录下递推过程中遇到的每一个数。例如对 n=3 进行验证的时候，我们需要计算 3、5、8、4、2、1，则当我们对 n=5、8、4、2 进行验证的时候，就可以直接判定卡拉兹猜想的真伪，而不需要重复计算，因为这 4 个数已经在验证3的时候遇到过了，我们称 5、8、4、2 是被 3“覆盖”的数。我们称一个数列中的某个数 n 为“关键数”，如果 n 不能被数列中的其他数字所覆盖。</p>
 <p>现在给定一系列待验证的数字，我们只需要验证其中的几个关键数，就可以不必再重复验证余下的数字。你的任务就是找出这些关键数字，并按从大到小的顺序输出它们。</p>
 <p>输入格式：<br>    每个测试输入包含 1 个测试用例，第 1 行给出一个正整数 K (&lt;100)，第 2 行给出 K 个互不相同的待验证的正整数 n (1&lt;n≤100)的值，数字间用空格隔开。</p>
@@ -210,40 +205,34 @@ for(int i=0;i&lt;number;i++）{
     }
 }
 return 0;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
     
-    <article id="post-PTA-Basic-1004" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
+ 
+   
+</article>
 
+    
+    <article
+  id="post-PTA-Basic-1004"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -255,33 +244,20 @@ return 0;
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/09/15/PTA-Basic-1004/" class="article-date">
   <time datetime="2019-09-15T08:02:01.000Z" itemprop="datePublished">2019-09-15</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>读入 n（&gt;0）名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。</p>
+       
+  <p>读入 n（&gt;0）名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。</p>
 <p>输入格式：<br>每个测试输入包含 1 个测试用例，格式为</p>
 <p>第 1 行：正整数 n</p>
 <p>第 2 行：第 1 个学生的姓名 学号 成绩</p>
@@ -336,40 +312,34 @@ printf(&quot;%s %s\n&quot;,max.name,max.id);
 printf(&quot;%s %s&quot;,min.name,min.id);
 return 0;
 }
-``</code></pre>
-      
+``</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
     
-    <article id="post-PTA-Basic-1003" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
+ 
+   
+</article>
 
+    
+    <article
+  id="post-PTA-Basic-1003"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -381,33 +351,20 @@ return 0;
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/09/15/PTA-Basic-1003/" class="article-date">
   <time datetime="2019-09-15T07:35:57.000Z" itemprop="datePublished">2019-09-15</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>“答案正确”是自动判题系统给出的最令人欢喜的回复。本题属于 PAT 的“答案正确”大派送 —— 只要读入的字符串满足下列条件，系统就输出“答案正确”，否则输出“答案错误”。</p>
+       
+  <p>“答案正确”是自动判题系统给出的最令人欢喜的回复。本题属于 PAT 的“答案正确”大派送 —— 只要读入的字符串满足下列条件，系统就输出“答案正确”，否则输出“答案错误”。</p>
 <p>得到“答案正确”的条件是：</p>
 <p>字符串中必须仅有 P、 A、 T这三种字符，不可以包含其它字符；]<br>任意形如 xPATx 的字符串都可以获得“答案正确”，其中 x 或者是空字符串，或者是仅由字母 A 组成的字符串;</p>
 <p>如果 aPbTc 是正确的，那么 aPbATca 也是正确的，其中 a、 b、 c 均或者是空字符串，或者是仅由字母 A 组成</p>
@@ -493,36 +450,26 @@ for(int i=0;i&lt;number;i++){
 }
 return 0;
 
-} </code></pre>
-      
+} </code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
+    
+ 
+   
 </article>
+
     
   </article>
   
@@ -541,12 +488,18 @@ return 0;
     <ul>
       <li>
         Copyrights &copy;
-        2020
+        2015-2020
         <i class="ri-heart-fill heart_icon"></i> ZM
       </li>
     </ul>
     <ul>
       <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
         
       </li>
     </ul>
@@ -569,6 +522,8 @@ return 0;
       <li>
         <!-- cnzz统计 -->
         
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
       </li>
     </ul>
   </div>
@@ -589,7 +544,7 @@ return 0;
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="Technology blog"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Technology blog"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -608,6 +563,14 @@ return 0;
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
     </li>
     
     <li class="nav-item">
@@ -654,13 +617,13 @@ return 0;
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -671,23 +634,6 @@ return 0;
 
 
 <script src="/js/lazyload.min.js"></script>
-
-<!-- Subtitle -->
-
-<script>
-  try {
-    var typed = new Typed("#subtitle", {
-      strings: ['想要的都拥有 得不到的都释怀', '愿你一生努力 一生被爱', '用代码改变世界'],
-      startDelay: 0,
-      typeSpeed: 300,
-      loop: true,
-      backSpeed: 300,
-      showCursor: false
-    });
-  } catch (err) {
-    console.log(err)
-  }
-</script>
 
 <!-- Tocbot -->
 
@@ -810,15 +756,6 @@ return 0;
 
 <!-- Katex -->
 
-
-    
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
-        
-    
-
-
 <!-- busuanzi  -->
 
 
@@ -826,6 +763,10 @@ return 0;
 
 
 <!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 
@@ -887,6 +828,8 @@ return 0;
   }(window, document);
 </script>
 
+
+<!-- CanvasBackground -->
 
 
     

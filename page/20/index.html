@@ -17,7 +17,7 @@
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
-  <link rel="shortcut icon" href="/images/ayer.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   
   
 <link rel="stylesheet" href="/dist/main.css">
@@ -36,16 +36,6 @@
   
 
   
-<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 
 <link rel="alternate" href="/atom.xml" title="Technology blog" type="application/atom+xml">
 </head>
@@ -54,18 +44,20 @@ var _hmt = _hmt || [];
 
 <body>
   <div id="app">
+    
+      
     <main class="content on">
       
 <section class="cover">
     
       
-      <a class="forkMe" href="https://github.com/Zhu-Ming/Zhu-Ming.github.io"
+      <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer"
         target="_blank"><img width="149" height="149" src="/images/forkme.png"
           class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover2.jpg" alt="image frame" />
+      <img src="/images/cover1.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">Technology blog</a></h1>
@@ -75,12 +67,6 @@ var _hmt = _hmt || [];
         
       </div>
       <div>
-        
-        <img
-          src="/images/ayer.png"
-          class="cover-logo"
-          alt="Technology blog"
-        />
         
       </div>
     </div>
@@ -94,6 +80,24 @@ var _hmt = _hmt || [];
 
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
 
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
 <div id="main">
   <section class="outer">
   <article class="articles">
@@ -101,9 +105,13 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1080" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
+    <article
+  id="post-PTA-Basic-1080"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -115,33 +123,20 @@ var _hmt = _hmt || [];
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/10/11/PTA-Basic-1080/" class="article-date">
   <time datetime="2019-10-11T14:18:44.000Z" itemprop="datePublished">2019-10-11</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：<br>对于在中国大学MOOC（<a href="http://www.icourse163.org/">http://www.icourse163.org/</a> ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 G=(G<br>​mid−term<br>​​ ×40%+G<br>​final<br>​​ ×60%)，如果 G<br>​mid−term<br>​​ &gt;G<br>​final<br>​​ ；否则总评 G 就是 G<br>​final<br>​​ 。这里 G<br>​mid−term<br>​​  和 G<br>​final<br>​​  分别为学生的期中和期末成绩。</p>
+       
+  <p>题目：<br>对于在中国大学MOOC（<a href="http://www.icourse163.org/">http://www.icourse163.org/</a> ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 G=(G<br>​mid−term<br>​​ ×40%+G<br>​final<br>​​ ×60%)，如果 G<br>​mid−term<br>​​ &gt;G<br>​final<br>​​ ；否则总评 G 就是 G<br>​final<br>​​ 。这里 G<br>​mid−term<br>​​  和 G<br>​final<br>​​  分别为学生的期中和期末成绩。</p>
 <p>现在的问题是，每次考试都产生一张独立的成绩单。本题就请你编写程序，把不同的成绩单合为一张。</p>
 <p>输入格式：<br>输入在第一行给出3个整数，分别是 P（做了在线编程作业的学生数）、M（参加了期中考试的学生数）、N（参加了期末考试的学生数）。每个数都不超过10000。</p>
 <p>接下来有三块输入。第一块包含 P 个在线编程成绩 G<br>​p<br>​​ ；第二块包含 M 个期中考试成绩 G<br>​mid−term<br>​​ ；第三块包含 N 个期末考试成绩 G<br>​final<br>​​ 。每个成绩占一行，格式为：学生学号 分数。其中学生学号为不超过20个字符的英文字母和数字；分数是非负整数（编程总分最高为900分，期中和期末的最高分为100分）。</p>
@@ -331,40 +326,34 @@ int main(void){
         printf(&quot;%s %d %d %d %d\n&quot;,stus[i].name,stus[i].gp,stus[i].gm,stus[i].gt,stus[i].g);
     }
     return 0;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
     
-    <article id="post-PTA-Basic-1079" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
+ 
+   
+</article>
 
+    
+    <article
+  id="post-PTA-Basic-1079"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -376,33 +365,20 @@ int main(void){
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/10/11/PTA-Basic-1079/" class="article-date">
   <time datetime="2019-10-11T14:18:23.000Z" itemprop="datePublished">2019-10-11</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>给定一个 k+1 位的正整数 N，写成 a<br>​k<br>​​ ⋯a<br>​1<br>​​ a<br>​0<br>​​  的形式，其中对所有 i 有 0≤a<br>​i<br>​​ &lt;10 且 a<br>​k<br>​​ &gt;0。N 被称为一个回文数，当且仅当对所有 i 有 a<br>​i<br>​​ =a<br>​k−i<br>​​ 。零也被定义为一个回文数。</p>
+       
+  <p>给定一个 k+1 位的正整数 N，写成 a<br>​k<br>​​ ⋯a<br>​1<br>​​ a<br>​0<br>​​  的形式，其中对所有 i 有 0≤a<br>​i<br>​​ &lt;10 且 a<br>​k<br>​​ &gt;0。N 被称为一个回文数，当且仅当对所有 i 有 a<br>​i<br>​​ =a<br>​k−i<br>​​ 。零也被定义为一个回文数。</p>
 <p>非回文数也可以通过一系列操作变出回文数。首先将该数字逆转，再将逆转数与该数相加，如果和还不是一个回文数，就重复这个逆转再相加的操作，直到一个回文数出现。如果一个非回文数可以变出回文数，就称这个数为延迟的回文数。（定义翻译自 <a href="https://en.wikipedia.org/wiki/Palindromic_number">https://en.wikipedia.org/wiki/Palindromic_number</a> ）</p>
 <p>给定任意一个正整数，本题要求你找到其变出的那个回文数。</p>
 <p>输入格式：<br>输入在一行中给出一个不超过1000位的正整数。</p>
@@ -493,40 +469,34 @@ int main()
         printf(&quot;Not found in 10 iterations.&quot;);
     }
     return 0;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
     
-    <article id="post-PTA-Basic-1078" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
+ 
+   
+</article>
 
+    
+    <article
+  id="post-PTA-Basic-1078"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -538,33 +508,20 @@ int main()
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/10/11/PTA-Basic-1078/" class="article-date">
   <time datetime="2019-10-11T14:18:16.000Z" itemprop="datePublished">2019-10-11</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：<br>文本压缩有很多种方法，这里我们只考虑最简单的一种：把由相同字符组成的一个连续的片段用这个字符和片段中含有这个字符的个数来表示。例如 ccccc 就用 5c 来表示。如果字符没有重复，就原样输出。例如 aba 压缩后仍然是 aba。</p>
+       
+  <p>题目：<br>文本压缩有很多种方法，这里我们只考虑最简单的一种：把由相同字符组成的一个连续的片段用这个字符和片段中含有这个字符的个数来表示。例如 ccccc 就用 5c 来表示。如果字符没有重复，就原样输出。例如 aba 压缩后仍然是 aba。</p>
 <p>解压方法就是反过来，把形如 5c 这样的表示恢复为 ccccc。</p>
 <p>本题需要你根据压缩或解压的要求，对给定字符串进行处理。这里我们简单地假设原始字符串是完全由英文字母和空格组成的非空字符串。</p>
 <p>输入格式：<br>输入第一行给出一个字符，如果是 C 就表示下面的字符串需要被压缩；如果是 D 就表示下面的字符串需要被解压。第二行给出需要被压缩或解压的不超过 1000 个字符的字符串，以回车结尾。题目保证字符重复个数在整型范围内，且输出文件不超过 1MB。</p>
@@ -639,36 +596,26 @@ int main()
     default:break;
     }
     return 0;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
+    
+ 
+   
 </article>
+
     
   </article>
   
@@ -687,12 +634,18 @@ int main()
     <ul>
       <li>
         Copyrights &copy;
-        2020
+        2015-2020
         <i class="ri-heart-fill heart_icon"></i> ZM
       </li>
     </ul>
     <ul>
       <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
         
       </li>
     </ul>
@@ -715,6 +668,8 @@ int main()
       <li>
         <!-- cnzz统计 -->
         
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
       </li>
     </ul>
   </div>
@@ -735,7 +690,7 @@ int main()
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="Technology blog"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Technology blog"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -754,6 +709,14 @@ int main()
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
     </li>
     
     <li class="nav-item">
@@ -800,13 +763,13 @@ int main()
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -817,23 +780,6 @@ int main()
 
 
 <script src="/js/lazyload.min.js"></script>
-
-<!-- Subtitle -->
-
-<script>
-  try {
-    var typed = new Typed("#subtitle", {
-      strings: ['想要的都拥有 得不到的都释怀', '愿你一生努力 一生被爱', '用代码改变世界'],
-      startDelay: 0,
-      typeSpeed: 300,
-      loop: true,
-      backSpeed: 300,
-      showCursor: false
-    });
-  } catch (err) {
-    console.log(err)
-  }
-</script>
 
 <!-- Tocbot -->
 
@@ -956,15 +902,6 @@ int main()
 
 <!-- Katex -->
 
-
-    
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
-        
-    
-
-
 <!-- busuanzi  -->
 
 
@@ -972,6 +909,10 @@ int main()
 
 
 <!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 
@@ -1033,6 +974,8 @@ int main()
   }(window, document);
 </script>
 
+
+<!-- CanvasBackground -->
 
 
     

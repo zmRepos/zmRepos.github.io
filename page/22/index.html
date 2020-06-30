@@ -17,7 +17,7 @@
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
-  <link rel="shortcut icon" href="/images/ayer.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   
   
 <link rel="stylesheet" href="/dist/main.css">
@@ -36,16 +36,6 @@
   
 
   
-<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 
 <link rel="alternate" href="/atom.xml" title="Technology blog" type="application/atom+xml">
 </head>
@@ -54,18 +44,20 @@ var _hmt = _hmt || [];
 
 <body>
   <div id="app">
+    
+      
     <main class="content on">
       
 <section class="cover">
     
       
-      <a class="forkMe" href="https://github.com/Zhu-Ming/Zhu-Ming.github.io"
+      <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer"
         target="_blank"><img width="149" height="149" src="/images/forkme.png"
           class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover2.jpg" alt="image frame" />
+      <img src="/images/cover1.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">Technology blog</a></h1>
@@ -75,12 +67,6 @@ var _hmt = _hmt || [];
         
       </div>
       <div>
-        
-        <img
-          src="/images/ayer.png"
-          class="cover-logo"
-          alt="Technology blog"
-        />
         
       </div>
     </div>
@@ -94,6 +80,24 @@ var _hmt = _hmt || [];
 
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
 
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
 <div id="main">
   <section class="outer">
   <article class="articles">
@@ -101,9 +105,13 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1073" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
+    <article
+  id="post-PTA-Basic-1073"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -115,33 +123,20 @@ var _hmt = _hmt || [];
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/10/08/PTA-Basic-1073/" class="article-date">
   <time datetime="2019-10-08T13:48:49.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：<br>批改多选题是比较麻烦的事情，有很多不同的计分方法。有一种最常见的计分方法是：如果考生选择了部分正确选项，并且没有选择任何错误选项，则得到 50% 分数；如果考生选择了任何一个错误的选项，则不能得分。本题就请你写个程序帮助老师批改多选题，并且指出哪道题的哪个选项错的人最多。</p>
+       
+  <p>题目：<br>批改多选题是比较麻烦的事情，有很多不同的计分方法。有一种最常见的计分方法是：如果考生选择了部分正确选项，并且没有选择任何错误选项，则得到 50% 分数；如果考生选择了任何一个错误的选项，则不能得分。本题就请你写个程序帮助老师批改多选题，并且指出哪道题的哪个选项错的人最多。</p>
 <p>输入格式：<br>输入在第一行给出两个正整数 N（≤1000）和 M（≤100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
 <p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行，输出小数点后 1 位。最后输出错得最多的题目选项的信息，格式为：错误次数 题目编号（题目按照输入的顺序从1开始编号）-选项号。如果有并列，则每行一个选项，按题目编号递增顺序输出；再并列则按选项号递增顺序输出。行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
 <p>输入样例 1：</p>
@@ -249,40 +244,34 @@ int main()
         printf(&quot;Too simple&quot;);
     }
     return 0;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
     
-    <article id="post-PTA-Basic-1072" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
+ 
+   
+</article>
 
+    
+    <article
+  id="post-PTA-Basic-1072"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -294,33 +283,20 @@ int main()
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/10/08/PTA-Basic-1072/" class="article-date">
   <time datetime="2019-10-08T13:48:36.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：<br>下图是上海某校的新学期开学寄语：天将降大任于斯人也，必先删其微博，卸其 QQ，封其电脑，夺其手机，收其 ipad，断其 wifi，使其百无聊赖，然后，净面、理发、整衣，然后思过、读书、锻炼、明智、开悟、精进。而后必成大器也！</p>
+       
+  <p>题目：<br>下图是上海某校的新学期开学寄语：天将降大任于斯人也，必先删其微博，卸其 QQ，封其电脑，夺其手机，收其 ipad，断其 wifi，使其百无聊赖，然后，净面、理发、整衣，然后思过、读书、锻炼、明智、开悟、精进。而后必成大器也！</p>
 <p><img src="https://images.ptausercontent.com/3b1d9f4a-778b-4942-a9e2-836262f363aa.JPG" alt="嘿嘿嘿"></p>
 <p>本题要求你写个程序帮助这所学校的老师检查所有学生的物品，以助其成大器。</p>
 <p>输入格式：</p>
@@ -371,40 +347,34 @@ int main(void){
     }
     printf(&quot;%d %d&quot;,sum,fsum);
     return 0;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
     
-    <article id="post-PTA-Basic-1071" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
+ 
+   
+</article>
 
+    
+    <article
+  id="post-PTA-Basic-1071"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -416,33 +386,20 @@ int main(void){
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/10/08/PTA-Basic-1071/" class="article-date">
   <time datetime="2019-10-08T13:47:39.000Z" itemprop="datePublished">2019-10-08</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
+       
+  <p>题目：</p>
 <p>常言道“小赌怡情”。这是一个很简单的小游戏：首先由计算机给出第一个整数；然后玩家下注赌第二个整数将会比第一个数大还是小；玩家下注 t 个筹码后，计算机给出第二个数。若玩家猜对了，则系统奖励玩家 t 个筹码；否则扣除玩家 t 个筹码。</p>
 <p>注意：玩家下注的筹码数不能超过自己帐户上拥有的筹码数。当玩家输光了全部筹码后，游戏就结束。</p>
 <p>输入格式：<br>输入在第一行给出 2 个正整数 T 和 K（≤ 100），分别是系统在初始状态下赠送给玩家的筹码数、以及需要处理的游戏次数。随后 K 行，每行对应一次游戏，顺序给出 4 个数字：</p>
@@ -495,36 +452,26 @@ int main()
         }
     }
     return 0;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
+    
+ 
+   
 </article>
+
     
   </article>
   
@@ -543,12 +490,18 @@ int main()
     <ul>
       <li>
         Copyrights &copy;
-        2020
+        2015-2020
         <i class="ri-heart-fill heart_icon"></i> ZM
       </li>
     </ul>
     <ul>
       <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
         
       </li>
     </ul>
@@ -571,6 +524,8 @@ int main()
       <li>
         <!-- cnzz统计 -->
         
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
       </li>
     </ul>
   </div>
@@ -591,7 +546,7 @@ int main()
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="Technology blog"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Technology blog"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -610,6 +565,14 @@ int main()
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
     </li>
     
     <li class="nav-item">
@@ -656,13 +619,13 @@ int main()
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -673,23 +636,6 @@ int main()
 
 
 <script src="/js/lazyload.min.js"></script>
-
-<!-- Subtitle -->
-
-<script>
-  try {
-    var typed = new Typed("#subtitle", {
-      strings: ['想要的都拥有 得不到的都释怀', '愿你一生努力 一生被爱', '用代码改变世界'],
-      startDelay: 0,
-      typeSpeed: 300,
-      loop: true,
-      backSpeed: 300,
-      showCursor: false
-    });
-  } catch (err) {
-    console.log(err)
-  }
-</script>
 
 <!-- Tocbot -->
 
@@ -812,15 +758,6 @@ int main()
 
 <!-- Katex -->
 
-
-    
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
-        
-    
-
-
 <!-- busuanzi  -->
 
 
@@ -828,6 +765,10 @@ int main()
 
 
 <!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 
@@ -889,6 +830,8 @@ int main()
   }(window, document);
 </script>
 
+
+<!-- CanvasBackground -->
 
 
     

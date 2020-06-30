@@ -17,7 +17,7 @@
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
-  <link rel="shortcut icon" href="/images/ayer.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   
   
 <link rel="stylesheet" href="/dist/main.css">
@@ -36,16 +36,6 @@
   
 
   
-<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 
 <link rel="alternate" href="/atom.xml" title="Technology blog" type="application/atom+xml">
 </head>
@@ -54,11 +44,17 @@ var _hmt = _hmt || [];
 
 <body>
   <div id="app">
+    
+      
     <main class="content on">
       <section class="outer">
-  <article id="post-LeetCode-24" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
+  <article
+  id="post-LeetCode-24"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -69,20 +65,15 @@ var _hmt = _hmt || [];
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2020/05/19/LeetCode-24/" class="article-date">
   <time datetime="2020-05-19T07:10:58.000Z" itemprop="datePublished">2020-05-19</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode-%E4%B8%AD%E7%AD%89/">LeetCode-中等</a> / <a class="article-category-link" href="/categories/%E9%93%BE%E8%A1%A8/">链表</a>
   </div>
-
-      
-      
+  
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
@@ -101,28 +92,18 @@ var _hmt = _hmt || [];
         </span>
     </span>
 </div>
-
-      
+ 
     </div>
-    
-
-    
-    
+      
     <div class="tocbot"></div>
 
 
 
 
-
-    
-
-    
+  
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="两两交换链表中的节点"><a href="#两两交换链表中的节点" class="headerlink" title="两两交换链表中的节点"></a>两两交换链表中的节点</h1><a id="more"></a>
+       
+  <h1 id="两两交换链表中的节点"><a href="#两两交换链表中的节点" class="headerlink" title="两两交换链表中的节点"></a>两两交换链表中的节点</h1><a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
 <h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给定一个链表，两两交换其中相邻的节点，并返回交换后的链表。</p>
 <p>你不能只是单纯的改变节点内部的值，而是需要实际的进行节点交换。</p>
@@ -133,8 +114,7 @@ var _hmt = _hmt || [];
 <h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">        ListNode cur=head;</span><br><span class="line">        ListNode next=<span class="keyword">null</span>;</span><br><span class="line">        <span class="keyword">if</span>(cur!=<span class="keyword">null</span>)</span><br><span class="line">        	next=cur.next;</span><br><span class="line">        <span class="keyword">if</span>(cur!=<span class="keyword">null</span>&amp;&amp;next!=<span class="keyword">null</span>)</span><br><span class="line">        &#123;</span><br><span class="line">        	cur.next=next.next;</span><br><span class="line">        	next.next=cur;</span><br><span class="line">        	head=next;</span><br><span class="line">        	cur.next=swapPairs(cur.next);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> head;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3><h2 id="思路2-迭代"><a href="#思路2-迭代" class="headerlink" title="思路2-迭代"></a>思路2-迭代</h2><p>首先设置一个哑节点，然后在一个for循环里面不断的每次取两个节点进行交换，并修改哑节点的指向，这样每次修改三个节点，并执行循环。</p>
 <h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ListNode <span class="title">swapPairs</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Dummy node acts as the prevNode for the head node</span></span><br><span class="line">        <span class="comment">// of the list and hence stores pointer to the head node.</span></span><br><span class="line">        ListNode dummy = <span class="keyword">new</span> ListNode(-<span class="number">1</span>);</span><br><span class="line">        dummy.next = head;</span><br><span class="line"></span><br><span class="line">        ListNode prevNode = dummy;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> ((head != <span class="keyword">null</span>) &amp;&amp; (head.next != <span class="keyword">null</span>)) &#123;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Nodes to be swapped</span></span><br><span class="line">            ListNode firstNode = head;</span><br><span class="line">            ListNode secondNode = head.next;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Swapping</span></span><br><span class="line">            prevNode.next = secondNode;</span><br><span class="line">            firstNode.next = secondNode.next;</span><br><span class="line">            secondNode.next = firstNode;</span><br><span class="line"></span><br><span class="line">            <span class="comment">// Reinitializing the head and prevNode for next swap</span></span><br><span class="line">            prevNode = firstNode;</span><br><span class="line">            head = firstNode.next; <span class="comment">// jump</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Return the new head node.</span></span><br><span class="line">        <span class="keyword">return</span> dummy.next;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="时间复杂度：O-n-1"><a href="#时间复杂度：O-n-1" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3>
-      
+<h3 id="时间复杂度：O-n-1"><a href="#时间复杂度：O-n-1" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3> 
       <!-- reward -->
       
       <div id="reward-btn">
@@ -143,22 +123,21 @@ var _hmt = _hmt || [];
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
-        <div class="declare">
-          <ul class="post-copyright">
-            <li>
-              <i class="ri-copyright-line"></i>
-              <strong>版权声明： </strong>
-              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
-            </li>
-          </ul>
-        </div>
-        
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+        </li>
+      </ul>
+    </div>
+    
     <footer class="article-footer">
-      
-          
+       
 <div class="share-btn">
       <span class="share-sns share-outer">
         <i class="ri-share-forward-line"></i>
@@ -205,18 +184,13 @@ var _hmt = _hmt || [];
     </div>
 </div>
 
-<div id="share-mask"></div>
-      
-      
+<div id="share-mask"></div>  
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-  
+   
   <nav class="article-nav">
     
       <a href="/2020/05/20/LeetCode-25/" class="article-nav-link">
@@ -236,82 +210,76 @@ var _hmt = _hmt || [];
     
   </nav>
 
-
-  
-
-  
-  
+   
 <!-- valine评论 -->
 <div id="vcomments-box">
-    <div id="vcomments">
-    </div>
+  <div id="vcomments"></div>
 </div>
 <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
-<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
 <script>
-    new Valine({
-        el: '#vcomments',
-        app_id: '6tOO9UzCCPwrAQMrQwFdo1c9-gzGzoHsz',
-        app_key: '7gv1YABDJKYutSvQVAL82lud',
-        path: window.location.pathname,
-        notify: 'false',
-        verify: 'false',
-        avatar: 'robohash',
-        placeholder: '欢迎指点',
-        recordIP: true
+  new Valine({
+    el: "#vcomments",
+    app_id: "",
+    app_key: "",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "给我的文章加点评论吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
     });
-    const infoEle = document.querySelector('#vcomments .info');
-    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
-        infoEle.childNodes.forEach(function (item) {
-            item.parentNode.removeChild(item);
-        });
-    }
+  }
 </script>
 <style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
     #vcomments-box {
-        padding: 5px 30px;
+      padding: 5px 0px;
     }
+  }
 
-    @media screen and (max-width: 800px) {
-        #vcomments-box {
-            padding: 5px 0px;
-        }
-    }
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
 
-    #vcomments-box #vcomments {
-        background-color: #fff;
-    }
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
 
-    .v .vlist .vcard .vh {
-        padding-right: 20px;
-    }
-
-    .v .vlist .vcard {
-        padding-left: 10px;
-    }
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
 </style>
 
-  
-
-  
-  
-  
-  
-  
-
+ 
+     
 </article>
+
 </section>
       <footer class="footer">
   <div class="outer">
     <ul>
       <li>
         Copyrights &copy;
-        2020
+        2015-2020
         <i class="ri-heart-fill heart_icon"></i> ZM
       </li>
     </ul>
     <ul>
       <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
         
       </li>
     </ul>
@@ -334,6 +302,8 @@ var _hmt = _hmt || [];
       <li>
         <!-- cnzz统计 -->
         
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
       </li>
     </ul>
   </div>
@@ -354,7 +324,7 @@ var _hmt = _hmt || [];
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="Technology blog"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Technology blog"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -373,6 +343,14 @@ var _hmt = _hmt || [];
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
     </li>
     
     <li class="nav-item">
@@ -419,13 +397,13 @@ var _hmt = _hmt || [];
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -436,23 +414,6 @@ var _hmt = _hmt || [];
 
 
 <script src="/js/lazyload.min.js"></script>
-
-<!-- Subtitle -->
-
-<script>
-  try {
-    var typed = new Typed("#subtitle", {
-      strings: ['想要的都拥有 得不到的都释怀', '愿你一生努力 一生被爱', '用代码改变世界'],
-      startDelay: 0,
-      typeSpeed: 300,
-      loop: true,
-      backSpeed: 300,
-      showCursor: false
-    });
-  } catch (err) {
-    console.log(err)
-  }
-</script>
 
 <!-- Tocbot -->
 
@@ -592,15 +553,6 @@ var _hmt = _hmt || [];
 
 <!-- Katex -->
 
-
-    
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
-        
-    
-
-
 <!-- busuanzi  -->
 
 
@@ -608,6 +560,10 @@ var _hmt = _hmt || [];
 
 
 <!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 
@@ -669,6 +625,8 @@ var _hmt = _hmt || [];
   }(window, document);
 </script>
 
+
+<!-- CanvasBackground -->
 
 
     

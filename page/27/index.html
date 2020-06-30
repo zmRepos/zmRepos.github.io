@@ -17,7 +17,7 @@
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
-  <link rel="shortcut icon" href="/images/ayer.png" />
+  <link rel="shortcut icon" href="/favicon.ico" />
   
   
 <link rel="stylesheet" href="/dist/main.css">
@@ -36,16 +36,6 @@
   
 
   
-<script>
-var _hmt = _hmt || [];
-(function() {
-	var hm = document.createElement("script");
-	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
-	var s = document.getElementsByTagName("script")[0]; 
-	s.parentNode.insertBefore(hm, s);
-})();
-</script>
-
 
 <link rel="alternate" href="/atom.xml" title="Technology blog" type="application/atom+xml">
 </head>
@@ -54,18 +44,20 @@ var _hmt = _hmt || [];
 
 <body>
   <div id="app">
+    
+      
     <main class="content on">
       
 <section class="cover">
     
       
-      <a class="forkMe" href="https://github.com/Zhu-Ming/Zhu-Ming.github.io"
+      <a class="forkMe" href="https://github.com/Shen-Yu/hexo-theme-ayer"
         target="_blank"><img width="149" height="149" src="/images/forkme.png"
           class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
     
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/images/cover2.jpg" alt="image frame" />
+      <img src="/images/cover1.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/">Technology blog</a></h1>
@@ -75,12 +67,6 @@ var _hmt = _hmt || [];
         
       </div>
       <div>
-        
-        <img
-          src="/images/ayer.png"
-          class="cover-logo"
-          alt="Technology blog"
-        />
         
       </div>
     </div>
@@ -94,6 +80,24 @@ var _hmt = _hmt || [];
 
 <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
 
+
+<!-- Subtitle -->
+
+  <script>
+    try {
+      var typed = new Typed("#subtitle", {
+        strings: ['面朝大海，春暖花开', '愿你一生努力，一生被爱', '想要的都拥有，得不到的都释怀'],
+        startDelay: 0,
+        typeSpeed: 200,
+        loop: true,
+        backSpeed: 100,
+        showCursor: true
+      });
+    } catch (err) {
+      console.log(err)
+    }
+  </script>
+  
 <div id="main">
   <section class="outer">
   <article class="articles">
@@ -101,9 +105,13 @@ var _hmt = _hmt || [];
     
     
     
-    <article id="post-PTA-Basic-1058" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
+    <article
+  id="post-PTA-Basic-1058"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -115,33 +123,20 @@ var _hmt = _hmt || [];
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/10/07/PTA-Basic-1058/" class="article-date">
   <time datetime="2019-10-07T12:40:40.000Z" itemprop="datePublished">2019-10-07</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
+       
+  <p>题目：</p>
 <p>批改多选题是比较麻烦的事情，本题就请你写个程序帮助老师批改多选题，并且指出哪道题错的人最多。</p>
 <p>输入格式：<br>输入在第一行给出两个正整数 N（ ≤ 1000）和 M（≤ 100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
 <p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行。注意判题时只有选择全部正确才能得到该题的分数。最后一行输出错得最多的题目的错误次数和编号（题目按照输入的顺序从 1 开始编号）。如果有并列，则按编号递增顺序输出。数字间用空格分隔，行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
@@ -232,40 +227,34 @@ int main(void){
         printf(&quot;Too simple&quot;);
     }
     return 0;
-} </code></pre>
-      
+} </code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
     
-    <article id="post-PTA-Basic-1057" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
+ 
+   
+</article>
 
+    
+    <article
+  id="post-PTA-Basic-1057"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -277,33 +266,20 @@ int main(void){
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/09/29/PTA-Basic-1057/" class="article-date">
   <time datetime="2019-09-29T13:43:33.000Z" itemprop="datePublished">2019-09-29</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>给定一串长度不超过 10<br>​5<br>​​  的字符串，本题要求你将其中所有英文字母的序号（字母 a-z 对应序号 1-26，不分大小写）相加，得到整数 N，然后再分析一下 N 的二进制表示中有多少 0、多少 1。例如给定字符串 PAT (Basic)，其字母序号之和为：16+1+20+2+1+19+9+3=71，而 71 的二进制是 1000111，即有 3 个 0、4 个 1。</p>
+       
+  <p>给定一串长度不超过 10<br>​5<br>​​  的字符串，本题要求你将其中所有英文字母的序号（字母 a-z 对应序号 1-26，不分大小写）相加，得到整数 N，然后再分析一下 N 的二进制表示中有多少 0、多少 1。例如给定字符串 PAT (Basic)，其字母序号之和为：16+1+20+2+1+19+9+3=71，而 71 的二进制是 1000111，即有 3 个 0、4 个 1。</p>
 <p>输入格式：<br>输入在一行中给出长度不超过 10<br>​5<br>​​ 、以回车结束的字符串。</p>
 <p>输出格式：<br>在一行中先后输出 0 的个数和 1 的个数，其间以空格分隔。</p>
 <p>输入样例：</p>
@@ -332,40 +308,34 @@ int main()
     }
     printf(&quot;%d %d&quot;,a[0],a[1]);
     return 0;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
-</article>
     
-    <article id="post-PTA-Basic-1056" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
+ 
+   
+</article>
 
+    
+    <article
+  id="post-PTA-Basic-1056"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
   <div class="article-inner">
     
     <header class="article-header">
@@ -377,33 +347,20 @@ int main()
  
 
     </header>
-    
-
-    
+     
     <div class="article-meta">
       <a href="/2019/09/29/PTA-Basic-1056/" class="article-date">
   <time datetime="2019-09-29T13:43:18.000Z" itemprop="datePublished">2019-09-29</time>
-</a>
-      
+</a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
   </div>
-
-      
-      
-      
+   
     </div>
-    
-
-    
-
-    
+      
     <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>题目：</p>
+       
+  <p>题目：</p>
 <p>给定 N 个非 0 的个位数字，用其中任意 2 个数字都可以组合成 1 个 2 位的数字。要求所有可能组合出来的 2 位数字的和。例如给定 2、5、8，则可以组合出：25、28、52、58、82、85，它们的和为330。</p>
 <p>输入格式：<br>输入在一行中先给出 N（1 &lt; N &lt; 10），随后给出 N 个不同的非 0 个位数字。数字间以空格分隔。</p>
 <p>输出格式：<br>输出所有可能组合出来的2位数字的和。</p>
@@ -444,36 +401,26 @@ int add(int a[],int n){
         }
     }
     return sum;
-}</code></pre>
-      
+}</code></pre> 
       <!-- reward -->
       
     </div>
     
+
+    <!-- copyright -->
     
-      <!-- copyright -->
-      
     <footer class="article-footer">
-      
-      
+       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/c%E8%AF%AD%E8%A8%80/" rel="tag">c语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
-
     </footer>
-
   </div>
 
-  
-
-  
-  
-  
-
-  
-  
-  
-
+    
+ 
+   
 </article>
+
     
   </article>
   
@@ -492,12 +439,18 @@ int add(int a[],int n){
     <ul>
       <li>
         Copyrights &copy;
-        2020
+        2015-2020
         <i class="ri-heart-fill heart_icon"></i> ZM
       </li>
     </ul>
     <ul>
       <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
         
       </li>
     </ul>
@@ -520,6 +473,8 @@ int add(int a[],int n){
       <li>
         <!-- cnzz统计 -->
         
+        <script type="text/javascript" src='https://s9.cnzz.com/z_stat.php?id=1278069914&amp;web_id=1278069914'></script>
+        
       </li>
     </ul>
   </div>
@@ -540,7 +495,7 @@ int add(int a[],int n){
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/"><img src="/images/avatar.jpg" alt="Technology blog"></a>
+    <a href="/"><img src="/images/ayer-side.svg" alt="Technology blog"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -559,6 +514,14 @@ int add(int a[],int n){
     
     <li class="nav-item">
       <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags/%E6%97%85%E8%A1%8C/">旅行</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="http://shenyu-vip.lofter.com">摄影</a>
     </li>
     
     <li class="nav-item">
@@ -605,13 +568,13 @@ int add(int a[],int n){
   <div class="reward-box">
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/alipay.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/alipay.jpg">
       <span class="reward-type">支付宝</span>
     </div>
     
     
     <div class="reward-item">
-      <img class="reward-img" src="/images/wechat.jpg">
+      <img class="reward-img" src="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/img/wechat.jpg">
       <span class="reward-type">微信</span>
     </div>
     
@@ -622,23 +585,6 @@ int add(int a[],int n){
 
 
 <script src="/js/lazyload.min.js"></script>
-
-<!-- Subtitle -->
-
-<script>
-  try {
-    var typed = new Typed("#subtitle", {
-      strings: ['想要的都拥有 得不到的都释怀', '愿你一生努力 一生被爱', '用代码改变世界'],
-      startDelay: 0,
-      typeSpeed: 300,
-      loop: true,
-      backSpeed: 300,
-      showCursor: false
-    });
-  } catch (err) {
-    console.log(err)
-  }
-</script>
 
 <!-- Tocbot -->
 
@@ -761,15 +707,6 @@ int add(int a[],int n){
 
 <!-- Katex -->
 
-
-    
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.css">
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/katex.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/katex@0.11.1/dist/contrib/auto-render.min.js"></script>
-        
-    
-
-
 <!-- busuanzi  -->
 
 
@@ -777,6 +714,10 @@ int add(int a[],int n){
 
 
 <!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
 
 <!-- CodeCopy -->
 
@@ -838,6 +779,8 @@ int add(int a[],int n){
   }(window, document);
 </script>
 
+
+<!-- CanvasBackground -->
 
 
     
