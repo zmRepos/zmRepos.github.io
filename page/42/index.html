@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1012"
+  id="post-PTA-Basic-1015"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,16 +130,16 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1012/"
-    >PTA-Basic-1012</a> 
+  <a class="article-title" href="/2019/09/18/PTA-Basic-1015/"
+    >PTA-Basic-1015</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1012/" class="article-date">
-  <time datetime="2019-09-17T15:05:09.000Z" itemprop="datePublished">2019-09-17</time>
+      <a href="/2019/09/18/PTA-Basic-1015/" class="article-date">
+  <time datetime="2019-09-18T14:07:50.000Z" itemprop="datePublished">2019-09-18</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -149,87 +149,131 @@ var _hmt = _hmt || [];
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>给定一系列正整数，请按要求对数字进行分类，并输出以下 5 个数字：</p>
-<p>A<br>​1<br>​​  = 能被 5 整除的数字中所有偶数的和；<br>A<br>​2<br>​​  = 将被 5 除后余 1 的数字按给出顺序进行交错求和，即计算 n<br>​1<br>​​ −n<br>​2<br>​​ +n<br>​3<br>​​ −n<br>​4<br>​​ ⋯；<br>A<br>​3<br>​​  = 被 5 除后余 2 的数字的个数；<br>A<br>​4<br>​​  = 被 5 除后余 3 的数字的平均数，精确到小数点后 1 位；<br>A<br>​5<br>​​  = 被 5 除后余 4 的数字中最大数字。<br>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例先给出一个不超过 1000 的正整数 N，随后给出 N 个不超过 1000 的待分类的正整数。数字间以空格分隔。</p>
-<p>输出格式：<br>对给定的 N 个正整数，按题目要求计算 A<br>​1<br>​​ ~A<br>​5<br>​​  并在一行中顺序输出。数字间以空格分隔，但行末不得有多余空格。</p>
-<p>若其中某一类数字不存在，则在相应位置输出 N。</p>
-<p>输入样例 1：</p>
-<p>13 1 2 3 4 5 6 7 8 9 10 20 16 18</p>
-<p>输出样例 1：</p>
-<p>30 11 2 9.7 9</p>
-<p>输入样例 2：</p>
-<p>8 1 2 4 5 6 7 9 16</p>
-<p>输出样例 2：</p>
-<p>N 11 2 N 9</p>
-<p>分析：<br>输入：一个代表个数的数字，后面跟着相应个数的数字。<br>输出：</p>
-<p>1number%2==0&amp;&amp;number%5==0的数字的和</p>
-<p>2number%5==1的差项和a1-a2+a3-a4…</p>
-<p>3number%5==2的个数</p>
-<p>4number%5==3的数字的平均数，保留一位小数。</p>
-<p>5number%5==4的所有数字中的最大数。</p>
-<p>以上所有输出如果不存在时，输出‘N’;</p>
-<p>思路：</p>
-<p>1输入时就处理数字，对每个数字判断，存放在二维数组，第一行存储个数，第二行存储结果。</p>
-<p>2输出时一定要注意，当输出平均数时，要注意到我们使用的时整型数组，因此就要进行相应的处理。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-static int result[2][5];
-int num=0;
-scanf(&quot;%d&quot;,&amp;nu2m);
-int number;
-int i=0;
-int flag=1;
-while(i&lt;num){
-    scanf(&quot;%d&quot;,&amp;number);
-    if(number%2==0&amp;&amp;number%5==0){
-        result[0][0]++;
-        result[1][0]=result[1][0]+number;
-    }
-    if(number%5==1){
-        result[0][1]++;
-        result[1][1]=result[1][1]+flag*number;
-        flag=-flag;
-    }
-    if(number%5==2){
-        result[0][2]++;
-        result[1][2]++;
-    }
-    if(number%5==3){
-        result[0][3]++;
-        result[1][3]=result[1][3]+number;
-    }
-    if(number%5==4){
-        result[0][4]++;
-        result[1][4]=result[1][4]&gt;=number?result[1][4]:number;
-    }
-    i++;
-}
+  <p>##1015 德才论</p>
+<p>宋代史学家司马光在《资治通鉴》中有一段著名的“德才论”：“是故才德全尽谓之圣人，才德兼亡谓之愚人，德胜才谓之君子，才胜德谓之小人。凡取人之术，苟不得圣人，君子而与之，与其得小人，不若得愚人。”</p>
+<p>现给出一批考生的德才分数，请根据司马光的理论给出录取排名。</p>
+<p>输入格式：<br>输入第一行给出 3 个正整数，分别为：N（≤10<br>​5<br>​​ ），即考生总数；L（≥60），为录取最低分数线，即德分和才分均不低于 L 的考生才有资格被考虑录取；H（&lt;100），为优先录取线——德分和才分均不低于此线的被定义为“才德全尽”，此类考生按德才总分从高到低排序；才分不到但德分到线的一类考生属于“德胜才”，也按总分排序，但排在第一类考生之后；德才分均低于 H，但是德分不低于才分的考生属于“才德兼亡”但尚有“德胜才”者，按总分排序，但排在第二类考生之后；其他达到最低线 L 的考生也按总分排序，但排在第三类考生之后。</p>
+<p>随后 N 行，每行给出一位考生的信息，包括：准考证号 德分 才分，其中准考证号为 8 位整数，德才分为区间 [0, 100] 内的整数。数字间以空格分隔。</p>
+<p>输出格式：<br>输出第一行首先给出达到最低分数线的考生人数 M，随后 M 行，每行按照输入格式输出一位考生的信息，考生按输入中说明的规则从高到低排序。当某类考生中有多人总分相同时，按其德分降序排列；若德分也并列，则按准考证号的升序输出。</p>
+<p>输入样例：</p>
+<pre><code>14 60 80
+10000001 64 90
+10000002 90 60
+10000011 85 80
+10000003 85 80
+10000004 80 85
+10000005 82 77
+10000006 83 76
+10000007 90 78
+10000008 75 79
+10000009 59 90
+10000010 88 45
+10000012 80 100
+10000013 90 99
+10000014 66 60</code></pre><p>输出样例：<br>    12<br>    10000013 90 99<br>    10000012 80 100<br>    10000003 85 80<br>    10000011 85 80<br>    10000004 80 85<br>    10000007 90 78<br>    10000006 83 76<br>    10000005 82 77<br>    10000002 90 60<br>    10000014 66 60<br>    10000008 75 79<br>    10000001 64 90</p>
+<p>分析：</p>
+<pre><code>输入：
+第一行：学生数 最低分 优秀线
+第二行：学生id 学生道德分 学生专业分。
+.....
 
-for(i=0;i&lt;4;i++){
-    if(i==3){
-        if(result[0][i]==0){
-            printf(&quot;N &quot;);
+处理:
+定义一个学生结构包括id score1 score2 sum(分数和)
+在输入时进行分析符合条件的就存储到相应等级的学生数组。
+
+对每个等级的学生数组进行快排。
+
+输出：
+遍历每个等级数组并输出。</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+typedef struct student{
+    int id;
+    int score_psy;
+    int score_pro;
+    int sum;
+}student;
+int compare(const void *a,const void *b){
+    student stu1=*((student *)a);
+    student stu2=*((student *)b);
+    if(stu1.sum&gt;stu2.sum){
+        return -1;
+    }
+    if(stu1.sum&lt;stu2.sum){
+        return 1;
+    }else{
+        if(stu1.score_psy&gt;stu2.score_psy){
+            return -1;
+        }else if(stu1.score_psy&lt;stu2.score_psy){
+            return 1;
         }else{
-            printf(&quot;%.1f &quot;,result[1][i]*1.0/result[0][i]);
+            if(stu1.id&gt;stu2.id){
+                return 1;
+            }
+            return -1;
         }
-        continue;
-    }
-    if(result[0][i]==0){
-        printf(&quot;N &quot;);
-    }
-    else{
-        printf(&quot;%d &quot;,result[1][i]);
     }
 }
-if(result[0][i]==0){
-        printf(&quot;N&quot;);
+int main(void){
+    int id;
+    int score_pro;
+    int score_psy;
+    int num,s1,s2;
+    scanf(&quot;%d %d %d&quot;,&amp;num,&amp;s1,&amp;s2);
+    struct student students1[num],students2[num],students3[num],students4[num];
+    int n1=0,n2=0,n3=0,n4=0;
+    int i=0;
+    while(num--){
+        scanf(&quot;%d %d %d&quot;,&amp;id,&amp;score_psy,&amp;score_pro);
+        if(score_pro&gt;=s1&amp;&amp;score_psy&gt;=s1){
+            i++;
+            if(score_psy&gt;=s2&amp;&amp;score_pro&gt;=s2){
+            students1[n1].id=id;
+            students1[n1].score_pro=score_pro;
+            students1[n1].score_psy=score_psy;
+            students1[n1].sum=score_pro+score_psy;
+            n1++;
+            }else if(score_pro &lt; s2 &amp;&amp; score_psy &gt;= s2){
+            students2[n2].id=id;
+            students2[n2].score_pro=score_pro;
+            students2[n2].score_psy=score_psy;
+            students2[n2].sum=score_pro+score_psy;
+            n2++;
+            }else if(score_pro &lt; s2 &amp;&amp; score_psy &lt; s2 &amp;&amp;score_psy&gt;=score_pro){
+            students3[n3].id=id;
+            students3[n3].score_pro=score_pro;
+            students3[n3].score_psy=score_psy;
+            students3[n3].sum=score_pro+score_psy;
+            n3++;
+            }else{
+            students4[n4].id=id;
+            students4[n4].score_pro=score_pro;
+            students4[n4].score_psy=score_psy;
+            students4[n4].sum=score_pro+score_psy;
+            n4++; 
+            }
+        }
     }
-    else{
-        printf(&quot;%d&quot;,result[1][i]);
+    printf(&quot;%d\n&quot;,i);
+    qsort(students1,n1,sizeof(student),compare);
+    qsort(students2,n2,sizeof(student),compare);
+    qsort(students3,n3,sizeof(student),compare);
+    qsort(students4,n4,sizeof(student),compare);
+    for(int j=0;j&lt;n1;j++){
+        printf(&quot;%d %d %d\n&quot;,students1[j].id,students1[j].score_psy,students1[j].score_pro);
     }
-return 0; 
-}</code></pre> 
+    for(int j=0;j&lt;n2;j++){
+        printf(&quot;%d %d %d\n&quot;,students2[j].id,students2[j].score_psy,students2[j].score_pro);
+    }
+    for(int j=0;j&lt;n3;j++){
+        printf(&quot;%d %d %d\n&quot;,students3[j].id,students3[j].score_psy,students3[j].score_pro);
+    }
+    for(int j=0;j&lt;n4;j++){
+        printf(&quot;%d %d %d\n&quot;,students4[j].id,students4[j].score_psy,students4[j].score_pro);
+    }
+    return 0;
+}</code></pre><p>####注意：排序条件：先按总分降序，如果总分相同，就按道德分数降序，如果还相等就按学号升序排。</p>
+ 
       <!-- reward -->
       
     </div>
@@ -251,7 +295,7 @@ return 0;
 
     
     <article
-  id="post-PTA-Basic-1011"
+  id="post-PTA-Basic-1014"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -262,16 +306,16 @@ return 0;
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1011/"
-    >PTA-Basic-1011</a> 
+  <a class="article-title" href="/2019/09/18/PTA-Basic-1014/"
+    >PTA-Basic-1014</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1011/" class="article-date">
-  <time datetime="2019-09-17T13:46:10.000Z" itemprop="datePublished">2019-09-17</time>
+      <a href="/2019/09/18/PTA-Basic-1014/" class="article-date">
+  <time datetime="2019-09-18T14:07:27.000Z" itemprop="datePublished">2019-09-18</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -281,44 +325,66 @@ return 0;
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>给定区间 [−2^31,2^31] 内的 3 个整数 A、B 和 C，请判断 A+B 是否大于 C。</p>
+  <p>大侦探福尔摩斯接到一张奇怪的字条：我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间星期四 14:04，因为前面两字符串中第 1 对相同的大写英文字母（大小写有区分）是第 4 个字母 D，代表星期四；第 2 对相同的字符是 E ，那是第 5 个英文字母，代表一天里的第 14 个钟头（于是一天的 0 点到 23 点由数字 0 到 9、以及大写字母 A 到 N 表示）；后面两字符串第 1 对相同的英文字母 s 出现在第 4 个位置（从 0 开始计数）上，代表第 4 分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
 <p>输入格式：</p>
-<p>输入第 1 行给出正整数 T (≤10)，是测试用例的个数。随后给出 T 组测试用例，每组占一行，顺序给出 A、B 和 C。整数间以空格分隔。</p>
+<p>输入在 4 行中分别给出 4 个非空、不包含空格、且长度不超过 60 的字符串。</p>
 <p>输出格式：</p>
-<p>对每组测试用例，在一行中输出 Case #X: true 如果 A+B&gt;C，否则输出 Case #X: false，其中 X 是测试用例的编号（从 1 开始）。</p>
+<p>在一行中输出约会的时间，格式为 DAY HH:MM，其中 DAY 是某星期的 3 字符缩写，即 MON 表示星期一，TUE 表示星期二，WED 表示星期三，THU 表示星期四，FRI 表示星期五，SAT 表示星期六，SUN 表示星期日。题目输入保证每个测试存在唯一解。</p>
 <p>输入样例：</p>
-<p>4</p>
-<p>1 2 3</p>
-<p>2 3 4</p>
-<p>2147483647 0 2147483646</p>
-<p>0 -2147483648 -2147483647</p>
+<p>3485djDkxh4hhGE </p>
+<p>2984akDfkkkkggEdsb </p>
+<p>s&amp;hgsfdk </p>
+<p>d&amp;Hyscvnm</p>
 <p>输出样例：</p>
-<p>Case #1: false</p>
-<p>Case #2: true</p>
-<p>Case #3: true</p>
-<p>Case #4: false</p>
+<p>THU 14:04</p>
 <p>分析：</p>
-<p>输入：个数，每一行一一组数据。<br>输出：判定结果。</p>
-<p>难点：<br>数字的长度过大，使用long long 类型，long long对应的长度为（-2^63,2^63 -1）足够存储数据，与加后的数据了;</p>
-<p>对定义后的字符数组赋值时，必须使用strcpy（）函数</p>
-<p>思路：输入一组比较一组，结果存放在字符数组中。</p>
+<p>输入：四个字符串，一行一个。</p>
+<p>处理：首先找出前面两个字符串中的第一个相应位置上相等的大写字母，并记录字母；以第一个大写字母相同的为第一个相等的字符，找出第二对相等的且为（0-9或A-N）中的字符，并记录。<br>在找出后两个字符串中对应位置上相等字符的下标，并记录。</p>
+<p>输出：见题目（注意：小时&lt;10时要补0，分钟小于&lt;10要补0）；</p>
+<p>思路：</p>
+<p>定义四个字符数组，存储数据。<br>遍历前两字符串，找出第一个字符（大写字母），第二个字符（0-9或A-N）；<br>遍历后面两个字符串，找到第一个对应位置上相等的字符下标。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
 int main(void){
-    int n;
-    scanf(&quot;%d&quot;,&amp;n);
-    long long number1,number2,number3;
-    char result[n][8];
+    char str[4][800];
     int i=0;
-    while(i&lt;n){
-        scanf(&quot;%ld %ld %ld&quot;,&amp;number1,&amp;number2,&amp;number3);
-        strcpy(result[i],(number1+number2&gt;number3)?&quot;true&quot;:&quot;false&quot;);
-        i++;
+    while(i&lt;4){
+    scanf(&quot;%s&quot;,str[i++]);
+    getchar();
     }
-    for(i=0;i&lt;n;i++){
-        printf(&quot;Case #%d: %s\n&quot;,i+1,result[i]);
+    char* res;
+    int flag=1;
+    int h=0;
+    for(i=0;i&lt;strlen(str[1])&amp;&amp;i&lt;strlen(str[0]);i++){
+    if(!flag&amp;&amp;((str[0][i]&gt;=&apos;A&apos;&amp;&amp;str[0][i]&lt;=&apos;N&apos;)||(str[0][i]&gt;=&apos;0&apos;&amp;&amp;str[0][i]&lt;=&apos;9&apos;))&amp;&amp;str[0][i]==str[1][i]){
+            switch(str[0][i]){
+                case &apos;0&apos;:case &apos;1&apos;:case &apos;2&apos;:case &apos;3&apos;:
+                case &apos;4&apos;:case &apos;5&apos;:case &apos;6&apos;:case &apos;7&apos;:
+                case &apos;8&apos;:case &apos;9&apos;:h=str[0][i]-&apos;0&apos;;break;
+                default:h=str[0][i]-&apos;A&apos;+10;break;
+            }
+            break;
+        }
+        if(flag&amp;&amp;str[0][i]&gt;=&apos;A&apos;&amp;&amp;str[0][i]&lt;=&apos;G&apos;&amp;&amp;str[0][i]==str[1][i]){
+            flag=0;
+            switch(str[0][i]){
+                case &apos;A&apos;:res=&quot;MON&quot;;break;
+                case &apos;B&apos;:res=&quot;TUE&quot;;break;
+                case &apos;C&apos;:res=&quot;WED&quot;;break;
+                case &apos;D&apos;:res=&quot;THU&quot;;break;
+                case &apos;E&apos;:res=&quot;FRI&quot;;break;
+                case &apos;F&apos;:res=&quot;SAT&quot;;break;
+                case &apos;G&apos;:res=&quot;SUN&quot;;break;
+            }
+        }
     }
+    for(i=0;i&lt;strlen(str[2])&amp;&amp;i&lt;strlen(str[3]);i++){
+        if(((str[2][i]&lt;=&apos;z&apos;&amp;&amp;str[2][i]&gt;=&apos;a&apos;)||(str[2][i]&lt;=&apos;Z&apos;&amp;&amp;str[2][i]&gt;=&apos;A&apos;))&amp;&amp;str[2][i]==str[3][i]){
+            break;
+        }
+    }
+    printf(&quot;%s %02d:%02d&quot;,res,h,i);
     return 0;
 }</code></pre> 
       <!-- reward -->
@@ -342,7 +408,7 @@ int main(void){
 
     
     <article
-  id="post-PTA-Basic-1010"
+  id="post-PTA-Basic-1013"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -353,16 +419,16 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1010/"
-    >PTA-Basic-1010</a> 
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1013/"
+    >PTA-Basic-1013</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1010/" class="article-date">
-  <time datetime="2019-09-17T12:46:30.000Z" itemprop="datePublished">2019-09-17</time>
+      <a href="/2019/09/17/PTA-Basic-1013/" class="article-date">
+  <time datetime="2019-09-17T15:05:34.000Z" itemprop="datePublished">2019-09-17</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -372,46 +438,60 @@ int main(void){
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>设计函数求一元多项式的导数。（注：x<br>​n<br>​​ （n为整数）的一阶导数为nx<br>​n−1<br>​​ 。）</p>
-<p>输入格式:<br>以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过 1000 的整数）。数字间以空格分隔。</p>
-<p>输出格式:<br>以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。注意“零多项式”的指数和系数都是 0，但是表示为 0 0。</p>
-<p>输入样例:</p>
-<pre><code>3 4 -5 2 6 1 -2 0</code></pre><p>输出样例:</p>
-<pre><code>12 3 -10 1 6 0</code></pre><p>分析：</p>
-<p>一元多项式条件：系数不为0，指数为大于-1的整数即（指数&gt;=0）;</p>
-<p>输入：先输入一个系数再输入一个指数，依此重复，指数递减。</p>
-<p>输出：格式见题目，输出求一次导后的的多项式对应的系数与指数。</p>
-<p>（注意： “零多项式”，最高项指数为0，但是表示为 0 0，除此以外，只要指数不为0，系数为不为无所谓，也要输出。百度解释0多项式就是0）</p>
-<p>因为系数一定不为0，所以如果结果中有“零多项式”，那么一定是输入时的指数为0.一旦指数为0，后面就不会再有输入了。</p>
+  <p>令 P<br>​<br>​​  表示第 i 个素数。现任给两个正整数 M≤N≤10<br>​4<br>​​ ，请输出 P<br>​M<br>​​  到 P<br>​N<br>​​  的所有素数。</p>
+<p>输入格式：<br>输入在一行中给出 M 和 N，其间以空格分隔。</p>
+<p>输出格式：<br>输出从 P<br>​M<br>​​  到 P<br>​N<br>​​  的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>5 27</code></pre><p>输出样例：</p>
+<pre><code>11 13 17 19 23 29 31 37 41 43
+47 53 59 61 67 71 73 79 83 89
+97 101 103</code></pre><p>分析：</p>
+<p>输入：整型数字n,m;<br>输出：从第n个素数（包含在内）到第m个素数之间的所有素数.十个换一行。</p>
 <p>思路：</p>
-<p>1读取一对数字再读一个字符。</p>
-<p>2如果指数为0就可以判断后面没有输入了。</p>
-<p>3不为0就输出对应求导后的数值，并标记一下此多项式不是“0多项式”。</p>
-<p>4如果不是0多项式，就不用输出“0 0”了，如果那么前面一定没有输出，那么就要输出此。</p>
+<p>1写一个判定素数的函数。<br>2for循环从2开始数每当是素数计算素数的变量num就加一，当变量大于等于n时开始输出，大于m时停止输出。<br>3变量num-n+1就是从n开始第几个素数，每当此数字为十的倍数时，就换行。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+int isPrime(int n){
+if(n==1)
+return 0;
+if(n==2)
+return 1;
+if(n%2==0){
+    return 0;
+}
+for(int i=3;i&lt;sqrt(n+1);i+=2){
+    if(n%i==0){
+        return 0;
+    }
+}
+return 1;
+}
 int main(void){
 int n,m;
-int flag=0;
-char ch;
-while(1){
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    ch=getchar();
-    if(m!=0){
-        if(flag)//此处用于判断是否为第一个输出，是就不用输出空格。
-            printf(&quot; &quot;);
-        printf(&quot;%d %d&quot;,n*m,m-1);
-        flag=1;
-    }
-    if(ch==&apos;\n&apos;){
-        break;
+scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+int num=0;
+for(int i=2;i&lt;=1000000;i++){
+    if(isPrime(i)){
+        num++;
+        if(num&gt;m){
+            break;
+        }
+        if(num&gt;=n){
+            if((num-n+1)%10==0){
+            printf(&quot;%d\n&quot;,i);
+            continue;
+        }
+        if(num!=m) 
+            printf(&quot;%d &quot;,i);
+        else
+            printf(&quot;%d&quot;,i);
+        } 
     }
 }
-if(!flag){
-    printf(&quot;0 0&quot;);
-}
- return 0;
-}</code></pre> 
+return 0;
+}</code></pre><p>###注意：此算法还可以在进一步优化，这里就不加赘述了。</p>
+ 
       <!-- reward -->
       
     </div>
@@ -438,7 +518,7 @@ if(!flag){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/41/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/41/">41</a><span class="page-number current">42</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/45/">45</a><a class="extend next" rel="next" href="/page/43/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/41/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/40/">40</a><a class="page-number" href="/page/41/">41</a><span class="page-number current">42</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><a class="extend next" rel="next" href="/page/43/">下一页</a>
   </nav>
   
 </section>

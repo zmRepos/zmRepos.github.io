@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-06-30T15:19:42.115Z</updated>
+  <updated>2020-07-02T14:15:23.263Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -17,11 +17,92 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>LeetCode-40</title>
+    <link href="http://zm163.github.io/2020/07/02/LeetCode-40/"/>
+    <id>http://zm163.github.io/2020/07/02/LeetCode-40/</id>
+    <published>2020-07-02T13:02:33.000Z</published>
+    <updated>2020-07-02T14:15:23.263Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/2020/07/02/LeetCode-40/1.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-39</title>
+    <link href="http://zm163.github.io/2020/07/02/LeetCode-39/"/>
+    <id>http://zm163.github.io/2020/07/02/LeetCode-39/</id>
+    <published>2020-07-02T13:02:28.000Z</published>
+    <updated>2020-07-02T14:14:24.033Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;&lt;img src=&quot;/2020/07/02/LeetCode-39/1.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>回溯算法解析</title>
+    <link href="http://zm163.github.io/2020/07/02/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/"/>
+    <id>http://zm163.github.io/2020/07/02/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/</id>
+    <published>2020-07-02T13:01:35.000Z</published>
+    <updated>2020-07-02T14:16:50.196Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;#什么是回溯算法？&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;回溯算法实际上是一种类似与枚举的搜索尝试过程，主要是在搜索尝试的过程寻找问题的&lt;br&gt;解，如果已经发现某个搜索尝试分支不可能得出正确的答案就回溯（返回），尝试别的&lt;br&gt;路径进行搜索。本质上是一种&lt;strong&gt;选
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="回溯算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>ThreadLocal使用不当导致的执行器关闭异常问题</title>
     <link href="http://zm163.github.io/2020/06/30/ThreadLocal%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%BD%93%E5%AF%BC%E8%87%B4%E7%9A%84%E6%89%A7%E8%A1%8C%E5%99%A8%E5%85%B3%E9%97%AD%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/"/>
     <id>http://zm163.github.io/2020/06/30/ThreadLocal%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%BD%93%E5%AF%BC%E8%87%B4%E7%9A%84%E6%89%A7%E8%A1%8C%E5%99%A8%E5%85%B3%E9%97%AD%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</id>
     <published>2020-06-30T12:10:07.000Z</published>
-    <updated>2020-06-30T15:19:42.115Z</updated>
+    <updated>2020-06-30T15:28:23.591Z</updated>
     
     <summary type="html">
     
@@ -40,6 +121,8 @@
     
       <category term="bug" scheme="http://zm163.github.io/tags/bug/"/>
     
+      <category term="MyBatis" scheme="http://zm163.github.io/tags/MyBatis/"/>
+    
   </entry>
   
   <entry>
@@ -56,13 +139,13 @@
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
-    
       <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="回溯算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
     
       <category term="哈希表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
     
@@ -87,11 +170,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="简单" scheme="http://zm163.github.io/categories/LeetCode/%E7%AE%80%E5%8D%95/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
@@ -116,11 +199,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="简单" scheme="http://zm163.github.io/categories/LeetCode/%E7%AE%80%E5%8D%95/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
     
@@ -147,11 +230,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
     
@@ -178,11 +261,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
@@ -209,11 +292,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
     
@@ -240,11 +323,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
     
@@ -269,11 +352,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="简单" scheme="http://zm163.github.io/categories/LeetCode/%E7%AE%80%E5%8D%95/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
@@ -298,11 +381,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数学公式" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/"/>
     
@@ -327,11 +410,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
@@ -360,11 +443,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
     
@@ -391,11 +474,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
     
@@ -422,11 +505,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="链表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/"/>
     
@@ -451,11 +534,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="链表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/"/>
     
@@ -480,11 +563,11 @@
     </summary>
     
     
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="链表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/"/>
     
@@ -513,106 +596,15 @@
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
       <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
       <category term="回溯算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
     
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-21</title>
-    <link href="http://zm163.github.io/2020/05/18/LeetCode-21/LeetCode-21/"/>
-    <id>http://zm163.github.io/2020/05/18/LeetCode-21/LeetCode-21/</id>
-    <published>2020-05-18T02:33:51.000Z</published>
-    <updated>2020-06-30T15:06:48.248Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;合并两个有序链表&quot;&gt;&lt;a href=&quot;#合并两个有序链表&quot; class=&quot;headerlink&quot; title=&quot;合并两个有序链表&quot;&gt;&lt;/a&gt;合并两个有序链表&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="简单" scheme="http://zm163.github.io/categories/LeetCode/%E7%AE%80%E5%8D%95/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="链表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-20</title>
-    <link href="http://zm163.github.io/2020/05/18/LeetCode-20/LeetCode-20/"/>
-    <id>http://zm163.github.io/2020/05/18/LeetCode-20/LeetCode-20/</id>
-    <published>2020-05-18T02:33:44.000Z</published>
-    <updated>2020-06-30T15:06:23.074Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;有效的括号&quot;&gt;&lt;a href=&quot;#有效的括号&quot; class=&quot;headerlink&quot; title=&quot;有效的括号&quot;&gt;&lt;/a&gt;有效的括号&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="简单" scheme="http://zm163.github.io/categories/LeetCode/%E7%AE%80%E5%8D%95/"/>
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-19</title>
-    <link href="http://zm163.github.io/2020/05/18/LeetCode-19/LeetCode-19/"/>
-    <id>http://zm163.github.io/2020/05/18/LeetCode-19/LeetCode-19/</id>
-    <published>2020-05-18T02:33:38.000Z</published>
-    <updated>2020-06-30T15:05:52.690Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;删除链表的倒数第N个结点&quot;&gt;&lt;a href=&quot;#删除链表的倒数第N个结点&quot; class=&quot;headerlink&quot; title=&quot;删除链表的倒数第N个结点&quot;&gt;&lt;/a&gt;删除链表的倒数第N个结点&lt;/h1&gt;
-    
-    </summary>
-    
-    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
     
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="链表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/"/>
-    
-      <category term="双指针" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
+      <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
