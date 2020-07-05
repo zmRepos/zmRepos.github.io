@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-07-02T14:15:23.263Z</updated>
+  <updated>2020-07-05T14:24:58.831Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>LeetCode-41</title>
+    <link href="http://zm163.github.io/2020/07/05/LeetCode-41/"/>
+    <id>http://zm163.github.io/2020/07/05/LeetCode-41/</id>
+    <published>2020-07-05T14:14:40.000Z</published>
+    <updated>2020-07-05T14:24:58.831Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;##题目:&lt;br&gt;&lt;img src=&quot;/2020/07/05/LeetCode-41/1.png&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
+    
+      <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-40</title>
@@ -71,19 +104,11 @@
     <link href="http://zm163.github.io/2020/07/02/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/"/>
     <id>http://zm163.github.io/2020/07/02/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/</id>
     <published>2020-07-02T13:01:35.000Z</published>
-    <updated>2020-07-02T14:16:50.196Z</updated>
+    <updated>2020-07-02T14:55:33.168Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;p&gt;#什么是回溯算法？&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;回溯算法实际上是一种类似与枚举的搜索尝试过程，主要是在搜索尝试的过程寻找问题的&lt;br&gt;解，如果已经发现某个搜索尝试分支不可能得出正确的答案就回溯（返回），尝试别的&lt;br&gt;路径进行搜索。本质上是一种&lt;strong&gt;选
-        
-      
+      &lt;p&gt;#什么是回溯算法？&lt;/p&gt;
     
     </summary>
     
@@ -574,37 +599,6 @@
       <category term="堆" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%A0%86/"/>
     
       <category term="分治算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-22</title>
-    <link href="http://zm163.github.io/2020/05/19/LeetCode-22/LeetCode-22/"/>
-    <id>http://zm163.github.io/2020/05/19/LeetCode-22/LeetCode-22/</id>
-    <published>2020-05-19T07:10:41.000Z</published>
-    <updated>2020-06-30T15:07:25.574Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;括号生成&quot;&gt;&lt;a href=&quot;#括号生成&quot; class=&quot;headerlink&quot; title=&quot;括号生成&quot;&gt;&lt;/a&gt;括号生成&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="回溯算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>

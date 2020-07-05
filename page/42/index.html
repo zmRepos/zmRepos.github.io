@@ -119,6 +119,91 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1016"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/18/PTA-Basic-1016/"
+    >PTA-Basic-1016</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/18/PTA-Basic-1016/" class="article-date">
+  <time datetime="2019-09-18T14:08:03.000Z" itemprop="datePublished">2019-09-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>正整数 A 的“D<br>​A<br>​​ （为 1 位整数）部分”定义为由 A 中所有 D<br>​A<br>​​  组成的新整数 P<br>​A<br>​​ 。例如：给定 A=3862767，D<br>​A<br>​​ =6，则 A 的“6 部分”P<br>​A<br>​​  是 66，因为 A 中有 2 个 6。</p>
+<p>现给定 A、D<br>​A<br>​​ 、B、D<br>​B<br>​​ ，请编写程序计算 P<br>​A<br>​​ +P<br>​B<br>​​ 。</p>
+<p>输入格式：<br>输入在一行中依次给出 A、D<br>​A<br>​​ 、B、D<br>​B<br>​​ ，中间以空格分隔，其中 0&lt;A,B&lt;10<br>​10<br>​​ 。</p>
+<p>输出格式：</p>
+<p>在一行中输出 P<br>​A<br>​​ +P<br>​B<br>​​  的值。</p>
+<p>输入样例 1：</p>
+<pre><code>3862767 6 13530293 3</code></pre><p>输出样例 1：</p>
+<pre><code>399</code></pre><p>输入样例 2：</p>
+<pre><code>3862767 1 13530293 8</code></pre><p>输出样例 2：</p>
+<pre><code>0</code></pre><p>分析：</p>
+<p>输入：数字1 包含的数1 数字2 包含的数2；<br>处理：<br>对数字1不断取余数，判断是否等于包含的数字1，是的话就在和基础上*10+包含的数字一。<br>对数字2的处理同1；<br>输出：<br>输出上述两个操作过后得到的两个数字的和。</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int num1,num2;
+    int d1,d2;
+    int sum1=0,sum2=0;
+    scanf(&quot;%d %d %d %d&quot;,&amp;num1,&amp;d1,&amp;num2,&amp;d2);
+    while(num1){
+        int n=num1%10;
+        num1=num1/10;
+        if(n==d1){
+            sum1=sum1*10+d1;
+        }
+    }
+    while(num2){
+        int n=num2%10;
+        num2=num2/10;
+        if(n==d2){
+            sum2=sum2*10+d2;
+        }
+    }
+    printf(&quot;%d&quot;,sum1+sum2);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1015"
   class="article article-type-post"
   itemscope
@@ -387,111 +472,6 @@ int main(void){
     printf(&quot;%s %02d:%02d&quot;,res,h,i);
     return 0;
 }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1013"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1013/"
-    >PTA-Basic-1013</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1013/" class="article-date">
-  <time datetime="2019-09-17T15:05:34.000Z" itemprop="datePublished">2019-09-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>令 P<br>​<br>​​  表示第 i 个素数。现任给两个正整数 M≤N≤10<br>​4<br>​​ ，请输出 P<br>​M<br>​​  到 P<br>​N<br>​​  的所有素数。</p>
-<p>输入格式：<br>输入在一行中给出 M 和 N，其间以空格分隔。</p>
-<p>输出格式：<br>输出从 P<br>​M<br>​​  到 P<br>​N<br>​​  的所有素数，每 10 个数字占 1 行，其间以空格分隔，但行末不得有多余空格。</p>
-<p>输入样例：</p>
-<pre><code>5 27</code></pre><p>输出样例：</p>
-<pre><code>11 13 17 19 23 29 31 37 41 43
-47 53 59 61 67 71 73 79 83 89
-97 101 103</code></pre><p>分析：</p>
-<p>输入：整型数字n,m;<br>输出：从第n个素数（包含在内）到第m个素数之间的所有素数.十个换一行。</p>
-<p>思路：</p>
-<p>1写一个判定素数的函数。<br>2for循环从2开始数每当是素数计算素数的变量num就加一，当变量大于等于n时开始输出，大于m时停止输出。<br>3变量num-n+1就是从n开始第几个素数，每当此数字为十的倍数时，就换行。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-int isPrime(int n){
-if(n==1)
-return 0;
-if(n==2)
-return 1;
-if(n%2==0){
-    return 0;
-}
-for(int i=3;i&lt;sqrt(n+1);i+=2){
-    if(n%i==0){
-        return 0;
-    }
-}
-return 1;
-}
-int main(void){
-int n,m;
-scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-int num=0;
-for(int i=2;i&lt;=1000000;i++){
-    if(isPrime(i)){
-        num++;
-        if(num&gt;m){
-            break;
-        }
-        if(num&gt;=n){
-            if((num-n+1)%10==0){
-            printf(&quot;%d\n&quot;,i);
-            continue;
-        }
-        if(num!=m) 
-            printf(&quot;%d &quot;,i);
-        else
-            printf(&quot;%d&quot;,i);
-        } 
-    }
-}
-return 0;
-}</code></pre><p>###注意：此算法还可以在进一步优化，这里就不加赘述了。</p>
- 
       <!-- reward -->
       
     </div>
