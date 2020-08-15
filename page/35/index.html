@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1039"
+  id="post-PTA-Basic-1045"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,16 +130,16 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/23/PTA-Basic-1039/"
-    >PTA-Basic-1039</a> 
+  <a class="article-title" href="/2019/09/25/PTA-Basic-1045/"
+    >PTA-Basic-1045</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/23/PTA-Basic-1039/" class="article-date">
-  <time datetime="2019-09-23T12:02:07.000Z" itemprop="datePublished">2019-09-23</time>
+      <a href="/2019/09/25/PTA-Basic-1045/" class="article-date">
+  <time datetime="2019-09-25T13:46:30.000Z" itemprop="datePublished">2019-09-25</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -149,139 +149,106 @@ var _hmt = _hmt || [];
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>题目：</p>
-<p>小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。</p>
-<p>为方便起见，我们用[0-9]、[a-z]、[A-Z]范围内的字符来表示颜色。例如在图1中，第3串是小红想做的珠串；那么第1串可以买，因为包含了全部她想要的珠子，还多了8颗不需要的珠子；第2串不能买，因为没有黑色珠子，并且少了一颗红色的珠子。</p>
-<p><img src="https://images.ptausercontent.com/b7e2ffa6-8819-436d-ad79-a41263abe914.jpg" alt="串串"></p>
-<p>图 1</p>
-<p>输入格式：</p>
-<pre><code>每个输入包含 1 个测试用例。每个测试用例分别在 2 行中先后给出
-摊主的珠串和小红想做的珠串，两串都不超过 1000 个珠子。</code></pre><p>输出格式：</p>
-<pre><code>如果可以买，则在一行中输出 Yes 以及有多少多余的珠子；如果不
-可以买，则在一行中输出 No 以及缺了多少珠子。其间以 1 个空格
-分隔。</code></pre><p>输入样例 1：</p>
-<pre><code>ppRYYGrrYBR2258
-YrR8RrY</code></pre><p>输出样例 1：</p>
-<pre><code>Yes 8</code></pre><p>输入样例 2：</p>
-<pre><code>ppRYYGrrYB225
-YrR8RrY</code></pre><p>输出样例 2：</p>
-<pre><code>No 2</code></pre><p>分析：此题与上一题采用相同的思路，先定义一个整型数组（范围要能把字母与数字的ascall码值包含在内），然后输入字符，如果字符符合条件就将字符对应的ascall码对应的数组下标所对应的数组+1，表示此种字符输入一次。输入要查找的字符串时，字符对应的数目-1.最后遍历数组将所有符数加到一起，所以正数加到一起，负数表示缺少的字符数目，正数表示多余的字符数目，如果有负数优先输出：No 缺少的数目（&gt;0）。反之 就输出Yes 多余的数目。</p>
+  <p>著名的快速排序算法里有一个经典的划分过程：我们通常采用某种方法取一个元素作为主元，通过交换，把比主元小的元素放到它的左边，比主元大的元素放到它的右边。 给定划分后的 N 个互不相同的正整数的排列，请问有多少个元素可能是划分前选取的主元？</p>
+<p>例如给定 $N = 5$, 排列是1、3、2、4、5。则：</p>
+<p>1 的左边没有元素，右边的元素都比它大，所以它可能是主元；<br>尽管 3 的左边元素都比它小，但其右边的 2 比它小，所以它不能是主元；<br>尽管 2 的右边元素都比它大，但其左边的 3 比它大，所以它不能是主元；<br>类似原因，4 和 5 都可能是主元。<br>因此，有 3 个元素可能是主元。</p>
+<p>输入格式：<br>输入在第 1 行中给出一个正整数 N（≤10<br>​5<br>​​ ）； 第 2 行是空格分隔的 N 个不同的正整数，每个数不超过 10<br>​9<br>​​ 。</p>
+<p>输出格式：<br>在第 1 行中输出有可能是主元的元素个数；在第 2 行中按递增顺序输出这些元素，其间以 1 个空格分隔，行首尾不得有多余空格。</p>
+<p>输入样例：<br>5<br>1 3 2 4 5<br>输出样例：<br>3<br>1 4 5</p>
+<p>我的思路：<br>使用for循环，从左边开始遍历如果有比它大的就标记它自己与那个数字，但是不跳出循环继续遍历，继续标识不合格的数字，如果一次循环下来没有找到比它大的数字那么说明他是合格的，合格的就存入另外一个数组。如果不是合格的那么后面比它小的都不合格了，所以不用遍历这些，最后最后得出一个主元的递增数列。但是这个方发还是有一个测试点1超时了。我还是可以的能把别人一半运行超时的思路减到一个。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
 int main(void){
-        int chars[250]={0};
-        char ch;
-        while((ch=getchar())!=&apos;\n&apos;){
-            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
-                chars[ch]++;
-            }
-        }
-        while((ch=getchar())!=&apos;\n&apos;){
-            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
-                chars[ch]--;
-            }
-        }
-        int sum1=0;
-        int sum2=0;
-        int i=0;
-        while(i&lt;250){
-            if(chars[i]&lt;0){
-                sum2+=chars[i];
-            }else{
-                sum1+=chars[i];
+    unsigned int num;
+    scanf(&quot;%d&quot;,&amp;num);
+    int res[num];
+    memset(res,0,sizeof(res));
+
+    int  nums[2][num];
+    memset(nums,0,sizeof(nums));
+    int i=0;
+    while(i&lt;num){
+        scanf(&quot;%d&quot;,&amp;nums[0][i++]);
+    }
+    int time=0;
+    for(i=0;i&lt;num;i++){
+        int key=nums[0][i];
+            if(nums[1][i]!=1){
+                int j=i+1;
+                int flag=0;
+                for(;j&lt;num;j++){
+                    if(nums[0][j]&lt;key){
+                        nums[1][j]=1;
+                        nums[1][i]=1;
+                        flag=1;
+                    }
                 }
-                i++;
+                if(!flag){
+                    res[time]=key;
+                    time++;
+                }
         }
-        if(sum2&lt;0){
-            printf(&quot;No %d&quot;,-sum2);
+    }
+    printf(&quot;%d\n&quot;,time);
+    for(int j=0;j&lt;time;j++){
+        if(j==0){
+            printf(&quot;%d&quot;,res[j]);
         }else{
-            printf(&quot;Yes %d&quot;,sum1);
-            }
-        return 0;
-    }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1038"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/23/PTA-Basic-1038/"
-    >PTA-Basic-1038</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/23/PTA-Basic-1038/" class="article-date">
-  <time datetime="2019-09-23T12:01:54.000Z" itemprop="datePublished">2019-09-23</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>本题要求读入 N 名学生的成绩，将获得某一给定分数的学生人数输出。</p>
-<p>输入格式：<br>输入在第 1 行给出不超过 10<br>​^5<br>​​  的正整数 N，即学生总人数。随后一行给出 N 名学生的百分制整数成绩，中间以空格分隔。最后一行给出要查询的分数个数 K（不超过 N 的正整数），随后是 K 个分数，中间以空格分隔。</p>
-<p>输出格式：<br>在一行中按查询顺序给出得分等于指定分数的学生人数，中间以空格分隔，但行末不得有多余空格。</p>
-<p>输入样例：</p>
-<pre><code>10
-60 75 90 55 75 99 82 90 75 50
-3 75 90 88</code></pre><p>输出样例：</p>
-<pre><code>3 2 0</code></pre><p>分析：</p>
-<p>输入：数目 与 得分。<br>处理：此题不好用循环去一个一个遍历，查找比对。<br>因为题目说了数字范围是1-100的整数，所以直接定义一个长度为101的数组，每输入一个分数时，就再分数对应的下标所在的数组存储的数目加1.输入要查找的得分时通过得分直接找到相应的次数，并输出，如果输出最后一个数字时，不用输出空格。</p>
+            printf(&quot; %d&quot;,res[j]);
+        }
+    }
+    printf(&quot;\n&quot;);
+    return 0;
+}</code></pre><p>思路二：<br>定义两个数组一个用来存储原数组，另一个用来存储对原数组排序后的数组。<br>遍历原数组，如果对应已经排好序的数组的相同位置也为那么这个数可能为主元（特例：3 2 1，1 2 3）还要保证他是原数组前面最大的哪一个，这又符合这两条件他才是主元，存入数组。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+
+int cmp(const void *a, const void *b)
+{
+  return *((int *)a)-*((int *)b);
+}
+
 int main()
 {
-    int n,m;
-    scanf(&quot;%d&quot;,&amp;n);
-    int score1[101]={0};
-    int score2;
-    while(n--)
+  int iNum=0;
+  scanf(&quot;%d&quot;,&amp;iNum);
+  int iData[iNum],iData_s[iNum];
+  for(int i=0;i&lt;iNum;i++)
+  {
+    scanf(&quot;%d&quot;,&amp;iData[i]);
+    iData_s[i]=iData[i];
+  }
+  qsort(iData_s,iNum,sizeof(int),cmp);//快速排序
+  int iZY[iNum];
+  int iCnt=0,iMax=0;
+  for(int i=0;i&lt;iNum;i++)
+  {
+    if(iMax&lt;iData[i])//iMax就是前i-1个数字中最大的哪一个。
     {
-        scanf(&quot;%d&quot;,&amp;score2);
-        score1[score2]++;
+      iMax=iData[i];
+      if(iData[i]==iData_s[i])   //如果是前i个最大的数字，且对应排好序的数组数字也是它，那么它就是主元。
+      {
+        iZY[iCnt++]=iData[i];
+      }
     }
-    scanf(&quot;%d&quot;,&amp;m);
-    int score3;
-    while(m--)
+  }
+  printf(&quot;%d\n&quot;,iCnt);//下面两种输出方法，区别在于icnt=0的情况
+  for(int i=0;i&lt;iCnt;i++)
+  {
+    if(i==0)
     {
-        scanf(&quot;%d&quot;,&amp;score3);
-        printf(&quot;%d&quot;,score1[score3]);
-        if(m!=0)
-            printf(&quot; &quot;);
+      printf(&quot;%d&quot;,iZY[i]);
     }
-    return 0;
+    else
+    {
+      printf(&quot; %d&quot;,iZY[i]);
+    }
+  }
+  printf(&quot;\n&quot;);//一个测试点好像有毛病，当主元数目为0时，还要要输出个换行。
+ return 0;
 }</code></pre> 
       <!-- reward -->
       
@@ -304,7 +271,7 @@ int main()
 
     
     <article
-  id="post-PTA-Basic-1037"
+  id="post-PTA-Basic-1044"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -315,16 +282,16 @@ int main()
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/23/PTA-Basic-1037/"
-    >PTA-Basic-1037</a> 
+  <a class="article-title" href="/2019/09/25/PTA-Basic-1044/"
+    >PTA-Basic-1044</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/23/PTA-Basic-1037/" class="article-date">
-  <time datetime="2019-09-23T12:01:40.000Z" itemprop="datePublished">2019-09-23</time>
+      <a href="/2019/09/25/PTA-Basic-1044/" class="article-date">
+  <time datetime="2019-09-25T13:46:17.000Z" itemprop="datePublished">2019-09-25</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -335,33 +302,226 @@ int main()
     <div class="article-entry" itemprop="articleBody">
        
   <p>题目：</p>
-<p>如果你是哈利·波特迷，你会知道魔法世界有它自己的货币系统 —— 就如海格告诉哈利的：“十七个银西可(Sickle)兑一个加隆(Galleon)，二十九个纳特(Knut)兑一个西可，很容易。”现在，给定哈利应付的价钱 P 和他实付的钱 A，你的任务是写一个程序来计算他应该被找的零钱。</p>
-<p>输入格式：<br>输入在 1 行中分别给出 P 和 A，格式为 Galleon.Sickle.Knut，其间用 1 个空格分隔。这里 Galleon 是 [0, 10<br>​^7<br>​​ ] 区间内的整数，Sickle 是 [0, 17) 区间内的整数，Knut 是 [0, 29) 区间内的整数。</p>
-<p>输出格式：</p>
-<p>在一行中用与输入同样的格式输出哈利应该被找的零钱。如果他没带够钱，那么输出的应该是负数。</p>
-<p>输入样例 1：</p>
-<pre><code>10.16.27 14.1.28</code></pre><p>输出样例 1：</p>
-<pre><code>3.2.1</code></pre><p>输入样例 2：</p>
-<pre><code>14.1.28 10.16.27</code></pre><p>输出样例 2：</p>
-<pre><code>-3.2.1</code></pre><p>分析：</p>
-<p>输入:Galleon1.Sickle1.Knut1 Galleon2.Sickle2.Knut2<br>处理：先将每个分别化为最小单位的货币和，然后用实收减去应收，所得结果即为多的或少的。然后对此进行单位换算，先化为高位的，再化为中位的，剩下的就是最低单位的数字。<br>输出：Galleon3.Sickle3.Knut3</p>
+<p>火星人是以 13 进制计数的：</p>
+<p>地球人的 0 被火星人称为 tret。<br>地球人数字 1 到 12 的火星文分别为：jan, feb, mar, apr, may, jun, jly, aug, sep, oct, nov, dec。<br>火星人将进位以后的 12 个高位数字分别称为：tam, hel, maa, huh, tou, kes, hei, elo, syy, lok, mer, jou。<br>例如地球人的数字 29 翻译成火星文就是 hel mar；而火星文 elo nov 对应地球数字 115。为了方便交流，请你编写程序实现地球和火星数字之间的互译。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（&lt;100），随后 N 行，每行给出一个 [0, 169) 区间内的数字 —— 或者是地球文，或者是火星文。</p>
+<p>输出格式：<br>对应输入的每一行，在一行中输出翻译后的另一种语言的数字。</p>
+<p>输入样例：</p>
+<pre><code>4
+29
+5
+elo nov
+tam</code></pre><p>输出样例：</p>
+<pre><code>hel mar
+may
+115
+13</code></pre><p>分析：<br>    定义一个字符串数组，用来存储n个字符串，然后对每个字符串判断是数字还是字母，分别调用不同的函数。<br>数字》字符串：<br>因为数字范围是【0-169），所以火星文只有两位。用数字对13取整得到高位，然后再对13取余，得到低位。如果高位有数，而低位为0则不用输出低位对应的火星文，如果高位低位都不为0，就正常输出。<br>字符串到数字：<br>在函数中定义两个字符串数组分别对应高位与低位的字符串，然后对传入的字符串查找是否包含某一个火星文，包含高位上的火星文就拿对应的下标<em>13，低位布用</em>13，为了减少运行时间可以添加变量控制循环。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+void changeToNumber(char *a);
+void changeToString(int num);
 int main(void){
-    long p[3]={0};
-    long a[3]={0};
-    scanf(&quot;%d.%d.%d %d.%d.%d&quot;,&amp;p[0],&amp;p[1],&amp;p[2],&amp;a[0],&amp;a[1],&amp;a[2]);
-    long c[3]={0};
-    long x=a[0]*29*17+a[1]*29+a[2];
-    long y=p[0]*29*17+p[1]*29+p[2];
-    x=x-y;
-    c[0]=(x)/(29*17);
-    c[1]=(x-c[0]*29*17)/29;
-    c[2]=(x-c[0]*29*17-c[1]*29);
-//此处的一个坑就是当欠钱时值输出一个负号。
-    printf(&quot;%d.%d.%d&quot;,c[0],(c[1]&gt;0?c[1]:-c[1]),(c[2]&gt;0?c[2]:-c[2]));//如果第一是负数时后面的就不用输出负号了。
+    int num=0;
+    scanf(&quot;%d&quot;,&amp;num);
+    getchar();
+    char str[num][10];
+    int i=0;
+    while(i&lt;num){
+        gets(str[i++]);
+    }
+    i=0;
+    for(;i&lt;num;i++){
+        if(str[i][0]&lt;=&apos;9&apos;&amp;&amp;str[i][0]&gt;=&apos;0&apos;){
+            int sum=0;
+            for(int j=0;j&lt;strlen(str[i]);j++){
+                sum=sum*10+(str[i][j]-&apos;0&apos;);
+            }
+            changeToString(sum);
+        }else{
+            changeToNumber(str[i]);
+        }
+    }
     return 0;
-    }</code></pre> 
+}
+void changeToString(int num){
+    int n=num/13;
+    int m=num%13;
+    if(n&gt;0){
+        switch(n){
+            case 1:printf(&quot;tam&quot;);break;
+            case 2:printf(&quot;hel&quot;);break;
+            case 3:printf(&quot;maa&quot;);break;
+            case 4:printf(&quot;huh&quot;);break;
+            case 5:printf(&quot;tou&quot;);break;
+            case 6:printf(&quot;kes&quot;);break;
+            case 7:printf(&quot;hei&quot;);break;
+            case 8:printf(&quot;elo&quot;);break;
+            case 9:printf(&quot;syy&quot;);break;
+            case 10:printf(&quot;lok&quot;);break;
+            case 11:printf(&quot;mer&quot;);break;
+            case 12:printf(&quot;jou&quot;);break;
+        }
+    }
+    if(n&gt;0&amp;&amp;m&gt;0){
+        printf(&quot; &quot;);
+    }
+    if(n&gt;0&amp;&amp;m==0){
+        printf(&quot;\n&quot;);
+        return;
+    }
+        switch(m){
+            case 0:printf(&quot;tret\n&quot;);break;
+            case 1:printf(&quot;jan\n&quot;);break;
+            case 2:printf(&quot;feb\n&quot;);break;
+            case 3:printf(&quot;mar\n&quot;);break;
+            case 4:printf(&quot;apr\n&quot;);break;
+            case 5:printf(&quot;may\n&quot;);break;
+            case 6:printf(&quot;jun\n&quot;);break;
+            case 7:printf(&quot;jly\n&quot;);break;
+            case 8:printf(&quot;aug\n&quot;);break;
+            case 9:printf(&quot;sep\n&quot;);break;
+            case 10:printf(&quot;oct\n&quot;);break;
+            case 11:printf(&quot;nov\n&quot;);break;
+            case 12:printf(&quot;dec\n&quot;);break;
+        }
+} 
+
+void changeToNumber(char *a){
+    static char chrs1[13][5]={&quot;##&quot;,&quot;tam&quot;, &quot;hel&quot;, &quot;maa&quot;, &quot;huh&quot;, &quot;tou&quot;, &quot;kes&quot;, &quot;hei&quot;, &quot;elo&quot;, &quot;syy&quot;, &quot;lok&quot;, &quot;mer&quot;, &quot;jou&quot;};
+    static char chrs2[13][5]={&quot;tret&quot;,&quot;jan&quot;, &quot;feb&quot;, &quot;mar&quot;, &quot;apr&quot;, &quot;may&quot;, &quot;jun&quot;, &quot;jly&quot;, &quot;aug&quot;, &quot;sep&quot;, &quot;oct&quot;, &quot;nov&quot;, &quot;dec&quot;};
+    int sum=0;
+    int flag1=1,flag2=1;
+    for(int i=0;i&lt;13;i++){
+        if(strstr(a,chrs1[i])&amp;&amp;flag1){
+            sum=sum+(i)*13;
+            flag1=0;
+        }
+        if(strstr(a,chrs2[i])&amp;&amp;flag2){
+            sum=sum+i;
+            flag2=0;
+        }
+        if(!flag1&amp;&amp;!flag2){
+            break;
+        }
+    }
+    printf(&quot;%d\n&quot;,sum);
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1043"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/25/PTA-Basic-1043/"
+    >PTA-Basic-1043</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/25/PTA-Basic-1043/" class="article-date">
+  <time datetime="2019-09-25T13:46:02.000Z" itemprop="datePublished">2019-09-25</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>给定一个长度不超过 10<br>​4<br>​​  的、仅由英文字母构成的字符串。请将字符重新调整顺序，按 PATestPATest…. 这样的顺序输出，并忽略其它字符。当然，六种字符的个数不一定是一样多的，若某种字符已经输出完，则余下的字符仍按 PATest 的顺序打印，直到所有字符都被输出。</p>
+<p>输入格式：<br>输入在一行中给出一个长度不超过 10<br>​4<br>​​  的、仅由英文字母构成的非空字符串。</p>
+<p>输出格式：<br>在一行中按题目要求输出排序后的字符串。题目保证输出非空。</p>
+<p>输入样例：</p>
+<pre><code>redlesPayBestPATTopTeePHPereatitAPPT</code></pre><p>输出样例：</p>
+<pre><code>PATestPATestPTetPTePePee</code></pre><p>分析：<br>定义一个整型数组用下标对应字母，数值对应个数。另外用一个变量存储符合条件的字符总数，然后进行输出，每次查找对应的字母是否还有数目，如果有就输出并字符总数减去1没有就跳过字母。</p>
+<p>代码：</p>
+<p>c++实现：</p>
+<pre><code>#include &lt;iostream&gt;
+#include&lt;stdio.h&gt;
+using namespace std;
+
+int main()
+{
+    int chars[6]={0};
+    string str;
+    cin&gt;&gt;str;
+    int len=str.length();
+    int sum=0;
+    for(int i=0;i&lt;len;i++){
+        switch(str.at(i)){
+            case &apos;P&apos;:chars[0]++;sum++;break;
+            case &apos;A&apos;:chars[1]++;sum++;break;
+            case &apos;T&apos;:chars[2]++;sum++;break;
+            case &apos;e&apos;:chars[3]++;sum++;break;
+            case &apos;s&apos;:chars[4]++;sum++;break;
+            case &apos;t&apos;:chars[5]++;sum++;break;
+            default:break;
+        }
+    }
+    while(sum){
+        if(chars[0]){
+            chars[0]--;
+            sum--;
+            cout&lt;&lt;&apos;P&apos;;
+        }
+        if(chars[1]){
+            chars[1]--;
+            sum--;
+            cout&lt;&lt;&apos;A&apos;;
+        }
+        if(chars[2]){
+            chars[2]--;
+            sum--;
+            cout&lt;&lt;&apos;T&apos;;
+        }
+        if(chars[3]){
+            chars[3]--;
+            sum--;
+            cout&lt;&lt;&apos;e&apos;;
+        }
+        if(chars[4]){
+            chars[4]--;
+            sum--;
+            cout&lt;&lt;&apos;s&apos;;
+        }
+        if(chars[5]){
+            chars[5]--;
+            sum--;
+            cout&lt;&lt;&apos;t&apos;;
+        }
+    }
+    return 0;
+}</code></pre> 
       <!-- reward -->
       
     </div>
@@ -388,7 +548,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/34/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><a class="extend next" rel="next" href="/page/36/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/34/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="page-number" href="/page/34/">34</a><span class="page-number current">35</span><a class="page-number" href="/page/36/">36</a><a class="page-number" href="/page/37/">37</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" href="/page/36/">下一页</a>
   </nav>
   
 </section>

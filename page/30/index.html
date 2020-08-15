@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1054"
+  id="post-PTA-Basic-1060"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,16 +130,16 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/28/PTA-Basic-1054/"
-    >PTA-Basic-1054</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1060/"
+    >PTA-Basic-1060</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/28/PTA-Basic-1054/" class="article-date">
-  <time datetime="2019-09-28T14:28:50.000Z" itemprop="datePublished">2019-09-28</time>
+      <a href="/2019/10/07/PTA-Basic-1060/" class="article-date">
+  <time datetime="2019-10-07T12:41:11.000Z" itemprop="datePublished">2019-10-07</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -150,186 +150,32 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
        
   <p>题目：</p>
-<p>本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
-<p>输入格式：<br>输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
-<p>输出格式：<br>对每个非法输入，在一行中输出 ERROR: X is not a legal number，其中 X 是输入。最后在一行中输出结果：The average of K numbers is Y，其中 K 是合法输入的个数，Y 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 Undefined 替换 Y。如果 K 为 1，则输出 The average of 1 number is Y。</p>
-<p>输入样例 1：</p>
-<pre><code>7
-5 -3.2 aaa 9999 2.3.4 7.123 2.35</code></pre><p>输出样例 1：</p>
-<pre><code>ERROR: aaa is not a legal number
-ERROR: 9999 is not a legal number
-ERROR: 2.3.4 is not a legal number
-ERROR: 7.123 is not a legal number
-The average of 3 numbers is 1.38</code></pre><p>输入样例 2：</p>
-<pre><code>2
-
-aaa -9999</code></pre><p>输出样例 2：</p>
-<pre><code>ERROR: aaa is not a legal number
-ERROR: -9999 is not a legal number
-The average of 0 numbers is Undefined</code></pre><p>分析：</p>
-<p>定义一个判断数字是否合法的函数（数字以数字或‘-’开头，不能只有‘-’，‘.’后面的数字长度不能大于2），注意如果输入数字中只有一个合法，不要不要用总和去除以1计算结果，而是直接输出The average of 1 number is ？。还有就是字符串赋值并不是想Java中的那样直接给就可以了，而是要调用函数复制。</p>
+<p>英国天文学家爱丁顿很喜欢骑车。据说他为了炫耀自己的骑车功力，还定义了一个“爱丁顿数” E ，即满足有 E 天骑车超过 E 英里的最大整数 E。据说爱丁顿自己的 E 等于87。</p>
+<p>现给定某人 N 天的骑车距离，请你算出对应的爱丁顿数 E（≤N）。</p>
+<p>输入格式：</p>
+<p>输入第一行给出一个正整数 N (≤10<br>​5<br>​​ )，即连续骑车的天数；第二行给出 N 个非负整数，代表每天的骑车距离。</p>
+<p>输出格式：<br>在一行中给出 N 天的爱丁顿数。</p>
+<p>输入样例：</p>
+<pre><code>10
+6 7 6 9 3 10 8 2 7 8</code></pre><p>输出样例：</p>
+<pre><code>6</code></pre><p>分析：首先什么是爱丁顿数？<br>        对输入的一个数组满足有e个数子大于e的最大整数，正如样例：此数组中数字大于六的个数是六，六又是最大的，所以它是爱丁顿数。</p>
+<pre><code>处理：对输入的数组进行由大到小倒序排序，然后遍历直到找到大于下标的位置处。（对于某一个数字如果它比对应的下标大，那么前面比它大的也比它的下标大，，就这么找下去直到找到不合适的下标）</code></pre><p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
 #include&lt;stdlib.h&gt;
-int check(char* s);
+int cmp(const void *a,const void *b){
+    return *(int *)b-*(int *)a;
+}
 int main(void){
     int n=0;
     scanf(&quot;%d&quot;,&amp;n);
-    char str[n][10000];
-    char s[10000];
+    int nums[n];
     int i=0;
-    double sum=0;
-    int m=n;
-    while(n--){
-        scanf(&quot;%s&quot;,s);
-        if(check(s)){
-            sum+=atof(s);//函数atof将数字字符串转化为数字。
-        }else{
-            strcpy(str[i++],s);
-        }
+    for(i=0;i&lt;n;i++){
+        scanf(&quot;%d&quot;,&amp;nums[i]);
     }
-    m=m-i;
-    for(int k=0;k&lt;i;k++){
-        printf(&quot;ERROR: %s is not a legal number\n&quot;,str[k]); 
-    }
-    if(m&gt;1)
-    printf(&quot;The average of %d numbers is %.2lf\n&quot;,m,sum/m);
-    if(m==0)
-    printf(&quot;The average of 0 numbers is Undefined\n&quot;);
-    if(m==1)
-    printf(&quot;The average of 1 number is %.2lf&quot;,sum);
-    return 0;
-}
-int  check(char* s){
-    int sum=0;
-    int n=0;
-    for(int i=0;i&lt;strlen(s);i++){
-        if(i==0){
-            if(!(s[i]==&apos;-&apos;||(s[i]&lt;=&apos;9&apos;&amp;&amp;s[i]&gt;=&apos;0&apos;))){
-                return 0;
-            }else{
-                if(strlen(s)==1&amp;&amp;s[i]==&apos;-&apos;){
-                    return 0;
-                }
-            }
-        }else{
-            if(sum&gt;0){
-                n++;
-                if(n&gt;2){
-                    return 0;
-                }
-            }
-            if(s[i]==&apos;.&apos;){
-                sum++;
-                if(sum&gt;=2){
-                    return 0;
-                }
-            }
-        }
-    }
-    double res=atof(s);
-    if(res&gt;1000||res&lt;-1000){
-        return 0;
-    }
-    return 1;
-} </code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1053"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/28/PTA-Basic-1053/"
-    >PTA-Basic-1053</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/28/PTA-Basic-1053/" class="article-date">
-  <time datetime="2019-09-28T14:28:35.000Z" itemprop="datePublished">2019-09-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>在不打扰居民的前提下，统计住房空置率的一种方法是根据每户用电量的连续变化规律进行判断。判断方法如下：</p>
-<p>在观察期内，若存在超过一半的日子用电量低于某给定的阈值 e，则该住房为“可能空置”；</p>
-<p>若观察期超过某给定阈值 D 天，且满足上一个条件，则该住房为“空置”。</p>
-<p>现给定某居民区的住户用电量数据，请你统计“可能空置”的比率和“空置”比率，即以上两种状态的住房占居民区住房总套数的百分比。</p>
-<p>输入格式：<br>输入第一行给出正整数 N（≤1000），为居民区住房总套数；正实数 e，即低电量阈值；正整数 D，即观察期阈值。随后 N 行，每行按以下格式给出一套住房的用电量数据：</p>
-<p>K E<br>​1<br>​​  E<br>​2<br>​​  … E<br>​K<br>​​ </p>
-<p>其中 K 为观察的天数，E<br>​i<br>​​  为第 i 天的用电量。</p>
-<p>输出格式：<br>在一行中输出“可能空置”的比率和“空置”比率的百分比值，其间以一个空格分隔，保留小数点后 1 位。</p>
-<p>输入样例：</p>
-<pre><code>5 0.5 10
-6 0.3 0.4 0.5 0.2 0.8 0.6
-10 0.0 0.1 0.2 0.3 0.0 0.8 0.6 0.7 0.0 0.5
-5 0.4 0.3 0.5 0.1 0.7
-11 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1
-11 2 2 2 1 1 0.1 1 0.1 0.1 0.1 0.1</code></pre><p>输出样例：</p>
-<pre><code>40.0% 20.0%</code></pre><p>（样例解释：第2、3户为“可能空置”，第4户为“空置”，其他户不是空置。）</p>
-<p>分析：<br>按题目走。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int sum=0;
-    double e,d;
-    scanf(&quot;%d %lf %lf&quot;,&amp;sum,&amp;e,&amp;d);
-    int maybe=0,must=0;
-    for(int i=0;i&lt;sum;i++){
-        int days=0;
-        int sum=0;
-        scanf(&quot;%d&quot;,&amp;days);
-        for(int j=0;j&lt;days;j++){
-            double en;
-            scanf(&quot;%lf&quot;,&amp;en);
-            if(en&lt;e){
-                sum++;
-            }
-        }
-        if(days&gt;d&amp;&amp;sum&gt;(int)(days/2)){
-            must++;
-        }else if(sum&gt;(int)(days/2)){
-            maybe++;
-        }else{    
-        }
-    }
-    printf(&quot;%.1f&quot;,100*(maybe*1.0/sum));
-    printf(&quot;%c &quot;,&apos;%&apos;);
-    printf(&quot;%.1f&quot;,100*(must*1.0/sum));
-    printf(&quot;%c&quot;,&apos;%&apos;);
+    qsort(nums,n,sizeof(int),cmp);//倒序排列
+    for(i=0;i&lt;n&amp;&amp;nums[i]&gt;(i+1);i++);//空语句
+    printf(&quot;%d&quot;,i);
     return 0;
 }</code></pre> 
       <!-- reward -->
@@ -353,7 +199,7 @@ int main(void){
 
     
     <article
-  id="post-PTA-Basic-1052"
+  id="post-PTA-Basic-1059"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -364,16 +210,151 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/28/PTA-Basic-1052/"
-    >PTA-Basic-1052</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1059/"
+    >PTA-Basic-1059</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/28/PTA-Basic-1052/" class="article-date">
-  <time datetime="2019-09-28T14:27:44.000Z" itemprop="datePublished">2019-09-28</time>
+      <a href="/2019/10/07/PTA-Basic-1059/" class="article-date">
+  <time datetime="2019-10-07T12:40:59.000Z" itemprop="datePublished">2019-10-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>C 语言竞赛是浙江大学计算机学院主持的一个欢乐的竞赛。既然竞赛主旨是为了好玩，颁奖规则也就制定得很滑稽：</p>
+<p>0、冠军将赢得一份“神秘大奖”（比如很巨大的一本学生研究论文集……）。<br>1、排名为素数的学生将赢得最好的奖品 —— 小黄人玩偶！<br>2、其他人将得到巧克力。<br>给定比赛的最终排名以及一系列参赛者的 ID，你要给出这些参赛者应该获得的奖品。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​4<br>​​ ），是参赛者人数。随后 N 行给出最终排名，每行按排名顺序给出一位参赛者的 ID（4 位数字组成）。接下来给出一个正整数 K 以及 K 个需要查询的 ID。</p>
+<p>输出格式：<br>对每个要查询的 ID，在一行中输出 ID: 奖品，其中奖品或者是 Mystery Award（神秘大奖）、或者是 Minion（小黄人）、或者是 Chocolate（巧克力）。如果所查 ID 根本不在排名里，打印 Are you kidding?（耍我呢？）。如果该 ID 已经查过了（即奖品已经领过了），打印 ID: Checked（不能多吃多占）。</p>
+<p>输入样例：</p>
+<pre><code>6
+1111
+6666
+8888
+1234
+5555
+0001
+6
+8888
+0001
+1111
+2222
+8888
+2222</code></pre><p>输出样例：</p>
+<pre><code>8888: Minion
+0001: Chocolate
+1111: Mystery Award
+2222: Are you kidding?
+8888: Checked
+2222: Are you kidding?</code></pre><p>分析：题目要求根据输入的排名给出相应的奖品</p>
+<pre><code>冠军-----Mystery Award
+素数排名-----Minion
+其他--------Chocolate
+已经输入过一次的人-----Checked
+没有的人------Are you kidding?
+
+
+#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+int pops[2][1000000000];//定义一个二维数组
+int isPrime(int n){//判断一个数是否是素数的函数第一行存储排名（从1开始不从0开始因为初始化数组是每个都是0）
+    if(n==2){
+        return 1;
+    }else{
+        if(n%2==0){
+            return 0;
+        }else{
+            for(int i=3;i&lt;sqrt(n+1);i+=2){
+                if(n%i==0){
+                    return 0;
+                }
+            }
+            return 1;
+        }
+    }
+}
+int main(void){
+    int n=0;
+    scanf(&quot;%d&quot;,&amp;n);
+    int m=0;
+    for(int i=1;i&lt;=n;i++){
+        scanf(&quot;%d&quot;,&amp;m);
+        pops[0][m]=i;//第一行存储排名，第二行存储查询的次数
+    }
+    scanf(&quot;%d&quot;,&amp;m);
+    int k=0;
+    for(int i=0;i&lt;m;i++){
+        scanf(&quot;%d&quot;,&amp;k);
+        printf(&quot;%04d: &quot;,k);
+        if(pops[0][k]==0){//如果输入的数字对应的排名是0就表示选手中没有这个人
+            printf(&quot;Are you kidding?&quot;);
+        }else if(pops[1][k]==0){//否则如果查询次数为0，即一次都没有看过此人
+            if(pops[0][k]==1){//如果排名为1
+            printf(&quot;Mystery Award&quot;);
+        }else if(isPrime(pops[0][k])){//如果排名是素数
+            printf(&quot;Minion&quot;);
+        }else{
+            printf(&quot;Chocolate&quot;);//其他
+        }
+        pops[1][k]++;//将此人的查询次数加1
+        }else{//下列就是查询次数超过1的输出
+            printf(&quot;Checked&quot;);
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1058"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1058/"
+    >PTA-Basic-1058</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/07/PTA-Basic-1058/" class="article-date">
+  <time datetime="2019-10-07T12:40:40.000Z" itemprop="datePublished">2019-10-07</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -384,84 +365,97 @@ int main(void){
     <div class="article-entry" itemprop="articleBody">
        
   <p>题目：</p>
-<p>萌萌哒表情符号通常由“手”、“眼”、“口”三个主要部分组成。简单起见，我们假设一个表情符号是按下列格式输出的：</p>
-<pre><code>[左手]([左眼][口][右眼])[右手]</code></pre><p>现给出可选用的符号集合，请你按用户的要求输出表情。</p>
-<p>输入格式：<br>输入首先在前三行顺序对应给出手、眼、口的可选符号集。每个符号括在一对方括号 []内。题目保证每个集合都至少有一个符号，并不超过 10 个符号；每个符号包含 1 到 4 个非空字符。</p>
-<p>之后一行给出一个正整数 K，为用户请求的个数。随后 K 行，每行给出一个用户的符号选择，顺序为左手、左眼、口、右眼、右手——这里只给出符号在相应集合中的序号（从 1 开始），数字间以空格分隔。</p>
-<p>输出格式：<br>对每个用户请求，在一行中输出生成的表情。若用户选择的序号不存在，则输出 Are you kidding me? @/@。</p>
+<p>批改多选题是比较麻烦的事情，本题就请你写个程序帮助老师批改多选题，并且指出哪道题错的人最多。</p>
+<p>输入格式：<br>输入在第一行给出两个正整数 N（ ≤ 1000）和 M（≤ 100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
+<p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行。注意判题时只有选择全部正确才能得到该题的分数。最后一行输出错得最多的题目的错误次数和编号（题目按照输入的顺序从 1 开始编号）。如果有并列，则按编号递增顺序输出。数字间用空格分隔，行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
 <p>输入样例：</p>
-<pre><code>[╮][╭][o][~\][/~]  [&lt;][&gt;]
- [╯][╰][^][-][=][&gt;][&lt;][@][⊙]
-[Д][▽][_][ε][^]  ...
-4
-1 1 2 2 2
-6 8 1 5 5
-3 3 4 3 3
-2 10 3 9 3</code></pre><p>输出样例：</p>
-<pre><code>╮(╯▽╰)╭
-&lt;(@Д=)/~
-o(^ε^)o
-Are you kidding me? @\/@</code></pre><p>思路：<br>第一行给出手的符号库，<br>第二行给出眼的符号库，<br>第三行给出口的符号库。<br>定义三个二维数组，每一行存储字符串。<br>然后存储输入进的数字，<br>根据每一行对手，眼，口的坐标选择，输出相应的字符串符号。若没有，则输出Are you kidding me? @/@<br>代码：</p>
+<pre><code>3 4 
+3 4 2 a c
+2 5 1 b
+5 3 2 b c
+1 5 4 a b d e
+(2 a c) (2 b d) (2 a c) (3 a b e)
+(2 a c) (1 b) (2 a b) (4 a b d e)
+(2 b d) (1 e) (2 b c) (4 a b c d)</code></pre><p>输出样例：</p>
+<pre><code>6
+5
+2 
+2 3 4</code></pre><p>分析：</p>
+<p>定义一个非常大的数组存储所有可能的题目答案，定义一个非常大的数组存储每题的得分，定义一个非常大的数组存储每题出错的次数，定义一个非常大题目存储媒体正确答案的个数，定义一个非常大的学生数组。<br>在输入是就开始计算每一位学生的得分以及此题的出错次数。<br>最后输出每一位学生的分数，以及最高出错次数，和对应的题目（按升序排列）。</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-int main()
-{
-  char Hand[10][5]={0};
-  char Eye[10][5]={0};
-  char Mouth[10][5]={0};
-  char temp=0;
-  int iHand=0,iEye=0,iMouth=0;//字符计数
-  while((temp=getchar())!=&apos;\n&apos;)
-  {
-    if(temp==&apos;[&apos;)
-    {
-      scanf(&quot;%[^]]&quot;,szHand[iHand++]);
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+int timu[100][5]={0};//定义一个二维数组存储题目正确的答案初始化每个都是0（表示错误）
+int score[100]={0};//存储每一题目的得分
+int time[100]={0};//存储每个题目的出错次数
+int righttime[100]={0}; //存储每个题目标准答案的个数
+int stu[1001]={0};//存储每个学生的得分
+int main(void){
+    int n=0,m=0;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);//输入学生数，与题目数。
+    for(int i=0;i&lt;m;i++){
+        int x=0;
+        scanf(&quot;%d %*d %d&quot;,&amp;score[i],&amp;righttime[i]);//将每一个题目的分数存储到数组中去，并存储正确答案的个数以便下面计算答对的题目数是否为全部的正确数目
+        char ch;
+        while((ch=getchar())!=&apos;\n&apos;){//此处开始读取正确的选项。如果读到a就将timu数组的第0为赋值为1.
+            if(ch&lt;=&apos;e&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
+                int k=ch-&apos;a&apos;;
+                timu[i][k]=1;
+            }
+        }
     }
-  }
-  while((temp=getchar())!=&apos;\n&apos;)
-  {
-    if(temp==&apos;[&apos;)
-    {
-      scanf(&quot;%[^]]&quot;,szEye[iEye++]);
+    int max=0; 
+    for(int i=0;i&lt;n;i++){
+        int t=0;
+        char ch;
+        int step0=0;//计算输入的选项的个数
+        int step1=0;//计算选对的个数
+        while((ch=getchar())!=&apos;\n&apos;){
+            if(ch==&apos;(&apos;){ //读到这个就代表开始了新的一个题目，要将选项数目，答对数目初始化为0.
+                step0=0;
+                step1=0;
+                continue;
+            }else if(ch==&apos; &apos;){
+                continue;
+            }else if(ch&lt;=&apos;5&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                step0=ch-&apos;0&apos;; //计算选项数目
+            }else{
+                if(ch==&apos;)&apos;){//如果输入的选项都对但是总数不达标也不对。
+                    if(step0==step1&amp;&amp;step0==righttime[t]){//对的步数符合初始化步数 
+                        stu[i]+=score[t];//将分数加到第i为学生上去
+                    }else{//否则此题就出错了
+                        time[t]++;//这个题目的出错次数加1
+                        if(time[t]&gt;max){
+                            max=time[t];//如果比出错次数最大值大就交换值
+                        }
+                    }
+                    t++;//下一题 
+                }
+                if(ch&lt;=&apos;e&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
+                    int k=ch-&apos;a&apos;;
+                    if(timu[t][k]){//输入的选项对应的数组下标有值表示输入的答案是正确的
+                        step1++;//对的步数加1 
+                    }
+                }
+            }
+        }
     }
-  }
-  while((temp=getchar())!=&apos;\n&apos;)
-  {
-    if(temp==&apos;[&apos;)
-    {
-      scanf(&quot;%[^]]&quot;,szMouth[iMouth++]);
+    for(int i=0;i&lt;n;i++){
+        printf(&quot;%d\n&quot;,stu[i]);//输出每一位学生的得分
     }
-  }
-  int iNum=0,iMood[5]={0};
-  scanf(&quot;%d&quot;,&amp;iNum);
-  for(int i=0;i&lt;iNum;i++)
-  {
-    for(int j=0;j&lt;5;j++)
-    {
-      scanf(&quot;%d&quot;,iMood+j);
+    if(max&gt;0){//如果最大值不为0就要统计出错的题目
+    printf(&quot;%d&quot;,max);
+        for(int i=0;i&lt;m;i++){
+            if(time[i]==max){
+                printf(&quot; %d&quot;,i+1);
+            }
+        }
+    }else{//否则直接输出
+        printf(&quot;Too simple&quot;);
     }
-    //选择输出，注意表情是从1开始，数组是从0开始
-    if(iMood[0]&gt;0&amp;&amp;iMood[0]&lt;=iHand
-     &amp;&amp;iMood[1]&gt;0&amp;&amp;iMood[1]&lt;=iEye
-     &amp;&amp;iMood[2]&gt;0&amp;&amp;iMood[2]&lt;=iMouth
-     &amp;&amp;iMood[3]&gt;0&amp;&amp;iMood[3]&lt;=iEye
-     &amp;&amp;iMood[4]&gt;0&amp;&amp;iMood[4]&lt;=iHand)
-     {
-       printf(&quot;%s(%s%s%s)%s&quot;,szHand[iMood[0]-1],szEye[iMood[1]-1],
-           szMouth[iMood[2]-1],szEye[iMood[3]-1],szHand[iMood[4]-1]);
-     }
-     else
-     {
-       printf(&quot;Are you kidding me? @\\/@&quot;);
-     }
-     if(i!=iNum-1)
-     {
-       printf(&quot;\n&quot;);
-     }
-  }
-  return 0;
-
-}</code></pre><p>注意：<br>scanf函数有一种格式控制可以输入指定符号前的字符串，即%[^…]，其中…可以是任意字符，之前的任意多个字符会被输入，如果加上<em>，即%</em>[^…]，就是忽略…前的任意多字符。因为有[]两个字符作为数据的前后标记，因此可以用getchar试探读入，读入回车则结束，读入[则接收数据。<br>参考链接：<a href="https://blog.csdn.net/bawangtu/article/details/81287293">https://blog.csdn.net/bawangtu/article/details/81287293</a></p>
- 
+    return 0;
+} </code></pre> 
       <!-- reward -->
       
     </div>
@@ -488,7 +482,7 @@ int main()
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/29/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/46/">46</a><a class="extend next" rel="next" href="/page/31/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/29/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="page-number current">30</span><a class="page-number" href="/page/31/">31</a><a class="page-number" href="/page/32/">32</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" href="/page/31/">下一页</a>
   </nav>
   
 </section>

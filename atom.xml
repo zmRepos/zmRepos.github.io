@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-07-05T14:24:58.831Z</updated>
+  <updated>2020-08-15T13:55:36.071Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,164 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>剑指offer-09</title>
+    <link href="http://zm163.github.io/2020/08/15/%E5%89%91%E6%8C%87offer-09/"/>
+    <id>http://zm163.github.io/2020/08/15/%E5%89%91%E6%8C%87offer-09/</id>
+    <published>2020-08-15T13:05:51.000Z</published>
+    <updated>2020-08-15T13:55:36.071Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;总题目&quot;&gt;&lt;a href=&quot;#总题目&quot; class=&quot;headerlink&quot; title=&quot;总题目&quot;&gt;&lt;/a&gt;总题目&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-1021</title>
+    <link href="http://zm163.github.io/2020/08/15/LeetCode-1021/"/>
+    <id>http://zm163.github.io/2020/08/15/LeetCode-1021/</id>
+    <published>2020-08-15T13:04:47.000Z</published>
+    <updated>2020-08-15T13:54:09.375Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;1021删除最外层的括号&quot;&gt;&lt;a href=&quot;#1021删除最外层的括号&quot; class=&quot;headerlink&quot; title=&quot;1021删除最外层的括号&quot;&gt;&lt;/a&gt;1021删除最外层的括号&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>单例模式为什么要双重检查null</title>
+    <link href="http://zm163.github.io/2020/07/16/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5null/"/>
+    <id>http://zm163.github.io/2020/07/16/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5null/</id>
+    <published>2020-07-16T14:50:46.000Z</published>
+    <updated>2020-07-16T15:10:03.323Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##单例设计模式（懒汉式）为什么要进行双重检测锁定?&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="java" scheme="http://zm163.github.io/categories/java/"/>
+    
+      <category term="设计模式" scheme="http://zm163.github.io/categories/java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+    
+      <category term="设计模式" scheme="http://zm163.github.io/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Spring中使用错误的代理导致类型转化异常</title>
+    <link href="http://zm163.github.io/2020/07/16/Spring%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%94%99%E8%AF%AF%E7%9A%84%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%BC%82%E5%B8%B8/"/>
+    <id>http://zm163.github.io/2020/07/16/Spring%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%94%99%E8%AF%AF%E7%9A%84%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%BC%82%E5%B8%B8/</id>
+    <published>2020-07-16T14:50:02.000Z</published>
+    <updated>2020-07-16T15:12:19.186Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Bean named ‘userService’ is expected to be of type ‘com.eju.service.impl.UserServiceImpl’ but was actually of type
+        
+      
+    
+    </summary>
+    
+    
+      <category term="Spring&amp;MyBatis" scheme="http://zm163.github.io/categories/Spring-MyBatis/"/>
+    
+      <category term="bugs" scheme="http://zm163.github.io/categories/Spring-MyBatis/bugs/"/>
+    
+    
+      <category term="bug" scheme="http://zm163.github.io/tags/bug/"/>
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MySql用户权限不足</title>
+    <link href="http://zm163.github.io/2020/07/16/MySql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/"/>
+    <id>http://zm163.github.io/2020/07/16/MySql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/</id>
+    <published>2020-07-16T14:49:04.000Z</published>
+    <updated>2020-07-16T15:14:37.992Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;MySQL建立表时出现：1044 - Access denied for user ‘root’@’localhost’ to database
+        
+      
+    
+    </summary>
+    
+    
+      <category term="mysql" scheme="http://zm163.github.io/categories/mysql/"/>
+    
+      <category term="bugs" scheme="http://zm163.github.io/categories/mysql/bugs/"/>
+    
+    
+      <category term="bug" scheme="http://zm163.github.io/tags/bug/"/>
+    
+      <category term="MySQL" scheme="http://zm163.github.io/tags/MySQL/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用Spring整合MyBatis时遇到的bugs</title>
+    <link href="http://zm163.github.io/2020/07/12/%E4%BD%BF%E7%94%A8Spring%E6%95%B4%E5%90%88MyBatis%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84bugs/"/>
+    <id>http://zm163.github.io/2020/07/12/%E4%BD%BF%E7%94%A8Spring%E6%95%B4%E5%90%88MyBatis%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84bugs/</id>
+    <published>2020-07-12T01:45:26.000Z</published>
+    <updated>2020-07-12T02:21:18.293Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;#在整合Spring与MyBatis时遇到的bugs&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="Spring&amp;MyBatis" scheme="http://zm163.github.io/categories/Spring-MyBatis/"/>
+    
+      <category term="bugs" scheme="http://zm163.github.io/categories/Spring-MyBatis/bugs/"/>
+    
+    
+      <category term="bug" scheme="http://zm163.github.io/tags/bug/"/>
+    
+      <category term="MyBatis" scheme="http://zm163.github.io/tags/MyBatis/"/>
+    
+      <category term="Spring" scheme="http://zm163.github.io/tags/Spring/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-41</title>
@@ -413,192 +571,6 @@
       <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
     
       <category term="数学公式" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-30</title>
-    <link href="http://zm163.github.io/2020/05/21/LeetCode-30/LeetCode-30/"/>
-    <id>http://zm163.github.io/2020/05/21/LeetCode-30/LeetCode-30/</id>
-    <published>2020-05-21T14:27:01.000Z</published>
-    <updated>2020-06-30T15:12:48.235Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;串联所有的子串&quot;&gt;&lt;a href=&quot;#串联所有的子串&quot; class=&quot;headerlink&quot; title=&quot;串联所有的子串&quot;&gt;&lt;/a&gt;串联所有的子串&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
-    
-      <category term="字符串" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-      <category term="双指针" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-      <category term="哈希表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%93%88%E5%B8%8C%E8%A1%A8/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-27</title>
-    <link href="http://zm163.github.io/2020/05/20/LeetCode-27/LeetCode-27/"/>
-    <id>http://zm163.github.io/2020/05/20/LeetCode-27/LeetCode-27/</id>
-    <published>2020-05-20T10:40:15.000Z</published>
-    <updated>2020-06-30T15:10:39.795Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;移除元素&quot;&gt;&lt;a href=&quot;#移除元素&quot; class=&quot;headerlink&quot; title=&quot;移除元素&quot;&gt;&lt;/a&gt;移除元素&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
-    
-      <category term="双指针" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-26</title>
-    <link href="http://zm163.github.io/2020/05/20/LeetCode-26/LeetCode-26/"/>
-    <id>http://zm163.github.io/2020/05/20/LeetCode-26/LeetCode-26/</id>
-    <published>2020-05-20T10:40:11.000Z</published>
-    <updated>2020-06-30T15:10:08.598Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;删除数组中的重复项&quot;&gt;&lt;a href=&quot;#删除数组中的重复项&quot; class=&quot;headerlink&quot; title=&quot;删除数组中的重复项&quot;&gt;&lt;/a&gt;删除数组中的重复项&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="数组" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/"/>
-    
-      <category term="双指针" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%8F%8C%E6%8C%87%E9%92%88/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-25</title>
-    <link href="http://zm163.github.io/2020/05/20/LeetCode-25/LeetCode-25/"/>
-    <id>http://zm163.github.io/2020/05/20/LeetCode-25/LeetCode-25/</id>
-    <published>2020-05-20T10:40:01.000Z</published>
-    <updated>2020-06-30T15:09:21.038Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;k个一组翻转链表&quot;&gt;&lt;a href=&quot;#k个一组翻转链表&quot; class=&quot;headerlink&quot; title=&quot;k个一组翻转链表&quot;&gt;&lt;/a&gt;k个一组翻转链表&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
-    
-      <category term="链表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-24</title>
-    <link href="http://zm163.github.io/2020/05/19/LeetCode-24/LeetCode-24/"/>
-    <id>http://zm163.github.io/2020/05/19/LeetCode-24/LeetCode-24/</id>
-    <published>2020-05-19T07:10:58.000Z</published>
-    <updated>2020-06-30T15:08:52.618Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;两两交换链表中的节点&quot;&gt;&lt;a href=&quot;#两两交换链表中的节点&quot; class=&quot;headerlink&quot; title=&quot;两两交换链表中的节点&quot;&gt;&lt;/a&gt;两两交换链表中的节点&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="中等" scheme="http://zm163.github.io/categories/LeetCode/%E4%B8%AD%E7%AD%89/"/>
-    
-      <category term="链表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-23</title>
-    <link href="http://zm163.github.io/2020/05/19/LeetCode-23/LeetCode-23/"/>
-    <id>http://zm163.github.io/2020/05/19/LeetCode-23/LeetCode-23/</id>
-    <published>2020-05-19T07:10:55.000Z</published>
-    <updated>2020-06-30T15:08:13.208Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;合并k个排序链表&quot;&gt;&lt;a href=&quot;#合并k个排序链表&quot; class=&quot;headerlink&quot; title=&quot;合并k个排序链表&quot;&gt;&lt;/a&gt;合并k个排序链表&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="困难" scheme="http://zm163.github.io/categories/LeetCode/%E5%9B%B0%E9%9A%BE/"/>
-    
-      <category term="链表" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E9%93%BE%E8%A1%A8/"/>
-    
-      <category term="堆" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%A0%86/"/>
-    
-      <category term="分治算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%88%86%E6%B2%BB%E7%AE%97%E6%B3%95/"/>
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>

@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1004"
+  id="post-PTA-Basic-1010"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,16 +130,16 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/15/PTA-Basic-1004/"
-    >PAT_Basic-1004</a> 
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1010/"
+    >PTA-Basic-1010</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/15/PTA-Basic-1004/" class="article-date">
-  <time datetime="2019-09-15T08:02:01.000Z" itemprop="datePublished">2019-09-15</time>
+      <a href="/2019/09/17/PTA-Basic-1010/" class="article-date">
+  <time datetime="2019-09-17T12:46:30.000Z" itemprop="datePublished">2019-09-17</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -149,62 +149,46 @@ var _hmt = _hmt || [];
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>读入 n（&gt;0）名学生的姓名、学号、成绩，分别输出成绩最高和成绩最低学生的姓名和学号。</p>
-<p>输入格式：<br>每个测试输入包含 1 个测试用例，格式为</p>
-<p>第 1 行：正整数 n</p>
-<p>第 2 行：第 1 个学生的姓名 学号 成绩</p>
-<p>第 3 行：第 2 个学生的姓名 学号 成绩<br>  … … …<br>第 n+1 行：第 n 个学生的姓名 学号 成绩</p>
-<p>其中姓名和学号均为不超过 10 个字符的字符串，成绩为 0 到 100 之间的一个整数，这里保证在一组测试用例中没有两个学生的成绩是相同的。</p>
-<p>输出格式：<br>对每个测试用例输出 2 行，第 1 行是成绩最高学生的姓名和学号，第 2 行是成绩最低学生的姓名和学号，字符串间有 1 空格。</p>
-<p>输入样例：</p>
-<p>3</p>
-<p>Joe Math990112 89</p>
-<p>Mike CS991301 100</p>
-<p>Mary EE990830 95</p>
-<p>输出样例：</p>
-<p>Mike CS991301</p>
-<p>Joe Math990112</p>
-<hr>
-<p>分析：</p>
-<p>1直接使用结构体的两个对象存储最大和最小分数对应的学生。<br>2在输入时比较分数的大小，比最大的的的就将最大的重新赋值，比最小的小的就将最小的重新赋值。</p>
-<p>##代码：</p>
+  <p>设计函数求一元多项式的导数。（注：x<br>​n<br>​​ （n为整数）的一阶导数为nx<br>​n−1<br>​​ 。）</p>
+<p>输入格式:<br>以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过 1000 的整数）。数字间以空格分隔。</p>
+<p>输出格式:<br>以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。注意“零多项式”的指数和系数都是 0，但是表示为 0 0。</p>
+<p>输入样例:</p>
+<pre><code>3 4 -5 2 6 1 -2 0</code></pre><p>输出样例:</p>
+<pre><code>12 3 -10 1 6 0</code></pre><p>分析：</p>
+<p>一元多项式条件：系数不为0，指数为大于-1的整数即（指数&gt;=0）;</p>
+<p>输入：先输入一个系数再输入一个指数，依此重复，指数递减。</p>
+<p>输出：格式见题目，输出求一次导后的的多项式对应的系数与指数。</p>
+<p>（注意： “零多项式”，最高项指数为0，但是表示为 0 0，除此以外，只要指数不为0，系数为不为无所谓，也要输出。百度解释0多项式就是0）</p>
+<p>因为系数一定不为0，所以如果结果中有“零多项式”，那么一定是输入时的指数为0.一旦指数为0，后面就不会再有输入了。</p>
+<p>思路：</p>
+<p>1读取一对数字再读一个字符。</p>
+<p>2如果指数为0就可以判断后面没有输入了。</p>
+<p>3不为0就输出对应求导后的数值，并标记一下此多项式不是“0多项式”。</p>
+<p>4如果不是0多项式，就不用输出“0 0”了，如果那么前面一定没有输出，那么就要输出此。</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-typedef struct student{
-char name[11];
-char id[11];
-int score;
-};
 int main(void){
-int number;
-scanf(&quot;%d&quot;,&amp;number);
-getchar();
-struct student max,min;
-number--;
-scanf(&quot;%s %s %d&quot;,max.name,max.id,&amp;max.score);
-min=max;
-while(number--){
-    getchar();
-    char name[11];
-    char id[11];
-    int score;
-    scanf(&quot;%s %s %d&quot;,name,id,&amp;score);
-    if(max.score&lt;score){
-        strcpy(max.name,name);
-        strcpy(max.id,i
-        max.score=score;
+int n,m;
+int flag=0;
+char ch;
+while(1){
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    ch=getchar();
+    if(m!=0){
+        if(flag)//此处用于判断是否为第一个输出，是就不用输出空格。
+            printf(&quot; &quot;);
+        printf(&quot;%d %d&quot;,n*m,m-1);
+        flag=1;
     }
-    if(min.score&gt;score){
-        strcpy(min.name,name);
-        strcpy(min.id,id);
-        min.score=score;
+    if(ch==&apos;\n&apos;){
+        break;
     }
 }
-printf(&quot;%s %s\n&quot;,max.name,max.id);
-printf(&quot;%s %s&quot;,min.name,min.id);
-return 0;
+if(!flag){
+    printf(&quot;0 0&quot;);
 }
-``</code></pre> 
+ return 0;
+}</code></pre> 
       <!-- reward -->
       
     </div>
@@ -226,7 +210,7 @@ return 0;
 
     
     <article
-  id="post-PTA-Basic-1003"
+  id="post-PTA-Basic-1009"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -237,16 +221,16 @@ return 0;
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/15/PTA-Basic-1003/"
-    >PTA-Basic-1003</a> 
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1009/"
+    >PTA-Basic-1009</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/15/PTA-Basic-1003/" class="article-date">
-  <time datetime="2019-09-15T07:35:57.000Z" itemprop="datePublished">2019-09-15</time>
+      <a href="/2019/09/17/PTA-Basic-1009/" class="article-date">
+  <time datetime="2019-09-17T11:35:44.000Z" itemprop="datePublished">2019-09-17</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
@@ -256,93 +240,131 @@ return 0;
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>“答案正确”是自动判题系统给出的最令人欢喜的回复。本题属于 PAT 的“答案正确”大派送 —— 只要读入的字符串满足下列条件，系统就输出“答案正确”，否则输出“答案错误”。</p>
-<p>得到“答案正确”的条件是：</p>
-<p>字符串中必须仅有 P、 A、 T这三种字符，不可以包含其它字符；]<br>任意形如 xPATx 的字符串都可以获得“答案正确”，其中 x 或者是空字符串，或者是仅由字母 A 组成的字符串;</p>
-<p>如果 aPbTc 是正确的，那么 aPbATca 也是正确的，其中 a、 b、 c 均或者是空字符串，或者是仅由字母 A 组成</p>
-<p>的字符串。</p>
-<p>现在就请你为 PAT 写一个自动裁判程序，判定哪些字符串是可以获得“答案正确”的。</p>
-<p>输入格式：<br>每个测试输入包含 1 个测试用例。第 1 行给出一个正整数 n (&lt;10)，是需要检测的字符串个数。接下来每个字符串占一行，字符串长度不超过 100，且不包含空格。</p>
-<p>输出格式：<br>每个字符串的检测结果占一行，如果该字符串可以获得“答案正确”，则输出 YES，否则输出 NO。</p>
+  <p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
+<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
+<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
 <p>输入样例：</p>
-<p>8</p>
-<p>PAT</p>
-<p>PAAT</p>
-<p>AAPATAA</p>
-<p>AAPAATAAAA</p>
-<p>xPATx</p>
-<p>PT</p>
-<p>Whatever</p>
-<p>APAAATAA</p>
+<p>Hello World Here I Come</p>
 <p>输出样例：</p>
-<p>YES</p>
-<p>YES</p>
-<p>YES</p>
-<p>YES</p>
-<p>NO</p>
-<p>NO</p>
-<p>NO</p>
-<p>NO<br>题目分析：</p>
-<p>1必须含有P,A,T这三个字符，且不含其他字符。<br>2字符P ,T 的数目必须为1；<br>3字符P与T之间的字符数*P字符前A的个数必须等于字符T后的A的数目。</p>
+<p>Come I Here World Hello</p>
+<p>分析：<br>1给出一句话，要求单词顺序不变，倒序输出所有单词。<br>首先要输出最后一个单词，接着是倒数第二个… ,直到到达首单词。</p>
+<p>思路：双指针算法。<br>1用一个字符数组存储输入的字符串；使用两个字符指针，一个用来指向空格的位置，另一个用来输出空格与空格或者空格与     ‘\0’    之间的单词（字符串的末尾会存放一个‘\0’）,然后继续此操作直到到达第一个单词，第一个单词不输出（因题目格式要求）<br>2另外输出第一个单词。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-
 #include&lt;string.h&gt;
-
+#define MAX 81
 int main(void){
-
-int number;
-scanf(&quot;%d&quot;,&amp;number);
-char str[100];
-int i=0;
-char* result[number];
-while(i&lt;number){
-    int number_p=0;
-    int number_t=0;
-    int flag1=0,flag2=0,flag3=0;
-    int index_p=0,index_t=0;
-    scanf(&quot;%s&quot;,str);
-    getchar();
-    for(int j=0;j&lt;strlen(str);j++){
-        if(str[j]==&apos;A&apos;){
-            flag1=1
+char str[MAX];
+char *p,*q;
+gets(str);
+for(p=str+strlen(str)-1;p!=str;p--){//输出到第一个单词停止。
+    if(*p==&apos; &apos;){//如果读到一个空格，说明，一个单词已经结束。
+        for(q=p+1;*q!=&apos; &apos;&amp;&amp;*q;q++){
+            printf(&quot;%c&quot;,*q);
         }
-        if(str[j]==&apos;P&apos;){
-            flag2=1;
-            number_p++;
-        }
-        if(str[j]==&apos;T&apos;){
-            flag3=1;
-            number_t++;
-        }
-        if(str[j]!=&apos;A&apos;&amp;&amp;str[j]!
-=&apos;T&apos;&amp;&amp;str[j]!=&apos;P&apos;){
-            break;
-        }else{
-            if(str[j]==&apos;P&apos;){
-                index_p=j;
-            }
-            if(str[j]==&apos;T&apos;){
-                index_t=j;
-                break;
-            }
-        }
+        printf(&quot; &quot;);
     }
-    if(index_p!=index_t&amp;&amp;(index_p*(index_t-index_p-1)==(strlen(str)-index_t-1))
-
-&amp;&amp;flag1&amp;&amp;flag2&amp;&amp;flag3&amp;&amp;number_p==1&amp;&amp;number_t==1){
-        result[i]=&quot;YES&quot;;
-    }else{
-        result[i]=&quot;NO&quot;;
-    }
-    i++;
 }
-for(int i=0;i&lt;number;i++){
-    printf(&quot;%s\n&quot;,result[i]);
+for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
+//此处判定条件中的*p是为了防止输入一个单词时造成死循环。因为只输入一个单词时，也作为字符串末尾也会加上一个&apos;\0&apos;.
+    printf(&quot;%c&quot;,*p);
 }
 return 0;
+}</code></pre><p>######如果有更好的思路欢迎交流。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
 
-} </code></pre> 
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1008"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/16/PTA-Basic-1008/"
+    >PTA-Basic-1008</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/16/PTA-Basic-1008/" class="article-date">
+  <time datetime="2019-09-16T15:58:39.000Z" itemprop="datePublished">2019-09-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>一个数组A中存有N（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（≥0）个位置，即将A中的数据由（A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−1<br>​​ ）变换为（A<br>​N−M<br>​​ ⋯A<br>​N−1<br>​​ A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−M−1<br>​​ ）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p>
+<p>输入格式:</p>
+<pre><code>每个输入包含一个测试用例，第1行输入N（1≤N≤100）和M（≥0）；第2行输入N个整数，之间用空格分隔。</code></pre><p>输出格式:</p>
+<pre><code>在一行中输出循环右移M位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。</code></pre><p>输入样例:</p>
+<pre><code>6 2
+1 2 3 4 5 6</code></pre><p>输出样例:</p>
+<pre><code>5 6 1 2 3 4</code></pre><hr>
+<p>分析：</p>
+<p>题目要求输入一个数组，将数组右移，并输出。</p>
+<p>思路：</p>
+<pre><code>本题并没有按照题目要求的那样改变数组，而是改变数组输出的顺
+
+序，先输出原数组从n-m到n-1的数字，再输出0到n-m-2的数字（为什么不输出到n-m-1,这是为了题目的输出
+
+格式要求。），最后在输出下标为n-m-1的数组中的数字。
+
+
+##注意：
+
+如果右移的位数大于输入数字的个数，就用位数对个数取余，并将余数设置为位移的位数，因为如果唯
+
+一的位数大于数字数目，就会多做一次周期位移（周期位移后数组不变）。</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt; 
+int main(void){
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    m=m%n;
+    int list[n];
+    int k=0;
+    while(k&lt;n){
+       scanf(&quot;%d&quot;,&amp;list[k++]);
+    }  
+    int i;
+    for(i=n-m;i&lt;n;i++){
+        printf(&quot;%d &quot;,list[i]);
+    }
+    for(i=0;i&lt;n-m-1;i++){
+        printf(&quot;%d &quot;,list[i]);
+    }
+    printf(&quot;%d&quot;,list[i]);
+    return 0;
+}</code></pre> 
       <!-- reward -->
       
     </div>
@@ -369,7 +391,7 @@ return 0;
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/45/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/45/">45</a><span class="page-number current">46</span>
+    <a class="extend prev" rel="prev" href="/page/45/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/44/">44</a><a class="page-number" href="/page/45/">45</a><span class="page-number current">46</span><a class="page-number" href="/page/47/">47</a><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" href="/page/47/">下一页</a>
   </nav>
   
 </section>
