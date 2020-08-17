@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-LeetCode-41"
+  id="post-单例模式为什么要双重检查null"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,29 +130,30 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/07/05/LeetCode-41/"
-    >LeetCode-41</a> 
+  <a class="article-title" href="/2020/07/16/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5null/"
+    >单例模式为什么要双重检查null</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/07/05/LeetCode-41/" class="article-date">
-  <time datetime="2020-07-05T14:14:40.000Z" itemprop="datePublished">2020-07-05</time>
+      <a href="/2020/07/16/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5null/" class="article-date">
+  <time datetime="2020-07-16T14:50:46.000Z" itemprop="datePublished">2020-07-16</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/LeetCode/%E5%9B%B0%E9%9A%BE/">困难</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/">数组</a>
+    <a class="article-category-link" href="/categories/java/">java</a> / <a class="article-category-link" href="/categories/java/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">设计模式</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>##题目:<br><img src="/2020/07/05/LeetCode-41/1.png" alt><br>##本题难点<br>本题主要是将数组元素对应位置处的数字做一个标记，那么这个标记如何做呢？只能通过把值赋值为相反数来做标记，前提是把原数组中所有的非正数化为正数。<br>##代码:</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len=nums.length;</span><br><span class="line">		<span class="comment">//将数组中小于等于0的数字都化为大于len的数字便于做标记</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			<span class="keyword">if</span>(nums[i]&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">				nums[i]=len+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//遍历数组将数组中的小于等于len的数字对应位置存储的数字化为相反数</span></span><br><span class="line">		<span class="comment">//这样做不会影响后面的遍历</span></span><br><span class="line">		<span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			temp=Math.abs(nums[i]);</span><br><span class="line">			<span class="keyword">if</span>(temp&lt;=len)&#123;</span><br><span class="line">				nums[temp-<span class="number">1</span>]=-Math.abs(nums[temp-<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//经过以上两步，遍历数组中不是负数的位置+1即是答案</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			<span class="keyword">if</span>(nums[i]&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> len+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##tips<br>O(2n)也是O(n)的时间复杂度</p>
- 
+  <h2 id="单例设计模式（懒汉式）为什么要进行双重检测锁定"><a href="#单例设计模式（懒汉式）为什么要进行双重检测锁定" class="headerlink" title="单例设计模式（懒汉式）为什么要进行双重检测锁定?"></a>单例设计模式（懒汉式）为什么要进行双重检测锁定?</h2> 
+      <a class="article-more-link" href="/2020/07/16/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5null/"
+        >阅读更多...</a
+      >
+       
       <!-- reward -->
       
     </div>
@@ -162,7 +163,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
 
     </footer>
   </div>
@@ -174,7 +175,7 @@ var _hmt = _hmt || [];
 
     
     <article
-  id="post-LeetCode-40"
+  id="post-Spring中使用错误的代理导致类型转化异常"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -185,22 +186,27 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/07/02/LeetCode-40/"
-    >LeetCode-40</a> 
+  <a class="article-title" href="/2020/07/16/Spring%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%94%99%E8%AF%AF%E7%9A%84%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%BC%82%E5%B8%B8/"
+    >Spring中使用错误的代理导致类型转化异常</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/07/02/LeetCode-40/" class="article-date">
-  <time datetime="2020-07-02T13:02:33.000Z" itemprop="datePublished">2020-07-02</time>
-</a>    
+      <a href="/2020/07/16/Spring%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%94%99%E8%AF%AF%E7%9A%84%E4%BB%A3%E7%90%86%E5%AF%BC%E8%87%B4%E7%B1%BB%E5%9E%8B%E8%BD%AC%E5%8C%96%E5%BC%82%E5%B8%B8/" class="article-date">
+  <time datetime="2020-07-16T14:50:02.000Z" itemprop="datePublished">2020-07-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a> / <a class="article-category-link" href="/categories/java/Spring/">Spring</a>
+  </div>
+   
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="/2020/07/02/LeetCode-40/1.png" alt></p>
+  <p>Bean named ‘userService’ is expected to be of type ‘com.eju.service.impl.UserServiceImpl’ but was actually of type ‘com.sun.proxy.$Proxy13’</p>
+<p>原因：由于通知类的方法中将代理对象转化为具体的Spring默认使用的是JDK动态代理，jdk的动态代理不支持类注入，只支持接口方式注入。<br>解决：改变配置，使用Cglib动态代理。</p>
  
       <!-- reward -->
       
@@ -211,7 +217,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/" rel="tag">bug</a></li></ul>
 
     </footer>
   </div>
@@ -223,7 +229,7 @@ var _hmt = _hmt || [];
 
     
     <article
-  id="post-LeetCode-39"
+  id="post-MySql用户权限不足"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -234,22 +240,26 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2020/07/02/LeetCode-39/"
-    >LeetCode-39</a> 
+  <a class="article-title" href="/2020/07/16/MySql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/"
+    >MySql用户权限不足</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2020/07/02/LeetCode-39/" class="article-date">
-  <time datetime="2020-07-02T13:02:28.000Z" itemprop="datePublished">2020-07-02</time>
-</a>    
+      <a href="/2020/07/16/MySql%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E4%B8%8D%E8%B6%B3/" class="article-date">
+  <time datetime="2020-07-16T14:49:04.000Z" itemprop="datePublished">2020-07-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/mysql/">mysql</a>
+  </div>
+   
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p><img src="/2020/07/02/LeetCode-39/1.png" alt></p>
+  <p>MySQL建立表时出现：1044 - Access denied for user ‘root’@’localhost’ to database ‘xxx’<br>原因：root账号没有在xxx数据库里面进行建表的权限，可能xxx数据库是系统数据库，而root账户的权限不足。<br>解决：修改使用的数据库</p>
  
       <!-- reward -->
       
@@ -260,7 +270,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/MySQL/" rel="tag">MySQL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bug/" rel="tag">bug</a></li></ul>
 
     </footer>
   </div>
@@ -277,7 +287,7 @@ var _hmt = _hmt || [];
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>

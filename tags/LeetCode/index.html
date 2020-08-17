@@ -13,7 +13,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Tag: LeetCode |  Technology blog
+    Tag: LeetCOde |  Technology blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -64,7 +64,7 @@ var _hmt = _hmt || [];
   <article class="articles">
     
     
-    <h1 class="page-type-title">#&nbspLeetCode</h1>
+    <h1 class="page-type-title">#&nbspLeetCOde</h1>
     
     
   
@@ -82,13 +82,13 @@ var _hmt = _hmt || [];
       <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
-      <a href="/2020/08/15/%E5%89%91%E6%8C%87offer-09/" class="archive-article-date">
-  <time datetime="2020-08-15T13:05:51.000Z" itemprop="datePublished">08/15</time>
+      <a href="/2020/08/17/LeetCode-496/" class="archive-article-date">
+  <time datetime="2020-08-17T14:53:23.000Z" itemprop="datePublished">08/17</time>
 </a>
        
 <h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/08/15/%E5%89%91%E6%8C%87offer-09/"
-    >剑指offer-09</a> 
+  <a class="archive-article-title" href="/2020/08/17/LeetCode-496/"
+    >LeetCode-496</a> 
 </h2>
  
 
@@ -96,57 +96,7 @@ var _hmt = _hmt || [];
     
     
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/15/LeetCode-1021/" class="archive-article-date">
-  <time datetime="2020-08-15T13:04:47.000Z" itemprop="datePublished">08/15</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/08/15/LeetCode-1021/"
-    >LeetCode-1021</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
-
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/07/05/LeetCode-41/" class="archive-article-date">
-  <time datetime="2020-07-05T14:14:40.000Z" itemprop="datePublished">07/05</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/07/05/LeetCode-41/"
-    >LeetCode-41</a> 
-</h2>
- 
-
-    </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCOde/" rel="tag">LeetCOde</a></li></ul>
 
     
   </div>
@@ -158,11 +108,6 @@ var _hmt = _hmt || [];
   
   
 
-  
-  <nav class="page-nav">
-    
-    <span class="page-number current">1</span><a class="page-number" href="/tags/LeetCode/page/2/">2</a><a class="extend next" rel="next" href="/tags/LeetCode/page/2/">下一页</a>
-  </nav>
   
 </section>
       <footer class="footer">
@@ -471,6 +416,48 @@ var _hmt = _hmt || [];
       clipboard.on('success', function(e) {
         let $btn = $(e.trigger);
         $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618,"jsonPath":"live2d-widget-model-izumi"},"display":{"superSample":2,"position":"right","width":150,"height":300,"hOffset":0,"vOffset":-20},"mobile":{"show":false,"scale":0.5},"react":{"opacityDefault":0.7,"opacityOnHover":0.3},"log":false});</script></body>
+
+</html>;
         let $icon = $($btn.find('i'));
         $icon.removeClass('ri-file-copy-2-line');
         $icon.addClass('ri-checkbox-circle-line');

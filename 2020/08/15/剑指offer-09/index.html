@@ -84,7 +84,7 @@ var _hmt = _hmt || [];
   <time datetime="2020-08-15T13:05:51.000Z" itemprop="datePublished">2020-08-15</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/">栈</a>
+    <a class="article-category-link" href="/categories/LeetCode/">LeetCode</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/">算法</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/">栈</a>
   </div>
   
 <div class="word_count">
@@ -92,7 +92,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">195</span>
+            <span class="post-count">201</span>
         </span>
     </span>
 
@@ -116,9 +116,9 @@ var _hmt = _hmt || [];
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="总题目"><a href="#总题目" class="headerlink" title="总题目"></a>总题目</h1><a id="more"></a>
+  <h1 id="用两个栈实现队列"><a href="#用两个栈实现队列" class="headerlink" title="用两个栈实现队列"></a>用两个栈实现队列</h1><a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
-<h2 id="用两个栈实现队列"><a href="#用两个栈实现队列" class="headerlink" title="用两个栈实现队列"></a>用两个栈实现队列</h2><p><img src="/2020/08/15/%E5%89%91%E6%8C%87offer-09/%E6%8D%95%E8%8E%B7.PNG" alt><br>##思路<br>    创建两个栈分别负责存和取数据，当取数据的时候，将存数据的那个栈<br>    中的数据依次取出再全部放到负责取数据的那个栈，然后从取数据的那<br>    个栈的栈定取出数据即可。<br>##代码</p>
+<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><pre><code>![](剑指offer-09/捕获.PNG)</code></pre><p>##思路<br>    创建两个栈分别负责存和取数据，当取数据的时候，将存数据的那个栈<br>    中的数据依次取出再全部放到负责取数据的那个栈，然后从取数据的那<br>    个栈的栈定取出数据即可。<br>##代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CQueue</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; in=<span class="keyword">null</span>;</span><br><span class="line">	<span class="keyword">private</span> Stack&lt;Integer&gt; out=<span class="keyword">null</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="title">CQueue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		in=<span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">		out=<span class="keyword">new</span> Stack&lt;&gt;();	</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">appendTail</span><span class="params">(<span class="keyword">int</span> value)</span> </span>&#123;</span><br><span class="line">		in.push(value);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">deleteHead</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(in.isEmpty()&amp;&amp;out.isEmpty())<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">		<span class="comment">//以上一句进行了优化，避免了不必要的执行</span></span><br><span class="line">		<span class="keyword">if</span>(out.isEmpty())&#123;</span><br><span class="line">			<span class="keyword">while</span>(!in.isEmpty())&#123;</span><br><span class="line">				out.push(in.pop());</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> out.pop();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
@@ -197,6 +197,15 @@ var _hmt = _hmt || [];
 
    
   <nav class="article-nav">
+    
+      <a href="/2020/08/17/%E5%8C%96%E6%A0%88%E4%B8%BA%E9%98%9F/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            化栈为队
+          
+        </div>
+      </a>
     
     
       <a href="/2020/08/15/LeetCode-1021/" class="article-nav-link">

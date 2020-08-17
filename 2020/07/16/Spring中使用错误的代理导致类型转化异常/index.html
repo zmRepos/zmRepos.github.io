@@ -84,7 +84,7 @@ var _hmt = _hmt || [];
   <time datetime="2020-07-16T14:50:02.000Z" itemprop="datePublished">2020-07-16</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Spring-MyBatis/">Spring&MyBatis</a> / <a class="article-category-link" href="/categories/Spring-MyBatis/bugs/">bugs</a>
+    <a class="article-category-link" href="/categories/java/">java</a> / <a class="article-category-link" href="/categories/java/Spring/">Spring</a>
   </div>
   
 <div class="word_count">
@@ -114,7 +114,8 @@ var _hmt = _hmt || [];
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>Bean named ‘userService’ is expected to be of type ‘com.eju.service.impl.UserServiceImpl’ but was actually of type ‘com.sun.proxy.$Proxy13’<br>原因：由于通知类的方法中将代理对象转化为具体的Spring默认使用的是JDK动态代理，jdk的动态代理不支持类注入，只支持接口方式注入。<br>解决：改变配置，使用Cglib动态代理。</p>
+  <p>Bean named ‘userService’ is expected to be of type ‘com.eju.service.impl.UserServiceImpl’ but was actually of type ‘com.sun.proxy.$Proxy13’</p>
+<p>原因：由于通知类的方法中将代理对象转化为具体的Spring默认使用的是JDK动态代理，jdk的动态代理不支持类注入，只支持接口方式注入。<br>解决：改变配置，使用Cglib动态代理。</p>
  
       <!-- reward -->
       

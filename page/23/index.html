@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1082"
+  id="post-PTA-Basic-1086"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,19 +130,19 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1082/"
-    >PTA-Basic-1082</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1086/"
+    >PTA-Basic-1086</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1082/" class="article-date">
-  <time datetime="2019-10-11T14:19:01.000Z" itemprop="datePublished">2019-10-11</time>
+      <a href="/2019/10/16/PTA-Basic-1086/" class="article-date">
+  <time datetime="2019-10-16T13:29:31.000Z" itemprop="datePublished">2019-10-16</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
   </div>
    
     </div>
@@ -150,37 +150,35 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
        
   <p>题目：</p>
-<p>本题目给出的射击比赛的规则非常简单，谁打的弹洞距离靶心最近，谁就是冠军；谁差得最远，谁就是菜鸟。本题给出一系列弹洞的平面坐标(x,y)，请你编写程序找出冠军和菜鸟。我们假设靶心在原点(0,0)。</p>
-<p>输入格式：<br>输入在第一行中给出一个正整数 N（≤ 10 000）。随后 N 行，每行按下列格式给出：</p>
-<p>ID x y<br>其中 ID 是运动员的编号（由 4 位数字组成）；x 和 y 是其打出的弹洞的平面坐标(x,y)，均为整数，且 0 ≤ |x|, |y| ≤ 100。题目保证每个运动员的编号不重复，且每人只打 1 枪。</p>
-<p>输出格式：<br>输出冠军和菜鸟的编号，中间空 1 格。题目保证他们是唯一的。</p>
+<p>做作业的时候，邻座的小盆友问你：“五乘以七等于多少？”你应该不失礼貌地围笑着告诉他：“五十三。”本题就要求你，对任何一对给定的正整数，倒着输出它们的乘积。</p>
+<p><img src="https://images.ptausercontent.com/0c3a4497-27c3-45ea-9c8e-5a1ab2df48af.jpg" alt></p>
+<p>输入格式：<br>输入在第一行给出两个不超过 1000 的正整数 A 和 B，其间以空格分隔。</p>
+<p>输出格式：<br>在一行中倒着输出 A 和 B 的乘积。</p>
 <p>输入样例：</p>
-<pre><code>3
-0001 5 7
-1020 -1 3
-0233 0 -1</code></pre><p>输出样例：</p>
-<pre><code>0233 0001</code></pre><p>分析：<br>直接对输入的每一行数据进行与最大值，最小值对比，然后变换。此处都是int型也是可以的。</p>
+<pre><code>5 7</code></pre><p>输出样例：</p>
+<pre><code>53</code></pre><p>分析：不超过1000，那么乘积就不会超过1000000，int足够了。计算乘积存入数组，对结果不断取余，不断存入数组，直到为0，最后倒着输出数组。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
 int main(void){
-    int n;
-    scanf(&quot;%d&quot;,&amp;n);
-    int maxid=0,minid=0;
-    long lenmax=0,lenmin=20000;
-    long id=0,x=0,y=0;
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%ld %ld %ld&quot;,&amp;id,&amp;x,&amp;y);
-        long len=x*x+y*y;
-        if(len&gt;lenmax){
-            lenmax=len;
-            maxid=id;
-        }
-        if(len&lt;lenmin){
-            lenmin=len;
-            minid=id;
-        }
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    int c=n*m;
+    int i=0;
+    int result[20];
+    int re=0;
+    if(c==0){//注意为0是，直接输，出有一个测试点对应这个。
+        printf(&quot;%d&quot;,c);
+        return 0;
     }
-    printf(&quot;%04ld %04ld&quot;,minid,maxid);
+    while(c!=0){
+        result[i++]=c%10; 
+        c=c/10;
+    }
+    for(int j=0;j&lt;i;j++){
+        re=re*10+result[j];
+    }
+    printf(&quot;%d&quot;,re);
     return 0;
 }</code></pre> 
       <!-- reward -->
@@ -204,7 +202,7 @@ int main(void){
 
     
     <article
-  id="post-PTA-Basic-1081"
+  id="post-PTA-Basic-1085"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -215,42 +213,257 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1081/"
-    >PTA-Basic-1081</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1085/"
+    >PTA-Basic-1085</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1081/" class="article-date">
-  <time datetime="2019-10-11T14:18:55.000Z" itemprop="datePublished">2019-10-11</time>
+      <a href="/2019/10/16/PTA-Basic-1085/" class="article-date">
+  <time datetime="2019-10-16T13:29:24.000Z" itemprop="datePublished">2019-10-16</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>题目：</p>
-<p>本题要求你帮助某网站的用户注册模块写一个密码合法性检查的小功能。该网站要求用户设置的密码必须由不少于6个字符组成，并且只能有英文字母、数字和小数点 .，还必须既有字母也有数字。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行给出一个用户设置的密码，为不超过 80 个字符的非空字符串，以回车结束。</p>
-<p>输出格式：<br>对每个用户的密码，在一行中输出系统反馈信息，分以下5种：</p>
-<p>如果密码合法，输出Your password is wan mei.；<br>如果密码太短，不论合法与否，都输出Your password is tai duan le.；<br>如果密码长度合法，但存在不合法字符，则输出Your password is tai luan le.；<br>如果密码长度合法，但只有字母没有数字，则输出Your password needs shu zi.；<br>如果密码长度合法，但只有数字没有字母，则输出Your password needs zi mu.。<br>输入样例：</p>
+  <p>题目：<br>每次 PAT 考试结束后，考试中心都会发布一个考生单位排行榜。本题就请你实现这个功能。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​5<br>​​ ），即考生人数。随后 N 行，每行按下列格式给出一个考生的信息：</p>
+<p>准考证号 得分 学校<br>其中准考证号是由 6 个字符组成的字符串，其首字母表示考试的级别：B代表乙级，A代表甲级，T代表顶级；得分是 [0, 100] 区间内的整数；学校是由不超过 6 个英文字母组成的单位码（大小写无关）。注意：题目保证每个考生的准考证号是不同的。</p>
+<p>输出格式：<br>首先在一行中输出单位个数。随后按以下格式非降序输出单位的排行榜：</p>
+<p>排名 学校 加权总分 考生人数<br>其中排名是该单位的排名（从 1 开始）；学校是全部按小写字母输出的单位码；加权总分定义为乙级总分/1.5 + 甲级总分 + 顶级总分*1.5的整数部分；考生人数是该属于单位的考生的总人数。</p>
+<p>学校首先按加权总分排行。如有并列，则应对应相同的排名，并按考生人数升序输出。如果仍然并列，则按单位码的字典序输出。</p>
+<p>输入样例：</p>
+<pre><code>10
+A57908 85 Au
+B57908 54 LanX
+A37487 60 au
+T28374 67 CMU
+T32486 24 hypu
+A66734 92 cmu
+B76378 71 AU
+A47780 45 lanx
+A72809 100 pku
+A03274 45 hypu</code></pre><p>输出样例：</p>
 <pre><code>5
-123s
-zheshi.wodepw
-1234.5678
-WanMei23333
-pass*word.6</code></pre><p>输出样例：</p>
-<pre><code>Your password is tai duan le.
-Your password needs shu zi.
-Your password needs zi mu.
-Your password is wan mei.
-Your password is tai luan le.</code></pre><p>代码：<br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>int main(void){<br>    int n;<br>    scanf(“%d”,&amp;n);//测试点二，是第一行的末尾的空格输入下一个。<br>    //scanf()函数则会保留换行符所以必须用getchar()吸收，防止作为一个输入行。<br>    getchar();<br>    char password[85];<br>    for(int i=0;i&lt;n;i++){<br>        int zifuflag=0;<br>        int zimuflag=0;<br>        int shuziflag=0;<br>        gets(password);//gets()函数会将换行符转换为‘\0’输入字符数组。<br>        int len=strlen(password);<br>        if(len&lt;6){<br>            printf(“Your password is tai duan le.\n”);<br>            continue;<br>        }<br>        for(int j=0;j&lt;len;j++){<br>            char ch=password[j];<br>            if((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’)){<br>                zimuflag=1;<br>            }<br>            if(ch&gt;=’0’&amp;&amp;ch&lt;=’9’){<br>                shuziflag=1;<br>            }<br>            if(ch!=’.’&amp;&amp;!(ch&lt;=’9’&amp;&amp;ch&gt;=’0’)&amp;&amp;!((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’))){<br>                zifuflag=1;<br>                break;<br>            }<br>        }<br>        if(zifuflag){<br>            printf(“Your password is tai luan le.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;!shuziflag){<br>            printf(“Your password needs shu zi.\n”);<br>            continue;<br>        }<br>        if(!zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password needs zi mu.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password is wan mei.\n”);<br>        }<br>    }<br>}</p>
- 
+1 cmu 192 2
+1 au 192 3
+3 pku 100 1
+4 hypu 81 2
+4 lanx 81 2</code></pre><p>分析：<br>定义一个结构体（包含学校名字（不分大小写），学校出席人数，学校总分（浮点数）），定义两个数组一个用来存储所有学校的（包含重复的内容）信息，然后再利用快排对第一个数组进行排序，再定义另一个数组用来合并名字相同的学校信息，然后每行输出一个学校的信息，排名从1开始，如果遇到不同的就+1。实话实说，这个代码是我抄的，我的思路固化了。<br>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+typedef struct{
+  char szSchool[7];
+  double fScore;
+  int iNumofStu;
+} SCHOOL;
+int cmp_sch(const void *a, const void *b)//利用学校的名字进行的排序
+{
+  SCHOOL *p=(SCHOOL *)a;//将a转化为结构体的指针，同样对b也是这样做。
+  SCHOOL *q=(SCHOOL *)b;
+  return strcmp(p-&gt;szSchool,q-&gt;szSchool);//对数组进行名字升序排序
+}
+int cmp(const void *a, const void *b)//依据题目排序，先对成绩降序，再对人数升序，再对学校名字升序。
+{
+  SCHOOL *p=(SCHOOL *)a;
+  SCHOOL *q=(SCHOOL *)b;
+  int flag=0;
+  int iscorep=(int)p-&gt;fScore,iscoreq=(int)q-&gt;fScore;
+  if(iscorep&lt;iscoreq)
+  {
+    flag=1;
+  }
+  else if(iscorep==iscoreq)
+  {
+    if(p-&gt;iNumofStu&gt;q-&gt;iNumofStu)
+    {
+      flag=1;
+    }
+    else if(p-&gt;iNumofStu==q-&gt;iNumofStu)
+    {
+      if(strcmp(p-&gt;szSchool,q-&gt;szSchool)&gt;0)
+      {
+        flag=1;
+      }
+    }
+  }
+  return flag;
+}
+int main()
+{
+  int iN=0,iNumofSchool=0;
+  scanf(&quot;%d&quot;,&amp;iN);
+  SCHOOL school[iN],result[iN];
+  memset(school,0,iN*sizeof(SCHOOL));//初始化含重复数据数组。
+  memset(result,0,iN*sizeof(SCHOOL));//初始化存储无重复数据的数组
+  int pos=0;
+  char szTempID[7]={0},szTempSch[7]={0};
+  double fTempScore=0;
+  for(int i=0;i&lt;iN;i++)
+  {
+    getchar();
+    scanf(&quot;%s %lf %s&quot;,szTempID,&amp;fTempScore,szTempSch);
+    if(szTempID[0]==&apos;B&apos;)//依据考试的等级进行分数统计。
+    {
+      fTempScore/=1.5;
+    }
+    else if(szTempID[0]==&apos;T&apos;)
+    {
+      fTempScore*=1.5;
+    }
+    for(int j=0;j&lt;strlen(szTempSch);j++)//将名字变为小写
+    {
+      if(szTempSch[j]&gt;=&apos;A&apos;&amp;&amp;szTempSch[j]&lt;=&apos;Z&apos;)
+      {
+        szTempSch[j]+=&apos;a&apos;-&apos;A&apos;;
+      }
+    }
+    strcpy(school[i].szSchool,szTempSch);
+    school[i].fScore=fTempScore;
+    school[i].iNumofStu=1;//存储到数组中去。
+  }
+  qsort(school,iN,sizeof(SCHOOL),cmp_sch);
+  result[0]=school[0];//首先将第一个学校数据给宁外一个数组
+  for(int i=1;i&lt;iN;i++)//从第一个开始，第0个已经给了另一个数组了，
+  {
+    if(strcmp(school[i].szSchool,school[i-1].szSchool)==0)
+    {//用后面的跟前面的比较，姓名一样就说明与前一个相同学校。
+      result[pos].fScore+=school[i].fScore;
+      result[pos].iNumofStu++;
+    }
+    else//不一样就说明另外一个学校，那么另一个数组的下标就要加1.
+    {
+      pos++;
+      result[pos]=school[i];
+    }
+  }
+  qsort(result,pos+1,sizeof(SCHOOL),cmp);//用题目条件排序。
+  int cnt=1;
+  printf(&quot;%d\n&quot;,pos+1);
+  printf(&quot;%d %s %d %d&quot;,cnt,result[0].szSchool,(int)result[0].fScore,result[0].iNumofStu);
+  for(int i=1;i&lt;=pos;i++)
+  {
+    if((int)result[i].fScore!=(int)result[i-1].fScore)
+    {
+      cnt=i+1;
+    }
+    printf(&quot;\n%d %s %d %d&quot;,cnt,result[i].szSchool,(int)result[i].fScore,result[i].iNumofStu);
+  }
+  return 0;
+}</code></pre><p>原来代码的错误分析：首先说一下运行结果，前三个测试点过去了，后两个运行超时，说明思路是对的，就是解决方法补恰当。</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+typedef struct school{//学校结构体
+    char name[8];//名字
+    double score;//学校分数
+    int time;//出席人数
+};
+struct school schools[100001];
+int cmp(const void *a,const void *b);
+int cnmp(const void *a,const void *b);
+void toLowerCase(char *s);
+int search(int nn,char *n);
+int main()
+{
+    char name[8]={&apos;\0&apos;};
+    int scor=0;
+    char id[8]={&apos;\0&apos;};
+    int n;
+    int time=0;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        getchar();
+        scanf(&quot;%s %d %s&quot;,id,&amp;scor,name);
+        toLowerCase(name);//变为小写
+        int index=search(time,name);//这里甚至采用了二人分查找依然没有逃过运行超时的命运，遍历已有的数组看看有没有这个名字有就返回下标没有返回-1。
+        if(index==-1){//返回-1，表示数组中要加一个新的学校了。
+            strcpy(schools[time].name,name);
+            index=time;//将已经有几个学校的数目给index，index就是新加进来的学校在数组中的位置
+            time++;//time加1，表示有加了一个新的学校
+        }
+        schools[index].time++;//出席人数加一
+        if(id[0]==&apos;A&apos;){//根据等级对分数计算
+            schools[index].score=schools[index].score+scor;
+        }else if(id[0]==&apos;B&apos;){
+            schools[index].score=schools[index].score+scor*1.0*2/3;
+        }else{
+            schools[index].score=schools[index].score+scor*1.0*3/2;
+        }
+        qsort(schools,time,sizeof(struct school),cnmp);//快速排序
+    }
+    qsort(schools,time,sizeof(struct school),cmp);
+    int max=-1;
+    int paiming=0;
+    int lastpaiming;
+    printf(&quot;%d\n&quot;,time);
+    for(int i=0;i&lt;time;i++){
+        paiming++;
+        if((int)(schools[i].score)==max){
+            printf(&quot;%d %s %d %d\n&quot;,lastpaiming,schools[i].name,(int)schools[i].score,schools[i].time);
+            continue;
+        }else{
+            max=(int)schools[i].score;
+            printf(&quot;%d %s %d %d\n&quot;,paiming,schools[i].name,(int)schools[i].score,schools[i].time);
+        }
+        lastpaiming=paiming;
+    }
+    return 0;
+}
+int search(int time,char *name){
+    int start=0,end=time;
+    while(start&lt;=end){
+        int mid=(start+end)/2;
+        int n=strcmp(schools[mid].name,name);
+        if(n==0){
+            return mid;
+        }else if(n&gt;0){
+            end=mid-1;
+        }else{
+            start=mid+1;
+        }
+    }
+    return -1;
+}
+int cmp(const void *a1,const void *b1){
+    struct school sc1=*(struct school *)a1;
+    struct school sc2=*(struct school *)b1;
+    int a=(int)sc1.score;
+    int b=(int)sc2.score;
+    if(a&gt;b){
+        return -1;
+    }else if(a&lt;b){
+        return 1;
+    }else{
+        if(sc1.time&gt;sc2.time){
+            return 1;
+        }else if(sc1.time&lt;sc2.time){
+        return -1;
+        }else{
+            return strcmp(sc1.name,sc2.name);
+        }
+    }
+}
+void toLowerCase(char *s){//将名字变为小写的函数
+    while((*s)!=&apos;\0&apos;){
+        if(*s&lt;=&apos;Z&apos;&amp;&amp;*s&gt;=&apos;A&apos;){
+            *s=(*s)-&apos;A&apos;+&apos;a&apos;;
+        }
+        s++;
+    }
+}
+int cnmp(const void *a,const void *b){
+    struct school sch1=*(struct school*)a;
+    struct school sch2=*(struct school*)b;
+    return strcmp(sch1.name,sch2.name);
+}</code></pre> 
       <!-- reward -->
       
     </div>
@@ -272,7 +485,7 @@ Your password is tai luan le.</code></pre><p>代码：<br>#include&lt;stdio.h&gt
 
     
     <article
-  id="post-PTA-Basic-1080"
+  id="post-PTA-Basic-1084"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -283,214 +496,60 @@ Your password is tai luan le.</code></pre><p>代码：<br>#include&lt;stdio.h&gt
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1080/"
-    >PTA-Basic-1080</a> 
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1084/"
+    >PTA-Basic-1084</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1080/" class="article-date">
-  <time datetime="2019-10-11T14:18:44.000Z" itemprop="datePublished">2019-10-11</time>
+      <a href="/2019/10/11/PTA-Basic-1084/" class="article-date">
+  <time datetime="2019-10-11T14:19:24.000Z" itemprop="datePublished">2019-10-11</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>题目：<br>对于在中国大学MOOC（<a href="http://www.icourse163.org/">http://www.icourse163.org/</a> ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 G=(G<br>​mid−term<br>​​ ×40%+G<br>​final<br>​​ ×60%)，如果 G<br>​mid−term<br>​​ &gt;G<br>​final<br>​​ ；否则总评 G 就是 G<br>​final<br>​​ 。这里 G<br>​mid−term<br>​​  和 G<br>​final<br>​​  分别为学生的期中和期末成绩。</p>
-<p>现在的问题是，每次考试都产生一张独立的成绩单。本题就请你编写程序，把不同的成绩单合为一张。</p>
-<p>输入格式：<br>输入在第一行给出3个整数，分别是 P（做了在线编程作业的学生数）、M（参加了期中考试的学生数）、N（参加了期末考试的学生数）。每个数都不超过10000。</p>
-<p>接下来有三块输入。第一块包含 P 个在线编程成绩 G<br>​p<br>​​ ；第二块包含 M 个期中考试成绩 G<br>​mid−term<br>​​ ；第三块包含 N 个期末考试成绩 G<br>​final<br>​​ 。每个成绩占一行，格式为：学生学号 分数。其中学生学号为不超过20个字符的英文字母和数字；分数是非负整数（编程总分最高为900分，期中和期末的最高分为100分）。</p>
-<p>输出格式：<br>打印出获得合格证书的学生名单。每个学生占一行，格式为：</p>
-<p>学生学号 G<br>​p<br>​​  G<br>​mid−term<br>​​  G<br>​final<br>​​  G</p>
-<p>如果有的成绩不存在（例如某人没参加期中考试），则在相应的位置输出“−1”。输出顺序为按照总评分数（四舍五入精确到整数）递减。若有并列，则按学号递增。题目保证学号没有重复，且至少存在1个合格的学生。</p>
+  <p>题目：<br>外观数列是指具有以下特点的整数序列：</p>
+<p>d, d1, d111, d113, d11231, d112213111, …<br>它从不等于 1 的数字 d 开始，序列的第 n+1 项是对第 n 项的描述。比如第 2 项表示第 1 项有 1 个 d，所以就是 d1；第 2 项是 1 个 d（对应 d1）和 1 个 1（对应 11），所以第 3 项就是 d111。又比如第 4 项是 d113，其描述就是 1 个 d，2 个 1，1 个 3，所以下一项就是 d11231。当然这个定义对 d = 1 也成立。本题要求你推算任意给定数字 d 的外观数列的第 N 项。</p>
+<p>输入格式：<br>输入第一行给出 [0,9] 范围内的一个整数 d、以及一个正整数 N（≤ 40），用空格分隔。</p>
+<p>输出格式：<br>在一行中给出数字 d 的外观数列的第 N 项。</p>
 <p>输入样例：</p>
-<pre><code>6 6 7
-01234 880
-a1903 199
-ydjh2 200
-wehu8 300
-dx86w 220
-missing 400
-ydhfu77 99
-wehu8 55
-ydjh2 98
-dx86w 88
-a1903 86
-01234 39
-ydhfu77 88
-a1903 66
-01234 58
-wehu8 84
-ydjh2 82
-missing 99
-dx86w 81</code></pre><p>输出样例：</p>
-<pre><code>missing 400 -1 99 99
-ydjh2 200 98 82 88
-dx86w 220 88 81 84
-wehu8 300 55 84 84</code></pre><p>分析：<br>定义一个学生的结构体。<br>首先输入6+6+7行数据，将此输入分为三块，第一块存储平时分合格（》=200）人的名字，与分数，第二部分存储，根据输入的名字在第一部分的结果数组中找到相应的人的下标，将其中成绩赋值，第三部分同第二但是此外还要加上对总评分数的计算，期中期末未来的人分数为-1，依据题目计算总评分，然后首先根据成绩降序排序，然后根据姓名升序排序。</p>
-<p>代码：<br>第一次代码：<br>此处最后一个测试点会运行超时，这是因为在查找时，耗时过多，因此必须采用更好的查找算法（先排序（快排），再二分查找）。</p>
-<pre><code>//#include&lt;stdio.h&gt;
-//#include&lt;string.h&gt;
-//#include&lt;stdlib.h&gt;
-//typedef struct Stu{
-//    char name[21];
-//    int gp;
-//    int gm;
-//    int gt;
-//    int g;
-//};
-//int search(Stu* stus,int total,char *name){
-//    for(int i=0;i&lt;total;i++){
-//        if(strcmp(stus[i].name,name)==0){
-//            return i;
-//        }
-//    }
-//    return -1;
-//}
-//int cmp(const void *a,const void *b){
-//    struct Stu s1=*(struct Stu *)a;
-//    struct Stu s2=*(struct Stu *)b;
-//    if(s1.g&lt;s2.g){}
-//        return 1;
-//    }else if(s1.g&gt;s2.g){
-//        return -1;
-//    }else{
-//        return strcmp(s1.name,s2.name);
-//    }
-//}
-//int main(void){
-//    int n,m,p;
-//    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;p);
-//    struct Stu stus[n];
-//    int time=0;
-//    char name[21];
-//    int k=0;
-//    for(int i=0;i&lt;n;i++){
-//        scanf(&quot;%s %d&quot;,name,&amp;k);
-//        if(k&gt;=200){
-//            strcpy(stus[time].name,name);
-//            stus[time].gp=k;
-//            stus[time].gm=-1;
-//            stus[time].gt=-1;
-//            stus[time].g=-1;
-//            time++;
-//        }
-//    }
-//    for(int i=0;i&lt;m;i++){
-//        scanf(&quot;%s %d&quot;,name,&amp;k);
-//        int index=search(stus,time,name);
-//        if(index&gt;-1){
-//            stus[index].gm=k;
-//        }
-//    }
-//    for(int i=0;i&lt;p;i++){
-//        scanf(&quot;%s %d&quot;,name,&amp;k);
-//        int index=search(stus,time,name);
-//        if(index&gt;-1){
-//            stus[index].gt=k;
-//            if(stus[index].gm&gt;stus[index].gt){
-//                stus[index].g=(int)(0.4*stus[index].gm+0.6*stus[index].gt+0.5);
-//            }else{
-//                stus[index].g=stus[index].gt;
-//            }
-//        }
-//    }
-//    qsort(stus,time,sizeof(struct Stu),cmp);
-//    for(int i=0;i&lt;time;i++){
-//        if(stus[i].g&gt;=60)
-//        printf(&quot;%s %d %d %d %d\n&quot;,stus[i].name,stus[i].gp,stus[i].gm,stus[i].gt,stus[i].g);
-//    }
-//    return 0;
-//}</code></pre><p>第二次代码：</p>
+<pre><code>1 8</code></pre><p>输出样例：</p>
+<pre><code>1123123111</code></pre><p>分析：做此题时，一定要在旁边自己演算一边推算过程，不要只看不动手。对于i-1项，从左边到右边读取，如果有连续的（n个）’d’就记作dn，第一个字符不算它是个特殊字符，不要把他与后面混为一谈，他始终是一个记作d1。<br>处理：</p>
+<p>对于一个给定的字符，对其进行从1到n之间的推演，首先将此字符存储入数组，然后对此数组进行n次的推演。</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;string.h&gt;
 #include&lt;stdlib.h&gt;
-typedef struct Stu{
-    char name[21];
-    int gp;//平时成绩
-    int gm;//期中成绩
-    int gt;//期末成绩
-    int g;//总评成绩
-};
-int search(struct Stu* stus,int total,char *name){//二分查找返回存在的人的下标，不存在就返回-1
-    int start=0,end=total-1;
-    while(start&lt;=end){
-         int mid=(start+end)/2;
-         int res=strcmp(stus[mid].name,name);
-        if(res==0){
-            return mid;
-        }else if(res&gt;0){
-            end=mid-1;
-        } else{
-            start=mid+1;
-        }
-    }
-    return -1;
-}
-int cmp(const void *a,const void *b){
-    struct Stu s1=*(struct Stu *)a;
-    struct Stu s2=*(struct Stu *)b;
-    if(s1.g&lt;s2.g){
-        return 1;
-    }else if(s1.g&gt;s2.g){
-        return -1;
-    }else{
-        return strcmp(s1.name,s2.name);
-    }
-}
-int tcmp(const void *a,const void *b){//用于二分查找的排序比较算法
-    struct Stu s1=*(struct Stu *)a;
-    struct Stu s2=*(struct Stu *)b;
-    return strcmp(s1.name,s2.name);
-    }
 int main(void){
-    int n,m,p;
-    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;p);
-    struct Stu stus[n];
-    int time=0;
-    char name[21];
-    int k=0;
-    for(int i=0;i&lt;n+m+p;i++){
-        scanf(&quot;%s %d&quot;,name,&amp;k);
-        if(i&lt;n){
-            if(k&gt;=200){//平时成绩合格才有资格
-                strcpy(stus[time].name,name);//首先初始化时将每个人的每个考试成绩都赋值为-1。
-                stus[time].gp=k;
-                stus[time].gm=-1;
-                stus[time].gt=-1;
-                stus[time].g=-1;
-                time++;
-            }
-        }else{
-            if(i==n){//第n个输入说明所有有资格的人都已经输入完毕，对其排序，以便于二分查找。
-                qsort(stus,time,sizeof(struct Stu),tcmp);
-            }
-            int index=search(stus,time,name);
-            if(index&gt;-1){//如果有这个人
-                if(i&lt;m+n){
-                    stus[index].gm=k;
-                }else{
-                    stus[index].gt=k;
-                    if(stus[index].gm&gt;stus[index].gt){
-                        stus[index].g=(int)(0.4*stus[index].gm+0.6*stus[index].gt+0.5);
-                    }else{
-                        stus[index].g=stus[index].gt;
-                    }
-                }
+    int n;
+    char ch;
+    scanf(&quot;%c %d&quot;,&amp;ch,&amp;n);
+    char res[100000]={0};//这个会非常大非常非常大。 
+    char crs[100000]={0};
+    res[0]=ch;
+    for(int i=1;i&lt;n;i++){
+        int time=0;
+        int begin=0;
+        for(int len=0;len&lt;strlen(res);len++){
+            time++;
+            if(res[len+1]==res[len]){//如果下一个字符还等于当前字符，继续数个数
+                continue;
+            }else{
+                crs[begin++]=res[len];//首先存入字符再存入数字
+                crs[begin++]=&apos;0&apos;+time;//这边我一开始担心有次数超过10的情况，但是那种处理起来有点麻烦，而且根据题目要求没看出来有大于10可能性的存在，就没考虑。
+                time=0;//time赋值为0用于下一次的计算有多少个
             }
         }
+        strcpy(res,crs);//将此次推演的结果存入res中用于下一次的推演。
     }
-    qsort(stus,time,sizeof(struct Stu),cmp);
-    for(int i=0;i&lt;time;i++){
-        if(stus[i].g&gt;=60)
-        printf(&quot;%s %d %d %d %d\n&quot;,stus[i].name,stus[i].gp,stus[i].gm,stus[i].gt,stus[i].g);
-    }
+    printf(&quot;%s&quot;,res);
     return 0;
 }</code></pre> 
       <!-- reward -->
@@ -519,7 +578,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/22/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="extend next" rel="next" href="/page/24/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/22/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/21/">21</a><a class="page-number" href="/page/22/">22</a><span class="page-number current">23</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="space">&hellip;</span><a class="page-number" href="/page/49/">49</a><a class="extend next" rel="next" href="/page/24/">下一页</a>
   </nav>
   
 </section>

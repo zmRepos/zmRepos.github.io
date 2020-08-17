@@ -84,7 +84,7 @@ var _hmt = _hmt || [];
   <time datetime="2019-09-15T09:52:41.000Z" itemprop="datePublished">2019-09-15</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a> / <a class="article-category-link" href="/categories/PTA/Basic/">Basic</a>
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
   </div>
   
 <div class="word_count">
@@ -92,7 +92,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">530</span>
+            <span class="post-count">532</span>
         </span>
     </span>
 
@@ -108,13 +108,15 @@ var _hmt = _hmt || [];
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>#1006 换个格式输出整数<br>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
+  <h1 id="1006-换个格式输出整数"><a href="#1006-换个格式输出整数" class="headerlink" title="1006 换个格式输出整数"></a>1006 换个格式输出整数</h1><p>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
 <p>输入格式：<br>    每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
 <p>输出格式：<br>    每个测试用例的输出占一行，用规定的格式输出 n。</p>
 <p>输入样例 1：</p>
@@ -128,67 +130,13 @@ var _hmt = _hmt || [];
 <p>3倒叙遍历存放数字的数组，按按百对应下标为2，十位对应的下标为1，个位对应的下标的为0，分别对处理。</p>
 <p>4注意一定要在最后将字符数组的最后置为’\0’,否则会输出错误。</p>
 <p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-char result[1000];
-int number;
-scanf(&quot;%d&quot;,&amp;number);
-
-int n=0;
-int num[3]={0};
-while(number){
-    num[n++]=number%10;
-    number=number/10;
-}
-int step=0;
-for(int i=3;i&gt;=0;i--){
-    int time=num[i];
-    if(time==0){
-        continue;
-    }
-    if(i==2)
-        for(int j=0;j&lt;time;j++){
-        result[step++]=&apos;B&apos;;
-    }
-    if(i==1)
-        for(int j=0;j&lt;time;j++){
-        result[step++]=&apos;S&apos;;
-    }
-    if(i==0){
-        for(int j=0;j&lt;time;j++){
-        result[step++]=j+&apos;1&apos;;
-        }
-    }
-
-}
-result[step]=&apos;\0&apos;;
-printf(&quot;%s&quot;,result);
-return 0;
-}</code></pre><p>另一种思路：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> result[<span class="number">1000</span>];</span><br><span class="line">   <span class="keyword">int</span> number;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">int</span> num[<span class="number">3</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">   <span class="keyword">while</span>(number)&#123;</span><br><span class="line">       num[n++]=number%<span class="number">10</span>;</span><br><span class="line">       number=number/<span class="number">10</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> <span class="built_in">step</span>=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">int</span> time=num[i];</span><br><span class="line">       <span class="keyword">if</span>(time==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">continue</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'B'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'S'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=j+<span class="string">'1'</span>;</span><br><span class="line">       	&#125;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line">   result[<span class="built_in">step</span>]=<span class="string">'\0'</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%s"</span>,result);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一种思路：</p>
 <p>分析：</p>
 <p>利用字符串长度判断输入的是几位数，再利用字符串倒置输出对应的题目要求符号</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i,j;</span><br><span class="line">   <span class="keyword">char</span> n[<span class="number">4</span>];</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%s"</span>,n);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span>(i=<span class="built_in">strlen</span>(n);i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=(n[<span class="built_in">strlen</span>(n)-i]-<span class="string">'0'</span>);j++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">3</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"B"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"S"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"%d"</span>,j);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-int main()
-{
-int i,j;
-char n[4];
-scanf(&quot;%s&quot;,n);
-
-for(i=strlen(n);i&gt;0;i--){
-    for(j=1;j&lt;=(n[strlen(n)-i]-&apos;0&apos;);j++){
-        if(i==3)
-            printf(&quot;B&quot;);
-        if(i==2)
-            printf(&quot;S&quot;);
-        if(i==1)
-            printf(&quot;%d&quot;,j);
-    }
-}
-printf(&quot;\n&quot;);
-return 0;
-}</code></pre><p><a href="https://blog.csdn.net/huaxuewan/article/details/85778884" title="参考资料">https://blog.csdn.net/huaxuewan/article/details/85778884</a></p>
+<p><a href="https://blog.csdn.net/huaxuewan/article/details/85778884" title="参考资料">https://blog.csdn.net/huaxuewan/article/details/85778884</a></p>
  
       <!-- reward -->
       
