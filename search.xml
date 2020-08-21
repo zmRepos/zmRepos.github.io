@@ -6751,7 +6751,7 @@ int main(void){
         <category>栈</category>
       </categories>
       <tags>
-        <tag>LeetCOde</tag>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -6772,7 +6772,6 @@ int main(void){
         <category>java</category>
         <category>Spring</category>
         <category>MyBatis</category>
-        <category>bugs</category>
       </categories>
       <tags>
         <tag>bug</tag>
@@ -7523,7 +7522,6 @@ private SingleTon() {
         <category>LeetCode</category>
         <category>数组</category>
         <category>哈希表</category>
-        <category>中等</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -7710,7 +7708,6 @@ private SingleTon() {
         <category>回溯算法</category>
         <category>LeetCode</category>
         <category>哈希表</category>
-        <category>困难</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -7817,6 +7814,46 @@ private SingleTon() {
       <tags>
         <tag>算法</tag>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-155</title>
+    <url>/2020/08/21/LeetCode-155/</url>
+    <content><![CDATA[<h1 id="最小栈-栈的最小值-包含min函数的栈"><a href="#最小栈-栈的最小值-包含min函数的栈" class="headerlink" title="最小栈/栈的最小值/包含min函数的栈"></a>最小栈/栈的最小值/包含min函数的栈</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><pre><code>![](LeetCode-155/a.PNG)</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>此题是栈设计类的题目，目的是设计一个栈，栈支持push，pop，还支持从当前栈中取出最小元素
+的min操作，这个min操作是动态的（即入栈和出栈可能会改变min操作的结果）三种不同的思路。</code></pre><p><strong>第一种 双栈法</strong><br>    一个栈用来存放元素，另一个栈用来存放当前元素存入栈中的最小值：入栈时，一个直接入栈，另<br>    一个与当前的栈顶元素（始终保证当前栈顶元素是另一个栈种当前位置及以前位置元素的最小值）<br>    比较，若小于当前栈定元素就直接入栈，若大于栈定元素，就再放入栈顶元素；在执行出栈时直接<br>    移除两个栈顶元素即可，min操作的时候直接返回用来存放最小值元素的栈的栈顶元素即可。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line">    Stack&lt;Integer&gt; valStack=<span class="keyword">null</span>;</span><br><span class="line">    Stack&lt;Integer&gt; minStack=<span class="keyword">null</span>;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        valStack=<span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">        minStack=<span class="keyword">new</span> Stack&lt;Integer&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        valStack.push(x);</span><br><span class="line">        <span class="keyword">if</span>(minStack.isEmpty())&#123;</span><br><span class="line">            minStack.push(x);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            minStack.push(Math.min(minStack.peek(),x));</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        valStack.pop();</span><br><span class="line">        minStack.pop();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> valStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> minStack.peek();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>第二种</strong><br><strong>自定义链表</strong>，有效的节省了Stack类型不必要的操作与空间。将两个栈化为一个链表，同时存放当前的目<br>前的最小值和当前值，还有就是节点插入的时候采用前插法，即将创建的最新的节点放到目前链表的头<br>节点位置处。</p>
+<h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> size = <span class="number">0</span>;</span><br><span class="line">    ListNode head;</span><br><span class="line">    <span class="keyword">int</span> min  = Integer.MAX_VALUE;</span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;<span class="comment">//插入时可能会修改当前最小值</span></span><br><span class="line">        <span class="keyword">if</span>(x &lt; min)</span><br><span class="line">            min = x;</span><br><span class="line">        ListNode t = <span class="keyword">new</span> ListNode(x , min);</span><br><span class="line">       ** t.next = head;**</span><br><span class="line">        **head = t;**</span><br><span class="line">        size++;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        head = head.next;</span><br><span class="line">        size--;</span><br><span class="line">        <span class="keyword">if</span>(size == <span class="number">0</span>) min = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">if</span>(head != <span class="keyword">null</span>)min = head.min;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> head.val;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> head.min;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        <span class="keyword">int</span> min;</span><br><span class="line">        ListNode next;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> val, <span class="keyword">int</span> min)</span></span>&#123;</span><br><span class="line">            <span class="keyword">this</span>.val = val;</span><br><span class="line">            <span class="keyword">this</span>.min = min;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>第三种</strong><br>使用一个栈，同时存放最小值和当前存入的值，注意此处与第二种不同的是，此处只会在，只会在最小<br>值发生改变的时候存入上一个最小值，以及修改当前的最小值，在pop操作时，如果取出的是当前的最小<br>值，那么就会连续的将它的前一个元素即上一个最下值赋值给min值，这样min就是始终就是目前栈中的最小值了。</p>
+<h2 id="代码2-1"><a href="#代码2-1" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">private</span> Stack&lt;Integer&gt; stack;</span><br><span class="line">    <span class="keyword">int</span> min;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/** initialize your data structure here. */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MinStack</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        stack = <span class="keyword">new</span> Stack&lt;&gt;();</span><br><span class="line">        min = Integer.MAX_VALUE;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">push</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(x &lt;= min)&#123;</span><br><span class="line">            stack.push(min);</span><br><span class="line">            min = x;</span><br><span class="line">        &#125;</span><br><span class="line">        stack.push(x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(stack.pop() == min)&#123;</span><br><span class="line">            min = stack.pop();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">top</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> stack.peek();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getMin</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> min;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+        <category>栈</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-1441</title>
+    <url>/2020/08/21/LeetCode-1441/</url>
+    <content><![CDATA[<h1 id="用栈操作构建数组"><a href="#用栈操作构建数组" class="headerlink" title="用栈操作构建数组"></a>用栈操作构建数组</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><pre><code>![](LeetCode-1441/a.PNG)</code></pre><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>观察得知，当每次遍历的索引与taget数组的当前值不同时放入&quot;Push&quot;&amp;&quot;Pop&quot;，相同时放入&quot;Push&quot;到结果数组中。
+因此只要遍历时判断以下即可。</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">buildArray</span><span class="params">(<span class="keyword">int</span>[] target, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        List&lt;String&gt; res=<span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        <span class="keyword">int</span> index=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n&amp;&amp;index&lt;target.length;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(target[index]==i)&#123;</span><br><span class="line">                res.add(<span class="string">"Push"</span>);</span><br><span class="line">                **index++;**</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                res.add(<span class="string">"Push"</span>);</span><br><span class="line">                res.add(<span class="string">"Pop"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>注意：此题要确保没有合适的index就不要改变target数组的当前索引指向的位置</p>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><pre><code>O(N) N为n的大小</code></pre><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><pre><code>O(N)</code></pre><h2 id="官方解法"><a href="#官方解法" class="headerlink" title="官方解法"></a>官方解法</h2><p>无</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+        <category>栈</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
 </search>
