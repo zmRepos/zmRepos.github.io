@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1079"
+  id="post-PTA-Basic-1082"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,286 +130,16 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1079/"
-    >PTA-Basic-1079</a> 
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1082/"
+    >PTA-Basic-1082</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1079/" class="article-date">
-  <time datetime="2019-10-11T14:18:23.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>给定一个 k+1 位的正整数 N，写成 a<br>​k<br>​​ ⋯a<br>​1<br>​​ a<br>​0<br>​​  的形式，其中对所有 i 有 0≤a<br>​i<br>​​ &lt;10 且 a<br>​k<br>​​ &gt;0。N 被称为一个回文数，当且仅当对所有 i 有 a<br>​i<br>​​ =a<br>​k−i<br>​​ 。零也被定义为一个回文数。</p>
-<p>非回文数也可以通过一系列操作变出回文数。首先将该数字逆转，再将逆转数与该数相加，如果和还不是一个回文数，就重复这个逆转再相加的操作，直到一个回文数出现。如果一个非回文数可以变出回文数，就称这个数为延迟的回文数。（定义翻译自 <a href="https://en.wikipedia.org/wiki/Palindromic_number">https://en.wikipedia.org/wiki/Palindromic_number</a> ）</p>
-<p>给定任意一个正整数，本题要求你找到其变出的那个回文数。</p>
-<p>输入格式：<br>输入在一行中给出一个不超过1000位的正整数。</p>
-<p>输出格式：<br>对给定的整数，一行一行输出其变出回文数的过程。每行格式如下</p>
-<p>A + B = C<br>其中 A 是原始的数字，B 是 A 的逆转数，C 是它们的和。A 从输入的整数开始。重复操作直到 C 在 10 步以内变成回文数，这时在一行中输出 C is a palindromic number.；或者如果 10 步都没能得到回文数，最后就在一行中输出 Not found in 10 iterations.。</p>
-<p>输入样例 1：</p>
-<pre><code>97152</code></pre><p>输出样例 1：</p>
-<pre><code>97152 + 25179 = 122331
-122331 + 133221 = 255552
-255552 is a palindromic number.</code></pre><p>输入样例 2：</p>
-<pre><code>196</code></pre><p>输出样例 2：</p>
-<pre><code>196 + 691 = 887
-887 + 788 = 1675
-1675 + 5761 = 7436
-7436 + 6347 = 13783
-13783 + 38731 = 52514
-52514 + 41525 = 94039
-94039 + 93049 = 187088
-187088 + 880781 = 1067869
-1067869 + 9687601 = 10755470
-10755470 + 07455701 = 18211171
-Not found in 10 iterations.</code></pre><p>分析：<br>定一个判断字符串是否回文字符串的函数，定义一个反转字符串的函数。<br>首先对输入的字符串判断是否是回文字符串，然后定义一个比它长1的字符数组，防止最高位进位，将当前字符串复制到另一个，然后用复制后的字符串与反转字符串相加。然后将结果输出，赋值给第一个字符串重复此操作，直到找到或达到10次。<br>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include &lt;stdlib.h&gt;//虽然题目说字符串的长度在0-1000之间但是他们相加后的长度就可能大于1000了所以要定义比1001大的
-int isReserve(char* s){//判断是否是回文字符串的函数。
-    int i=0;
-    int j=strlen(s)-1;
-    while(i&lt;j){
-        if(s[i]!=s[j]){
-            return 0;
-        }
-        i++;
-        j--;
-    }
-    return 1;
-}
-char * strrev(char *str){
-    int i=0,j=strlen(str)-1;//对源字符串直接操作，
-    char ch;
-    while(i&lt;j){
-        ch=str[j];
-        str[j]=str[i];
-        str[i]=ch;
-        i++;
-        j--;
-    }
-    return str;
-}
-int main()
-{
-    char str[1050];
-    gets(str);
-    int i=0;
-    for(;i&lt;10;i++){
-        if(isReserve(str)){
-            printf(&quot;%s is a palindromic number.&quot;,str);
-            break;
-        }else{
-            char strcopy[1050];//保留反转前的字符串
-            strcpy(strcopy,str);
-            strrev(str);//反转str中的字符串
-            printf(&quot;%s + %s = &quot;,strcopy,str);
-            char res[1050]={&apos;\0&apos;};//定义结果数组。
-            int k=0;
-            int max=strlen(str);
-            for(int j=0;j&lt;max;j++){//因为字符串是与反转字符串相加，唯一不同的就是如果最高位有进位，进位就存在右边了，此时需要反转一下。
-                int sum=0;
-                if(strcopy[j]){
-                    sum=sum+strcopy[j]-&apos;0&apos;;
-                }
-                if(str[j]){
-                    sum=sum+str[j]-&apos;0&apos;;
-                }
-                sum=sum+k;
-                res[j]=sum%10+&apos;0&apos;;
-                k=sum/10;
-                if(j==max-1&amp;&amp;k!=0){//如果高位有进位，就要存下他。
-                    res[j+1]=k+&apos;0&apos;;//
-                }
-            }
-            strrev(res);//反转结果数组
-            puts(res);//输出
-            strcpy(str,res);//将结果赋值给str继续操作。
-        }
-    }
-    if(i==10){
-        printf(&quot;Not found in 10 iterations.&quot;);
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1078"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1078/"
-    >PTA-Basic-1078</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1078/" class="article-date">
-  <time datetime="2019-10-11T14:18:16.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>文本压缩有很多种方法，这里我们只考虑最简单的一种：把由相同字符组成的一个连续的片段用这个字符和片段中含有这个字符的个数来表示。例如 ccccc 就用 5c 来表示。如果字符没有重复，就原样输出。例如 aba 压缩后仍然是 aba。</p>
-<p>解压方法就是反过来，把形如 5c 这样的表示恢复为 ccccc。</p>
-<p>本题需要你根据压缩或解压的要求，对给定字符串进行处理。这里我们简单地假设原始字符串是完全由英文字母和空格组成的非空字符串。</p>
-<p>输入格式：<br>输入第一行给出一个字符，如果是 C 就表示下面的字符串需要被压缩；如果是 D 就表示下面的字符串需要被解压。第二行给出需要被压缩或解压的不超过 1000 个字符的字符串，以回车结尾。题目保证字符重复个数在整型范围内，且输出文件不超过 1MB。</p>
-<p>输出格式：<br>根据要求压缩或解压字符串，并在一行中输出结果。</p>
-<p>输入样例 1：</p>
-<pre><code>C
-
-TTTTThhiiiis isssss a   tesssst CAaaa as</code></pre><p>输出样例 1：</p>
-<pre><code>5T2h4is i5s a3 te4st CA3a as</code></pre><p>输入样例 2：</p>
-<pre><code>D
-
-5T2h4is i5s a3 te4st CA3a as10Z</code></pre><p>输出样例 2：</p>
-<pre><code>TTTTThhiiiis isssss a   tesssst CAaaa asZZZZZZZZZZ</code></pre><p>分析：</p>
-<p>首先根据题目要求知道要求我们解压与压缩，解压-&gt;将字符串中的数字转换成其后面紧跟的字符的个数，注</p>
-<p>意，此处数字可能大于10。然后输出n个字符。</p>
-<p>压缩过程：将连续的n个字符（n&gt;1）表达成‘n字符’的形式。</p>
-<p>注意：此题的一个坑，输入中可能会有空格。</p>
-<p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include &lt;stdlib.h&gt;
-void c(char *s){//压缩函数
-    char *p=s;
-    char cur=*p;//保存当前的字符
-    p++;
-    int time=1;//默认的字符长度为1
-    while(cur){
-        char ch=*p;//存储下一个字符
-        if(cur==ch){//当前字符与下一个字符比较
-            time++;
-        }else{//不同时，表示连续的已经断开
-            if(time&gt;1){
-                printf(&quot;%d%c&quot;,time,cur);
-            }else{
-                printf(&quot;%c&quot;,cur);
-            }
-            time=1;//重新将字符设置为1
-            cur=ch;//将后一个字符给当前字符。
-        }
-        p++;//指针指向后面一个字符。
-    }
-}
-void d(char *s){//解压
-    char *p=s;
-    int time=0;
-    while(*p){
-        if((*p)&lt;=&apos;9&apos;&amp;&amp;(*p)&gt;=&apos;0&apos;){//将字符串中的数字转化为int型。
-            time=time*10+(*p)-&apos;0&apos;;//
-        }else
-        {
-            if(time==0){//如果此处不给time赋值为1，且time==0，那么字母前面没有数字的就会被丢掉。
-                time=1;
-            }
-            for(int i=0;i&lt;time;i++){
-                printf(&quot;%c&quot;,*p);
-            }
-            time=0;//防止遇到数字为两位或更高位的。
-        }
-        p++;
-    }
-}
-int main()
-{
-    char ch;
-    scanf(&quot;%c&quot;,&amp;ch);
-    getchar();
-    char str[1001];
-    gets(str);
-    switch(ch){
-    case &apos;C&apos;:c(str);break;
-    case &apos;D&apos;:d(str);break;
-    default:break;
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1077"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/09/PTA-Basic-1077/"
-    >PTA-Basic-1077</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/09/PTA-Basic-1077/" class="article-date">
-  <time datetime="2019-10-09T14:15:10.000Z" itemprop="datePublished">2019-10-09</time>
+      <a href="/2019/10/11/PTA-Basic-1082/" class="article-date">
+  <time datetime="2019-10-11T14:19:01.000Z" itemprop="datePublished">2019-10-11</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a>
@@ -420,66 +150,346 @@ int main()
     <div class="article-entry" itemprop="articleBody">
        
   <p>题目：</p>
-<p>在浙大的计算机专业课中，经常有互评分组报告这个环节。一个组上台介绍自己的工作，其他组在台下为其表现评分。最后这个组的互评成绩是这样计算的：所有其他组的评分中，去掉一个最高分和一个最低分，剩下的分数取平均分记为 G<br>​1<br>​​ ；老师给这个组的评分记为 G<br>​2<br>​​ 。该组得分为 (G<br>​1<br>​​ +G<br>​2<br>​​ )/2，最后结果四舍五入后保留整数分。本题就要求你写个程序帮助老师计算每个组的互评成绩。</p>
-<p>输入格式：<br>输入第一行给出两个正整数 N（&gt; 3）和 M，分别是分组数和满分，均不超过 100。随后 N 行，每行给出该组得到的 N 个分数（均保证为整型范围内的整数），其中第 1 个是老师给出的评分，后面 N−1 个是其他组给的评分。合法的输入应该是 [0,M] 区间内的整数，若不在合法区间内，则该分数须被忽略。题目保证老师的评分都是合法的，并且每个组至少会有 3 个来自同学的合法评分。</p>
-<p>输出格式：<br>为每个组输出其最终得分。每个得分占一行。</p>
+<p>本题目给出的射击比赛的规则非常简单，谁打的弹洞距离靶心最近，谁就是冠军；谁差得最远，谁就是菜鸟。本题给出一系列弹洞的平面坐标(x,y)，请你编写程序找出冠军和菜鸟。我们假设靶心在原点(0,0)。</p>
+<p>输入格式：<br>输入在第一行中给出一个正整数 N（≤ 10 000）。随后 N 行，每行按下列格式给出：</p>
+<p>ID x y<br>其中 ID 是运动员的编号（由 4 位数字组成）；x 和 y 是其打出的弹洞的平面坐标(x,y)，均为整数，且 0 ≤ |x|, |y| ≤ 100。题目保证每个运动员的编号不重复，且每人只打 1 枪。</p>
+<p>输出格式：<br>输出冠军和菜鸟的编号，中间空 1 格。题目保证他们是唯一的。</p>
 <p>输入样例：</p>
-<pre><code>6 50
-42 
-36 51 50 28 -1 3049 49 35 38 41
-40 36 41 33 47 49
-30 250 -25 27 45 31
-48 0 0 50 50 1234
-43 41 36 29 42 29</code></pre><p>输出样例：</p>
-<pre><code>42
-33
-41
-31
-37
-39</code></pre><p>分析：<br>先存储行数（亦是列数），再存储总分，定义一个判断函数，然后对于每一行每一个数据进行判断，合适的第一个数赋值给老师，剩余存储到数组中去，对数组排序，从第二个元素开始，到倒数第二个元素求平均值，然后再与老师的分数值取平均值，对此品均值进行四舍五入，注意整型与整型除法的结果为整型。继续下一行的数据的输入与处理。</p>
+<pre><code>3
+0001 5 7
+1020 -1 3
+0233 0 -1</code></pre><p>输出样例：</p>
+<pre><code>0233 0001</code></pre><p>分析：<br>直接对输入的每一行数据进行与最大值，最小值对比，然后变换。此处都是int型也是可以的。</p>
 <p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-int cmp(const void *a,const void *b){
-    return *(int *)a-*(int *)b;
-}
-int check(int n,int m){
-        if(n&lt;=m&amp;&amp;n&gt;=0){
-            return 1;
-        }
-        return 0;
-}
-int main()
-{
-    int n,m;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int n;
+    scanf(&quot;%d&quot;,&amp;n);
+    int maxid=0,minid=0;
+    long lenmax=0,lenmin=20000;
+    long id=0,x=0,y=0;
     for(int i=0;i&lt;n;i++){
-            int n0=0;
-            int time=-1;
-            int a[n-1];
-        for(int j=0;j&lt;n;j++){
-                int k;
-            scanf(&quot;%d&quot;,&amp;k);
-            if(check(k,m)){
-                if(time==-1){
-                    n0=k;
-                }else{
-                    a[time]=k;
-                }
+        scanf(&quot;%ld %ld %ld&quot;,&amp;id,&amp;x,&amp;y);
+        long len=x*x+y*y;
+        if(len&gt;lenmax){
+            lenmax=len;
+            maxid=id;
+        }
+        if(len&lt;lenmin){
+            lenmin=len;
+            minid=id;
+        }
+    }
+    printf(&quot;%04ld %04ld&quot;,minid,maxid);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1081"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1081/"
+    >PTA-Basic-1081</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/11/PTA-Basic-1081/" class="article-date">
+  <time datetime="2019-10-11T14:18:55.000Z" itemprop="datePublished">2019-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>本题要求你帮助某网站的用户注册模块写一个密码合法性检查的小功能。该网站要求用户设置的密码必须由不少于6个字符组成，并且只能有英文字母、数字和小数点 .，还必须既有字母也有数字。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行给出一个用户设置的密码，为不超过 80 个字符的非空字符串，以回车结束。</p>
+<p>输出格式：<br>对每个用户的密码，在一行中输出系统反馈信息，分以下5种：</p>
+<p>如果密码合法，输出Your password is wan mei.；<br>如果密码太短，不论合法与否，都输出Your password is tai duan le.；<br>如果密码长度合法，但存在不合法字符，则输出Your password is tai luan le.；<br>如果密码长度合法，但只有字母没有数字，则输出Your password needs shu zi.；<br>如果密码长度合法，但只有数字没有字母，则输出Your password needs zi mu.。<br>输入样例：</p>
+<pre><code>5
+123s
+zheshi.wodepw
+1234.5678
+WanMei23333
+pass*word.6</code></pre><p>输出样例：</p>
+<pre><code>Your password is tai duan le.
+Your password needs shu zi.
+Your password needs zi mu.
+Your password is wan mei.
+Your password is tai luan le.</code></pre><p>代码：<br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>int main(void){<br>    int n;<br>    scanf(“%d”,&amp;n);//测试点二，是第一行的末尾的空格输入下一个。<br>    //scanf()函数则会保留换行符所以必须用getchar()吸收，防止作为一个输入行。<br>    getchar();<br>    char password[85];<br>    for(int i=0;i&lt;n;i++){<br>        int zifuflag=0;<br>        int zimuflag=0;<br>        int shuziflag=0;<br>        gets(password);//gets()函数会将换行符转换为‘\0’输入字符数组。<br>        int len=strlen(password);<br>        if(len&lt;6){<br>            printf(“Your password is tai duan le.\n”);<br>            continue;<br>        }<br>        for(int j=0;j&lt;len;j++){<br>            char ch=password[j];<br>            if((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’)){<br>                zimuflag=1;<br>            }<br>            if(ch&gt;=’0’&amp;&amp;ch&lt;=’9’){<br>                shuziflag=1;<br>            }<br>            if(ch!=’.’&amp;&amp;!(ch&lt;=’9’&amp;&amp;ch&gt;=’0’)&amp;&amp;!((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’))){<br>                zifuflag=1;<br>                break;<br>            }<br>        }<br>        if(zifuflag){<br>            printf(“Your password is tai luan le.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;!shuziflag){<br>            printf(“Your password needs shu zi.\n”);<br>            continue;<br>        }<br>        if(!zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password needs zi mu.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password is wan mei.\n”);<br>        }<br>    }<br>}</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1080"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1080/"
+    >PTA-Basic-1080</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/11/PTA-Basic-1080/" class="article-date">
+  <time datetime="2019-10-11T14:18:44.000Z" itemprop="datePublished">2019-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>对于在中国大学MOOC（<a href="http://www.icourse163.org/">http://www.icourse163.org/</a> ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 G=(G<br>​mid−term<br>​​ ×40%+G<br>​final<br>​​ ×60%)，如果 G<br>​mid−term<br>​​ &gt;G<br>​final<br>​​ ；否则总评 G 就是 G<br>​final<br>​​ 。这里 G<br>​mid−term<br>​​  和 G<br>​final<br>​​  分别为学生的期中和期末成绩。</p>
+<p>现在的问题是，每次考试都产生一张独立的成绩单。本题就请你编写程序，把不同的成绩单合为一张。</p>
+<p>输入格式：<br>输入在第一行给出3个整数，分别是 P（做了在线编程作业的学生数）、M（参加了期中考试的学生数）、N（参加了期末考试的学生数）。每个数都不超过10000。</p>
+<p>接下来有三块输入。第一块包含 P 个在线编程成绩 G<br>​p<br>​​ ；第二块包含 M 个期中考试成绩 G<br>​mid−term<br>​​ ；第三块包含 N 个期末考试成绩 G<br>​final<br>​​ 。每个成绩占一行，格式为：学生学号 分数。其中学生学号为不超过20个字符的英文字母和数字；分数是非负整数（编程总分最高为900分，期中和期末的最高分为100分）。</p>
+<p>输出格式：<br>打印出获得合格证书的学生名单。每个学生占一行，格式为：</p>
+<p>学生学号 G<br>​p<br>​​  G<br>​mid−term<br>​​  G<br>​final<br>​​  G</p>
+<p>如果有的成绩不存在（例如某人没参加期中考试），则在相应的位置输出“−1”。输出顺序为按照总评分数（四舍五入精确到整数）递减。若有并列，则按学号递增。题目保证学号没有重复，且至少存在1个合格的学生。</p>
+<p>输入样例：</p>
+<pre><code>6 6 7
+01234 880
+a1903 199
+ydjh2 200
+wehu8 300
+dx86w 220
+missing 400
+ydhfu77 99
+wehu8 55
+ydjh2 98
+dx86w 88
+a1903 86
+01234 39
+ydhfu77 88
+a1903 66
+01234 58
+wehu8 84
+ydjh2 82
+missing 99
+dx86w 81</code></pre><p>输出样例：</p>
+<pre><code>missing 400 -1 99 99
+ydjh2 200 98 82 88
+dx86w 220 88 81 84
+wehu8 300 55 84 84</code></pre><p>分析：<br>定义一个学生的结构体。<br>首先输入6+6+7行数据，将此输入分为三块，第一块存储平时分合格（》=200）人的名字，与分数，第二部分存储，根据输入的名字在第一部分的结果数组中找到相应的人的下标，将其中成绩赋值，第三部分同第二但是此外还要加上对总评分数的计算，期中期末未来的人分数为-1，依据题目计算总评分，然后首先根据成绩降序排序，然后根据姓名升序排序。</p>
+<p>代码：<br>第一次代码：<br>此处最后一个测试点会运行超时，这是因为在查找时，耗时过多，因此必须采用更好的查找算法（先排序（快排），再二分查找）。</p>
+<pre><code>//#include&lt;stdio.h&gt;
+//#include&lt;string.h&gt;
+//#include&lt;stdlib.h&gt;
+//typedef struct Stu{
+//    char name[21];
+//    int gp;
+//    int gm;
+//    int gt;
+//    int g;
+//};
+//int search(Stu* stus,int total,char *name){
+//    for(int i=0;i&lt;total;i++){
+//        if(strcmp(stus[i].name,name)==0){
+//            return i;
+//        }
+//    }
+//    return -1;
+//}
+//int cmp(const void *a,const void *b){
+//    struct Stu s1=*(struct Stu *)a;
+//    struct Stu s2=*(struct Stu *)b;
+//    if(s1.g&lt;s2.g){}
+//        return 1;
+//    }else if(s1.g&gt;s2.g){
+//        return -1;
+//    }else{
+//        return strcmp(s1.name,s2.name);
+//    }
+//}
+//int main(void){
+//    int n,m,p;
+//    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;p);
+//    struct Stu stus[n];
+//    int time=0;
+//    char name[21];
+//    int k=0;
+//    for(int i=0;i&lt;n;i++){
+//        scanf(&quot;%s %d&quot;,name,&amp;k);
+//        if(k&gt;=200){
+//            strcpy(stus[time].name,name);
+//            stus[time].gp=k;
+//            stus[time].gm=-1;
+//            stus[time].gt=-1;
+//            stus[time].g=-1;
+//            time++;
+//        }
+//    }
+//    for(int i=0;i&lt;m;i++){
+//        scanf(&quot;%s %d&quot;,name,&amp;k);
+//        int index=search(stus,time,name);
+//        if(index&gt;-1){
+//            stus[index].gm=k;
+//        }
+//    }
+//    for(int i=0;i&lt;p;i++){
+//        scanf(&quot;%s %d&quot;,name,&amp;k);
+//        int index=search(stus,time,name);
+//        if(index&gt;-1){
+//            stus[index].gt=k;
+//            if(stus[index].gm&gt;stus[index].gt){
+//                stus[index].g=(int)(0.4*stus[index].gm+0.6*stus[index].gt+0.5);
+//            }else{
+//                stus[index].g=stus[index].gt;
+//            }
+//        }
+//    }
+//    qsort(stus,time,sizeof(struct Stu),cmp);
+//    for(int i=0;i&lt;time;i++){
+//        if(stus[i].g&gt;=60)
+//        printf(&quot;%s %d %d %d %d\n&quot;,stus[i].name,stus[i].gp,stus[i].gm,stus[i].gt,stus[i].g);
+//    }
+//    return 0;
+//}</code></pre><p>第二次代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+typedef struct Stu{
+    char name[21];
+    int gp;//平时成绩
+    int gm;//期中成绩
+    int gt;//期末成绩
+    int g;//总评成绩
+};
+int search(struct Stu* stus,int total,char *name){//二分查找返回存在的人的下标，不存在就返回-1
+    int start=0,end=total-1;
+    while(start&lt;=end){
+         int mid=(start+end)/2;
+         int res=strcmp(stus[mid].name,name);
+        if(res==0){
+            return mid;
+        }else if(res&gt;0){
+            end=mid-1;
+        } else{
+            start=mid+1;
+        }
+    }
+    return -1;
+}
+int cmp(const void *a,const void *b){
+    struct Stu s1=*(struct Stu *)a;
+    struct Stu s2=*(struct Stu *)b;
+    if(s1.g&lt;s2.g){
+        return 1;
+    }else if(s1.g&gt;s2.g){
+        return -1;
+    }else{
+        return strcmp(s1.name,s2.name);
+    }
+}
+int tcmp(const void *a,const void *b){//用于二分查找的排序比较算法
+    struct Stu s1=*(struct Stu *)a;
+    struct Stu s2=*(struct Stu *)b;
+    return strcmp(s1.name,s2.name);
+    }
+int main(void){
+    int n,m,p;
+    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;p);
+    struct Stu stus[n];
+    int time=0;
+    char name[21];
+    int k=0;
+    for(int i=0;i&lt;n+m+p;i++){
+        scanf(&quot;%s %d&quot;,name,&amp;k);
+        if(i&lt;n){
+            if(k&gt;=200){//平时成绩合格才有资格
+                strcpy(stus[time].name,name);//首先初始化时将每个人的每个考试成绩都赋值为-1。
+                stus[time].gp=k;
+                stus[time].gm=-1;
+                stus[time].gt=-1;
+                stus[time].g=-1;
                 time++;
-            }else{
-                continue;
+            }
+        }else{
+            if(i==n){//第n个输入说明所有有资格的人都已经输入完毕，对其排序，以便于二分查找。
+                qsort(stus,time,sizeof(struct Stu),tcmp);
+            }
+            int index=search(stus,time,name);
+            if(index&gt;-1){//如果有这个人
+                if(i&lt;m+n){
+                    stus[index].gm=k;
+                }else{
+                    stus[index].gt=k;
+                    if(stus[index].gm&gt;stus[index].gt){
+                        stus[index].g=(int)(0.4*stus[index].gm+0.6*stus[index].gt+0.5);
+                    }else{
+                        stus[index].g=stus[index].gt;
+                    }
+                }
             }
         }
-        qsort(a,time,sizeof(int),cmp);
-        int sum=0;
-        for(int j=1;j&lt;time-1;j++){
-            sum=sum+a[j];
-        }
-        if(sum!=0){
-            sum=sum/(time-2);
-        }
-        printf(&quot;%d\n&quot;,(int)((sum+n0)*1.0/2+0.5));//必须*1.0，防止整形运算的区别
+    }
+    qsort(stus,time,sizeof(struct Stu),cmp);
+    for(int i=0;i&lt;time;i++){
+        if(stus[i].g&gt;=60)
+        printf(&quot;%s %d %d %d %d\n&quot;,stus[i].name,stus[i].gp,stus[i].gm,stus[i].gt,stus[i].g);
     }
     return 0;
 }</code></pre> 
@@ -509,7 +519,7 @@ int main()
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/25/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/50/">50</a><a class="extend next" rel="next" href="/page/27/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/25/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/24/">24</a><a class="page-number" href="/page/25/">25</a><span class="page-number current">26</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/27/">下一页</a>
   </nav>
   
 </section>

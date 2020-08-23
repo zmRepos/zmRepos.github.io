@@ -119,7 +119,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1007"
+  id="post-PTA-Basic-1010"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -130,16 +130,16 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/16/PTA-Basic-1007/"
-    >PTA-Basic-1007</a> 
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1010/"
+    >PTA-Basic-1010</a> 
 </h2>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/16/PTA-Basic-1007/" class="article-date">
-  <time datetime="2019-09-16T15:29:36.000Z" itemprop="datePublished">2019-09-16</time>
+      <a href="/2019/09/17/PTA-Basic-1010/" class="article-date">
+  <time datetime="2019-09-17T12:46:30.000Z" itemprop="datePublished">2019-09-17</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/PTA/">PTA</a>
@@ -149,213 +149,221 @@ var _hmt = _hmt || [];
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>让我们定义d<br>n<br>​​ 为：d<br>​n<br>​​ =p<br>​n+1<br>​​ −p<br>​n<br>​​ ，其中p<br>​i<br>​​ 是第i个素数。显然有d<br>​1<br>​​ =1，且对于n&gt;1有d<br>​n<br>​​ 是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。</p>
-<p>现给定任意正整数N(&lt;10<br>​5<br>​​ )，请计算不超过N的满足猜想的素数对的个数。</p>
-<p>输入格式:</p>
-<pre><code>输入在一行给出正整数N。</code></pre><p>输出格式:</p>
-<pre><code>在一行中输出不超过N的满足猜想的素数对的个数。</code></pre><p>输入样例:</p>
-<pre><code>20</code></pre><p>输出样例:</p>
-<pre><code>4</code></pre><hr>
-<p>分析：<br>1题目要求给出一个数字要求输出这个数字以内的素数对个数。</p>
-<p>2素数对条件（1为素数，2两个素数相差2）；</p>
+  <p>设计函数求一元多项式的导数。（注：x<br>​n<br>​​ （n为整数）的一阶导数为nx<br>​n−1<br>​​ 。）</p>
+<p>输入格式:<br>以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过 1000 的整数）。数字间以空格分隔。</p>
+<p>输出格式:<br>以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。注意“零多项式”的指数和系数都是 0，但是表示为 0 0。</p>
+<p>输入样例:</p>
+<pre><code>3 4 -5 2 6 1 -2 0</code></pre><p>输出样例:</p>
+<pre><code>12 3 -10 1 6 0</code></pre><p>分析：</p>
+<p>一元多项式条件：系数不为0，指数为大于-1的整数即（指数&gt;=0）;</p>
+<p>输入：先输入一个系数再输入一个指数，依此重复，指数递减。</p>
+<p>输出：格式见题目，输出求一次导后的的多项式对应的系数与指数。</p>
+<p>（注意： “零多项式”，最高项指数为0，但是表示为 0 0，除此以外，只要指数不为0，系数为不为无所谓，也要输出。百度解释0多项式就是0）</p>
+<p>因为系数一定不为0，所以如果结果中有“零多项式”，那么一定是输入时的指数为0.一旦指数为0，后面就不会再有输入了。</p>
 <p>思路：</p>
-<p>1做一个判断是否时素数的函数。</p>
-<p>2因为素数必定不为除2以外的偶数，所以直接从3开始去奇数判断是否为素数，并判断这个数字加2是否也是素数，如果是，则计算素数对个数的变量加1，否则就继续循环，直到超过所给的数字的大小。</p>
-<p>代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;  </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="comment">//函数</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=(<span class="keyword">int</span>)<span class="built_in">sqrt</span>(n+<span class="number">1</span>);i+=<span class="number">2</span>)&#123;</span><br><span class="line">           <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> n;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">   <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=n;i+=<span class="number">2</span>)&#123;</span><br><span class="line">   	<span class="keyword">if</span>(isPrime(i)&amp;&amp;isPrime(i+<span class="number">2</span>)&amp;&amp;(i+<span class="number">2</span>)&lt;=n)&#123;</span><br><span class="line">   		num++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%d"</span>,num);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1006"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/15/PTA-Basic-1006/"
-    >PTA-Basic-1006</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/15/PTA-Basic-1006/" class="article-date">
-  <time datetime="2019-09-15T09:52:41.000Z" itemprop="datePublished">2019-09-15</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="1006-换个格式输出整数"><a href="#1006-换个格式输出整数" class="headerlink" title="1006 换个格式输出整数"></a>1006 换个格式输出整数</h1><p>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
-<p>输入格式：<br>    每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
-<p>输出格式：<br>    每个测试用例的输出占一行，用规定的格式输出 n。</p>
-<p>输入样例 1：</p>
-<pre><code>234</code></pre><p>输出样例 1：</p>
-<pre><code>BBSSS1234</code></pre><p>输入样例 2：</p>
-<pre><code>23</code></pre><p>输出样例 2：</p>
-<pre><code>SS123</code></pre><hr>
-<p>分析：</p>
-<p>1因为输入的数字小于1000，所以定义一个数组长度为3的整型数组，存放数字的个位，十位，百位。</p>
-<p>2再定义一个足够大的数组存放结果。</p>
-<p>3倒叙遍历存放数字的数组，按按百对应下标为2，十位对应的下标为1，个位对应的下标的为0，分别对处理。</p>
-<p>4注意一定要在最后将字符数组的最后置为’\0’,否则会输出错误。</p>
-<p>代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> result[<span class="number">1000</span>];</span><br><span class="line">   <span class="keyword">int</span> number;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">int</span> num[<span class="number">3</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">   <span class="keyword">while</span>(number)&#123;</span><br><span class="line">       num[n++]=number%<span class="number">10</span>;</span><br><span class="line">       number=number/<span class="number">10</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> <span class="built_in">step</span>=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">int</span> time=num[i];</span><br><span class="line">       <span class="keyword">if</span>(time==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">continue</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'B'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'S'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=j+<span class="string">'1'</span>;</span><br><span class="line">       	&#125;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line">   result[<span class="built_in">step</span>]=<span class="string">'\0'</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%s"</span>,result);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>另一种思路：</p>
-<p>分析：</p>
-<p>利用字符串长度判断输入的是几位数，再利用字符串倒置输出对应的题目要求符号</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i,j;</span><br><span class="line">   <span class="keyword">char</span> n[<span class="number">4</span>];</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%s"</span>,n);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span>(i=<span class="built_in">strlen</span>(n);i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=(n[<span class="built_in">strlen</span>(n)-i]-<span class="string">'0'</span>);j++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">3</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"B"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"S"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"%d"</span>,j);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.csdn.net/huaxuewan/article/details/85778884" title="参考资料">https://blog.csdn.net/huaxuewan/article/details/85778884</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1005"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/15/PTA-Basic-1005/"
-    >PTA-Basic-1005</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/15/PTA-Basic-1005/" class="article-date">
-  <time datetime="2019-09-15T09:14:58.000Z" itemprop="datePublished">2019-09-15</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>卡拉兹(Callatz)猜想已经在1001中给出了描述。在这个题目里，情况稍微有些复杂。</p>
-<p>当我们验证卡拉兹猜想的时候，为了避免重复计算，可以记录下递推过程中遇到的每一个数。例如对 n=3 进行验证的时候，我们需要计算 3、5、8、4、2、1，则当我们对 n=5、8、4、2 进行验证的时候，就可以直接判定卡拉兹猜想的真伪，而不需要重复计算，因为这 4 个数已经在验证3的时候遇到过了，我们称 5、8、4、2 是被 3“覆盖”的数。我们称一个数列中的某个数 n 为“关键数”，如果 n 不能被数列中的其他数字所覆盖。</p>
-<p>现在给定一系列待验证的数字，我们只需要验证其中的几个关键数，就可以不必再重复验证余下的数字。你的任务就是找出这些关键数字，并按从大到小的顺序输出它们。</p>
-<p>输入格式：<br>    每个测试输入包含 1 个测试用例，第 1 行给出一个正整数 K (&lt;100)，第 2 行给出 K 个互不相同的待验证的正整数 n (1&lt;n≤100)的值，数字间用空格隔开。</p>
-<p>输出格式：<br>    每个测试用例的输出占一行，按从大到小的顺序输出关键数字。数字间用 1 个空格隔开，但一行中最后一个数字后没有空格。</p>
-<p>输入样例：</p>
-<pre><code>6
-3 5 6 7 8 11</code></pre><p>输出样例：</p>
-<pre><code>7 6</code></pre><hr>
-<p>分析：</p>
-<p>1定义一个数组存储输入的数字。</p>
-<p>2遍历数组的每一个数字，对它们每个数字求其覆盖的数字，对被覆盖的每个数字一一与输入的数组对比，如果有相同的就将处于该位置的数字置为1，因为题目中提到数字在（1&lt;n&lt;=100）之间，所以便利该数组时可以遇到一就跳过去。</p>
-<p>3最后数组中只剩下不能被数组中的其他元素所覆盖的数字了，这就是要求的关键数的数组。</p>
-<p>4对这个数组进行排序，直到第一个为1的下标。</p>
-<p>5按要求输出下标前面的数字。</p>
-<hr>
+<p>1读取一对数字再读一个字符。</p>
+<p>2如果指数为0就可以判断后面没有输入了。</p>
+<p>3不为0就输出对应求导后的数值，并标记一下此多项式不是“0多项式”。</p>
+<p>4如果不是0多项式，就不用输出“0 0”了，如果那么前面一定没有输出，那么就要输出此。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-//此处是比较函数，用于对处理后的数组排序。
-int compare(const void *a,const void *b){
-if(*(int *)a&gt;*(int *)b)
-return -1;
-if(*(int *)a&lt;*(int *)b)
-return 1;
-return 0;
-}
 int main(void){
-int number;
-scanf(&quot;%d&quot;,&amp;number);
-int num[number];
-int i=0;
-while(i&lt;number){ 
-    scanf(&quot;%d&quot;,&amp;num[i++]);
-}
-for(i=0;i&lt;number;i++){
-    int n=num[i];
-    if(n==1){
-        continue;
+int n,m;
+int flag=0;
+char ch;
+while(1){
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    ch=getchar();
+    if(m!=0){
+        if(flag)//此处用于判断是否为第一个输出，是就不用输出空格。
+            printf(&quot; &quot;);
+        printf(&quot;%d %d&quot;,n*m,m-1);
+        flag=1;
     }
-    while(1){
-     if(n==1){
+    if(ch==&apos;\n&apos;){
         break;
     }
-    if(n%2==0){
-        n=n/2;
-    }else{
-        n=(3*n+1)/2;
-    }
-    for(int m=0;m&lt;number;m++){
-        if(n==num[m]){
-            num[m]=1;// 因为数组的数字各不相同，找到被覆盖的即可跳出循环
-            break;
+}
+if(!flag){
+    printf(&quot;0 0&quot;);
+}
+ return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1009"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1009/"
+    >PTA-Basic-1009</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/17/PTA-Basic-1009/" class="article-date">
+  <time datetime="2019-09-17T11:35:44.000Z" itemprop="datePublished">2019-09-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
+<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
+<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
+<p>输入样例：</p>
+<p>Hello World Here I Come</p>
+<p>输出样例：</p>
+<p>Come I Here World Hello</p>
+<p>分析：<br>1给出一句话，要求单词顺序不变，倒序输出所有单词。<br>首先要输出最后一个单词，接着是倒数第二个… ,直到到达首单词。</p>
+<p>思路：双指针算法。<br>1用一个字符数组存储输入的字符串；使用两个字符指针，一个用来指向空格的位置，另一个用来输出空格与空格或者空格与     ‘\0’    之间的单词（字符串的末尾会存放一个‘\0’）,然后继续此操作直到到达第一个单词，第一个单词不输出（因题目格式要求）<br>2另外输出第一个单词。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#define MAX 81
+int main(void){
+char str[MAX];
+char *p,*q;
+gets(str);
+for(p=str+strlen(str)-1;p!=str;p--){//输出到第一个单词停止。
+    if(*p==&apos; &apos;){//如果读到一个空格，说明，一个单词已经结束。
+        for(q=p+1;*q!=&apos; &apos;&amp;&amp;*q;q++){
+            printf(&quot;%c&quot;,*q);
         }
-      }
+        printf(&quot; &quot;);
     }
 }
-qsort(num,sizeof(num)/sizeof(int),sizeof(int),compare);
-int flag=1;
-for(int i=0;i&lt;number;i++）{
-    if(num[i]==1)break;
-    if(flag){
-        flag=0;
-        printf(&quot;%d&quot;,num[i]);
-    }else{
-        printf(&quot; %d&quot;,num[i]);
-    }
+for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
+//此处判定条件中的*p是为了防止输入一个单词时造成死循环。因为只输入一个单词时，也作为字符串末尾也会加上一个&apos;\0&apos;.
+    printf(&quot;%c&quot;,*p);
 }
 return 0;
+}</code></pre><p>######如果有更好的思路欢迎交流。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1008"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/16/PTA-Basic-1008/"
+    >PTA-Basic-1008</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/16/PTA-Basic-1008/" class="article-date">
+  <time datetime="2019-09-16T15:58:39.000Z" itemprop="datePublished">2019-09-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>一个数组A中存有N（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（≥0）个位置，即将A中的数据由（A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−1<br>​​ ）变换为（A<br>​N−M<br>​​ ⋯A<br>​N−1<br>​​ A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−M−1<br>​​ ）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p>
+<p>输入格式:</p>
+<pre><code>每个输入包含一个测试用例，第1行输入N（1≤N≤100）和M（≥0）；第2行输入N个整数，之间用空格分隔。</code></pre><p>输出格式:</p>
+<pre><code>在一行中输出循环右移M位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。</code></pre><p>输入样例:</p>
+<pre><code>6 2
+1 2 3 4 5 6</code></pre><p>输出样例:</p>
+<pre><code>5 6 1 2 3 4</code></pre><hr>
+<p>分析：</p>
+<p>题目要求输入一个数组，将数组右移，并输出。</p>
+<p>思路：</p>
+<pre><code>本题并没有按照题目要求的那样改变数组，而是改变数组输出的顺
+
+序，先输出原数组从n-m到n-1的数字，再输出0到n-m-2的数字（为什么不输出到n-m-1,这是为了题目的输出
+
+格式要求。），最后在输出下标为n-m-1的数组中的数字。
+
+
+##注意：
+
+如果右移的位数大于输入数字的个数，就用位数对个数取余，并将余数设置为位移的位数，因为如果唯
+
+一的位数大于数字数目，就会多做一次周期位移（周期位移后数组不变）。</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt; 
+int main(void){
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    m=m%n;
+    int list[n];
+    int k=0;
+    while(k&lt;n){
+       scanf(&quot;%d&quot;,&amp;list[k++]);
+    }  
+    int i;
+    for(i=n-m;i&lt;n;i++){
+        printf(&quot;%d &quot;,list[i]);
+    }
+    for(i=0;i&lt;n-m-1;i++){
+        printf(&quot;%d &quot;,list[i]);
+    }
+    printf(&quot;%d&quot;,list[i]);
+    return 0;
 }</code></pre> 
       <!-- reward -->
       
@@ -383,7 +391,7 @@ return 0;
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/48/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/47/">47</a><a class="page-number" href="/page/48/">48</a><span class="page-number current">49</span><a class="page-number" href="/page/50/">50</a><a class="extend next" rel="next" href="/page/50/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/48/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/47/">47</a><a class="page-number" href="/page/48/">48</a><span class="page-number current">49</span><a class="page-number" href="/page/50/">50</a><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/50/">下一页</a>
   </nav>
   
 </section>
