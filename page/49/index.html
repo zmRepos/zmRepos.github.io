@@ -119,6 +119,97 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1011"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1011/"
+    >PTA-Basic-1011</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/17/PTA-Basic-1011/" class="article-date">
+  <time datetime="2019-09-17T13:46:10.000Z" itemprop="datePublished">2019-09-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>给定区间 [−2^31,2^31] 内的 3 个整数 A、B 和 C，请判断 A+B 是否大于 C。</p>
+<p>输入格式：</p>
+<p>输入第 1 行给出正整数 T (≤10)，是测试用例的个数。随后给出 T 组测试用例，每组占一行，顺序给出 A、B 和 C。整数间以空格分隔。</p>
+<p>输出格式：</p>
+<p>对每组测试用例，在一行中输出 Case #X: true 如果 A+B&gt;C，否则输出 Case #X: false，其中 X 是测试用例的编号（从 1 开始）。</p>
+<p>输入样例：</p>
+<p>4</p>
+<p>1 2 3</p>
+<p>2 3 4</p>
+<p>2147483647 0 2147483646</p>
+<p>0 -2147483648 -2147483647</p>
+<p>输出样例：</p>
+<p>Case #1: false</p>
+<p>Case #2: true</p>
+<p>Case #3: true</p>
+<p>Case #4: false</p>
+<p>分析：</p>
+<p>输入：个数，每一行一一组数据。<br>输出：判定结果。</p>
+<p>难点：<br>数字的长度过大，使用long long 类型，long long对应的长度为（-2^63,2^63 -1）足够存储数据，与加后的数据了;</p>
+<p>对定义后的字符数组赋值时，必须使用strcpy（）函数</p>
+<p>思路：输入一组比较一组，结果存放在字符数组中。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+int main(void){
+    int n;
+    scanf(&quot;%d&quot;,&amp;n);
+    long long number1,number2,number3;
+    char result[n][8];
+    int i=0;
+    while(i&lt;n){
+        scanf(&quot;%ld %ld %ld&quot;,&amp;number1,&amp;number2,&amp;number3);
+        strcpy(result[i],(number1+number2&gt;number3)?&quot;true&quot;:&quot;false&quot;);
+        i++;
+    }
+    for(i=0;i&lt;n;i++){
+        printf(&quot;Case #%d: %s\n&quot;,i+1,result[i]);
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1010"
   class="article article-type-post"
   itemscope
@@ -272,99 +363,6 @@ for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
 return 0;
 }</code></pre><p>######如果有更好的思路欢迎交流。</p>
  
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1008"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/16/PTA-Basic-1008/"
-    >PTA-Basic-1008</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/16/PTA-Basic-1008/" class="article-date">
-  <time datetime="2019-09-16T15:58:39.000Z" itemprop="datePublished">2019-09-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>一个数组A中存有N（&gt;0）个整数，在不允许使用另外数组的前提下，将每个整数循环向右移M（≥0）个位置，即将A中的数据由（A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−1<br>​​ ）变换为（A<br>​N−M<br>​​ ⋯A<br>​N−1<br>​​ A<br>​0<br>​​ A<br>​1<br>​​ ⋯A<br>​N−M−1<br>​​ ）（最后M个数循环移至最前面的M个位置）。如果需要考虑程序移动数据的次数尽量少，要如何设计移动的方法？</p>
-<p>输入格式:</p>
-<pre><code>每个输入包含一个测试用例，第1行输入N（1≤N≤100）和M（≥0）；第2行输入N个整数，之间用空格分隔。</code></pre><p>输出格式:</p>
-<pre><code>在一行中输出循环右移M位以后的整数序列，之间用空格分隔，序列结尾不能有多余空格。</code></pre><p>输入样例:</p>
-<pre><code>6 2
-1 2 3 4 5 6</code></pre><p>输出样例:</p>
-<pre><code>5 6 1 2 3 4</code></pre><hr>
-<p>分析：</p>
-<p>题目要求输入一个数组，将数组右移，并输出。</p>
-<p>思路：</p>
-<pre><code>本题并没有按照题目要求的那样改变数组，而是改变数组输出的顺
-
-序，先输出原数组从n-m到n-1的数字，再输出0到n-m-2的数字（为什么不输出到n-m-1,这是为了题目的输出
-
-格式要求。），最后在输出下标为n-m-1的数组中的数字。
-
-
-##注意：
-
-如果右移的位数大于输入数字的个数，就用位数对个数取余，并将余数设置为位移的位数，因为如果唯
-
-一的位数大于数字数目，就会多做一次周期位移（周期位移后数组不变）。</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt; 
-int main(void){
-    int n,m;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    m=m%n;
-    int list[n];
-    int k=0;
-    while(k&lt;n){
-       scanf(&quot;%d&quot;,&amp;list[k++]);
-    }  
-    int i;
-    for(i=n-m;i&lt;n;i++){
-        printf(&quot;%d &quot;,list[i]);
-    }
-    for(i=0;i&lt;n-m-1;i++){
-        printf(&quot;%d &quot;,list[i]);
-    }
-    printf(&quot;%d&quot;,list[i]);
-    return 0;
-}</code></pre> 
       <!-- reward -->
       
     </div>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-08-23T00:27:06.491Z</updated>
+  <updated>2020-08-27T14:27:32.800Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Node安装</title>
+    <link href="http://zm163.github.io/2020/08/27/Node%E5%AE%89%E8%A3%85/"/>
+    <id>http://zm163.github.io/2020/08/27/Node%E5%AE%89%E8%A3%85/</id>
+    <published>2020-08-27T12:26:31.000Z</published>
+    <updated>2020-08-27T14:27:32.800Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Node与npm安装&quot;&gt;&lt;a href=&quot;#Node与npm安装&quot; class=&quot;headerlink&quot; title=&quot;Node与npm安装&quot;&gt;&lt;/a&gt;Node与npm安装&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Node" scheme="http://zm163.github.io/categories/Node/"/>
+    
+    
+      <category term="软件工具" scheme="http://zm163.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>LeetCode-1544</title>
@@ -63,11 +84,11 @@
   </entry>
   
   <entry>
-    <title>前端tips</title>
-    <link href="http://zm163.github.io/2020/08/23/%E5%89%8D%E7%AB%AFtips/"/>
-    <id>http://zm163.github.io/2020/08/23/%E5%89%8D%E7%AB%AFtips/</id>
+    <title>前端页面编码问题</title>
+    <link href="http://zm163.github.io/2020/08/23/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://zm163.github.io/2020/08/23/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</id>
     <published>2020-08-22T23:15:50.000Z</published>
-    <updated>2020-08-22T23:43:51.653Z</updated>
+    <updated>2020-08-23T16:06:58.414Z</updated>
     
     <summary type="html">
     
@@ -492,33 +513,6 @@
     
     
       <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ThreadLocal使用不当导致的执行器关闭异常问题</title>
-    <link href="http://zm163.github.io/2020/06/30/ThreadLocal%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%BD%93%E5%AF%BC%E8%87%B4%E7%9A%84%E6%89%A7%E8%A1%8C%E5%99%A8%E5%85%B3%E9%97%AD%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/"/>
-    <id>http://zm163.github.io/2020/06/30/ThreadLocal%E4%BD%BF%E7%94%A8%E4%B8%8D%E5%BD%93%E5%AF%BC%E8%87%B4%E7%9A%84%E6%89%A7%E8%A1%8C%E5%99%A8%E5%85%B3%E9%97%AD%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98/</id>
-    <published>2020-06-30T12:10:07.000Z</published>
-    <updated>2020-08-17T14:46:23.197Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;MyBatis使用过程中产生执行器异常：&quot;&gt;&lt;a href=&quot;#MyBatis使用过程中产生执行器异常：&quot; class=&quot;headerlink&quot; title=&quot;MyBatis使用过程中产生执行器异常：&quot;&gt;&lt;/a&gt;MyBatis使用过程中产生执行器异常：&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;Cause:org.apache.ibatis.executor.ExecutorException: Executor was closed.&lt;/p&gt;
-&lt;/blockquote&gt;
-    
-    </summary>
-    
-    
-      <category term="java" scheme="http://zm163.github.io/categories/java/"/>
-    
-      <category term="MyBatis" scheme="http://zm163.github.io/categories/java/MyBatis/"/>
-    
-      <category term="并发" scheme="http://zm163.github.io/categories/java/%E5%B9%B6%E5%8F%91/"/>
-    
-    
-      <category term="bug" scheme="http://zm163.github.io/tags/bug/"/>
     
   </entry>
   

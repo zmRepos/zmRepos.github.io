@@ -119,6 +119,136 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1052"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/28/PTA-Basic-1052/"
+    >PTA-Basic-1052</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/28/PTA-Basic-1052/" class="article-date">
+  <time datetime="2019-09-28T14:27:44.000Z" itemprop="datePublished">2019-09-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>萌萌哒表情符号通常由“手”、“眼”、“口”三个主要部分组成。简单起见，我们假设一个表情符号是按下列格式输出的：</p>
+<pre><code>[左手]([左眼][口][右眼])[右手]</code></pre><p>现给出可选用的符号集合，请你按用户的要求输出表情。</p>
+<p>输入格式：<br>输入首先在前三行顺序对应给出手、眼、口的可选符号集。每个符号括在一对方括号 []内。题目保证每个集合都至少有一个符号，并不超过 10 个符号；每个符号包含 1 到 4 个非空字符。</p>
+<p>之后一行给出一个正整数 K，为用户请求的个数。随后 K 行，每行给出一个用户的符号选择，顺序为左手、左眼、口、右眼、右手——这里只给出符号在相应集合中的序号（从 1 开始），数字间以空格分隔。</p>
+<p>输出格式：<br>对每个用户请求，在一行中输出生成的表情。若用户选择的序号不存在，则输出 Are you kidding me? @/@。</p>
+<p>输入样例：</p>
+<pre><code>[╮][╭][o][~\][/~]  [&lt;][&gt;]
+ [╯][╰][^][-][=][&gt;][&lt;][@][⊙]
+[Д][▽][_][ε][^]  ...
+4
+1 1 2 2 2
+6 8 1 5 5
+3 3 4 3 3
+2 10 3 9 3</code></pre><p>输出样例：</p>
+<pre><code>╮(╯▽╰)╭
+&lt;(@Д=)/~
+o(^ε^)o
+Are you kidding me? @\/@</code></pre><p>思路：<br>第一行给出手的符号库，<br>第二行给出眼的符号库，<br>第三行给出口的符号库。<br>定义三个二维数组，每一行存储字符串。<br>然后存储输入进的数字，<br>根据每一行对手，眼，口的坐标选择，输出相应的字符串符号。若没有，则输出Are you kidding me? @/@<br>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main()
+{
+  char Hand[10][5]={0};
+  char Eye[10][5]={0};
+  char Mouth[10][5]={0};
+  char temp=0;
+  int iHand=0,iEye=0,iMouth=0;//字符计数
+  while((temp=getchar())!=&apos;\n&apos;)
+  {
+    if(temp==&apos;[&apos;)
+    {
+      scanf(&quot;%[^]]&quot;,szHand[iHand++]);
+    }
+  }
+  while((temp=getchar())!=&apos;\n&apos;)
+  {
+    if(temp==&apos;[&apos;)
+    {
+      scanf(&quot;%[^]]&quot;,szEye[iEye++]);
+    }
+  }
+  while((temp=getchar())!=&apos;\n&apos;)
+  {
+    if(temp==&apos;[&apos;)
+    {
+      scanf(&quot;%[^]]&quot;,szMouth[iMouth++]);
+    }
+  }
+  int iNum=0,iMood[5]={0};
+  scanf(&quot;%d&quot;,&amp;iNum);
+  for(int i=0;i&lt;iNum;i++)
+  {
+    for(int j=0;j&lt;5;j++)
+    {
+      scanf(&quot;%d&quot;,iMood+j);
+    }
+    //选择输出，注意表情是从1开始，数组是从0开始
+    if(iMood[0]&gt;0&amp;&amp;iMood[0]&lt;=iHand
+     &amp;&amp;iMood[1]&gt;0&amp;&amp;iMood[1]&lt;=iEye
+     &amp;&amp;iMood[2]&gt;0&amp;&amp;iMood[2]&lt;=iMouth
+     &amp;&amp;iMood[3]&gt;0&amp;&amp;iMood[3]&lt;=iEye
+     &amp;&amp;iMood[4]&gt;0&amp;&amp;iMood[4]&lt;=iHand)
+     {
+       printf(&quot;%s(%s%s%s)%s&quot;,szHand[iMood[0]-1],szEye[iMood[1]-1],
+           szMouth[iMood[2]-1],szEye[iMood[3]-1],szHand[iMood[4]-1]);
+     }
+     else
+     {
+       printf(&quot;Are you kidding me? @\\/@&quot;);
+     }
+     if(i!=iNum-1)
+     {
+       printf(&quot;\n&quot;);
+     }
+  }
+  return 0;
+
+}</code></pre><p>注意：<br>scanf函数有一种格式控制可以输入指定符号前的字符串，即%[^…]，其中…可以是任意字符，之前的任意多个字符会被输入，如果加上<em>，即%</em>[^…]，就是忽略…前的任意多字符。因为有[]两个字符作为数据的前后标记，因此可以用getchar试探读入，读入回车则结束，读入[则接收数据。<br>参考链接：<a href="https://blog.csdn.net/bawangtu/article/details/81287293">https://blog.csdn.net/bawangtu/article/details/81287293</a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1051"
   class="article article-type-post"
   itemscope
@@ -310,86 +440,6 @@ int main(){
         }
         printf(&quot;\n&quot;);
     }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1049"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/27/PTA-Basic-1049/"
-    >PTA-Basic-1049</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/27/PTA-Basic-1049/" class="article-date">
-  <time datetime="2019-09-27T09:26:38.000Z" itemprop="datePublished">2019-09-27</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>给定一个正数数列，我们可以从中截取任意的连续的几个数，称为片段。例如，给定数列 { 0.1, 0.2, 0.3, 0.4 }，我们有 (0.1) (0.1, 0.2) (0.1, 0.2, 0.3) (0.1, 0.2, 0.3, 0.4) (0.2) (0.2, 0.3) (0.2, 0.3, 0.4) (0.3) (0.3, 0.4) (0.4) 这 10 个片段。</p>
-<p>给定正整数数列，求出全部片段包含的所有的数之和。如本例中 10 个片段总和是 0.1 + 0.3 + 0.6 + 1.0 + 0.2 + 0.5 + 0.9 + 0.3 + 0.7 + 0.4 = 5.0。</p>
-<p>输入格式：<br>输入第一行给出一个不超过 10<br>​5<br>​​  的正整数 N，表示数列中数的个数，第二行给出 N 个不超过 1.0 的正数，是数列中的数，其间以空格分隔。</p>
-<p>输出格式：<br>在一行中输出该序列所有片段包含的数之和，精确到小数点后 2 位。</p>
-<p>输入样例：</p>
-<pre><code>4
-
-0.1 0.2 0.3 0.4</code></pre><p>输出样例：</p>
-<pre><code>5.00</code></pre><p>分析：<br>此题并不难，只要在做题目前，思考一下，不难得出一个推导的公式<br>（sum = n1<em>n</em>1+n2<em>(n-1)*2+n3</em>(n-2)<em>3+…(nk</em>(n-k-1)*k)…）<br>注意点：双精度浮点数输入输出时用%lf，单精度用%f，不能混合用不然输入或输出的数据可能会出错。<br>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int num;
-    scanf(&quot;%d&quot;,&amp;num);
-    double nums[num];
-    int i=0;
-    while(i&lt;num){
-        scanf(&quot;%lf&quot;,&amp;nums[i]);
-        i++;
-    }
-    double sum=0;
-    int n=num;
-    for(i=0;i&lt;num;i++){
-        sum=sum+1.0*nums[i]*n*(i+1);
-        n--;
-    }
-    printf(&quot;%.2f&quot;,sum);
     return 0;
 }</code></pre> 
       <!-- reward -->
