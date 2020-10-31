@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-08-27T14:27:32.800Z</updated>
+  <updated>2020-10-31T15:35:44.718Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>小程序中使用antv入门</title>
+    <link href="http://zm163.github.io/2020/10/31/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8antv%E5%85%A5%E9%97%A8/"/>
+    <id>http://zm163.github.io/2020/10/31/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8antv%E5%85%A5%E9%97%A8/</id>
+    <published>2020-10-31T15:04:46.000Z</published>
+    <updated>2020-10-31T15:35:44.718Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;在小程序中使用可视化数据&quot;&gt;&lt;a href=&quot;#在小程序中使用可视化数据&quot; class=&quot;headerlink&quot; title=&quot;在小程序中使用可视化数据&quot;&gt;&lt;/a&gt;在小程序中使用可视化数据&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="小程序" scheme="http://zm163.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="antv" scheme="http://zm163.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/antv/"/>
+    
+    
+      <category term="前端" scheme="http://zm163.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>Node安装</title>
@@ -403,9 +426,9 @@
     
       <category term="java" scheme="http://zm163.github.io/categories/java/"/>
     
-      <category term="MyBatis" scheme="http://zm163.github.io/categories/java/MyBatis/"/>
-    
       <category term="Spring" scheme="http://zm163.github.io/categories/java/Spring/"/>
+    
+      <category term="MyBatis" scheme="http://zm163.github.io/categories/java/MyBatis/"/>
     
     
       <category term="bug" scheme="http://zm163.github.io/tags/bug/"/>
@@ -490,29 +513,6 @@
     
     
       <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>回溯算法解析</title>
-    <link href="http://zm163.github.io/2020/07/02/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/"/>
-    <id>http://zm163.github.io/2020/07/02/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95%E8%A7%A3%E6%9E%90/</id>
-    <published>2020-07-02T13:01:35.000Z</published>
-    <updated>2020-08-17T14:43:21.076Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;什么是回溯算法？&quot;&gt;&lt;a href=&quot;#什么是回溯算法？&quot; class=&quot;headerlink&quot; title=&quot;什么是回溯算法？&quot;&gt;&lt;/a&gt;什么是回溯算法？&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="回溯算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   

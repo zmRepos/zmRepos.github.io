@@ -9,7 +9,7 @@
    
   <meta name="keywords" content="代码,技术,生活,思考,博客,人生" />
    
-  <meta name="description" content="有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅" />
+  <meta name="description" content="做一名优秀的代码搬运工" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
@@ -55,9 +55,17 @@ var _hmt = _hmt || [];
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
       
@@ -117,6 +125,105 @@ var _hmt = _hmt || [];
     
     
     
+    
+    <article
+  id="post-PTA-Basic-1053"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/28/PTA-Basic-1053/"
+    >PTA-Basic-1053</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/28/PTA-Basic-1053/" class="article-date">
+  <time datetime="2019-09-28T14:28:35.000Z" itemprop="datePublished">2019-09-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>在不打扰居民的前提下，统计住房空置率的一种方法是根据每户用电量的连续变化规律进行判断。判断方法如下：</p>
+<p>在观察期内，若存在超过一半的日子用电量低于某给定的阈值 e，则该住房为“可能空置”；</p>
+<p>若观察期超过某给定阈值 D 天，且满足上一个条件，则该住房为“空置”。</p>
+<p>现给定某居民区的住户用电量数据，请你统计“可能空置”的比率和“空置”比率，即以上两种状态的住房占居民区住房总套数的百分比。</p>
+<p>输入格式：<br>输入第一行给出正整数 N（≤1000），为居民区住房总套数；正实数 e，即低电量阈值；正整数 D，即观察期阈值。随后 N 行，每行按以下格式给出一套住房的用电量数据：</p>
+<p>K E<br>​1<br>​​  E<br>​2<br>​​  … E<br>​K<br>​​ </p>
+<p>其中 K 为观察的天数，E<br>​i<br>​​  为第 i 天的用电量。</p>
+<p>输出格式：<br>在一行中输出“可能空置”的比率和“空置”比率的百分比值，其间以一个空格分隔，保留小数点后 1 位。</p>
+<p>输入样例：</p>
+<pre><code>5 0.5 10
+6 0.3 0.4 0.5 0.2 0.8 0.6
+10 0.0 0.1 0.2 0.3 0.0 0.8 0.6 0.7 0.0 0.5
+5 0.4 0.3 0.5 0.1 0.7
+11 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1 0.1
+11 2 2 2 1 1 0.1 1 0.1 0.1 0.1 0.1</code></pre><p>输出样例：</p>
+<pre><code>40.0% 20.0%</code></pre><p>（样例解释：第2、3户为“可能空置”，第4户为“空置”，其他户不是空置。）</p>
+<p>分析：<br>按题目走。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int sum=0;
+    double e,d;
+    scanf(&quot;%d %lf %lf&quot;,&amp;sum,&amp;e,&amp;d);
+    int maybe=0,must=0;
+    for(int i=0;i&lt;sum;i++){
+        int days=0;
+        int sum=0;
+        scanf(&quot;%d&quot;,&amp;days);
+        for(int j=0;j&lt;days;j++){
+            double en;
+            scanf(&quot;%lf&quot;,&amp;en);
+            if(en&lt;e){
+                sum++;
+            }
+        }
+        if(days&gt;d&amp;&amp;sum&gt;(int)(days/2)){
+            must++;
+        }else if(sum&gt;(int)(days/2)){
+            maybe++;
+        }else{    
+        }
+    }
+    printf(&quot;%.1f&quot;,100*(maybe*1.0/sum));
+    printf(&quot;%c &quot;,&apos;%&apos;);
+    printf(&quot;%.1f&quot;,100*(must*1.0/sum));
+    printf(&quot;%c&quot;,&apos;%&apos;);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
     
     <article
   id="post-PTA-Basic-1052"
@@ -329,146 +436,13 @@ int main(){
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1050"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/27/PTA-Basic-1050/"
-    >PTA-Basic-1050</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/27/PTA-Basic-1050/" class="article-date">
-  <time datetime="2019-09-27T09:27:45.000Z" itemprop="datePublished">2019-09-27</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>本题要求将给定的 N 个正整数按非递增的顺序，填入“螺旋矩阵”。所谓“螺旋矩阵”，是指从左上角第 1 个格子开始，按顺时针螺旋方向填充。要求矩阵的规模为 m 行 n 列，满足条件：m×n 等于 N；m≥n；且 m−n 取所有可能值中的最小值。</p>
-<p>输入格式：<br>输入在第 1 行中给出一个正整数 N，第 2 行给出 N 个待填充的正整数。所有数字不超过 10<br>​4<br>​​ ，相邻数字以空格分隔。</p>
-<p>输出格式：<br>输出螺旋矩阵。每行 n 个数字，共 m 行。相邻数字以 1 个空格分隔，行末不得有多余空格。</p>
-<p>输入样例：</p>
-<pre><code>12
-37 76 20 98 76 42 53 95 60 81 58 93</code></pre><p>输出样例：</p>
-<pre><code>98 95 93
-42 37 81
-53 20 76
-58 60 76</code></pre><p>分析：<br>    难点：</p>
-<pre><code>1.求一个数字最接近的两个约数。//用于求行数与列数
-2.每一层输出时可能会位置出错。</code></pre><p>思路：</p>
-<pre><code>对一个数开平方，然后从它的根向下（包含跟）找
-
-到的第一个能把它整除的数就是最接近的两个数字
-
-中的小的哪一个，大的哪一个只要原数取整即可。且大的哪一个为行数，小的哪一个为列数。
-
-对输入进来的数组进行排序，然后定义一个二维数组存储螺旋矩阵（从最外面一层开始，分为上部赋值，
-
-右部赋值，下部赋值，左部赋值，然后进行第二层的赋值。。。）
-
-把螺旋矩阵看成一个不断重复相同操作的过程。</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;math.h&gt;
-//求一个数字最接近平方根的数字，就是其接近的约数。
-int func(int n){
-    int m=sqrt(n);
-    while(m!=1){
-        if(n%m==0){
-            return m;
-        }
-        m--;
-    }
-    return 1;
-}
-int cmp(const void *a,const void *b){
-    return *(int *)b-*(int *)a;
-}
-int main(){
-    int N,n,m,t=0;
-    scanf(&quot;%d&quot;,&amp;N);
-    int a[N];
-    while(t&lt;N){
-        scanf(&quot;%d&quot;,&amp;a[t++]);
-    }
-    qsort(a,N,sizeof(int),cmp);//对数组排序从大到小
-    n=func(N); //列数
-    m=N/n;//获得行数，行数一定大于等于列数
-    int b[m][n]; //定义一个二维矩阵
-    int level=n/2+n%2; //一共有几层螺旋圈
-    t=0;
-    int j=0;
-    for(int i=1;i&lt;=level;i++){
-        //实现第i层的上面部分.
-         for( j=i-1;j&lt;=n-i&amp;&amp;t&lt;N;j++){//行数为[i-1]列数为[i-1,n-i]
-             b[i-1][j]=a[t++];
-         }
-         //实现第i层的右边
-         for( j=i;j&lt;=(m-i)&amp;&amp;t&lt;N;j++){//行数为[i,m-i][n-i]
-             b[j][n-i]=a[t++];
-         }
-         //实现第i层的下面
-         for( j=n-i-1;j&gt;=(i-1)&amp;&amp;t&lt;N;j--){//行数为[m-i]列数为[n-i,i-1]
-             b[m-i][j]=a[t++];
-         }
-         //实现第i层的左面
-         for( j=m-i-1;j&gt;(i-1)&amp;&amp;t&lt;N;j--){//行数为[m-i-1，i]列数为[i-1]
-             b[j][i-1]=a[t++];
-         }
-    }
-    for(int i=0;i&lt;m;i++){
-        for(int j=0;j&lt;n;j++){
-            if(j!=0)
-                printf(&quot; &quot;);
-            printf(&quot;%d&quot;,b[i][j]);
-        }
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/35/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><a class="page-number" href="/page/38/">38</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/37/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/35/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="page-number" href="/page/35/">35</a><span class="page-number current">36</span><a class="page-number" href="/page/37/">37</a><a class="page-number" href="/page/38/">38</a><span class="space">&hellip;</span><a class="page-number" href="/page/52/">52</a><a class="extend next" rel="next" href="/page/37/">下一页</a>
   </nav>
   
 </section>
@@ -747,11 +721,12 @@ int main(){
 
 <!-- ClickBoom1 -->
 
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
 <!-- ClickBoom2 -->
-
-
-<script src="/js/clickBoom2.js"></script>
-
 
 <!-- CodeCopy -->
 

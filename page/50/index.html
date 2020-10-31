@@ -9,7 +9,7 @@
    
   <meta name="keywords" content="代码,技术,生活,思考,博客,人生" />
    
-  <meta name="description" content="有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅" />
+  <meta name="description" content="做一名优秀的代码搬运工" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
@@ -55,9 +55,17 @@ var _hmt = _hmt || [];
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
       
@@ -117,6 +125,89 @@ var _hmt = _hmt || [];
     
     
     
+    
+    <article
+  id="post-PTA-Basic-1009"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1009/"
+    >PTA-Basic-1009</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/17/PTA-Basic-1009/" class="article-date">
+  <time datetime="2019-09-17T11:35:44.000Z" itemprop="datePublished">2019-09-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
+<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
+<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
+<p>输入样例：</p>
+<p>Hello World Here I Come</p>
+<p>输出样例：</p>
+<p>Come I Here World Hello</p>
+<p>分析：<br>1给出一句话，要求单词顺序不变，倒序输出所有单词。<br>首先要输出最后一个单词，接着是倒数第二个… ,直到到达首单词。</p>
+<p>思路：双指针算法。<br>1用一个字符数组存储输入的字符串；使用两个字符指针，一个用来指向空格的位置，另一个用来输出空格与空格或者空格与     ‘\0’    之间的单词（字符串的末尾会存放一个‘\0’）,然后继续此操作直到到达第一个单词，第一个单词不输出（因题目格式要求）<br>2另外输出第一个单词。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#define MAX 81
+int main(void){
+char str[MAX];
+char *p,*q;
+gets(str);
+for(p=str+strlen(str)-1;p!=str;p--){//输出到第一个单词停止。
+    if(*p==&apos; &apos;){//如果读到一个空格，说明，一个单词已经结束。
+        for(q=p+1;*q!=&apos; &apos;&amp;&amp;*q;q++){
+            printf(&quot;%c&quot;,*q);
+        }
+        printf(&quot; &quot;);
+    }
+}
+for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
+//此处判定条件中的*p是为了防止输入一个单词时造成死循环。因为只输入一个单词时，也作为字符串末尾也会加上一个&apos;\0&apos;.
+    printf(&quot;%c&quot;,*p);
+}
+return 0;
+}</code></pre><p>######如果有更好的思路欢迎交流。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
     
     <article
   id="post-PTA-Basic-1008"
@@ -276,86 +367,13 @@ int main(void){
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1006"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/15/PTA-Basic-1006/"
-    >PTA-Basic-1006</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/15/PTA-Basic-1006/" class="article-date">
-  <time datetime="2019-09-15T09:52:41.000Z" itemprop="datePublished">2019-09-15</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="1006-换个格式输出整数"><a href="#1006-换个格式输出整数" class="headerlink" title="1006 换个格式输出整数"></a>1006 换个格式输出整数</h1><p>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
-<p>输入格式：<br>    每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
-<p>输出格式：<br>    每个测试用例的输出占一行，用规定的格式输出 n。</p>
-<p>输入样例 1：</p>
-<pre><code>234</code></pre><p>输出样例 1：</p>
-<pre><code>BBSSS1234</code></pre><p>输入样例 2：</p>
-<pre><code>23</code></pre><p>输出样例 2：</p>
-<pre><code>SS123</code></pre><hr>
-<p>分析：</p>
-<p>1因为输入的数字小于1000，所以定义一个数组长度为3的整型数组，存放数字的个位，十位，百位。</p>
-<p>2再定义一个足够大的数组存放结果。</p>
-<p>3倒叙遍历存放数字的数组，按按百对应下标为2，十位对应的下标为1，个位对应的下标的为0，分别对处理。</p>
-<p>4注意一定要在最后将字符数组的最后置为’\0’,否则会输出错误。</p>
-<p>代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> result[<span class="number">1000</span>];</span><br><span class="line">   <span class="keyword">int</span> number;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">int</span> num[<span class="number">3</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">   <span class="keyword">while</span>(number)&#123;</span><br><span class="line">       num[n++]=number%<span class="number">10</span>;</span><br><span class="line">       number=number/<span class="number">10</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> <span class="built_in">step</span>=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">int</span> time=num[i];</span><br><span class="line">       <span class="keyword">if</span>(time==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">continue</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'B'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'S'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=j+<span class="string">'1'</span>;</span><br><span class="line">       	&#125;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line">   result[<span class="built_in">step</span>]=<span class="string">'\0'</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%s"</span>,result);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>另一种思路：</p>
-<p>分析：</p>
-<p>利用字符串长度判断输入的是几位数，再利用字符串倒置输出对应的题目要求符号</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i,j;</span><br><span class="line">   <span class="keyword">char</span> n[<span class="number">4</span>];</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%s"</span>,n);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span>(i=<span class="built_in">strlen</span>(n);i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=(n[<span class="built_in">strlen</span>(n)-i]-<span class="string">'0'</span>);j++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">3</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"B"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"S"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"%d"</span>,j);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.csdn.net/huaxuewan/article/details/85778884" title="参考资料">https://blog.csdn.net/huaxuewan/article/details/85778884</a></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/49/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><a class="extend next" rel="next" href="/page/51/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/49/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/48/">48</a><a class="page-number" href="/page/49/">49</a><span class="page-number current">50</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><a class="extend next" rel="next" href="/page/51/">下一页</a>
   </nav>
   
 </section>
@@ -634,11 +652,12 @@ int main(void){
 
 <!-- ClickBoom1 -->
 
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
 <!-- ClickBoom2 -->
-
-
-<script src="/js/clickBoom2.js"></script>
-
 
 <!-- CodeCopy -->
 

@@ -9,7 +9,7 @@
    
   <meta name="keywords" content="代码,技术,生活,思考,博客,人生" />
    
-  <meta name="description" content="有一分热,发一分光,就令萤火虫一般,也可以在黑暗中发一点光,不必等候炬火。此后如竟没有炬火,我便是唯一的光   ——鲁迅" />
+  <meta name="description" content="做一名优秀的代码搬运工" />
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
@@ -55,9 +55,17 @@ var _hmt = _hmt || [];
 <body>
   <div id="app">
     
+      <canvas class="fireworks"></canvas>
+      <style>
+        .fireworks {
+          position: fixed;
+          left: 0;
+          top: 0;
+          z-index: 99999;
+          pointer-events: none;
+        }
+      </style>
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
       
     <main class="content on">
       <section class="outer">
@@ -79,6 +87,27 @@ var _hmt = _hmt || [];
     </div>
     <div class="archives">
       
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2020/10/31/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8antv%E5%85%A5%E9%97%A8/" class="archive-article-date">
+  <time datetime="2020-10-31T15:04:46.000Z" itemprop="datePublished">10/31</time>
+</a>
+       
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2020/10/31/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8antv%E5%85%A5%E9%97%A8/"
+    >小程序中使用antv入门</a> 
+</h2>
+ 
+
+    </header>
+    
+    
+  </div>
+</article>
+      
+  
+  
       <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
@@ -110,27 +139,6 @@ var _hmt = _hmt || [];
 <h2 itemprop="name">
   <a class="archive-article-title" href="/2020/08/23/LeetCode-1544/"
     >LeetCode-1544</a> 
-</h2>
- 
-
-    </header>
-    
-    
-  </div>
-</article>
-      
-  
-  
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/08/23/LeetCode-844/" class="archive-article-date">
-  <time datetime="2020-08-22T23:16:36.000Z" itemprop="datePublished">08/23</time>
-</a>
-       
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2020/08/23/LeetCode-844/"
-    >LeetCode-844</a> 
 </h2>
  
 
@@ -426,11 +434,12 @@ var _hmt = _hmt || [];
 
 <!-- ClickBoom1 -->
 
+<script src="https://cdn.jsdelivr.net/npm/animejs@latest/anime.min.js"></script>
+
+<script src="/js/clickBoom1.js"></script>
+
+
 <!-- ClickBoom2 -->
-
-
-<script src="/js/clickBoom2.js"></script>
-
 
 <!-- CodeCopy -->
 
