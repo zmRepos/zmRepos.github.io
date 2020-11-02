@@ -127,6 +127,112 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1030"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/20/PTA-Basic-1030/"
+    >PTA-Basic-1030</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/20/PTA-Basic-1030/" class="article-date">
+  <time datetime="2019-09-20T12:06:46.000Z" itemprop="datePublished">2019-09-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>给定一个正整数数列，和正整数 p，设这个数列中的最大值是 M，最小值是 m，如果 M≤mp，则称这个数列是完美数列。</p>
+<p>现在给定参数 p 和一些正整数，请你从中选择尽可能多的数构成一个完美数列。</p>
+<p>输入格式：<br>输入第一行给出两个正整数 N 和 p，其中 N（≤10^5）是输入的正整数的个数，p（≤10^9）是给定的参数。第二行给出 N 个正整数，每个数不超过10^9。</p>
+<p>输出格式：<br>在一行中输出最多可以选择多少个数可以用它们组成一个完美数列。</p>
+<p>输入样例：</p>
+<pre><code>10 8
+2 3 20 4 5 1 6 7 8 9</code></pre><p>输出样例：</p>
+<pre><code>8</code></pre><p>分析:</p>
+<p>将输入的数字存入数组，对数组进行排序。从第i个开始向后找,每当有值与第i个元素之比小于p时，就看看要不要改变sum的值，下一次进行第i+1此比较时，就从i+1+sum处向后遍历。只有这样，其可能有的sum值才可能大于上一次循环得到的sum值。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+int compare(const void * a,const void *b){
+    long A=*(long *)a;
+    long B=*(long *)b;
+    if(A&gt;B){
+        return 1;
+    }else{
+        if(A==B){
+            return 0; 
+        }else{
+            return -1;
+        }
+    }
+}
+int main(void){
+    int N;
+    double p;
+    scanf(&quot;%ld %lf&quot;,&amp;N,&amp;p);
+    long nums[N];
+    long x=0;
+    int i=0;
+    while(N--){
+        scanf(&quot;%d&quot;,&amp;x);
+        nums[i++]=x;
+    } 
+    int MAX=0;
+    qsort(nums,i,sizeof(long),compare);
+        for(int j=0;j&lt;i;j++){//外层遍历，从0开始，
+            for(int k=j+MAX;k&lt;i;k++){
+                if(nums[k]*1.0/nums[j]&gt;p){
+                    break;
+                }
+                else{
+                    if(k-j+1&gt;MAX){
+                        MAX=k-j+1;
+                    }
+                }
+            }
+        }
+    printf(&quot;%d&quot;,MAX);
+    return 0;
+}</code></pre><p>注意：</p>
+<p>此处存储数值建议使用long存储数字，double存储p的值。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1029"
   class="article article-type-post"
   itemscope
@@ -316,164 +422,6 @@ int main(void){
     }
     return 0;
 }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1024"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/19/PTA-Basic-1024/"
-    >PTA-Basic-1024</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/19/PTA-Basic-1024/" class="article-date">
-  <time datetime="2019-09-19T13:35:29.000Z" itemprop="datePublished">2019-09-19</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>科学计数法是科学家用来表示很大或很小的数字的一种方便的方法，其满足正则表达式 [+-][1-9].[0-9]+E[+-][0-9]+，即数字的整数部分只有 1 位，小数部分至少有 1 位，该数字及其指数部分的正负号即使对正</p>
-<p>数也必定明确给出。</p>
-<p>现以科学计数法的格式给出实数 A，请编写程序按普通数字表示法输出 A，并保证所有有效位都被保留。</p>
-<p>输入格式：</p>
-<pre><code>每个输入包含 1 个测试用例，即一个以科学计数法表示的实数 A。该数字的存储长度不超过 9999 字节，且其指数的绝对值不超过 9999。</code></pre><p>输出格式：</p>
-<pre><code>对每个测试用例，在一行中按普通数字表示法输出 A，并保证所有有效位都被保留，包括末尾的 0。</code></pre><p>输入样例 1：</p>
-<pre><code>+1.23400E-03</code></pre><p>输出样例 1：</p>
-<pre><code>0.00123400</code></pre><p>输入样例 2：</p>
-<pre><code>-1.2E+10</code></pre><p>输出样例 2：</p>
-<pre><code>-12000000000</code></pre><p>分析：</p>
-<p>输入： “[+-][1-9].[0-9]+E[+-][0-9]+” 格式如图，数值正负号，一位1到9之间的整数，小数点，小数部分（长度不定且结果要求保留所有小数部分即小数部分有什么样的数字，结果就得含有这个字符串，可以在不同的位置放小数点），指数部分正负号，指数（0-正无穷）。</p>
-<p>处理：首先保留一定是位于第一位的正负号，接着将数字部分的小数点去掉，依次存入到字符数组中，当读到‘E’时就可以保留另一个正负号，与其后面数字代表小数点要移动的位数了，</p>
-<p>输出：</p>
-<pre><code>根据第一个正负号决定是否输出‘-’号。如果移动的位数为0，直接输出元数字字符；否则 根据第二个正负号判断是左移小数点（符号为负号）还是右移（+）</code></pre><p>1左移：</p>
-<pre><code>因为位数为0的情况已经讨论过了，所以剩下的都是位数不为0的。
-先输出‘0.’在根据要移动的位数，输出位数-1个0，接着输出字符数组。</code></pre><p>2右移：</p>
-<pre><code>先输出第一个字符，根据移动位数是否小于剩余字符串的长度决定是否输出小数点，小于：读到指定位数后输出小数点，接着输出剩余字符数组。
-大于等于：不输出小数点可能会输出‘0’，输出移动的位数减去除去第一个字符剩余字符数组的长度个‘0’.
-
-
-
-
-#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-int main(void){
-    char str[10003]={&apos;\0&apos;};//存放输入字符数组
-    scanf(&quot;%s&quot;,str);
-    int flag=1;//用来标识是否已经读取过小数部分了。
-    int f1,f2;//用来记住两个正负号
-    char result[10000]={&apos;\0&apos;};//用来存放小数部分除去小数点。
-    int j=0;
-    int num=0;
-    for(int i=0;i&lt;strlen(str);i++){
-//判断输入的小数部分的符号
-        if(i==0){
-            switch(str[i]){
-                case &apos;+&apos;:f1=1;break;
-                case &apos;-&apos;:f1=-1;
-            }
-            continue;
-        }
-
-//表示小数部分已经读取完毕。
-        if(str[i]==&apos;E&apos;){
-            flag=0;
-            continue;
-        }
-
-//将小数部分的数字存放到数组中。
-        if(flag&amp;&amp;str[i]&lt;=&apos;9&apos;&amp;&amp;str[i]&gt;=&apos;0&apos;){
-            result[j++]=str[i];
-        }
-
-//判断输入的指数部分的符号
-        if(str[i]==&apos;+&apos;||str[i]==&apos;-&apos;){
-            switch(str[i]){
-                case &apos;+&apos;:f2=1;break;
-                case &apos;-&apos;:f2=-1;
-            }
-            continue;
-        }
-
-//计算指数部分要移动的位数
-        if(!flag){
-            num=num*10+(str[i]-&apos;0&apos;);
-        }
-    }
-//输出符号（+对应‘’负数对应‘-’）
-    if(f1&gt;0){
-        printf(&quot;&quot;);
-    }else{
-        printf(&quot;-&quot;);
-    }移动位数为0直接输出原小数
-//如果
-    if(num==0){
-            printf(&quot;%c.%s&quot;,result[0],result+1);
-        return 0;
-        }
-//根据指数部分判断移动方向。大于表示右移。
-    if(f2&gt;0){//右移时：
-        printf(&quot;%c&quot;,result[0]);//首先输出第一个数字
-//根据移动位数判断是否要补0
-        if(num&lt;strlen(result+1)){//然后根据要移动位数的长度输出0
-        for(int j=1;j&lt;=strlen(result+1);j++){
-                    if(j&lt;=num){
-                    printf(&quot;%c&quot;,result[j]);
-                }
-                else{
-                    printf(&quot;.%s&quot;,result+j);
-                    break;//不要忘了跳出去
-                }
-            }    
-        }else{
-                printf(&quot;%s&quot;,result+1);
-                for(int j=0;j&lt;num-strlen(result+1);j++){
-                    printf(&quot;0&quot;);
-                }
-            }
-    }else{//左移第一个肯定为0.几
-            printf(&quot;0.&quot;);
-            for(int j=1;j&lt;num;j++){
-                printf(&quot;0&quot;);
-            }
-            printf(&quot;%s&quot;,result);
-    }
-    return 0;
-} </code></pre> 
       <!-- reward -->
       
     </div>

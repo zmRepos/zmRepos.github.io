@@ -127,6 +127,107 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1039"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/23/PTA-Basic-1039/"
+    >PTA-Basic-1039</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/23/PTA-Basic-1039/" class="article-date">
+  <time datetime="2019-09-23T12:02:07.000Z" itemprop="datePublished">2019-09-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。</p>
+<p>为方便起见，我们用[0-9]、[a-z]、[A-Z]范围内的字符来表示颜色。例如在图1中，第3串是小红想做的珠串；那么第1串可以买，因为包含了全部她想要的珠子，还多了8颗不需要的珠子；第2串不能买，因为没有黑色珠子，并且少了一颗红色的珠子。</p>
+<p><img src="https://images.ptausercontent.com/b7e2ffa6-8819-436d-ad79-a41263abe914.jpg" alt="串串"></p>
+<p>图 1</p>
+<p>输入格式：</p>
+<pre><code>每个输入包含 1 个测试用例。每个测试用例分别在 2 行中先后给出
+摊主的珠串和小红想做的珠串，两串都不超过 1000 个珠子。</code></pre><p>输出格式：</p>
+<pre><code>如果可以买，则在一行中输出 Yes 以及有多少多余的珠子；如果不
+可以买，则在一行中输出 No 以及缺了多少珠子。其间以 1 个空格
+分隔。</code></pre><p>输入样例 1：</p>
+<pre><code>ppRYYGrrYBR2258
+YrR8RrY</code></pre><p>输出样例 1：</p>
+<pre><code>Yes 8</code></pre><p>输入样例 2：</p>
+<pre><code>ppRYYGrrYB225
+YrR8RrY</code></pre><p>输出样例 2：</p>
+<pre><code>No 2</code></pre><p>分析：此题与上一题采用相同的思路，先定义一个整型数组（范围要能把字母与数字的ascall码值包含在内），然后输入字符，如果字符符合条件就将字符对应的ascall码对应的数组下标所对应的数组+1，表示此种字符输入一次。输入要查找的字符串时，字符对应的数目-1.最后遍历数组将所有符数加到一起，所以正数加到一起，负数表示缺少的字符数目，正数表示多余的字符数目，如果有负数优先输出：No 缺少的数目（&gt;0）。反之 就输出Yes 多余的数目。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+        int chars[250]={0};
+        char ch;
+        while((ch=getchar())!=&apos;\n&apos;){
+            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                chars[ch]++;
+            }
+        }
+        while((ch=getchar())!=&apos;\n&apos;){
+            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                chars[ch]--;
+            }
+        }
+        int sum1=0;
+        int sum2=0;
+        int i=0;
+        while(i&lt;250){
+            if(chars[i]&lt;0){
+                sum2+=chars[i];
+            }else{
+                sum1+=chars[i];
+                }
+                i++;
+        }
+        if(sum2&lt;0){
+            printf(&quot;No %d&quot;,-sum2);
+        }else{
+            printf(&quot;Yes %d&quot;,sum1);
+            }
+        return 0;
+    }</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1038"
   class="article article-type-post"
   itemscope
@@ -269,108 +370,6 @@ int main(void){
     printf(&quot;%d.%d.%d&quot;,c[0],(c[1]&gt;0?c[1]:-c[1]),(c[2]&gt;0?c[2]:-c[2]));//如果第一是负数时后面的就不用输出负号了。
     return 0;
     }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1023"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1023/"
-    >PTA-Basic-1023</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1023/" class="article-date">
-  <time datetime="2019-09-22T13:48:42.000Z" itemprop="datePublished">2019-09-22</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>给定数字 0-9 各若干个。你可以以任意顺序排列这些数字，但必须全部使用。目标是使得最后得到的数尽可能小（注意 0 不能做首位）。例如：给定两个 0，两个 1，三个 5，一个 8，我们得到的最小的数就是 10015558。</p>
-<p>现给定数字，请编写程序输出能够组成的最小的数。</p>
-<p>输入格式：</p>
-<pre><code>输入在一行中给出 10 个非负整数，顺序表示我们拥有数字 0、数字 
-1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不
-超过 50，且至少拥有 1 个非 0 的数字。</code></pre><p>输出格式：</p>
-<pre><code>在一行中输出能够组成的最小的数。</code></pre><p>输入样例：</p>
-<pre><code>2 2 0 0 0 3 0 0 1 0</code></pre><p>输出样例：</p>
-<pre><code>10015558</code></pre><p>输入：</p>
-<p>遍历数字，将相应的整型数组加1（下标代表数字，值代表次数）。优先输出0但是首字符不能为0然后依次输出小的。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    static int number[2][10]={{0,1,2,3,4,5,6,7,8,9},{0}};
-    int n=0;
-    int sum=0;
-    char result[1000];
-    int i=0;
-    for(i=0;i&lt;10;i++){
-        scanf(&quot;%d&quot;,&amp;n);
-        number[1][i]=n;
-        sum+=n;
-    }
-    i=0;
-    while(sum){//当剩余的总个数为0时说明所有数字都用上了。
-        if(i==0){
-            for(int j=1;j&lt;10;j++){//首先将1-9的数字次数用掉一次，放在字符串首。
-                if(number[1][j]!=0){
-                    result[i]=number[0][j]+&apos;0&apos;;
-                    number[1][j]--;
-                    sum--;
-                    break;
-                }
-            }
-        }else{
-            for(int j=0;j&lt;10;j++){
-                if(number[1][j]!=0){
-                    result[i]=number[0][j]+&apos;0&apos;;
-                    number[1][j]--;
-                    sum--;
-                    break;
-                }
-            }
-        }
-        i++;
-    }
-    result[i]=&apos;\0&apos;;
-    printf(&quot;%s&quot;,result);
-    return 0;
-}</code></pre> 
       <!-- reward -->
       
     </div>

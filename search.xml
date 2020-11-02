@@ -50,10 +50,11 @@
 </blockquote>
 ]]></content>
       <categories>
-        <category>Git</category>
+        <category>前端</category>
+        <category>工具</category>
       </categories>
       <tags>
-        <tag>bug</tag>
+        <tag>Git</tag>
       </tags>
   </entry>
   <entry>
@@ -306,11 +307,12 @@ return 0;
 
 } </code></pre>]]></content>
       <categories>
-        <category>PTA</category>
+        <category>算法与数据结构</category>
+        <category>练习</category>
       </categories>
       <tags>
-        <tag>算法</tag>
-        <tag>C语言</tag>
+        <tag>PTA</tag>
+        <tag>字符串</tag>
       </tags>
   </entry>
   <entry>
@@ -416,7 +418,8 @@ return 0;
 }
 ``</code></pre>]]></content>
       <categories>
-        <category>PTA</category>
+        <category>算法与数据结构</category>
+        <category>练习</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -8030,5 +8033,30 @@ private SingleTon() {
         <tag>算法</tag>
         <tag>Java</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Oracle密码过期</title>
+    <url>/2020/11/01/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/</url>
+    <content><![CDATA[<h2 id="Oracle密码过期"><a href="#Oracle密码过期" class="headerlink" title="Oracle密码过期"></a>Oracle密码过期</h2><a id="more"></a>
+
+<p><img src="/2020/11/01/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/C:%5CUsers%5Cdell%5CDesktop%5COracle.PNG" alt="Oracle"></p>
+<p>原因：Oracle11G创建用户时缺省密码过期限制是180天（即6个月），如果超过180天用户密码未做修改则该用户无法登录</p>
+<p>解决：</p>
+<p>使用PL/SQL进入操作界面</p>
+<p>执行SQL语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> profile <span class="keyword">default</span> <span class="keyword">limit</span> password_life_time   <span class="keyword">unlimited</span>;</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+
+<p>查看是否成功将密码的期限设置无限：</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dba_profiles <span class="keyword">where</span> profile=<span class="string">'DEFAULT'</span> <span class="keyword">and</span> resource_name=<span class="string">'PASSWORD_LIFE_TIME'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/2020/11/01/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/C:%5CUsers%5Cdell%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20201030001317871.png" alt="image-20201030001317871"></p>
+<p>注意要修改用户密码：不然用户无法正常连接数据库</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> scott indentified <span class="keyword">by</span> xxxxxxx(xxxxxxxx为你的密码);</span><br></pre></td></tr></table></figure>
+
+<p>如果用户在修改密码后处于被锁定状态，执行以下SQL语句取消锁定状态</p>
+<figure class="highlight sql"><table><tr><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> scott <span class="keyword">account</span> <span class="keyword">unlock</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
   </entry>
 </search>
