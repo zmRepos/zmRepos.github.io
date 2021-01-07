@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>寻找三原色</title>
+  <icon>https://www.gravatar.com/avatar/f63e2932402ca598fd6af3eed9f33d56</icon>
+  <subtitle>say less and do more!</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://zm163.github.io/"/>
+  <updated>2020-12-23T15:27:24.054Z</updated>
+  <id>http://zm163.github.io/</id>
+  
+  <author>
+    <name>ZM</name>
+    <email>19850830198@163.com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>use of logger(based on log4j)</title>
+    <link href="http://zm163.github.io/2020/12/23/use-of-logger-based-on-log4j/"/>
+    <id>http://zm163.github.io/2020/12/23/use-of-logger-based-on-log4j/</id>
+    <published>2020-12-23T14:31:50.000Z</published>
+    <updated>2020-12-23T15:27:24.054Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;内容：日志的目的以及使用（以log4j为例）&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="框架" scheme="http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/"/>
+    
+    
+      <category term="log4j" scheme="http://zm163.github.io/tags/log4j/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>扁平化嵌套列表迭代器</title>
+    <link href="http://zm163.github.io/2020/12/02/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
+    <id>http://zm163.github.io/2020/12/02/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/</id>
+    <published>2020-12-02T14:24:58.000Z</published>
+    <updated>2020-12-02T14:27:43.283Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>将递归转化为迭代</title>
+    <link href="http://zm163.github.io/2020/12/01/%E5%B0%86%E9%80%92%E5%BD%92%E8%BD%AC%E5%8C%96%E4%B8%BA%E8%BF%AD%E4%BB%A3/"/>
+    <id>http://zm163.github.io/2020/12/01/%E5%B0%86%E9%80%92%E5%BD%92%E8%BD%AC%E5%8C%96%E4%B8%BA%E8%BF%AD%E4%BB%A3/</id>
+    <published>2020-12-01T15:46:52.000Z</published>
+    <updated>2020-12-01T16:10:22.749Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h4 id=&quot;将递归算法转化为迭代算法&quot;&gt;&lt;a href=&quot;#将递归算法转化为迭代算法&quot; class=&quot;headerlink&quot; title=&quot;将递归算法转化为迭代算法&quot;&gt;&lt;/a&gt;将递归算法转化为迭代算法&lt;/h4&gt;
+    
+    </summary>
+    
+    
+      <category term="算法与数据结构" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="算法整合" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95%E6%95%B4%E5%90%88/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>组合两个表</title>
+    <link href="http://zm163.github.io/2020/12/01/%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/"/>
+    <id>http://zm163.github.io/2020/12/01/%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/</id>
+    <published>2020-12-01T14:35:54.000Z</published>
+    <updated>2020-12-01T14:35:54.176Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>每日温度</title>
+    <link href="http://zm163.github.io/2020/12/01/%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/"/>
+    <id>http://zm163.github.io/2020/12/01/%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/</id>
+    <published>2020-12-01T14:34:06.000Z</published>
+    <updated>2020-12-01T14:34:06.789Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>二叉树的前序遍历</title>
+    <link href="http://zm163.github.io/2020/12/01/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/"/>
+    <id>http://zm163.github.io/2020/12/01/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/</id>
+    <published>2020-12-01T14:33:39.000Z</published>
+    <updated>2020-12-01T15:38:27.253Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;##二叉树的前序遍历&lt;/p&gt;
+&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法与数据结构" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+      <category term="练习" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E7%BB%83%E4%B9%A0/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/tags/%E6%A0%88/"/>
+    
+      <category term="树" scheme="http://zm163.github.io/tags/%E6%A0%91/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Oracle密码过期</title>
+    <link href="http://zm163.github.io/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/"/>
+    <id>http://zm163.github.io/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/</id>
+    <published>2020-11-26T16:00:00.000Z</published>
+    <updated>2020-11-27T13:03:42.504Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Oracle密码过期：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/imgs%5COracle.PNG&quot;
+        
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>贪心算法理解</title>
+    <link href="http://zm163.github.io/2020/11/02/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
+    <id>http://zm163.github.io/2020/11/02/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</id>
+    <published>2020-11-02T14:15:07.000Z</published>
+    <updated>2020-11-02T14:17:39.500Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;贪心算法&quot;&gt;&lt;a href=&quot;#贪心算法&quot; class=&quot;headerlink&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="算法与数据结构" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    
+      <category term="贪心算法" scheme="http://zm163.github.io/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Oracle密码过期</title>
+    <link href="http://zm163.github.io/2020/11/01/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/"/>
+    <id>http://zm163.github.io/2020/11/01/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/</id>
+    <published>2020-11-01T05:01:14.000Z</published>
+    <updated>2020-11-01T05:02:26.701Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Oracle密码过期&quot;&gt;&lt;a href=&quot;#Oracle密码过期&quot; class=&quot;headerlink&quot; title=&quot;Oracle密码过期&quot;&gt;&lt;/a&gt;Oracle密码过期&lt;/h2&gt;
+    
+    </summary>
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>小程序中使用antv入门</title>
+    <link href="http://zm163.github.io/2020/10/31/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8antv%E5%85%A5%E9%97%A8/"/>
+    <id>http://zm163.github.io/2020/10/31/%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8antv%E5%85%A5%E9%97%A8/</id>
+    <published>2020-10-31T15:04:46.000Z</published>
+    <updated>2020-10-31T15:35:44.718Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;在小程序中使用可视化数据&quot;&gt;&lt;a href=&quot;#在小程序中使用可视化数据&quot; class=&quot;headerlink&quot; title=&quot;在小程序中使用可视化数据&quot;&gt;&lt;/a&gt;在小程序中使用可视化数据&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="小程序" scheme="http://zm163.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+    
+      <category term="antv" scheme="http://zm163.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/antv/"/>
+    
+    
+      <category term="前端" scheme="http://zm163.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Node安装</title>
+    <link href="http://zm163.github.io/2020/08/27/Node%E5%AE%89%E8%A3%85/"/>
+    <id>http://zm163.github.io/2020/08/27/Node%E5%AE%89%E8%A3%85/</id>
+    <published>2020-08-27T12:26:31.000Z</published>
+    <updated>2020-08-27T14:27:32.800Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Node与npm安装&quot;&gt;&lt;a href=&quot;#Node与npm安装&quot; class=&quot;headerlink&quot; title=&quot;Node与npm安装&quot;&gt;&lt;/a&gt;Node与npm安装&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="Node" scheme="http://zm163.github.io/categories/Node/"/>
+    
+    
+      <category term="软件工具" scheme="http://zm163.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-1544</title>
+    <link href="http://zm163.github.io/2020/08/23/LeetCode-1544/"/>
+    <id>http://zm163.github.io/2020/08/23/LeetCode-1544/</id>
+    <published>2020-08-22T23:16:49.000Z</published>
+    <updated>2020-08-23T00:27:06.491Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;整理字符串&quot;&gt;&lt;a href=&quot;#整理字符串&quot; class=&quot;headerlink&quot; title=&quot;整理字符串&quot;&gt;&lt;/a&gt;整理字符串&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/LeetCode/%E6%A0%88/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-844</title>
+    <link href="http://zm163.github.io/2020/08/23/LeetCode-844/"/>
+    <id>http://zm163.github.io/2020/08/23/LeetCode-844/</id>
+    <published>2020-08-22T23:16:36.000Z</published>
+    <updated>2020-08-23T00:49:25.277Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;整理字符串&quot;&gt;&lt;a href=&quot;#整理字符串&quot; class=&quot;headerlink&quot; title=&quot;整理字符串&quot;&gt;&lt;/a&gt;整理字符串&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/LeetCode/%E6%A0%88/"/>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>前端页面编码问题</title>
+    <link href="http://zm163.github.io/2020/08/23/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://zm163.github.io/2020/08/23/%E5%89%8D%E7%AB%AF%E9%A1%B5%E9%9D%A2%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/</id>
+    <published>2020-08-22T23:15:50.000Z</published>
+    <updated>2020-08-23T16:06:58.414Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;HTML中的字符设置辨析&quot;&gt;&lt;a href=&quot;#HTML中的字符设置辨析&quot; class=&quot;headerlink&quot; title=&quot;HTML中的字符设置辨析&quot;&gt;&lt;/a&gt;HTML中的字符设置辨析&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="html" scheme="http://zm163.github.io/categories/html/"/>
+    
+    
+      <category term="前端" scheme="http://zm163.github.io/tags/%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-155</title>
+    <link href="http://zm163.github.io/2020/08/21/LeetCode-155/"/>
+    <id>http://zm163.github.io/2020/08/21/LeetCode-155/</id>
+    <published>2020-08-21T12:47:56.000Z</published>
+    <updated>2020-08-21T13:40:40.419Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;最小栈-栈的最小值-包含min函数的栈&quot;&gt;&lt;a href=&quot;#最小栈-栈的最小值-包含min函数的栈&quot; class=&quot;headerlink&quot; title=&quot;最小栈/栈的最小值/包含min函数的栈&quot;&gt;&lt;/a&gt;最小栈/栈的最小值/包含min函数的栈&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-1441</title>
+    <link href="http://zm163.github.io/2020/08/21/LeetCode-1441/"/>
+    <id>http://zm163.github.io/2020/08/21/LeetCode-1441/</id>
+    <published>2020-08-21T12:47:27.000Z</published>
+    <updated>2020-08-21T12:56:35.194Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;用栈操作构建数组&quot;&gt;&lt;a href=&quot;#用栈操作构建数组&quot; class=&quot;headerlink&quot; title=&quot;用栈操作构建数组&quot;&gt;&lt;/a&gt;用栈操作构建数组&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-496</title>
+    <link href="http://zm163.github.io/2020/08/17/LeetCode-496/"/>
+    <id>http://zm163.github.io/2020/08/17/LeetCode-496/</id>
+    <published>2020-08-17T14:53:23.000Z</published>
+    <updated>2020-08-21T13:41:46.819Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;下一个更大的元素I&quot;&gt;&lt;a href=&quot;#下一个更大的元素I&quot; class=&quot;headerlink&quot; title=&quot;下一个更大的元素I&quot;&gt;&lt;/a&gt;下一个更大的元素I&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-682</title>
+    <link href="http://zm163.github.io/2020/08/17/LeetCode-682/"/>
+    <id>http://zm163.github.io/2020/08/17/LeetCode-682/</id>
+    <published>2020-08-17T14:52:02.000Z</published>
+    <updated>2020-08-17T15:31:21.539Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;棒球比赛&quot;&gt;&lt;a href=&quot;#棒球比赛&quot; class=&quot;headerlink&quot; title=&quot;棒球比赛&quot;&gt;&lt;/a&gt;棒球比赛&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>LeetCode-1047</title>
+    <link href="http://zm163.github.io/2020/08/17/LeetCode-1047/"/>
+    <id>http://zm163.github.io/2020/08/17/LeetCode-1047/</id>
+    <published>2020-08-17T14:51:39.000Z</published>
+    <updated>2020-08-17T15:24:47.846Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;删除重复字符串中的所有相邻重复项&quot;&gt;&lt;a href=&quot;#删除重复字符串中的所有相邻重复项&quot; class=&quot;headerlink&quot; title=&quot;删除重复字符串中的所有相邻重复项&quot;&gt;&lt;/a&gt;删除重复字符串中的所有相邻重复项&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>化栈为队</title>
+    <link href="http://zm163.github.io/2020/08/17/%E5%8C%96%E6%A0%88%E4%B8%BA%E9%98%9F/"/>
+    <id>http://zm163.github.io/2020/08/17/%E5%8C%96%E6%A0%88%E4%B8%BA%E9%98%9F/</id>
+    <published>2020-08-17T14:51:03.000Z</published>
+    <updated>2020-08-17T15:03:39.984Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;化队为栈&quot;&gt;&lt;a href=&quot;#化队为栈&quot; class=&quot;headerlink&quot; title=&quot;化队为栈&quot;&gt;&lt;/a&gt;化队为栈&lt;/h1&gt;
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
+    
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
+    
+  </entry>
+  
+</feed>
