@@ -128,6 +128,119 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1014"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/18/PTA-Basic-1014/"
+    >PTA-Basic-1014</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/18/PTA-Basic-1014/" class="article-date">
+  <time datetime="2019-09-18T14:07:27.000Z" itemprop="datePublished">2019-09-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>大侦探福尔摩斯接到一张奇怪的字条：我们约会吧！ 3485djDkxh4hhGE 2984akDfkkkkggEdsb s&amp;hgsfdk d&amp;Hyscvnm。大侦探很快就明白了，字条上奇怪的乱码实际上就是约会的时间星期四 14:04，因为前面两字符串中第 1 对相同的大写英文字母（大小写有区分）是第 4 个字母 D，代表星期四；第 2 对相同的字符是 E ，那是第 5 个英文字母，代表一天里的第 14 个钟头（于是一天的 0 点到 23 点由数字 0 到 9、以及大写字母 A 到 N 表示）；后面两字符串第 1 对相同的英文字母 s 出现在第 4 个位置（从 0 开始计数）上，代表第 4 分钟。现给定两对字符串，请帮助福尔摩斯解码得到约会的时间。</p>
+<p>输入格式：</p>
+<p>输入在 4 行中分别给出 4 个非空、不包含空格、且长度不超过 60 的字符串。</p>
+<p>输出格式：</p>
+<p>在一行中输出约会的时间，格式为 DAY HH:MM，其中 DAY 是某星期的 3 字符缩写，即 MON 表示星期一，TUE 表示星期二，WED 表示星期三，THU 表示星期四，FRI 表示星期五，SAT 表示星期六，SUN 表示星期日。题目输入保证每个测试存在唯一解。</p>
+<p>输入样例：</p>
+<p>3485djDkxh4hhGE </p>
+<p>2984akDfkkkkggEdsb </p>
+<p>s&amp;hgsfdk </p>
+<p>d&amp;Hyscvnm</p>
+<p>输出样例：</p>
+<p>THU 14:04</p>
+<p>分析：</p>
+<p>输入：四个字符串，一行一个。</p>
+<p>处理：首先找出前面两个字符串中的第一个相应位置上相等的大写字母，并记录字母；以第一个大写字母相同的为第一个相等的字符，找出第二对相等的且为（0-9或A-N）中的字符，并记录。<br>在找出后两个字符串中对应位置上相等字符的下标，并记录。</p>
+<p>输出：见题目（注意：小时&lt;10时要补0，分钟小于&lt;10要补0）；</p>
+<p>思路：</p>
+<p>定义四个字符数组，存储数据。<br>遍历前两字符串，找出第一个字符（大写字母），第二个字符（0-9或A-N）；<br>遍历后面两个字符串，找到第一个对应位置上相等的字符下标。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+int main(void){
+    char str[4][800];
+    int i=0;
+    while(i&lt;4){
+    scanf(&quot;%s&quot;,str[i++]);
+    getchar();
+    }
+    char* res;
+    int flag=1;
+    int h=0;
+    for(i=0;i&lt;strlen(str[1])&amp;&amp;i&lt;strlen(str[0]);i++){
+    if(!flag&amp;&amp;((str[0][i]&gt;=&apos;A&apos;&amp;&amp;str[0][i]&lt;=&apos;N&apos;)||(str[0][i]&gt;=&apos;0&apos;&amp;&amp;str[0][i]&lt;=&apos;9&apos;))&amp;&amp;str[0][i]==str[1][i]){
+            switch(str[0][i]){
+                case &apos;0&apos;:case &apos;1&apos;:case &apos;2&apos;:case &apos;3&apos;:
+                case &apos;4&apos;:case &apos;5&apos;:case &apos;6&apos;:case &apos;7&apos;:
+                case &apos;8&apos;:case &apos;9&apos;:h=str[0][i]-&apos;0&apos;;break;
+                default:h=str[0][i]-&apos;A&apos;+10;break;
+            }
+            break;
+        }
+        if(flag&amp;&amp;str[0][i]&gt;=&apos;A&apos;&amp;&amp;str[0][i]&lt;=&apos;G&apos;&amp;&amp;str[0][i]==str[1][i]){
+            flag=0;
+            switch(str[0][i]){
+                case &apos;A&apos;:res=&quot;MON&quot;;break;
+                case &apos;B&apos;:res=&quot;TUE&quot;;break;
+                case &apos;C&apos;:res=&quot;WED&quot;;break;
+                case &apos;D&apos;:res=&quot;THU&quot;;break;
+                case &apos;E&apos;:res=&quot;FRI&quot;;break;
+                case &apos;F&apos;:res=&quot;SAT&quot;;break;
+                case &apos;G&apos;:res=&quot;SUN&quot;;break;
+            }
+        }
+    }
+    for(i=0;i&lt;strlen(str[2])&amp;&amp;i&lt;strlen(str[3]);i++){
+        if(((str[2][i]&lt;=&apos;z&apos;&amp;&amp;str[2][i]&gt;=&apos;a&apos;)||(str[2][i]&lt;=&apos;Z&apos;&amp;&amp;str[2][i]&gt;=&apos;A&apos;))&amp;&amp;str[2][i]==str[3][i]){
+            break;
+        }
+    }
+    printf(&quot;%s %02d:%02d&quot;,res,h,i);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1013"
   class="article article-type-post"
   itemscope
@@ -343,97 +456,6 @@ if(result[0][i]==0){
         printf(&quot;%d&quot;,result[1][i]);
     }
 return 0; 
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1011"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/17/PTA-Basic-1011/"
-    >PTA-Basic-1011</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/17/PTA-Basic-1011/" class="article-date">
-  <time datetime="2019-09-17T13:46:10.000Z" itemprop="datePublished">2019-09-17</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>给定区间 [−2^31,2^31] 内的 3 个整数 A、B 和 C，请判断 A+B 是否大于 C。</p>
-<p>输入格式：</p>
-<p>输入第 1 行给出正整数 T (≤10)，是测试用例的个数。随后给出 T 组测试用例，每组占一行，顺序给出 A、B 和 C。整数间以空格分隔。</p>
-<p>输出格式：</p>
-<p>对每组测试用例，在一行中输出 Case #X: true 如果 A+B&gt;C，否则输出 Case #X: false，其中 X 是测试用例的编号（从 1 开始）。</p>
-<p>输入样例：</p>
-<p>4</p>
-<p>1 2 3</p>
-<p>2 3 4</p>
-<p>2147483647 0 2147483646</p>
-<p>0 -2147483648 -2147483647</p>
-<p>输出样例：</p>
-<p>Case #1: false</p>
-<p>Case #2: true</p>
-<p>Case #3: true</p>
-<p>Case #4: false</p>
-<p>分析：</p>
-<p>输入：个数，每一行一一组数据。<br>输出：判定结果。</p>
-<p>难点：<br>数字的长度过大，使用long long 类型，long long对应的长度为（-2^63,2^63 -1）足够存储数据，与加后的数据了;</p>
-<p>对定义后的字符数组赋值时，必须使用strcpy（）函数</p>
-<p>思路：输入一组比较一组，结果存放在字符数组中。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-int main(void){
-    int n;
-    scanf(&quot;%d&quot;,&amp;n);
-    long long number1,number2,number3;
-    char result[n][8];
-    int i=0;
-    while(i&lt;n){
-        scanf(&quot;%ld %ld %ld&quot;,&amp;number1,&amp;number2,&amp;number3);
-        strcpy(result[i],(number1+number2&gt;number3)?&quot;true&quot;:&quot;false&quot;);
-        i++;
-    }
-    for(i=0;i&lt;n;i++){
-        printf(&quot;Case #%d: %s\n&quot;,i+1,result[i]);
-    }
-    return 0;
 }</code></pre> 
       <!-- reward -->
       

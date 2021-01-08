@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2021-01-08T04:22:27.150Z</updated>
+  <updated>2021-01-08T04:31:57.756Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -17,21 +17,36 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>电脑网络故障排查步骤</title>
+    <link href="http://zm163.github.io/2021/01/08/%E7%94%B5%E8%84%91%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%AD%A5%E9%AA%A4/"/>
+    <id>http://zm163.github.io/2021/01/08/%E7%94%B5%E8%84%91%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%AD%A5%E9%AA%A4/</id>
+    <published>2021-01-08T04:26:23.000Z</published>
+    <updated>2021-01-08T04:31:57.756Z</updated>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;电脑网络故障排查&quot;&gt;&lt;a href=&quot;#电脑网络故障排查&quot; class=&quot;headerlink&quot; title=&quot;电脑网络故障排查&quot;&gt;&lt;/a&gt;电脑网络故障排查&lt;/h2&gt;
+    
+    </summary>
+    
+    
+      <category term="other" scheme="http://zm163.github.io/categories/other/"/>
+    
+    
+      <category term="other" scheme="http://zm163.github.io/tags/other/"/>
+    
+  </entry>
+  
+  <entry>
     <title>降低nodejs版本</title>
     <link href="http://zm163.github.io/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/"/>
     <id>http://zm163.github.io/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/</id>
     <published>2021-01-08T03:47:06.000Z</published>
-    <updated>2021-01-08T04:22:27.150Z</updated>
+    <updated>2021-01-08T04:36:34.485Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h2 id=&quot;使用hexo上传博文时出现异常&quot;&gt;&lt;a href=&quot;#使用hexo上传博文时出现异常&quot; class=&quot;headerlink&quot; title=&quot;使用hexo上传博文时出现异常&quot;&gt;&lt;/a&gt;使用hexo上传博文时出现异常&lt;/h2&gt;&lt;p&gt;&lt;img
-        
-      
+      &lt;h2 id=&quot;使用hexo上传博文时出现异常&quot;&gt;&lt;a href=&quot;#使用hexo上传博文时出现异常&quot; class=&quot;headerlink&quot; title=&quot;使用hexo上传博文时出现异常&quot;&gt;&lt;/a&gt;使用hexo上传博文时出现异常&lt;/h2&gt;
     
     </summary>
     
@@ -361,9 +376,9 @@
     </summary>
     
     
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
     
@@ -386,9 +401,9 @@
     </summary>
     
     
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
     
@@ -411,9 +426,9 @@
     </summary>
     
     
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
+    
+      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
       <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
     
@@ -436,34 +451,9 @@
     </summary>
     
     
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
       <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
-      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-1047</title>
-    <link href="http://zm163.github.io/2020/08/17/LeetCode-1047/"/>
-    <id>http://zm163.github.io/2020/08/17/LeetCode-1047/</id>
-    <published>2020-08-17T14:51:39.000Z</published>
-    <updated>2020-08-17T15:24:47.846Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;删除重复字符串中的所有相邻重复项&quot;&gt;&lt;a href=&quot;#删除重复字符串中的所有相邻重复项&quot; class=&quot;headerlink&quot; title=&quot;删除重复字符串中的所有相邻重复项&quot;&gt;&lt;/a&gt;删除重复字符串中的所有相邻重复项&lt;/h1&gt;
-    
-    </summary>
-    
-    
       <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
     

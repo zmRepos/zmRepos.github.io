@@ -128,6 +128,86 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1049"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/27/PTA-Basic-1049/"
+    >PTA-Basic-1049</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/27/PTA-Basic-1049/" class="article-date">
+  <time datetime="2019-09-27T09:26:38.000Z" itemprop="datePublished">2019-09-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>给定一个正数数列，我们可以从中截取任意的连续的几个数，称为片段。例如，给定数列 { 0.1, 0.2, 0.3, 0.4 }，我们有 (0.1) (0.1, 0.2) (0.1, 0.2, 0.3) (0.1, 0.2, 0.3, 0.4) (0.2) (0.2, 0.3) (0.2, 0.3, 0.4) (0.3) (0.3, 0.4) (0.4) 这 10 个片段。</p>
+<p>给定正整数数列，求出全部片段包含的所有的数之和。如本例中 10 个片段总和是 0.1 + 0.3 + 0.6 + 1.0 + 0.2 + 0.5 + 0.9 + 0.3 + 0.7 + 0.4 = 5.0。</p>
+<p>输入格式：<br>输入第一行给出一个不超过 10<br>​5<br>​​  的正整数 N，表示数列中数的个数，第二行给出 N 个不超过 1.0 的正数，是数列中的数，其间以空格分隔。</p>
+<p>输出格式：<br>在一行中输出该序列所有片段包含的数之和，精确到小数点后 2 位。</p>
+<p>输入样例：</p>
+<pre><code>4
+
+0.1 0.2 0.3 0.4</code></pre><p>输出样例：</p>
+<pre><code>5.00</code></pre><p>分析：<br>此题并不难，只要在做题目前，思考一下，不难得出一个推导的公式<br>（sum = n1<em>n</em>1+n2<em>(n-1)*2+n3</em>(n-2)<em>3+…(nk</em>(n-k-1)*k)…）<br>注意点：双精度浮点数输入输出时用%lf，单精度用%f，不能混合用不然输入或输出的数据可能会出错。<br>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int num;
+    scanf(&quot;%d&quot;,&amp;num);
+    double nums[num];
+    int i=0;
+    while(i&lt;num){
+        scanf(&quot;%lf&quot;,&amp;nums[i]);
+        i++;
+    }
+    double sum=0;
+    int n=num;
+    for(i=0;i&lt;num;i++){
+        sum=sum+1.0*nums[i]*n*(i+1);
+        n--;
+    }
+    printf(&quot;%.2f&quot;,sum);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1047"
   class="article article-type-post"
   itemscope
@@ -306,92 +386,6 @@ int main(void){
     return 0;
 }</code></pre><p>###总结：做任何算法包括事情前都要有一个大致思路，不然就会在做的过程中迷失方向。</p>
  
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1046"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/26/PTA-Basic-1046/"
-    >PTA-Basic-1046</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/26/PTA-Basic-1046/" class="article-date">
-  <time datetime="2019-09-26T12:59:45.000Z" itemprop="datePublished">2019-09-26</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>划拳是古老中国酒文化的一个有趣的组成部分。酒桌上两人划拳的方法为：每人口中喊出一个数字，同时用手比划出一个数字。如果谁比划出的数字正好等于两人喊出的数字之和，谁就赢了，输家罚一杯酒。两人同赢或两人同输则继续下一轮，直到唯一的赢家出现。</p>
-<p>下面给出甲、乙两人的划拳记录，请你统计他们最后分别喝了多少杯酒。</p>
-<p>输入格式：<br>输入第一行先给出一个正整数 N（≤100），随后 N 行，每行给出一轮划拳的记录，格式为：</p>
-<p>甲喊 甲划 乙喊 乙划<br>其中喊是喊出的数字，划是划出的数字，均为不超过 100 的正整数（两只手一起划）。</p>
-<p>输出格式：<br>在一行中先后输出甲、乙两人喝酒的杯数，其间以一个空格分隔。</p>
-<p>输入样例：</p>
-<pre><code>5
-8 10 9 12
-5 10 5 10
-3 8 5 12
-12 18 1 13
-4 16 12 15</code></pre><p>输出样例：</p>
-<pre><code>1 2</code></pre><p>分析：<br>定义变量存储甲乙败的次数，对每次输入的数字判断即可。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int num;
-    scanf(&quot;%d&quot;,&amp;num);
-    int i=0,j=0;
-    int a,b,c,d;
-    while(num--){
-        scanf(&quot;%d %d %d %d&quot;,&amp;a,&amp;b,&amp;c,&amp;d);
-        int res=a+c;
-        if(b==res&amp;&amp;d!=res){
-            j++;
-        }else if(b!=res&amp;&amp;d==res){
-            i++;
-        }else{
-            continue;
-        }
-    }
-    printf(&quot;%d %d&quot;,i,j);
-    return 0;
-}</code></pre> 
       <!-- reward -->
       
     </div>

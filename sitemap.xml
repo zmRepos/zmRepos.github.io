@@ -9,6 +9,13 @@
   </url>
   
   <url>
+    <loc>http://zm163.github.io/2021/01/08/%E7%94%B5%E8%84%91%E7%BD%91%E7%BB%9C%E6%95%85%E9%9A%9C%E6%8E%92%E6%9F%A5%E6%AD%A5%E9%AA%A4/</loc>
+    
+    <lastmod>2021-01-08</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://zm163.github.io/2020/12/23/use-of-logger-based-on-log4j/</loc>
     
     <lastmod>2020-12-23</lastmod>
@@ -1313,14 +1320,21 @@
   </url>
   
   <url>
-    <loc>http://zm163.github.io/tags/Node/</loc>
+    <loc>http://zm163.github.io/tags/log4j/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://zm163.github.io/tags/log4j/</loc>
+    <loc>http://zm163.github.io/tags/other/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://zm163.github.io/tags/Node/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1378,7 +1392,7 @@
   </url>
   
   <url>
-    <loc>http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
+    <loc>http://zm163.github.io/categories/LeetCode/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1392,6 +1406,13 @@
   </url>
   
   <url>
+    <loc>http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://zm163.github.io/categories/java/Spring/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1399,28 +1420,7 @@
   </url>
   
   <url>
-    <loc>http://zm163.github.io/categories/LeetCode/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://zm163.github.io/categories/mysql/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2021-01-08</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1441,7 +1441,14 @@
   </url>
   
   <url>
-    <loc>http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/</loc>
+    <loc>http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1456,6 +1463,13 @@
   
   <url>
     <loc>http://zm163.github.io/categories/html/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%95%B0%E7%BB%84/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -1483,6 +1497,13 @@
   </url>
   
   <url>
+    <loc>http://zm163.github.io/categories/other/</loc>
+    <lastmod>2021-01-08</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>http://zm163.github.io/categories/%E5%B0%8F%E7%A8%8B%E5%BA%8F/antv/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
@@ -1490,14 +1511,14 @@
   </url>
   
   <url>
-    <loc>http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E5%85%B7/</loc>
+    <loc>http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/%E6%A1%86%E6%9E%B6/</loc>
+    <loc>http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2021-01-08</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

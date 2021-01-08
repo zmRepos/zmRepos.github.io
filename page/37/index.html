@@ -128,6 +128,104 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1061"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1061/"
+    >PTA-Basic-1061</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/07/PTA-Basic-1061/" class="article-date">
+  <time datetime="2019-10-07T12:41:23.000Z" itemprop="datePublished">2019-10-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>判断题的评判很简单，本题就要求你写个简单的程序帮助老师判题并统计学生们判断题的得分。</p>
+<p>输入格式：<br>输入在第一行给出两个不超过 100 的正整数 N 和 M，分别是学生人数和判断题数量。第二行给出 M 个不超过 5 的正整数，是每道题的满分值。第三行给出每道题对应的正确答案，0 代表“非”，1 代表“是”。随后 N 行，每行给出一个学生的解答。数字间均以空格分隔。</p>
+<p>输出格式：</p>
+<p>按照输入的顺序输出每个学生的得分，每个分数占一行。</p>
+<p>输入样例：</p>
+<pre><code>3 6
+2 1 3 3 4 5
+0 0 1 0 1 1
+0 1 1 0 0 1
+1 0 1 0 1 0
+1 1 0 0 1 1</code></pre><p>输出样例：</p>
+<pre><code>13
+11
+12</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int n=0,m=0;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    int score[2][m];
+    int stu[n];
+    int k=0;
+    int x=0;
+    for(int i=0;i&lt;n+2;i++){
+            stu[x]=0;
+        for(int j=0;j&lt;m;j++){
+                scanf(&quot;%d&quot;,&amp;k);
+            if(i==0){
+            score[0][j]=k;
+        }else if(i==1){
+            score[1][j]=k;
+        }else{
+            if(k==score[1][j]){
+                stu[x]+=score[0][j];
+            }
+        }
+        }
+        if(i!=0&amp;&amp;i!=1){
+            x++;
+        }
+    }
+
+    for(int i=0;i&lt;x;i++){
+            printf(&quot;%d\n&quot;,stu[i]);
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1060"
   class="article article-type-post"
   itemscope
@@ -322,149 +420,6 @@ int main(void){
     }
     return 0;
 }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1058"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1058/"
-    >PTA-Basic-1058</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1058/" class="article-date">
-  <time datetime="2019-10-07T12:40:40.000Z" itemprop="datePublished">2019-10-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>批改多选题是比较麻烦的事情，本题就请你写个程序帮助老师批改多选题，并且指出哪道题错的人最多。</p>
-<p>输入格式：<br>输入在第一行给出两个正整数 N（ ≤ 1000）和 M（≤ 100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
-<p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行。注意判题时只有选择全部正确才能得到该题的分数。最后一行输出错得最多的题目的错误次数和编号（题目按照输入的顺序从 1 开始编号）。如果有并列，则按编号递增顺序输出。数字间用空格分隔，行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
-<p>输入样例：</p>
-<pre><code>3 4 
-3 4 2 a c
-2 5 1 b
-5 3 2 b c
-1 5 4 a b d e
-(2 a c) (2 b d) (2 a c) (3 a b e)
-(2 a c) (1 b) (2 a b) (4 a b d e)
-(2 b d) (1 e) (2 b c) (4 a b c d)</code></pre><p>输出样例：</p>
-<pre><code>6
-5
-2 
-2 3 4</code></pre><p>分析：</p>
-<p>定义一个非常大的数组存储所有可能的题目答案，定义一个非常大的数组存储每题的得分，定义一个非常大的数组存储每题出错的次数，定义一个非常大题目存储媒体正确答案的个数，定义一个非常大的学生数组。<br>在输入是就开始计算每一位学生的得分以及此题的出错次数。<br>最后输出每一位学生的分数，以及最高出错次数，和对应的题目（按升序排列）。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;string.h&gt;
-int timu[100][5]={0};//定义一个二维数组存储题目正确的答案初始化每个都是0（表示错误）
-int score[100]={0};//存储每一题目的得分
-int time[100]={0};//存储每个题目的出错次数
-int righttime[100]={0}; //存储每个题目标准答案的个数
-int stu[1001]={0};//存储每个学生的得分
-int main(void){
-    int n=0,m=0;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);//输入学生数，与题目数。
-    for(int i=0;i&lt;m;i++){
-        int x=0;
-        scanf(&quot;%d %*d %d&quot;,&amp;score[i],&amp;righttime[i]);//将每一个题目的分数存储到数组中去，并存储正确答案的个数以便下面计算答对的题目数是否为全部的正确数目
-        char ch;
-        while((ch=getchar())!=&apos;\n&apos;){//此处开始读取正确的选项。如果读到a就将timu数组的第0为赋值为1.
-            if(ch&lt;=&apos;e&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
-                int k=ch-&apos;a&apos;;
-                timu[i][k]=1;
-            }
-        }
-    }
-    int max=0; 
-    for(int i=0;i&lt;n;i++){
-        int t=0;
-        char ch;
-        int step0=0;//计算输入的选项的个数
-        int step1=0;//计算选对的个数
-        while((ch=getchar())!=&apos;\n&apos;){
-            if(ch==&apos;(&apos;){ //读到这个就代表开始了新的一个题目，要将选项数目，答对数目初始化为0.
-                step0=0;
-                step1=0;
-                continue;
-            }else if(ch==&apos; &apos;){
-                continue;
-            }else if(ch&lt;=&apos;5&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
-                step0=ch-&apos;0&apos;; //计算选项数目
-            }else{
-                if(ch==&apos;)&apos;){//如果输入的选项都对但是总数不达标也不对。
-                    if(step0==step1&amp;&amp;step0==righttime[t]){//对的步数符合初始化步数 
-                        stu[i]+=score[t];//将分数加到第i为学生上去
-                    }else{//否则此题就出错了
-                        time[t]++;//这个题目的出错次数加1
-                        if(time[t]&gt;max){
-                            max=time[t];//如果比出错次数最大值大就交换值
-                        }
-                    }
-                    t++;//下一题 
-                }
-                if(ch&lt;=&apos;e&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
-                    int k=ch-&apos;a&apos;;
-                    if(timu[t][k]){//输入的选项对应的数组下标有值表示输入的答案是正确的
-                        step1++;//对的步数加1 
-                    }
-                }
-            }
-        }
-    }
-    for(int i=0;i&lt;n;i++){
-        printf(&quot;%d\n&quot;,stu[i]);//输出每一位学生的得分
-    }
-    if(max&gt;0){//如果最大值不为0就要统计出错的题目
-    printf(&quot;%d&quot;,max);
-        for(int i=0;i&lt;m;i++){
-            if(time[i]==max){
-                printf(&quot; %d&quot;,i+1);
-            }
-        }
-    }else{//否则直接输出
-        printf(&quot;Too simple&quot;);
-    }
-    return 0;
-} </code></pre> 
       <!-- reward -->
       
     </div>
