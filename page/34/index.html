@@ -128,6 +128,122 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1069"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1069/"
+    >PTA-Basic-1069</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/07/PTA-Basic-1069/" class="article-date">
+  <time datetime="2019-10-07T12:43:06.000Z" itemprop="datePublished">2019-10-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
+<p>输入格式：<br>输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。</p>
+<p>注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取</p>
+<p>下一位。</p>
+<p>输出格式：</p>
+<p>按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going…。</p>
+<p>输入样例 1：</p>
+<pre><code>9 3 2
+Imgonnawin!
+PickMe
+PickMeMeMeee
+LookHere
+Imgonnawin!
+TryAgainAgain
+TryAgainAgain
+Imgonnawin!
+TryAgainAgain</code></pre><p>输出样例 1：</p>
+<pre><code>PickMe
+Imgonnawin!
+TryAgainAgain</code></pre><p>输入样例 2：</p>
+<pre><code>2 3 5
+Imgonnawin!
+PickMe</code></pre><p>输出样例 2：</p>
+<pre><code>Keep going...</code></pre><p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+char result[1000][21];
+int check(char *str,int t){
+    for(int j=0;j&lt;t;j++){
+        if(strcmp(str,result[j])==0){//比较人数数组中是否已经有这个人了
+            return 1;
+        }
+    }
+    return 0;
+}
+int main()
+{
+    int m,n,s;
+    scanf(&quot;%d%d%d&quot;,&amp;m,&amp;n,&amp;s);
+    char str[21];
+    int t=0;//用来存储有多少人得奖。
+    for(int i=1;i&lt;=m;i++){
+            scanf(&quot;%s&quot;,str);
+            getchar();
+        if(i==s){
+                if(check(str,t)){//此人已经转发过了
+                    s=s+1;//看看它的下一个人是否合适
+                    continue;
+                }else{
+                    strcpy(result[t++],str);//此人没有转发过，就存入数组。
+                    s=s+n;//并且到下一个相隔n的人。
+                }
+        }
+    }
+    if(t==0){
+        printf(&quot;Keep going...&quot;);
+    }else{
+        for(int i=0;i&lt;t;i++){
+            puts(result[i]);
+        }
+        }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1068"
   class="article article-type-post"
   itemscope
@@ -346,96 +462,6 @@ int main(void)
                 printf(&quot;Account locked\n&quot;);
                 break;
             }
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1066"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1066/"
-    >PTA-Basic-1066</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1066/" class="article-date">
-  <time datetime="2019-10-07T12:42:25.000Z" itemprop="datePublished">2019-10-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>图像过滤是把图像中不重要的像素都染成背景色，使得重要部分被凸显出来。现给定一幅黑白图像，要求你将灰度值位于某指定区间内的所有像素颜色都用一种指定的颜色替换。</p>
-<p>输入格式：<br>输入在第一行给出一幅图像的分辨率，即两个正整数 M 和 N（0&lt;M,N≤500），另外是待过滤的灰度值区间端点 A 和 B（0≤A&lt;B≤255）、以及指定的替换灰度值。随后 M 行，每行给出 N 个像素点的灰度值，其间以空格分隔。所有灰度值都在 [0, 255] 区间内。</p>
-<p>输出格式：<br>输出按要求过滤后的图像。即输出 M 行，每行 N 个像素灰度值，每个灰度值占 3 位（例如黑色要显示为 000），其间以一个空格分隔。行首尾不得有多余空格。</p>
-<p>输入样例：</p>
-<pre><code>3 5 100 150 0
-3 189 254 101 119
-150 233 151 99 100
-88 123 149 0 255</code></pre><p>输出样例：</p>
-<pre><code>003 189 254 000 000
-000 233 151 099 000
-088 000 000 000 255</code></pre><p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-
-int main()
-{
-    int n=0,m=0,a=0,b=0,replace=0,h=0;
-    scanf(&quot;%d %d %d %d %d&quot;,&amp;m,&amp;n,&amp;a,&amp;b,&amp;replace);
-    int dlex[m][n];
-    for(int i=0;i&lt;m;i++){
-        for(int j=0;j&lt;n;j++){
-            scanf(&quot;%d&quot;,&amp;h);
-            if(h&lt;=b&amp;&amp;h&gt;=a){
-                h=replace;
-            }
-            dlex[i][j]=h;
-        }
-    }
-    for(int i=0;i&lt;m;i++){
-        for(int j=0;j&lt;n;j++){
-            printf(&quot;%03d&quot;,dlex[i][j]);
-            if(j!=n-1){
-                printf(&quot; &quot;);
-            }
-        }
-        printf(&quot;\n&quot;);
     }
     return 0;
 }</code></pre> 

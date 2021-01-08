@@ -128,6 +128,89 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-降低nodejs版本"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/"
+    >降低nodejs版本</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/" class="article-date">
+  <time datetime="2021-01-08T03:47:06.000Z" itemprop="datePublished">2021-01-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E5%85%B7/">工具</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="使用hexo上传博文时出现异常"><a href="#使用hexo上传博文时出现异常" class="headerlink" title="使用hexo上传博文时出现异常"></a>使用hexo上传博文时出现异常</h2><p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/image-20210108115116863.png" alt="image-20210108115116863"></p>
+<p>原因：node版本太高且向前兼容性不好导致文件解析失败</p>
+<p>解决：降低node的版本</p>
+<ol>
+<li>cmd中输入where node</li>
+</ol>
+<p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/clip_image001.png" alt="img"></p>
+<ol start="2">
+<li>删除exe所在文件目录中所有内容</li>
+</ol>
+<p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/clip_image002.png" alt="img"></p>
+<ol start="3">
+<li>控制面板中卸载node.js</li>
+</ol>
+<p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/clip_image004.jpg" alt="img"></p>
+<ol start="4">
+<li>安装第版本的node</li>
+</ol>
+<p>版本入口：<a href="https://nodejs.org/download/release">https://nodejs.org/download/release</a> [注意选择下载.msi后缀结尾的文件这是Windows](<a href="https://nodejs.org/download/release，">https://nodejs.org/download/release，</a> 注意选择下载.msi后缀结尾的文件这是Windows)的安装文件，注意不要下载zip文件因为</p>
+<ol>
+<li><p>msi 为安装版本，安装过程中自动配置</p>
+</li>
+<li><p>zip 为压缩版本，安装过程中手动配置</p>
+</li>
+</ol>
+<p>最后按照教程安装即可。</p>
+<p>如果出现npm版本过高的情况，如下图</p>
+<p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/image-20210108115611951.png" alt="image-20210108115611951"></p>
+<p>只需要，cmd中安装合适的版本即可</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g npm@推荐的版本即可 </span><br><span class="line"><span class="comment">##推荐的版本可以到官网上查找</span></span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-use-of-logger-based-on-log4j"
   class="article article-type-post"
   itemscope
@@ -220,62 +303,6 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
        
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-将递归转化为迭代"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/12/01/%E5%B0%86%E9%80%92%E5%BD%92%E8%BD%AC%E5%8C%96%E4%B8%BA%E8%BF%AD%E4%BB%A3/"
-    >将递归转化为迭代</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/12/01/%E5%B0%86%E9%80%92%E5%BD%92%E8%BD%AC%E5%8C%96%E4%B8%BA%E8%BF%AD%E4%BB%A3/" class="article-date">
-  <time datetime="2020-12-01T15:46:52.000Z" itemprop="datePublished">2020-12-01</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h4 id="将递归算法转化为迭代算法"><a href="#将递归算法转化为迭代算法" class="headerlink" title="将递归算法转化为迭代算法"></a>将递归算法转化为迭代算法</h4> 
-      <a class="article-more-link" href="/2020/12/01/%E5%B0%86%E9%80%92%E5%BD%92%E8%BD%AC%E5%8C%96%E4%B8%BA%E8%BF%AD%E4%BB%A3/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95%E6%95%B4%E5%90%88/" rel="tag">算法整合</a></li></ul>
-
     </footer>
   </div>
 

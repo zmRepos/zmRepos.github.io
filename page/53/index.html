@@ -128,6 +128,97 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1010"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1010/"
+    >PTA-Basic-1010</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/17/PTA-Basic-1010/" class="article-date">
+  <time datetime="2019-09-17T12:46:30.000Z" itemprop="datePublished">2019-09-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>设计函数求一元多项式的导数。（注：x<br>​n<br>​​ （n为整数）的一阶导数为nx<br>​n−1<br>​​ 。）</p>
+<p>输入格式:<br>以指数递降方式输入多项式非零项系数和指数（绝对值均为不超过 1000 的整数）。数字间以空格分隔。</p>
+<p>输出格式:<br>以与输入相同的格式输出导数多项式非零项的系数和指数。数字间以空格分隔，但结尾不能有多余空格。注意“零多项式”的指数和系数都是 0，但是表示为 0 0。</p>
+<p>输入样例:</p>
+<pre><code>3 4 -5 2 6 1 -2 0</code></pre><p>输出样例:</p>
+<pre><code>12 3 -10 1 6 0</code></pre><p>分析：</p>
+<p>一元多项式条件：系数不为0，指数为大于-1的整数即（指数&gt;=0）;</p>
+<p>输入：先输入一个系数再输入一个指数，依此重复，指数递减。</p>
+<p>输出：格式见题目，输出求一次导后的的多项式对应的系数与指数。</p>
+<p>（注意： “零多项式”，最高项指数为0，但是表示为 0 0，除此以外，只要指数不为0，系数为不为无所谓，也要输出。百度解释0多项式就是0）</p>
+<p>因为系数一定不为0，所以如果结果中有“零多项式”，那么一定是输入时的指数为0.一旦指数为0，后面就不会再有输入了。</p>
+<p>思路：</p>
+<p>1读取一对数字再读一个字符。</p>
+<p>2如果指数为0就可以判断后面没有输入了。</p>
+<p>3不为0就输出对应求导后的数值，并标记一下此多项式不是“0多项式”。</p>
+<p>4如果不是0多项式，就不用输出“0 0”了，如果那么前面一定没有输出，那么就要输出此。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+int n,m;
+int flag=0;
+char ch;
+while(1){
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    ch=getchar();
+    if(m!=0){
+        if(flag)//此处用于判断是否为第一个输出，是就不用输出空格。
+            printf(&quot; &quot;);
+        printf(&quot;%d %d&quot;,n*m,m-1);
+        flag=1;
+    }
+    if(ch==&apos;\n&apos;){
+        break;
+    }
+}
+if(!flag){
+    printf(&quot;0 0&quot;);
+}
+ return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1009"
   class="article article-type-post"
   itemscope
@@ -283,71 +374,6 @@ int main(void){
     printf(&quot;%d&quot;,list[i]);
     return 0;
 }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1007"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/16/PTA-Basic-1007/"
-    >PTA-Basic-1007</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/16/PTA-Basic-1007/" class="article-date">
-  <time datetime="2019-09-16T15:29:36.000Z" itemprop="datePublished">2019-09-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>让我们定义d<br>n<br>​​ 为：d<br>​n<br>​​ =p<br>​n+1<br>​​ −p<br>​n<br>​​ ，其中p<br>​i<br>​​ 是第i个素数。显然有d<br>​1<br>​​ =1，且对于n&gt;1有d<br>​n<br>​​ 是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。</p>
-<p>现给定任意正整数N(&lt;10<br>​5<br>​​ )，请计算不超过N的满足猜想的素数对的个数。</p>
-<p>输入格式:</p>
-<pre><code>输入在一行给出正整数N。</code></pre><p>输出格式:</p>
-<pre><code>在一行中输出不超过N的满足猜想的素数对的个数。</code></pre><p>输入样例:</p>
-<pre><code>20</code></pre><p>输出样例:</p>
-<pre><code>4</code></pre><hr>
-<p>分析：<br>1题目要求给出一个数字要求输出这个数字以内的素数对个数。</p>
-<p>2素数对条件（1为素数，2两个素数相差2）；</p>
-<p>思路：</p>
-<p>1做一个判断是否时素数的函数。</p>
-<p>2因为素数必定不为除2以外的偶数，所以直接从3开始去奇数判断是否为素数，并判断这个数字加2是否也是素数，如果是，则计算素数对个数的变量加1，否则就继续循环，直到超过所给的数字的大小。</p>
-<p>代码：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;math.h&gt;  </span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">isPrime</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line"><span class="comment">//函数</span></span><br><span class="line">       <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=(<span class="keyword">int</span>)<span class="built_in">sqrt</span>(n+<span class="number">1</span>);i+=<span class="number">2</span>)&#123;</span><br><span class="line">           <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">               <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> n;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">   <span class="keyword">int</span> num=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&lt;=n;i+=<span class="number">2</span>)&#123;</span><br><span class="line">   	<span class="keyword">if</span>(isPrime(i)&amp;&amp;isPrime(i+<span class="number">2</span>)&amp;&amp;(i+<span class="number">2</span>)&lt;=n)&#123;</span><br><span class="line">   		num++;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%d"</span>,num);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
     </div>

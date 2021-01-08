@@ -128,6 +128,87 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1057"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/29/PTA-Basic-1057/"
+    >PTA-Basic-1057</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/29/PTA-Basic-1057/" class="article-date">
+  <time datetime="2019-09-29T13:43:33.000Z" itemprop="datePublished">2019-09-29</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>给定一串长度不超过 10<br>​5<br>​​  的字符串，本题要求你将其中所有英文字母的序号（字母 a-z 对应序号 1-26，不分大小写）相加，得到整数 N，然后再分析一下 N 的二进制表示中有多少 0、多少 1。例如给定字符串 PAT (Basic)，其字母序号之和为：16+1+20+2+1+19+9+3=71，而 71 的二进制是 1000111，即有 3 个 0、4 个 1。</p>
+<p>输入格式：<br>输入在一行中给出长度不超过 10<br>​5<br>​​ 、以回车结束的字符串。</p>
+<p>输出格式：<br>在一行中先后输出 0 的个数和 1 的个数，其间以空格分隔。</p>
+<p>输入样例：</p>
+<pre><code>PAT (Basic)</code></pre><p>输出样例：</p>
+<pre><code>3 4</code></pre><p>分析：</p>
+<p>一个一个字符读取并将输入的字符化为小写形式，如果是字母就将其对应的值加到和上。定义一个长度为2的整型数组，0位存储二进制中0的个数，1位存储二进制中1的个数，二进制位数数字除以2的余数，注意数字为0数二进制位的0位不为1，即数字为0时不计算其二进制位。</p>
+<p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+int sum(char *a);
+int main()
+{
+    char ch=&apos;\0&apos;;
+    int total=0;
+    while((ch=getchar())!=&apos;\n&apos;){
+        ch=tolower(ch);
+        if(ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
+            total=total+ch-&apos;a&apos;+1;
+        }
+    }
+    int a[]={0,0};
+    while(total){
+            a[total%2]++;
+            total=total/2;
+    }
+    printf(&quot;%d %d&quot;,a[0],a[1]);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1056"
   class="article article-type-post"
   itemscope
@@ -336,141 +417,6 @@ int cmp(const void *a,const void *b){//先依据身高排序（降序），如�
         }
     }
 }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1054"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/28/PTA-Basic-1054/"
-    >PTA-Basic-1054</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/28/PTA-Basic-1054/" class="article-date">
-  <time datetime="2019-09-28T14:28:50.000Z" itemprop="datePublished">2019-09-28</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
-<p>输入格式：<br>输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
-<p>输出格式：<br>对每个非法输入，在一行中输出 ERROR: X is not a legal number，其中 X 是输入。最后在一行中输出结果：The average of K numbers is Y，其中 K 是合法输入的个数，Y 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 Undefined 替换 Y。如果 K 为 1，则输出 The average of 1 number is Y。</p>
-<p>输入样例 1：</p>
-<pre><code>7
-5 -3.2 aaa 9999 2.3.4 7.123 2.35</code></pre><p>输出样例 1：</p>
-<pre><code>ERROR: aaa is not a legal number
-ERROR: 9999 is not a legal number
-ERROR: 2.3.4 is not a legal number
-ERROR: 7.123 is not a legal number
-The average of 3 numbers is 1.38</code></pre><p>输入样例 2：</p>
-<pre><code>2
-
-aaa -9999</code></pre><p>输出样例 2：</p>
-<pre><code>ERROR: aaa is not a legal number
-ERROR: -9999 is not a legal number
-The average of 0 numbers is Undefined</code></pre><p>分析：</p>
-<p>定义一个判断数字是否合法的函数（数字以数字或‘-’开头，不能只有‘-’，‘.’后面的数字长度不能大于2），注意如果输入数字中只有一个合法，不要不要用总和去除以1计算结果，而是直接输出The average of 1 number is ？。还有就是字符串赋值并不是想Java中的那样直接给就可以了，而是要调用函数复制。</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-int check(char* s);
-int main(void){
-    int n=0;
-    scanf(&quot;%d&quot;,&amp;n);
-    char str[n][10000];
-    char s[10000];
-    int i=0;
-    double sum=0;
-    int m=n;
-    while(n--){
-        scanf(&quot;%s&quot;,s);
-        if(check(s)){
-            sum+=atof(s);//函数atof将数字字符串转化为数字。
-        }else{
-            strcpy(str[i++],s);
-        }
-    }
-    m=m-i;
-    for(int k=0;k&lt;i;k++){
-        printf(&quot;ERROR: %s is not a legal number\n&quot;,str[k]); 
-    }
-    if(m&gt;1)
-    printf(&quot;The average of %d numbers is %.2lf\n&quot;,m,sum/m);
-    if(m==0)
-    printf(&quot;The average of 0 numbers is Undefined\n&quot;);
-    if(m==1)
-    printf(&quot;The average of 1 number is %.2lf&quot;,sum);
-    return 0;
-}
-int  check(char* s){
-    int sum=0;
-    int n=0;
-    for(int i=0;i&lt;strlen(s);i++){
-        if(i==0){
-            if(!(s[i]==&apos;-&apos;||(s[i]&lt;=&apos;9&apos;&amp;&amp;s[i]&gt;=&apos;0&apos;))){
-                return 0;
-            }else{
-                if(strlen(s)==1&amp;&amp;s[i]==&apos;-&apos;){
-                    return 0;
-                }
-            }
-        }else{
-            if(sum&gt;0){
-                n++;
-                if(n&gt;2){
-                    return 0;
-                }
-            }
-            if(s[i]==&apos;.&apos;){
-                sum++;
-                if(sum&gt;=2){
-                    return 0;
-                }
-            }
-        }
-    }
-    double res=atof(s);
-    if(res&gt;1000||res&lt;-1000){
-        return 0;
-    }
-    return 1;
-} </code></pre> 
       <!-- reward -->
       
     </div>

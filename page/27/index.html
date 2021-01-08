@@ -128,6 +128,101 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1091"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1091/"
+    >PTA-Basic-1091</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1091/" class="article-date">
+  <time datetime="2019-10-16T13:30:08.000Z" itemprop="datePublished">2019-10-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>如果某个数 K 的平方乘以 N 以后，结果的末尾几位数等于 K，那么就称这个数为“N-自守数”。例如 3×92<br>​2<br>​​ =25392，而 25392 的末尾两位正好是 92，所以 92 是一个 3-自守数。</p>
+<p>本题就请你编写程序判断一个给定的数字是否关于某个 N 是 N-自守数。</p>
+<p>输入格式：<br>输入在第一行中给出正整数 M（≤20），随后一行给出 M 个待检测的、不超过 1000 的正整数。</p>
+<p>输出格式：<br>对每个需要检测的数字，如果它是 N-自守数就在一行中输出最小的 N 和 N*K^<br>​2<br>​​  的值，以一个空格隔开；否则输出 No。注意题目保证 N&lt;10。</p>
+<p>输入样例：</p>
+<pre><code>3
+92 5 233</code></pre><p>输出样例：</p>
+<pre><code>3 25392
+1 25
+No</code></pre><p>分析：题目说了保证n&lt;10，即在1-9之中找就可以了，定义一个判断是不是字守数的函数，然后对每个数字判断就可以了。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+int re(long value,long contains);
+int main(void){
+    int n;
+    int key;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d&quot;,&amp;key);
+        int k=1;
+        for(;k&lt;10;k++){
+            if(re(key*key*k,key)){
+                printf(&quot;%d %ld\n&quot;,k,key*key*k);
+                break;
+            }
+        }
+        if(k&gt;9){
+            printf(&quot;No\n&quot;);
+        }
+    }
+}
+int re(long value,long contains){
+    int i=0;
+    long key=contains;
+    do{
+        i++;
+        key=key/10;
+    }while(key);
+    if((value-contains)%((int)pow(10,i))==0){
+        return 1;
+    }    
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1090"
   class="article article-type-post"
   itemscope
@@ -358,81 +453,6 @@ int main(void){
         }
     }
     printf(&quot;No Solution&quot;);
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1088"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1088/"
-    >PTA-Basic-1088</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1088/" class="article-date">
-  <time datetime="2019-10-16T13:29:51.000Z" itemprop="datePublished">2019-10-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）</p>
-<p>输入格式：<br>输入给出一个正整数 N（2≤N≤10<br>​4<br>​​ ）。</p>
-<p>输出格式：<br>在一行中输出题面中算式取到的不同值的个数。</p>
-<p>输入样例：</p>
-<pre><code>2017</code></pre><p>输出样例：</p>
-<pre><code>1480</code></pre><p>思路：利用此函数的递增性。<br>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int n;
-    int time=0;
-    int last=-1;//初始一个数为-1，因为n为任何正数，值都不可能为-1
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++){
-        int k=i/2+i/3+i/5;
-        if(k==last){//如果与上一个相同就跳过此次
-            continue;
-        }else{
-            time++;
-            last=k;
-        }
-    }
-    printf(&quot;%d&quot;,time);
     return 0;
 }</code></pre> 
       <!-- reward -->

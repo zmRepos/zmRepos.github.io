@@ -25,6 +25,25 @@
       </tags>
   </entry>
   <entry>
+    <title>Hello World</title>
+    <url>/2019/12/11/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>PTA-Basic-1003</title>
     <url>/2019/09/15/PTA-Basic-1003/</url>
     <content><![CDATA[<p>“答案正确”是自动判题系统给出的最令人欢喜的回复。本题属于 PAT 的“答案正确”大派送 —— 只要读入的字符串满足下列条件，系统就输出“答案正确”，否则输出“答案错误”。</p>
@@ -122,25 +141,6 @@ return 0;
         <tag>PTA</tag>
         <tag>字符串</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2019/12/11/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><a id="more"></a>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>PAT_Basic-1004</title>
@@ -292,39 +292,6 @@ return 0;
       </tags>
   </entry>
   <entry>
-    <title>PTA-Basic-1006</title>
-    <url>/2019/09/15/PTA-Basic-1006/</url>
-    <content><![CDATA[<h1 id="1006-换个格式输出整数"><a href="#1006-换个格式输出整数" class="headerlink" title="1006 换个格式输出整数"></a>1006 换个格式输出整数</h1><p>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
-<p>输入格式：<br>    每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
-<p>输出格式：<br>    每个测试用例的输出占一行，用规定的格式输出 n。</p>
-<p>输入样例 1：</p>
-<pre><code>234</code></pre><p>输出样例 1：</p>
-<pre><code>BBSSS1234</code></pre><p>输入样例 2：</p>
-<pre><code>23</code></pre><p>输出样例 2：</p>
-<pre><code>SS123</code></pre><hr>
-<p>分析：</p>
-<p>1因为输入的数字小于1000，所以定义一个数组长度为3的整型数组，存放数字的个位，十位，百位。</p>
-<p>2再定义一个足够大的数组存放结果。</p>
-<p>3倒叙遍历存放数字的数组，按按百对应下标为2，十位对应的下标为1，个位对应的下标的为0，分别对处理。</p>
-<p>4注意一定要在最后将字符数组的最后置为’\0’,否则会输出错误。</p>
-<p>代码：</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> result[<span class="number">1000</span>];</span><br><span class="line">   <span class="keyword">int</span> number;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">int</span> num[<span class="number">3</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">   <span class="keyword">while</span>(number)&#123;</span><br><span class="line">       num[n++]=number%<span class="number">10</span>;</span><br><span class="line">       number=number/<span class="number">10</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> <span class="built_in">step</span>=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">int</span> time=num[i];</span><br><span class="line">       <span class="keyword">if</span>(time==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">continue</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'B'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'S'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=j+<span class="string">'1'</span>;</span><br><span class="line">       	&#125;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line">   result[<span class="built_in">step</span>]=<span class="string">'\0'</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%s"</span>,result);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>另一种思路：</p>
-<p>分析：</p>
-<p>利用字符串长度判断输入的是几位数，再利用字符串倒置输出对应的题目要求符号</p>
-<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i,j;</span><br><span class="line">   <span class="keyword">char</span> n[<span class="number">4</span>];</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%s"</span>,n);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span>(i=<span class="built_in">strlen</span>(n);i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=(n[<span class="built_in">strlen</span>(n)-i]-<span class="string">'0'</span>);j++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">3</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"B"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"S"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"%d"</span>,j);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://blog.csdn.net/huaxuewan/article/details/85778884" title="参考资料">https://blog.csdn.net/huaxuewan/article/details/85778884</a></p>
-]]></content>
-      <categories>
-        <category>PTA</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PTA-Basic-1007</title>
     <url>/2019/09/16/PTA-Basic-1007/</url>
     <content><![CDATA[<p>让我们定义d<br>n<br>​​ 为：d<br>​n<br>​​ =p<br>​n+1<br>​​ −p<br>​n<br>​​ ，其中p<br>​i<br>​​ 是第i个素数。显然有d<br>​1<br>​​ =1，且对于n&gt;1有d<br>​n<br>​​ 是偶数。“素数对猜想”认为“存在无穷多对相邻且差为2的素数”。</p>
@@ -403,49 +370,6 @@ int main(void){
       </tags>
   </entry>
   <entry>
-    <title>PTA-Basic-1009</title>
-    <url>/2019/09/17/PTA-Basic-1009/</url>
-    <content><![CDATA[<p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
-<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
-<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
-<p>输入样例：</p>
-<p>Hello World Here I Come</p>
-<p>输出样例：</p>
-<p>Come I Here World Hello</p>
-<p>分析：<br>1给出一句话，要求单词顺序不变，倒序输出所有单词。<br>首先要输出最后一个单词，接着是倒数第二个… ,直到到达首单词。</p>
-<p>思路：双指针算法。<br>1用一个字符数组存储输入的字符串；使用两个字符指针，一个用来指向空格的位置，另一个用来输出空格与空格或者空格与     ‘\0’    之间的单词（字符串的末尾会存放一个‘\0’）,然后继续此操作直到到达第一个单词，第一个单词不输出（因题目格式要求）<br>2另外输出第一个单词。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#define MAX 81
-int main(void){
-char str[MAX];
-char *p,*q;
-gets(str);
-for(p=str+strlen(str)-1;p!=str;p--){//输出到第一个单词停止。
-    if(*p==&apos; &apos;){//如果读到一个空格，说明，一个单词已经结束。
-        for(q=p+1;*q!=&apos; &apos;&amp;&amp;*q;q++){
-            printf(&quot;%c&quot;,*q);
-        }
-        printf(&quot; &quot;);
-    }
-}
-for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
-//此处判定条件中的*p是为了防止输入一个单词时造成死循环。因为只输入一个单词时，也作为字符串末尾也会加上一个&apos;\0&apos;.
-    printf(&quot;%c&quot;,*p);
-}
-return 0;
-}</code></pre><p>######如果有更好的思路欢迎交流。</p>
-]]></content>
-      <categories>
-        <category>PTA</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PTA-Basic-1010</title>
     <url>/2019/09/17/PTA-Basic-1010/</url>
     <content><![CDATA[<p>设计函数求一元多项式的导数。（注：x<br>​n<br>​​ （n为整数）的一阶导数为nx<br>​n−1<br>​​ 。）</p>
@@ -488,6 +412,49 @@ if(!flag){
 }
  return 0;
 }</code></pre>]]></content>
+      <categories>
+        <category>PTA</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PTA-Basic-1009</title>
+    <url>/2019/09/17/PTA-Basic-1009/</url>
+    <content><![CDATA[<p>给定一句英语，要求你编写程序，将句中所有单词的顺序颠倒输出。</p>
+<p>输入格式：<br>测试输入包含一个测试用例，在一行内给出总长度不超过 80 的字符串。字符串由若干单词和若干空格组成，其中单词是由英文字母（大小写有区分）组成的字符串，单词之间用 1 个空格分开，输入保证句子末尾没有多余的空格。</p>
+<p>输出格式：<br>每个测试用例的输出占一行，输出倒序后的句子。</p>
+<p>输入样例：</p>
+<p>Hello World Here I Come</p>
+<p>输出样例：</p>
+<p>Come I Here World Hello</p>
+<p>分析：<br>1给出一句话，要求单词顺序不变，倒序输出所有单词。<br>首先要输出最后一个单词，接着是倒数第二个… ,直到到达首单词。</p>
+<p>思路：双指针算法。<br>1用一个字符数组存储输入的字符串；使用两个字符指针，一个用来指向空格的位置，另一个用来输出空格与空格或者空格与     ‘\0’    之间的单词（字符串的末尾会存放一个‘\0’）,然后继续此操作直到到达第一个单词，第一个单词不输出（因题目格式要求）<br>2另外输出第一个单词。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#define MAX 81
+int main(void){
+char str[MAX];
+char *p,*q;
+gets(str);
+for(p=str+strlen(str)-1;p!=str;p--){//输出到第一个单词停止。
+    if(*p==&apos; &apos;){//如果读到一个空格，说明，一个单词已经结束。
+        for(q=p+1;*q!=&apos; &apos;&amp;&amp;*q;q++){
+            printf(&quot;%c&quot;,*q);
+        }
+        printf(&quot; &quot;);
+    }
+}
+for(p=str;*p!=&apos; &apos;&amp;&amp;*p;p++){
+//此处判定条件中的*p是为了防止输入一个单词时造成死循环。因为只输入一个单词时，也作为字符串末尾也会加上一个&apos;\0&apos;.
+    printf(&quot;%c&quot;,*p);
+}
+return 0;
+}</code></pre><p>######如果有更好的思路欢迎交流。</p>
+]]></content>
       <categories>
         <category>PTA</category>
       </categories>
@@ -1271,6 +1238,68 @@ int main(void){
       </tags>
   </entry>
   <entry>
+    <title>PTA-Basic-1023</title>
+    <url>/2019/09/22/PTA-Basic-1023/</url>
+    <content><![CDATA[<p>题目：</p>
+<p>给定数字 0-9 各若干个。你可以以任意顺序排列这些数字，但必须全部使用。目标是使得最后得到的数尽可能小（注意 0 不能做首位）。例如：给定两个 0，两个 1，三个 5，一个 8，我们得到的最小的数就是 10015558。</p>
+<p>现给定数字，请编写程序输出能够组成的最小的数。</p>
+<p>输入格式：</p>
+<pre><code>输入在一行中给出 10 个非负整数，顺序表示我们拥有数字 0、数字 
+1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不
+超过 50，且至少拥有 1 个非 0 的数字。</code></pre><p>输出格式：</p>
+<pre><code>在一行中输出能够组成的最小的数。</code></pre><p>输入样例：</p>
+<pre><code>2 2 0 0 0 3 0 0 1 0</code></pre><p>输出样例：</p>
+<pre><code>10015558</code></pre><p>输入：</p>
+<p>遍历数字，将相应的整型数组加1（下标代表数字，值代表次数）。优先输出0但是首字符不能为0然后依次输出小的。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    static int number[2][10]={{0,1,2,3,4,5,6,7,8,9},{0}};
+    int n=0;
+    int sum=0;
+    char result[1000];
+    int i=0;
+    for(i=0;i&lt;10;i++){
+        scanf(&quot;%d&quot;,&amp;n);
+        number[1][i]=n;
+        sum+=n;
+    }
+    i=0;
+    while(sum){//当剩余的总个数为0时说明所有数字都用上了。
+        if(i==0){
+            for(int j=1;j&lt;10;j++){//首先将1-9的数字次数用掉一次，放在字符串首。
+                if(number[1][j]!=0){
+                    result[i]=number[0][j]+&apos;0&apos;;
+                    number[1][j]--;
+                    sum--;
+                    break;
+                }
+            }
+        }else{
+            for(int j=0;j&lt;10;j++){
+                if(number[1][j]!=0){
+                    result[i]=number[0][j]+&apos;0&apos;;
+                    number[1][j]--;
+                    sum--;
+                    break;
+                }
+            }
+        }
+        i++;
+    }
+    result[i]=&apos;\0&apos;;
+    printf(&quot;%s&quot;,result);
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>PTA</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>PTA-Basic-1022</title>
     <url>/2019/09/22/PTA-Basic-1022/</url>
     <content><![CDATA[<p>输入两个非负 10 进制整数 A 和 B (≤2<br>​30<br>​​ −1)，输出 A+B 的 D (1&lt;D≤10)进制数。</p>
@@ -1427,59 +1456,26 @@ int main(void){
       </tags>
   </entry>
   <entry>
-    <title>PTA-Basic-1023</title>
-    <url>/2019/09/22/PTA-Basic-1023/</url>
-    <content><![CDATA[<p>题目：</p>
-<p>给定数字 0-9 各若干个。你可以以任意顺序排列这些数字，但必须全部使用。目标是使得最后得到的数尽可能小（注意 0 不能做首位）。例如：给定两个 0，两个 1，三个 5，一个 8，我们得到的最小的数就是 10015558。</p>
-<p>现给定数字，请编写程序输出能够组成的最小的数。</p>
-<p>输入格式：</p>
-<pre><code>输入在一行中给出 10 个非负整数，顺序表示我们拥有数字 0、数字 
-1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不
-超过 50，且至少拥有 1 个非 0 的数字。</code></pre><p>输出格式：</p>
-<pre><code>在一行中输出能够组成的最小的数。</code></pre><p>输入样例：</p>
-<pre><code>2 2 0 0 0 3 0 0 1 0</code></pre><p>输出样例：</p>
-<pre><code>10015558</code></pre><p>输入：</p>
-<p>遍历数字，将相应的整型数组加1（下标代表数字，值代表次数）。优先输出0但是首字符不能为0然后依次输出小的。</p>
-<p>代码：</p>
+    <title>PTA-Basic-1026</title>
+    <url>/2019/09/19/PTA-Basic-1026/</url>
+    <content><![CDATA[<p>要获得一个 C 语言程序的运行时间，常用的方法是调用头文件 time.h，其中提供了 clock() 函数，可以捕捉从程序开始运行到 clock() 被调用时所耗费的时间。这个时间单位是 clock tick，即“时钟打点”。同时还有一个常数 CLK_TCK，给出了机器时钟每秒所走的时钟打点数。于是为了获得一个函数 f 的运行时间，我们只要在调用 f 之前先调用 clock()，获得一个时钟打点数 C1；在 f 执行完成后再调用 clock()，获得另一个时钟打点数 C2；两次获得的时钟打点数之差 (C2-C1) 就是 f 运行所消耗的时钟打点数，再除以常数 CLK_TCK，就得到了以秒为单位的运行时间。</p>
+<p>这里不妨简单假设常数 CLK_TCK 为 100。现给定被测函数前后两次获得的时钟打点数，请你给出被测函数运行的时间。</p>
+<p>输入格式：<br>输入在一行中顺序给出 2 个整数 C1 和 C2。注意两次获得的时钟打点数肯定不相同，即 C1 &lt; C2，并且取值在 [0,10<br>​7<br>​​ ]。</p>
+<p>输出格式：<br>在一行中输出被测函数运行的时间。运行时间必须按照 hh:mm:ss（即2位的 时:分:秒）格式输出；不足 1 秒的时间四舍五入到秒。</p>
+<p>输入样例：</p>
+<pre><code>123 4577973</code></pre><p>输出样例：</p>
+<pre><code>12:42:59</code></pre><p>分析：<br>此题简单不做赘述，注意一点，转型时注意语言自带的转型功能。</p>
 <pre><code>#include&lt;stdio.h&gt;
 int main(void){
-    static int number[2][10]={{0,1,2,3,4,5,6,7,8,9},{0}};
-    int n=0;
-    int sum=0;
-    char result[1000];
-    int i=0;
-    for(i=0;i&lt;10;i++){
-        scanf(&quot;%d&quot;,&amp;n);
-        number[1][i]=n;
-        sum+=n;
-    }
-    i=0;
-    while(sum){//当剩余的总个数为0时说明所有数字都用上了。
-        if(i==0){
-            for(int j=1;j&lt;10;j++){//首先将1-9的数字次数用掉一次，放在字符串首。
-                if(number[1][j]!=0){
-                    result[i]=number[0][j]+&apos;0&apos;;
-                    number[1][j]--;
-                    sum--;
-                    break;
-                }
-            }
-        }else{
-            for(int j=0;j&lt;10;j++){
-                if(number[1][j]!=0){
-                    result[i]=number[0][j]+&apos;0&apos;;
-                    number[1][j]--;
-                    sum--;
-                    break;
-                }
-            }
-        }
-        i++;
-    }
-    result[i]=&apos;\0&apos;;
-    printf(&quot;%s&quot;,result);
-    return 0;
-}</code></pre>]]></content>
+    int number1;
+    int number2;
+
+    scanf(&quot;%d %d&quot;,&amp;number1,&amp;number2);
+    int h=(int)((number2-number1)/360000);
+    printf(&quot;%02d:&quot;,h);
+    int m=(int)(((number2-number1)/100 -h * 3600)/60);
+    printf(&quot;%02d:&quot;,m);</code></pre><p>#####//此处强制转型一定要在除过后就进行否则会导致数字丢失。<br>        int s=(((int)((number2-number1)<em>1.0/100+0.5)-h</em>3600-m*60));<br>        printf(“%02d”,s);<br>        return 0;<br>    }</p>
+]]></content>
       <categories>
         <category>PTA</category>
       </categories>
@@ -1560,35 +1556,6 @@ int main() {
     } 
     return 0;
 }</code></pre>]]></content>
-      <categories>
-        <category>PTA</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>PTA-Basic-1026</title>
-    <url>/2019/09/19/PTA-Basic-1026/</url>
-    <content><![CDATA[<p>要获得一个 C 语言程序的运行时间，常用的方法是调用头文件 time.h，其中提供了 clock() 函数，可以捕捉从程序开始运行到 clock() 被调用时所耗费的时间。这个时间单位是 clock tick，即“时钟打点”。同时还有一个常数 CLK_TCK，给出了机器时钟每秒所走的时钟打点数。于是为了获得一个函数 f 的运行时间，我们只要在调用 f 之前先调用 clock()，获得一个时钟打点数 C1；在 f 执行完成后再调用 clock()，获得另一个时钟打点数 C2；两次获得的时钟打点数之差 (C2-C1) 就是 f 运行所消耗的时钟打点数，再除以常数 CLK_TCK，就得到了以秒为单位的运行时间。</p>
-<p>这里不妨简单假设常数 CLK_TCK 为 100。现给定被测函数前后两次获得的时钟打点数，请你给出被测函数运行的时间。</p>
-<p>输入格式：<br>输入在一行中顺序给出 2 个整数 C1 和 C2。注意两次获得的时钟打点数肯定不相同，即 C1 &lt; C2，并且取值在 [0,10<br>​7<br>​​ ]。</p>
-<p>输出格式：<br>在一行中输出被测函数运行的时间。运行时间必须按照 hh:mm:ss（即2位的 时:分:秒）格式输出；不足 1 秒的时间四舍五入到秒。</p>
-<p>输入样例：</p>
-<pre><code>123 4577973</code></pre><p>输出样例：</p>
-<pre><code>12:42:59</code></pre><p>分析：<br>此题简单不做赘述，注意一点，转型时注意语言自带的转型功能。</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int number1;
-    int number2;
-
-    scanf(&quot;%d %d&quot;,&amp;number1,&amp;number2);
-    int h=(int)((number2-number1)/360000);
-    printf(&quot;%02d:&quot;,h);
-    int m=(int)(((number2-number1)/100 -h * 3600)/60);
-    printf(&quot;%02d:&quot;,m);</code></pre><p>#####//此处强制转型一定要在除过后就进行否则会导致数字丢失。<br>        int s=(((int)((number2-number1)<em>1.0/100+0.5)-h</em>3600-m*60));<br>        printf(“%02d”,s);<br>        return 0;<br>    }</p>
-]]></content>
       <categories>
         <category>PTA</category>
       </categories>
@@ -4472,59 +4439,6 @@ int check(int i,int j,int n,int m,int tol){//判断是否合格函数，有左�
       </tags>
   </entry>
   <entry>
-    <title>PTA-Basic-1070</title>
-    <url>/2019/10/07/PTA-Basic-1070/</url>
-    <content><![CDATA[<p>题目：</p>
-<p>给定一段一段的绳子，你需要把它们串成一条绳。每次串连的时候，是把两段绳子对折，再如下图所示套接在一起。这样得到的绳子又被当成是另一段绳子，可以再次对折去跟另一段绳子串连。每次串连后，原来两段绳子的长度就会减半。</p>
-<p><img src="https://images.ptausercontent.com/46293e57-aa0e-414b-b5c3-7c4b2d5201e2.jpg" alt></p>
-<p>给定 N 段绳子的长度，你需要找出它们能串成的绳子的最大长度。</p>
-<p>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例第 1 行给出正整数 N (2≤N≤10<br>​4<br>​​ )；第 2 行给出 N 个正整数，即原始绳段的长度，数字间以空格分隔。所有整数都不超过10<br>​4<br>​​ 。</p>
-<p>输出格式：<br>在一行中输出能够串成的绳子的最大长度。结果向下取整，即取为不超过最大长度的最近整数。</p>
-<p>输入样例：</p>
-<pre><code>8
-10 15 12 3 4 13 1 15</code></pre><p>输出样例：</p>
-<pre><code>14</code></pre><p>思路：排序从小到大，不断折半。<br>代码:</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-int cmp(const void *a,const void *b){
-return *(int *)a-*(int *)b;
-}
-int main()
-{
-
-    int n=0;
-
-    scanf(&quot;%d&quot;,&amp;n);
-
-    int nums[n];
-
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%d&quot;,&amp;nums[i]);
-    }
-
-    qsort(nums,n,sizeof(int),cmp);
-
-    int max=nums[0];
-
-    for(int i=1;i&lt;n;i++){
-
-        max=(max+nums[i])/2;
-
-    }
-
-    printf(&quot;%d&quot;,max);
-
-    return 0;
-}</code></pre>]]></content>
-      <categories>
-        <category>PTA</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>C语言</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>PTA-Basic-1069</title>
     <url>/2019/10/07/PTA-Basic-1069/</url>
     <content><![CDATA[<p>题目：</p>
@@ -4590,6 +4504,59 @@ int main()
             puts(result[i]);
         }
         }
+    return 0;
+}</code></pre>]]></content>
+      <categories>
+        <category>PTA</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>PTA-Basic-1070</title>
+    <url>/2019/10/07/PTA-Basic-1070/</url>
+    <content><![CDATA[<p>题目：</p>
+<p>给定一段一段的绳子，你需要把它们串成一条绳。每次串连的时候，是把两段绳子对折，再如下图所示套接在一起。这样得到的绳子又被当成是另一段绳子，可以再次对折去跟另一段绳子串连。每次串连后，原来两段绳子的长度就会减半。</p>
+<p><img src="https://images.ptausercontent.com/46293e57-aa0e-414b-b5c3-7c4b2d5201e2.jpg" alt></p>
+<p>给定 N 段绳子的长度，你需要找出它们能串成的绳子的最大长度。</p>
+<p>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例第 1 行给出正整数 N (2≤N≤10<br>​4<br>​​ )；第 2 行给出 N 个正整数，即原始绳段的长度，数字间以空格分隔。所有整数都不超过10<br>​4<br>​​ 。</p>
+<p>输出格式：<br>在一行中输出能够串成的绳子的最大长度。结果向下取整，即取为不超过最大长度的最近整数。</p>
+<p>输入样例：</p>
+<pre><code>8
+10 15 12 3 4 13 1 15</code></pre><p>输出样例：</p>
+<pre><code>14</code></pre><p>思路：排序从小到大，不断折半。<br>代码:</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int cmp(const void *a,const void *b){
+return *(int *)a-*(int *)b;
+}
+int main()
+{
+
+    int n=0;
+
+    scanf(&quot;%d&quot;,&amp;n);
+
+    int nums[n];
+
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d&quot;,&amp;nums[i]);
+    }
+
+    qsort(nums,n,sizeof(int),cmp);
+
+    int max=nums[0];
+
+    for(int i=1;i&lt;n;i++){
+
+        max=(max+nums[i])/2;
+
+    }
+
+    printf(&quot;%d&quot;,max);
+
     return 0;
 }</code></pre>]]></content>
       <categories>
@@ -6691,22 +6658,6 @@ int type3(struct id ids[], int n, int i)
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-41</title>
-    <url>/2020/07/05/LeetCode-41/</url>
-    <content><![CDATA[<p>##题目:<br><img src="/2020/07/05/LeetCode-41/1.png" alt><br>##本题难点<br>本题主要是将数组元素对应位置处的数字做一个标记，那么这个标记如何做呢？只能通过把值赋值为相反数来做标记，前提是把原数组中所有的非正数化为正数。<br>##代码:</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len=nums.length;</span><br><span class="line">		<span class="comment">//将数组中小于等于0的数字都化为大于len的数字便于做标记</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			<span class="keyword">if</span>(nums[i]&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">				nums[i]=len+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//遍历数组将数组中的小于等于len的数字对应位置存储的数字化为相反数</span></span><br><span class="line">		<span class="comment">//这样做不会影响后面的遍历</span></span><br><span class="line">		<span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			temp=Math.abs(nums[i]);</span><br><span class="line">			<span class="keyword">if</span>(temp&lt;=len)&#123;</span><br><span class="line">				nums[temp-<span class="number">1</span>]=-Math.abs(nums[temp-<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//经过以上两步，遍历数组中不是负数的位置+1即是答案</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			<span class="keyword">if</span>(nums[i]&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> len+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>##tips<br>O(2n)也是O(n)的时间复杂度</p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-        <category>数组</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>使用Spring整合MyBatis时遇到的bugs</title>
     <url>/2020/07/12/%E4%BD%BF%E7%94%A8Spring%E6%95%B4%E5%90%88MyBatis%E6%97%B6%E9%81%87%E5%88%B0%E7%9A%84bugs/</url>
     <content><![CDATA[<h1 id="在整合Spring与MyBatis时遇到的bugs"><a href="#在整合Spring与MyBatis时遇到的bugs" class="headerlink" title="在整合Spring与MyBatis时遇到的bugs"></a>在整合Spring与MyBatis时遇到的bugs</h1><a id="more"></a>
@@ -6727,6 +6678,22 @@ int type3(struct id ids[], int n, int i)
       </categories>
       <tags>
         <tag>bug</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-41</title>
+    <url>/2020/07/05/LeetCode-41/</url>
+    <content><![CDATA[<p>##题目:<br><img src="/2020/07/05/LeetCode-41/1.png" alt><br>##本题难点<br>本题主要是将数组元素对应位置处的数字做一个标记，那么这个标记如何做呢？只能通过把值赋值为相反数来做标记，前提是把原数组中所有的非正数化为正数。<br>##代码:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">firstMissingPositive</span><span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len=nums.length;</span><br><span class="line">		<span class="comment">//将数组中小于等于0的数字都化为大于len的数字便于做标记</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			<span class="keyword">if</span>(nums[i]&lt;=<span class="number">0</span>)&#123;</span><br><span class="line">				nums[i]=len+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//遍历数组将数组中的小于等于len的数字对应位置存储的数字化为相反数</span></span><br><span class="line">		<span class="comment">//这样做不会影响后面的遍历</span></span><br><span class="line">		<span class="keyword">int</span> temp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			temp=Math.abs(nums[i]);</span><br><span class="line">			<span class="keyword">if</span>(temp&lt;=len)&#123;</span><br><span class="line">				nums[temp-<span class="number">1</span>]=-Math.abs(nums[temp-<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//经过以上两步，遍历数组中不是负数的位置+1即是答案</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</span><br><span class="line">			<span class="keyword">if</span>(nums[i]&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span> i+<span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> len+<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>##tips<br>O(2n)也是O(n)的时间复杂度</p>
+]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+        <category>数组</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -6758,6 +6725,27 @@ int type3(struct id ids[], int n, int i)
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-1021</title>
+    <url>/2020/08/15/LeetCode-1021/</url>
+    <content><![CDATA[<h1 id="1021删除最外层的括号"><a href="#1021删除最外层的括号" class="headerlink" title="1021删除最外层的括号"></a>1021删除最外层的括号</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p><img src="/2020/08/15/LeetCode-1021/content.PNG" alt="题目"></p>
+<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>根据题目意思，只需要从左向右遍历字符串，然后将每个原语最外
+层的()之间的字符串追加到结果上就行了，而原语的获取可以直接
+根据temp数量来指示一个原语的结束。此处原语的判断可以用栈实现，而我所用的数字，只不过是栈的替代品，功能与栈一致。</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeOuterParentheses</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> l=<span class="number">0</span>,r=l,temp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">char</span> chs[]=S.toCharArray();</span><br><span class="line">		StringBuilder res=<span class="keyword">new</span> StringBuilder(<span class="string">""</span>);</span><br><span class="line">		<span class="keyword">for</span>(;r&lt;chs.length;++r)&#123;</span><br><span class="line">			<span class="keyword">if</span>(chs[r]==<span class="string">'('</span>)&#123;</span><br><span class="line">				++temp;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				--temp;</span><br><span class="line">                <span class="keyword">if</span>(temp==<span class="number">0</span>)&#123;</span><br><span class="line">                    res.append(S.substring(l+<span class="number">1</span>, r));</span><br><span class="line">                    l=r+<span class="number">1</span>;</span><br><span class="line">			    &#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><pre><code>O(n)</code></pre><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><pre><code>O(n)</code></pre><h2 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h2><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeOuterParentheses</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">		StringBuilder res=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> ch:S.toCharArray())&#123;</span><br><span class="line">            <span class="keyword">if</span>(ch==<span class="string">')'</span>)--count;</span><br><span class="line">            <span class="keyword">if</span>(count&gt;=<span class="number">1</span>)res.append(ch);</span><br><span class="line">            <span class="keyword">if</span>(ch==<span class="string">'('</span>)++count;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="keyword">return</span> res.toString();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><pre><code>按理来说&quot;if(ch==&apos;(&apos;)++count;&quot;应该放到&quot;if(count&gt;=1)res.append(ch);&quot;前，那为什么没有呢？这是为了避免原语以为
+(开头的漏洞。</code></pre><h3 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><pre><code>O(n)</code></pre><h3 id="空间复杂度-1"><a href="#空间复杂度-1" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><pre><code>O(n)</code></pre>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+        <category>栈</category>
+      </categories>
+      <tags>
+        <tag>LeetCode</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>单例模式为什么要双重检查null</title>
     <url>/2020/07/16/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%8F%8C%E9%87%8D%E6%A3%80%E6%9F%A5null/</url>
     <content><![CDATA[<h2 id="单例设计模式（懒汉式）为什么要进行双重检测锁定"><a href="#单例设计模式（懒汉式）为什么要进行双重检测锁定" class="headerlink" title="单例设计模式（懒汉式）为什么要进行双重检测锁定?"></a>单例设计模式（懒汉式）为什么要进行双重检测锁定?</h2><a id="more"></a>
@@ -6780,27 +6768,6 @@ private SingleTon() {
       </categories>
       <tags>
         <tag>java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-1021</title>
-    <url>/2020/08/15/LeetCode-1021/</url>
-    <content><![CDATA[<h1 id="1021删除最外层的括号"><a href="#1021删除最外层的括号" class="headerlink" title="1021删除最外层的括号"></a>1021删除最外层的括号</h1><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
-<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p><img src="/2020/08/15/LeetCode-1021/content.PNG" alt="题目"></p>
-<h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><pre><code>根据题目意思，只需要从左向右遍历字符串，然后将每个原语最外
-层的()之间的字符串追加到结果上就行了，而原语的获取可以直接
-根据temp数量来指示一个原语的结束。此处原语的判断可以用栈实现，而我所用的数字，只不过是栈的替代品，功能与栈一致。</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeOuterParentheses</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> l=<span class="number">0</span>,r=l,temp=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">char</span> chs[]=S.toCharArray();</span><br><span class="line">		StringBuilder res=<span class="keyword">new</span> StringBuilder(<span class="string">""</span>);</span><br><span class="line">		<span class="keyword">for</span>(;r&lt;chs.length;++r)&#123;</span><br><span class="line">			<span class="keyword">if</span>(chs[r]==<span class="string">'('</span>)&#123;</span><br><span class="line">				++temp;</span><br><span class="line">			&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">				--temp;</span><br><span class="line">                <span class="keyword">if</span>(temp==<span class="number">0</span>)&#123;</span><br><span class="line">                    res.append(S.substring(l+<span class="number">1</span>, r));</span><br><span class="line">                    l=r+<span class="number">1</span>;</span><br><span class="line">			    &#125;</span><br><span class="line">			&#125;</span><br><span class="line">			</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res.toString();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><pre><code>O(n)</code></pre><h3 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><pre><code>O(n)</code></pre><h2 id="其他解法"><a href="#其他解法" class="headerlink" title="其他解法"></a>其他解法</h2><h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">removeOuterParentheses</span><span class="params">(String S)</span> </span>&#123;</span><br><span class="line">		StringBuilder res=<span class="keyword">new</span> StringBuilder();</span><br><span class="line">        <span class="keyword">int</span> count=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> ch:S.toCharArray())&#123;</span><br><span class="line">            <span class="keyword">if</span>(ch==<span class="string">')'</span>)--count;</span><br><span class="line">            <span class="keyword">if</span>(count&gt;=<span class="number">1</span>)res.append(ch);</span><br><span class="line">            <span class="keyword">if</span>(ch==<span class="string">'('</span>)++count;</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="keyword">return</span> res.toString();</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h2><pre><code>按理来说&quot;if(ch==&apos;(&apos;)++count;&quot;应该放到&quot;if(count&gt;=1)res.append(ch);&quot;前，那为什么没有呢？这是为了避免原语以为
-(开头的漏洞。</code></pre><h3 id="时间复杂度-1"><a href="#时间复杂度-1" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><pre><code>O(n)</code></pre><h3 id="空间复杂度-1"><a href="#空间复杂度-1" class="headerlink" title="空间复杂度"></a>空间复杂度</h3><pre><code>O(n)</code></pre>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-        <category>栈</category>
-      </categories>
-      <tags>
-        <tag>LeetCode</tag>
       </tags>
   </entry>
   <entry>
@@ -7231,9 +7198,85 @@ private SingleTon() {
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>PTA-Basic-1006</title>
+    <url>/2019/09/15/PTA-Basic-1006/</url>
+    <content><![CDATA[<h1 id="1006-换个格式输出整数"><a href="#1006-换个格式输出整数" class="headerlink" title="1006 换个格式输出整数"></a>1006 换个格式输出整数</h1><p>让我们用字母 B 来表示“百”、字母 S 表示“十”，用 12…n 来表示不为零的个位数字 n（&lt;10），换个格式来输出任一个不超过 3 位的正整数。例如 234 应该被输出为 BBSSS1234，因为它有 2 个“百”、3 个“十”、以及个位的 4。</p>
+<p>输入格式：<br>    每个测试输入包含 1 个测试用例，给出正整数 n（&lt;1000）。</p>
+<p>输出格式：<br>    每个测试用例的输出占一行，用规定的格式输出 n。</p>
+<p>输入样例 1：</p>
+<pre><code>234</code></pre><p>输出样例 1：</p>
+<pre><code>BBSSS1234</code></pre><p>输入样例 2：</p>
+<pre><code>23</code></pre><p>输出样例 2：</p>
+<pre><code>SS123</code></pre><hr>
+<p>分析：</p>
+<p>1因为输入的数字小于1000，所以定义一个数组长度为3的整型数组，存放数字的个位，十位，百位。</p>
+<p>2再定义一个足够大的数组存放结果。</p>
+<p>3倒叙遍历存放数字的数组，按按百对应下标为2，十位对应的下标为1，个位对应的下标的为0，分别对处理。</p>
+<p>4注意一定要在最后将字符数组的最后置为’\0’,否则会输出错误。</p>
+<p>代码：</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">void</span>)</span></span>&#123;</span><br><span class="line">   <span class="keyword">char</span> result[<span class="number">1000</span>];</span><br><span class="line">   <span class="keyword">int</span> number;</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;number);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">int</span> n=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">int</span> num[<span class="number">3</span>]=&#123;<span class="number">0</span>&#125;;</span><br><span class="line">   <span class="keyword">while</span>(number)&#123;</span><br><span class="line">       num[n++]=number%<span class="number">10</span>;</span><br><span class="line">       number=number/<span class="number">10</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">int</span> <span class="built_in">step</span>=<span class="number">0</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">3</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">int</span> time=num[i];</span><br><span class="line">       <span class="keyword">if</span>(time==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">continue</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'B'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=<span class="string">'S'</span>;</span><br><span class="line">       &#125;</span><br><span class="line">       <span class="keyword">if</span>(i==<span class="number">0</span>)&#123;</span><br><span class="line">           <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;time;j++)&#123;</span><br><span class="line">           result[<span class="built_in">step</span>++]=j+<span class="string">'1'</span>;</span><br><span class="line">       	&#125;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">   &#125;</span><br><span class="line">   result[<span class="built_in">step</span>]=<span class="string">'\0'</span>;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"%s"</span>,result);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>另一种思路：</p>
+<p>分析：</p>
+<p>利用字符串长度判断输入的是几位数，再利用字符串倒置输出对应的题目要求符号</p>
+<figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">int</span> i,j;</span><br><span class="line">   <span class="keyword">char</span> n[<span class="number">4</span>];</span><br><span class="line">   <span class="built_in">scanf</span>(<span class="string">"%s"</span>,n);</span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span>(i=<span class="built_in">strlen</span>(n);i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">       <span class="keyword">for</span>(j=<span class="number">1</span>;j&lt;=(n[<span class="built_in">strlen</span>(n)-i]-<span class="string">'0'</span>);j++)&#123;</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">3</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"B"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">2</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"S"</span>);</span><br><span class="line">           <span class="keyword">if</span>(i==<span class="number">1</span>)</span><br><span class="line">               <span class="built_in">printf</span>(<span class="string">"%d"</span>,j);</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">   <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.csdn.net/huaxuewan/article/details/85778884" title="参考资料">https://blog.csdn.net/huaxuewan/article/details/85778884</a></p>
+]]></content>
+      <categories>
+        <category>PTA</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>C语言</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>扁平化嵌套列表迭代器</title>
     <url>/2020/12/02/%E6%89%81%E5%B9%B3%E5%8C%96%E5%B5%8C%E5%A5%97%E5%88%97%E8%A1%A8%E8%BF%AD%E4%BB%A3%E5%99%A8/</url>
     <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>降低nodejs版本</title>
+    <url>/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/</url>
+    <content><![CDATA[<h2 id="使用hexo上传博文时出现异常"><a href="#使用hexo上传博文时出现异常" class="headerlink" title="使用hexo上传博文时出现异常"></a>使用hexo上传博文时出现异常</h2><p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/image-20210108115116863.png" alt="image-20210108115116863"></p>
+<p>原因：node版本太高且向前兼容性不好导致文件解析失败</p>
+<p>解决：降低node的版本</p>
+<ol>
+<li>cmd中输入where node</li>
+</ol>
+<p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/clip_image001.png" alt="img"></p>
+<ol start="2">
+<li>删除exe所在文件目录中所有内容</li>
+</ol>
+<p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/clip_image002.png" alt="img"></p>
+<ol start="3">
+<li>控制面板中卸载node.js</li>
+</ol>
+<p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/clip_image004.jpg" alt="img"></p>
+<ol start="4">
+<li>安装第版本的node</li>
+</ol>
+<p>版本入口：<a href="https://nodejs.org/download/release">https://nodejs.org/download/release</a> [注意选择下载.msi后缀结尾的文件这是Windows](<a href="https://nodejs.org/download/release，">https://nodejs.org/download/release，</a> 注意选择下载.msi后缀结尾的文件这是Windows)的安装文件，注意不要下载zip文件因为</p>
+<ol>
+<li><p>msi 为安装版本，安装过程中自动配置</p>
+</li>
+<li><p>zip 为压缩版本，安装过程中手动配置</p>
+</li>
+</ol>
+<p>最后按照教程安装即可。</p>
+<p>如果出现npm版本过高的情况，如下图</p>
+<p><img src="/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/image-20210108115611951.png" alt="image-20210108115611951"></p>
+<p>只需要，cmd中安装合适的版本即可</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install -g npm@推荐的版本即可 </span><br><span class="line"><span class="comment">##推荐的版本可以到官网上查找</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>Node</tag>
+      </tags>
   </entry>
   <entry>
     <title>use of logger(based on log4j)</title>
@@ -7449,24 +7492,6 @@ private SingleTon() {
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-2</title>
-    <url>/2019/10/19/LeetCode-2/LeetCode-2/</url>
-    <content><![CDATA[<h1 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a>两数相加</h1><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">题目描述：</span><br><span class="line"></span><br><span class="line">给定两个非空链表表示两个非负整数，位数按照逆序存储他们的每个节点只存储单个数字，将两数相加</span><br><span class="line">返回一个新的链表。</span><br><span class="line">你可以假设除了数字0外，这两个数字都不以0开头.&#123;即数字不为（002）转化为输入就是（2-&gt;0-&gt;0）也告诉我们结果不可能出现2-&gt;1-&gt;0-&gt;0这样的&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入（2-&gt;4-&gt;3）,(5-&gt;6-&gt;4)</span><br><span class="line"></span><br><span class="line">输出（7-&gt;0-&gt;8）</span><br><span class="line"></span><br><span class="line">原因：342+465&#x3D;807</span><br></pre></td></tr></table></figure>
-<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一：</span><br><span class="line"></span><br><span class="line">	通过Java自带的ArrayList数组列表，存放数值，并进行运算（首先取出两个数组列表上的相同位置处的数</span><br><span class="line">	值，若一个没有另外一个长则长的部分数值就是0，定义一个carry用于存放余数，定义一个sum用于存放和，然后</span><br><span class="line">	根据将sum对10取余的结果放入ArrayList,注意如果结尾余数不为0，那么还要将余数放入ArrayList中，防止进数</span><br><span class="line">	的丢失）</span><br><span class="line"></span><br><span class="line">二：</span><br><span class="line"></span><br><span class="line">	使用自定义的ListNode节点类（包含值与指向下一个对象的指针），首先初始化一个头结点，注意此头结点不</span><br><span class="line">	作为返回值的一部分，然后定义对输入的两个链表的两指针（用于取出链表上的每个数值），在定义一指向头</span><br><span class="line">	结点的头指针，用于操作结果链表，定义sum,carry分别用于存放和，与进数之后的操作同思路1。</span><br></pre></td></tr></table></figure>
-<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">o0002</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//		ArrayList&lt;Integer&gt;a=new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment">//		a.add(0);</span></span><br><span class="line"><span class="comment">//		ArrayList&lt;Integer&gt;b=new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment">//		b.add(0);</span></span><br><span class="line"><span class="comment">//		a.add(0);</span></span><br><span class="line"><span class="comment">//		System.out.println(Arrays.toString(Solution_1(a,b).toArray()));</span></span><br><span class="line">		ListNode a=<span class="keyword">new</span> ListNode(<span class="number">2</span>);</span><br><span class="line">		ListNode _a=a;</span><br><span class="line">		_a.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		_a=_a.next;</span><br><span class="line">		_a.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode b=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode _b=b;</span><br><span class="line">		_b.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		_b=_b.next;</span><br><span class="line">		_b.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode result=Solution_2(a,b);</span><br><span class="line">		<span class="keyword">while</span>(result!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">" "</span>+result.getVal());</span><br><span class="line">			result=result.next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Integer&gt; <span class="title">Solution_1</span><span class="params">(ArrayList&lt;Integer&gt;a,ArrayList&lt;Integer&gt;b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len_a=a.size();</span><br><span class="line">		<span class="keyword">int</span> len_b=b.size();</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> next=<span class="number">0</span>;</span><br><span class="line">		ArrayList&lt;Integer&gt; result=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Math.max(len_a, len_b);i++) &#123;</span><br><span class="line">			sum=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;len_a) &#123;</span><br><span class="line">				sum=sum+a.get(i);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;len_b) &#123;</span><br><span class="line">				sum=sum+b.get(i);</span><br><span class="line">			&#125;</span><br><span class="line">			sum=sum+next;</span><br><span class="line">			result.add(sum%<span class="number">10</span>);</span><br><span class="line">			next=sum/<span class="number">10</span>;</span><br><span class="line"><span class="comment">//			if(i==Math.max(len_a,len_b)-1&amp;&amp;next!=0) &#123;//此处防止，最高位的进数丢失。处理最高进项到最高位的算法不好</span></span><br><span class="line"><span class="comment">//				result.add(next);</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(next!=<span class="number">0</span>) &#123;<span class="comment">//放在外面判断更容易理解。</span></span><br><span class="line">			result.add(next);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(result.get(result.size()-<span class="number">1</span>)==<span class="number">0</span>&amp;&amp;result.size()&gt;<span class="number">1</span>) &#123;<span class="comment">//此处解决当所有位数都是0的情况，只保留一位0.此处是我多想了，题目中明确说不会以0开头</span></span><br><span class="line">			result.remove(result.size()-<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;<span class="comment">//新建一个节点类</span></span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">int</span> val;<span class="comment">//存储当前值</span></span><br><span class="line">		<span class="keyword">public</span> ListNode next;<span class="comment">//指向下一个位置</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.val=i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getVal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> val;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">Solution_2</span><span class="params">(ListNode a,ListNode b)</span> </span>&#123;</span><br><span class="line">		ListNode HeadNode=<span class="keyword">new</span> ListNode(<span class="number">0</span>);<span class="comment">//头节点，不做返回值的一部分。</span></span><br><span class="line">		ListNode p=a,q=b,curr=HeadNode;</span><br><span class="line">		<span class="keyword">int</span> carry=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(p!=<span class="keyword">null</span>||q!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> x=p!=<span class="keyword">null</span>?p.getVal():<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> y=q!=<span class="keyword">null</span>?q.getVal():<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> sum=x+y+carry;</span><br><span class="line">			carry=sum/<span class="number">10</span>;</span><br><span class="line">			curr.next=<span class="keyword">new</span> ListNode(sum%<span class="number">10</span>);</span><br><span class="line">			curr=curr.next;</span><br><span class="line">			<span class="keyword">if</span>(p!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				p=p.next;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(q!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				q=q.next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(carry!=<span class="number">0</span>) &#123;</span><br><span class="line">			curr.next=<span class="keyword">new</span> ListNode(carry);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> HeadNode.next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-        <category>链表</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-3</title>
     <url>/2019/10/20/LeetCode-3/LeetCode-3/</url>
     <content><![CDATA[<h1 id="最长无重字符串"><a href="#最长无重字符串" class="headerlink" title="最长无重字符串"></a>最长无重字符串</h1><a id="more"></a>
@@ -7488,6 +7513,24 @@ private SingleTon() {
       </tags>
   </entry>
   <entry>
+    <title>LeetCode-2</title>
+    <url>/2019/10/19/LeetCode-2/LeetCode-2/</url>
+    <content><![CDATA[<h1 id="两数相加"><a href="#两数相加" class="headerlink" title="两数相加"></a>两数相加</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">题目描述：</span><br><span class="line"></span><br><span class="line">给定两个非空链表表示两个非负整数，位数按照逆序存储他们的每个节点只存储单个数字，将两数相加</span><br><span class="line">返回一个新的链表。</span><br><span class="line">你可以假设除了数字0外，这两个数字都不以0开头.&#123;即数字不为（002）转化为输入就是（2-&gt;0-&gt;0）也告诉我们结果不可能出现2-&gt;1-&gt;0-&gt;0这样的&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入（2-&gt;4-&gt;3）,(5-&gt;6-&gt;4)</span><br><span class="line"></span><br><span class="line">输出（7-&gt;0-&gt;8）</span><br><span class="line"></span><br><span class="line">原因：342+465&#x3D;807</span><br></pre></td></tr></table></figure>
+<h2 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">一：</span><br><span class="line"></span><br><span class="line">	通过Java自带的ArrayList数组列表，存放数值，并进行运算（首先取出两个数组列表上的相同位置处的数</span><br><span class="line">	值，若一个没有另外一个长则长的部分数值就是0，定义一个carry用于存放余数，定义一个sum用于存放和，然后</span><br><span class="line">	根据将sum对10取余的结果放入ArrayList,注意如果结尾余数不为0，那么还要将余数放入ArrayList中，防止进数</span><br><span class="line">	的丢失）</span><br><span class="line"></span><br><span class="line">二：</span><br><span class="line"></span><br><span class="line">	使用自定义的ListNode节点类（包含值与指向下一个对象的指针），首先初始化一个头结点，注意此头结点不</span><br><span class="line">	作为返回值的一部分，然后定义对输入的两个链表的两指针（用于取出链表上的每个数值），在定义一指向头</span><br><span class="line">	结点的头指针，用于操作结果链表，定义sum,carry分别用于存放和，与进数之后的操作同思路1。</span><br></pre></td></tr></table></figure>
+<h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">o0002</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//		ArrayList&lt;Integer&gt;a=new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment">//		a.add(0);</span></span><br><span class="line"><span class="comment">//		ArrayList&lt;Integer&gt;b=new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment">//		b.add(0);</span></span><br><span class="line"><span class="comment">//		a.add(0);</span></span><br><span class="line"><span class="comment">//		System.out.println(Arrays.toString(Solution_1(a,b).toArray()));</span></span><br><span class="line">		ListNode a=<span class="keyword">new</span> ListNode(<span class="number">2</span>);</span><br><span class="line">		ListNode _a=a;</span><br><span class="line">		_a.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		_a=_a.next;</span><br><span class="line">		_a.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode b=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode _b=b;</span><br><span class="line">		_b.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		_b=_b.next;</span><br><span class="line">		_b.next=<span class="keyword">new</span> ListNode(<span class="number">0</span>);</span><br><span class="line">		ListNode result=Solution_2(a,b);</span><br><span class="line">		<span class="keyword">while</span>(result!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			System.out.println(<span class="string">" "</span>+result.getVal());</span><br><span class="line">			result=result.next;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ArrayList&lt;Integer&gt; <span class="title">Solution_1</span><span class="params">(ArrayList&lt;Integer&gt;a,ArrayList&lt;Integer&gt;b)</span></span>&#123;</span><br><span class="line">		<span class="keyword">int</span> len_a=a.size();</span><br><span class="line">		<span class="keyword">int</span> len_b=b.size();</span><br><span class="line">		<span class="keyword">int</span> sum=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> next=<span class="number">0</span>;</span><br><span class="line">		ArrayList&lt;Integer&gt; result=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;Math.max(len_a, len_b);i++) &#123;</span><br><span class="line">			sum=<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;len_a) &#123;</span><br><span class="line">				sum=sum+a.get(i);</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(i&lt;len_b) &#123;</span><br><span class="line">				sum=sum+b.get(i);</span><br><span class="line">			&#125;</span><br><span class="line">			sum=sum+next;</span><br><span class="line">			result.add(sum%<span class="number">10</span>);</span><br><span class="line">			next=sum/<span class="number">10</span>;</span><br><span class="line"><span class="comment">//			if(i==Math.max(len_a,len_b)-1&amp;&amp;next!=0) &#123;//此处防止，最高位的进数丢失。处理最高进项到最高位的算法不好</span></span><br><span class="line"><span class="comment">//				result.add(next);</span></span><br><span class="line"><span class="comment">//			&#125;</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(next!=<span class="number">0</span>) &#123;<span class="comment">//放在外面判断更容易理解。</span></span><br><span class="line">			result.add(next);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">while</span>(result.get(result.size()-<span class="number">1</span>)==<span class="number">0</span>&amp;&amp;result.size()&gt;<span class="number">1</span>) &#123;<span class="comment">//此处解决当所有位数都是0的情况，只保留一位0.此处是我多想了，题目中明确说不会以0开头</span></span><br><span class="line">			result.remove(result.size()-<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> result;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">ListNode</span></span>&#123;<span class="comment">//新建一个节点类</span></span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">int</span> val;<span class="comment">//存储当前值</span></span><br><span class="line">		<span class="keyword">public</span> ListNode next;<span class="comment">//指向下一个位置</span></span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="title">ListNode</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">			<span class="keyword">this</span>.val=i;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getVal</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> val;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> ListNode <span class="title">Solution_2</span><span class="params">(ListNode a,ListNode b)</span> </span>&#123;</span><br><span class="line">		ListNode HeadNode=<span class="keyword">new</span> ListNode(<span class="number">0</span>);<span class="comment">//头节点，不做返回值的一部分。</span></span><br><span class="line">		ListNode p=a,q=b,curr=HeadNode;</span><br><span class="line">		<span class="keyword">int</span> carry=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">while</span>(p!=<span class="keyword">null</span>||q!=<span class="keyword">null</span>) &#123;</span><br><span class="line">			<span class="keyword">int</span> x=p!=<span class="keyword">null</span>?p.getVal():<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> y=q!=<span class="keyword">null</span>?q.getVal():<span class="number">0</span>;</span><br><span class="line">			<span class="keyword">int</span> sum=x+y+carry;</span><br><span class="line">			carry=sum/<span class="number">10</span>;</span><br><span class="line">			curr.next=<span class="keyword">new</span> ListNode(sum%<span class="number">10</span>);</span><br><span class="line">			curr=curr.next;</span><br><span class="line">			<span class="keyword">if</span>(p!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				p=p.next;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(q!=<span class="keyword">null</span>) &#123;</span><br><span class="line">				q=q.next;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(carry!=<span class="number">0</span>) &#123;</span><br><span class="line">			curr.next=<span class="keyword">new</span> ListNode(carry);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> HeadNode.next;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+        <category>链表</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode-7</title>
     <url>/2020/05/13/LeetCode-7/LeetCode-7/</url>
     <content><![CDATA[<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
@@ -7499,6 +7542,29 @@ private SingleTon() {
 <h2 id="思路1-逆序取值"><a href="#思路1-逆序取值" class="headerlink" title="思路1-逆序取值"></a>思路1-逆序取值</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">不断取出原整数的最后一个数位</span><br></pre></td></tr></table></figure>
 <h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">reverse</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">int</span> result=<span class="number">0</span>;</span><br><span class="line">       <span class="keyword">int</span> flag=x&gt;<span class="number">0</span>?<span class="number">1</span>:-<span class="number">1</span>;</span><br><span class="line">           x=Math.abs(x);</span><br><span class="line">           <span class="keyword">while</span>(x&gt;<span class="number">0</span>)&#123;</span><br><span class="line">           	<span class="keyword">if</span>(result&gt;<span class="number">214748364</span>)&#123;</span><br><span class="line">               	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">               &#125;<span class="keyword">else</span> <span class="keyword">if</span>(result==<span class="number">214748364</span>)&#123;</span><br><span class="line">               	<span class="keyword">if</span>((x&gt;<span class="number">7</span>&amp;&amp;flag==<span class="number">1</span>)||(flag==-<span class="number">1</span>&amp;&amp;x&gt;<span class="number">8</span>))&#123;</span><br><span class="line">               		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">               	&#125;</span><br><span class="line">               &#125;</span><br><span class="line">               result=result*<span class="number">10</span>+(x%<span class="number">10</span>);</span><br><span class="line">               x/=<span class="number">10</span>;                </span><br><span class="line">           &#125;</span><br><span class="line">       <span class="keyword">return</span> flag*result;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 <h3 id="时间复杂度：O-n"><a href="#时间复杂度：O-n" class="headerlink" title="时间复杂度：O(n)"></a>时间复杂度：O(n)</h3>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+        <category>数学公式</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-9</title>
+    <url>/2020/05/13/LeetCode-9/LeetCode-9/</url>
+    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">输入: 121</span><br><span class="line"></span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">输入: -121</span><br><span class="line">输出: false</span><br><span class="line">解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3"></a>示例 3</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">输入: 10</span><br><span class="line">输出: false</span><br><span class="line">解释: 从右向左读, 为 01 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
+<h2 id="思路1-反转一半数字"><a href="#思路1-反转一半数字" class="headerlink" title="思路1-反转一半数字"></a>思路1-反转一半数字</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">由于数字对称的特点，那么一半的反转，等于另外一半。</span><br></pre></td></tr></table></figure>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> revert = <span class="number">0</span>;		</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span> || (x%<span class="number">10</span> ==<span class="number">0</span> &amp;&amp; x!=<span class="number">0</span>))&#123;<span class="comment">//此处是如果为10的倍数或者负数，但不是0，则不是对称的。</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;<span class="comment">//由于对称数的特性，左边-中间与右边-中间的数值应该一样</span></span><br><span class="line">	<span class="keyword">while</span>(revert&lt;x)&#123;<span class="comment">//反转的数等于时表名有偶数个数位，&gt;时表示奇数个数位</span></span><br><span class="line">		revert =revert*<span class="number">10</span>+x%<span class="number">10</span>;</span><br><span class="line">		x=x/<span class="number">10</span>;</span><br><span class="line">	&#125;		    </span><br><span class="line">	<span class="keyword">if</span>(revert==x || revert/<span class="number">10</span> ==x)&#123;<span class="comment">//防止有奇数个数位，那么就应该取整再比较</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-n-2"><a href="#时间复杂度：O-n-2" class="headerlink" title="时间复杂度：O(n^2)"></a>时间复杂度：O(n^2)</h3><h2 id="思路2-字符串法"><a href="#思路2-字符串法" class="headerlink" title="思路2-字符串法"></a>思路2-字符串法</h2><p><code>将数字转化为字符串，调用反转函数，返回两者比对值。</code></p>
+]]></content>
       <categories>
         <category>算法</category>
         <category>LeetCode</category>
@@ -7539,29 +7605,6 @@ private SingleTon() {
         <category>算法</category>
         <category>LeetCode</category>
         <category>字符串</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>LeetCode-9</title>
-    <url>/2020/05/13/LeetCode-9/LeetCode-9/</url>
-    <content><![CDATA[<h1 id="回文数"><a href="#回文数" class="headerlink" title="回文数"></a>回文数</h1><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
-<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">输入: 121</span><br><span class="line"></span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">输入: -121</span><br><span class="line">输出: false</span><br><span class="line">解释: 从左向右读, 为 -121 。 从右向左读, 为 121- 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
-<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例 3"></a>示例 3</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">输入: 10</span><br><span class="line">输出: false</span><br><span class="line">解释: 从右向左读, 为 01 。因此它不是一个回文数。</span><br></pre></td></tr></table></figure>
-<h2 id="思路1-反转一半数字"><a href="#思路1-反转一半数字" class="headerlink" title="思路1-反转一半数字"></a>思路1-反转一半数字</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">由于数字对称的特点，那么一半的反转，等于另外一半。</span><br></pre></td></tr></table></figure>
-<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPalindrome</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> revert = <span class="number">0</span>;		</span><br><span class="line">	<span class="keyword">if</span>(x&lt;<span class="number">0</span> || (x%<span class="number">10</span> ==<span class="number">0</span> &amp;&amp; x!=<span class="number">0</span>))&#123;<span class="comment">//此处是如果为10的倍数或者负数，但不是0，则不是对称的。</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">	&#125;<span class="comment">//由于对称数的特性，左边-中间与右边-中间的数值应该一样</span></span><br><span class="line">	<span class="keyword">while</span>(revert&lt;x)&#123;<span class="comment">//反转的数等于时表名有偶数个数位，&gt;时表示奇数个数位</span></span><br><span class="line">		revert =revert*<span class="number">10</span>+x%<span class="number">10</span>;</span><br><span class="line">		x=x/<span class="number">10</span>;</span><br><span class="line">	&#125;		    </span><br><span class="line">	<span class="keyword">if</span>(revert==x || revert/<span class="number">10</span> ==x)&#123;<span class="comment">//防止有奇数个数位，那么就应该取整再比较</span></span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="时间复杂度：O-n-2"><a href="#时间复杂度：O-n-2" class="headerlink" title="时间复杂度：O(n^2)"></a>时间复杂度：O(n^2)</h3><h2 id="思路2-字符串法"><a href="#思路2-字符串法" class="headerlink" title="思路2-字符串法"></a>思路2-字符串法</h2><p><code>将数字转化为字符串，调用反转函数，返回两者比对值。</code></p>
-]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-        <category>数学公式</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -7715,29 +7758,6 @@ private SingleTon() {
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-17</title>
-    <url>/2020/05/17/LeetCode-17/LeetCode-17/</url>
-    <content><![CDATA[<h1 id="电话号码的字母组合"><a href="#电话号码的字母组合" class="headerlink" title="电话号码的字母组合"></a>电话号码的字母组合</h1><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
-<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。</p>
-<p>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</p>
-<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png" alt><br>说明:<br>尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br></pre></td></tr></table></figure>
-<h2 id="思路1-回溯法"><a href="#思路1-回溯法" class="headerlink" title="思路1-回溯法"></a>思路1-回溯法</h2><p>操作公共列表，保存结果。太聪明了这种算法，代码理解更好。</p>
-<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> String map[]=&#123;<span class="string">""</span>,<span class="string">""</span>,<span class="string">"abc"</span>,<span class="string">"def"</span>,<span class="string">"ghi"</span>,<span class="string">"jkl"</span>,<span class="string">"mno"</span>,<span class="string">"pqrs"</span>,<span class="string">"tuv"</span>,<span class="string">"wxyz"</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line">List&lt;String&gt;result=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] digitsArray=digits.toCharArray();<span class="comment">//将"12"转化为【'1'、'2'】</span></span><br><span class="line">        len=digitsArray.length;<span class="comment">//此处保存长度，用于递归的结束条件</span></span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span>)<span class="keyword">return</span> result;<span class="comment">//如果为空串直接返回空列表</span></span><br><span class="line">        <span class="keyword">char</span>[]temp=<span class="keyword">new</span> <span class="keyword">char</span>[len];<span class="comment">//定义一个字符数组用于存储如['a','d']、或者['a','e']，这样的中间结果</span></span><br><span class="line">        letterCombinations(digitsArray,<span class="number">0</span>,temp);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">letterCombinations</span><span class="params">(<span class="keyword">char</span>[] digitsArray,<span class="keyword">int</span> index,<span class="keyword">char</span>[] temp)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index==len)&#123;<span class="comment">//结束条件，如果达到len表明到达digits的末尾之后，此时temp的每一位都有了字符</span></span><br><span class="line">            result.add(String.valueOf(temp));<span class="comment">//将temp数组直接转化为字符串，并存入字符串列表，每一个temp代表一个结果字符串</span></span><br><span class="line">               <span class="keyword">return</span> ;<span class="comment">//返回避免递归无法终止</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span> chs[]=map[digitsArray[index]-<span class="string">'0'</span>].toCharArray();<span class="comment">//获得当前索引映射到的字母数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> ch:chs)&#123;<span class="comment">//将此索引的每一个字母先存入到temp中，然后进行下一位temp索引位置处字母的搭配</span></span><br><span class="line">            temp[index]=ch;</span><br><span class="line">            letterCombinations(digitsArray,index+<span class="number">1</span>,temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="时间复杂度：O-3-N-×4-M"><a href="#时间复杂度：O-3-N-×4-M" class="headerlink" title="时间复杂度：O(3^N ×4^M )"></a>时间复杂度：O(3^N ×4^M )</h3>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-        <category>回溯算法</category>
-        <category>字符串</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-16</title>
     <url>/2020/05/17/LeetCode-16/LeetCode-16/</url>
     <content><![CDATA[<h1 id="最接近的三数之和"><a href="#最接近的三数之和" class="headerlink" title="最接近的三数之和"></a>最接近的三数之和</h1><a id="more"></a>
@@ -7755,6 +7775,29 @@ private SingleTon() {
         <category>LeetCode</category>
         <category>数组</category>
         <category>双指针</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-17</title>
+    <url>/2020/05/17/LeetCode-17/LeetCode-17/</url>
+    <content><![CDATA[<h1 id="电话号码的字母组合"><a href="#电话号码的字母组合" class="headerlink" title="电话号码的字母组合"></a>电话号码的字母组合</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>给定一个仅包含数字 2-9 的字符串，返回所有它能表示的字母组合。</p>
+<p>给出数字到字母的映射如下（与电话按键相同）。注意 1 不对应任何字母。</p>
+<p><img src="https://assets.leetcode-cn.com/aliyun-lc-upload/original_images/17_telephone_keypad.png" alt><br>说明:<br>尽管上面的答案是按字典序排列的，但是你可以任意选择答案输出的顺序。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入：&quot;23&quot;</span><br><span class="line">输出：[&quot;ad&quot;, &quot;ae&quot;, &quot;af&quot;, &quot;bd&quot;, &quot;be&quot;, &quot;bf&quot;, &quot;cd&quot;, &quot;ce&quot;, &quot;cf&quot;].</span><br></pre></td></tr></table></figure>
+<h2 id="思路1-回溯法"><a href="#思路1-回溯法" class="headerlink" title="思路1-回溯法"></a>思路1-回溯法</h2><p>操作公共列表，保存结果。太聪明了这种算法，代码理解更好。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">static</span> String map[]=&#123;<span class="string">""</span>,<span class="string">""</span>,<span class="string">"abc"</span>,<span class="string">"def"</span>,<span class="string">"ghi"</span>,<span class="string">"jkl"</span>,<span class="string">"mno"</span>,<span class="string">"pqrs"</span>,<span class="string">"tuv"</span>,<span class="string">"wxyz"</span>&#125;;</span><br><span class="line"><span class="keyword">int</span> len;</span><br><span class="line">List&lt;String&gt;result=<span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="function"><span class="keyword">public</span> List&lt;String&gt; <span class="title">letterCombinations</span><span class="params">(String digits)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">char</span>[] digitsArray=digits.toCharArray();<span class="comment">//将"12"转化为【'1'、'2'】</span></span><br><span class="line">        len=digitsArray.length;<span class="comment">//此处保存长度，用于递归的结束条件</span></span><br><span class="line">        <span class="keyword">if</span>(len==<span class="number">0</span>)<span class="keyword">return</span> result;<span class="comment">//如果为空串直接返回空列表</span></span><br><span class="line">        <span class="keyword">char</span>[]temp=<span class="keyword">new</span> <span class="keyword">char</span>[len];<span class="comment">//定义一个字符数组用于存储如['a','d']、或者['a','e']，这样的中间结果</span></span><br><span class="line">        letterCombinations(digitsArray,<span class="number">0</span>,temp);</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">letterCombinations</span><span class="params">(<span class="keyword">char</span>[] digitsArray,<span class="keyword">int</span> index,<span class="keyword">char</span>[] temp)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(index==len)&#123;<span class="comment">//结束条件，如果达到len表明到达digits的末尾之后，此时temp的每一位都有了字符</span></span><br><span class="line">            result.add(String.valueOf(temp));<span class="comment">//将temp数组直接转化为字符串，并存入字符串列表，每一个temp代表一个结果字符串</span></span><br><span class="line">               <span class="keyword">return</span> ;<span class="comment">//返回避免递归无法终止</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">char</span> chs[]=map[digitsArray[index]-<span class="string">'0'</span>].toCharArray();<span class="comment">//获得当前索引映射到的字母数组</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> ch:chs)&#123;<span class="comment">//将此索引的每一个字母先存入到temp中，然后进行下一位temp索引位置处字母的搭配</span></span><br><span class="line">            temp[index]=ch;</span><br><span class="line">            letterCombinations(digitsArray,index+<span class="number">1</span>,temp);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-3-N-×4-M"><a href="#时间复杂度：O-3-N-×4-M" class="headerlink" title="时间复杂度：O(3^N ×4^M )"></a>时间复杂度：O(3^N ×4^M )</h3>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+        <category>回溯算法</category>
+        <category>字符串</category>
       </categories>
       <tags>
         <tag>算法</tag>
@@ -8178,32 +8221,6 @@ private SingleTon() {
       </tags>
   </entry>
   <entry>
-    <title>LeetCode-35</title>
-    <url>/2020/05/24/LeetCode-35/LeetCode-35/</url>
-    <content><![CDATA[<h1 id="有效的数独"><a href="#有效的数独" class="headerlink" title="有效的数独"></a>有效的数独</h1><a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
-<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。</p>
-<p>数字 1-9 在每一行只能出现一次。<br>数字 1-9 在每一列只能出现一次。<br>数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。</p>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [&quot;5&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],</span><br><span class="line">  [&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],</span><br><span class="line">  [&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]</span><br><span class="line">]</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
-<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],</span><br><span class="line">  [&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],</span><br><span class="line">  [&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]</span><br><span class="line">]</span><br><span class="line">输出: false</span><br><span class="line">解释: 除了第一行的第一个数字从 5 改为 8 以外，空格内其他数字均与 示例1 相同。</span><br><span class="line">     但由于位于左上角的 3x3 宫内有两个 8 存在, 因此这个数独是无效的。</span><br></pre></td></tr></table></figure>
-<h2 id="思路1-一次迭代"><a href="#思路1-一次迭代" class="headerlink" title="思路1-一次迭代"></a>思路1-一次迭代</h2><p>不断的把数字存入相应的行列九宫格数组中，然后判断所在位置的数字的数目是否合理，不合理直接返回false，最终结束循环后返回true。</p>
-<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">boolean</span> <span class="title">isValidSudoku1</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 定义三个9*9的二维数组，分别用来存储，每一行，每一列，每一个九宫格，由于默认初始化为0。</span></span><br><span class="line">    <span class="keyword">int</span>[][] rows = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">int</span>[][] columns = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">int</span>[][] boxes = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">char</span> num;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> box_index;</span><br><span class="line">    <span class="comment">// 验证</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">        num = board[i][j];</span><br><span class="line">        <span class="keyword">if</span> (num != <span class="string">'.'</span>) &#123;</span><br><span class="line">          n = num-<span class="string">'1'</span>;<span class="comment">//把当前的数值去字符化</span></span><br><span class="line">          box_index = (i / <span class="number">3</span> ) * <span class="number">3</span> + j / <span class="number">3</span>;<span class="comment">//确认当前所在索引是哪一个九宫格内部</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">// 将当前单元格的值存储到对应的某一行，某一列，以及某一个九宫格中</span></span><br><span class="line">          rows[i][n]+=<span class="number">1</span>;<span class="comment">//行</span></span><br><span class="line">          columns[j][n]+=<span class="number">1</span>;<span class="comment">//列</span></span><br><span class="line">          boxes[box_index][n]+=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 确认是否每个索引添加后的行、列、九宫格都是合格的。</span></span><br><span class="line">          <span class="keyword">if</span> (rows[i][n] &gt; <span class="number">1</span> || columns[j][n] &gt; <span class="number">1</span> || boxes[box_index][n] &gt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>由于数组格子的数目始终为81个，所以时间复杂度为O(1)</p>
-<h2 id="思路2-一次迭代"><a href="#思路2-一次迭代" class="headerlink" title="思路2-一次迭代"></a>思路2-一次迭代</h2><p>将数组换位束字，用位串，来存储数目。</p>
-<h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] row = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">int</span>[] col = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">int</span>[] squal = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; ++j)</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> index = board[i][j] - <span class="string">'1'</span>;</span><br><span class="line">                    <span class="keyword">if</span> ((row[i] &amp; (<span class="number">1</span> &lt;&lt; index)) &gt; <span class="number">0</span> || (col[j] &amp; (<span class="number">1</span> &lt;&lt; index)) &gt; <span class="number">0</span> || (squal[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>] &amp; (<span class="number">1</span> &lt;&lt; index)) &gt; <span class="number">0</span>)</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    row[i] |= <span class="number">1</span> &lt;&lt; index;</span><br><span class="line">                    col[j] |= <span class="number">1</span> &lt;&lt; index;</span><br><span class="line">                    squal[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>] |= <span class="number">1</span> &lt;&lt; index;</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h3 id="时间复杂度：O-1"><a href="#时间复杂度：O-1" class="headerlink" title="时间复杂度：O(1)"></a>时间复杂度：O(1)</h3>]]></content>
-      <categories>
-        <category>算法</category>
-        <category>LeetCode</category>
-        <category>数组</category>
-        <category>哈希表</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-        <tag>Java</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>LeetCode-34</title>
     <url>/2020/05/24/LeetCode-34/LeetCode-34/</url>
     <content><![CDATA[<h1 id="搜索插入位置"><a href="#搜索插入位置" class="headerlink" title="搜索插入位置"></a>搜索插入位置</h1><a id="more"></a>
@@ -8228,6 +8245,32 @@ private SingleTon() {
         <category>LeetCode</category>
         <category>数组</category>
         <category>二分查找</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>LeetCode-35</title>
+    <url>/2020/05/24/LeetCode-35/LeetCode-35/</url>
+    <content><![CDATA[<h1 id="有效的数独"><a href="#有效的数独" class="headerlink" title="有效的数独"></a>有效的数独</h1><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">来源：力扣（LeetCode）</span><br><span class="line">链接：https:&#x2F;&#x2F;leetcode-cn.com&#x2F;problems&#x2F;zigzag-conversion</span><br></pre></td></tr></table></figure>
+<h2 id="题目内容"><a href="#题目内容" class="headerlink" title="题目内容"></a>题目内容</h2><p>判断一个 9x9 的数独是否有效。只需要根据以下规则，验证已经填入的数字是否有效即可。</p>
+<p>数字 1-9 在每一行只能出现一次。<br>数字 1-9 在每一列只能出现一次。<br>数字 1-9 在每一个以粗实线分隔的 3x3 宫内只能出现一次。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例 1"></a>示例 1</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [&quot;5&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],</span><br><span class="line">  [&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],</span><br><span class="line">  [&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]</span><br><span class="line">]</span><br><span class="line">输出: true</span><br></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例 2"></a>示例 2</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">输入:</span><br><span class="line">[</span><br><span class="line">  [&quot;8&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;,&quot;9&quot;,&quot;5&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;9&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;3&quot;],</span><br><span class="line">  [&quot;4&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;3&quot;,&quot;.&quot;,&quot;.&quot;,&quot;1&quot;],</span><br><span class="line">  [&quot;7&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;6&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;6&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;2&quot;,&quot;8&quot;,&quot;.&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;4&quot;,&quot;1&quot;,&quot;9&quot;,&quot;.&quot;,&quot;.&quot;,&quot;5&quot;],</span><br><span class="line">  [&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;.&quot;,&quot;8&quot;,&quot;.&quot;,&quot;.&quot;,&quot;7&quot;,&quot;9&quot;]</span><br><span class="line">]</span><br><span class="line">输出: false</span><br><span class="line">解释: 除了第一行的第一个数字从 5 改为 8 以外，空格内其他数字均与 示例1 相同。</span><br><span class="line">     但由于位于左上角的 3x3 宫内有两个 8 存在, 因此这个数独是无效的。</span><br></pre></td></tr></table></figure>
+<h2 id="思路1-一次迭代"><a href="#思路1-一次迭代" class="headerlink" title="思路1-一次迭代"></a>思路1-一次迭代</h2><p>不断的把数字存入相应的行列九宫格数组中，然后判断所在位置的数字的数目是否合理，不合理直接返回false，最终结束循环后返回true。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span>  <span class="keyword">boolean</span> <span class="title">isValidSudoku1</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 定义三个9*9的二维数组，分别用来存储，每一行，每一列，每一个九宫格，由于默认初始化为0。</span></span><br><span class="line">    <span class="keyword">int</span>[][] rows = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">int</span>[][] columns = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">int</span>[][] boxes = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>][<span class="number">9</span>];</span><br><span class="line">    <span class="keyword">char</span> num;</span><br><span class="line">    <span class="keyword">int</span> n;</span><br><span class="line">    <span class="keyword">int</span> box_index;</span><br><span class="line">    <span class="comment">// 验证</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; j++) &#123;</span><br><span class="line">        num = board[i][j];</span><br><span class="line">        <span class="keyword">if</span> (num != <span class="string">'.'</span>) &#123;</span><br><span class="line">          n = num-<span class="string">'1'</span>;<span class="comment">//把当前的数值去字符化</span></span><br><span class="line">          box_index = (i / <span class="number">3</span> ) * <span class="number">3</span> + j / <span class="number">3</span>;<span class="comment">//确认当前所在索引是哪一个九宫格内部</span></span><br><span class="line"></span><br><span class="line">          <span class="comment">// 将当前单元格的值存储到对应的某一行，某一列，以及某一个九宫格中</span></span><br><span class="line">          rows[i][n]+=<span class="number">1</span>;<span class="comment">//行</span></span><br><span class="line">          columns[j][n]+=<span class="number">1</span>;<span class="comment">//列</span></span><br><span class="line">          boxes[box_index][n]+=<span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">          <span class="comment">// 确认是否每个索引添加后的行、列、九宫格都是合格的。</span></span><br><span class="line">          <span class="keyword">if</span> (rows[i][n] &gt; <span class="number">1</span> || columns[j][n] &gt; <span class="number">1</span> || boxes[box_index][n] &gt; <span class="number">1</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a>时间复杂度</h3><p>由于数组格子的数目始终为81个，所以时间复杂度为O(1)</p>
+<h2 id="思路2-一次迭代"><a href="#思路2-一次迭代" class="headerlink" title="思路2-一次迭代"></a>思路2-一次迭代</h2><p>将数组换位束字，用位串，来存储数目。</p>
+<h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isValidSudoku</span><span class="params">(<span class="keyword">char</span>[][] board)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] row = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">int</span>[] col = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">int</span>[] squal = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">9</span>];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; ++i)</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">9</span>; ++j)</span><br><span class="line">                <span class="keyword">if</span> (board[i][j] != <span class="string">'.'</span>) &#123;</span><br><span class="line">                    <span class="keyword">int</span> index = board[i][j] - <span class="string">'1'</span>;</span><br><span class="line">                    <span class="keyword">if</span> ((row[i] &amp; (<span class="number">1</span> &lt;&lt; index)) &gt; <span class="number">0</span> || (col[j] &amp; (<span class="number">1</span> &lt;&lt; index)) &gt; <span class="number">0</span> || (squal[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>] &amp; (<span class="number">1</span> &lt;&lt; index)) &gt; <span class="number">0</span>)</span><br><span class="line">                        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">                    row[i] |= <span class="number">1</span> &lt;&lt; index;</span><br><span class="line">                    col[j] |= <span class="number">1</span> &lt;&lt; index;</span><br><span class="line">                    squal[i / <span class="number">3</span> * <span class="number">3</span> + j / <span class="number">3</span>] |= <span class="number">1</span> &lt;&lt; index;</span><br><span class="line">                &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h3 id="时间复杂度：O-1"><a href="#时间复杂度：O-1" class="headerlink" title="时间复杂度：O(1)"></a>时间复杂度：O(1)</h3>]]></content>
+      <categories>
+        <category>算法</category>
+        <category>LeetCode</category>
+        <category>数组</category>
+        <category>哈希表</category>
       </categories>
       <tags>
         <tag>算法</tag>

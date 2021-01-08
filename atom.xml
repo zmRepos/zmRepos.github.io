@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2020-12-23T15:27:24.054Z</updated>
+  <updated>2021-01-08T04:22:27.150Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>降低nodejs版本</title>
+    <link href="http://zm163.github.io/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/"/>
+    <id>http://zm163.github.io/2021/01/08/%E9%99%8D%E4%BD%8Enodejs%E7%89%88%E6%9C%AC/</id>
+    <published>2021-01-08T03:47:06.000Z</published>
+    <updated>2021-01-08T04:22:27.150Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;使用hexo上传博文时出现异常&quot;&gt;&lt;a href=&quot;#使用hexo上传博文时出现异常&quot; class=&quot;headerlink&quot; title=&quot;使用hexo上传博文时出现异常&quot;&gt;&lt;/a&gt;使用hexo上传博文时出现异常&lt;/h2&gt;&lt;p&gt;&lt;img
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="工具" scheme="http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="Node" scheme="http://zm163.github.io/tags/Node/"/>
+    
+  </entry>
   
   <entry>
     <title>use of logger(based on log4j)</title>
@@ -428,31 +457,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;删除重复字符串中的所有相邻重复项&quot;&gt;&lt;a href=&quot;#删除重复字符串中的所有相邻重复项&quot; class=&quot;headerlink&quot; title=&quot;删除重复字符串中的所有相邻重复项&quot;&gt;&lt;/a&gt;删除重复字符串中的所有相邻重复项&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
-      <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
-    
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/tags/LeetCode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>化栈为队</title>
-    <link href="http://zm163.github.io/2020/08/17/%E5%8C%96%E6%A0%88%E4%B8%BA%E9%98%9F/"/>
-    <id>http://zm163.github.io/2020/08/17/%E5%8C%96%E6%A0%88%E4%B8%BA%E9%98%9F/</id>
-    <published>2020-08-17T14:51:03.000Z</published>
-    <updated>2020-08-17T15:03:39.984Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;化队为栈&quot;&gt;&lt;a href=&quot;#化队为栈&quot; class=&quot;headerlink&quot; title=&quot;化队为栈&quot;&gt;&lt;/a&gt;化队为栈&lt;/h1&gt;
     
     </summary>
     

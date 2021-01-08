@@ -128,6 +128,90 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1047"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/26/PTA-Basic-1047/"
+    >PTA-Basic-1047</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/26/PTA-Basic-1047/" class="article-date">
+  <time datetime="2019-09-26T13:00:38.000Z" itemprop="datePublished">2019-09-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>编程团体赛的规则为：每个参赛队由若干队员组成；所有队员独立比赛；参赛队的成绩为所有队员的成绩和；成绩最高的队获胜。</p>
+<p>现给定所有队员的比赛成绩，请你编写程序找出冠军队。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​4<br>​​ ），即所有参赛队员总数。随后 N 行，每行给出一位队员的成绩，格式为：队伍编号-队员编号 成绩，其中队伍编号为 1 到 1000 的正整数，队员编号为 1 到 10 的正整数，成绩为 0 到 100 的整数。</p>
+<p>输出格式：<br>在一行中输出冠军队的编号和总成绩，其间以一个空格分隔。注意：题目保证冠军队是唯一的。</p>
+<p>输入样例：</p>
+<pre><code>6
+3-10 99
+11-5 87
+102-1 0
+102-3 100
+11-9 89
+3-2 61</code></pre><p>输出样例：</p>
+<pre><code>11 176</code></pre><p>分析：此题与前面的挖掘机那题完全一样。<br>定义一个足够大的数组要把队伍编号都包含在内，然后把输输入一个队伍的相关信息，可以跳过中间一个数字的读取，队伍编号就是对应其在数组的位置，每次就<br>把输入的分数加到对应的位置，然后跟目前位置最大的比，如果比它大就把它存储下来，最后直接输出队伍编号，与分数。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int schools[10001];
+    int max=0;
+    int max_school=0;
+    int n,a,b;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d-%*d %d&quot;,&amp;a,&amp;b);//%*d代表不接受此输入。
+        schools[a]=schools[a]+b;
+        if(schools[a]&gt;max){
+            max=schools[a];
+            max_school=a;
+        }
+    }
+    printf(&quot;%d %d&quot;,max_school,max);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1048"
   class="article article-type-post"
   itemscope
@@ -307,158 +391,6 @@ int main(void){
     }
     printf(&quot;%d %d&quot;,i,j);
     return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1045"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/25/PTA-Basic-1045/"
-    >PTA-Basic-1045</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/25/PTA-Basic-1045/" class="article-date">
-  <time datetime="2019-09-25T13:46:30.000Z" itemprop="datePublished">2019-09-25</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>著名的快速排序算法里有一个经典的划分过程：我们通常采用某种方法取一个元素作为主元，通过交换，把比主元小的元素放到它的左边，比主元大的元素放到它的右边。 给定划分后的 N 个互不相同的正整数的排列，请问有多少个元素可能是划分前选取的主元？</p>
-<p>例如给定 $N = 5$, 排列是1、3、2、4、5。则：</p>
-<p>1 的左边没有元素，右边的元素都比它大，所以它可能是主元；<br>尽管 3 的左边元素都比它小，但其右边的 2 比它小，所以它不能是主元；<br>尽管 2 的右边元素都比它大，但其左边的 3 比它大，所以它不能是主元；<br>类似原因，4 和 5 都可能是主元。<br>因此，有 3 个元素可能是主元。</p>
-<p>输入格式：<br>输入在第 1 行中给出一个正整数 N（≤10<br>​5<br>​​ ）； 第 2 行是空格分隔的 N 个不同的正整数，每个数不超过 10<br>​9<br>​​ 。</p>
-<p>输出格式：<br>在第 1 行中输出有可能是主元的元素个数；在第 2 行中按递增顺序输出这些元素，其间以 1 个空格分隔，行首尾不得有多余空格。</p>
-<p>输入样例：<br>5<br>1 3 2 4 5<br>输出样例：<br>3<br>1 4 5</p>
-<p>我的思路：<br>使用for循环，从左边开始遍历如果有比它大的就标记它自己与那个数字，但是不跳出循环继续遍历，继续标识不合格的数字，如果一次循环下来没有找到比它大的数字那么说明他是合格的，合格的就存入另外一个数组。如果不是合格的那么后面比它小的都不合格了，所以不用遍历这些，最后最后得出一个主元的递增数列。但是这个方发还是有一个测试点1超时了。我还是可以的能把别人一半运行超时的思路减到一个。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-int main(void){
-    unsigned int num;
-    scanf(&quot;%d&quot;,&amp;num);
-    int res[num];
-    memset(res,0,sizeof(res));
-
-    int  nums[2][num];
-    memset(nums,0,sizeof(nums));
-    int i=0;
-    while(i&lt;num){
-        scanf(&quot;%d&quot;,&amp;nums[0][i++]);
-    }
-    int time=0;
-    for(i=0;i&lt;num;i++){
-        int key=nums[0][i];
-            if(nums[1][i]!=1){
-                int j=i+1;
-                int flag=0;
-                for(;j&lt;num;j++){
-                    if(nums[0][j]&lt;key){
-                        nums[1][j]=1;
-                        nums[1][i]=1;
-                        flag=1;
-                    }
-                }
-                if(!flag){
-                    res[time]=key;
-                    time++;
-                }
-        }
-    }
-    printf(&quot;%d\n&quot;,time);
-    for(int j=0;j&lt;time;j++){
-        if(j==0){
-            printf(&quot;%d&quot;,res[j]);
-        }else{
-            printf(&quot; %d&quot;,res[j]);
-        }
-    }
-    printf(&quot;\n&quot;);
-    return 0;
-}</code></pre><p>思路二：<br>定义两个数组一个用来存储原数组，另一个用来存储对原数组排序后的数组。<br>遍历原数组，如果对应已经排好序的数组的相同位置也为那么这个数可能为主元（特例：3 2 1，1 2 3）还要保证他是原数组前面最大的哪一个，这又符合这两条件他才是主元，存入数组。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;string.h&gt;
-
-int cmp(const void *a, const void *b)
-{
-  return *((int *)a)-*((int *)b);
-}
-
-int main()
-{
-  int iNum=0;
-  scanf(&quot;%d&quot;,&amp;iNum);
-  int iData[iNum],iData_s[iNum];
-  for(int i=0;i&lt;iNum;i++)
-  {
-    scanf(&quot;%d&quot;,&amp;iData[i]);
-    iData_s[i]=iData[i];
-  }
-  qsort(iData_s,iNum,sizeof(int),cmp);//快速排序
-  int iZY[iNum];
-  int iCnt=0,iMax=0;
-  for(int i=0;i&lt;iNum;i++)
-  {
-    if(iMax&lt;iData[i])//iMax就是前i-1个数字中最大的哪一个。
-    {
-      iMax=iData[i];
-      if(iData[i]==iData_s[i])   //如果是前i个最大的数字，且对应排好序的数组数字也是它，那么它就是主元。
-      {
-        iZY[iCnt++]=iData[i];
-      }
-    }
-  }
-  printf(&quot;%d\n&quot;,iCnt);//下面两种输出方法，区别在于icnt=0的情况
-  for(int i=0;i&lt;iCnt;i++)
-  {
-    if(i==0)
-    {
-      printf(&quot;%d&quot;,iZY[i]);
-    }
-    else
-    {
-      printf(&quot; %d&quot;,iZY[i]);
-    }
-  }
-  printf(&quot;\n&quot;);//一个测试点好像有毛病，当主元数目为0时，还要要输出个换行。
- return 0;
 }</code></pre> 
       <!-- reward -->
       
