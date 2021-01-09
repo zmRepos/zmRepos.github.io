@@ -128,6 +128,52 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-组合两个表"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/12/01/%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/"
+    >组合两个表</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/12/01/%E7%BB%84%E5%90%88%E4%B8%A4%E4%B8%AA%E8%A1%A8/" class="article-date">
+  <time datetime="2020-12-01T14:35:54.000Z" itemprop="datePublished">2020-12-01</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+   
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-每日温度"
   class="article article-type-post"
   itemscope
@@ -233,78 +279,13 @@ var _hmt = _hmt || [];
 </article>
 
     
-    <article
-  id="post-Oracle密码过期"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/"
-    >Oracle密码过期</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/" class="article-date">
-  <time datetime="2020-11-26T16:00:00.000Z" itemprop="datePublished">2020-11-27</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>Oracle密码过期：</p>
-<p><img src="/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/imgs%5COracle.PNG" alt="Oracle"></p>
-<p>原因：Oracle11G创建用户时缺省密码过期限制是180天（即6个月），如果超过180天用户密码未做修改则该用户无法登录</p>
-<p>解决：</p>
-<p>使用PL/SQL进入操作界面</p>
-<p>执行SQL语句如下：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> profile <span class="keyword">default</span> <span class="keyword">limit</span> password_life_time   <span class="keyword">unlimited</span>;</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
-
-<p>查看是否成功将密码的期限设置无限：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dba_profiles <span class="keyword">where</span> profile=<span class="string">'DEFAULT'</span> <span class="keyword">and</span> resource_name=<span class="string">'PASSWORD_LIFE_TIME'</span>;</span><br></pre></td></tr></table></figure>
-
-<p>结果：</p>
-<p><img src="/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/imgs%5Cimage-20201030001317871.png" alt="image-20201030001317871"></p>
-<p>注意要修改用户密码：不然用户无法正常连接数据库</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> scott indentified <span class="keyword">by</span> xxxxxxx(xxxxxxxx为你的密码);</span><br></pre></td></tr></table></figure>
-
-<p>如果用户在修改密码后处于被锁定状态，执行以下SQL语句取消锁定状态</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> scott <span class="keyword">account</span> <span class="keyword">unlock</span></span><br></pre></td></tr></table></figure>
-
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
   </nav>
   
 </section>

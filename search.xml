@@ -7399,10 +7399,11 @@ private SingleTon() {
 <p>无关。 </p>
 ]]></content>
       <categories>
-        <category>other</category>
+        <category>电脑</category>
+        <category>经验</category>
       </categories>
       <tags>
-        <tag>other</tag>
+        <tag>电脑</tag>
       </tags>
   </entry>
   <entry>
@@ -8365,6 +8366,60 @@ private SingleTon() {
       <tags>
         <tag>算法</tag>
         <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>队列详解</title>
+    <url>/2021/01/09/%E9%98%9F%E5%88%97%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="队列数据结构详解"><a href="#队列数据结构详解" class="headerlink" title="队列数据结构详解"></a>队列数据结构详解</h2><a id="more"></a>
+
+<p>定义：队列是一种<strong>操作受限的线性表</strong>，就像日常生活中的排队一样。</p>
+<p>特点：只允许对队首进行删除，对队尾进行插入操作。先进先出的操作特点。</p>
+<p>组成：</p>
+<p>​    队头(front)：队列两端中允许进行删除的一端</p>
+<p>​    队尾(rear)：两端中允许进行插入的一端</p>
+<p>​    enQueue(元素):入队，返回插入的结果</p>
+<p>​    deQueue():出队，返回队首的元素</p>
+<p>实现方式：</p>
+<p>一、顺序队列</p>
+<p>使用数组实现，开始时队首指针和队尾指针指向同一个位置，然后当有新的元素加入队列的时候，通过移动游标rear来加入新的元素。</p>
+<ul>
+<li>初始化：指针front和rear都指向0</li>
+<li>入队：<code>队不满</code>，<code>数组不越界</code>，先入队，再队尾下标+1</li>
+<li>出队：队不空，先取队头位置元素，在队头+1</li>
+</ul>
+<p>优点：</p>
+<p>​    简单，容易实现</p>
+<p>缺点：</p>
+<p>​    空间利用率极低，由于是 移动游标的方式，因此一旦元素被删除之后，以前存放的空间就不可以再用了。</p>
+<p>二、循环队列</p>
+<p>解决了第一种实现方式空间利用率不高的问题。将队列收尾向连线程一个环状结构，当容量达到队列最大值的时候就插入到原来的队首处。</p>
+<ul>
+<li>初始化：数组的front和rear都指向0.</li>
+<li>入队：<code>队</code>不满，先队尾位置传值，再<code>rear=(rear + 1) % maxsize;</code></li>
+<li>出队：队不空，先取队头位置元素，<code>front=(front + 1)%maxsize;</code></li>
+<li>是否为空：<code>return rear == front;</code></li>
+<li>大小：<code>return (rear+maxsize-front)%maxsize;</code></li>
+</ul>
+<p>代码实现：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class seqQueue&lt;T&gt; &#123;</span><br><span class="line">	private T data[];</span><br><span class="line">	private int front;</span><br><span class="line">	private int rear;</span><br><span class="line">	private int maxsize;</span><br><span class="line"></span><br><span class="line">	public seqQueue(int i)</span><br><span class="line">	&#123;</span><br><span class="line">		data = (T[]) new Object[i+1];</span><br><span class="line">		front = 0;</span><br><span class="line">		rear = 0;</span><br><span class="line">		maxsize = i+1;</span><br><span class="line">	&#125;</span><br><span class="line">	public int  lenth() &#123;</span><br><span class="line">		return (rear+maxsize-front)%maxsize;</span><br><span class="line">	&#125;</span><br><span class="line">	public boolean isempty() &#123;</span><br><span class="line">		return rear == front;</span><br><span class="line">	&#125;</span><br><span class="line">	public boolean isfull() &#123;</span><br><span class="line">		return (rear + 1) % maxsize == front;</span><br><span class="line">	&#125;</span><br><span class="line">	public void enQueue(T i) throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		if (isfull())</span><br><span class="line">			throw new Exception("已满");</span><br><span class="line">		else &#123;</span><br><span class="line">			data[rear] = i;</span><br><span class="line">			rear=(rear + 1) % maxsize;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public T deQueue() throws Exception</span><br><span class="line">	&#123;</span><br><span class="line">		if (isempty())</span><br><span class="line">			throw new Exception("已空");</span><br><span class="line">		else &#123;</span><br><span class="line">			T va=data[front];</span><br><span class="line">			front=(front+1)%maxsize;</span><br><span class="line">			return va;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public String toString()</span><br><span class="line">	&#123;</span><br><span class="line">		String va="队头: ";</span><br><span class="line">		int lenth=lenth();</span><br><span class="line">		for(int i=0;i&lt;lenth;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			va+=data[(front+i)%maxsize]+" ";</span><br><span class="line">		&#125;</span><br><span class="line">		return va;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>两种队列对比</p>
+<p><img src="/2021/01/09/%E9%98%9F%E5%88%97%E8%AF%A6%E8%A7%A3/image-20210109233548793.png" alt="image-20210109233548793"></p>
+<p>​    三、链式队列</p>
+<p>前面两种实现的缺点，空间总是有限的，即使是循环队列，当队列中的元素操作预先设定好的最大容量时也会发生元素替换的非法情况，因此有了队列的链式实现。</p>
+<p>实现方式：以链表头作为队首，保存一个指向队尾的执政，当有元素插入的时候，就移动队尾的指针向后移动，然后。当有元素删除的时候就直接移动队首指针，使它指向下一个节点。</p>
+<p>代码；</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">public class listQueue&lt;T&gt; &#123;</span><br><span class="line">	static class node&lt;T&gt; &#123;</span><br><span class="line">		T data;// 节点的结果</span><br><span class="line">		node next;// 下一个连接的节点</span><br><span class="line">		public node() &#123;&#125;</span><br><span class="line">		public node(T data) &#123;</span><br><span class="line">			this.data = data;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	node front;//相当于head 带头节点的</span><br><span class="line">	node rear;//相当于tail/<span class="keyword">end</span></span><br><span class="line">	<span class="keyword">public</span> listQueue() &#123;</span><br><span class="line">		front=<span class="keyword">new</span> node&lt;T&gt;();</span><br><span class="line">		rear=front;</span><br><span class="line">	&#125;</span><br><span class="line">	public int  lenth() &#123;</span><br><span class="line">		int len=0;</span><br><span class="line">		node team=front;</span><br><span class="line">		while(team!=rear)</span><br><span class="line">		&#123;</span><br><span class="line">			len++;team=team.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return len;</span><br><span class="line">	&#125;</span><br><span class="line">	public boolean isempty() &#123;</span><br><span class="line">		return rear == front;</span><br><span class="line">	&#125;</span><br><span class="line">	public void enQueue(T value) // 入队.尾部插入</span><br><span class="line">	&#123;</span><br><span class="line">		node va=new node&lt;T&gt;(value);</span><br><span class="line">		rear.next=va;</span><br><span class="line">		rear=va;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	public T deQueue() throws Exception// 出队</span><br><span class="line">	&#123;</span><br><span class="line">		if (isempty())</span><br><span class="line">			throw new Exception("已空");</span><br><span class="line">		else &#123;</span><br><span class="line">			T va=(T) front.next.data;</span><br><span class="line">			front.next=front.next.next;</span><br><span class="line">			return va;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	public String toString()</span><br><span class="line">	&#123;</span><br><span class="line">		node team=front.next;</span><br><span class="line">		String va="队头： ";</span><br><span class="line">		while(team!=null)</span><br><span class="line">		&#123;</span><br><span class="line">			va+=team.data+" ";</span><br><span class="line">			team=team.next;</span><br><span class="line">		&#125;</span><br><span class="line">		return va;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>参考资料</p>
+<p>1.<a href="https://www.cnblogs.com/bigsai/p/11363071.html">https://www.cnblogs.com/bigsai/p/11363071.html</a></p>
+]]></content>
+      <categories>
+        <category>算法与数据结构</category>
+      </categories>
+      <tags>
+        <tag>队列</tag>
       </tags>
   </entry>
 </search>

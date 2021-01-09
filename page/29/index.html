@@ -128,6 +128,108 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1087"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1087/"
+    >PTA-Basic-1087</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1087/" class="article-date">
+  <time datetime="2019-10-16T13:29:41.000Z" itemprop="datePublished">2019-10-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>子曰：“三人行，必有我师焉。择其善者而从之，其不善者而改之。”</p>
+<p>本题给定甲、乙、丙三个人的能力值关系为：甲的能力值确定是 2 位正整数；把甲的能力值的 2 个数字调换位置就是乙的能力值；甲乙两人能力差是丙的能力值的 X 倍；乙的能力值是丙的 Y 倍。请你指出谁比你强应“从之”，谁比你弱应“改之”。</p>
+<p>输入格式：<br>输入在一行中给出三个数，依次为：M（你自己的能力值）、X 和 Y。三个数字均为不超过 1000 的正整数。</p>
+<p>输出格式：<br>在一行中首先输出甲的能力值，随后依次输出甲、乙、丙三人与你的关系：如果其比你强，输出 Cong；平等则输出 Ping；比你弱则输出 Gai。其间以 1 个空格分隔，行首尾不得有多余空格。</p>
+<p>注意：如果解不唯一，则以甲的最大解为准进行判断；如果解不存在，则输出 No Solution。</p>
+<p>输入样例 1：</p>
+<pre><code>48 3 7</code></pre><p>输出样例 1：</p>
+<pre><code>48 Ping Cong Gai</code></pre><p>输入样例 2：</p>
+<pre><code>48 11 6</code></pre><p>输出样例 2：</p>
+<pre><code>No Solution</code></pre><p>分析：<br>输入的是自己的分数，x,y.<br>处理：从99到10假设甲的成绩，利用甲的成绩计算乙的成绩，看看这两个数是否符合条件，符合就计算丙的成绩，之后进行对比。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+int main(void){
+    int n,x,y;
+    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;x,&amp;y);
+    int a=10,b=0;//甲乙成绩肯定是整数
+    double c=0;//丙的成绩不一定为整数。即（10-99）
+    for(a=99;a&gt;9;a--){//因为甲是两位数，又以甲的最大值为唯一答案，所以要倒序。
+        b=(a/10)+(a%10)*10;//利用甲的成绩计算乙的成绩
+        if(abs(a-b)*y==x*b){//如果符合此条件那么丙的成绩就可以算出来了。
+            c=abs(a-b)*1.0/x;//计算丙的成绩
+            printf(&quot;%d &quot;,a);//先输出a的成绩
+            if(a==n){//输出对比结果
+                printf(&quot;Ping &quot;);
+            }else if(a&gt;n){
+                printf(&quot;Cong &quot;);
+            }else{
+                printf(&quot;Gai &quot;);
+            }
+            if(b==n){
+                printf(&quot;Ping &quot;);
+            }else if(b&gt;n){
+                printf(&quot;Cong &quot;);
+            }else{
+                printf(&quot;Gai &quot;);
+            }
+            if(c==n*1.0){//c的成绩可能为浮点数，所以左右多应该为浮点数
+                printf(&quot;Ping&quot;);
+            }else if(c&gt;n*1.0){
+                printf(&quot;Cong&quot;);
+            }else{
+                printf(&quot;Gai&quot;);
+            }
+            return 0;//找到即可退出程序。
+        }
+    }
+    printf(&quot;No Solution&quot;);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+   
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1086"
   class="article article-type-post"
   itemscope
@@ -493,101 +595,13 @@ int cnmp(const void *a,const void *b){
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1084"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1084/"
-    >PTA-Basic-1084</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1084/" class="article-date">
-  <time datetime="2019-10-11T14:19:24.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>外观数列是指具有以下特点的整数序列：</p>
-<p>d, d1, d111, d113, d11231, d112213111, …<br>它从不等于 1 的数字 d 开始，序列的第 n+1 项是对第 n 项的描述。比如第 2 项表示第 1 项有 1 个 d，所以就是 d1；第 2 项是 1 个 d（对应 d1）和 1 个 1（对应 11），所以第 3 项就是 d111。又比如第 4 项是 d113，其描述就是 1 个 d，2 个 1，1 个 3，所以下一项就是 d11231。当然这个定义对 d = 1 也成立。本题要求你推算任意给定数字 d 的外观数列的第 N 项。</p>
-<p>输入格式：<br>输入第一行给出 [0,9] 范围内的一个整数 d、以及一个正整数 N（≤ 40），用空格分隔。</p>
-<p>输出格式：<br>在一行中给出数字 d 的外观数列的第 N 项。</p>
-<p>输入样例：</p>
-<pre><code>1 8</code></pre><p>输出样例：</p>
-<pre><code>1123123111</code></pre><p>分析：做此题时，一定要在旁边自己演算一边推算过程，不要只看不动手。对于i-1项，从左边到右边读取，如果有连续的（n个）’d’就记作dn，第一个字符不算它是个特殊字符，不要把他与后面混为一谈，他始终是一个记作d1。<br>处理：</p>
-<p>对于一个给定的字符，对其进行从1到n之间的推演，首先将此字符存储入数组，然后对此数组进行n次的推演。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-int main(void){
-    int n;
-    char ch;
-    scanf(&quot;%c %d&quot;,&amp;ch,&amp;n);
-    char res[100000]={0};//这个会非常大非常非常大。 
-    char crs[100000]={0};
-    res[0]=ch;
-    for(int i=1;i&lt;n;i++){
-        int time=0;
-        int begin=0;
-        for(int len=0;len&lt;strlen(res);len++){
-            time++;
-            if(res[len+1]==res[len]){//如果下一个字符还等于当前字符，继续数个数
-                continue;
-            }else{
-                crs[begin++]=res[len];//首先存入字符再存入数字
-                crs[begin++]=&apos;0&apos;+time;//这边我一开始担心有次数超过10的情况，但是那种处理起来有点麻烦，而且根据题目要求没看出来有大于10可能性的存在，就没考虑。
-                time=0;//time赋值为0用于下一次的计算有多少个
-            }
-        }
-        strcpy(res,crs);//将此次推演的结果存入res中用于下一次的推演。
-    }
-    printf(&quot;%s&quot;,res);
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-   
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/28/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/30/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/28/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/27/">27</a><a class="page-number" href="/page/28/">28</a><span class="page-number current">29</span><a class="page-number" href="/page/30/">30</a><a class="page-number" href="/page/31/">31</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/30/">下一页</a>
   </nav>
   
 </section>
