@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>寻找三原色</title>
+  <title>codeFOF</title>
   <icon>https://www.gravatar.com/avatar/f63e2932402ca598fd6af3eed9f33d56</icon>
   <subtitle>say less and do more!</subtitle>
   <link href="/atom.xml" rel="self"/>
