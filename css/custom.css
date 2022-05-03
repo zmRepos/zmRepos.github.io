@@ -1,3 +1,6 @@
+body {
+  cursor: url("/images/mouse.cur"), auto;
+}
 .sidebar {
   left: -8rem;
   width: 8rem;
@@ -24,7 +27,16 @@
   .tocbot {
     display: none !important;
   }
-  .content.on {
+  .sidebar {
+    left: 0;
+  }
+  .sidebar.on {
+    left: -8rem;
+  }
+  .content {
     transform: translateX(8rem);
+  }
+  .content.on {
+    transform: translateX(0);
   }
 }
