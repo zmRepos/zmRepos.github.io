@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">876</span>
+            <span class="post-count">874</span>
         </span>
     </span>
 
@@ -150,9 +150,9 @@ var _hmt = _hmt || [];
 </blockquote>
 <p>​    理解了以上这些就能知道国内的Github访问速度为什么慢了？</p>
 <p>​    因为GitHub对应的CND域名遭到了<a href="https://baike.baidu.com/item/DNS%E6%B1%A1%E6%9F%93/8620359">DNS污染</a>导致域名解析过程变得异常麻烦甚至失败，最终导致CDN网络不能正常工作，只能访问节点较远的主服务器导致速度较慢。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>​    通过自定义hosts文件来设置github的域名解析。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>​    通过自定义hosts文件来设置github的域名解析</p>
 <ol>
-<li>到<a href="https://www.ipaddress.com/上查询github.global.ssl.Fastly.net与github.com最佳的ip地址">https://www.ipaddress.com/上查询github.global.ssl.Fastly.net与github.com最佳的ip地址</a></li>
+<li>到<a href="https://www.ipaddress.com/">这里</a>上查询github.global.ssl.Fastly.net与github.com最佳的ip地址</li>
 <li>到hosts文件中配置直接解析</li>
 </ol>
 <p><img src="images/1651645642110.png" alt="1651645642110"></p>
@@ -160,9 +160,6 @@ var _hmt = _hmt || [];
 <li>cmd中执行如下命令来刷新dns缓存</li>
 </ol>
 <figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ipconfig</span> /flushdns</span><br></pre></td></tr></table></figure>
-
-
-
  
       <!-- reward -->
       
