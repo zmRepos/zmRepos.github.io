@@ -174,183 +174,6 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1015"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/18/PTA-Basic-1015/"
-    >PTA-Basic-1015</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/18/PTA-Basic-1015/" class="article-date">
-  <time datetime="2019-09-18T14:07:50.000Z" itemprop="datePublished">2019-09-18</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>##1015 德才论</p>
-<p>宋代史学家司马光在《资治通鉴》中有一段著名的“德才论”：“是故才德全尽谓之圣人，才德兼亡谓之愚人，德胜才谓之君子，才胜德谓之小人。凡取人之术，苟不得圣人，君子而与之，与其得小人，不若得愚人。”</p>
-<p>现给出一批考生的德才分数，请根据司马光的理论给出录取排名。</p>
-<p>输入格式：<br>输入第一行给出 3 个正整数，分别为：N（≤10<br>​5<br>​​ ），即考生总数；L（≥60），为录取最低分数线，即德分和才分均不低于 L 的考生才有资格被考虑录取；H（&lt;100），为优先录取线——德分和才分均不低于此线的被定义为“才德全尽”，此类考生按德才总分从高到低排序；才分不到但德分到线的一类考生属于“德胜才”，也按总分排序，但排在第一类考生之后；德才分均低于 H，但是德分不低于才分的考生属于“才德兼亡”但尚有“德胜才”者，按总分排序，但排在第二类考生之后；其他达到最低线 L 的考生也按总分排序，但排在第三类考生之后。</p>
-<p>随后 N 行，每行给出一位考生的信息，包括：准考证号 德分 才分，其中准考证号为 8 位整数，德才分为区间 [0, 100] 内的整数。数字间以空格分隔。</p>
-<p>输出格式：<br>输出第一行首先给出达到最低分数线的考生人数 M，随后 M 行，每行按照输入格式输出一位考生的信息，考生按输入中说明的规则从高到低排序。当某类考生中有多人总分相同时，按其德分降序排列；若德分也并列，则按准考证号的升序输出。</p>
-<p>输入样例：</p>
-<pre><code>14 60 80
-10000001 64 90
-10000002 90 60
-10000011 85 80
-10000003 85 80
-10000004 80 85
-10000005 82 77
-10000006 83 76
-10000007 90 78
-10000008 75 79
-10000009 59 90
-10000010 88 45
-10000012 80 100
-10000013 90 99
-10000014 66 60</code></pre><p>输出样例：<br>    12<br>    10000013 90 99<br>    10000012 80 100<br>    10000003 85 80<br>    10000011 85 80<br>    10000004 80 85<br>    10000007 90 78<br>    10000006 83 76<br>    10000005 82 77<br>    10000002 90 60<br>    10000014 66 60<br>    10000008 75 79<br>    10000001 64 90</p>
-<p>分析：</p>
-<pre><code>输入：
-第一行：学生数 最低分 优秀线
-第二行：学生id 学生道德分 学生专业分。
-.....
-
-处理:
-定义一个学生结构包括id score1 score2 sum(分数和)
-在输入时进行分析符合条件的就存储到相应等级的学生数组。
-
-对每个等级的学生数组进行快排。
-
-输出：
-遍历每个等级数组并输出。</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-typedef struct student{
-    int id;
-    int score_psy;
-    int score_pro;
-    int sum;
-}student;
-int compare(const void *a,const void *b){
-    student stu1=*((student *)a);
-    student stu2=*((student *)b);
-    if(stu1.sum&gt;stu2.sum){
-        return -1;
-    }
-    if(stu1.sum&lt;stu2.sum){
-        return 1;
-    }else{
-        if(stu1.score_psy&gt;stu2.score_psy){
-            return -1;
-        }else if(stu1.score_psy&lt;stu2.score_psy){
-            return 1;
-        }else{
-            if(stu1.id&gt;stu2.id){
-                return 1;
-            }
-            return -1;
-        }
-    }
-}
-int main(void){
-    int id;
-    int score_pro;
-    int score_psy;
-    int num,s1,s2;
-    scanf(&quot;%d %d %d&quot;,&amp;num,&amp;s1,&amp;s2);
-    struct student students1[num],students2[num],students3[num],students4[num];
-    int n1=0,n2=0,n3=0,n4=0;
-    int i=0;
-    while(num--){
-        scanf(&quot;%d %d %d&quot;,&amp;id,&amp;score_psy,&amp;score_pro);
-        if(score_pro&gt;=s1&amp;&amp;score_psy&gt;=s1){
-            i++;
-            if(score_psy&gt;=s2&amp;&amp;score_pro&gt;=s2){
-            students1[n1].id=id;
-            students1[n1].score_pro=score_pro;
-            students1[n1].score_psy=score_psy;
-            students1[n1].sum=score_pro+score_psy;
-            n1++;
-            }else if(score_pro &lt; s2 &amp;&amp; score_psy &gt;= s2){
-            students2[n2].id=id;
-            students2[n2].score_pro=score_pro;
-            students2[n2].score_psy=score_psy;
-            students2[n2].sum=score_pro+score_psy;
-            n2++;
-            }else if(score_pro &lt; s2 &amp;&amp; score_psy &lt; s2 &amp;&amp;score_psy&gt;=score_pro){
-            students3[n3].id=id;
-            students3[n3].score_pro=score_pro;
-            students3[n3].score_psy=score_psy;
-            students3[n3].sum=score_pro+score_psy;
-            n3++;
-            }else{
-            students4[n4].id=id;
-            students4[n4].score_pro=score_pro;
-            students4[n4].score_psy=score_psy;
-            students4[n4].sum=score_pro+score_psy;
-            n4++; 
-            }
-        }
-    }
-    printf(&quot;%d\n&quot;,i);
-    qsort(students1,n1,sizeof(student),compare);
-    qsort(students2,n2,sizeof(student),compare);
-    qsort(students3,n3,sizeof(student),compare);
-    qsort(students4,n4,sizeof(student),compare);
-    for(int j=0;j&lt;n1;j++){
-        printf(&quot;%d %d %d\n&quot;,students1[j].id,students1[j].score_psy,students1[j].score_pro);
-    }
-    for(int j=0;j&lt;n2;j++){
-        printf(&quot;%d %d %d\n&quot;,students2[j].id,students2[j].score_psy,students2[j].score_pro);
-    }
-    for(int j=0;j&lt;n3;j++){
-        printf(&quot;%d %d %d\n&quot;,students3[j].id,students3[j].score_psy,students3[j].score_pro);
-    }
-    for(int j=0;j&lt;n4;j++){
-        printf(&quot;%d %d %d\n&quot;,students4[j].id,students4[j].score_psy,students4[j].score_pro);
-    }
-    return 0;
-}</code></pre><p>####注意：排序条件：先按总分降序，如果总分相同，就按道德分数降序，如果还相等就按学号升序排。</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
   id="post-PTA-Basic-1014"
   class="article article-type-post"
   itemscope
@@ -570,13 +393,146 @@ return 0;
 </article>
 
     
+    <article
+  id="post-PTA-Basic-1012"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/17/PTA-Basic-1012/"
+    >PTA-Basic-1012</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/17/PTA-Basic-1012/" class="article-date">
+  <time datetime="2019-09-17T15:05:09.000Z" itemprop="datePublished">2019-09-17</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>给定一系列正整数，请按要求对数字进行分类，并输出以下 5 个数字：</p>
+<p>A<br>​1<br>​​  = 能被 5 整除的数字中所有偶数的和；<br>A<br>​2<br>​​  = 将被 5 除后余 1 的数字按给出顺序进行交错求和，即计算 n<br>​1<br>​​ −n<br>​2<br>​​ +n<br>​3<br>​​ −n<br>​4<br>​​ ⋯；<br>A<br>​3<br>​​  = 被 5 除后余 2 的数字的个数；<br>A<br>​4<br>​​  = 被 5 除后余 3 的数字的平均数，精确到小数点后 1 位；<br>A<br>​5<br>​​  = 被 5 除后余 4 的数字中最大数字。<br>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例先给出一个不超过 1000 的正整数 N，随后给出 N 个不超过 1000 的待分类的正整数。数字间以空格分隔。</p>
+<p>输出格式：<br>对给定的 N 个正整数，按题目要求计算 A<br>​1<br>​​ ~A<br>​5<br>​​  并在一行中顺序输出。数字间以空格分隔，但行末不得有多余空格。</p>
+<p>若其中某一类数字不存在，则在相应位置输出 N。</p>
+<p>输入样例 1：</p>
+<p>13 1 2 3 4 5 6 7 8 9 10 20 16 18</p>
+<p>输出样例 1：</p>
+<p>30 11 2 9.7 9</p>
+<p>输入样例 2：</p>
+<p>8 1 2 4 5 6 7 9 16</p>
+<p>输出样例 2：</p>
+<p>N 11 2 N 9</p>
+<p>分析：<br>输入：一个代表个数的数字，后面跟着相应个数的数字。<br>输出：</p>
+<p>1number%2==0&amp;&amp;number%5==0的数字的和</p>
+<p>2number%5==1的差项和a1-a2+a3-a4…</p>
+<p>3number%5==2的个数</p>
+<p>4number%5==3的数字的平均数，保留一位小数。</p>
+<p>5number%5==4的所有数字中的最大数。</p>
+<p>以上所有输出如果不存在时，输出‘N’;</p>
+<p>思路：</p>
+<p>1输入时就处理数字，对每个数字判断，存放在二维数组，第一行存储个数，第二行存储结果。</p>
+<p>2输出时一定要注意，当输出平均数时，要注意到我们使用的时整型数组，因此就要进行相应的处理。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+static int result[2][5];
+int num=0;
+scanf(&quot;%d&quot;,&amp;nu2m);
+int number;
+int i=0;
+int flag=1;
+while(i&lt;num){
+    scanf(&quot;%d&quot;,&amp;number);
+    if(number%2==0&amp;&amp;number%5==0){
+        result[0][0]++;
+        result[1][0]=result[1][0]+number;
+    }
+    if(number%5==1){
+        result[0][1]++;
+        result[1][1]=result[1][1]+flag*number;
+        flag=-flag;
+    }
+    if(number%5==2){
+        result[0][2]++;
+        result[1][2]++;
+    }
+    if(number%5==3){
+        result[0][3]++;
+        result[1][3]=result[1][3]+number;
+    }
+    if(number%5==4){
+        result[0][4]++;
+        result[1][4]=result[1][4]&gt;=number?result[1][4]:number;
+    }
+    i++;
+}
+
+for(i=0;i&lt;4;i++){
+    if(i==3){
+        if(result[0][i]==0){
+            printf(&quot;N &quot;);
+        }else{
+            printf(&quot;%.1f &quot;,result[1][i]*1.0/result[0][i]);
+        }
+        continue;
+    }
+    if(result[0][i]==0){
+        printf(&quot;N &quot;);
+    }
+    else{
+        printf(&quot;%d &quot;,result[1][i]);
+    }
+}
+if(result[0][i]==0){
+        printf(&quot;N&quot;);
+    }
+    else{
+        printf(&quot;%d&quot;,result[1][i]);
+    }
+return 0; 
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/52/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/54/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/52/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/54/">下一页</a>
   </nav>
   
 </section>

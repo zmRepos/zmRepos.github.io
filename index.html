@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-temp-md-1"
+  id="post-github访问速度太慢的来龙去脉以及解决之道"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -185,8 +185,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2022/05/03/temp-md-1/"
-    >temp.md</a> 
+  <a class="article-title" href="/2022/05/04/github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93/"
+    >github访问速度太慢的来龙去脉以及解决之道</a> 
 </h2>
  
 
@@ -194,18 +194,58 @@ var _hmt = _hmt || [];
     </header>
      
     <div class="article-meta">
-      <a href="/2022/05/03/temp-md-1/" class="article-date">
-  <time datetime="2022-05-03T05:36:52.000Z" itemprop="datePublished">2022-05-03</time>
+      <a href="/2022/05/04/github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93/" class="article-date">
+  <time datetime="2022-05-04T04:27:02.000Z" itemprop="datePublished">2022-05-04</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/other/">other</a>
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/github/">github</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <h1 id="github访问速度太慢的来龙去脉以及解决之道"><a href="#github访问速度太慢的来龙去脉以及解决之道" class="headerlink" title="github访问速度太慢的来龙去脉以及解决之道"></a>github访问速度太慢的来龙去脉以及解决之道</h1><h2 id="国内访问GitHub速度为什么慢"><a href="#国内访问GitHub速度为什么慢" class="headerlink" title="国内访问GitHub速度为什么慢"></a>国内访问GitHub速度为什么慢</h2><blockquote>
+<p>CDN :<strong>内容分发网络</strong>，一个网站往往包含大量的静态资源（如图片、视频等），这些静态资源如果都是通过一个主服务器访问，会严重影响主服务器的处理请求的能力，因此有必要将这些静态资源抽离出来，放到各地的次服务器的存储中，然后对于一些静态或者其他资源的请求交由这些服务器接受处理，主服务器只负责核心功能请求的处理。这便是<strong>基于内容的分布式发送网络</strong>。</p>
+<p>CDN的实现要素</p>
+<ol>
+<li><p>分布式存储：即将内容存储到分散的服务器中</p>
+<ol start="2">
+<li>通过DNS解析或者主服务器重定向实现请求的负载均衡 ：即对于一个资源的请求要能够让合适的服务器处理该请求</li>
+<li>全局负载均衡管理和内容管理：即要对全局的服务器这些负载均衡节点的状态、以及全局的资源进行管理</li>
+</ol>
+</li>
+</ol>
+<p>CDN的整体结构：</p>
+<ol>
+<li>中心节点：负责全局服务器的状态检测以及请求分配即<strong>负载均衡</strong>以及内容管理，即实现上面的2 3 功能</li>
+<li>边缘节点：主要负责处理分配来的请求，以及维护数据。</li>
+</ol>
+<p>CDN的工作流程：</p>
+<blockquote>
+<p> 常见的域名解析类型有两种：</p>
+<p>​    A记录类型：A记录类型将<strong>一个或者多个域名直接映射到一个ip地址</strong></p>
+<p>​    CNAME记录类型：CNAME类型将<strong>一个或者多个域名映射到一个域名</strong></p>
+<p>​    NS记录类型、TXT记录类型</p>
+</blockquote>
+<p>​    用户在浏览器输入框中输入域名，现到浏览器缓存中找，没有再到hosts文件中查询，hosts文件中没有映射后，则先请求本地的DNS服务器解析，如果处理不了则向更高级的DNS服务器请求，最终解析出一个负载均衡服务器的主机域名（这里为什么不是Ip地址呢？因为这种服务器常常配置的DNS解析记录一般CNAME记录类型），而后浏览器得到这个解析后的域名后，再去请求解析这个域名对应的<strong>智能复杂均衡系统</strong>的地址得出ip后并将解析任务交给它，智能复杂均衡系统会其根据各地的服务器状态以及各种因素考虑（即考虑复杂均衡）之后返回一个响应速度最快的ip给用户，最终用户得到就在DNS缓存中记录下该ip和域名之间的映射关系，后期的请求都会发送给该ip服务器处理。</p>
+</blockquote>
+<p>​    理解了以上这些就能知道国内的Github访问速度为什么慢了？</p>
+<p>​    因为GitHub对应的CND域名遭到了<a href="https://baike.baidu.com/item/DNS%E6%B1%A1%E6%9F%93/8620359">DNS污染</a>导致域名解析过程变得异常麻烦甚至失败，最终导致CDN网络不能正常工作，只能访问节点较远的主服务器导致速度较慢。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>​    通过自定义hosts文件来设置github的域名解析。</p>
+<ol>
+<li>到<a href="https://www.ipaddress.com/上查询github.global.ssl.Fastly.net与github.com最佳的ip地址">https://www.ipaddress.com/上查询github.global.ssl.Fastly.net与github.com最佳的ip地址</a></li>
+<li>到hosts文件中配置直接解析</li>
+</ol>
+<p><img src="images/1651645642110.png" alt="1651645642110"></p>
+<ol start="3">
+<li>cmd中执行如下命令来刷新dns缓存</li>
+</ol>
+<figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">ipconfig</span> /flushdns</span><br></pre></td></tr></table></figure>
+
+
+
+ 
       <!-- reward -->
       
     </div>
@@ -215,60 +255,7 @@ var _hmt = _hmt || [];
     
     <footer class="article-footer">
        
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/" rel="tag">other</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-temp-md"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2022/05/03/temp-md/"
-    >temp.md</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2022/05/03/temp-md/" class="article-date">
-  <time datetime="2022-05-03T05:33:21.000Z" itemprop="datePublished">2022-05-03</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/other/">other</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-   
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/" rel="tag">other</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
 
     </footer>
   </div>
@@ -336,13 +323,70 @@ var _hmt = _hmt || [];
 </article>
 
     
+    <article
+  id="post-队列详解"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/01/09/%E9%98%9F%E5%88%97%E8%AF%A6%E8%A7%A3/"
+    >队列详解</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/01/09/%E9%98%9F%E5%88%97%E8%AF%A6%E8%A7%A3/" class="article-date">
+  <time datetime="2021-01-09T15:04:42.000Z" itemprop="datePublished">2021-01-09</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="队列数据结构详解"><a href="#队列数据结构详解" class="headerlink" title="队列数据结构详解"></a>队列数据结构详解</h2> 
+      <a class="article-more-link" href="/2021/01/09/%E9%98%9F%E5%88%97%E8%AF%A6%E8%A7%A3/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%98%9F%E5%88%97/" rel="tag">队列</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>
