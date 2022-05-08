@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,思考,代码,博客" />
+       
+      <meta name="description" content="勇攀技术绝壁" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>HCA架构 |  codeFOF</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/ayer.png" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="codeFOF" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-HCA架构"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  HCA架构
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/" class="article-date">
+  <time datetime="2022-05-08T10:07:07.000Z" itemprop="datePublished">2022-05-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%9E%B6%E6%9E%84/">架构</a> / <a class="article-category-link" href="/categories/%E6%9E%B6%E6%9E%84/HCA/">HCA</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">7 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​    <a id="more"></a></p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p> HCA架构，也叫超融合架构，简而言之就是把不同方式读取数据源以及读取不同数据源的东西融合到一起，然后提供给领域层调用融合后的统一接口，进行业务处理，最终返回给上层。</p>
+<p>HCA架构的优点是摒弃了专用存储网络，大大降低了存储成本。缺点是数据的读写无法保持一致的性能比如某些数据源可能读写较快某些数据源可能读写较慢。</p>
+<p><a href="https://blog.csdn.net/weixin_34194702/article/details/90388620">参考文章</a></p>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960506.png" alt="img"></p>
+<h3 id="目录简介"><a href="#目录简介" class="headerlink" title="目录简介"></a>目录简介</h3><p>hca目录</p>
+<ul>
+<li><p><strong>ohs</strong>：开放主机服务（北向），提供远程和本地服务，在分布式场景下多被另外一个界限上下文的 acl 防腐层调用。</p>
+</li>
+<li><p><strong><em>appservice*</em></strong>：应用<strong>服</strong>务，主要为远程*服务提供实现。</p>
+</li>
+<li><p><strong>appservice.executor</strong>：命令执行器 - 同时也是应用服务的具体实现的载体。为什么会有这一层 : 主要是为了让应用服务的实现从原本的大实现类中分离出来，不至于随着业务的增加，应用服务的实现别的无比臃肿，执行器的职责就是干好一件事。</p>
+</li>
+<li><p><strong>event subscriber</strong>：事件订阅。</p>
+</li>
+<li><p><strong>pl</strong>：publish language（发布语言），一般包含请求命令及响应、远程调用参数和响应，ohs 层中主要是请求命令和响应。</p>
+</li>
+<li><p><strong>pl.command</strong>：存放 命令和查询。</p>
+</li>
+<li><p><strong>pl.data</strong>：DTO 数据传输对象。<strong>最终发送给用户的封装之后的对象</strong></p>
+</li>
+<li><p><strong>remote.controller</strong>：<strong>相当于Controller层</strong> </p>
+</li>
+<li><p><strong>domain</strong>：领域层。</p>
+</li>
+<li><p><strong>domain.entity</strong>：领域实体、对象传输模型。</p>
+</li>
+<li><p><strong>domain.event</strong>：事件。</p>
+</li>
+<li><p><strong>domain.service</strong>：领域服务，完整的原子业务服务（应用服务层通用能力的沉淀），一般在执行器中被编排。</p>
+</li>
+<li><p><strong>domain.exception</strong>：领域异常。</p>
+</li>
+<li><p><strong>domain.valueobject</strong>：领域实体 值对象。</p>
+</li>
+</ul>
+<ul>
+<li><p><strong>acl</strong>：防腐层（南向），ohs、领域层 调用防腐层时只通过领域对象打交道，除非时 CQRS 模式中直接查询，acl 层可以直接返回 DTO。</p>
+</li>
+<li><p><strong>dataobject</strong>：数据对象，一般是 Jpa的持久化对象，命名样例: ExampleDO。</p>
+</li>
+<li><p><strong>jpa</strong>：JPA 数据访问层，命名样例: ExampleJpaDAO。原来我们 JPA 接口使用 XXXRepository 命名，但是为了与 HCA 框架中仓储的概念区分，统一命名 XXXJpaDAO 作为JPA数据访问层的命名。</p>
+</li>
+<li><p><strong>pl</strong>：publish language（发布语言），一般包含命令、数据响应、远程调用参数和响应，acl 层中主要是远程调用及响应。</p>
+</li>
+<li><p><strong>Repository</strong>：领域实体 仓储接口，命名样例: ExampleRepository。</p>
+</li>
+<li><p><strong>adapter</strong>：仓储适配器，适配器是端口的实现。命名样例: ExampleRepositoryAdapter</p>
+</li>
+</ul>
+<h3 id="第一层仓储层-acl"><a href="#第一层仓储层-acl" class="headerlink" title="第一层仓储层(acl)"></a>第一层仓储层(acl)</h3><p>负责数据库数据的读写，可以通过mapper、jpa等手段进行数据读取，数据源可以是mysql、redis等。</p>
+<p>仓储层有两个文件夹</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960501.png" alt="img"></p>
+<h4 id="adapter-repository"><a href="#adapter-repository" class="headerlink" title="adapter.repository"></a>adapter.repository</h4><p>仓储层接口的实现，其包括如下内容</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960645.png" alt="img"></p>
+<p>其中dataobject是仓储层的数据对象，用来<strong>简单</strong>封装从数据库中的数据。</p>
+<h5 id="dataobject文件夹"><a href="#dataobject文件夹" class="headerlink" title="dataobject文件夹"></a>dataobject文件夹</h5><p>xxDO对应的就是一个数据对象类</p>
+<p>.  一般xxDO继承了IdentityStrategyEntity，来作为jpa的默认的自增主键</p>
+<p>.  提供了from()方法，将上层传入的领域对象，转化成数据对象(XXDO)然后存入数据库中</p>
+<p>.  提供了to()方法，将本层的数据对象转化成上层的领域对象</p>
+<p>.  此外对于数据对象中的值固定的属性一般采用枚举类型</p>
+<p>tip:这两种方法都使用了BeanCopierUtils工具类，进行对象的深拷贝。</p>
+<h5 id="jpa文件夹中"><a href="#jpa文件夹中" class="headerlink" title="jpa文件夹中"></a>jpa文件夹中</h5><p>存放的是使用jpa方式实现的数据操作接口，由于jpa会提供默认的接口实现，所以一般不需要我们提供接口方法。直接继承对应的<strong>JPARepository&lt;查询出来的数据对象的类型，该数据对象的主键&gt;</strong>即可</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960796.png" alt="img"></p>
+<h5 id="MyBatis文件夹"><a href="#MyBatis文件夹" class="headerlink" title="MyBatis文件夹"></a>MyBatis文件夹</h5><p>存放使用使用mybatis方式实现的操作数据库表信息的类。一般该Mapper类继承了AppBaseMapper*&lt;*F5MemberDO&gt;来实现分页功能。</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960590.png" alt="img"></p>
+<h5 id="XXRepositoryAdapter"><a href="#XXRepositoryAdapter" class="headerlink" title="XXRepositoryAdapter"></a>XXRepositoryAdapter</h5><p>实现了port.repository中声明的接口，一般注入了jpaDAO以及Mapper对象来对该接口进行实现，一般在这个类中对上层传入的领域对象转化成数据对象然后转化成调用仓储方法进行数据库操作。</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image.png" alt="img"></p>
+<h4 id="port-repository"><a href="#port-repository" class="headerlink" title="port.repository"></a>port.repository</h4><p>仓储层提供给上层的接口，方法的入参一般是本层的实体类对象即XXDO，方法的返回值是上层实体对象即领域层实体对象。</p>
+<h3 id="第二层领域层"><a href="#第二层领域层" class="headerlink" title="第二层领域层"></a>第二层领域层</h3><p>负责某个领域的业务逻辑的处理，使用下层提供的数据进行处理，并最终返回给上层。</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960545.png" alt="img"></p>
+<h4 id="entity"><a href="#entity" class="headerlink" title="entity"></a>entity</h4><p>此文件夹内部存放是领域层的实体对象类，用来对本层进行业务逻辑处理后的数据进行封装。</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960631.png" alt="img"></p>
+<p>.  一般此对象要提供从上层DTO对象转化成本层领域实体对象的的from方法，以及将本层领域实体对象转化成下层数据对象的to方法。</p>
+<h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4><p>此文件夹存放，本层使用下层仓储适配器实现的提供给上层的服务类，这些类的方法返回值一般是DTO对象，传入的参数一般是本类对象</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960504.png" alt="img"></p>
+<h3 id="第三层远程服务层-ohs"><a href="#第三层远程服务层-ohs" class="headerlink" title="第三层远程服务层(ohs)"></a>第三层远程服务层(ohs)</h3><p>负责对请求进行封装、传入下层服务进行处理，对处理的返回值进行包装。</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960501.png" alt="img"></p>
+<h4 id="local-appservice"><a href="#local-appservice" class="headerlink" title="local.appservice"></a>local.appservice</h4><p>此文件夹表示本地应用服务，是使用下层服务实现的请求处理并最终返回合适的响应对象给浏览器流程的封装。</p>
+<p>其包括文件夹如下</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960593.png" alt="img"></p>
+<h5 id="api"><a href="#api" class="headerlink" title="api"></a>api</h5><p>是本地服务接口，声明了本项目能够对请求命令进行哪些处理，并且能够返回什么给浏览器。</p>
+<p>.  一般方法返回Response</p>
+<p>.  分页查询方法返回PageResponse<T></T></p>
+<p>.  返回所有对象的列表方法返回MultiResponse<T></T></p>
+<p>服务方法的入参常常是某个原子操作的命令</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960559.png" alt="img"></p>
+<h5 id="executor"><a href="#executor" class="headerlink" title="executor"></a>executor</h5><p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960559.png" alt="img"></p>
+<p>使用下层服务xxService实现的某个原子操作的类，该执行器类拥有execute方法表示调用执行器执行。也是本地服务接口实现类的调用对象。</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image.png" alt="img"></p>
+<h5 id="impl"><a href="#impl" class="headerlink" title="impl"></a>impl</h5><p>本地服务接口实现类存放的文件夹，本地服务接口实现类implements 本地服务接口，通过传入的各种原子操作执行器，完成本地服务。</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960505.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960609.png" alt="img"></p>
+<h4 id="pl"><a href="#pl" class="headerlink" title="pl"></a>pl</h4><p>ohs层的实体类存放文件夹</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960546.png" alt="img"></p>
+<h5 id="command"><a href="#command" class="headerlink" title="command"></a>command</h5><p>是对请求数据的封装</p>
+<p>一般增删改这样的请求，要求我们定义一个XXCommandCmd，封装请求的一般属性，这个CommandCmd还要实现Command接口（标记接口）。一般还要<strong>提供一个转化成下层领域对象的to方法。</strong></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960513.png" alt="img"></p>
+<p>一般查询这样的请求，要求我们定义一个XXQry，封装查询请求的信息，并实现Query接口，这个接口要继承Command接口（标记接口）。</p>
+<p>特别地分页查询，接口需要继承一个PageQuery<em>接口</em></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960562.png" alt="img"></p>
+<h5 id="data"><a href="#data" class="headerlink" title="data"></a>data</h5><p>封装返回数据的对象，这些类要提供从下层的领域对象实体转化成本层DTO的方法from</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960646.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960569.png" alt="img"></p>
+<h4 id="remote-controller"><a href="#remote-controller" class="headerlink" title="remote.controller"></a>remote.controller</h4><p>远程服务，存放Controller，共浏览器使用。本层的Controller类使用本层的本次服务接口实现类实现了各种操作，并返回方法返回值给客户。</p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960517.png" alt="img"></p>
+<p>下面以增加为例讲解请求处理过程</p>
+<p>​    前端采用post方式发送数据，请求体中携带json数据，到达对应的控制器方法后，请求体中的数据被映射到<img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960578.png" alt="img">中，其data属性就代表前端传入的数据对象即被封装成了一个增加命令实体F5MemberAddCmd，此方法调用本地服务实现类的对应方法，本地服务实现方法，调用新增命令执行器，新增命令执行器调用领域层服务并传入新增命令转化成的领域层实体对象进行处理，领域层服务调用仓储层的服务实现操作并传入领域层对象的to方法的返回值即xxDO。最终仓储层返回领域对象。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zm163.github.io/2022/05/08/HCA%E6%9E%B6%E6%9E%84/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HCA/" rel="tag">HCA</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/05/08/%E4%B8%BA%E4%BB%80%E4%B9%88%E5%BC%80%E5%8F%91%E4%B8%AD%E4%B8%8D%E8%A6%81%E4%BD%BF%E7%94%A8System-out-println/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            为什么开发中不要使用System.out.println
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/05/04/github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">github访问速度太慢的来龙去脉以及解决之道</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "6tOO9UzCCPwrAQMrQwFdo1c9-gzGzoHsz",
+    app_key: "7gv1YABDJKYutSvQVAL82lud",
+    path: window.location.pathname,
+    avatar: "robohash",
+    placeholder: "欢迎指点",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2022
+        <i class="ri-heart-fill heart_icon"></i> ZM
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1281098224&amp;web_id=1281098224'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/avatar.jpg" alt="codeFOF"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>支持一下~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
