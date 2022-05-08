@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">97</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -108,7 +108,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">5 分钟</span>
         </span>
     </span>
 </div>
@@ -123,11 +123,99 @@ var _hmt = _hmt || [];
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="位图算法"><a href="#位图算法" class="headerlink" title="位图算法"></a>位图算法</h1><h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><p>在重复率不高的整数集中,整数的范围是0到40亿。输入一个数，判断这个数是不是属于这组整数。请设计出时间复杂度符合O(n)的算法？</p>
+  <h1 id="位图算法"><a href="#位图算法" class="headerlink" title="位图算法"></a>位图算法</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>​    位图(BitMap)，简单的来说就是bit类型的数组，但是各种计算机语言中并没有提供这种数据类型的结构，因此我们可以利用数字的数组来构成位图。比如我们想要128位的位图，那么在Java中定义一个long [] bits = new long[2];就可以了。而在Redis中有专门的数据结构(bitmap)并提供了相应的操作方法。</p>
+<a id="more"></a>
+
+<h2 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h2><p>位运算包括</p>
+<table>
+<thead>
+<tr>
+<th>运算</th>
+<th>符号</th>
+<th>举例</th>
+<th>结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>与</td>
+<td>&amp;</td>
+<td>1101     &amp; 0110</td>
+<td>0100</td>
+</tr>
+<tr>
+<td>或</td>
+<td>|</td>
+<td>1101     | 0110</td>
+<td>1111</td>
+</tr>
+<tr>
+<td>非</td>
+<td>!</td>
+<td>!0101</td>
+<td>1010</td>
+</tr>
+<tr>
+<td>异或</td>
+<td>^</td>
+<td>1101     ^ 0110</td>
+<td>1011</td>
+</tr>
+<tr>
+<td>取反</td>
+<td>~</td>
+<td>1101</td>
+<td>0010</td>
+</tr>
+<tr>
+<td>左移</td>
+<td>&lt;&lt;</td>
+<td>1101 &lt;&lt; 1</td>
+<td>11010</td>
+</tr>
+<tr>
+<td>带符号右移（高位补充符号位）</td>
+<td>&gt;&gt;</td>
+<td>1101 &gt;&gt; 1</td>
+<td>1110</td>
+</tr>
+<tr>
+<td>不带符号右移（即高位补0）</td>
+<td>&gt;&gt;&gt;</td>
+<td>1101&gt;&gt;&gt;1</td>
+<td>0110</td>
+</tr>
+</tbody></table>
+<h2 id="例子-车座抢票"><a href="#例子-车座抢票" class="headerlink" title="例子-车座抢票"></a>例子-车座抢票</h2><p>​    12306抢票，一列火车车起点站到终点站要经过许多站点，每个站点都会有人上车、有人下车，火车一共200个座位，如何计算才能保证火车从起点到终点搭载的总人数相对较多呢？（<strong>为什么不是最多，因为你无法控制乘客的选择</strong>）</p>
 <blockquote>
-<p>显然，循环遍历，判断一个数据在不在太过耗时，此时可以使用位图算法解决此问题。</p>
+<p>理解：一个座位，如果被人占用了从站点i到站点j，那么被占用期间经过的站点，就不允许其他人购买该座的车票。即针对一个座位，乘坐的不同人，除了邻接站点，经过的站点不能有相交的部分。我们无法控制某个座位不出售给某个人，但是可以算出出某个站点没有被占用的座位从而在合适的站点地段出售该座位的车票，如果被抢到了</p>
 </blockquote>
-<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2> 
+<p><a href="https://blog.csdn.net/lizc_lizc/article/details/108418564?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165196789116781483740607%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=165196789116781483740607&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-1-108418564-null-null.142^v9^pc_search_result_cache,157^v4^control&utm_term=%E4%BD%8D%E5%9B%BE%E7%AE%97%E6%B3%95&spm=1018.2226.3001.4187">🔗参考文献</a></p>
+<p>下面来思考一个理想化的模型：</p>
+<p>​    从北京到广州，经过[北京、信阳、武汉、岳阳、长沙、广州]六个站点，火车一共8个座位。那么如何处理才能让火车乘坐的人数相对较多呢？</p>
+<p>解决思路</p>
+<p>定义5个位图(位图a,b,c,d,e)，每个位图用一个byte变量表示，分别代表从北京到信阳、信阳到武汉、武汉到岳阳、岳阳到长沙、长沙到广州的车座占用情况，那么从<strong>北京到岳阳的空闲车座</strong>就可以<strong>通过位图a与位图b、位图c做或运算得出</strong>的，（因为只有这三个位图都没有人坐的位置才算可以出售给北京站点乘客的座位）。例如如图，三个位图的占用情况。</p>
+<p><img src="images/1651970602376.png" alt="1651970602376"></p>
+<p>那么三个位图取或之后的空（实际用0表示）即座位2 4 6 8，就是北京到岳阳站点还未售卖的车座，那么北京站点处的人就可以购买了。</p>
+<p><img src="images/1651970625519.png" alt="1651970625519"></p>
+<p>结论：统计一个站点处可以售卖的车座，就是这个站点到目标站点中经过的所有站点的位图取或之后的0的位置。</p>
+<h2 id="位图-统计日活跃用户人数"><a href="#位图-统计日活跃用户人数" class="headerlink" title="位图-统计日活跃用户人数"></a>位图-统计日活跃用户人数</h2><p>问题：假设网站有一亿的用户，这些用户的id是连续的从1到1亿，如何统计这个网站的日活用户。日活用户指当日登录该系统的用户。</p>
+<p>​    原本思路：直接定义一个全局变量，有一人登录系统就加1，然后实时地显示到展示界面中。可以添加一个标识，标识今日已经登录过了，但是维护起来比较麻烦（要考虑用户重复登录问题、这个标识添加在数据库表中会不会导致整个项目的代码重构）。</p>
+<p>​    sql方式的思路：sql查询出登录表格（用户id,登录时间date）中日活跃人数，sql语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">----建表语句</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> login;</span><br><span class="line"><span class="comment"># date(只记录日期) time(只记录时间) datetime 记录日期时间 timestamp 记录时间戳</span></span><br><span class="line"><span class="comment"># 这里用datetime，因为不可能一天只登录一次。</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> login(</span><br><span class="line"> <span class="keyword">id</span> <span class="built_in">int</span>(<span class="number">5</span>) <span class="keyword">comment</span> <span class="string">'用户id'</span>,</span><br><span class="line"> login_date datetime <span class="keyword">comment</span> <span class="string">'登录时间'</span>,</span><br><span class="line"> PRIMARY <span class="keyword">KEY</span>(<span class="keyword">id</span>,login_date)</span><br><span class="line"> );</span><br><span class="line"> <span class="comment">----插值语句 分别在5.4 5.3 5.2这几天插入语句</span></span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">1</span>,<span class="string">'2022-5-4 12:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">1</span>,<span class="string">'2022-5-4 13:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">3</span>,<span class="string">'2022-5-4 14:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">1</span>,<span class="string">'2022-5-4 1:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">4</span>,<span class="string">'2022-5-4 13:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">3</span>,<span class="string">'2022-5-4 12:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">1</span>,<span class="string">'2022-5-3 12:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">1</span>,<span class="string">'2022-5-3 13:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">3</span>,<span class="string">'2022-5-3 14:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">1</span>,<span class="string">'2022-5-3 1:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">4</span>,<span class="string">'2022-5-2 13:00:00'</span>);</span><br><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> login <span class="keyword">VALUES</span>(<span class="number">3</span>,<span class="string">'2022-5-2 12:00:00'</span>);</span><br><span class="line"><span class="comment">--- 查询5.4这天日活</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">DATE</span>(login_date) <span class="keyword">AS</span> <span class="string">'date'</span>, <span class="keyword">COUNT</span>(<span class="keyword">DISTINCT</span> <span class="keyword">id</span>) <span class="keyword">AS</span> <span class="string">'count'</span> </span><br><span class="line"><span class="keyword">FROM</span> login</span><br><span class="line"><span class="keyword">GROUP</span> <span class="keyword">BY</span> <span class="built_in">DATE</span>(login_date)</span><br><span class="line"><span class="keyword">HAVING</span> <span class="built_in">date</span>=<span class="built_in">DATE</span>(<span class="string">'2022-05-04'</span>)</span><br></pre></td></tr></table></figure>
+
+<p><img src="images/1651975654117.png" alt="1651975654117"></p>
+<p>这种方式涉及的数据量较大，如果网站比较活跃，数据量扩增非常迅速，且单单为了这个功能就建一张表太过奢侈。</p>
+<p>位图算法的思路</p>
+<p>​    每天维护一个1亿bit的数组如day20220504[100000000]，这个数组的第i位置的bit为1代表今日id为i的用户登录了。这样活跃人数的计算就成了统计改数组中1个个数。</p>
+<blockquote>
+<p>数组大小为12m（1亿bit=12500000byte=12208k=12m），还算可以接受。但是如果你用byte型的数组来表示改存储结构，那么大小就是96m.</p>
+</blockquote>
+<p>我们可以用redis实现这种思路因为Redis 的bitmap是自动扩展的，如果设置了某个偏移位置超出了现有的内容范围，位数组就会自动扩充。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 当一个用户id为i的用户登录时，直接将位图对应下标处的位设置为1</span><br><span class="line">set day20220504 i 1</span><br><span class="line">## 统计日活的命令</span><br><span class="line">BITCOUNT day20220504</span><br></pre></td></tr></table></figure>
+
+<h2 id="位图-权限控制"><a href="#位图-权限控制" class="headerlink" title="位图-权限控制"></a>位图-权限控制</h2><p>待续</p>
+<h2 id="位图-限流"><a href="#位图-限流" class="headerlink" title="位图-限流"></a>位图-限流</h2><p><a href="https://blog.51cto.com/u_2837193/4904056">待续：常用限流算法</a></p>
+ 
       <!-- reward -->
       
       <div id="reword-out">

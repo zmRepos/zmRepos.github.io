@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2022-05-04T08:49:15.164Z</updated>
+  <updated>2022-05-08T03:42:30.719Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -21,17 +21,11 @@
     <link href="http://zm163.github.io/2022/05/04/github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93/"/>
     <id>http://zm163.github.io/2022/05/04/github%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E5%A4%AA%E6%85%A2%E7%9A%84%E6%9D%A5%E9%BE%99%E5%8E%BB%E8%84%89%E4%BB%A5%E5%8F%8A%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93/</id>
     <published>2022-05-04T04:27:02.000Z</published>
-    <updated>2022-05-04T08:49:15.164Z</updated>
+    <updated>2022-05-08T03:42:30.719Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;github访问速度太慢的来龙去脉以及解决之道&quot;&gt;&lt;a href=&quot;#github访问速度太慢的来龙去脉以及解决之道&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;github访问速度太慢的来龙去脉以及解决之道&quot;&gt;&lt;a href=&quot;#github访问速度太慢的来龙去脉以及解决之道&quot; class=&quot;headerlink&quot; title=&quot;github访问速度太慢的来龙去脉以及解决之道&quot;&gt;&lt;/a&gt;github访问速度太慢的来龙去脉以及解决之道&lt;/h1&gt;&lt;h2 id=&quot;国内访问GitHub速度为什么慢&quot;&gt;&lt;a href=&quot;#国内访问GitHub速度为什么慢&quot; class=&quot;headerlink&quot; title=&quot;国内访问GitHub速度为什么慢&quot;&gt;&lt;/a&gt;国内访问GitHub速度为什么慢&lt;/h2&gt;
     
     </summary>
     
@@ -50,17 +44,11 @@
     <link href="http://zm163.github.io/2022/04/26/%E4%BD%8D%E5%9B%BE%E7%AE%97%E6%B3%95/"/>
     <id>http://zm163.github.io/2022/04/26/%E4%BD%8D%E5%9B%BE%E7%AE%97%E6%B3%95/</id>
     <published>2022-04-26T14:49:36.000Z</published>
-    <updated>2022-04-27T15:37:24.881Z</updated>
+    <updated>2022-05-08T03:41:34.409Z</updated>
     
     <summary type="html">
     
-      
-      
-        
-        
-          &lt;h1 id=&quot;位图算法&quot;&gt;&lt;a href=&quot;#位图算法&quot; class=&quot;headerlink&quot; title=&quot;位图算法&quot;&gt;&lt;/a&gt;位图算法&lt;/h1&gt;&lt;h2 id=&quot;例子&quot;&gt;&lt;a href=&quot;#例子&quot; class=&quot;headerlink&quot;
-        
-      
+      &lt;h1 id=&quot;位图算法&quot;&gt;&lt;a href=&quot;#位图算法&quot; class=&quot;headerlink&quot; title=&quot;位图算法&quot;&gt;&lt;/a&gt;位图算法&lt;/h1&gt;&lt;h2 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h2&gt;&lt;p&gt;​    位图(BitMap)，简单的来说就是bit类型的数组，但是各种计算机语言中并没有提供这种数据类型的结构，因此我们可以利用数字的数组来构成位图。比如我们想要128位的位图，那么在Java中定义一个long [] bits = new long[2];就可以了。而在Redis中有专门的数据结构(bitmap)并提供了相应的操作方法。&lt;/p&gt;
     
     </summary>
     
@@ -457,9 +445,9 @@
     </summary>
     
     
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
-    
       <category term="算法" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="LeetCode" scheme="http://zm163.github.io/categories/LeetCode/"/>
     
       <category term="栈" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95/%E6%A0%88/"/>
     
