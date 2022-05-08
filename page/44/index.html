@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1043"
+  id="post-PTA-Basic-1039"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -185,8 +185,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/25/PTA-Basic-1043/"
-    >PTA-Basic-1043</a> 
+  <a class="article-title" href="/2019/09/23/PTA-Basic-1039/"
+    >PTA-Basic-1039</a> 
 </h2>
  
 
@@ -194,78 +194,149 @@ var _hmt = _hmt || [];
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/25/PTA-Basic-1043/" class="article-date">
-  <time datetime="2019-09-25T13:46:02.000Z" itemprop="datePublished">2019-09-25</time>
+      <a href="/2019/09/23/PTA-Basic-1039/" class="article-date">
+  <time datetime="2019-09-23T12:02:07.000Z" itemprop="datePublished">2019-09-23</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>题目：<br>给定一个长度不超过 10<br>​4<br>​​  的、仅由英文字母构成的字符串。请将字符重新调整顺序，按 PATestPATest…. 这样的顺序输出，并忽略其它字符。当然，六种字符的个数不一定是一样多的，若某种字符已经输出完，则余下的字符仍按 PATest 的顺序打印，直到所有字符都被输出。</p>
-<p>输入格式：<br>输入在一行中给出一个长度不超过 10<br>​4<br>​​  的、仅由英文字母构成的非空字符串。</p>
-<p>输出格式：<br>在一行中按题目要求输出排序后的字符串。题目保证输出非空。</p>
-<p>输入样例：</p>
-<pre><code>redlesPayBestPATTopTeePHPereatitAPPT</code></pre><p>输出样例：</p>
-<pre><code>PATestPATestPTetPTePePee</code></pre><p>分析：<br>定义一个整型数组用下标对应字母，数值对应个数。另外用一个变量存储符合条件的字符总数，然后进行输出，每次查找对应的字母是否还有数目，如果有就输出并字符总数减去1没有就跳过字母。</p>
+  <p>题目：</p>
+<p>小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。</p>
+<p>为方便起见，我们用[0-9]、[a-z]、[A-Z]范围内的字符来表示颜色。例如在图1中，第3串是小红想做的珠串；那么第1串可以买，因为包含了全部她想要的珠子，还多了8颗不需要的珠子；第2串不能买，因为没有黑色珠子，并且少了一颗红色的珠子。</p>
+<p><img src="https://images.ptausercontent.com/b7e2ffa6-8819-436d-ad79-a41263abe914.jpg" alt="串串"></p>
+<p>图 1</p>
+<p>输入格式：</p>
+<pre><code>每个输入包含 1 个测试用例。每个测试用例分别在 2 行中先后给出
+摊主的珠串和小红想做的珠串，两串都不超过 1000 个珠子。</code></pre><p>输出格式：</p>
+<pre><code>如果可以买，则在一行中输出 Yes 以及有多少多余的珠子；如果不
+可以买，则在一行中输出 No 以及缺了多少珠子。其间以 1 个空格
+分隔。</code></pre><p>输入样例 1：</p>
+<pre><code>ppRYYGrrYBR2258
+YrR8RrY</code></pre><p>输出样例 1：</p>
+<pre><code>Yes 8</code></pre><p>输入样例 2：</p>
+<pre><code>ppRYYGrrYB225
+YrR8RrY</code></pre><p>输出样例 2：</p>
+<pre><code>No 2</code></pre><p>分析：此题与上一题采用相同的思路，先定义一个整型数组（范围要能把字母与数字的ascall码值包含在内），然后输入字符，如果字符符合条件就将字符对应的ascall码对应的数组下标所对应的数组+1，表示此种字符输入一次。输入要查找的字符串时，字符对应的数目-1.最后遍历数组将所有符数加到一起，所以正数加到一起，负数表示缺少的字符数目，正数表示多余的字符数目，如果有负数优先输出：No 缺少的数目（&gt;0）。反之 就输出Yes 多余的数目。</p>
 <p>代码：</p>
-<p>c++实现：</p>
-<pre><code>#include &lt;iostream&gt;
-#include&lt;stdio.h&gt;
-using namespace std;
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+        int chars[250]={0};
+        char ch;
+        while((ch=getchar())!=&apos;\n&apos;){
+            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                chars[ch]++;
+            }
+        }
+        while((ch=getchar())!=&apos;\n&apos;){
+            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                chars[ch]--;
+            }
+        }
+        int sum1=0;
+        int sum2=0;
+        int i=0;
+        while(i&lt;250){
+            if(chars[i]&lt;0){
+                sum2+=chars[i];
+            }else{
+                sum1+=chars[i];
+                }
+                i++;
+        }
+        if(sum2&lt;0){
+            printf(&quot;No %d&quot;,-sum2);
+        }else{
+            printf(&quot;Yes %d&quot;,sum1);
+            }
+        return 0;
+    }</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
 
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1038"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/23/PTA-Basic-1038/"
+    >PTA-Basic-1038</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/23/PTA-Basic-1038/" class="article-date">
+  <time datetime="2019-09-23T12:01:54.000Z" itemprop="datePublished">2019-09-23</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>本题要求读入 N 名学生的成绩，将获得某一给定分数的学生人数输出。</p>
+<p>输入格式：<br>输入在第 1 行给出不超过 10<br>​^5<br>​​  的正整数 N，即学生总人数。随后一行给出 N 名学生的百分制整数成绩，中间以空格分隔。最后一行给出要查询的分数个数 K（不超过 N 的正整数），随后是 K 个分数，中间以空格分隔。</p>
+<p>输出格式：<br>在一行中按查询顺序给出得分等于指定分数的学生人数，中间以空格分隔，但行末不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>10
+60 75 90 55 75 99 82 90 75 50
+3 75 90 88</code></pre><p>输出样例：</p>
+<pre><code>3 2 0</code></pre><p>分析：</p>
+<p>输入：数目 与 得分。<br>处理：此题不好用循环去一个一个遍历，查找比对。<br>因为题目说了数字范围是1-100的整数，所以直接定义一个长度为101的数组，每输入一个分数时，就再分数对应的下标所在的数组存储的数目加1.输入要查找的得分时通过得分直接找到相应的次数，并输出，如果输出最后一个数字时，不用输出空格。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
 int main()
 {
-    int chars[6]={0};
-    string str;
-    cin&gt;&gt;str;
-    int len=str.length();
-    int sum=0;
-    for(int i=0;i&lt;len;i++){
-        switch(str.at(i)){
-            case &apos;P&apos;:chars[0]++;sum++;break;
-            case &apos;A&apos;:chars[1]++;sum++;break;
-            case &apos;T&apos;:chars[2]++;sum++;break;
-            case &apos;e&apos;:chars[3]++;sum++;break;
-            case &apos;s&apos;:chars[4]++;sum++;break;
-            case &apos;t&apos;:chars[5]++;sum++;break;
-            default:break;
-        }
+    int n,m;
+    scanf(&quot;%d&quot;,&amp;n);
+    int score1[101]={0};
+    int score2;
+    while(n--)
+    {
+        scanf(&quot;%d&quot;,&amp;score2);
+        score1[score2]++;
     }
-    while(sum){
-        if(chars[0]){
-            chars[0]--;
-            sum--;
-            cout&lt;&lt;&apos;P&apos;;
-        }
-        if(chars[1]){
-            chars[1]--;
-            sum--;
-            cout&lt;&lt;&apos;A&apos;;
-        }
-        if(chars[2]){
-            chars[2]--;
-            sum--;
-            cout&lt;&lt;&apos;T&apos;;
-        }
-        if(chars[3]){
-            chars[3]--;
-            sum--;
-            cout&lt;&lt;&apos;e&apos;;
-        }
-        if(chars[4]){
-            chars[4]--;
-            sum--;
-            cout&lt;&lt;&apos;s&apos;;
-        }
-        if(chars[5]){
-            chars[5]--;
-            sum--;
-            cout&lt;&lt;&apos;t&apos;;
-        }
+    scanf(&quot;%d&quot;,&amp;m);
+    int score3;
+    while(m--)
+    {
+        scanf(&quot;%d&quot;,&amp;score3);
+        printf(&quot;%d&quot;,score1[score3]);
+        if(m!=0)
+            printf(&quot; &quot;);
     }
     return 0;
 }</code></pre> 
@@ -290,7 +361,7 @@ int main()
 
     
     <article
-  id="post-PTA-Basic-1042"
+  id="post-PTA-Basic-1037"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -301,8 +372,8 @@ int main()
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/09/24/PTA-Basic-1042/"
-    >PTA-Basic-1042</a> 
+  <a class="article-title" href="/2019/09/23/PTA-Basic-1037/"
+    >PTA-Basic-1037</a> 
 </h2>
  
 
@@ -310,163 +381,45 @@ int main()
     </header>
      
     <div class="article-meta">
-      <a href="/2019/09/24/PTA-Basic-1042/" class="article-date">
-  <time datetime="2019-09-24T14:26:41.000Z" itemprop="datePublished">2019-09-24</time>
+      <a href="/2019/09/23/PTA-Basic-1037/" class="article-date">
+  <time datetime="2019-09-23T12:01:40.000Z" itemprop="datePublished">2019-09-23</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
   </div>
    
     </div>
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>请编写程序，找出一段给定文字中出现最频繁的那个英文字母。</p>
-<p>输入格式：<br>输入在一行中给出一个长度不超过 1000 的字符串。字符串由 ASCII 码表中任意可见字符及空格组成，至少包含 1 个英文字母，以回车结束（回车不算在内）。</p>
-<p>输出格式：<br>在一行中输出出现频率最高的那个英文字母及其出现次数，其间以空格分隔。如果有并列，则输出按字母序最小的那个字母。统计时不区分大小写，输出小写字母。</p>
-<p>输入样例：</p>
-<pre><code>This is a simple TEST.  There ARE numbers and other symbols 1&amp;2&amp;3...........</code></pre><p>输出样例：</p>
-<pre><code>e 7</code></pre><p>分析：定义一个26个字母（小写）的整型数组，每次遇到字母（如果大写就将其化为小写）存储到字母-97（‘a’对应的ascall码值）下标的位置。最后遍历数组找出最大数字的下标，并将其转为字符输出。</p>
-<p>代码:</p>
+  <p>题目：</p>
+<p>如果你是哈利·波特迷，你会知道魔法世界有它自己的货币系统 —— 就如海格告诉哈利的：“十七个银西可(Sickle)兑一个加隆(Galleon)，二十九个纳特(Knut)兑一个西可，很容易。”现在，给定哈利应付的价钱 P 和他实付的钱 A，你的任务是写一个程序来计算他应该被找的零钱。</p>
+<p>输入格式：<br>输入在 1 行中分别给出 P 和 A，格式为 Galleon.Sickle.Knut，其间用 1 个空格分隔。这里 Galleon 是 [0, 10<br>​^7<br>​​ ] 区间内的整数，Sickle 是 [0, 17) 区间内的整数，Knut 是 [0, 29) 区间内的整数。</p>
+<p>输出格式：</p>
+<p>在一行中用与输入同样的格式输出哈利应该被找的零钱。如果他没带够钱，那么输出的应该是负数。</p>
+<p>输入样例 1：</p>
+<pre><code>10.16.27 14.1.28</code></pre><p>输出样例 1：</p>
+<pre><code>3.2.1</code></pre><p>输入样例 2：</p>
+<pre><code>14.1.28 10.16.27</code></pre><p>输出样例 2：</p>
+<pre><code>-3.2.1</code></pre><p>分析：</p>
+<p>输入:Galleon1.Sickle1.Knut1 Galleon2.Sickle2.Knut2<br>处理：先将每个分别化为最小单位的货币和，然后用实收减去应收，所得结果即为多的或少的。然后对此进行单位换算，先化为高位的，再化为中位的，剩下的就是最低单位的数字。<br>输出：Galleon3.Sickle3.Knut3</p>
+<p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 int main(void){
-    int strs[26]={0};
-    char ch;
-    while((ch=getchar())!=&apos;\n&apos;){
-        if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&gt;=&apos;A&apos;&amp;&amp;ch&lt;=&apos;Z&apos;)){
-            if(ch&lt;97){
-                ch=ch-&apos;A&apos;+&apos;a&apos;;
-            }
-            strs[ch-97]++;
-        }
-    }
-    int a=0;
-    for(int i=1;i&lt;26;i++){
-        if(strs[i]&gt;strs[a]){
-            a=i;
-        }
-    }
-    printf(&quot;%c %d&quot;,a+97,strs[a]);
+    long p[3]={0};
+    long a[3]={0};
+    scanf(&quot;%d.%d.%d %d.%d.%d&quot;,&amp;p[0],&amp;p[1],&amp;p[2],&amp;a[0],&amp;a[1],&amp;a[2]);
+    long c[3]={0};
+    long x=a[0]*29*17+a[1]*29+a[2];
+    long y=p[0]*29*17+p[1]*29+p[2];
+    x=x-y;
+    c[0]=(x)/(29*17);
+    c[1]=(x-c[0]*29*17)/29;
+    c[2]=(x-c[0]*29*17-c[1]*29);
+//此处的一个坑就是当欠钱时值输出一个负号。
+    printf(&quot;%d.%d.%d&quot;,c[0],(c[1]&gt;0?c[1]:-c[1]),(c[2]&gt;0?c[2]:-c[2]));//如果第一是负数时后面的就不用输出负号了。
     return 0;
-}</code></pre><p>思路二：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;ctype.h&gt;
-int map[255]={0};
-int main(void){
-    int maxNum=0;
-    char  maxChar=&apos;a&apos;;
-    char ch;
-    while((ch=getchar())!=&apos;\n&apos;){
-        if((ch&gt;=&apos;a&apos;&amp;&amp;ch&lt;=&apos;z&apos;)||(ch&gt;=&apos;A&apos;&amp;&amp;ch&lt;=&apos;Z&apos;)){
-            ch=tolower(ch);
-            map[ch]++;
-            if(map[ch]&gt;=map[maxChar]){
-                if(map[ch]==map[maxChar]){
-                    if(maxChar&gt;ch)
-                        maxChar=ch;
-                }else{
-                    maxChar=ch;
-                }
-            }
-        }
-
-    }
-    printf(&quot;%c %d&quot;,maxChar,map[maxChar]);
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1041"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/24/PTA-Basic-1041/"
-    >PTA-Basic-1041</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/24/PTA-Basic-1041/" class="article-date">
-  <time datetime="2019-09-24T14:26:25.000Z" itemprop="datePublished">2019-09-24</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>每个 PAT 考生在参加考试时都会被分配两个座位号，一个是试机座位，一个是考试座位。正常情况下，考生在入场时先得到试机座位号码，入座进入试机状态后，系统会显示该考生的考试座位号码，考试时考生需要换到考试座位就座。但有些考生迟到了，试机已经结束，他们只能拿着领到的试机座位号码求助于你，从后台查出他们的考试座位号码。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤1000），随后 N 行，每行给出一个考生的信息：准考证号 试机座位号 考试座位号。其中准考证号由 16 位数字组成，座位从 1 到 N 编号。输入保证每个人的准考证号都不同，并且任何时候都不会把两个人分配到同一个座位上。</p>
-<p>考生信息之后，给出一个正整数 M（≤N），随后一行中给出 M 个待查询的试机座位号码，以空格分隔。</p>
-<p>输出格式：<br>对应每个需要查询的试机座位号码，在一行中输出对应考生的准考证号和考试座位号码，中间用 1 个空格分隔。</p>
-<p>输入样例：</p>
-<pre><code>4
-3310120150912233 2 4
-3310120150912119 4 1
-3310120150912126 1 3
-3310120150912002 3 2
-2
-3 4</code></pre><p>输出样例：</p>
-<pre><code>3310120150912002 2
-3310120150912119 1</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-typedef struct stu{
-    char id[17];
-    int sitNum;
-    int examNum;
-}stu;
-int main(void){
-    int num;
-    scanf(&quot;%d&quot;,&amp;num);
-    stu stus[num];
-    int i=0;
-    while(i&lt;num){
-        scanf(&quot;%s %d %d&quot;,(stus[i].id),&amp;(stus[i].sitNum),&amp;(stus[i].examNum));
-        i++;
-    }
-    int num1=0;
-    scanf(&quot;%d&quot;,&amp;num1);
-    while(num1--){
-        int n;
-        scanf(&quot;%d&quot;,&amp;n);
-        for(int i=0;i&lt;num;i++){
-            if(stus[i].sitNum==n){
-                printf(&quot;%s %d\n&quot;,stus[i].id,stus[i].examNum);
-            }
-        }
-    }
-    return 0;
-}</code></pre> 
+    }</code></pre> 
       <!-- reward -->
       
     </div>
@@ -493,7 +446,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/43/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/46/">46</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/45/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/43/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="page-number current">44</span><a class="page-number" href="/page/45/">45</a><a class="page-number" href="/page/46/">46</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/45/">下一页</a>
   </nav>
   
 </section>
