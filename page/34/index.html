@@ -174,6 +174,110 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1072"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/08/PTA-Basic-1072/"
+    >PTA-Basic-1072</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/08/PTA-Basic-1072/" class="article-date">
+  <time datetime="2019-10-08T13:48:36.000Z" itemprop="datePublished">2019-10-08</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>下图是上海某校的新学期开学寄语：天将降大任于斯人也，必先删其微博，卸其 QQ，封其电脑，夺其手机，收其 ipad，断其 wifi，使其百无聊赖，然后，净面、理发、整衣，然后思过、读书、锻炼、明智、开悟、精进。而后必成大器也！</p>
+<p><img src="https://images.ptausercontent.com/3b1d9f4a-778b-4942-a9e2-836262f363aa.JPG" alt="嘿嘿嘿"></p>
+<p>本题要求你写个程序帮助这所学校的老师检查所有学生的物品，以助其成大器。</p>
+<p>输入格式：</p>
+<p>输入第一行给出两个正整数 N（≤ 1000）和 M（≤ 6），分别是学生人数和需要被查缴的物品种类数。第二行<br>给出 M 个需要被查缴的物品编号，其中编号为 4 位数字。随后 N 行，每行给出一位学生的姓名缩写（由 1-4 个大写英文字母组成）、个人物品数量 K（0 ≤ K ≤ 10）、以及 K 个物品的编号。</p>
+<p>输出格式：<br>顺次检查每个学生携带的物品，如果有需要被查缴的物品存在，则按以下格式输出该生的信息和其需要被查缴的物品的信息（注意行末不得有多余空格）：</p>
+<p>姓名缩写: 物品编号1 物品编号2 ……<br>最后一行输出存在问题的学生的总人数和被查缴物品的总数。</p>
+<p>输入样例：</p>
+<pre><code>4 2
+2333 6666
+CYLL 3 1234 2345 3456
+U 4 9966 6666 8888 6666
+GG 2 2333 7777
+JJ 3 0012 6666 2333</code></pre><p>输出样例：</p>
+<pre><code>U: 6666 6666
+GG: 2333
+JJ: 6666 2333
+3 5</code></pre><p>分析：<br>定义一个图，存储被禁止的编号，然后对每一个输入判断，如果有不允许的，就标记一下此人，输入此人的姓名，与违禁品。注意输出格式为4位</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int forbid[10000]={0};
+    int n,m,temp,k;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    for(int i=0;i&lt;m;i++){
+        scanf(&quot;%d&quot;,&amp;temp);
+        forbid[temp]=1;
+    }
+    int sum=0,fsum=0;
+    for(int i=0;i&lt;n;i++){
+        char name[5]={&apos;\0&apos;};
+        scanf(&quot;%s %d&quot;,name,&amp;k);
+        int flag=0;
+        for(int j=0;j&lt;k;j++){
+            scanf(&quot;%d&quot;,&amp;temp);
+            if(forbid[temp]){
+                if(!flag){
+                    flag=1;
+                    printf(&quot;%s:&quot;,name);
+                    sum++;
+                }
+                printf(&quot; %04d&quot;,temp);
+                fsum++;
+            }
+        }
+        if(flag){
+            printf(&quot;\n&quot;);
+        }
+    }
+    printf(&quot;%d %d&quot;,sum,fsum);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1071"
   class="article article-type-post"
   itemscope
@@ -373,130 +477,13 @@ int main()
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1069"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1069/"
-    >PTA-Basic-1069</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1069/" class="article-date">
-  <time datetime="2019-10-07T12:43:06.000Z" itemprop="datePublished">2019-10-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>小明 PAT 考了满分，高兴之余决定发起微博转发抽奖活动，从转发的网友中按顺序每隔 N 个人就发出一个红包。请你编写程序帮助他确定中奖名单。</p>
-<p>输入格式：<br>输入第一行给出三个正整数 M（≤ 1000）、N 和 S，分别是转发的总量、小明决定的中奖间隔、以及第一位中奖者的序号（编号从 1 开始）。随后 M 行，顺序给出转发微博的网友的昵称（不超过 20 个字符、不包含空格回车的非空字符串）。</p>
-<p>注意：可能有人转发多次，但不能中奖多次。所以如果处于当前中奖位置的网友已经中过奖，则跳过他顺次取</p>
-<p>下一位。</p>
-<p>输出格式：</p>
-<p>按照输入的顺序输出中奖名单，每个昵称占一行。如果没有人中奖，则输出 Keep going…。</p>
-<p>输入样例 1：</p>
-<pre><code>9 3 2
-Imgonnawin!
-PickMe
-PickMeMeMeee
-LookHere
-Imgonnawin!
-TryAgainAgain
-TryAgainAgain
-Imgonnawin!
-TryAgainAgain</code></pre><p>输出样例 1：</p>
-<pre><code>PickMe
-Imgonnawin!
-TryAgainAgain</code></pre><p>输入样例 2：</p>
-<pre><code>2 3 5
-Imgonnawin!
-PickMe</code></pre><p>输出样例 2：</p>
-<pre><code>Keep going...</code></pre><p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-char result[1000][21];
-int check(char *str,int t){
-    for(int j=0;j&lt;t;j++){
-        if(strcmp(str,result[j])==0){//比较人数数组中是否已经有这个人了
-            return 1;
-        }
-    }
-    return 0;
-}
-int main()
-{
-    int m,n,s;
-    scanf(&quot;%d%d%d&quot;,&amp;m,&amp;n,&amp;s);
-    char str[21];
-    int t=0;//用来存储有多少人得奖。
-    for(int i=1;i&lt;=m;i++){
-            scanf(&quot;%s&quot;,str);
-            getchar();
-        if(i==s){
-                if(check(str,t)){//此人已经转发过了
-                    s=s+1;//看看它的下一个人是否合适
-                    continue;
-                }else{
-                    strcpy(result[t++],str);//此人没有转发过，就存入数组。
-                    s=s+n;//并且到下一个相隔n的人。
-                }
-        }
-    }
-    if(t==0){
-        printf(&quot;Keep going...&quot;);
-    }else{
-        for(int i=0;i&lt;t;i++){
-            puts(result[i]);
-        }
-        }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/33/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/55/">55</a><a class="extend next" rel="next" href="/page/35/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/33/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/35/">下一页</a>
   </nav>
   
 </section>

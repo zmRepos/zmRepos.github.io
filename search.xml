@@ -8664,4 +8664,96 @@ int type3(struct id ids[], int n, int i)
         <tag>字符串</tag>
       </tags>
   </entry>
+  <entry>
+    <title>跨域问题</title>
+    <url>/2022/05/09/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>​        <a id="more"></a></p>
+<h2 id="1-浏览器的同源策略"><a href="#1-浏览器的同源策略" class="headerlink" title="1 浏览器的同源策略"></a>1 浏览器的同源策略</h2><p>​    在一个脚本发送请求得到的响应结果，如果不是请求当前脚本执行环境所在的域名（协议、域名、端口有一个不一样就不是同域），那么给请求的响应结果会被浏览器拦截，不交给该脚本处理。这就是同源策略。这种策略能够有效的防止一个恶意开发者通过自己用户登录自己的网站时，底层默默执行代码，发送请求获取其他网站例如某些特殊网站（假如同时用户刚好登录了政府内网）获取到机关人员的cookie信息，然后使用携带该请求去请求政府服务器（这也就是传说中的CSRF攻击，跨站请求伪造攻击），浏览器会拦截这些恶意请求的响应数据不让它得到响应，从而保证了数据的安全性。</p>
+<h2 id="2-什么是跨域"><a href="#2-什么是跨域" class="headerlink" title="2 什么是跨域"></a>2 什么是跨域</h2><p>简而言之，就是如果你所在的网站是<a href="https://example.com">https://example.com</a> ： 那么如果你向<a href="https://m.example.com">https://m.example.com</a> 或者<a href="https://example.com:3000">https://example.com:3000</a> 或者 <a href="http://example.com">http://example.com</a> 发送的请求都属于跨域请求。跨域所报的异常情况如下：</p>
+<p><img src="/2022/05/09/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/image-1652110357572.png" alt="img"></p>
+<h2 id="3-什么时候出现跨域问题？"><a href="#3-什么时候出现跨域问题？" class="headerlink" title="3 什么时候出现跨域问题？"></a>3 什么时候出现跨域问题？</h2><p>跨域不一定就有跨域问题， 仅在 </p>
+<p>1）调用 Ajax 时：调用 Ajax 发送请求的页面 所在的域，和被请求页面所在的域不一致<br>2）当操作 ifream 内引入的元素时：ifream 所属页面的域，和 ifream 引入页面的域不一致</p>
+<h2 id="4-如何解决跨域问题？"><a href="#4-如何解决跨域问题？" class="headerlink" title="4 如何解决跨域问题？"></a>4 如何解决跨域问题？</h2><p><strong>Jsonp</strong> </p>
+<p>原理如图</p>
+<p>​            &lt;script src=”xx”&gt;、&lt;image src=”xx”&gt;、&lt;link src=”xx”/&gt;这些包含src属性的标签可以加载跨域的资源。</p>
+<p><img src="/2022/05/09/%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/image-1652110357527.png" alt="img"></p>
+<p>这是最早的解决方案，利用script标签可以跨域的原理实现。 使用js动态地创建<script>标签，但是请求响应数据会立马被浏览器当作javascript语句去执行，但这种数据格式并不符合其js语法。由于浏览器得到数据后会立即试图解析执行这些数据，所以如果服务器响应的数据外围包裹一层函数调用，如图，{..}是返回的数据，callback()是包裹的函数，而恰巧，浏览器环境刚好全局变量有这种函数，那么{…}就会作为数据被传递进入callback函数。</p>
+<p><img src="%E8%B7%A8%E5%9F%9F%E9%97%AE%E9%A2%98/image.png" alt="img"></p>
+<p>缺点：只能发起GET请求</p>
+<p><strong>反向代理</strong></p>
+<p>由于只有浏览器有同源策略，所以可以配置一个同域名下的nginx反向代理(理解为分发代理，帮你进行请求转发)服务器，接受所在域名的请求，然后转发请求到其他的域名指向的服务器，nginx接收到其他域名服务器的处理结果再返回给请求发出者。这样就规避了跨域。</p>
+<p>缺点：需要在nginx进行额外配置，比较麻烦</p>
+<p>实现</p>
+<p>ngnix配置如下</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line">server&#123;</span><br><span class="line">    # 监听9009端口，http://localhost:9009就是反向代理服务器的域名，即浏览器可见的服务器地址</span><br><span class="line">    listen 9009;</span><br><span class="line">    # 域名是localhost</span><br><span class="line">    server_name localhost;</span><br><span class="line">    # 凡是localhost:9009/api这个样子的，都转发到真正的服务端地址localhost:9888上去</span><br><span class="line">    location ^~ /api &#123;</span><br><span class="line">        proxy_pass 最终的目标域名;</span><br><span class="line">    &#125;    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CORS（最常用）</strong></p>
+<p>​        通过 W3C 规范 的“ 跨域资源共享（Cross-Origin Resource Sharing ，CORS）”，通过服务器端在 HTTP 头中的设置，可以使浏览器能够获取不同来源的资源。，<strong>来限制服务器所能接受的来源、请求的方法、可携带的头</strong>等。当浏览器发现发现的ajax请求是简单请求(见下)时，会在请求头中携带一个字段：Origin指出当前请求属于哪个域（协议+域名+端口），服务器得到请求后进行处理，如果确定接受则在响应头中加上如 Access-Control-Allow-Origin、Access-Control-Request-Method、Access-Control-Request-Headers 等属性，浏览器判断Access-Control-Allow-Origin中是否包含Origin的值，含有就把响应返回给请求者。简而言之，就是浏览器得到了一个服务器的白名单，根据这个白名单决定是否把响应数据交给调用者。</p>
+<blockquote>
+<p>Access-Control-Allow-Origin: 跨域请求的目标域名 如<a href="http://manage.enjoyment.com">http://manage.enjoyment.com</a></p>
+<p>Access-Control-Allow-Credentials: 是否允许携带cookie如true</p>
+<p>Content-Type: text/html; charset=utf-8。</p>
+</blockquote>
+<p>​        如果是复杂请求，不携带Origin，浏览器在正式请求之前增加一次http查询请求，也叫<strong>预检</strong> ，看看当前网页所在域名是否在服务器允许范围之内，浏览器得到肯定答复后才会发出正式的XMLHttpRequest请求。后续在服务器的答复的有效期内，该域名的请求都当作简单请求处理。</p>
+<blockquote>
+<p>简单请求的条件：</p>
+<p>（1) 请求方法是以下三种方法之一：</p>
+<ul>
+<li>HEAD|GET|POST</li>
+</ul>
+<p>（2）HTTP的头信息不超出以下几种字段：</p>
+<ul>
+<li><p>Accept</p>
+</li>
+<li><p>Accept-Language</p>
+</li>
+<li><p>Content-Language</p>
+</li>
+<li><p>Last-Event-ID</p>
+</li>
+<li><p>Content-Type：只限于三个值application/x-www-form-urlencoded、multipart/form-data、text/plain</p>
+</li>
+</ul>
+<p>除此之外的请求都属于复杂请求，</p>
+</blockquote>
+<p>实现CORS</p>
+<ul>
+<li>浏览器端都有浏览器自动完成，浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。</li>
+<li>服务端可通过拦截器统一实现，SpringMVC已经帮我们写好了CORS的跨域过滤器：CorsFilter ,内部已经实现了所讲的判定逻辑，会用即可。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">GlobalCorsConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CorsFilter <span class="title">corsFilter</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">//1.添加CORS配置信息</span></span><br><span class="line">            CorsConfiguration config = <span class="keyword">new</span> CorsConfiguration();</span><br><span class="line">            <span class="comment">//1) 允许的域,不要写*，否则cookie就无法使用了</span></span><br><span class="line">            config.addAllowedOrigin(<span class="string">"http://pronhub.heiheihei.com"</span>);</span><br><span class="line">            <span class="comment">//2) 是否发送Cookie信息</span></span><br><span class="line">            config.setAllowCredentials(<span class="keyword">true</span>);</span><br><span class="line">            <span class="comment">//3) 允许的请求方式</span></span><br><span class="line">            config.addAllowedMethod(<span class="string">"OPTIONS"</span>);</span><br><span class="line">            config.addAllowedMethod(<span class="string">"HEAD"</span>);</span><br><span class="line">            config.addAllowedMethod(<span class="string">"GET"</span>);</span><br><span class="line">            config.addAllowedMethod(<span class="string">"PUT"</span>);</span><br><span class="line">            config.addAllowedMethod(<span class="string">"POST"</span>);</span><br><span class="line">            config.addAllowedMethod(<span class="string">"DELETE"</span>);</span><br><span class="line">            config.addAllowedMethod(<span class="string">"PATCH"</span>);</span><br><span class="line">            <span class="comment">// 4）允许的头信息</span></span><br><span class="line">            config.addAllowedHeader(<span class="string">"*"</span>);</span><br><span class="line">        <span class="comment">//2.添加映射路径，我们拦截一切请求</span></span><br><span class="line">            UrlBasedCorsConfigurationSource configSource = <span class="keyword">new</span> UrlBasedCorsConfigurationSource();</span><br><span class="line">            configSource.registerCorsConfiguration(<span class="string">"/**"</span>, config);</span><br><span class="line">        <span class="comment">//3.返回新的CorsFilter.</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> CorsFilter(configSource);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>​    规范化的跨域请求解决方案，安全可靠。</p>
+<p>​                优势： </p>
+<ul>
+<li><ul>
+<li><ul>
+<li>在服务端进行控制是否允许跨域，可自定义规则</li>
+<li>支持各种请求方式</li>
+</ul>
+</li>
+<li><p>缺点： </p>
+</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li>会产生额外的请求</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>降域</strong></p>
+<p>child1.parent.com与parent.com 虽然这两个域名不同域，可以通过document.domain=”parent.com”设置让浏览器认为他们都属于一个域。这就是降域。</p>
+<p>…其他方法</p>
+</script></p>]]></content>
+      <categories>
+        <category>计算机网络</category>
+        <category>经验</category>
+      </categories>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
 </search>
