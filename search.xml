@@ -8749,8 +8749,8 @@ int type3(struct id ids[], int n, int i)
 <p>…其他方法</p>
 </script></p>]]></content>
       <categories>
-        <category>计算机网络</category>
-        <category>经验</category>
+        <category>前端</category>
+        <category>基础</category>
       </categories>
       <tags>
         <tag>js</tag>
