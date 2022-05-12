@@ -91,7 +91,7 @@ var _hmt = _hmt || [];
   <time datetime="2022-05-09T16:03:40.000Z" itemprop="datePublished">2022-05-10</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/other/">other</a>
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80/">基础</a>
   </div>
   
 <div class="word_count">
@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">407</span>
         </span>
     </span>
 
@@ -115,13 +115,26 @@ var _hmt = _hmt || [];
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-   
+  <p>​    <a id="more"></a></p>
+<h2 id="Comparable接口"><a href="#Comparable接口" class="headerlink" title="Comparable接口"></a>Comparable接口</h2><p>​     Comparable是个排序接口，若一个类实现了该接口 ，那么该类的数组和列表就可以通过<strong>Collections.sort</strong>或<strong>Arrays.sort</strong>进行自动排序。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Comparable</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(T o)</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">如果返回<span class="keyword">this</span>-o，那么相当于从小到大排序。</span><br><span class="line">如果返回o-<span class="keyword">this</span>，那么相当于从大到小排序。</span><br></pre></td></tr></table></figure>
+
+<p>由于基本类型对应的包装类一般都实现了Comarable接口，这些基本类型数组都可以使用Arrays,sort()…等方法。</p>
+<p>但是这个排序方式需要改变代码结构，侵入较大。</p>
+<h2 id="Comparator比较器"><a href="#Comparator比较器" class="headerlink" title="Comparator比较器"></a>Comparator比较器</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//创建比较器对象cp</span></span><br><span class="line">        Comparator&lt;Person2&gt; cp = <span class="keyword">new</span> Comparator&lt;Person2&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span><span class="comment">//重写compare方法，使按照照学号升序</span></span><br><span class="line">            <span class="comment">//o2.getXuehao()-o1.getXuehao()：按照学号降序</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Person2 o1, Person2 o2)</span> </span>&#123;<span class="comment">//自定义排序规则</span></span><br><span class="line">                <span class="keyword">return</span> o1.getXuehao()-o2.getXuehao();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line"><span class="comment">//对数组persons安装比较器cp进行排序</span></span><br><span class="line">        Arrays.sort(persons, cp);</span><br></pre></td></tr></table></figure>
+
+<h3 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h3><p>​    常常使用自定义比较器，来构造优先级队列对象，这个优先级队列底层是树形结构，通过自定义Comparator比较器来比较进行元素的对比。</p>
+<p>在优先队列中，如果定义的比较器是按照某值X升序(return o1.X-o2.X)排序的，那么优先队列中元素的位置会按照X的值所构建的小顶堆来放置；</p>
+<p>在优先队列中，如果定义的比较器是按照某值X降序(return o2.X-o1.X)排序的，那么优先队列中元素的位置会按照X的值所构建的大顶堆来放置；</p>
+ 
       <!-- reward -->
       
       <div id="reword-out">
@@ -196,7 +209,7 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/" rel="tag">other</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
   </div>
