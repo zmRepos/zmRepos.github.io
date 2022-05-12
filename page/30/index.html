@@ -174,6 +174,193 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1087"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1087/"
+    >PTA-Basic-1087</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1087/" class="article-date">
+  <time datetime="2019-10-16T13:29:41.000Z" itemprop="datePublished">2019-10-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>子曰：“三人行，必有我师焉。择其善者而从之，其不善者而改之。”</p>
+<p>本题给定甲、乙、丙三个人的能力值关系为：甲的能力值确定是 2 位正整数；把甲的能力值的 2 个数字调换位置就是乙的能力值；甲乙两人能力差是丙的能力值的 X 倍；乙的能力值是丙的 Y 倍。请你指出谁比你强应“从之”，谁比你弱应“改之”。</p>
+<p>输入格式：<br>输入在一行中给出三个数，依次为：M（你自己的能力值）、X 和 Y。三个数字均为不超过 1000 的正整数。</p>
+<p>输出格式：<br>在一行中首先输出甲的能力值，随后依次输出甲、乙、丙三人与你的关系：如果其比你强，输出 Cong；平等则输出 Ping；比你弱则输出 Gai。其间以 1 个空格分隔，行首尾不得有多余空格。</p>
+<p>注意：如果解不唯一，则以甲的最大解为准进行判断；如果解不存在，则输出 No Solution。</p>
+<p>输入样例 1：</p>
+<pre><code>48 3 7</code></pre><p>输出样例 1：</p>
+<pre><code>48 Ping Cong Gai</code></pre><p>输入样例 2：</p>
+<pre><code>48 11 6</code></pre><p>输出样例 2：</p>
+<pre><code>No Solution</code></pre><p>分析：<br>输入的是自己的分数，x,y.<br>处理：从99到10假设甲的成绩，利用甲的成绩计算乙的成绩，看看这两个数是否符合条件，符合就计算丙的成绩，之后进行对比。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+int main(void){
+    int n,x,y;
+    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;x,&amp;y);
+    int a=10,b=0;//甲乙成绩肯定是整数
+    double c=0;//丙的成绩不一定为整数。即（10-99）
+    for(a=99;a&gt;9;a--){//因为甲是两位数，又以甲的最大值为唯一答案，所以要倒序。
+        b=(a/10)+(a%10)*10;//利用甲的成绩计算乙的成绩
+        if(abs(a-b)*y==x*b){//如果符合此条件那么丙的成绩就可以算出来了。
+            c=abs(a-b)*1.0/x;//计算丙的成绩
+            printf(&quot;%d &quot;,a);//先输出a的成绩
+            if(a==n){//输出对比结果
+                printf(&quot;Ping &quot;);
+            }else if(a&gt;n){
+                printf(&quot;Cong &quot;);
+            }else{
+                printf(&quot;Gai &quot;);
+            }
+            if(b==n){
+                printf(&quot;Ping &quot;);
+            }else if(b&gt;n){
+                printf(&quot;Cong &quot;);
+            }else{
+                printf(&quot;Gai &quot;);
+            }
+            if(c==n*1.0){//c的成绩可能为浮点数，所以左右多应该为浮点数
+                printf(&quot;Ping&quot;);
+            }else if(c&gt;n*1.0){
+                printf(&quot;Cong&quot;);
+            }else{
+                printf(&quot;Gai&quot;);
+            }
+            return 0;//找到即可退出程序。
+        }
+    }
+    printf(&quot;No Solution&quot;);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1086"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1086/"
+    >PTA-Basic-1086</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1086/" class="article-date">
+  <time datetime="2019-10-16T13:29:31.000Z" itemprop="datePublished">2019-10-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>做作业的时候，邻座的小盆友问你：“五乘以七等于多少？”你应该不失礼貌地围笑着告诉他：“五十三。”本题就要求你，对任何一对给定的正整数，倒着输出它们的乘积。</p>
+<p><img src="https://images.ptausercontent.com/0c3a4497-27c3-45ea-9c8e-5a1ab2df48af.jpg" alt></p>
+<p>输入格式：<br>输入在第一行给出两个不超过 1000 的正整数 A 和 B，其间以空格分隔。</p>
+<p>输出格式：<br>在一行中倒着输出 A 和 B 的乘积。</p>
+<p>输入样例：</p>
+<pre><code>5 7</code></pre><p>输出样例：</p>
+<pre><code>53</code></pre><p>分析：不超过1000，那么乘积就不会超过1000000，int足够了。计算乘积存入数组，对结果不断取余，不断存入数组，直到为0，最后倒着输出数组。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+int main(void){
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    int c=n*m;
+    int i=0;
+    int result[20];
+    int re=0;
+    if(c==0){//注意为0是，直接输，出有一个测试点对应这个。
+        printf(&quot;%d&quot;,c);
+        return 0;
+    }
+    while(c!=0){
+        result[i++]=c%10; 
+        c=c/10;
+    }
+    for(int j=0;j&lt;i;j++){
+        re=re*10+result[j];
+    }
+    printf(&quot;%d&quot;,re);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1085"
   class="article article-type-post"
   itemscope
@@ -436,177 +623,6 @@ int cnmp(const void *a,const void *b){
     struct school sch1=*(struct school*)a;
     struct school sch2=*(struct school*)b;
     return strcmp(sch1.name,sch2.name);
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1084"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1084/"
-    >PTA-Basic-1084</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1084/" class="article-date">
-  <time datetime="2019-10-11T14:19:24.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>外观数列是指具有以下特点的整数序列：</p>
-<p>d, d1, d111, d113, d11231, d112213111, …<br>它从不等于 1 的数字 d 开始，序列的第 n+1 项是对第 n 项的描述。比如第 2 项表示第 1 项有 1 个 d，所以就是 d1；第 2 项是 1 个 d（对应 d1）和 1 个 1（对应 11），所以第 3 项就是 d111。又比如第 4 项是 d113，其描述就是 1 个 d，2 个 1，1 个 3，所以下一项就是 d11231。当然这个定义对 d = 1 也成立。本题要求你推算任意给定数字 d 的外观数列的第 N 项。</p>
-<p>输入格式：<br>输入第一行给出 [0,9] 范围内的一个整数 d、以及一个正整数 N（≤ 40），用空格分隔。</p>
-<p>输出格式：<br>在一行中给出数字 d 的外观数列的第 N 项。</p>
-<p>输入样例：</p>
-<pre><code>1 8</code></pre><p>输出样例：</p>
-<pre><code>1123123111</code></pre><p>分析：做此题时，一定要在旁边自己演算一边推算过程，不要只看不动手。对于i-1项，从左边到右边读取，如果有连续的（n个）’d’就记作dn，第一个字符不算它是个特殊字符，不要把他与后面混为一谈，他始终是一个记作d1。<br>处理：</p>
-<p>对于一个给定的字符，对其进行从1到n之间的推演，首先将此字符存储入数组，然后对此数组进行n次的推演。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-int main(void){
-    int n;
-    char ch;
-    scanf(&quot;%c %d&quot;,&amp;ch,&amp;n);
-    char res[100000]={0};//这个会非常大非常非常大。 
-    char crs[100000]={0};
-    res[0]=ch;
-    for(int i=1;i&lt;n;i++){
-        int time=0;
-        int begin=0;
-        for(int len=0;len&lt;strlen(res);len++){
-            time++;
-            if(res[len+1]==res[len]){//如果下一个字符还等于当前字符，继续数个数
-                continue;
-            }else{
-                crs[begin++]=res[len];//首先存入字符再存入数字
-                crs[begin++]=&apos;0&apos;+time;//这边我一开始担心有次数超过10的情况，但是那种处理起来有点麻烦，而且根据题目要求没看出来有大于10可能性的存在，就没考虑。
-                time=0;//time赋值为0用于下一次的计算有多少个
-            }
-        }
-        strcpy(res,crs);//将此次推演的结果存入res中用于下一次的推演。
-    }
-    printf(&quot;%s&quot;,res);
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1083"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1083/"
-    >PTA-Basic-1083</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1083/" class="article-date">
-  <time datetime="2019-10-11T14:19:18.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>给定 N 张卡片，正面分别写上 1、2、……、N，然后全部翻面，洗牌，在背面分别写上 1、2、……、N。将每张牌的正反两面数字相减（大减小），得到 N 个非负差值，其中是否存在相等的差？</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（2 ≤ N ≤ 10 000），随后一行给出 1 到 N 的一个洗牌后的排列，第 i 个数表示正面写了 i 的那张卡片背面的数字。</p>
-<p>输出格式：<br>按照“差值 重复次数”的格式从大到小输出重复的差值及其重复的次数，每行输出一个结果。</p>
-<p>输入样例：</p>
-<pre><code>8
-3 5 8 6 2 1 4 7</code></pre><p>输出样例：</p>
-<pre><code>5 2
-3 3
-2 2</code></pre><p>分析：定义一个非常大的数组就命名为差值数组，用数组下标存储差值，数组元素值存储此差值出现了多少次，<br>对第i个输入的数字，将其与其i值做差，取绝对值，存入差值数组中。最后倒序遍历输出数组下标与对应的值（大于1的）。<br>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-//而全局变量则可以全部自动初始化为0
-int main(void){
-    int n;
-    scanf(&quot;%d&quot;,&amp;n);
-    int time[10002]={0};//如果不手动初始化数组，那么最大初始化为0的长度是7921
-    int x,y;
-    int z;
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%d&quot;,&amp;x);
-        z=abs(x-i-1);
-        time[z]++;
-    }
-    for(int i=n-1;i&gt;=0;i--){
-        if(time[i]&gt;1){
-            printf(&quot;%d %d\n&quot;,i,time[i]);
-        }
-    }
-    return 0;
 }</code></pre> 
       <!-- reward -->
       

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2022-05-09T16:01:44.329Z</updated>
+  <updated>2022-05-09T16:03:40.176Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,57 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Arrays.sort、PriorityQueue、自定义Comparator的比较</title>
+    <link href="http://zm163.github.io/2022/05/10/Arrays-sort%E3%80%81PriorityQueue%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89Comparator%E7%9A%84%E6%AF%94%E8%BE%83/"/>
+    <id>http://zm163.github.io/2022/05/10/Arrays-sort%E3%80%81PriorityQueue%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89Comparator%E7%9A%84%E6%AF%94%E8%BE%83/</id>
+    <published>2022-05-09T16:03:40.000Z</published>
+    <updated>2022-05-09T16:03:40.176Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="other" scheme="http://zm163.github.io/categories/other/"/>
+    
+    
+      <category term="other" scheme="http://zm163.github.io/tags/other/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>String StringBuilder StringBuffer的异同</title>
+    <link href="http://zm163.github.io/2022/05/10/String-StringBuilder-StringBuffer%E7%9A%84%E5%BC%82%E5%90%8C/"/>
+    <id>http://zm163.github.io/2022/05/10/String-StringBuilder-StringBuffer%E7%9A%84%E5%BC%82%E5%90%8C/</id>
+    <published>2022-05-09T16:02:58.000Z</published>
+    <updated>2022-05-12T15:05:56.640Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h2 id=&quot;相同点&quot;&gt;&lt;a href=&quot;#相同点&quot; class=&quot;headerlink&quot; title=&quot;相同点&quot;&gt;&lt;/a&gt;相同点&lt;/h2&gt;&lt;ol&gt;
+&lt;li&gt;都是 final 类, 都不允许被继承;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&quot;不同点&quot;&gt;&lt;a href=&quot;#不同点&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="基础" scheme="http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Java" scheme="http://zm163.github.io/tags/Java/"/>
+    
+  </entry>
   
   <entry>
     <title>跨域问题</title>
@@ -436,52 +487,6 @@
     <summary type="html">
     
       &lt;h1 id=&quot;最小栈-栈的最小值-包含min函数的栈&quot;&gt;&lt;a href=&quot;#最小栈-栈的最小值-包含min函数的栈&quot; class=&quot;headerlink&quot; title=&quot;最小栈/栈的最小值/包含min函数的栈&quot;&gt;&lt;/a&gt;最小栈/栈的最小值/包含min函数的栈&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法与数据结构" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LeetCode/"/>
-    
-    
-      <category term="栈" scheme="http://zm163.github.io/tags/%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-1441</title>
-    <link href="http://zm163.github.io/2020/08/21/LeetCode-1441/"/>
-    <id>http://zm163.github.io/2020/08/21/LeetCode-1441/</id>
-    <published>2020-08-21T12:47:27.000Z</published>
-    <updated>2022-05-08T09:07:39.494Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;用栈操作构建数组&quot;&gt;&lt;a href=&quot;#用栈操作构建数组&quot; class=&quot;headerlink&quot; title=&quot;用栈操作构建数组&quot;&gt;&lt;/a&gt;用栈操作构建数组&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法与数据结构" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LeetCode/"/>
-    
-    
-      <category term="栈" scheme="http://zm163.github.io/tags/%E6%A0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-496</title>
-    <link href="http://zm163.github.io/2020/08/17/LeetCode-496/"/>
-    <id>http://zm163.github.io/2020/08/17/LeetCode-496/</id>
-    <published>2020-08-17T14:53:23.000Z</published>
-    <updated>2022-05-08T09:08:59.694Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;下一个更大的元素I&quot;&gt;&lt;a href=&quot;#下一个更大的元素I&quot; class=&quot;headerlink&quot; title=&quot;下一个更大的元素I&quot;&gt;&lt;/a&gt;下一个更大的元素I&lt;/h1&gt;
     
     </summary>
     
