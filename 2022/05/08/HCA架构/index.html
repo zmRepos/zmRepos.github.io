@@ -127,7 +127,7 @@ var _hmt = _hmt || [];
 <h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p> HCA架构，也叫超融合架构，简而言之就是把不同方式读取数据源以及读取不同数据源的东西融合到一起，然后提供给领域层调用融合后的统一接口，进行业务处理，最终返回给上层。</p>
 <p>HCA架构的优点是摒弃了专用存储网络，大大降低了存储成本。缺点是数据的读写无法保持一致的性能比如某些数据源可能读写较快某些数据源可能读写较慢。</p>
 <p><a href="https://blog.csdn.net/weixin_34194702/article/details/90388620">参考文章</a></p>
-<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960506.png" alt="img"></p>
+<h2 id="整体架构"><a href="#整体架构" class="headerlink" title="整体架构"></a>整体架构</h2><p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653313890632.png" alt="1653313890632"></p>
 <h3 id="目录简介"><a href="#目录简介" class="headerlink" title="目录简介"></a>目录简介</h3><p>hca目录</p>
 <ul>
 <li><p><strong>ohs</strong>：开放主机服务（北向），提供远程和本地服务，在分布式场景下多被另外一个界限上下文的 acl 防腐层调用。</p>
@@ -156,10 +156,8 @@ var _hmt = _hmt || [];
 </li>
 <li><p><strong>domain.exception</strong>：领域异常。</p>
 </li>
-<li><p><strong>domain.valueobject</strong>：领域实体 值对象。</p>
+<li><p><strong>domain.valueobject</strong>：领域实体 值对象。、</p>
 </li>
-</ul>
-<ul>
 <li><p><strong>acl</strong>：防腐层（南向），ohs、领域层 调用防腐层时只通过领域对象打交道，除非时 CQRS 模式中直接查询，acl 层可以直接返回 DTO。</p>
 </li>
 <li><p><strong>dataobject</strong>：数据对象，一般是 Jpa的持久化对象，命名样例: ExampleDO。</p>
@@ -177,7 +175,7 @@ var _hmt = _hmt || [];
 <p>仓储层有两个文件夹</p>
 <p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960501.png" alt="img"></p>
 <h4 id="adapter-repository"><a href="#adapter-repository" class="headerlink" title="adapter.repository"></a>adapter.repository</h4><p>仓储层接口的实现，其包括如下内容</p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960645.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314172367.png" alt="1653314172367"></p>
 <p>其中dataobject是仓储层的数据对象，用来<strong>简单</strong>封装从数据库中的数据。</p>
 <h5 id="dataobject文件夹"><a href="#dataobject文件夹" class="headerlink" title="dataobject文件夹"></a>dataobject文件夹</h5><p>xxDO对应的就是一个数据对象类</p>
 <p>.  一般xxDO继承了IdentityStrategyEntity，来作为jpa的默认的自增主键</p>
@@ -188,17 +186,17 @@ var _hmt = _hmt || [];
 <h5 id="jpa文件夹中"><a href="#jpa文件夹中" class="headerlink" title="jpa文件夹中"></a>jpa文件夹中</h5><p>存放的是使用jpa方式实现的数据操作接口，由于jpa会提供默认的接口实现，所以一般不需要我们提供接口方法。直接继承对应的<strong>JPARepository&lt;查询出来的数据对象的类型，该数据对象的主键&gt;</strong>即可</p>
 <p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960796.png" alt="img"></p>
 <h5 id="MyBatis文件夹"><a href="#MyBatis文件夹" class="headerlink" title="MyBatis文件夹"></a>MyBatis文件夹</h5><p>存放使用使用mybatis方式实现的操作数据库表信息的类。一般该Mapper类继承了AppBaseMapper*&lt;*F5MemberDO&gt;来实现分页功能。</p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960590.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314229584.png" alt="1653314229584"></p>
 <h5 id="XXRepositoryAdapter"><a href="#XXRepositoryAdapter" class="headerlink" title="XXRepositoryAdapter"></a>XXRepositoryAdapter</h5><p>实现了port.repository中声明的接口，一般注入了jpaDAO以及Mapper对象来对该接口进行实现，一般在这个类中对上层传入的领域对象转化成数据对象然后转化成调用仓储方法进行数据库操作。</p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314269885.png" alt="1653314269885"></p>
 <h4 id="port-repository"><a href="#port-repository" class="headerlink" title="port.repository"></a>port.repository</h4><p>仓储层提供给上层的接口，方法的入参一般是本层的实体类对象即XXDO，方法的返回值是上层实体对象即领域层实体对象。</p>
 <h3 id="第二层领域层"><a href="#第二层领域层" class="headerlink" title="第二层领域层"></a>第二层领域层</h3><p>负责某个领域的业务逻辑的处理，使用下层提供的数据进行处理，并最终返回给上层。</p>
 <p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960545.png" alt="img"></p>
 <h4 id="entity"><a href="#entity" class="headerlink" title="entity"></a>entity</h4><p>此文件夹内部存放是领域层的实体对象类，用来对本层进行业务逻辑处理后的数据进行封装。</p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960631.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314292404.png" alt="1653314292404"></p>
 <p>.  一般此对象要提供从上层DTO对象转化成本层领域实体对象的的from方法，以及将本层领域实体对象转化成下层数据对象的to方法。</p>
 <h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4><p>此文件夹存放，本层使用下层仓储适配器实现的提供给上层的服务类，这些类的方法返回值一般是DTO对象，传入的参数一般是本类对象</p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960504.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314321323.png" alt="1653314321323"></p>
 <h3 id="第三层远程服务层-ohs"><a href="#第三层远程服务层-ohs" class="headerlink" title="第三层远程服务层(ohs)"></a>第三层远程服务层(ohs)</h3><p>负责对请求进行封装、传入下层服务进行处理，对处理的返回值进行包装。</p>
 <p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960501.png" alt="img"></p>
 <h4 id="local-appservice"><a href="#local-appservice" class="headerlink" title="local.appservice"></a>local.appservice</h4><p>此文件夹表示本地应用服务，是使用下层服务实现的请求处理并最终返回合适的响应对象给浏览器流程的封装。</p>
@@ -209,28 +207,26 @@ var _hmt = _hmt || [];
 <p>.  分页查询方法返回PageResponse<T></T></p>
 <p>.  返回所有对象的列表方法返回MultiResponse<T></T></p>
 <p>服务方法的入参常常是某个原子操作的命令</p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960559.png" alt="img"></p>
-<h5 id="executor"><a href="#executor" class="headerlink" title="executor"></a>executor</h5><p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960559.png" alt="img"></p>
+<h5 id="executor"><a href="#executor" class="headerlink" title="executor"></a>executor</h5><p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314350494.png" alt="1653314350494"></p>
 <p>使用下层服务xxService实现的某个原子操作的类，该执行器类拥有execute方法表示调用执行器执行。也是本地服务接口实现类的调用对象。</p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image.png" alt="img"></p>
 <h5 id="impl"><a href="#impl" class="headerlink" title="impl"></a>impl</h5><p>本地服务接口实现类存放的文件夹，本地服务接口实现类implements 本地服务接口，通过传入的各种原子操作执行器，完成本地服务。</p>
 <p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960505.png" alt="img"></p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960609.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314439915.png" alt="1653314439915"></p>
 <h4 id="pl"><a href="#pl" class="headerlink" title="pl"></a>pl</h4><p>ohs层的实体类存放文件夹</p>
 <p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960546.png" alt="img"></p>
 <h5 id="command"><a href="#command" class="headerlink" title="command"></a>command</h5><p>是对请求数据的封装</p>
 <p>一般增删改这样的请求，要求我们定义一个XXCommandCmd，封装请求的一般属性，这个CommandCmd还要实现Command接口（标记接口）。一般还要<strong>提供一个转化成下层领域对象的to方法。</strong></p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960513.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314460520.png" alt="1653314460520"></p>
 <p>一般查询这样的请求，要求我们定义一个XXQry，封装查询请求的信息，并实现Query接口，这个接口要继承Command接口（标记接口）。</p>
 <p>特别地分页查询，接口需要继承一个PageQuery<em>接口</em></p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960562.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314479034.png" alt="1653314479034"></p>
 <h5 id="data"><a href="#data" class="headerlink" title="data"></a>data</h5><p>封装返回数据的对象，这些类要提供从下层的领域对象实体转化成本层DTO的方法from</p>
 <p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960646.png" alt="img"></p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960569.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-16520049630569.png" alt="img"></p>
 <h4 id="remote-controller"><a href="#remote-controller" class="headerlink" title="remote.controller"></a>remote.controller</h4><p>远程服务，存放Controller，共浏览器使用。本层的Controller类使用本层的本次服务接口实现类实现了各种操作，并返回方法返回值给客户。</p>
-<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960517.png" alt="img"></p>
+<p><img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/1653314523806.png" alt="1653314523806"></p>
 <p>下面以增加为例讲解请求处理过程</p>
-<p>​    前端采用post方式发送数据，请求体中携带json数据，到达对应的控制器方法后，请求体中的数据被映射到<img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-1652004960578.png" alt="img">中，其data属性就代表前端传入的数据对象即被封装成了一个增加命令实体F5MemberAddCmd，此方法调用本地服务实现类的对应方法，本地服务实现方法，调用新增命令执行器，新增命令执行器调用领域层服务并传入新增命令转化成的领域层实体对象进行处理，领域层服务调用仓储层的服务实现操作并传入领域层对象的to方法的返回值即xxDO。最终仓储层返回领域对象。</p>
+<p>​    前端采用post方式发送数据，请求体中携带json数据，到达对应的控制器方法后，请求体中的数据被映射到<img src="/2022/05/08/HCA%E6%9E%B6%E6%9E%84/image-16520034960578.png" alt="img">中，其data属性就代表前端传入的数据对象即被封装成了一个增加命令实体F5MemberAddCmd，此方法调用本地服务实现类的对应方法，本地服务实现方法，调用新增命令执行器，新增命令执行器调用领域层服务并传入新增命令转化成的领域层实体对象进行处理，领域层服务调用仓储层的服务实现操作并传入领域层对象的to方法的返回值即xxDO。最终仓储层返回领域对象。</p>
  
       <!-- reward -->
       

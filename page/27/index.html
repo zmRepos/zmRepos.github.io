@@ -174,6 +174,132 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1035"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1035/"
+    >PTA-Basic-1035</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1035/" class="article-date">
+  <time datetime="2019-10-16T15:23:22.000Z" itemprop="datePublished">2019-10-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>根据维基百科的定义：</p>
+<p>插入排序是迭代算法，逐一获得输入数据，逐步产生有序的输出序列。每步迭代中，算法从输入序列中取出一元素，将之插入有序序列中正确的位置。如此迭代直到全部元素有序。</p>
+<p>归并排序进行如下迭代操作：首先将原始序列看成 N 个只包含 1 个元素的有序子序列，然后每次迭代归并两个相邻的有序子序列，直到最后只剩下 1 个有序的序列。</p>
+<p>现给定原始序列和由某排序算法产生的中间序列，请你判断该算法究竟是哪种排序算法？</p>
+<p>输入格式：<br>输入在第一行给出正整数 N (≤100)；随后一行给出原始序列的 N 个整数；最后一行给出由某排序算法产生的中间序列。这里假设排序的目标序列是升序。数字间以空格分隔。</p>
+<p>输出格式：<br>首先在第 1 行中输出Insertion Sort表示插入排序、或Merge Sort表示归并排序；然后在第 2 行中输出用该排序算法再迭代一轮的结果序列。题目保证每组测试的结果是唯一的。数字间以空格分隔，且行首尾不得有多余空格。</p>
+<p>输入样例 1：</p>
+<pre><code>10
+3 1 2 8 7 5 9 4 6 0
+1 2 3 7 8 5 9 4 6 0</code></pre><p>输出样例 1：</p>
+<pre><code>Insertion Sort
+1 2 3 5 7 8 9 4 6 0</code></pre><p>输入样例 2：</p>
+<pre><code>10
+3 1 2 8 7 5 9 4 0 6
+1 3 2 8 5 7 4 9 0 6</code></pre><p>输出样例 2：</p>
+<pre><code>Merge Sort
+1 2 3 8 4 5 7 9 0 6</code></pre><p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+
+int isinsertion(int n, int num[], int half[]);
+int nextmerge(int n, int num[], int half[]);
+
+int comp(const void *a, const void *b)
+{
+    return *(int *)a - *(int *)b;
+}
+
+int main()
+{
+    int n, num[100], half[100];
+    int i;
+    scanf(&quot;%d&quot;, &amp;n);
+    for(i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;num[i]);
+    for(i = 0; i &lt; n; i++) scanf(&quot;%d&quot;, &amp;half[i]);
+
+    if(isinsertion(n, num, half)) nextmerge(n, num, half);。//既然不是插入排序，那就一定是归并排序，直接进行下一次排序。
+
+    for(i = 0; i &lt; n; i++){//另一种解决末尾不能有空格的方式。
+        printf(&quot;%d%c&quot;, num[i], i == n - 1 ? &apos;\n&apos; : &apos; &apos;);
+    }
+    return 0;
+}
+
+int isinsertion(int n, int num[], int half[])
+{
+    int i, lenth;
+    for(i = 0; i &lt; n - 1 &amp;&amp; half[i] &lt;= half[i + 1]; i++){//先判段排好序的结果是否符合插入排序的判断条件。即开始到某一下标处都是有序的其他的与元素组一样排列。不用担心length处的数字与后一个相同，题目保证了结果唯一，所以你直接取相同数字的后一个。
+        continue;
+    }
+    for(i++, lenth = i; i &lt; n &amp;&amp; half[i] == num[i]; i++){//length代表目前有序的最后一个。然后i继续遍历判断与数组是否相等。
+        continue;
+    }
+    if(i &lt; n)//不是的情况下。
+        return 1;
+    printf(&quot;Insertion Sort\n&quot;);//此处已经可以判断是插入排序了，因此只需在进行一次排序就可以了。
+    lenth++;
+    qsort(num, lenth, sizeof(int), comp);
+    return 0;
+}
+
+int nextmerge(int n, int num[], int half[])
+{
+    int i, j, lenth;
+    printf(&quot;Merge Sort\n&quot;);
+    for(lenth = 1, i = 0; i &lt; n &amp;&amp; lenth &lt;= n; lenth *=2){//分n/2次，第一次排序每一个，第二次每两个拍一次顺序，只需要调用qsort函数并改变数组的起始位置就可以了。每次的长度为上一次的2倍
+        for(i = 0; i &lt; n &amp;&amp; num[i] == half[i]; i++) ;//判断是否与结果数组完全相同，如果已经完全相同了就没有必要进行下一次排序了。即i已经不符合条件了。
+        for(j = 1; j &lt; = n / lenth; j++){//数组依据每一段的长度可以分为n/length段，对每一段排序就饿可以了。
+            qsort(num + j * lenth/*每一次排序的起始位置*/, lenth, sizeof(int), comp);
+        }
+        qsort(num + j * lenth, n % lenth, sizeof(int), comp);//排序剩余的部分数字
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1025"
   class="article article-type-post"
   itemscope
@@ -495,79 +621,13 @@ int type3(struct id ids[], int n, int i)
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1094"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1094/"
-    >PTA-Basic-1094</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1094/" class="article-date">
-  <time datetime="2019-10-16T13:30:22.000Z" itemprop="datePublished">2019-10-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>###题目描述</p>
-<p>2004 年 7 月，谷歌在硅谷的 101 号公路边竖立了一块巨大的广告牌（如下图）用于招聘。内容超级简单，就是一个以 .com 结尾的网址，而前面的网址是一个 10 位素数，这个素数是自然常数 e 中最早出现的 10 位连续数字。能找出这个素数的人，就可以通过访问谷歌的这个网站进入招聘流程的下一步。</p>
-<p><img src="https://images.ptausercontent.com/57148679-d574-4f49-b048-775c6c07791c.jpg" alt></p>
-<p>自然常数 e 是一个著名的超越数，前面若干位写出来是这样的：e = 2.718281828459045235360287471352662497757247093699959574966967627724076630353547594571382178525166427427466391932003059921… 其中粗体标出的 10 位数就是答案。</p>
-<p>本题要求你编程解决一个更通用的问题：从任一给定的长度为 L 的数字中，找出最早出现的 K 位连续数字所组成的素数。</p>
-<p>输入格式：<br>输入在第一行给出 2 个正整数，分别是 L（不超过 1000 的正整数，为数字长度）和 K（小于 10 的正整数）。接下来一行给出一个长度为 L 的正整数 N。<br>###格式<br>输出格式：<br>在一行中输出 N 中最早出现的 K 位连续数字所组成的素数。如果这样的素数不存在，则输出 404。注意，原始数字中的前导零也计算在位数之内。例如在 200236 中找 4 位素数，0023 算是解；但第一位 2 不能被当成 0002 输出，因为在原始数字中不存在这个 2 的前导零。<br>###样例<br>输入样例 1：</p>
-<pre><code>20 5
-23654987725541023819</code></pre><p>输出样例 1：</p>
-<pre><code>49877</code></pre><p>输入样例 2：</p>
-<pre><code>10 3
-
-2468024680</code></pre><p>输出样例 2：</p>
-<pre><code>404</code></pre><p>代码：</p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/26/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/28/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/26/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/25/">25</a><a class="page-number" href="/page/26/">26</a><span class="page-number current">27</span><a class="page-number" href="/page/28/">28</a><a class="page-number" href="/page/29/">29</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/28/">下一页</a>
   </nav>
   
 </section>

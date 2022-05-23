@@ -174,6 +174,110 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1042"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/24/PTA-Basic-1042/"
+    >PTA-Basic-1042</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/24/PTA-Basic-1042/" class="article-date">
+  <time datetime="2019-09-24T14:26:41.000Z" itemprop="datePublished">2019-09-24</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>请编写程序，找出一段给定文字中出现最频繁的那个英文字母。</p>
+<p>输入格式：<br>输入在一行中给出一个长度不超过 1000 的字符串。字符串由 ASCII 码表中任意可见字符及空格组成，至少包含 1 个英文字母，以回车结束（回车不算在内）。</p>
+<p>输出格式：<br>在一行中输出出现频率最高的那个英文字母及其出现次数，其间以空格分隔。如果有并列，则输出按字母序最小的那个字母。统计时不区分大小写，输出小写字母。</p>
+<p>输入样例：</p>
+<pre><code>This is a simple TEST.  There ARE numbers and other symbols 1&amp;2&amp;3...........</code></pre><p>输出样例：</p>
+<pre><code>e 7</code></pre><p>分析：定义一个26个字母（小写）的整型数组，每次遇到字母（如果大写就将其化为小写）存储到字母-97（‘a’对应的ascall码值）下标的位置。最后遍历数组找出最大数字的下标，并将其转为字符输出。</p>
+<p>代码:</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int strs[26]={0};
+    char ch;
+    while((ch=getchar())!=&apos;\n&apos;){
+        if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&gt;=&apos;A&apos;&amp;&amp;ch&lt;=&apos;Z&apos;)){
+            if(ch&lt;97){
+                ch=ch-&apos;A&apos;+&apos;a&apos;;
+            }
+            strs[ch-97]++;
+        }
+    }
+    int a=0;
+    for(int i=1;i&lt;26;i++){
+        if(strs[i]&gt;strs[a]){
+            a=i;
+        }
+    }
+    printf(&quot;%c %d&quot;,a+97,strs[a]);
+    return 0;
+}</code></pre><p>思路二：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;ctype.h&gt;
+int map[255]={0};
+int main(void){
+    int maxNum=0;
+    char  maxChar=&apos;a&apos;;
+    char ch;
+    while((ch=getchar())!=&apos;\n&apos;){
+        if((ch&gt;=&apos;a&apos;&amp;&amp;ch&lt;=&apos;z&apos;)||(ch&gt;=&apos;A&apos;&amp;&amp;ch&lt;=&apos;Z&apos;)){
+            ch=tolower(ch);
+            map[ch]++;
+            if(map[ch]&gt;=map[maxChar]){
+                if(map[ch]==map[maxChar]){
+                    if(maxChar&gt;ch)
+                        maxChar=ch;
+                }else{
+                    maxChar=ch;
+                }
+            }
+        }
+
+    }
+    printf(&quot;%c %d&quot;,maxChar,map[maxChar]);
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1041"
   class="article article-type-post"
   itemscope
@@ -367,115 +471,13 @@ int main() {
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1039"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/23/PTA-Basic-1039/"
-    >PTA-Basic-1039</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/23/PTA-Basic-1039/" class="article-date">
-  <time datetime="2019-09-23T12:02:07.000Z" itemprop="datePublished">2019-09-23</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>小红想买些珠子做一串自己喜欢的珠串。卖珠子的摊主有很多串五颜六色的珠串，但是不肯把任何一串拆散了卖。于是小红要你帮忙判断一下，某串珠子里是否包含了全部自己想要的珠子？如果是，那么告诉她有多少多余的珠子；如果不是，那么告诉她缺了多少珠子。</p>
-<p>为方便起见，我们用[0-9]、[a-z]、[A-Z]范围内的字符来表示颜色。例如在图1中，第3串是小红想做的珠串；那么第1串可以买，因为包含了全部她想要的珠子，还多了8颗不需要的珠子；第2串不能买，因为没有黑色珠子，并且少了一颗红色的珠子。</p>
-<p><img src="https://images.ptausercontent.com/b7e2ffa6-8819-436d-ad79-a41263abe914.jpg" alt="串串"></p>
-<p>图 1</p>
-<p>输入格式：</p>
-<pre><code>每个输入包含 1 个测试用例。每个测试用例分别在 2 行中先后给出
-摊主的珠串和小红想做的珠串，两串都不超过 1000 个珠子。</code></pre><p>输出格式：</p>
-<pre><code>如果可以买，则在一行中输出 Yes 以及有多少多余的珠子；如果不
-可以买，则在一行中输出 No 以及缺了多少珠子。其间以 1 个空格
-分隔。</code></pre><p>输入样例 1：</p>
-<pre><code>ppRYYGrrYBR2258
-YrR8RrY</code></pre><p>输出样例 1：</p>
-<pre><code>Yes 8</code></pre><p>输入样例 2：</p>
-<pre><code>ppRYYGrrYB225
-YrR8RrY</code></pre><p>输出样例 2：</p>
-<pre><code>No 2</code></pre><p>分析：此题与上一题采用相同的思路，先定义一个整型数组（范围要能把字母与数字的ascall码值包含在内），然后输入字符，如果字符符合条件就将字符对应的ascall码对应的数组下标所对应的数组+1，表示此种字符输入一次。输入要查找的字符串时，字符对应的数目-1.最后遍历数组将所有符数加到一起，所以正数加到一起，负数表示缺少的字符数目，正数表示多余的字符数目，如果有负数优先输出：No 缺少的数目（&gt;0）。反之 就输出Yes 多余的数目。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-        int chars[250]={0};
-        char ch;
-        while((ch=getchar())!=&apos;\n&apos;){
-            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
-                chars[ch]++;
-            }
-        }
-        while((ch=getchar())!=&apos;\n&apos;){
-            if((ch&lt;=&apos;z&apos;&amp;&amp;ch&gt;=&apos;a&apos;)||(ch&lt;=&apos;Z&apos;&amp;&amp;ch&gt;=&apos;A&apos;)||ch&lt;=&apos;9&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
-                chars[ch]--;
-            }
-        }
-        int sum1=0;
-        int sum2=0;
-        int i=0;
-        while(i&lt;250){
-            if(chars[i]&lt;0){
-                sum2+=chars[i];
-            }else{
-                sum1+=chars[i];
-                }
-                i++;
-        }
-        if(sum2&lt;0){
-            printf(&quot;No %d&quot;,-sum2);
-        }else{
-            printf(&quot;Yes %d&quot;,sum1);
-            }
-        return 0;
-    }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/44/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="page-number current">45</span><a class="page-number" href="/page/46/">46</a><a class="page-number" href="/page/47/">47</a><span class="space">&hellip;</span><a class="page-number" href="/page/56/">56</a><a class="extend next" rel="next" href="/page/46/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/44/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="page-number current">45</span><a class="page-number" href="/page/46/">46</a><a class="page-number" href="/page/47/">47</a><span class="space">&hellip;</span><a class="page-number" href="/page/57/">57</a><a class="extend next" rel="next" href="/page/46/">下一页</a>
   </nav>
   
 </section>
