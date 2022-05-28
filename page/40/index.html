@@ -174,6 +174,150 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1058"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1058/"
+    >PTA-Basic-1058</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/07/PTA-Basic-1058/" class="article-date">
+  <time datetime="2019-10-07T12:40:40.000Z" itemprop="datePublished">2019-10-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>批改多选题是比较麻烦的事情，本题就请你写个程序帮助老师批改多选题，并且指出哪道题错的人最多。</p>
+<p>输入格式：<br>输入在第一行给出两个正整数 N（ ≤ 1000）和 M（≤ 100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
+<p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行。注意判题时只有选择全部正确才能得到该题的分数。最后一行输出错得最多的题目的错误次数和编号（题目按照输入的顺序从 1 开始编号）。如果有并列，则按编号递增顺序输出。数字间用空格分隔，行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
+<p>输入样例：</p>
+<pre><code>3 4 
+3 4 2 a c
+2 5 1 b
+5 3 2 b c
+1 5 4 a b d e
+(2 a c) (2 b d) (2 a c) (3 a b e)
+(2 a c) (1 b) (2 a b) (4 a b d e)
+(2 b d) (1 e) (2 b c) (4 a b c d)</code></pre><p>输出样例：</p>
+<pre><code>6
+5
+2 
+2 3 4</code></pre><p>分析：</p>
+<p>定义一个非常大的数组存储所有可能的题目答案，定义一个非常大的数组存储每题的得分，定义一个非常大的数组存储每题出错的次数，定义一个非常大题目存储媒体正确答案的个数，定义一个非常大的学生数组。<br>在输入是就开始计算每一位学生的得分以及此题的出错次数。<br>最后输出每一位学生的分数，以及最高出错次数，和对应的题目（按升序排列）。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;stdlib.h&gt;
+#include&lt;string.h&gt;
+int timu[100][5]={0};//定义一个二维数组存储题目正确的答案初始化每个都是0（表示错误）
+int score[100]={0};//存储每一题目的得分
+int time[100]={0};//存储每个题目的出错次数
+int righttime[100]={0}; //存储每个题目标准答案的个数
+int stu[1001]={0};//存储每个学生的得分
+int main(void){
+    int n=0,m=0;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);//输入学生数，与题目数。
+    for(int i=0;i&lt;m;i++){
+        int x=0;
+        scanf(&quot;%d %*d %d&quot;,&amp;score[i],&amp;righttime[i]);//将每一个题目的分数存储到数组中去，并存储正确答案的个数以便下面计算答对的题目数是否为全部的正确数目
+        char ch;
+        while((ch=getchar())!=&apos;\n&apos;){//此处开始读取正确的选项。如果读到a就将timu数组的第0为赋值为1.
+            if(ch&lt;=&apos;e&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
+                int k=ch-&apos;a&apos;;
+                timu[i][k]=1;
+            }
+        }
+    }
+    int max=0; 
+    for(int i=0;i&lt;n;i++){
+        int t=0;
+        char ch;
+        int step0=0;//计算输入的选项的个数
+        int step1=0;//计算选对的个数
+        while((ch=getchar())!=&apos;\n&apos;){
+            if(ch==&apos;(&apos;){ //读到这个就代表开始了新的一个题目，要将选项数目，答对数目初始化为0.
+                step0=0;
+                step1=0;
+                continue;
+            }else if(ch==&apos; &apos;){
+                continue;
+            }else if(ch&lt;=&apos;5&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
+                step0=ch-&apos;0&apos;; //计算选项数目
+            }else{
+                if(ch==&apos;)&apos;){//如果输入的选项都对但是总数不达标也不对。
+                    if(step0==step1&amp;&amp;step0==righttime[t]){//对的步数符合初始化步数 
+                        stu[i]+=score[t];//将分数加到第i为学生上去
+                    }else{//否则此题就出错了
+                        time[t]++;//这个题目的出错次数加1
+                        if(time[t]&gt;max){
+                            max=time[t];//如果比出错次数最大值大就交换值
+                        }
+                    }
+                    t++;//下一题 
+                }
+                if(ch&lt;=&apos;e&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
+                    int k=ch-&apos;a&apos;;
+                    if(timu[t][k]){//输入的选项对应的数组下标有值表示输入的答案是正确的
+                        step1++;//对的步数加1 
+                    }
+                }
+            }
+        }
+    }
+    for(int i=0;i&lt;n;i++){
+        printf(&quot;%d\n&quot;,stu[i]);//输出每一位学生的得分
+    }
+    if(max&gt;0){//如果最大值不为0就要统计出错的题目
+    printf(&quot;%d&quot;,max);
+        for(int i=0;i&lt;m;i++){
+            if(time[i]==max){
+                printf(&quot; %d&quot;,i+1);
+            }
+        }
+    }else{//否则直接输出
+        printf(&quot;Too simple&quot;);
+    }
+    return 0;
+} </code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1057"
   class="article article-type-post"
   itemscope
@@ -328,143 +472,6 @@ int add(int a[],int n){
         }
     }
     return sum;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1055"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/29/PTA-Basic-1055/"
-    >PTA-Basic-1055</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/29/PTA-Basic-1055/" class="article-date">
-  <time datetime="2019-09-29T13:41:29.000Z" itemprop="datePublished">2019-09-29</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目:</p>
-<p>拍集体照时队形很重要，这里对给定的 N 个人 K 排的队形设计排队规则如下：</p>
-<p>每排人数为 N/K（向下取整），多出来的人全部站在最后一排；</p>
-<p>后排所有人的个子都不比前排任何人矮；</p>
-<p>每排中最高者站中间（中间位置为 m/2+1，其中 m 为该排人数，除法向下取整）；</p>
-<p>每排其他人以中间人为轴，按身高非增序，先右后左交替入队站在中间人的两侧（例如5人身高为190、188、186、175、170，则队形为175、188、190、186、170。这里假设你面对拍照者，所以你的左边是中间人的右边）。</p>
-<p>若多人身高相同，则按名字的字典序升序排列。这里保证无重名。</p>
-<p>现给定一组拍照人，请编写程序输出他们的队形。</p>
-<p>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例第 1 行给出两个正整数 N（≤10<br>​4<br>​​ ，总人数）和 K（≤10，总排数）。随后 N 行，每行给出一个人的名字（不包含空格、长度不超过 8 个英文字母）和身高（[30, 300] 区间内的整数）。</p>
-<p>输出格式：<br>输出拍照的队形。即K排人名，其间以空格分隔，行末不得有多余空格。注意：假设你面对拍照者，后排的人输出在上方，前排输出在下方。</p>
-<p>输入样例：</p>
-<pre><code>10 3
-Tom 188
-Mike 170
-Eva 168
-Tim 160
-Joe 190
-Ann 168
-Bob 175
-Nick 186
-Amy 160
-John 159</code></pre><p>输出样例：</p>
-<pre><code>Bob Tom Joe Nick
-Ann Mike Eva
-Tim Amy John</code></pre><p>分析：</p>
-<p>定一个一个结构体，其拥有姓名，身高。然后将输入的信息转化为人，然后根据题目要求降序排序，先输出最后一排，接着倒数第二排，每排定义适合题意的个数个人，然后根据题目，先将最大的人插入中间，接着依左右，左右（题目中的右左为面向摄像机的方向）赋值。<br>最后遍历输出。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt; 
-#include&lt;stdlib.h&gt;
-int cmp(const void *a ,const void *b);
-typedef struct {
-    char name[9];
-    int height;
-}human;
-int main(void){
-    int sum,n;
-    scanf(&quot;%d %d&quot;,&amp;sum,&amp;n);
-    human humen[sum];
-    for(int i=0;i&lt;sum;i++){
-        scanf(&quot;%s %d&quot;,&amp;humen[i].name,&amp;(humen[i].height));//输入到人的数组中去
-        getchar();
-    }
-    qsort(humen,sum,sizeof(human),cmp);//对人的数组进行重大到小排序。
-    int begin=0;
-    int x=0;
-    while(begin&lt;sum){
-        if(begin==0){
-             x=sum/n+sum%n;//如果是最后一排的话要将剩余的人数插入到其中
-        }else{
-             x=sum/n;//如果不是最后一排的话，直接得到人数。
-        }
-        int index=x/2;//中间的人，题目中的m/2+1是根据下标从1开始计算的。
-            human hus[x];
-            strcpy(hus[index--].name,humen[begin++].name);//先将中间的人赋值，并将人修改为左边的哪一个人。
-            int step=1;//初始步长为1
-            while(index&gt;-1&amp;&amp;index&lt;x){
-                step++;//左右相距的人头数（刚进入是相距2个人头）
-                strcpy(hus[index].name,humen[begin++].name);
-                index=index+step;//每次操作完都要改变坐标此处是将下标由左边变化到右边
-                if(!(index&gt;-1&amp;&amp;index&lt;x))//检验变化后的坐标是否合法。
-                    break;
-                strcpy(hus[index].name,humen[begin++].name);//给右边赋值
-                step++;//每一次左右赋值完之后，后面一个左右的距离就多了一个人头。
-                index=index-step;//将下标放到下一次要赋值的人头处。
-            }
-            for(int i=0;i&lt;x;i++){//输出这一排的人。
-                printf(&quot;%s%c&quot;,hus[i].name,(i==x-1?&apos;\n&apos;:&apos; &apos;));
-            }
-    }
-    return 0;
-}
-int cmp(const void *a,const void *b){//先依据身高排序（降序），如果身高相同依据姓名排序（升序）
-    human human1=*(human *)a;
-    human human2=*(human *)b;
-    if(human1.height&gt;human2.height){
-        return -1;
-    }else{
-        if(human1.height==human2.height){
-            return strcmp(human1.name,human2.name);
-        }else{
-            return 1;
-        }
-    }
 }</code></pre> 
       <!-- reward -->
       
@@ -858,9 +865,26 @@ int cmp(const void *a,const void *b){//先依据身高排序（降序），如�
 
 
     
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
     
 
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 
 </html>

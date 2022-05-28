@@ -174,6 +174,90 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1086"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1086/"
+    >PTA-Basic-1086</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1086/" class="article-date">
+  <time datetime="2019-10-16T13:29:31.000Z" itemprop="datePublished">2019-10-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>做作业的时候，邻座的小盆友问你：“五乘以七等于多少？”你应该不失礼貌地围笑着告诉他：“五十三。”本题就要求你，对任何一对给定的正整数，倒着输出它们的乘积。</p>
+<p><img src="https://images.ptausercontent.com/0c3a4497-27c3-45ea-9c8e-5a1ab2df48af.jpg" alt></p>
+<p>输入格式：<br>输入在第一行给出两个不超过 1000 的正整数 A 和 B，其间以空格分隔。</p>
+<p>输出格式：<br>在一行中倒着输出 A 和 B 的乘积。</p>
+<p>输入样例：</p>
+<pre><code>5 7</code></pre><p>输出样例：</p>
+<pre><code>53</code></pre><p>分析：不超过1000，那么乘积就不会超过1000000，int足够了。计算乘积存入数组，对结果不断取余，不断存入数组，直到为0，最后倒着输出数组。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+int main(void){
+    int n,m;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    int c=n*m;
+    int i=0;
+    int result[20];
+    int re=0;
+    if(c==0){//注意为0是，直接输，出有一个测试点对应这个。
+        printf(&quot;%d&quot;,c);
+        return 0;
+    }
+    while(c!=0){
+        result[i++]=c%10; 
+        c=c/10;
+    }
+    for(int j=0;j&lt;i;j++){
+        re=re*10+result[j];
+    }
+    printf(&quot;%d&quot;,re);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1085"
   class="article article-type-post"
   itemscope
@@ -524,88 +608,6 @@ int main(void){
         strcpy(res,crs);//将此次推演的结果存入res中用于下一次的推演。
     }
     printf(&quot;%s&quot;,res);
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1083"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1083/"
-    >PTA-Basic-1083</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1083/" class="article-date">
-  <time datetime="2019-10-11T14:19:18.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>给定 N 张卡片，正面分别写上 1、2、……、N，然后全部翻面，洗牌，在背面分别写上 1、2、……、N。将每张牌的正反两面数字相减（大减小），得到 N 个非负差值，其中是否存在相等的差？</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（2 ≤ N ≤ 10 000），随后一行给出 1 到 N 的一个洗牌后的排列，第 i 个数表示正面写了 i 的那张卡片背面的数字。</p>
-<p>输出格式：<br>按照“差值 重复次数”的格式从大到小输出重复的差值及其重复的次数，每行输出一个结果。</p>
-<p>输入样例：</p>
-<pre><code>8
-3 5 8 6 2 1 4 7</code></pre><p>输出样例：</p>
-<pre><code>5 2
-3 3
-2 2</code></pre><p>分析：定义一个非常大的数组就命名为差值数组，用数组下标存储差值，数组元素值存储此差值出现了多少次，<br>对第i个输入的数字，将其与其i值做差，取绝对值，存入差值数组中。最后倒序遍历输出数组下标与对应的值（大于1的）。<br>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-//而全局变量则可以全部自动初始化为0
-int main(void){
-    int n;
-    scanf(&quot;%d&quot;,&amp;n);
-    int time[10002]={0};//如果不手动初始化数组，那么最大初始化为0的长度是7921
-    int x,y;
-    int z;
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%d&quot;,&amp;x);
-        z=abs(x-i-1);
-        time[z]++;
-    }
-    for(int i=n-1;i&gt;=0;i--){
-        if(time[i]&gt;1){
-            printf(&quot;%d %d\n&quot;,i,time[i]);
-        }
-    }
     return 0;
 }</code></pre> 
       <!-- reward -->
@@ -1000,9 +1002,26 @@ int main(void){
 
 
     
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
     
 
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 
 </html>

@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">1.5k</span>
+            <span class="post-count">1.6k</span>
         </span>
     </span>
 
@@ -108,7 +108,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">5 分钟</span>
+            <span class="post-count">6 分钟</span>
         </span>
     </span>
 </div>
@@ -185,7 +185,7 @@ var _hmt = _hmt || [];
 <td>0110</td>
 </tr>
 </tbody></table>
-<h2 id="例子-车座抢票"><a href="#例子-车座抢票" class="headerlink" title="例子-车座抢票"></a>例子-车座抢票</h2><p>​    12306抢票，一列火车车起点站到终点站要经过许多站点，每个站点都会有人上车、有人下车，火车一共200个座位，如何计算才能保证火车从起点到终点搭载的总人数相对较多呢？（<strong>为什么不是最多，因为你无法控制乘客的选择</strong>）</p>
+<h2 id="位图-车座抢票"><a href="#位图-车座抢票" class="headerlink" title="位图-车座抢票"></a>位图-车座抢票</h2><p>​    12306抢票，一列火车车起点站到终点站要经过许多站点，每个站点都会有人上车、有人下车，火车一共200个座位，如何计算才能保证火车从起点到终点搭载的总人数相对较多呢？（<strong>为什么不是最多，因为你无法控制乘客的选择</strong>）</p>
 <blockquote>
 <p>理解：一个座位，如果被人占用了从站点i到站点j，那么被占用期间经过的站点，就不允许其他人购买该座的车票。即针对一个座位，乘坐的不同人，除了邻接站点，经过的站点不能有相交的部分。我们无法控制某个座位不出售给某个人，但是可以算出出某个站点没有被占用的座位从而在合适的站点地段出售该座位的车票，如果被抢到了</p>
 </blockquote>
@@ -213,6 +213,7 @@ var _hmt = _hmt || [];
 <p>我们可以用redis实现这种思路因为Redis 的bitmap是自动扩展的，如果设置了某个偏移位置超出了现有的内容范围，位数组就会自动扩充。 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">## 当一个用户id为i的用户登录时，直接将位图对应下标处的位设置为1</span><br><span class="line">set day20220504 i 1</span><br><span class="line">## 统计日活的命令</span><br><span class="line">BITCOUNT day20220504</span><br></pre></td></tr></table></figure>
 
+<h2 id="位图-海量数据查重"><a href="#位图-海量数据查重" class="headerlink" title="位图-海量数据查重"></a>位图-海量数据查重</h2><p>​    假设有40亿的数据，要求你从中找出重复出现的数据。思路与日活用户思路类似，使用一个40亿位的BitSet，然后遍历这40亿数据，按照一定规则将每个数字设置到到位图中，当我们设置一个位置处的位图的值时，如果能取出其值，说明它已经出现过了，此算法时间复杂度为O(n)。空间占用大概480m.</p>
 <h2 id="位图-权限控制"><a href="#位图-权限控制" class="headerlink" title="位图-权限控制"></a>位图-权限控制</h2><p>待续</p>
 <h2 id="位图-限流"><a href="#位图-限流" class="headerlink" title="位图-限流"></a>位图-限流</h2><p><a href="https://blog.51cto.com/u_2837193/4904056">待续：常用限流算法</a></p>
  
@@ -745,9 +746,26 @@ var _hmt = _hmt || [];
 
 
     
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
     
 
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 
 </html>

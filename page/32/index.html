@@ -174,6 +174,88 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1083"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1083/"
+    >PTA-Basic-1083</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/11/PTA-Basic-1083/" class="article-date">
+  <time datetime="2019-10-11T14:19:18.000Z" itemprop="datePublished">2019-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>给定 N 张卡片，正面分别写上 1、2、……、N，然后全部翻面，洗牌，在背面分别写上 1、2、……、N。将每张牌的正反两面数字相减（大减小），得到 N 个非负差值，其中是否存在相等的差？</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（2 ≤ N ≤ 10 000），随后一行给出 1 到 N 的一个洗牌后的排列，第 i 个数表示正面写了 i 的那张卡片背面的数字。</p>
+<p>输出格式：<br>按照“差值 重复次数”的格式从大到小输出重复的差值及其重复的次数，每行输出一个结果。</p>
+<p>输入样例：</p>
+<pre><code>8
+3 5 8 6 2 1 4 7</code></pre><p>输出样例：</p>
+<pre><code>5 2
+3 3
+2 2</code></pre><p>分析：定义一个非常大的数组就命名为差值数组，用数组下标存储差值，数组元素值存储此差值出现了多少次，<br>对第i个输入的数字，将其与其i值做差，取绝对值，存入差值数组中。最后倒序遍历输出数组下标与对应的值（大于1的）。<br>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;math.h&gt;
+//而全局变量则可以全部自动初始化为0
+int main(void){
+    int n;
+    scanf(&quot;%d&quot;,&amp;n);
+    int time[10002]={0};//如果不手动初始化数组，那么最大初始化为0的长度是7921
+    int x,y;
+    int z;
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d&quot;,&amp;x);
+        z=abs(x-i-1);
+        time[z]++;
+    }
+    for(int i=n-1;i&gt;=0;i--){
+        if(time[i]&gt;1){
+            printf(&quot;%d %d\n&quot;,i,time[i]);
+        }
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1082"
   class="article article-type-post"
   itemscope
@@ -308,249 +390,6 @@ Your password needs zi mu.
 Your password is wan mei.
 Your password is tai luan le.</code></pre><p>代码：<br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>int main(void){<br>    int n;<br>    scanf(“%d”,&amp;n);//测试点二，是第一行的末尾的空格输入下一个。<br>    //scanf()函数则会保留换行符所以必须用getchar()吸收，防止作为一个输入行。<br>    getchar();<br>    char password[85];<br>    for(int i=0;i&lt;n;i++){<br>        int zifuflag=0;<br>        int zimuflag=0;<br>        int shuziflag=0;<br>        gets(password);//gets()函数会将换行符转换为‘\0’输入字符数组。<br>        int len=strlen(password);<br>        if(len&lt;6){<br>            printf(“Your password is tai duan le.\n”);<br>            continue;<br>        }<br>        for(int j=0;j&lt;len;j++){<br>            char ch=password[j];<br>            if((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’)){<br>                zimuflag=1;<br>            }<br>            if(ch&gt;=’0’&amp;&amp;ch&lt;=’9’){<br>                shuziflag=1;<br>            }<br>            if(ch!=’.’&amp;&amp;!(ch&lt;=’9’&amp;&amp;ch&gt;=’0’)&amp;&amp;!((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’))){<br>                zifuflag=1;<br>                break;<br>            }<br>        }<br>        if(zifuflag){<br>            printf(“Your password is tai luan le.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;!shuziflag){<br>            printf(“Your password needs shu zi.\n”);<br>            continue;<br>        }<br>        if(!zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password needs zi mu.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password is wan mei.\n”);<br>        }<br>    }<br>}</p>
  
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1080"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1080/"
-    >PTA-Basic-1080</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1080/" class="article-date">
-  <time datetime="2019-10-11T14:18:44.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>对于在中国大学MOOC（<a href="http://www.icourse163.org/">http://www.icourse163.org/</a> ）学习“数据结构”课程的学生，想要获得一张合格证书，必须首先获得不少于200分的在线编程作业分，然后总评获得不少于60分（满分100）。总评成绩的计算公式为 G=(G<br>​mid−term<br>​​ ×40%+G<br>​final<br>​​ ×60%)，如果 G<br>​mid−term<br>​​ &gt;G<br>​final<br>​​ ；否则总评 G 就是 G<br>​final<br>​​ 。这里 G<br>​mid−term<br>​​  和 G<br>​final<br>​​  分别为学生的期中和期末成绩。</p>
-<p>现在的问题是，每次考试都产生一张独立的成绩单。本题就请你编写程序，把不同的成绩单合为一张。</p>
-<p>输入格式：<br>输入在第一行给出3个整数，分别是 P（做了在线编程作业的学生数）、M（参加了期中考试的学生数）、N（参加了期末考试的学生数）。每个数都不超过10000。</p>
-<p>接下来有三块输入。第一块包含 P 个在线编程成绩 G<br>​p<br>​​ ；第二块包含 M 个期中考试成绩 G<br>​mid−term<br>​​ ；第三块包含 N 个期末考试成绩 G<br>​final<br>​​ 。每个成绩占一行，格式为：学生学号 分数。其中学生学号为不超过20个字符的英文字母和数字；分数是非负整数（编程总分最高为900分，期中和期末的最高分为100分）。</p>
-<p>输出格式：<br>打印出获得合格证书的学生名单。每个学生占一行，格式为：</p>
-<p>学生学号 G<br>​p<br>​​  G<br>​mid−term<br>​​  G<br>​final<br>​​  G</p>
-<p>如果有的成绩不存在（例如某人没参加期中考试），则在相应的位置输出“−1”。输出顺序为按照总评分数（四舍五入精确到整数）递减。若有并列，则按学号递增。题目保证学号没有重复，且至少存在1个合格的学生。</p>
-<p>输入样例：</p>
-<pre><code>6 6 7
-01234 880
-a1903 199
-ydjh2 200
-wehu8 300
-dx86w 220
-missing 400
-ydhfu77 99
-wehu8 55
-ydjh2 98
-dx86w 88
-a1903 86
-01234 39
-ydhfu77 88
-a1903 66
-01234 58
-wehu8 84
-ydjh2 82
-missing 99
-dx86w 81</code></pre><p>输出样例：</p>
-<pre><code>missing 400 -1 99 99
-ydjh2 200 98 82 88
-dx86w 220 88 81 84
-wehu8 300 55 84 84</code></pre><p>分析：<br>定义一个学生的结构体。<br>首先输入6+6+7行数据，将此输入分为三块，第一块存储平时分合格（》=200）人的名字，与分数，第二部分存储，根据输入的名字在第一部分的结果数组中找到相应的人的下标，将其中成绩赋值，第三部分同第二但是此外还要加上对总评分数的计算，期中期末未来的人分数为-1，依据题目计算总评分，然后首先根据成绩降序排序，然后根据姓名升序排序。</p>
-<p>代码：<br>第一次代码：<br>此处最后一个测试点会运行超时，这是因为在查找时，耗时过多，因此必须采用更好的查找算法（先排序（快排），再二分查找）。</p>
-<pre><code>//#include&lt;stdio.h&gt;
-//#include&lt;string.h&gt;
-//#include&lt;stdlib.h&gt;
-//typedef struct Stu{
-//    char name[21];
-//    int gp;
-//    int gm;
-//    int gt;
-//    int g;
-//};
-//int search(Stu* stus,int total,char *name){
-//    for(int i=0;i&lt;total;i++){
-//        if(strcmp(stus[i].name,name)==0){
-//            return i;
-//        }
-//    }
-//    return -1;
-//}
-//int cmp(const void *a,const void *b){
-//    struct Stu s1=*(struct Stu *)a;
-//    struct Stu s2=*(struct Stu *)b;
-//    if(s1.g&lt;s2.g){}
-//        return 1;
-//    }else if(s1.g&gt;s2.g){
-//        return -1;
-//    }else{
-//        return strcmp(s1.name,s2.name);
-//    }
-//}
-//int main(void){
-//    int n,m,p;
-//    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;p);
-//    struct Stu stus[n];
-//    int time=0;
-//    char name[21];
-//    int k=0;
-//    for(int i=0;i&lt;n;i++){
-//        scanf(&quot;%s %d&quot;,name,&amp;k);
-//        if(k&gt;=200){
-//            strcpy(stus[time].name,name);
-//            stus[time].gp=k;
-//            stus[time].gm=-1;
-//            stus[time].gt=-1;
-//            stus[time].g=-1;
-//            time++;
-//        }
-//    }
-//    for(int i=0;i&lt;m;i++){
-//        scanf(&quot;%s %d&quot;,name,&amp;k);
-//        int index=search(stus,time,name);
-//        if(index&gt;-1){
-//            stus[index].gm=k;
-//        }
-//    }
-//    for(int i=0;i&lt;p;i++){
-//        scanf(&quot;%s %d&quot;,name,&amp;k);
-//        int index=search(stus,time,name);
-//        if(index&gt;-1){
-//            stus[index].gt=k;
-//            if(stus[index].gm&gt;stus[index].gt){
-//                stus[index].g=(int)(0.4*stus[index].gm+0.6*stus[index].gt+0.5);
-//            }else{
-//                stus[index].g=stus[index].gt;
-//            }
-//        }
-//    }
-//    qsort(stus,time,sizeof(struct Stu),cmp);
-//    for(int i=0;i&lt;time;i++){
-//        if(stus[i].g&gt;=60)
-//        printf(&quot;%s %d %d %d %d\n&quot;,stus[i].name,stus[i].gp,stus[i].gm,stus[i].gt,stus[i].g);
-//    }
-//    return 0;
-//}</code></pre><p>第二次代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;stdlib.h&gt;
-typedef struct Stu{
-    char name[21];
-    int gp;//平时成绩
-    int gm;//期中成绩
-    int gt;//期末成绩
-    int g;//总评成绩
-};
-int search(struct Stu* stus,int total,char *name){//二分查找返回存在的人的下标，不存在就返回-1
-    int start=0,end=total-1;
-    while(start&lt;=end){
-         int mid=(start+end)/2;
-         int res=strcmp(stus[mid].name,name);
-        if(res==0){
-            return mid;
-        }else if(res&gt;0){
-            end=mid-1;
-        } else{
-            start=mid+1;
-        }
-    }
-    return -1;
-}
-int cmp(const void *a,const void *b){
-    struct Stu s1=*(struct Stu *)a;
-    struct Stu s2=*(struct Stu *)b;
-    if(s1.g&lt;s2.g){
-        return 1;
-    }else if(s1.g&gt;s2.g){
-        return -1;
-    }else{
-        return strcmp(s1.name,s2.name);
-    }
-}
-int tcmp(const void *a,const void *b){//用于二分查找的排序比较算法
-    struct Stu s1=*(struct Stu *)a;
-    struct Stu s2=*(struct Stu *)b;
-    return strcmp(s1.name,s2.name);
-    }
-int main(void){
-    int n,m,p;
-    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;m,&amp;p);
-    struct Stu stus[n];
-    int time=0;
-    char name[21];
-    int k=0;
-    for(int i=0;i&lt;n+m+p;i++){
-        scanf(&quot;%s %d&quot;,name,&amp;k);
-        if(i&lt;n){
-            if(k&gt;=200){//平时成绩合格才有资格
-                strcpy(stus[time].name,name);//首先初始化时将每个人的每个考试成绩都赋值为-1。
-                stus[time].gp=k;
-                stus[time].gm=-1;
-                stus[time].gt=-1;
-                stus[time].g=-1;
-                time++;
-            }
-        }else{
-            if(i==n){//第n个输入说明所有有资格的人都已经输入完毕，对其排序，以便于二分查找。
-                qsort(stus,time,sizeof(struct Stu),tcmp);
-            }
-            int index=search(stus,time,name);
-            if(index&gt;-1){//如果有这个人
-                if(i&lt;m+n){
-                    stus[index].gm=k;
-                }else{
-                    stus[index].gt=k;
-                    if(stus[index].gm&gt;stus[index].gt){
-                        stus[index].g=(int)(0.4*stus[index].gm+0.6*stus[index].gt+0.5);
-                    }else{
-                        stus[index].g=stus[index].gt;
-                    }
-                }
-            }
-        }
-    }
-    qsort(stus,time,sizeof(struct Stu),cmp);
-    for(int i=0;i&lt;time;i++){
-        if(stus[i].g&gt;=60)
-        printf(&quot;%s %d %d %d %d\n&quot;,stus[i].name,stus[i].gp,stus[i].gm,stus[i].gt,stus[i].g);
-    }
-    return 0;
-}</code></pre> 
       <!-- reward -->
       
     </div>
@@ -943,9 +782,26 @@ int main(void){
 
 
     
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
     
 
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 
 </html>

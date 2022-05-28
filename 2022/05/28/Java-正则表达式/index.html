@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,思考,代码,博客" />
+       
+      <meta name="description" content="勇攀技术绝壁" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>Java-正则表达式 |  codeFOF</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/ayer.png" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="codeFOF" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-Java-正则表达式"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Java-正则表达式
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/05/28/Java-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-date">
+  <time datetime="2022-05-28T01:16:16.000Z" itemprop="datePublished">2022-05-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">17 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​        <a id="more"></a></p>
+<h2 id="什么是正则表达式"><a href="#什么是正则表达式" class="headerlink" title="什么是正则表达式?"></a>什么是正则表达式?</h2><p>​    简而言之，正则表达式就是一种字符串的模式串，这种模式串能够匹配一类或者一个字符串，结合正则表达式对这一类字符串做相应的处理比如替换、分割、去除等。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">my\s&#123;1&#125;name\s&#123;1&#125;is\s&#123;1&#125;peiqi.</span><br><span class="line">---</span><br><span class="line">这个模式串只能用来匹配&quot;my name is peiqi.&quot;这一个字符串。</span><br></pre></td></tr></table></figure>
+
+<h2 id="正则表达式原理"><a href="#正则表达式原理" class="headerlink" title="正则表达式原理"></a>正则表达式原理</h2><p>​    当你写好一个正则表达式模式串时，并使用的时候，底层会拿着这个表达式从头到尾到目标字符串中遍历，看看是否匹配，匹配则可能会做相应的处理。因此一旦某个字符被模式串匹配中了，下一个开始匹配的位置必然在此之后。</p>
+<h2 id="正则表达式的语法？"><a href="#正则表达式的语法？" class="headerlink" title="正则表达式的语法？"></a>正则表达式的语法？</h2><p>​    正则表达式的语法大体可以分为：普通字符、非打印字符、特殊字符(元字符)、限定符、定位符、选择、反向引用</p>
+<h3 id="普通字符"><a href="#普通字符" class="headerlink" title="普通字符"></a>普通字符</h3><p>​    所有出现在正则表达式中的大小写字母、数字、个别标点符号等字符都是仅仅匹配自己。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"abc!"</span>作为模式串只能匹配<span class="string">"abc!"</span></span><br><span class="line">但是<span class="string">"abc."</span>作为模式串可以匹配<span class="string">"ab"</span>、<span class="string">"abc"</span>、<span class="string">"abcc"</span>...因为其中的.不是普通字符，而是正则表达式识别的一种特殊字符。</span><br></pre></td></tr></table></figure>
+
+<h3 id="非打印字符"><a href="#非打印字符" class="headerlink" title="非打印字符"></a>非打印字符</h3><p>​    什么是非打印字符？</p>
+<p>​        就是界面中展示不了即看不见的字符，比如换行符、分页符、制表符等。这些字符一般无法用具体的某个符号表示，但是可以用转义字符表示。</p>
+<table>
+<thead>
+<tr>
+<th align="center">字符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\cx</td>
+<td align="left">匹配由x指明的控制字符。比如\cp匹配ctrl+p</td>
+</tr>
+<tr>
+<td align="center">\t</td>
+<td align="left">匹配一个制表符</td>
+</tr>
+<tr>
+<td align="center">\v</td>
+<td align="left">匹配一个垂直制表符</td>
+</tr>
+<tr>
+<td align="center">\r</td>
+<td align="left">匹配一个回车符,回车符是CR,表示回到本行行首</td>
+</tr>
+<tr>
+<td align="center">\n</td>
+<td align="left">匹配一个换行符,换行符是LF，表示到达下一行的当前位置</td>
+</tr>
+<tr>
+<td align="center">\s</td>
+<td align="left">匹配一个空白字符（空格、制表符、换页符等）等价于[\f\n\r\t\v ],注意这里面有一个空格字符</td>
+</tr>
+<tr>
+<td align="center">\S</td>
+<td align="left">配任何非空白字符,等价于[^\f\n\r\t\v],注意这里面有一个空格字符</td>
+</tr>
+</tbody></table>
+<pre><code>### 特殊字符</code></pre><p>​    什么是特殊字符？</p>
+<p>​        特殊字符也叫元字符，在正则中，特殊字符具有特殊的含义，比如.表示出了\n之外的任何单个字符，如果我们需要匹配没有特殊意义的.字符，则需要添加转义字符\在正则表达式中。特殊字符又可以分为：限定符、定位符、选择符、反向引用。下表是一些无法分类的特殊字符。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.</td>
+<td align="left">匹配除”\r\n”以及各种空白符之外的任何单个字符。若要匹配包括”\r\n”在内的任意字符，请使用诸如”[\s\S]”之类的模式。</td>
+</tr>
+<tr>
+<td align="left">\</td>
+<td align="left">将下一个字符标记为或特殊字符、或原义字符、或向后引用、或八进制转义符。例如， ‘n’ 匹配字符 ‘n’。’\n’ 匹配换行符,  “\(“ 则匹配 “(“。</td>
+</tr>
+<tr>
+<td align="left">(pattern)</td>
+<td align="left">表示一个子表达式，子表达式是当前正则表达式里面的表达式，一个正则表达式中往往有多个子表达式供选择，如”a(pattern_a|pattern_b)”的匹配结果相当于正则表达式”apattern_a”与”apattern_b”的结果取并集，这类似于划分学生成绩时做的if-else if-else判断，这一个整体相当于一个正则表达式，每个判断分支又相当于一个子表达式，最终只有一个表达式作用于一个匹配的结果中。但是这种用法匹配的结果会被缓存起来，可能会导致大量的内存占用。我们可以用<strong>$0…$9</strong> 属性从结果”匹配”集合中检索捕获的匹配。这种能将匹配的字符串存储在缓存区的正则表达式也叫一个捕获组。</td>
+</tr>
+<tr>
+<td align="left">(?:pattern)</td>
+<td align="left">保证pattern匹配的结果不会被缓存起来。？打头的都是非捕获组，即匹配后不存放到内存区。</td>
+</tr>
+<tr>
+<td align="left">(?=X )</td>
+<td align="left">零宽度正先行断言。仅当子表达式 X 在 此位置的右侧匹配时才继续匹配。也就是说要使此零宽度断言起到我们想要的效果的话，就必须把这个非捕获组放在整个表达式的右侧。例如，/w+(?=/d) 与后跟数字的单词匹配，而不与该数字匹配。此构造不会回溯。</td>
+</tr>
+<tr>
+<td align="left">(?!X)</td>
+<td align="left">零宽度负先行断言。仅当子表达式 X 不在 此位置的右侧匹配时才继续匹配。例如，例如，/w+(?!/d) 与后不跟数字的单词匹配，而不与该数字匹配 。</td>
+</tr>
+<tr>
+<td align="left">(?&lt;=X)</td>
+<td align="left">零宽度正后发断言。仅当子表达式 X 在 此位置的左侧匹配时才继续匹配。例如，(?&lt;=19)99 与跟在 19 后面的 99 的实例匹配。此构造不会回溯。</td>
+</tr>
+<tr>
+<td align="left">(?&lt;!X)</td>
+<td align="left">零宽度负后发断言。仅当子表达式 X 不在此位置的左侧匹配时才继续匹配。例如，(?&lt;!19)99 与不跟在 19 后面的 99 的实例匹配</td>
+</tr>
+<tr>
+<td align="left">[]</td>
+<td align="left">字符集，[]内部的（字符集）出现的字符最终只有一个字符作为最终匹配结果的一个字符。比如[a-zA-Z0-9]只能匹配a-z或者A-Z或者0-9的一个字符。</td>
+</tr>
+<tr>
+<td align="left">[<em>xyz</em>]</td>
+<td align="left">字符集。匹配包含的任一字符。例如，”[abc]”匹配”plain”中的”a”。</td>
+</tr>
+<tr>
+<td align="left">[^<em>xyz</em>]</td>
+<td align="left">反向字符集。匹配未包含的任何字符。例如，”[^abc]”匹配”plain”中”p”，”l”，”i”，”n”。</td>
+</tr>
+<tr>
+<td align="left">[<em>a-z</em>]</td>
+<td align="left">字符范围。匹配指定范围内的任何字符。例如，”[a-z]”匹配”a”到”z”范围内的任何小写字母。</td>
+</tr>
+<tr>
+<td align="left">[^<em>a-z</em>]</td>
+<td align="left">反向范围字符。匹配不在指定的范围内的任何字符。例如，”[^a-z]”匹配任何不在”a”到”z”范围内的任何字符。</td>
+</tr>
+</tbody></table>
+<h4 id="限定符"><a href="#限定符" class="headerlink" title="限定符"></a>限定符</h4><p>​    限定符，用来指明前面组件出现的次数</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">*</td>
+<td align="left">匹配前面的子表达式零次或多次。例如，zo* 能匹配 “z” 以及 “zoo”。* 等价于{0,}。</td>
+</tr>
+<tr>
+<td align="left">+</td>
+<td align="left">匹配前面的子表达式一次或多次。例如，’zo+’ 能匹配 “zo” 以及 “zoo”，但不能匹配 “z”。+ 等价于 {1,}。</td>
+</tr>
+<tr>
+<td align="left">?</td>
+<td align="left">匹配前面的子表达式零次或一次。例如，”do(es)?” 可以匹配 “do” 、 “does” 中的 “does” 、 “doxy” 中的 “do” 。? 等价于 {0,1}。</td>
+</tr>
+<tr>
+<td align="left">{n}</td>
+<td align="left">n 是一个非负整数。匹配确定的 n 次。例如，’o{2}’ 不能匹配 “Bob” 中的 ‘o’，但是能匹配 “food” 中的两个 o。</td>
+</tr>
+<tr>
+<td align="left">{n,}</td>
+<td align="left">n 是一个非负整数。至少匹配n 次。例如，’o{2,}’ 不能匹配 “Bob” 中的 ‘o’，但能匹配 “foooood” 中的所有 o。’o{1,}’ 等价于 ‘o+’。’o{0,}’ 则等价于 ‘o*’。</td>
+</tr>
+<tr>
+<td align="left">{n,m}</td>
+<td align="left">m 和 n 均为非负整数，其中n &lt;= m。最少匹配 n 次且最多匹配 m 次。例如，”o{1,3}” 将匹配 “fooooood” 中的前三个 o。’o{0,1}’ 等价于 ‘o?’。请注意在逗号和两个数之间不能有空格。</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><em>、+、?在匹配的时候是贪婪的（最多匹配），即匹配的越多越好，比如a*可以匹配 空、a、aa、aaa、，如果一个字符串中有aaa那么a*会选择匹配aaa而不是空、a或者aa，这种希望匹配的更多行为就叫做贪婪。我们可以用a\</em>?来取消贪婪模式变为最小匹配，那个这个模式串只匹配空。a+?只匹配a、</p>
+</blockquote>
+<p>例子</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/Chapter [<span class="number">1</span>-<span class="number">9</span>][<span class="number">0</span>-<span class="number">9</span>]*</span><br><span class="line">匹配</span><br><span class="line">    /Chapter <span class="number">1</span>-无穷</span><br><span class="line">解释：章节一般从<span class="number">1</span>开始到无穷结束，因此用*限定[<span class="number">0</span>-<span class="number">9</span>]能出现&#123;<span class="number">0</span>,&#125;次</span><br></pre></td></tr></table></figure>
+
+<h4 id="定位符"><a href="#定位符" class="headerlink" title="定位符"></a>定位符</h4><p>​    正则表达式中用来表示位置的符号。有时我们需要对某个位置进行限定，所以正则表达式提供了定位符。比如有时我们只想匹配app而不像匹配application中的app，此时我们就需要对位置进行限定，要求app前后均是空格，所以可以用”\bapp\b”来匹配。这样就可以把全文的app取出来，而不会取出application中的app。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字符</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">^</td>
+<td align="left">匹配输入字符串开始的位置。如果设置了 RegExp 对象的 Multiline 属性，^ 还会与 \n 或 \r 之后的位置匹配。</td>
+</tr>
+<tr>
+<td align="left">$</td>
+<td align="left">匹配输入字符串结尾的位置。如果设置了 RegExp 对象的 Multiline 属性，$ 还会与 \n 或 \r 之前的位置匹配。</td>
+</tr>
+<tr>
+<td align="left">\b</td>
+<td align="left">匹配一个字边界，即字与空格间的位置。<img src="/2022/05/28/Java-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1652585837142.png" alt="1652585837142"></td>
+</tr>
+<tr>
+<td align="left">\B</td>
+<td align="left">非字边界匹配。即这个位置边界外是字符<img src="/2022/05/28/Java-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1652585822991.png" alt="1652585822991"></td>
+</tr>
+</tbody></table>
+<h4 id="选择符"><a href="#选择符" class="headerlink" title="选择符"></a>选择符</h4><p>​    正则表达式有时需要条件判断这种结构的模式匹配来构成最终的正则表达式，因此正则中支持选择符</p>
+<table>
+<thead>
+<tr>
+<th>字符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>|</td>
+<td>|前后的内容最终只有一个作为匹结果对应的模式串，两者是或的关系</td>
+</tr>
+<tr>
+<td><em>x</em>|<em>y</em></td>
+<td>匹配 <em>x</em> 或 <em>y</em>。例如，’z|food’ 匹配”z”或”food”。’(z|f)ood’ 匹配”zood”或”food”。</td>
+</tr>
+</tbody></table>
+<h4 id="反向引用"><a href="#反向引用" class="headerlink" title="反向引用"></a>反向引用</h4><p>​    有时我们需要在正则表达式中使用正则表达式的匹配结果，比如找到需求：找到昵称名就是姓名的字符串。因此正则表达式提供了反向引用，使得正则表达式中也可以引用已经匹配的字符串。反向引用的下标从1开始，一般与子表达式符号连用，遇到一个左括号，下标加1，比如”\b([a-z]+) \1\b”其中的\1表示第一个子表达式”([a-z]+)”匹配的字符串。</p>
+<p>下面我们来完成需求：找到昵称名就是姓名的字符串。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a&#39;s nickname is a</span><br><span class="line">xiaobai&#39;s nickname is xb</span><br><span class="line">对应的模式串为</span><br><span class="line">\b([a-zA-Z]+)&#39;s nickname is \1\b</span><br><span class="line">匹配的结果为</span><br><span class="line">a&#39;s nickname is a</span><br></pre></td></tr></table></figure>
+
+<p>此外反向引用还可以将URI拆分成组件</p>
+<p> 假定您想将下面的 URI 分解为协议（ftp、http 等等）、域地址和页/路径： </p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://www.w3cschool.cn:80/html/html-tutorial.html</span><br></pre></td></tr></table></figure>
+
+<p>对应的正则为</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(\w+):\/\/([^/:]+)(:\d*)?([^# ]*)</span><br></pre></td></tr></table></figure>
+
+<p> 第一个括号子表达式捕获 Web 地址的协议部分。该子表达式匹配在冒号和两个正斜杠前面的任何单词。 </p>
+<p>​    第一个子表达式匹配的字符串是”http”</p>
+<p> 第二个括号子表达式捕获地址的域地址部分。子表达式匹配 / 或 : 之外的一个或多个字符。</p>
+<p>​    第二个表达式匹配的字符串是”<a href="http://www.w3cschool.cn&quot;">www.w3cschool.cn&quot;</a></p>
+<p>第三个括号子表达式捕获端口号（如果指定了的话）。该子表达式匹配冒号后面的零个或多个数字。只能重复一次该子表达式。</p>
+<p>​    第三个表达式匹配的字符串是”:80”，由于后面接着?所以可以没有这个字符串</p>
+<p>第四个括号子表达式捕获 Web 地址指定的路径和/或页信息。该子表达式能匹配不包括 # 或空格字符的任何字符序列。 </p>
+<p>​    第四个表达式匹配的字符串是” /html/html-tutorial.html “</p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><table>
+<thead>
+<tr>
+<th align="center">字符</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">\x<em>n</em></td>
+<td align="left">匹配 <em>n</em>，此处的 <em>n</em> 是一个十六进制转义码。十六进制转义码必须正好是两位数长。例如，”\x41”匹配”A”。”\x041”与”\x04”&amp;”1”等效。允许在正则表达式中使用 ASCII 代码。</td>
+</tr>
+<tr>
+<td align="center"><em>num</em></td>
+<td align="left">匹配 <em>num*，此处的 *num</em> 是一个正整数。到捕获匹配的反向引用。例如，”(.)\1”匹配两个连续的相同字符。</td>
+</tr>
+<tr>
+<td align="center"><em>n</em></td>
+<td align="left">标识一个八进制转义码或反向引用。如果 <em>n</em> 前面至少有 <em>n</em> 个捕获子表达式，那么 <em>n</em> 是反向引用。否则，如果 <em>n</em> 是八进制数 (0-7)，那么 <em>n</em> 是八进制转义码。</td>
+</tr>
+<tr>
+<td align="center"><em>nm</em></td>
+<td align="left">标识一个八进制转义码或反向引用。如果 <em>nm</em> 前面至少有 <em>nm</em> 个捕获子表达式，那么 <em>nm</em> 是反向引用。如果 <em>nm</em> 前面至少有 <em>n</em> 个捕获，则 <em>n</em> 是反向引用，后面跟有字符 <em>m</em>。如果两种前面的情况都不存在，则 <em>nm</em> 匹配八进制值 <em>nm*，其中 *n</em> 和 <em>m</em> 是八进制数字 (0-7)。</td>
+</tr>
+<tr>
+<td align="center">\nml</td>
+<td align="left">当 <em>n</em> 是八进制数 (0-3)，<em>m</em> 和 <em>l</em> 是八进制数 (0-7) 时，匹配八进制转义码 <em>nml</em>。</td>
+</tr>
+<tr>
+<td align="center">\u<em>n</em></td>
+<td align="left">匹配 <em>n</em>，其中 <em>n</em> 是以四位十六进制数表示的 Unicode 字符。例如，\u00A9 匹配版权符号 (©)。</td>
+</tr>
+</tbody></table>
+<h2 id="正则表达式工具推荐"><a href="#正则表达式工具推荐" class="headerlink" title="正则表达式工具推荐"></a>正则表达式工具推荐</h2><p>​    <img src="/2022/05/28/Java-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/1652604705418.png" alt="1652604705418"></p>
+<h2 id="Java中如何使用正则？"><a href="#Java中如何使用正则？" class="headerlink" title="Java中如何使用正则？"></a>Java中如何使用正则？</h2><p>​    不同的编程语言，对正则表达式的支持程度不同，编写的正则表达式一般也不同。我们这里仅考虑Java实现的正则。</p>
+<p>​    Java中主要提供了Pattern类、Matcher类、PatternSyntaxExcaption类来做到正则表达式的匹配如语法检查。 pattern 对象是一个正则表达式的编译表示；Matcher 对象是对输入字符串进行解释和匹配操作的引擎；PatternSyntaxException 是一个非强制异常类，它表示一个正则表达式模式中的语法错误。 </p>
+<blockquote>
+<p> <em>根据 Java Language Specification 的要求，Java 源代码的字符串中的反斜线被解释为 Unicode 转义或其他字符转义。因此必须在字符串字面值中使用两个反斜线，表示正则表达式受到保护，不被 Java 字节码编译器解释。例如，当解释为正则表达式时，字符串字面值 “\b” 与单个退格字符匹配，而 “\\b” 与单词边界匹配。字符串字面值 “\(hello\)” 是非法的，将导致编译时错误；要与字符串 (hello) 匹配，必须使用字符串字面值 “\\(hello\\)”。</em> </p>
+</blockquote>
+<p> <img src="/2022/05/28/Java-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/c182dd874f2e4c4baaf1806d54bf9cfc.png" alt="img"> </p>
+<h3 id="Pattern类"><a href="#Pattern类" class="headerlink" title="Pattern类"></a>Pattern类</h3><blockquote>
+<p>Pattern类在java.util.regex 包中 ，且是正则表达式的编译表示形式；<br>Pattern类由final修饰，因此不能被子类继承；<br>Pattern类的实例不可变，可供多个并发线程安全使用；<br>Pattern的构造器是私有的，只能通过Pattern调用静态方法compile返回Pattern实例。</p>
+</blockquote>
+<p> <strong>Pattern compile(String regex)：</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Pattern <span class="title">compile</span><span class="params">(String regex)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Pattern(regex, <span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <strong>Pattern compile(String regex, int flags)：</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Pattern <span class="title">compile</span><span class="params">(String regex, <span class="keyword">int</span> flags)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Pattern(regex, flags);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>flag可取值</p>
+<ul>
+<li><strong>Pattern.UNIX_LINES：</strong>unix lines模式，该模式下，仅以\n为结尾（行一般以\n或\r\n结尾）；</li>
+<li><strong>Pattern.CASE_INSENSITIVE：</strong>忽略大小写进行匹配；</li>
+<li><strong>Pattern.COMMENTS：</strong>忽略空格字符（例如，表达式里的空格，tab，回车）和注释（从#开始，一直到行结束）；</li>
+<li><strong>Pattern.MULTILINE：</strong>多行模式的开启，在多行模式下，^匹配输入字符串开始的位置，$匹配输入字符串结尾的位置；</li>
+<li><strong>Pattern.DOTALL：</strong>dotall模式，”.”匹配所有字符，包括行终结符。（若该模式未开启，“.”表达式不匹配行终结符）；</li>
+<li><strong>Pattern.UNICODE_CASE：</strong>UNICODE_CASE模式结合CASE_INSENSITIVE模式，那么它会对Unicode字符进行大小写不敏感的匹配。（若未开启UNICODE_CASE模式，仅开始CASE_INSENSITIVE模式，则只适用于US-ASCII字符集）；</li>
+<li><strong>Pattern.CANON_EQ：</strong>当且仅当两个字符的正规分解都完全相同的情况下，则认定匹配。（默认情况下，不考虑规范相等性）；</li>
+</ul>
+</blockquote>
+<p><strong>String[] split(CharSequence input, int limit)</strong> </p>
+<blockquote>
+<p> input 要拆分的字符序列</p>
+<p> ​    limit 结果阈值，控制应用模式的次数，从而影响结果数组的长度</p>
+<pre><code>若 limit &gt; 0：split最多应用limit - 1次，数组的长度不大于limit；常常匹配结果中出现空字符串。</code></pre><p> ​        若 limit &lt; 0：split次数不受限制，数组为任意长度；</p>
+<p> ​        若 limit = 0：split次数不受限制，数组为任意长度，但会摒弃尾部的空字符串；</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pattern pattern= Pattern.compile(<span class="string">"\\d&#123;2&#125;"</span>);</span><br><span class="line">String[] split = pattern.split(<span class="string">"12a2"</span>);<span class="comment">//""、"a2"</span></span><br></pre></td></tr></table></figure>
+
+<p> <strong>boolean Pattern.matches(String regex,CharSequence input)</strong> </p>
+<p>​    判断regex是否能匹配到input中的所有字符</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println(Pattern.matches(<span class="string">"\\d+"</span>, <span class="string">"aa123456"</span>));<span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Matcher类"><a href="#Matcher类" class="headerlink" title="Matcher类"></a>Matcher类</h3><p>​     Matcher 对象是对输入字符串进行解释和匹配操作的引擎，与Pattern 类一样，Matcher 也没有公共构造方法； </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pattern pattern = Pattern.compile(<span class="string">"正则表达式"</span>);</span><br><span class="line">Matcher matcher = pattern.matcher(<span class="string">"目标字符串"</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>1、查找方法</strong></p>
+<ul>
+<li>find()：只要正则表达式在字符串被匹配到就返回true</li>
+<li>lookingAt()：只有匹配到的字符串在最前面，返回true，否则，false（即，匹配到的字符串部分必须在首位）</li>
+<li>matches(): 对整个字符串进行匹配,若整个字符串都匹配，返回true，否则，false（即，整个字符串全部匹配）</li>
+</ul>
+<p><strong>2、索引方法</strong>，这些方法必须结合(matcher.find()方法使用</p>
+<ul>
+<li>start(): 返回匹配到的子字符串的第一个字符在原字符串中的索引位置</li>
+<li>end(): 返回匹配到的子字符串的最后一个字符在原字符串中的索引位置</li>
+<li>group(): 返回匹配到的子字符串，是整个正则表达式匹配到的字符串，相当于group(0)的返回值</li>
+<li>groupCount()  : 返回捕获组的数量，除去了全局字符串匹配到的捕获组。</li>
+<li>start(int i): 匹配到的第i个捕获组组第一个字符索引</li>
+<li>end(int i): 匹配到的第i个捕获组最后一个字符索引</li>
+<li>group(int i): 匹配到的第i个捕获组</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">String text = <span class="string">"aaasdas&lt;textarea rows=\"20\" cols=\"70\"&gt;nexus maven repository index properties updating index central&lt;/textarea&gt;"</span>;</span><br><span class="line"><span class="comment">//下面的正则表达式中共有四个捕获组：(&lt;textarea.*?&gt;)、(.*?)、(&lt;/textarea&gt;)和整个匹配到的内容</span></span><br><span class="line">String reg = <span class="string">"(&lt;textarea.*?&gt;)(.*?)(&lt;/textarea&gt;)"</span>;</span><br><span class="line">Pattern p = Pattern.compile(reg);</span><br><span class="line">Matcher m = p.matcher(text);</span><br><span class="line">System.out.println(m.find());<span class="comment">//true，字符串中能匹配到，返回true</span></span><br><span class="line">System.out.println(m.lookingAt());<span class="comment">//false，匹配到的字符串不在首位</span></span><br><span class="line">System.out.println(m.matches());<span class="comment">//false，因为整个字符串不符合这个模式串</span></span><br><span class="line"><span class="keyword">while</span> (m.find()) &#123;</span><br><span class="line">    System.out.println(m.group(<span class="number">0</span>)); <span class="comment">// 整个匹配到的内容</span></span><br><span class="line">    System.out.println(m.group(<span class="number">1</span>)); <span class="comment">// (&lt;textarea.*?&gt;)</span></span><br><span class="line">    System.out.println(m.group(<span class="number">2</span>)); <span class="comment">// (.*?)</span></span><br><span class="line">    System.out.println(m.group(<span class="number">3</span>)); <span class="comment">// (&lt;/textarea&gt;)</span></span><br><span class="line">&#125;</span><br><span class="line">如果不想要捕获某个组，只需要将(变为(?:即可，还有方便的写法 (&lt;textarea.*?&gt;)(?&lt;data&gt;.*?)(&lt;/textarea&gt;) 在正则表达式中加一个变量 data 然后在 group 获取 string str = m.group(“data”);相当于中间那个捕获组的名字叫做data。</span><br></pre></td></tr></table></figure>
+
+<p><strong>3、替换方法</strong></p>
+<ul>
+<li><p>replace(CharSequence target, CharSequence replacement)：用replacement替换所有的target，两个参数都是字符串；</p>
+</li>
+<li><p>replaceAll(String regex, String replacement)：用replacement替换所有的regex匹配项，regex是正则表达式，</p>
+<p>replacement是字符串；</p>
+</li>
+<li><p>replaceFirst(String regex, String replacement)：基本和replaceAll相同，区别是只替换第一个匹配项；</p>
+</li>
+</ul>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zm163.github.io/2022/05/28/Java-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="tag">正则表达式</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/05/15/ip%E5%9C%B0%E5%9D%80%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%88%86%E7%B1%BB/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">ip地址为什么要分类</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "6tOO9UzCCPwrAQMrQwFdo1c9-gzGzoHsz",
+    app_key: "7gv1YABDJKYutSvQVAL82lud",
+    path: window.location.pathname,
+    avatar: "robohash",
+    placeholder: "欢迎指点",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2022
+        <i class="ri-heart-fill heart_icon"></i> ZM
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1281098224&amp;web_id=1281098224'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/avatar.jpg" alt="codeFOF"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>支持一下~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+
+</html>

@@ -174,6 +174,133 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1028"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/20/PTA-Basic-1028/"
+    >PTA-Basic-1028</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/20/PTA-Basic-1028/" class="article-date">
+  <time datetime="2019-09-20T12:06:06.000Z" itemprop="datePublished">2019-09-20</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>某城镇进行人口普查，得到了全体居民的生日。现请你写个程序，找出镇上最年长和最年轻的人。</p>
+<p>这里确保每个输入的日期都是合法的，但不一定是合理的——假设已知镇上没有超过 200 岁的老人，而今天是 2014 年 9 月 6 日，所以超过 200 岁的生日和未出生的生日都是不合理的，应该被过滤掉。</p>
+<p>输入格式：<br>输入在第一行给出正整数 N，取值在(0,10^5]；随后 N 行，每行给出 1 个人的姓名（由不超过 5 个英文字母组成的字符串）、以及按 yyyy/mm/dd（即年/月/日）格式给出的生日。题目保证最年长和最年轻的人没有并列。</p>
+<p>输出格式：<br>在一行中顺序输出有效生日的个数、最年长人和最年轻人的姓名，其间以空格分隔。</p>
+<p>输入样例：</p>
+<pre><code>5
+John 2001/05/12
+Tom 1814/09/06
+Ann 2121/01/30
+James 1814/09/05
+Steve 1967/11/20</code></pre><p>输出样例：</p>
+<pre><code>3 Tom John</code></pre><p>分析：</p>
+<p>定义一个结构体，首先日期一定都是合法的，但是不一定合理。定义一个在<br>最早的可能的年份出生的人，与今天出生的人，然后输入的每个人的数据与这两个人对比，合格的就存入person数组中。然后对此数组进行快排，输出第一个元素，与最后一个元素。注意：当没有人时，只输出一个0.</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+typedef struct person{
+    char name[6];
+    int birthyear;
+    int birthmonth;
+    int birthday;
+}person;
+int compare(const void * a,const void * b){
+    person A=*(person *)a;
+    person B=*(person *)b;
+    if(A.birthyear&gt;B.birthyear){
+        return 1;
+    }else if(A.birthyear&lt;B.birthyear){
+        return -1;
+    }else{
+        if(A.birthmonth&gt;B.birthmonth){
+            return 1;
+        }else if(A.birthmonth&lt;B.birthmonth){
+            return -1;
+        }else{
+                if(A.birthday&gt;B.birthday){
+                return 1;
+            }else if(A.birthday&lt;B.birthday){
+                return -1;
+            }else{
+                return 0;
+            }
+        }
+    }
+}
+int main(void){
+    long num;
+    scanf(&quot;%ld&quot;,&amp;num);
+    long i=0;
+    person persons[num],oldperson,p,lastperson;  
+    oldperson.birthyear=1814;
+    oldperson.birthmonth=9;
+    oldperson.birthday=6;
+    lastperson.birthyear=2014;
+    lastperson.birthmonth=9;
+    lastperson.birthday=7;
+    while(num--){
+        scanf(&quot;%s %d/%d/%d&quot;,p.name,&amp;p.birthyear,&amp;p.birthmonth,&amp;p.birthday);
+        if(compare(&amp;p,&amp;oldperson)&gt;=0 &amp;&amp; compare(&amp;p,&amp;lastperson)&lt;0){
+            strcpy(persons[i].name,p.name);
+            persons[i].birthyear=p.birthyear;
+            persons[i].birthmonth=p.birthmonth;
+            persons[i].birthday=p.birthday;
+            i++;
+        }
+    }
+    qsort(persons,i,sizeof(person),compare);
+    if(i!=0)
+    printf(&quot;%d %s %s&quot;,i,persons[0].name,persons[i-1].name);
+    else{
+        printf(&quot;0&quot;);
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1024"
   class="article article-type-post"
   itemscope
@@ -421,76 +548,6 @@ int main(void){
     printf(&quot;%d&quot;,num);
     return 0;
 }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1026"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/19/PTA-Basic-1026/"
-    >PTA-Basic-1026</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/19/PTA-Basic-1026/" class="article-date">
-  <time datetime="2019-09-19T13:33:50.000Z" itemprop="datePublished">2019-09-19</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>要获得一个 C 语言程序的运行时间，常用的方法是调用头文件 time.h，其中提供了 clock() 函数，可以捕捉从程序开始运行到 clock() 被调用时所耗费的时间。这个时间单位是 clock tick，即“时钟打点”。同时还有一个常数 CLK_TCK，给出了机器时钟每秒所走的时钟打点数。于是为了获得一个函数 f 的运行时间，我们只要在调用 f 之前先调用 clock()，获得一个时钟打点数 C1；在 f 执行完成后再调用 clock()，获得另一个时钟打点数 C2；两次获得的时钟打点数之差 (C2-C1) 就是 f 运行所消耗的时钟打点数，再除以常数 CLK_TCK，就得到了以秒为单位的运行时间。</p>
-<p>这里不妨简单假设常数 CLK_TCK 为 100。现给定被测函数前后两次获得的时钟打点数，请你给出被测函数运行的时间。</p>
-<p>输入格式：<br>输入在一行中顺序给出 2 个整数 C1 和 C2。注意两次获得的时钟打点数肯定不相同，即 C1 &lt; C2，并且取值在 [0,10<br>​7<br>​​ ]。</p>
-<p>输出格式：<br>在一行中输出被测函数运行的时间。运行时间必须按照 hh:mm:ss（即2位的 时:分:秒）格式输出；不足 1 秒的时间四舍五入到秒。</p>
-<p>输入样例：</p>
-<pre><code>123 4577973</code></pre><p>输出样例：</p>
-<pre><code>12:42:59</code></pre><p>分析：<br>此题简单不做赘述，注意一点，转型时注意语言自带的转型功能。</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int number1;
-    int number2;
-
-    scanf(&quot;%d %d&quot;,&amp;number1,&amp;number2);
-    int h=(int)((number2-number1)/360000);
-    printf(&quot;%02d:&quot;,h);
-    int m=(int)(((number2-number1)/100 -h * 3600)/60);
-    printf(&quot;%02d:&quot;,m);</code></pre><p>#####//此处强制转型一定要在除过后就进行否则会导致数字丢失。<br>        int s=(((int)((number2-number1)<em>1.0/100+0.5)-h</em>3600-m*60));<br>        printf(“%02d”,s);<br>        return 0;<br>    }</p>
- 
       <!-- reward -->
       
     </div>
@@ -883,9 +940,26 @@ int main(void){
 
 
     
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
     
 
   </div>
-</body>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
 
 </html>
