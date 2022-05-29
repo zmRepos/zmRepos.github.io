@@ -174,6 +174,63 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-LeetCode-1/LeetCode-1"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/19/LeetCode-1/LeetCode-1/"
+    >LeetCode-1</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/19/LeetCode-1/LeetCode-1/" class="article-date">
+  <time datetime="2019-10-19T13:43:00.000Z" itemprop="datePublished">2019-10-19</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LeetCode/">LeetCode</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="两数之和"><a href="#两数之和" class="headerlink" title="两数之和"></a>两数之和</h1> 
+      <a class="article-more-link" href="/2019/10/19/LeetCode-1/LeetCode-1/"
+        >阅读更多...</a
+      >
+       
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E7%BB%84/" rel="tag">数组</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1075"
   class="article article-type-post"
   itemscope
@@ -406,127 +463,6 @@ int nextmerge(int n, int num[], int half[])
         }
         qsort(num + j * lenth, n % lenth, sizeof(int), comp);//排序剩余的部分数字
     }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1025"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1025/"
-    >PTA-Basic-1025</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1025/" class="article-date">
-  <time datetime="2019-10-16T15:23:01.000Z" itemprop="datePublished">2019-10-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>给定一个常数 K 以及一个单链表 L，请编写程序将 L 中每 K 个结点反转。例如：给定 L 为 1→2→3→4→5→6，K 为 3，则输出应该为 3→2→1→6→5→4；如果 K 为 4，则输出应该为 4→3→2→1→5→6，即最后不到 K 个元素不反转。</p>
-<p>输入格式：<br>每个输入包含 1 个测试用例。每个测试用例第 1 行给出第 1 个结点的地址、结点总个数正整数 N (≤10<br>​5<br>​​ )、以及正整数 K (≤N)，即要求反转的子链结点的个数。结点的地址是 5 位非负整数，NULL 地址用 −1 表示。</p>
-<p>接下来有 N 行，每行格式为：</p>
-<p>Address Data Next<br>其中 Address 是结点地址，Data 是该结点保存的整数数据，Next 是下一结点的地址。</p>
-<p>输出格式：<br>对每个测试用例，顺序输出反转后的链表，其上每个结点占一行，格式与输入相同。</p>
-<p>输入样例：</p>
-<pre><code>00100 6 4
-00000 4 99999
-00100 1 12309
-68237 6 -1
-33218 3 00000
-99999 5 68237
-12309 2 33218</code></pre><p>输出样例：</p>
-<pre><code>00000 4 33218
-33218 3 12309
-12309 2 00100
-00100 1 99999
-99999 5 68237
-68237 6 -1</code></pre><p>思路：<br>定义一个结构体存储节点的地址数据下一个地址，定义一个数组存放结点，在定义一个数组存放从第一个结点出发的有序的结点，然后对有序的结点数组进行反转，交换每k个结点，并将每一个结点的下一个地址设置为下一个结点的地址。</p>
-<p>坑：可能输入的结点中有些不在链表中应该舍去它们。<br>代码：</p>
-<pre><code>/** 
- * (涉及反转，可回顾一下 1008. 数组元素循环右移问题)
- * 1. 通过数组下标来表示地址，便于链接各个节点
- * 2. 考虑存在无效节点的情况
- */
-#include &lt;stdio.h&gt;
-
-typedef struct {
-    int address;//节点地址
-    int data; //整数数据
-    int next;//下一节点的地址  
-} Node; 
-int main() {
-    int addr, N, K;//读取首地址，节点数量，反转个数 
-    scanf(&quot;%d %d %d&quot;, &amp;addr, &amp;N, &amp;K);
-    Node origin[100001], sort[100001];//创建初始单链表,反转后的单链表 
-    for (int i = 0; i &lt; N; i++) {//读取节点
-        Node temp; 
-        scanf(&quot;%d %d %d&quot;, &amp;temp.address, &amp;temp.data, &amp;temp.next);
-        origin[temp.address] = temp;
-    }
-    for (int i = 0; i &lt; N; i++) {//链接节点 //将链表有序存入sorted数组
-        sort[i] = origin[addr];
-        addr = sort[i].next;//获取下一个节点的地址 
-        if (addr == -1) {
-            N = i + 1;//可能有无效的节点，需要更新链表中节点的数量 
-            break;
-        }
-    }   
-    for (int i = 0; i &lt; N / K; i++) {//反转的次数 
-        for (int j = 0; j &lt; K / 2; j++) {//反转 
-            Node temp;
-            temp = sort[j + i * K];
-            sort[j + i * K] = sort[K - 1 - j + i * K];//数组下标确认好 
-            sort[K - 1 - j + i * K] = temp;
-        }
-    }
-    for (int i = 0; i &lt; N; i++) {
-        if(i != N - 1) {
-            sort[i].next = sort[i+1].address;
-            printf(&quot;%05d %d %05d\n&quot;, sort[i].address, sort[i].data, sort[i].next);
-        } else {
-            sort[i].next = -1;
-            printf(&quot;%05d %d %d\n&quot;, sort[i].address, sort[i].data, sort[i].next);
-        }
-    } 
     return 0;
 }</code></pre> 
       <!-- reward -->

@@ -9160,4 +9160,43 @@ int type3(struct id ids[], int n, int i)
         <tag>字符串</tag>
       </tags>
   </entry>
+  <entry>
+    <title>shelll习题记录</title>
+    <url>/2022/05/28/shelll%E4%B9%A0%E9%A2%98%E8%AE%B0%E5%BD%95/</url>
+    <content><![CDATA[<h1 id="wc、tail等指令的使用"><a href="#wc、tail等指令的使用" class="headerlink" title="wc、tail等指令的使用"></a>wc、tail等指令的使用</h1><h2 id="WC-指令"><a href="#WC-指令" class="headerlink" title="WC 指令"></a>WC 指令</h2><p><code>wc</code>是shell提供的用来查看文件的行数等信息的简陋工具。 <code>wc</code>可以计算文件的Byte数、字数或是列数。  若<strong>不指定文件名称，或是所给予的文件名为“-”</strong>，则wc指令会从标准输入设备读取数据，即<code>wc -l</code>这种执行语句，会等待用户输入后才会开始统计用户的输入信息。 </p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 查看某个文件的行数 单词数 字节数</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wc nowcoder.txt </span></span><br><span class="line"> 10  31 149 nowcoder.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文件的字节数（一个中文字符占两个字节）</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wc -c nowcoder.txt </span></span><br><span class="line">149 nowcoder.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文件的字符数</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wc -m nowcoder.txt</span></span><br><span class="line">145 nowcoder.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 统计文件的行数</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wc  -l  ./nowcoder.txt</span></span><br><span class="line">8 ./nowcoder.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 统计文件中最长的一行的字节数</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wc -L nowcoder.txt</span></span><br><span class="line">38 nowcoder.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 打印一个日志文件的单词数目</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wc -w nowcoder.txt </span></span><br><span class="line">31 nowcoder.txt</span><br><span class="line"><span class="meta">#</span><span class="bash"> 打印当前目录下所有文件的行数，并统计最终行数</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> wc -l *</span></span><br><span class="line">  0 a.txt</span><br><span class="line"> 10 nowcoder.txt</span><br><span class="line"> 10 total</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>输出结果也包含了文件名，所以如果只需要行数，还需要cut共聚介入处理只取出第一列的值。</p>
+</blockquote>
+<h2 id="tail指令"><a href="#tail指令" class="headerlink" title="tail指令"></a>tail指令</h2><h3 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">输出a.txt的最后100行</span><br><span class="line">tail -n 100 a.txt</span><br><span class="line">从100行开始输出一直到最后</span><br><span class="line">tail -n +100 a.txt</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>后端</category>
+        <category>基础</category>
+      </categories>
+      <tags>
+        <tag>Linux</tag>
+        <tag>Shell</tag>
+      </tags>
+  </entry>
 </search>

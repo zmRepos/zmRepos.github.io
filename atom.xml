@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://zm163.github.io/"/>
-  <updated>2022-05-28T01:29:29.790Z</updated>
+  <updated>2022-05-29T04:43:39.160Z</updated>
   <id>http://zm163.github.io/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>shelll习题记录</title>
+    <link href="http://zm163.github.io/2022/05/28/shelll%E4%B9%A0%E9%A2%98%E8%AE%B0%E5%BD%95/"/>
+    <id>http://zm163.github.io/2022/05/28/shelll%E4%B9%A0%E9%A2%98%E8%AE%B0%E5%BD%95/</id>
+    <published>2022-05-28T15:38:00.000Z</published>
+    <updated>2022-05-29T04:43:39.160Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h1 id=&quot;wc、tail等指令的使用&quot;&gt;&lt;a href=&quot;#wc、tail等指令的使用&quot; class=&quot;headerlink&quot; title=&quot;wc、tail等指令的使用&quot;&gt;&lt;/a&gt;wc、tail等指令的使用&lt;/h1&gt;&lt;h2 id=&quot;WC-指令&quot;&gt;&lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="后端" scheme="http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/"/>
+    
+      <category term="基础" scheme="http://zm163.github.io/categories/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Linux" scheme="http://zm163.github.io/tags/Linux/"/>
+    
+      <category term="Shell" scheme="http://zm163.github.io/tags/Shell/"/>
+    
+  </entry>
   
   <entry>
     <title>Java-正则表达式</title>
@@ -469,29 +500,6 @@
     
     
       <category term="字符串" scheme="http://zm163.github.io/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>LeetCode-844</title>
-    <link href="http://zm163.github.io/2020/08/23/LeetCode-844/"/>
-    <id>http://zm163.github.io/2020/08/23/LeetCode-844/</id>
-    <published>2020-08-22T23:16:36.000Z</published>
-    <updated>2022-05-08T09:06:26.906Z</updated>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;整理字符串&quot;&gt;&lt;a href=&quot;#整理字符串&quot; class=&quot;headerlink&quot; title=&quot;整理字符串&quot;&gt;&lt;/a&gt;整理字符串&lt;/h1&gt;
-    
-    </summary>
-    
-    
-      <category term="算法与数据结构" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
-    
-      <category term="LeetCode" scheme="http://zm163.github.io/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LeetCode/"/>
-    
-    
-      <category term="栈" scheme="http://zm163.github.io/tags/%E6%A0%88/"/>
     
   </entry>
   
