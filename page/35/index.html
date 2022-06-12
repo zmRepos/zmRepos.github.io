@@ -174,6 +174,134 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1078"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1078/"
+    >PTA-Basic-1078</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/11/PTA-Basic-1078/" class="article-date">
+  <time datetime="2019-10-11T14:18:16.000Z" itemprop="datePublished">2019-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>文本压缩有很多种方法，这里我们只考虑最简单的一种：把由相同字符组成的一个连续的片段用这个字符和片段中含有这个字符的个数来表示。例如 ccccc 就用 5c 来表示。如果字符没有重复，就原样输出。例如 aba 压缩后仍然是 aba。</p>
+<p>解压方法就是反过来，把形如 5c 这样的表示恢复为 ccccc。</p>
+<p>本题需要你根据压缩或解压的要求，对给定字符串进行处理。这里我们简单地假设原始字符串是完全由英文字母和空格组成的非空字符串。</p>
+<p>输入格式：<br>输入第一行给出一个字符，如果是 C 就表示下面的字符串需要被压缩；如果是 D 就表示下面的字符串需要被解压。第二行给出需要被压缩或解压的不超过 1000 个字符的字符串，以回车结尾。题目保证字符重复个数在整型范围内，且输出文件不超过 1MB。</p>
+<p>输出格式：<br>根据要求压缩或解压字符串，并在一行中输出结果。</p>
+<p>输入样例 1：</p>
+<pre><code>C
+
+TTTTThhiiiis isssss a   tesssst CAaaa as</code></pre><p>输出样例 1：</p>
+<pre><code>5T2h4is i5s a3 te4st CA3a as</code></pre><p>输入样例 2：</p>
+<pre><code>D
+
+5T2h4is i5s a3 te4st CA3a as10Z</code></pre><p>输出样例 2：</p>
+<pre><code>TTTTThhiiiis isssss a   tesssst CAaaa asZZZZZZZZZZ</code></pre><p>分析：</p>
+<p>首先根据题目要求知道要求我们解压与压缩，解压-&gt;将字符串中的数字转换成其后面紧跟的字符的个数，注</p>
+<p>意，此处数字可能大于10。然后输出n个字符。</p>
+<p>压缩过程：将连续的n个字符（n&gt;1）表达成‘n字符’的形式。</p>
+<p>注意：此题的一个坑，输入中可能会有空格。</p>
+<p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include &lt;stdlib.h&gt;
+void c(char *s){//压缩函数
+    char *p=s;
+    char cur=*p;//保存当前的字符
+    p++;
+    int time=1;//默认的字符长度为1
+    while(cur){
+        char ch=*p;//存储下一个字符
+        if(cur==ch){//当前字符与下一个字符比较
+            time++;
+        }else{//不同时，表示连续的已经断开
+            if(time&gt;1){
+                printf(&quot;%d%c&quot;,time,cur);
+            }else{
+                printf(&quot;%c&quot;,cur);
+            }
+            time=1;//重新将字符设置为1
+            cur=ch;//将后一个字符给当前字符。
+        }
+        p++;//指针指向后面一个字符。
+    }
+}
+void d(char *s){//解压
+    char *p=s;
+    int time=0;
+    while(*p){
+        if((*p)&lt;=&apos;9&apos;&amp;&amp;(*p)&gt;=&apos;0&apos;){//将字符串中的数字转化为int型。
+            time=time*10+(*p)-&apos;0&apos;;//
+        }else
+        {
+            if(time==0){//如果此处不给time赋值为1，且time==0，那么字母前面没有数字的就会被丢掉。
+                time=1;
+            }
+            for(int i=0;i&lt;time;i++){
+                printf(&quot;%c&quot;,*p);
+            }
+            time=0;//防止遇到数字为两位或更高位的。
+        }
+        p++;
+    }
+}
+int main()
+{
+    char ch;
+    scanf(&quot;%c&quot;,&amp;ch);
+    getchar();
+    char str[1001];
+    gets(str);
+    switch(ch){
+    case &apos;C&apos;:c(str);break;
+    case &apos;D&apos;:d(str);break;
+    default:break;
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1077"
   class="article article-type-post"
   itemscope
@@ -362,123 +490,6 @@ int main()
             }
         }
     }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1074"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/09/PTA-Basic-1074/"
-    >PTA-Basic-1074</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/09/PTA-Basic-1074/" class="article-date">
-  <time datetime="2019-10-09T14:14:27.000Z" itemprop="datePublished">2019-10-09</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>分析：<br>地球人习惯使用十进制数，并且默认一个数字的每一位都是十进制的。而在 PAT 星人开挂的世界里，每个数字的每一位都是不同进制的，这种神奇的数字称为“PAT数”。每个 PAT 星人都必须熟记各位数字的进制表，例如“……0527”就表示最低位是 7 进制数、第 2 位是 2 进制数、第 3 位是 5 进制数、第 4 位是 10 进制数，等等。每一位的进制 d 或者是 0（表示十进制）、或者是 [2，9] 区间内的整数。理论上这个进制表应该包含无穷多位数字，但从实际应用出发，PAT 星人通常只需要记住前 20 位就够用了，以后各位默认为 10 进制。</p>
-<p>在这样的数字系统中，即使是简单的加法运算也变得不简单。例如对应进制表“0527”，该如何计算“6203 + 415”呢？我们得首先计算最低位：3 + 5 = 8；因为最低位是 7 进制的，所以我们得到 1 和 1 个进位。第 2 位是：0 + 1 + 1（进位）= 2；因为此位是 2 进制的，所以我们得到 0 和 1 个进位。第 3 位是：2 + 4 + 1（进位）= 7；因为此位是 5 进制的，所以我们得到 2 和 1 个进位。第 4 位是：6 + 1（进位）= 7；因为此位是 10 进制的，所以我们就得到 7。最后我们得到：6203 + 415 = 7201。</p>
-<p>输入格式：<br>输入首先在第一行给出一个 N 位的进制表（0 &lt; N ≤ 20），以回车结束。 随后两行，每行给出一个不超过 N 位的非负的 PAT 数。</p>
-<p>输出格式：<br>在一行中输出两个 PAT 数之和。</p>
-<p>输入样例：</p>
-<pre><code>30527
-06203
-415</code></pre><p>输出样例：</p>
-<pre><code>7201</code></pre><p>分析：<br>将输入的字符串存入字符数组，定义一个逆转字符串的函数，将每个字符串逆转，然后从头取对应的数字加起来在加上上一次运算的进数，然后对进制取余存入结果数组，取整作为下一次的进数，注意循环的次数，应该比进制字符串的长度大1，为了防止最高项加后超过进制数而导致进项丢失。</p>
-<p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-char decimal[21];
-char str1[21];
-char str2[21];
-char result[22];
-char* strrev(char *str){//字符逆置函数。
-    char *cs1=str;
-    char *cs2=str+(strlen(str)-1);
-    while(cs1&lt;cs2){
-        char ch=*cs1;
-        *cs1=*cs2;
-        *cs2=ch;
-        cs1++;
-        cs2--;
-    }
-    return str;
-}
-int main()
-{
-    gets(decimal);//输入进制
-    gets(str1);//输入数字1
-    gets(str2);//输入数字2
-    char *pdecimal=strrev(decimal);//逆置进制
-    char *pstr1=strrev(str1);//逆置数字1
-    char *pstr2=strrev(str2);//逆置数字2
-    int max=strlen(decimal);//存储最大的字符长度。
-    int next=0;
-    for(int i=0;i&lt;max+1;i++){
-            int n=0,m=0,k=0;
-            if(pstr1[i]!=&apos;\0&apos;){//第一个数字的一位
-                n=pstr1[i]-&apos;0&apos;;
-            }
-            if(pstr2[i]!=&apos;\0&apos;){//第二个数字的一位
-                m=pstr2[i]-&apos;0&apos;;
-            }
-            if(pdecimal[i]==&apos;0&apos;){//当i达到max时k变为‘\0’-&apos;0&apos;=-48，而其他数字（不小于-48）对其取还是其他数字任何数字对负数取余的结果是那个数字对对应的整数取余的结果。
-                k=10;
-            }else{
-                k=pdecimal[i]-&apos;0&apos;;
-            }
-            result[i]=(n+m+next)%k+&apos;0&apos;;
-            next=(n+m+next)/k;
-    }
-    char *presult=strrev(result);
-        while(*presult==&apos;0&apos;){//将开头的0都去掉，直到找到不为0的数字
-        presult++;
-    }
-    if(strlen(presult)&gt;0)
-     printf(&quot;%s&quot;,presult);
-    else//测试点5为所有位数都是0，这是会去掉所有位数上的0，而导致字符串为0.长度为0，此时只需输出一个0即可。
-        printf(&quot;0&quot;);
     return 0;
 }</code></pre> 
       <!-- reward -->

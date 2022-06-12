@@ -174,6 +174,95 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1084"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1084/"
+    >PTA-Basic-1084</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/11/PTA-Basic-1084/" class="article-date">
+  <time datetime="2019-10-11T14:19:24.000Z" itemprop="datePublished">2019-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>外观数列是指具有以下特点的整数序列：</p>
+<p>d, d1, d111, d113, d11231, d112213111, …<br>它从不等于 1 的数字 d 开始，序列的第 n+1 项是对第 n 项的描述。比如第 2 项表示第 1 项有 1 个 d，所以就是 d1；第 2 项是 1 个 d（对应 d1）和 1 个 1（对应 11），所以第 3 项就是 d111。又比如第 4 项是 d113，其描述就是 1 个 d，2 个 1，1 个 3，所以下一项就是 d11231。当然这个定义对 d = 1 也成立。本题要求你推算任意给定数字 d 的外观数列的第 N 项。</p>
+<p>输入格式：<br>输入第一行给出 [0,9] 范围内的一个整数 d、以及一个正整数 N（≤ 40），用空格分隔。</p>
+<p>输出格式：<br>在一行中给出数字 d 的外观数列的第 N 项。</p>
+<p>输入样例：</p>
+<pre><code>1 8</code></pre><p>输出样例：</p>
+<pre><code>1123123111</code></pre><p>分析：做此题时，一定要在旁边自己演算一边推算过程，不要只看不动手。对于i-1项，从左边到右边读取，如果有连续的（n个）’d’就记作dn，第一个字符不算它是个特殊字符，不要把他与后面混为一谈，他始终是一个记作d1。<br>处理：</p>
+<p>对于一个给定的字符，对其进行从1到n之间的推演，首先将此字符存储入数组，然后对此数组进行n次的推演。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+int main(void){
+    int n;
+    char ch;
+    scanf(&quot;%c %d&quot;,&amp;ch,&amp;n);
+    char res[100000]={0};//这个会非常大非常非常大。 
+    char crs[100000]={0};
+    res[0]=ch;
+    for(int i=1;i&lt;n;i++){
+        int time=0;
+        int begin=0;
+        for(int len=0;len&lt;strlen(res);len++){
+            time++;
+            if(res[len+1]==res[len]){//如果下一个字符还等于当前字符，继续数个数
+                continue;
+            }else{
+                crs[begin++]=res[len];//首先存入字符再存入数字
+                crs[begin++]=&apos;0&apos;+time;//这边我一开始担心有次数超过10的情况，但是那种处理起来有点麻烦，而且根据题目要求没看出来有大于10可能性的存在，就没考虑。
+                time=0;//time赋值为0用于下一次的计算有多少个
+            }
+        }
+        strcpy(res,crs);//将此次推演的结果存入res中用于下一次的推演。
+    }
+    printf(&quot;%s&quot;,res);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1083"
   class="article article-type-post"
   itemscope
@@ -321,75 +410,6 @@ int main(void){
     printf(&quot;%04ld %04ld&quot;,minid,maxid);
     return 0;
 }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1081"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/11/PTA-Basic-1081/"
-    >PTA-Basic-1081</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/11/PTA-Basic-1081/" class="article-date">
-  <time datetime="2019-10-11T14:18:55.000Z" itemprop="datePublished">2019-10-11</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>本题要求你帮助某网站的用户注册模块写一个密码合法性检查的小功能。该网站要求用户设置的密码必须由不少于6个字符组成，并且只能有英文字母、数字和小数点 .，还必须既有字母也有数字。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行给出一个用户设置的密码，为不超过 80 个字符的非空字符串，以回车结束。</p>
-<p>输出格式：<br>对每个用户的密码，在一行中输出系统反馈信息，分以下5种：</p>
-<p>如果密码合法，输出Your password is wan mei.；<br>如果密码太短，不论合法与否，都输出Your password is tai duan le.；<br>如果密码长度合法，但存在不合法字符，则输出Your password is tai luan le.；<br>如果密码长度合法，但只有字母没有数字，则输出Your password needs shu zi.；<br>如果密码长度合法，但只有数字没有字母，则输出Your password needs zi mu.。<br>输入样例：</p>
-<pre><code>5
-123s
-zheshi.wodepw
-1234.5678
-WanMei23333
-pass*word.6</code></pre><p>输出样例：</p>
-<pre><code>Your password is tai duan le.
-Your password needs shu zi.
-Your password needs zi mu.
-Your password is wan mei.
-Your password is tai luan le.</code></pre><p>代码：<br>#include&lt;stdio.h&gt;<br>#include&lt;string.h&gt;<br>int main(void){<br>    int n;<br>    scanf(“%d”,&amp;n);//测试点二，是第一行的末尾的空格输入下一个。<br>    //scanf()函数则会保留换行符所以必须用getchar()吸收，防止作为一个输入行。<br>    getchar();<br>    char password[85];<br>    for(int i=0;i&lt;n;i++){<br>        int zifuflag=0;<br>        int zimuflag=0;<br>        int shuziflag=0;<br>        gets(password);//gets()函数会将换行符转换为‘\0’输入字符数组。<br>        int len=strlen(password);<br>        if(len&lt;6){<br>            printf(“Your password is tai duan le.\n”);<br>            continue;<br>        }<br>        for(int j=0;j&lt;len;j++){<br>            char ch=password[j];<br>            if((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’)){<br>                zimuflag=1;<br>            }<br>            if(ch&gt;=’0’&amp;&amp;ch&lt;=’9’){<br>                shuziflag=1;<br>            }<br>            if(ch!=’.’&amp;&amp;!(ch&lt;=’9’&amp;&amp;ch&gt;=’0’)&amp;&amp;!((ch&gt;=’a’&amp;&amp;ch&lt;=’z’)||(ch&gt;=’A’&amp;&amp;ch&lt;=’Z’))){<br>                zifuflag=1;<br>                break;<br>            }<br>        }<br>        if(zifuflag){<br>            printf(“Your password is tai luan le.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;!shuziflag){<br>            printf(“Your password needs shu zi.\n”);<br>            continue;<br>        }<br>        if(!zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password needs zi mu.\n”);<br>            continue;<br>        }<br>        if(zimuflag&amp;&amp;shuziflag){<br>            printf(“Your password is wan mei.\n”);<br>        }<br>    }<br>}</p>
- 
       <!-- reward -->
       
     </div>
