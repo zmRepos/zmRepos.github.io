@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,思考,代码,博客" />
+       
+      <meta name="description" content="勇攀技术绝壁" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>字符串相关算法 |  codeFOF</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/ayer.png" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="codeFOF" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-字符串相关算法"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  字符串相关算法
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2022-06-04T00:07:56.000Z" itemprop="datePublished">2022-06-04</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.8k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">10 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​    <a id="more"></a></p>
+<h2 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h2><p>字符串是开发中经常使用的一种数据结构下面我们来学习一下其涉及的各种算法</p>
+<p>字符串匹配可用于数据处理、压缩、文本编辑、信息检索、甚至在分子生物学领域也大放异彩。字符串匹配分为精确匹配和模糊匹配（近似匹配）两种类型,而精确匹配算法又可以分为单模式匹配和多模式匹配算法。</p>
+<blockquote>
+<ul>
+<li>单模式匹配算法：在字符串A中查找字符串B的位置，A叫主串，B叫模式串。</li>
+<li>多模式匹配算法：在长文本主串$A$中查找字符串$B_1、B_2、B_3、…$这些模式串的位置。</li>
+</ul>
+</blockquote>
+<h3 id="单模式匹配"><a href="#单模式匹配" class="headerlink" title="单模式匹配"></a>单模式匹配</h3><h4 id="BF"><a href="#BF" class="headerlink" title="BF"></a>BF</h4><ul>
+<li><p>介绍</p>
+<p>一次循环从主串的一个下标出发，不断的与模式串对应位置的字符进行比较，不同则结束此次循环；相同则继续比对如果最终全部比对成功，则返回下标位置，否则进行下一个下标位置处的比对。如果最终都没有比对成功则返回-1.</p>
+</li>
+<li><p>图解</p>
+<p> <img src="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/c2cec3fdfc039245dff7384787da7cc57c1e2589.jpeg" alt="img"></p>
+</li>
+<li><p>复杂度</p>
+<p>主串长度为n，字串长度为m，循环最多要执行O(n-m)次，每次比对最多比对m个字符，因此时间复杂度为O(nm)。 </p>
+</li>
+<li><p>实现</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">isMatch</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 实际实现是每个字符串做字符比较 ，需要循环子串</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= (a.length() - b.length()); i++) &#123; </span><br><span class="line">        <span class="keyword">if</span> (a.startsWith(b, i)) &#123;</span><br><span class="line">            <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>使用场景</p>
+<p>实际开发中较为常用，因为实际开发中，字符串长度不会太长，且最坏情况也不会经常发生，所以从统计学角度来看更加实用。</p>
+</li>
+</ul>
+<h4 id="RK"><a href="#RK" class="headerlink" title="RK"></a>RK</h4><ul>
+<li><p>介绍</p>
+<p>由 Rabin 和 Karp 两人发明的算法。通过主串中n-m+1个字串的hash值，直接与模式串串的hash值进行比对，避免了BF算法中的比对过程，理想情况下时间复杂度为O(n)，但是由于如果求hash值方法设计的不好，可能会产生hash冲突的问题，此时还需要对冲突的每个子串与模式串进行比对，算法退化成BF，时间复杂度最坏是O(nm)。但是如果你能设计一个不会冲突的hash函数，那么就不必再次比对每个hash相同的情况就能保持O(n)。</p>
+</li>
+<li><p>具体步骤：</p>
+<ul>
+<li><p>第一步：计算模式串的hashcode。伪代码：hashcode = hash(pattern);</p>
+</li>
+<li><p>第二步：从i位置生成主串与模式串等长子串，并计算出其hashcode:hashcode2 = hash(t);</p>
+</li>
+<li><p>第三步：比较两个hashcode是否相等</p>
+<p>如果两个hashcode不相等，则继续重复执行第二步；</p>
+<p>如果两个hashcode相等，然后再拆分每个字符进行比对进一步确保字符相等，如果每个字符都相等则终止流程；</p>
+</li>
+</ul>
+</li>
+<li><p>代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">rk</span><span class="params">(String t, String pattern)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> hash_pattern = pattern.hashCode();</span><br><span class="line">    <span class="keyword">int</span> len_p = pattern.length(),len_t = t.length(),hash_temp;</span><br><span class="line">    String tempString;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= len_t - len_p; i++) &#123;</span><br><span class="line">      tempString = t.substring(i, i + len_p);</span><br><span class="line">      hash_temp = tempString.hashCode();</span><br><span class="line">      <span class="keyword">if</span> (hash_temp!=hash_pattern) &#123;</span><br><span class="line">        <span class="keyword">continue</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (tempString.compareTo(pattern)==<span class="number">0</span>)&#123;</span><br><span class="line">          <span class="keyword">return</span> i;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进一步优化的想法：这里是每次都重新对字符串计算一次hash，但是每次计算只变动了首尾两个字符，所以，可以直接将计算hash的算法提出来部分，避免对中间字符进行计算。不过具体是否可以进行优化，还是要看hash算法。</p>
+</li>
+</ul>
+<h4 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h4><ul>
+<li><p>介绍</p>
+<p>D.E.Knuth、J.H.Morris和V.R.Pratt 3人于1977年提出来的。先来讲一下BF算法的缺陷：主串aabaabaaf模式串aabaaf，假设现在处于BF算法的外层循环的下标为0处的循环比对过程，匹配到f与b时比对失败。那么下次比对完全可以从主串下标为5，模式串下标为2处进行比对，但是BF算法抛弃每次匹配结果中的有效信息，导致大量的无效的回溯，仍然从头开始比对两者。因此KMP算法对BF进行了优化，其大概思路：在一次比对失败之后，主串中匹配失败位置不需要回溯到前面重新进行比对，模式串的指针回溯当前模式串当前字符前面的子串中的最长相等前后缀字符串的下一位置处进行比对。这个算法的关键在于利用模式串求出一个数组，这个数组告诉模式串下一次比对的回退位置，因此也叫next数组。</p>
+<blockquote>
+<p>比如当前字符为f，其前面字符串对应的<a href="https://www.bilibili.com/video/BV1M5411j7Xx?spm_id_from=333.337.search-card.all.click">最长相等前后缀</a>为<code>aa</code>，长度为2，因此下次比对直接从模式串的下标为2处进行比较。特别地，当模式串第一个字符失配时，回退的位置就是达到下标为0处。</p>
+<p>首先next数组j对应的元素是j下标前面的子串的最长相等前后缀长度，而这个长度也是当前匹配失败处，模式串需要回退的位置。</p>
+<p>由于以上性质可以推导出next数组的求值方式：</p>
+<p>j=0时，由于最长相等前后缀不存在，则主串需要向后移动一位，则对应的next[0]=-1;</p>
+<p>j&gt;0时，next[j]：如果next[j-1]对应的字符和j对应的字符相等，则next[j]=next[j-1]+1;如果不相等，则再将next[next[j-1]]对应的字符与j对应的字符相比，如果相等则，next[j]=next[next[j-1]]+1；如果不相等重复刚刚的不相等的过程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="keyword">int</span>[] getNext(String pattern) &#123;</span><br><span class="line">    <span class="keyword">int</span>[] next = <span class="keyword">new</span> <span class="keyword">int</span>[pattern.length()];</span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">0</span>;</span><br><span class="line">    next[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; next.length; i++) &#123;</span><br><span class="line">      k=next[i-<span class="number">1</span>];<span class="comment">// 假定前一个最长相等前后缀的长度</span></span><br><span class="line">      <span class="keyword">while</span> (pattern.charAt(k) != pattern.charAt(i) &amp;&amp; k &gt; <span class="number">0</span>) &#123;<span class="comment">// 不断寻找到最吻合的最长相等前后缀的长度</span></span><br><span class="line">        k = next[k - <span class="number">1</span>];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (pattern.charAt(k) == pattern.charAt(i)) &#123;<span class="comment">// 比对前后缀后面的字符是否与当前字符一致</span></span><br><span class="line">        k++;</span><br><span class="line">      &#125;</span><br><span class="line">      next[i] = k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> next;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<p>####<a href="https://www.jb51.net/article/247405.htm#_lab2_1_0">BM</a></p>
+<ul>
+<li><strong>介绍：</strong>kmp算法好，不错，但是有个毛病，考虑一下如下情况(下标从1开始计算)：当主串T[14]=’a’与模式串P[8]=’c’不等时，要根据对应的next数组值，将模式串指针移动到P[5]=’b’与主串的T[14]对比，显然这是合理的，但是当主串T[14]=’S’，时，S不存在于模式串中，那么P[5]与T[14]的比较也是多此一举的，直接可以从T[15]与P[1]开始对比。基于这种主串中可能有字串没有的字符串导致大量无效对比的情况，又有人想出了BM算法，这种算法在绝大多数场合比KMP更加出色。</li>
+</ul>
+<p><img src="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/1654429900570.png" alt="1654429900570"></p>
+<ul>
+<li><p><strong>算法原理：</strong></p>
+<ul>
+<li><p>坏字符原则：主串与模式串当前比较失配的字符；而坏字符原则指当比较到这种字符的时候，直接将模式串后移<code>坏字符对应的模式串字符的位序 - 模式串中的上一次出现坏字符位序（不存在为0）</code>个位置 ，然后从末到头进行比较。</p>
+<p>》为什么要从末到头对比呢？因为一般情况下，坏字符是同等概率分布在字符串中的，但是我们从头到尾比较字符串带来的移动模式串的幅度，不如从末到头来对比模式串移动的幅度大，后者更加能够避免无效对比。</p>
+<p>比如：如图，d为坏字符，对应位置为5，模式串中没有d这个坏字符，因此对应位置为-1,那么移动模式串到主串的6=5–1处开始比较。<img src="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/1654430640826.png" alt="1654430640826">但是仅有坏字符原则远远不够，如果遇到主串<code>aaaaaa</code>模式串<code>baaa</code>求出来的移动位数是负数就没招了。</p>
+</li>
+<li><p>好后缀原则：模式串中从尾到头已经匹配的部分叫做好后缀，比如下图的<code>ab</code>，我们拿着ab到模式串从尾部到头找匹配的<strong>其他（不同于当前已经匹配的）</strong><code>ab</code>，如果找到一个直接将模式串移动到找到的的ab处进行从尾部到头部的对比。如果找不到另一个ab则倘若模式串的前缀a、ab、abd、abda、…能够和好后缀的后缀匹b配上，则我们直接滑到匹配位置。(为什么不考虑中间可能出现b的情况呢，因为如果中间出现了，那么其前面的字符必然不是a,那么此次比较必然会失败。) </p>
+</li>
+<li><p>模式串向后滑动距离取两者计算出来的较大值。 </p>
+</li>
+</ul>
+<p><img src="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/1654432126151.png" alt="1654432126151"></p>
+</li>
+<li><p>算法实现</p>
+<ul>
+<li>利用坏字符算法，计算匹配串可以滑动的距离</li>
+<li>利用好后缀算法，计算匹配串可以滑动的距离</li>
+<li>结合坏字符算法和好后缀算法，实现BM算法，查看匹配串在主串中存在的位置</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h3 id="多模式匹配"><a href="#多模式匹配" class="headerlink" title="多模式匹配"></a>多模式匹配</h3><p>多模式串匹配算法：多个模式串与主串进行匹配找到，判断主串是否包含多个模式串中的任意一个。显然这种业务可以遍历每个模式串，进行单模式匹配，但是这种算法效率太低。因此要求了多模式串匹配算法，这种算法常用于：关键词过滤、入侵检测、病毒检测、分词等等问题中(仅考虑英文的，中文的我不会)。涉及的解法如下：</p>
+<h4 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h4><p>​    Trie树，也叫字典树，单词前缀树由若干模式串构建而成。从主串第一个下标处开始，不断的取出子串，到Trie树中进行查找，如果有一个子串匹配到某个叶子节点了，则说明主串包含了该条路径对应的模式串。</p>
+<p>实现流程：</p>
+<p>​    1 对多个模式串建立Trie树</p>
+<p>​    2 不断对主串取出不同下标处的子串，知道匹配到Trie树的叶子为止，此时说明主串包含该路径对应的模式串。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>字典树除了用来判断主串中是否包含某个模式串外，还可以用来对多个模式串对应的单词进行排序：先将多个单词建立Tried树，然后按照先序遍历输出这颗树的所有涉及单词，就是排序+去重后的单词集合；还可以用来查找不同字符串的最长的公共子串：先将不同字符串建立成Trie树，然后层序遍历每个节点，到达具有多个分支的节点为止，这个节点就是最长公共前缀的末尾。</p>
+</blockquote>
+<p>​    </p>
+<h4 id="AC算法"><a href="#AC算法" class="headerlink" title="AC算法"></a>AC算法</h4><h4 id="WM算法"><a href="#WM算法" class="headerlink" title="WM算法"></a>WM算法</h4> 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zm163.github.io/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/" rel="tag">字符串相关算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/06/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            计算机网络总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/05/28/shelll%E4%B9%A0%E9%A2%98%E8%AE%B0%E5%BD%95/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">shelll习题记录</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "6tOO9UzCCPwrAQMrQwFdo1c9-gzGzoHsz",
+    app_key: "7gv1YABDJKYutSvQVAL82lud",
+    path: window.location.pathname,
+    avatar: "robohash",
+    placeholder: "欢迎指点",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2022
+        <i class="ri-heart-fill heart_icon"></i> ZM
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1281098224&amp;web_id=1281098224'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/avatar.jpg" alt="codeFOF"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>支持一下~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+
+</html>
