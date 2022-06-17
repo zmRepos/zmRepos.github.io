@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">2.8k</span>
+            <span class="post-count">4.7k</span>
         </span>
     </span>
 
@@ -108,7 +108,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">10 分钟</span>
+            <span class="post-count">18 分钟</span>
         </span>
     </span>
 </div>
@@ -124,6 +124,7 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
        
   <p>​    <a id="more"></a></p>
+<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>字符串是开发中经常遇到的一种数据结构，就是有简单字符构成的序列，常见的问题包括，字符串匹配问题、子串问题、前后缀问题、子序列相关问题。本文旨在对一些字符串常用算法进行总结。</p>
 <h2 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h2><p>字符串是开发中经常使用的一种数据结构下面我们来学习一下其涉及的各种算法</p>
 <p>字符串匹配可用于数据处理、压缩、文本编辑、信息检索、甚至在分子生物学领域也大放异彩。字符串匹配分为精确匹配和模糊匹配（近似匹配）两种类型,而精确匹配算法又可以分为单模式匹配和多模式匹配算法。</p>
 <blockquote>
@@ -140,7 +141,7 @@ var _hmt = _hmt || [];
 <p> <img src="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/c2cec3fdfc039245dff7384787da7cc57c1e2589.jpeg" alt="img"></p>
 </li>
 <li><p>复杂度</p>
-<p>主串长度为n，字串长度为m，循环最多要执行O(n-m)次，每次比对最多比对m个字符，因此时间复杂度为O(nm)。 </p>
+<p>主串长度为n，字串长度为m，循环最多要执行O(n-m+1)次，每次比对最多比对m个字符，因此时间复杂度为O(nm)。 </p>
 </li>
 <li><p>实现</p>
 </li>
@@ -154,7 +155,7 @@ var _hmt = _hmt || [];
 </ul>
 <h4 id="RK"><a href="#RK" class="headerlink" title="RK"></a>RK</h4><ul>
 <li><p>介绍</p>
-<p>由 Rabin 和 Karp 两人发明的算法。通过主串中n-m+1个字串的hash值，直接与模式串串的hash值进行比对，避免了BF算法中的比对过程，理想情况下时间复杂度为O(n)，但是由于如果求hash值方法设计的不好，可能会产生hash冲突的问题，此时还需要对冲突的每个子串与模式串进行比对，算法退化成BF，时间复杂度最坏是O(nm)。但是如果你能设计一个不会冲突的hash函数，那么就不必再次比对每个hash相同的情况就能保持O(n)。</p>
+<p>由 Rabin 和 Karp 两人发明的算法。通过主串中n-m+1个字串的hash值，直接与模式串串的hash值进行比对，避免了BF算法中的比对过程，理想情况下时间复杂度为O(n)，但是由于如果求hash值方法设计的不好，可能会产生<strong>hash冲突（不同字符串的hash值相同）</strong>的问题，此时还需要对冲突的每个子串与模式串进行比对，算法退化成BF，时间复杂度最坏是O(nm)。但是如果你能设计一个不会冲突的hash函数，那么就不必再次比对每个hash相同的情况就能保持O(n)。</p>
 </li>
 <li><p>具体步骤：</p>
 <ul>
@@ -176,7 +177,10 @@ var _hmt = _hmt || [];
 </ul>
 <h4 id="KMP"><a href="#KMP" class="headerlink" title="KMP"></a>KMP</h4><ul>
 <li><p>介绍</p>
-<p>D.E.Knuth、J.H.Morris和V.R.Pratt 3人于1977年提出来的。先来讲一下BF算法的缺陷：主串aabaabaaf模式串aabaaf，假设现在处于BF算法的外层循环的下标为0处的循环比对过程，匹配到f与b时比对失败。那么下次比对完全可以从主串下标为5，模式串下标为2处进行比对，但是BF算法抛弃每次匹配结果中的有效信息，导致大量的无效的回溯，仍然从头开始比对两者。因此KMP算法对BF进行了优化，其大概思路：在一次比对失败之后，主串中匹配失败位置不需要回溯到前面重新进行比对，模式串的指针回溯当前模式串当前字符前面的子串中的最长相等前后缀字符串的下一位置处进行比对。这个算法的关键在于利用模式串求出一个数组，这个数组告诉模式串下一次比对的回退位置，因此也叫next数组。</p>
+<p>D.E.Knuth、J.H.Morris和V.R.Pratt 3人于1977年提出来的。先来讲一下BF算法的缺陷：主串aabaabaaf模式串aabaaf，假设现在处于BF算法的外层循环的下标为0处的循环比对过程，匹配到f与b时比对失败。那么下次比对完全可以从主串下标为5，模式串下标为2处进行比对，但是BF算法抛弃每次匹配结果中的有效信息，导致大量的无效的回溯，仍然从头开始比对两者。因此KMP算法对BF进行了优化，其大概思路：在一次比对失败之后，主串中匹配失败位置不需要回溯到前面重新进行比对，模式串的指针回溯当前模式串当前字符前面的子串中的最长相等前后缀字符串的下一位置处进行比对。这个算法的关键在于利用模式串求出一个数组，这个数组告诉模式串下一次比对的回退位置，因此也叫next数组。此外补充一点：<strong>为什么不需要回退主串的指针呢？</strong>因为如果如下这种情况</p>
+<p>主串：aabdaabcaad</p>
+<p>模式：aabdaabd</p>
+<p>当匹配 到主串的c与模式的d时，匹配失败，那么已经匹配的前面字符串为aabdaab,其最小公共前后缀为aab，即使主串回退到aab的第二个a处与模式串重新比较，由于d在那边，所以从第二个a到d处开始的主串与模式串的比较都是多余的，而由于aabd与aabc有公共前缀，所以从d到c前面的b的字符处开始的主串与模式串的比较也是多余的，所以主串指针不需要回退，只需要移动模式串的指针到最长公共前后缀的下一个字符处开始比较即可。</p>
 <blockquote>
 <p>比如当前字符为f，其前面字符串对应的<a href="https://www.bilibili.com/video/BV1M5411j7Xx?spm_id_from=333.337.search-card.all.click">最长相等前后缀</a>为<code>aa</code>，长度为2，因此下次比对直接从模式串的下标为2处进行比较。特别地，当模式串第一个字符失配时，回退的位置就是达到下标为0处。</p>
 <p>首先next数组j对应的元素是j下标前面的子串的最长相等前后缀长度，而这个长度也是当前匹配失败处，模式串需要回退的位置。</p>
@@ -215,23 +219,109 @@ var _hmt = _hmt || [];
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"> </span><br></pre></td></tr></table></figure>
 
 
-
 </li>
 </ul>
-<h3 id="多模式匹配"><a href="#多模式匹配" class="headerlink" title="多模式匹配"></a>多模式匹配</h3><p>多模式串匹配算法：多个模式串与主串进行匹配找到，判断主串是否包含多个模式串中的任意一个。显然这种业务可以遍历每个模式串，进行单模式匹配，但是这种算法效率太低。因此要求了多模式串匹配算法，这种算法常用于：关键词过滤、入侵检测、病毒检测、分词等等问题中(仅考虑英文的，中文的我不会)。涉及的解法如下：</p>
-<h4 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h4><p>​    Trie树，也叫字典树，单词前缀树由若干模式串构建而成。从主串第一个下标处开始，不断的取出子串，到Trie树中进行查找，如果有一个子串匹配到某个叶子节点了，则说明主串包含了该条路径对应的模式串。</p>
+<h3 id="多模式匹配"><a href="#多模式匹配" class="headerlink" title="多模式匹配"></a>多模式匹配</h3><p>多模式匹配问题：给一个字符串S和一个字符串数组T(T中的字符串要比S短许多)，设计一个算法，在字符串S中查找T中的字符串。<br>我们把S称为目标串，T中的字符串称为模式串。设目标串S的长度为m，模式串的平均长度为 n，共有k个模式串。如果我们用KMP算法(或BM算法)去处理每个模式串，判断模式串是否在目标串中出现，匹配一个模式串和目标串的时间为O(m+n)，所以总时间复杂度为：O(k(m+n))。一般实际应用中，目标串往往是一段文本，一篇文章，甚至是一个基因库，而模式串则是一些较短的字符串，也就是m一般要远大于n。这时候如果我们要匹配的模式串非常多(即k非常大)，那么我们使用上述算法就会非常慢。这也是为什么KMP或BM一般只用于单模式匹配，而不用于多模式匹配。因此催生了多模式串匹配算法，这种问题思路常用于：关键词过滤、入侵检测、病毒检测、分词等等问题中(仅考虑英文的，中文的我不会)。涉及的解法如下：</p>
+<h4 id="Trie树"><a href="#Trie树" class="headerlink" title="Trie树"></a>Trie树</h4><p>​    Trie树，也叫字典树、前缀树，由若干单词构建成字典树。Trie树常用于统计词频、保存以及排序大量的字符串、字符串查询，由于避免了大量无效的字符串比较，因此其适合于动态查询（比如搜索框的实时关联词提示）。与传统树的结构不同，Trie树某个节点处的实际值由根节点到某个节点处的路径的所代表的字符组成的字符串（如下图），但是实际上我们并不会存储这个路径对应的字符串。</p>
+<p><img src="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/1655334907482.png" alt="1655334907482"></p>
+<p>​    Trie的实现方式</p>
+<p>​    链表方式：每一个节点处使用26条边，表示下一个字母,每个节点仅仅用来表示，当前到此节点处路径构成的单词是一个独立的单词还是一个前缀。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// trie树节点</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TrieNode</span> </span>&#123;</span><br><span class="line">  <span class="comment">//    标识从root出发到本节点的构成的字符串是否是一个单词，默认为false，即当前节点不是一个单词的末尾</span></span><br><span class="line">  <span class="keyword">boolean</span> isWordEnd;</span><br><span class="line">  <span class="comment">//    本节点延伸出去的字母数组，为null时表示，此节点为单词末尾。</span></span><br><span class="line">  TrieNode[] nexts;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// trie树</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TrieTree</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> TrieNode root = <span class="keyword">new</span> TrieNode();</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 字典树中是否存在某个单词</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> word</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">weatherContainsWord</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">    TrieNode tempRoot = root;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (Objects.isNull(tempRoot.nexts) || Objects.isNull(tempRoot.nexts[c - <span class="string">'a'</span>])) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        tempRoot = tempRoot.nexts[c - <span class="string">'a'</span>];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> tempRoot.isWordEnd;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 字典树中是否存在某个前缀</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> prefix</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">weatherContainsPrefix</span><span class="params">(String prefix)</span> </span>&#123;</span><br><span class="line">    TrieNode tempRoot = root;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> c : prefix.toCharArray()) &#123;</span><br><span class="line">      <span class="keyword">if</span> (Objects.isNull(tempRoot.nexts) || Objects.isNull(tempRoot.nexts[c - <span class="string">'a'</span>])) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        tempRoot = tempRoot.nexts[c - <span class="string">'a'</span>];</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 加入一个新单词</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> word</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addWord</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">char</span>[] letters = word.toCharArray();</span><br><span class="line">    TrieNode tempRoot = root;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">char</span> letter : letters) &#123;</span><br><span class="line">      <span class="keyword">if</span> (Objects.isNull(tempRoot.nexts)) &#123;</span><br><span class="line">        tempRoot.nexts = <span class="keyword">new</span> TrieNode[<span class="number">26</span>];</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (Objects.isNull(tempRoot.nexts[letter - <span class="string">'a'</span>])) &#123;</span><br><span class="line">        tempRoot.nexts[letter - <span class="string">'a'</span>] = <span class="keyword">new</span> TrieNode();</span><br><span class="line">      &#125;</span><br><span class="line">      tempRoot = tempRoot.nexts[letter - <span class="string">'a'</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    tempRoot.isWordEnd = <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 加入一堆单词</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> words</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addWords</span><span class="params">(String... words)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">      addWord(word);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="comment">// 广度遍历字典树，也叫层次遍历</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Queue&lt;TrieNode&gt; nodeQueue = <span class="keyword">new</span> LinkedList&lt;TrieNode&gt;();</span><br><span class="line">    nodeQueue.add(root); </span><br><span class="line">    <span class="keyword">int</span> preNodeCount = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> nextNodeCount = <span class="number">0</span>;</span><br><span class="line">    StringBuilder sb = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">while</span> (!nodeQueue.isEmpty()) &#123;</span><br><span class="line">      TrieNode tempNode = nodeQueue.poll();</span><br><span class="line">      <span class="keyword">if</span> (!tempNode.isWordEnd) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">          <span class="keyword">if</span> (Objects.nonNull(tempNode.nexts[i])) &#123;</span><br><span class="line">            nextNodeCount++;</span><br><span class="line">            nodeQueue.add(tempNode.nexts[i]);</span><br><span class="line">            sb.append((<span class="keyword">char</span>) (<span class="string">'a'</span> + i));</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">      preNodeCount--;</span><br><span class="line">      <span class="keyword">if</span> (preNodeCount == <span class="number">0</span>) &#123;</span><br><span class="line">        preNodeCount=nextNodeCount;</span><br><span class="line">        nextNodeCount=<span class="number">0</span>;</span><br><span class="line">        sb.append(<span class="string">'\n'</span>);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(sb.toString());</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>讲完了Trie树，这种数据结构后，多模式匹配算法，可以利用这种数据结构。</p>
 <p>实现流程：</p>
-<p>​    1 对多个模式串建立Trie树</p>
-<p>​    2 不断对主串取出不同下标处的子串，知道匹配到Trie树的叶子为止，此时说明主串包含该路径对应的模式串。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>​    1 将主串的所有后缀构造成一颗trie树：eg:’student’构造成的trie树中包含单词student、’udent、udent、dent、ent、nt、t。这个过程为O(n$^2$)，其中n为主串的长度。</p>
+<p>​    2 然后遍历每个模式串，判断模式串是否是该trie树的前缀，是的话证明原来的主串中包含该模式串。这个过程时间复杂度为O($km$),k是模式串的个数，m是模式串的平均长度</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    String t = <span class="string">"ahishers"</span>;</span><br><span class="line">    String[] ps = <span class="keyword">new</span> String[]&#123;<span class="string">"hi"</span>,<span class="string">"her"</span>,<span class="string">"shee"</span>&#125;;</span><br><span class="line">    TrieTree trieTree = <span class="keyword">new</span> TrieTree();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; t.length(); i++) &#123;</span><br><span class="line">      trieTree.addWords(t.substring(i));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (String p : ps) &#123;</span><br><span class="line">      System.out.println(trieTree.weatherContainsPrefix(p));</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">-------</span><br><span class="line"><span class="keyword">true</span></span><br><span class="line"><span class="keyword">true</span></span><br><span class="line"><span class="keyword">false</span></span><br></pre></td></tr></table></figure>
 
-
-
+<p>以上的这种做法效率极低，时间复杂度为O($n^2+km$)，空间复杂度为O($ n^2 $), 显然不适合进行模式串匹配算法，但是这种思路为下文的自动状态机进行了铺垫，所以必须掌握。</p>
 <blockquote>
-<p>字典树除了用来判断主串中是否包含某个模式串外，还可以用来对多个模式串对应的单词进行排序：先将多个单词建立Tried树，然后按照先序遍历输出这颗树的所有涉及单词，就是排序+去重后的单词集合；还可以用来查找不同字符串的最长的公共子串：先将不同字符串建立成Trie树，然后层序遍历每个节点，到达具有多个分支的节点为止，这个节点就是最长公共前缀的末尾。</p>
+<p>字典树除了用来判断主串中是否包含某个模式串外，还可以用来对多个模式串对应的单词进行排序：先将多个单词建立Trie树，然后按照先序遍历输出这颗树的所有涉及单词，就是排序+去重后的单词集合；还可以用来查找不同字符串的最长的公共子串：先将不同字符串建立成Trie树，然后层序遍历每个节点，到达具有多个分支的节点为止，这个节点就是最长公共前缀的末尾。</p>
 </blockquote>
-<p>​    </p>
-<h4 id="AC算法"><a href="#AC算法" class="headerlink" title="AC算法"></a>AC算法</h4><h4 id="WM算法"><a href="#WM算法" class="headerlink" title="WM算法"></a>WM算法</h4> 
+<h4 id="AC自动状态机"><a href="#AC自动状态机" class="headerlink" title="AC自动状态机"></a>AC自动状态机</h4><p> <a href="https://www.bilibili.com/video/BV1uJ411Y7Eg?spm_id_from=333.337.search-card.all.click&vd_source=f95b900f862c216d7583fbbb4a9a3aa0">前提知识：Trie树、层序遍历</a></p>
+<p>​    利用Tried字典树进行多模式匹配的前提条件。</p>
+<p>主串以及模式串集如下：</p>
+<p><img src="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/1655393828643.png" alt="1655393828643"></p>
+<p>自动状态机使用的字典树如下：</p>
+<p><img src="/2022/06/04/%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9B%B8%E5%85%B3%E7%AE%97%E6%B3%95/1655392163582.png" alt="1655392163582"></p>
+<ol>
+<li><p>根据模式串集合构建字典树。</p>
+<blockquote>
+<p>与传统的字典树不同的是，AC自动状态机中的字典树，在一个结点处，使用一个长度列表不为null的长度列表表示该节点是字典中的一个单词，如果一个结点处的长度列表为null说明根节点到该节点为止的字符串不存在于模式串集合中，其仅仅只是某个模式串的前缀而已。也可以直接在单词末尾存储单词。</p>
+</blockquote>
+</li>
+<li><p>层序遍历，构建出字典树每个结点处的失败指针，并继续维护每个节点处的长度列表。</p>
+<blockquote>
+<p>失败指针的作用，在对主串某个下标处为止匹配失败的时候，可以通过匹配失败位置处的失败节点，找到字典树中存在的以根节点到当前节点构成的字符串的所有后缀中的最长的那个末尾对应的节点，这就是fali指针的指向对象，从这个节点开始继续查找匹配失败的字符。</p>
+</blockquote>
+</li>
+<li><p>当找到一个叶子节点后，表示字典树中的一个字符串被匹配到了，一次返回当前下标-长度的每个值，即为存在的每个模式串中开始下标。</p>
+</li>
+</ol>
+<p>代码实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AC</span> </span>&#123;</span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">ACTrieNode</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> ACTrieNode[] branchs;</span><br><span class="line">    <span class="keyword">private</span> List&lt;String&gt; words;</span><br><span class="line">    <span class="keyword">private</span> ACTrieNode fail;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="class"><span class="keyword">class</span> <span class="title">ACTrie</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> ACTrieNode root = <span class="keyword">new</span> ACTrieNode();</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addOneWord</span><span class="params">(String word)</span> </span>&#123;</span><br><span class="line">      ACTrieNode tempRoot = root;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">char</span> c : word.toCharArray()) &#123;</span><br><span class="line">        <span class="keyword">if</span> (Objects.isNull(tempRoot.branchs)) &#123;</span><br><span class="line">          <span class="comment">// 初始化每个结点处的分支数组</span></span><br><span class="line">          tempRoot.branchs = <span class="keyword">new</span> ACTrieNode[<span class="number">26</span>];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 加入某个不存在字符分支</span></span><br><span class="line">        <span class="keyword">if</span> (Objects.isNull(tempRoot.branchs[c - <span class="string">'a'</span>])) &#123;</span><br><span class="line">          tempRoot.branchs[c - <span class="string">'a'</span>] = <span class="keyword">new</span> ACTrieNode();</span><br><span class="line">        &#125;</span><br><span class="line">        tempRoot = tempRoot.branchs[c - <span class="string">'a'</span>];</span><br><span class="line">      &#125;</span><br><span class="line">      tempRoot.words = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">      tempRoot.words.add(word);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 使用模式串数组words，构建字典树</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> words 模式串数组</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">buildTree</span><span class="params">(String... words)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">for</span> (String word : words) &#123;</span><br><span class="line">        addOneWord(word);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 预处理，设置每个节点的失败指针，以及长度列表。</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">preHandle</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      Queue&lt;ACTrieNode&gt; nodeQueue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">      nodeQueue.add(root);</span><br><span class="line">      <span class="keyword">while</span> (!nodeQueue.isEmpty()) &#123;</span><br><span class="line">        ACTrieNode fatherNode = nodeQueue.poll();</span><br><span class="line">        <span class="keyword">if</span> (Objects.nonNull(fatherNode.branchs)) &#123;</span><br><span class="line">          <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">26</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (Objects.isNull(fatherNode.branchs[i])) &#123;</span><br><span class="line">              <span class="keyword">continue</span>;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">              ACTrieNode childNode = fatherNode.branchs[i];</span><br><span class="line">              <span class="keyword">if</span> (Objects.nonNull(fatherNode.fail) &amp;&amp; Objects.nonNull(fatherNode.fail.branchs) &amp;&amp; Objects.nonNull(fatherNode.fail.branchs[i])) &#123;</span><br><span class="line">                childNode.fail = fatherNode.fail.branchs[i];</span><br><span class="line">              &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                childNode.fail = root;</span><br><span class="line">              &#125;</span><br><span class="line">              nodeQueue.add(childNode);</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h4 id="WM算法"><a href="#WM算法" class="headerlink" title="WM算法"></a>WM算法</h4> 
       <!-- reward -->
       
       <div id="reword-out">
