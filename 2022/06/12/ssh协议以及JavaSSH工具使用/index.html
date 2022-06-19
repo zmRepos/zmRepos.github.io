@@ -91,7 +91,7 @@ var _hmt = _hmt || [];
   <time datetime="2022-06-12T13:33:05.000Z" itemprop="datePublished">2022-06-12</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/other/">other</a>
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80/">基础</a> / <a class="article-category-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
   </div>
   
 <div class="word_count">
@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">0</span>
+            <span class="post-count">4.5k</span>
         </span>
     </span>
 
@@ -108,13 +108,15 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">17 分钟</span>
         </span>
     </span>
 </div>
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
@@ -122,6 +124,168 @@ var _hmt = _hmt || [];
     <div class="article-entry" itemprop="articleBody">
        
   <p>​    <a id="more"></a></p>
+<p>!!!! 本文章为个人知识成果，转载请注明出处。</p>
+<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>3月中旬，公司的客户突发奇想，想要在我们的系统里面直接下载自己的远程服务器上的某个给定路径上的文件，还要求每次取日志末尾多少行由我自己来定，这种任务被分配到的身上了，给了三天时间来完成开发测试。【os：卧槽，我一看，这是要考验我开发能力啊，那我不得表现一番】。于是开启了苦逼的<strong>调研</strong>加<strong>开发</strong>加<strong>测试</strong>的过程。最后终于搞完了，然后老大让我把过程总结一下，介绍一下相关的知识，并写一个SSH工具类放到公司库中供大家使用。【os: 卧槽，我一看，这是要考验我的<strong>语言表达能力</strong>以及<strong>学习能力</strong>啊，那我不得表现一番，研究透彻了再表达清楚了】</p>
+<h2 id="前提知识"><a href="#前提知识" class="headerlink" title="前提知识"></a>前提知识</h2><p><a href="https://zhuming-github.github.io/2022/06/12/计算机网络总结/">五层网络协议模型</a></p>
+<h2 id="远程登录协议简介"><a href="#远程登录协议简介" class="headerlink" title="远程登录协议简介"></a>远程登录协议简介</h2><p>远程登录协议，是对我们在一台机器上操作另一台机器的过程的规范化表示。每台机器都是用了基本的网络层服务，提供了基本的远程登录能力。</p>
+<p>传统的远程登录协议有Telnet(终端仿真协议)、 <strong>rcp ftp</strong>、 <strong>rlogin</strong>、<strong>rsh</strong>，其他在通信期间会使用明文传送数据，包括登录时的ID和密码数据没有加密就传到网络上，存在安全上的问题。甚至即使在内部网上，也可能有被在外网上的主机窃取和篡改等危险性。而 Secure Shell，安全外壳协议，简称ssh，一种基于TCP协议实现的应用层协议，将包括密码在内的所有数据都已进行了加密处理，可以进行更安全的远程操作。实现ssh客户端和ssh服务器端的连接，也就是说ssh协议是基于C/S结构，可以用来进行远程控制，或在计算机之间传送文件。但是目前市场上由于协议标准的不同而存在SSH1和SSH2两个不同的版本，两个版本互不兼容，SSH2避免了SSH1协议的非对称加密算法的专利权问题以及解决了SSH1的数据完整性校验的漏洞。基于以上这些，远程登录协议一般采用SSH的版本2。</p>
+<p><strong>SSH2主要功能</strong></p>
+<ol>
+<li>远程联机执行命令相当于 安全的telnet 的远程联机使用 shell的作用</li>
+<li>更安全的文件传输相当于安全的FTP服务</li>
+</ol>
+<h2 id="SSH基本原理"><a href="#SSH基本原理" class="headerlink" title="SSH基本原理"></a>SSH基本原理</h2><ol>
+<li>建立加密连接通道-&gt;供后续信息传输用。</li>
+</ol>
+<p>服务器端把公钥明文【没必要密文传送，公钥本就是公开的】发给客户端，客户端收到公钥后，对自己的~/.ssh/known_hosts文件进行修改，新增或者修改一条 【域名或者ip 公钥】记录。然后计算自己的公私钥，并使用远程机器的公钥加密并传自己的公钥给远程机器。此时</p>
+<p>远程机器上有自己的私钥+控制它的机器的公钥</p>
+<p>本地机器上有自己的私钥+远程机器上的公钥</p>
+<p>这种不对称的方式叫做非对称加密。</p>
+<p>客户端发送数据，使用私钥加密，服务器接收到数据后，使用对方的公钥解密；服务器发送数据使用客户端的公钥加密，客户端接收到数据后使用自己的私钥解密，这样就保证了数据传输的安全型。</p>
+<p>然后双方机器使用自己的私钥和对方的公钥生成一个仅用于本次会话的临时密钥，采用了Diffie-Hellman算法，两者各自计算出的会话密钥应该是相同的，即对称加密方式。这个临时密钥仅用于本次session会话期间的数据加密。</p>
+<ol>
+<li><p>服务器用户身份验证-&gt;确定是否要给该用户开放访问权限。有如下方式</p>
+</li>
+<li><ol>
+<li>密码登录：虽然交互数据被加密了，但是为了省事以及防止暴力破解了用户密码，因此不推荐使用</li>
+<li>密钥登录：如果采用了此种登录方式，那么不会要求进行密码的输入。在基本加密连接通道建立后，客户端会自动使用服务器的公钥加密并发送自己的公钥ID给服务器，服务器检查自己的authorized_keys 里面是否有此ID对应的公钥，有则生成一个随机数字并用ID对应的公钥加密传递给客户机，同时生成给随机数字的md5哈希后的hash值保存到本地机器。客户机收到后用私钥解密，然后也用md5哈希算法求出hash值，然后传递给服务器与服务器的hash值，对比，相同则通过验证开放权限给客户端。</li>
+</ol>
+</li>
+</ol>
+<h2 id="SSH工作流程"><a href="#SSH工作流程" class="headerlink" title="SSH工作流程"></a>SSH工作流程</h2><ol>
+<li><p>服务器启动sshd，如果是第一次启动，则会生成对应的公钥和私钥到目录/etc/ssh下；不是第一次启动则直接获取公钥。</p>
+</li>
+<li><p>然后sshd程序监听配置的端口【默认是22端口】，等待客户端连接</p>
+</li>
+<li><p>如果某个客户端想要连接远程服务器，先三次握手建立TCP连接</p>
+</li>
+<li><p>建立底层TCP连接后，然后开始如下内容</p>
+</li>
+<li><ol>
+<li>版本号协商阶段：服务器向客户端发送ssh版本信息，客户端接受后，解析报文，发现如果版本比自己低，且自己支持低版本的ssh，则使用服务器版本进行沟通，否则使用自己的版本的ssh，并且客户端返回自己决定的ssh版本信息，然后服务器最终决定是否具备沟通的条件。如果不支持客户端的ssh版本则断开TCP连接。如果支持则进入下一步。</li>
+<li>密钥和算法协商阶段：SSH支持多种加密算法，服务器、客户端双方根据各自支持的算法，协商出最终用于产生会话密钥的密钥交换算法、用于数据信息加密的加密算法、用于进行数字签名和认证的公钥算法以及用于数据完整性保护的HMAC算法。</li>
+<li>密钥交换：服务器和客户端通过密钥交换算法，动态生成共享的会话密钥和会话ID，建立加密通道。会话密钥主要用于后续数据传输的加密，会话ID用于在认证过程中标识该SSH连接。这个过程对应上面SSH工作原理的密钥交换过程。</li>
+<li>用户认证：SSH客户端向服务器端发起认证请求，服务器端对客户端进行认证。支持密码（password）登录【用户输入用户名密码让服务器校验是否通过，通过之后发送验证】、密钥登录等等。</li>
+<li>会话请求：认证通过后，SSH客户端向服务器端发送会话请求，请求建立会话。</li>
+<li>会话交互：会话建立后，SSH服务器端和客户端在该会话上进行数据信息的交互。</li>
+</ol>
+</li>
+<li><p>数据传输：用户机与服务器之间直接进行沟通</p>
+</li>
+</ol>
+<p>在工作中如何使用</p>
+<p>在你想要远程控制的机器上安装opensssh的服务端程序openssh-server</p>
+<p>修改/etc/ssh/sshd_config配置文件，然后启动sshd服务</p>
+<p>在你想要控制远程机器的机器上安装openssh-client，并启动即可</p>
+<p>关于opensssh工具的具体使用可以看<a href="https://www.cnblogs.com/wwufengg/articles/ssh-openssh-detail.html">这里</a></p>
+<h2 id="Java-SSH工具介绍"><a href="#Java-SSH工具介绍" class="headerlink" title="Java SSH工具介绍"></a>Java SSH工具介绍</h2><h3 id="1-JSch"><a href="#1-JSch" class="headerlink" title="1. JSch"></a>1. JSch</h3><p> 用过，玛德，bug一堆，使用体验极差，官方文档描述极差，白白浪费我半天时间。不建议大家使用。</p>
+<h3 id="2-Ganymed"><a href="#2-Ganymed" class="headerlink" title="2. Ganymed"></a>2. Ganymed</h3><p>使用过，体验还好，官方提供了文档讲解非常详细，因此最终开发就采用这个工具。这个框架对SSH协议的上述的工作流程的1-4.c进行了封装实现，后续的流程由于涉及用户密码这些无法自动化配置的东西，因此需要使用者编程进行。</p>
+<h4 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h4>  <details> 
+      <summary>步骤</summary> 
+      <ol>
+          <li>建立连接->connection = new Connection(ip, port);connection.connect();</li>
+          <li>认证登录->boolean isAuthenticated = connection.authenticateWithPassword(username, password);</li>
+          <li>开启会话->Session session = connection.openSession();</li>
+          <li>执行命令->session.execCommand(command);</li>
+          <li>处理结果->StreamGobbler normalInfo = new StreamGobbler(session.getStdout());StreamGobbler errInfo = new StreamGobbler(session.getStderr());</li>
+          <li>关闭资源->normalReader.close();errReader.close();session.close();</li>
+      </ol>
+</details>  
+
+<p><strong>tip:</strong></p>
+<ul>
+<li><p>SSH协议规定对于本地机器，使用一个窗口来接受远程机器的stdout数据以及stderr数据，当本地机器的窗口被塞满了，远程机器的发送线程|进程会阻塞，本地机器消费掉本地窗口中的数据后，远程机器才会继续发送。如下图，由于stdout与stderr共用一个窗口，所以两者都必须要同时进行消费才能，即开两个线程进行消费，但是不用担心，这个工具给我们提供了StreamGobbler类，其底层开启线程读取数据到本地缓存【如下代码1】，我们只要对此StreamGobbler对象进行同步读取就行了，此时数据读取的代码【如下代码2】。如果不喜欢使用关方的线程读取数据的方法，也可以自己开启两个线程分别处理stdout以及strerr, 两个线程中使用session.waitForCondition或者stdout.available以及stderr.available方法判断是否可以开始读取。</p>
+<p><img src="/2022/06/12/ssh%E5%8D%8F%E8%AE%AE%E4%BB%A5%E5%8F%8AJavaSSH%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/1655603467648.png" alt="1655603467648"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">StreamGobbler</span><span class="params">(InputStream is)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.is = is;</span><br><span class="line">    t = <span class="keyword">new</span> GobblerThread();</span><br><span class="line">    t.setDaemon(<span class="keyword">true</span>);</span><br><span class="line">    t.start();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">StreamGobbler normalInfo = <span class="keyword">new</span> StreamGobbler(session.getStdout());</span><br><span class="line">StreamGobbler errInfo = <span class="keyword">new</span> StreamGobbler(session.getStderr());</span><br><span class="line"> <span class="comment">// 获取err 以及 正常的执行返回信息，由于err 与 stdout共用一个窗口，所以此处一般必须要都获取</span></span><br><span class="line">BufferedReader normalReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(normalInfo));</span><br><span class="line">BufferedReader errReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(errInfo));</span><br><span class="line"><span class="comment">// 下面这两个循环语句，放在一个线程里面执行没有问题的，因为一个命令执行结果无非就是两种，两种不可能同时出现。所以无需担心：一个远程机器先返回错误信息后导致后返回的标准输出信息丢失。当然如果你是这种语句"cd xx;xxx;xxxx"那么可能会出现这种问题，但是这种极端情况非常非常难以出现。</span></span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">    String line = normalReader.readLine();</span><br><span class="line">    <span class="keyword">if</span> (line == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(line);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">    String line = errReader.readLine();</span><br><span class="line">    <span class="keyword">if</span> (line == <span class="keyword">null</span> || line.length() == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(line);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>一个session只能执行一条命令，这是ssh协议规定了，且每次执行命令的默认路径都是用户home目录下。我们可以用如下方法实现执行多行命令；</p>
+<ul>
+<li>单行多条命令：[xxx;yyy;sss]</li>
+<li>搞个命令的list，开启多个session，每次执行一条命令。虽然一个Connection可以开启多个session，但是服务器端为一个Connection开启的会话个数一般是有限制的，可以通过修改openssh程序的配置改变最大会话数。</li>
+<li>session.startShell(),这个我们用过，估计应该是类似JSch那种命令行式的shell吧，直接把控制台转化成远程shell，然后用户输入，执行。</li>
+</ul>
+</li>
+<li><p>认证失败，可能是服务器没有开启密码认证方式</p>
+<ul>
+<li>服务器开启密码登录方式</li>
+<li>使用密钥登录方式</li>
+</ul>
+</li>
+</ul>
+<h4 id="详细介绍"><a href="#详细介绍" class="headerlink" title="详细介绍"></a>详细介绍</h4><ul>
+<li><p><strong>ChannelCondition</strong></p>
+<p>一个接口，定义了本地机器与远程机器交互过程中可能出现的的状态码。</p>
+<ul>
+<li><a href="http://www.ganymed.ethz.ch/ssh2/javadoc/ch/ethz/ssh2/ChannelCondition.html#EOF">EOF</a>：表示已经读到了文件的末尾，也就是SSH服务器传送过来一个文件结束符</li>
+<li>TIMEOUT:表示通道已经超时了但是其他条件可能满足，比如EOF条件满足了，但是也超时了。</li>
+</ul>
+<p>​     使用<code>(cond &amp; ChannelCondition.CLOSED) != 0</code>，来判断是否以及超时。 </p>
+<ul>
+<li>CLOSED：表示底层通道已经关闭了，尽管本地窗口中可能仍然有未读取的数据，也会被强制EOF掉，无法读取。</li>
+<li>STDOUT_DATA：表示本地窗口中的标准输出数据可以读取了</li>
+<li>STDERR_DATA：类上</li>
+<li>EOF：表示远程服务机器上的数据都已经发送完毕，但是stdout与stderr流<strong>可能</strong>会被远程机器同时设置成EOF，导致本地窗口数据丢失。</li>
+<li>EXIT_STATUS：远程机器结束工作后可能会发送退出状态，此时就可以通过这个状态来判断</li>
+</ul>
+</li>
+<li><p>Connection </p>
+<p>用来与服务器建立TCP/IP连接</p>
+<p>构造器</p>
+<ul>
+<li>Connection(String hostname, int port)</li>
+</ul>
+<p>建立连接</p>
+<ul>
+<li>connect()：与服务器建立TCP/IP连接，进行后续操作</li>
+</ul>
+<p>获取连接信息</p>
+<ul>
+<li>ConnectionInfo getConnectionInfo()：连接信息里面包含了交互双方的加密算法信息，主机的公钥等</li>
+</ul>
+<p>认证方法（返回值均为boolean）</p>
+<ul>
+<li>authenticateWithPublicKey(String user, char[] pemPrivateKey,String password)：通过密钥认证登录，没试过，流程大概是：本地机器上生成公私钥，然后将公钥手动拷贝到服务器，然后通过此方法把 自己的私钥加密传输给服务器。这里的password是，pem文件的加密的密码，如果没有被加密，则可以设置为null。</li>
+<li>authenticateWithPassword(String user, String password)：密码认证方式，推荐</li>
+</ul>
+<p>开启会话</p>
+<ul>
+<li>Session openSession()：会话可用于执行命令</li>
+</ul>
+<p>创建SCP客户端</p>
+<ul>
+<li>SCPClient createSCPClient()：返回一个SCPClient对象，该对象可被用于文件传输。</li>
+</ul>
+</li>
+<li><p>SCPClient （用来与服务器之间进行文件传输的类）</p>
+<ul>
+<li>上传<ul>
+<li>public void put(String localFile, String remoteTargetDirectory)：将一个本地文件上传到远程服务器的某个目录下</li>
+<li>void put(String[] localFiles, String remoteTargetDirectory)：同上为一个一堆文件</li>
+<li>void put(String localFile, String remoteTargetDirectory, String mode)：将一个文件上传并设置其权限</li>
+<li>public void put(String localFile, String remoteFileName, String remoteTargetDirectory, String mode)：将一堆文件上传并设置权限</li>
+<li>public void put(byte[] data, String remoteFileName, String remoteTargetDirectory): 将一个字节数组上传到某个文件中</li>
+<li>…</li>
+</ul>
+</li>
+<li>下载<ul>
+<li>get(String remoteFile, String localTargetDirectory)</li>
+<li>get(String remoteFile, OutputStream target)：获取文件到某个输出流中</li>
+<li>get(String[] remoteFiles, String localTargetDirectory)：将远程目录下的一堆文件拷贝到本地</li>
+</ul>
+</li>
+</ul>
+<p>tip：默认远程路径都是用户home目录下。</p>
+</li>
+<li><p>SFTP与SCP功能类似，但是更加强大，但传输效率不如SCP。</p>
+</li>
+</ul>
+<h4 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 获取连接对象</span></span><br><span class="line"><span class="comment"> * 调用connect()方法</span></span><br><span class="line"><span class="comment"> * 进行身份认证</span></span><br><span class="line"><span class="comment"> * 开启会话</span></span><br><span class="line"><span class="comment"> * 执行命令</span></span><br><span class="line"><span class="comment"> * 关闭并释放资源</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SSHClient</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  Logger logger = LoggerFactory.getLogger(SSHClient<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">  <span class="keyword">private</span> String ip;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">int</span> port;</span><br><span class="line">  <span class="keyword">private</span> String username;</span><br><span class="line">  <span class="keyword">private</span> String password;</span><br><span class="line">  <span class="keyword">private</span> Connection connection;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">SSHClient</span><span class="params">(String configPath)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 获取配置信息</span></span><br><span class="line">      SSHConfiguration sshConfiguration = <span class="keyword">new</span> SSHConfiguration(<span class="string">"E:\\DataCodeFile\\Java\\IdeaProjects\\Utils\\src\\main\\java\\com\\nju\\zm\\ssh\\ssh.properties"</span>);</span><br><span class="line">      <span class="keyword">this</span>.ip = sshConfiguration.getPropValue(<span class="string">"host.ip"</span>);</span><br><span class="line">      <span class="keyword">this</span>.port = Integer.parseInt(sshConfiguration.getPropValue(<span class="string">"host.port"</span>));</span><br><span class="line">      <span class="keyword">this</span>.username = sshConfiguration.getPropValue(<span class="string">"host.username"</span>);</span><br><span class="line">      <span class="keyword">this</span>.password = sshConfiguration.getPropValue(<span class="string">"host.password"</span>);</span><br><span class="line">      <span class="comment">// 建立TCP/IP连接</span></span><br><span class="line">      <span class="keyword">this</span>.connection = <span class="keyword">new</span> Connection(ip, port);</span><br><span class="line">      <span class="keyword">this</span>.connection.connect();</span><br><span class="line">      <span class="comment">// 密码认证</span></span><br><span class="line">      <span class="keyword">boolean</span> isAuthenticated = <span class="keyword">this</span>.connection.authenticateWithPassword(username, password);</span><br><span class="line">      <span class="comment">// 密钥认证，试了二十几次，一直不行，估计是密钥格式问题</span></span><br><span class="line"><span class="comment">//      boolean isAuthenticated = this.connection.authenticateWithPublicKey(username, new File("C:\\Users\\me\\.ssh\\id_rsa"), null);</span></span><br><span class="line">      <span class="keyword">if</span> (!isAuthenticated) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> IOException(<span class="string">"认证失败"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">      logger.info(<span class="string">"用户&#123;&#125;登录成功"</span>, username);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      logger.info(e.getMessage());</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      logger.info(e.getMessage());</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 执行一条命令</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> command 一条命令</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">executeCommand</span><span class="params">(String command)</span> </span>&#123;</span><br><span class="line">    Session session = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      session = connection.openSession();</span><br><span class="line">      session.execCommand(command);</span><br><span class="line">      <span class="comment">// 处理命令的执行结果</span></span><br><span class="line">      handleOutput(session);</span><br><span class="line">      Integer exitStatus = session.getExitStatus();</span><br><span class="line">      logger.info(<span class="string">"命令：&#123;&#125; -&gt; 执行结果：&#123;&#125;"</span>, command, Objects.nonNull(exitStatus) ? exitStatus : <span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      logger.warn(e.getMessage());</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (Objects.nonNull(session))</span><br><span class="line">          session.close();</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        logger.error(<span class="string">"资源关闭失败:&#123;&#125;"</span>, e);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 执行本地的某个shell脚本</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> shellPath 脚本的绝对路径</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">runShell</span><span class="params">(String shellPath)</span> </span>&#123;</span><br><span class="line">    Session session = <span class="keyword">null</span>;</span><br><span class="line">    BufferedReader reader = <span class="keyword">null</span>;</span><br><span class="line">    PrintWriter out = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      session = connection.openSession();</span><br><span class="line">      session.requestPTY(<span class="string">"bash"</span>);</span><br><span class="line">      session.startShell();</span><br><span class="line">      reader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(shellPath)));</span><br><span class="line">      out = <span class="keyword">new</span> PrintWriter(session.getStdin());</span><br><span class="line">      String readLine = <span class="keyword">null</span>;</span><br><span class="line">      <span class="keyword">while</span> (Objects.nonNull(readLine = reader.readLine())) &#123;</span><br><span class="line">        out.println(readLine);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">// 必须要有一个logout语句，不然服务器会以为你想保持沟通，便不会发送EOF</span></span><br><span class="line">      out.println(<span class="string">"exit"</span>);</span><br><span class="line">      out.flush();</span><br><span class="line">      <span class="comment">// 处理输出结果</span></span><br><span class="line">      handleOutput(session);</span><br><span class="line">      Integer exitStatus = session.getExitStatus();</span><br><span class="line">      logger.info(<span class="string">"执行结果：&#123;&#125;"</span>, Objects.nonNull(exitStatus) ? exitStatus : <span class="number">0</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      logger.info(e.getMessage());</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        out.close();</span><br><span class="line">        reader.close();</span><br><span class="line">        session.close();</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        logger.warn(e.getMessage());</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 处理每个会话的输出结果</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> session 一个会话</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">handleOutput</span><span class="params">(Session session)</span> </span>&#123;</span><br><span class="line">    BufferedReader normalReader = <span class="keyword">null</span>;</span><br><span class="line">    BufferedReader errReader = <span class="keyword">null</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">// 获取err 以及 正常的执行返回信息，由于err 与 stdout共用一个窗口，所以此处一般必须要都获取</span></span><br><span class="line">      normalReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> StreamGobbler(session.getStdout())));</span><br><span class="line">      errReader = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> StreamGobbler(session.getStderr())));</span><br><span class="line">      <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        String line = normalReader.readLine();</span><br><span class="line">        <span class="keyword">if</span> (Objects.isNull(line)) <span class="keyword">break</span>;</span><br><span class="line">        logger.info(<span class="string">"$: &#123;&#125;"</span>,line);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">while</span> (<span class="keyword">true</span>) &#123;</span><br><span class="line">        String line = errReader.readLine();</span><br><span class="line">        <span class="keyword">if</span> (Objects.isNull(line)) <span class="keyword">break</span>;</span><br><span class="line">        logger.info(<span class="string">"$: &#123;&#125;"</span>,line);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">      logger.info(e.getMessage());</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125; <span class="keyword">finally</span> &#123;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (normalReader != <span class="keyword">null</span>) &#123;</span><br><span class="line">          normalReader.close();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        logger.info(<span class="string">"NormalReader关闭失败&#123;&#125;"</span>, e.getMessage());</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (errReader != <span class="keyword">null</span>) &#123;</span><br><span class="line">          errReader.close();</span><br><span class="line">        &#125;</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        logger.info(<span class="string">"ErrReader关闭失败&#123;&#125;"</span>, e.getMessage());</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 下载文件：使用现成的的ScpClient即可，底层会自动帮我们开启会话，关闭等动作</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> remoteFile           远程文件路径 默认是到home目录下的文件</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> localTargetDirectory 本地目录</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">getFile</span><span class="params">(String remoteFile, String localTargetDirectory)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      SCPClient client = <span class="keyword">new</span> SCPClient(connection);</span><br><span class="line">      client.get(remoteFile, localTargetDirectory);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException ex) &#123;</span><br><span class="line">      ex.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 上传文件</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> localFile             本地文件路径</span></span><br><span class="line"><span class="comment">   * <span class="doctag">@param</span> remoteTargetDirectory 远程目录</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">putFile</span><span class="params">(String localFile, String remoteTargetDirectory)</span> </span>&#123;</span><br><span class="line">    SCPClient client = <span class="keyword">new</span> SCPClient(connection);</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      client.put(localFile, remoteTargetDirectory);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 关闭资源</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">close</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (connection != <span class="keyword">null</span>) &#123;</span><br><span class="line">      connection.close();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">SSHClient sshClient = <span class="keyword">new</span> SSHClient(<span class="string">"E:\\xx\\ssh\\ssh.properties"</span>);</span><br><span class="line">sshClient.runShell(<span class="string">"xx\\test.txt"</span>);</span><br><span class="line">sshClient.getFile(<span class="string">"nowcoder.txt"</span>,<span class="string">"D:/"</span>);</span><br><span class="line">sshClient.executeCommand(<span class="string">"echo 'HELLO ZI　YOU'"</span>);</span><br><span class="line">sshClient.executeCommand(<span class="string">"echo 'WO LAI　LE'"</span>);</span><br><span class="line">sshClient.close();</span><br></pre></td></tr></table></figure>
+
  
       <!-- reward -->
       
@@ -197,7 +361,7 @@ var _hmt = _hmt || [];
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/" rel="tag">other</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaSSH%E5%B7%A5%E5%85%B7/" rel="tag">JavaSSH工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a></li></ul>
 
     </footer>
   </div>
