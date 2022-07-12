@@ -170,7 +170,7 @@ var _hmt = _hmt || [];
 <td align="left">配任何非空白字符,等价于[^\f\n\r\t\v],注意这里面有一个空格字符</td>
 </tr>
 </tbody></table>
-<pre><code>### 特殊字符</code></pre><p>​    什么是特殊字符？</p>
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><p>​    什么是特殊字符？</p>
 <p>​        特殊字符也叫元字符，在正则中，特殊字符具有特殊的含义，比如.表示出了\n之外的任何单个字符，如果我们需要匹配没有特殊意义的.字符，则需要添加转义字符\在正则表达式中。特殊字符又可以分为：限定符、定位符、选择符、反向引用。下表是一些无法分类的特殊字符。</p>
 <table>
 <thead>
@@ -340,27 +340,27 @@ var _hmt = _hmt || [];
 </tr>
 </thead>
 <tbody><tr>
-<td align="center">\x<em>n</em></td>
+<td align="center"><code>\xn</code></td>
 <td align="left">匹配 <em>n</em>，此处的 <em>n</em> 是一个十六进制转义码。十六进制转义码必须正好是两位数长。例如，”\x41”匹配”A”。”\x041”与”\x04”&amp;”1”等效。允许在正则表达式中使用 ASCII 代码。</td>
 </tr>
 <tr>
-<td align="center"><em>num</em></td>
+<td align="center"><code>num</code></td>
 <td align="left">匹配 <em>num*，此处的 *num</em> 是一个正整数。到捕获匹配的反向引用。例如，”(.)\1”匹配两个连续的相同字符。</td>
 </tr>
 <tr>
-<td align="center"><em>n</em></td>
+<td align="center"><code>n</code></td>
 <td align="left">标识一个八进制转义码或反向引用。如果 <em>n</em> 前面至少有 <em>n</em> 个捕获子表达式，那么 <em>n</em> 是反向引用。否则，如果 <em>n</em> 是八进制数 (0-7)，那么 <em>n</em> 是八进制转义码。</td>
 </tr>
 <tr>
-<td align="center"><em>nm</em></td>
+<td align="center"><code>nm</code></td>
 <td align="left">标识一个八进制转义码或反向引用。如果 <em>nm</em> 前面至少有 <em>nm</em> 个捕获子表达式，那么 <em>nm</em> 是反向引用。如果 <em>nm</em> 前面至少有 <em>n</em> 个捕获，则 <em>n</em> 是反向引用，后面跟有字符 <em>m</em>。如果两种前面的情况都不存在，则 <em>nm</em> 匹配八进制值 <em>nm*，其中 *n</em> 和 <em>m</em> 是八进制数字 (0-7)。</td>
 </tr>
 <tr>
-<td align="center">\nml</td>
+<td align="center"><code>\nml</code></td>
 <td align="left">当 <em>n</em> 是八进制数 (0-3)，<em>m</em> 和 <em>l</em> 是八进制数 (0-7) 时，匹配八进制转义码 <em>nml</em>。</td>
 </tr>
 <tr>
-<td align="center">\u<em>n</em></td>
+<td align="center"><code>\un</code></td>
 <td align="left">匹配 <em>n</em>，其中 <em>n</em> 是以四位十六进制数表示的 Unicode 字符。例如，\u00A9 匹配版权符号 (©)。</td>
 </tr>
 </tbody></table>
@@ -368,7 +368,7 @@ var _hmt = _hmt || [];
 <h2 id="Java中如何使用正则？"><a href="#Java中如何使用正则？" class="headerlink" title="Java中如何使用正则？"></a>Java中如何使用正则？</h2><p>​    不同的编程语言，对正则表达式的支持程度不同，编写的正则表达式一般也不同。我们这里仅考虑Java实现的正则。</p>
 <p>​    Java中主要提供了Pattern类、Matcher类、PatternSyntaxExcaption类来做到正则表达式的匹配如语法检查。 pattern 对象是一个正则表达式的编译表示；Matcher 对象是对输入字符串进行解释和匹配操作的引擎；PatternSyntaxException 是一个非强制异常类，它表示一个正则表达式模式中的语法错误。 </p>
 <blockquote>
-<p> <em>根据 Java Language Specification 的要求，Java 源代码的字符串中的反斜线被解释为 Unicode 转义或其他字符转义。因此必须在字符串字面值中使用两个反斜线，表示正则表达式受到保护，不被 Java 字节码编译器解释。例如，当解释为正则表达式时，字符串字面值 “\b” 与单个退格字符匹配，而 “\\b” 与单词边界匹配。字符串字面值 “\(hello\)” 是非法的，将导致编译时错误；要与字符串 (hello) 匹配，必须使用字符串字面值 “\\(hello\\)”。</em> </p>
+<p> <em>根据 Java Language Specification 的要求，Java 源代码的字符串中的反斜线被解释为 Unicode 转义或其他字符转义。因此必须在字符串字面值中使用两个反斜线，表示正则表达式受到保护，不被 Java 字节码编译器解释。例如，当解释为正则表达式时，字符串字面值 “\b” 与单个退格字符匹配，而 “\\b” 与单词边界匹配。字符串字面值 “<code>\(hello\)</code>“ 是非法的，将导致编译时错误；要与字符串 (hello) 匹配，必须使用字符串字面值 “\\(hello\\)”。</em> </p>
 </blockquote>
 <p> <img src="/2022/05/28/Java-%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/c182dd874f2e4c4baaf1806d54bf9cfc.png" alt="img"> </p>
 <h3 id="Pattern类"><a href="#Pattern类" class="headerlink" title="Pattern类"></a>Pattern类</h3><blockquote>
@@ -396,7 +396,8 @@ var _hmt = _hmt || [];
 <blockquote>
 <p> input 要拆分的字符序列</p>
 <p> ​    limit 结果阈值，控制应用模式的次数，从而影响结果数组的长度</p>
-<pre><code>若 limit &gt; 0：split最多应用limit - 1次，数组的长度不大于limit；常常匹配结果中出现空字符串。</code></pre><p> ​        若 limit &lt; 0：split次数不受限制，数组为任意长度；</p>
+<p> ​        若 limit &gt; 0：split最多应用limit - 1次，数组的长度不大于limit；常常匹配结果中出现空字符串。</p>
+<p> ​        若 limit &lt; 0：split次数不受限制，数组为任意长度；</p>
 <p> ​        若 limit = 0：split次数不受限制，数组为任意长度，但会摒弃尾部的空字符串；</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Pattern pattern= Pattern.compile(<span class="string">"\\d&#123;2&#125;"</span>);</span><br><span class="line">String[] split = pattern.split(<span class="string">"12a2"</span>);<span class="comment">//""、"a2"</span></span><br></pre></td></tr></table></figure>

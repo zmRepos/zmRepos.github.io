@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1062"
+  id="post-PTA-Basic-1066"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -185,8 +185,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1062/"
-    >PTA-Basic-1062</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1066/"
+    >PTA-Basic-1066</a> 
 </h2>
  
 
@@ -194,8 +194,8 @@ var _hmt = _hmt || [];
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1062/" class="article-date">
-  <time datetime="2019-10-07T12:41:33.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/07/PTA-Basic-1066/" class="article-date">
+  <time datetime="2019-10-07T12:42:25.000Z" itemprop="datePublished">2019-10-07</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
@@ -205,139 +205,42 @@ var _hmt = _hmt || [];
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>题目：<br>一个分数一般写成两个整数相除的形式：N/M，其中 M 不为0。最简分数是指分子和分母没有公约数的分数表示形式。</p>
-<p>现给定两个不相等的正分数 N<br>​1<br>​​ /M<br>​1<br>​​  和 N<br>​2<br>​​ /M<br>​2<br>​​ ，要求你按从小到大的顺序列出它们之间分母为 K 的最简分数。</p>
-<p>输入格式：</p>
-<p>输入在一行中按 N/M 的格式给出两个正分数，随后是一个正整数分母 K，其间以空格分隔。题目保证给出的所有整数都不超过 1000。</p>
-<p>输出格式：<br>在一行中按 N/M 的格式列出两个给定分数之间分母为 K 的所有最简分数，按从小到大的顺序，其间以 1 个空格分隔。行首尾不得有多余空格。题目保证至少有 1 个输出。</p>
+  <p>题目：<br>图像过滤是把图像中不重要的像素都染成背景色，使得重要部分被凸显出来。现给定一幅黑白图像，要求你将灰度值位于某指定区间内的所有像素颜色都用一种指定的颜色替换。</p>
+<p>输入格式：<br>输入在第一行给出一幅图像的分辨率，即两个正整数 M 和 N（0&lt;M,N≤500），另外是待过滤的灰度值区间端点 A 和 B（0≤A&lt;B≤255）、以及指定的替换灰度值。随后 M 行，每行给出 N 个像素点的灰度值，其间以空格分隔。所有灰度值都在 [0, 255] 区间内。</p>
+<p>输出格式：<br>输出按要求过滤后的图像。即输出 M 行，每行 N 个像素灰度值，每个灰度值占 3 位（例如黑色要显示为 000），其间以一个空格分隔。行首尾不得有多余空格。</p>
 <p>输入样例：</p>
-<pre><code>7/18 13/20 12</code></pre><p>输出样例：</p>
-<pre><code>5/12 7/12</code></pre><p>分析:</p>
-<pre><code>此题不能使用浮点数的比较，而是使用分数的比较性质。
-求两个数字的最大公约数，如果存在就跳此数。</code></pre><p>代码：</p>
+<pre><code>3 5 100 150 0
+3 189 254 101 119
+150 233 151 99 100
+88 123 149 0 255</code></pre><p>输出样例：</p>
+<pre><code>003 189 254 000 000
+000 233 151 099 000
+088 000 000 000 255</code></pre><p>代码：</p>
 <pre><code>#include &lt;stdio.h&gt;
-int check(int n,int m){//求最大公约数的最简单方法
-    if (m)//分母不为0
-                while ((n %= m) &amp;&amp; (m %= n)) ;
-        return n + m;
-}
+#include &lt;stdlib.h&gt;
+
 int main()
 {
-    int n1,m1,n2,m2,k,tmp;
-    scanf(&quot;%d/%d %d/%d %d&quot;,&amp;n1,&amp;m1,&amp;n2,&amp;m2,&amp;k);
-    if(n1*m2&gt;n2*m1){//如果输入的两个分数大小不为先大后小
-         tmp=n1;
-         n1=n2;
-         n2=tmp;
-         tmp=m1;
-         m1=m2;
-         m2=tmp;
-    }
-    int time=0;
-    tmp=0;
-    for(int i=n1*k/m1+1;i*m2&lt;n2*k;i++){//此处不加1可能会导致多输出一个不合适的结果。
-        if(check(i,k)==1){//之间没有公约数（除了一以外）
-            printf(&quot;%s%d/%d&quot;,time++?&quot; &quot;:&quot;&quot;,i,k);//从0开始计数为0不输出空格，其他输出。
+    int n=0,m=0,a=0,b=0,replace=0,h=0;
+    scanf(&quot;%d %d %d %d %d&quot;,&amp;m,&amp;n,&amp;a,&amp;b,&amp;replace);
+    int dlex[m][n];
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            scanf(&quot;%d&quot;,&amp;h);
+            if(h&lt;=b&amp;&amp;h&gt;=a){
+                h=replace;
+            }
+            dlex[i][j]=h;
         }
     }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1061"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1061/"
-    >PTA-Basic-1061</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1061/" class="article-date">
-  <time datetime="2019-10-07T12:41:23.000Z" itemprop="datePublished">2019-10-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>判断题的评判很简单，本题就要求你写个简单的程序帮助老师判题并统计学生们判断题的得分。</p>
-<p>输入格式：<br>输入在第一行给出两个不超过 100 的正整数 N 和 M，分别是学生人数和判断题数量。第二行给出 M 个不超过 5 的正整数，是每道题的满分值。第三行给出每道题对应的正确答案，0 代表“非”，1 代表“是”。随后 N 行，每行给出一个学生的解答。数字间均以空格分隔。</p>
-<p>输出格式：</p>
-<p>按照输入的顺序输出每个学生的得分，每个分数占一行。</p>
-<p>输入样例：</p>
-<pre><code>3 6
-2 1 3 3 4 5
-0 0 1 0 1 1
-0 1 1 0 0 1
-1 0 1 0 1 0
-1 1 0 0 1 1</code></pre><p>输出样例：</p>
-<pre><code>13
-11
-12</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int n=0,m=0;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    int score[2][m];
-    int stu[n];
-    int k=0;
-    int x=0;
-    for(int i=0;i&lt;n+2;i++){
-            stu[x]=0;
-        for(int j=0;j&lt;m;j++){
-                scanf(&quot;%d&quot;,&amp;k);
-            if(i==0){
-            score[0][j]=k;
-        }else if(i==1){
-            score[1][j]=k;
-        }else{
-            if(k==score[1][j]){
-                stu[x]+=score[0][j];
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            printf(&quot;%03d&quot;,dlex[i][j]);
+            if(j!=n-1){
+                printf(&quot; &quot;);
             }
         }
-        }
-        if(i!=0&amp;&amp;i!=1){
-            x++;
-        }
-    }
-
-    for(int i=0;i&lt;x;i++){
-            printf(&quot;%d\n&quot;,stu[i]);
+        printf(&quot;\n&quot;);
     }
     return 0;
 }</code></pre> 
@@ -362,7 +265,7 @@ int main(void){
 
     
     <article
-  id="post-PTA-Basic-1060"
+  id="post-PTA-Basic-1065"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -373,8 +276,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1060/"
-    >PTA-Basic-1060</a> 
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1065/"
+    >PTA-Basic-1065</a> 
 </h2>
  
 
@@ -382,8 +285,8 @@ int main(void){
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1060/" class="article-date">
-  <time datetime="2019-10-07T12:41:11.000Z" itemprop="datePublished">2019-10-07</time>
+      <a href="/2019/10/07/PTA-Basic-1065/" class="article-date">
+  <time datetime="2019-10-07T12:42:14.000Z" itemprop="datePublished">2019-10-07</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
@@ -393,33 +296,162 @@ int main(void){
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>题目：</p>
-<p>英国天文学家爱丁顿很喜欢骑车。据说他为了炫耀自己的骑车功力，还定义了一个“爱丁顿数” E ，即满足有 E 天骑车超过 E 英里的最大整数 E。据说爱丁顿自己的 E 等于87。</p>
-<p>现给定某人 N 天的骑车距离，请你算出对应的爱丁顿数 E（≤N）。</p>
-<p>输入格式：</p>
-<p>输入第一行给出一个正整数 N (≤10<br>​5<br>​​ )，即连续骑车的天数；第二行给出 N 个非负整数，代表每天的骑车距离。</p>
-<p>输出格式：<br>在一行中给出 N 天的爱丁顿数。</p>
+  <p>“单身狗”是中文对于单身人士的一种爱称。本题请你从上万人的大型派对中找出落单的客人，以便给予特殊关爱。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 50 000），是已知夫妻/伴侣的对数；随后 N 行，每行给出一对夫妻/伴侣——为方便起见，每人对应一个 ID 号，为 5 位数字（从 00000 到 99999），ID 间以空格分隔；之后给出一个正整数 M（≤ 10 000），为参加派对的总人数；随后一行给出这 M 位客人的 ID，以空格分隔。题目保证无人重婚或脚踩两条船。</p>
+<p>输出格式：<br>首先第一行输出落单客人的总人数；随后第二行按 ID 递增顺序列出落单的客人。ID 间用 1 个空格分隔，行的首尾不得有多余空格。</p>
 <p>输入样例：</p>
-<pre><code>10
-6 7 6 9 3 10 8 2 7 8</code></pre><p>输出样例：</p>
-<pre><code>6</code></pre><p>分析：首先什么是爱丁顿数？<br>        对输入的一个数组满足有e个数子大于e的最大整数，正如样例：此数组中数字大于六的个数是六，六又是最大的，所以它是爱丁顿数。</p>
-<pre><code>处理：对输入的数组进行由大到小倒序排序，然后遍历直到找到大于下标的位置处。（对于某一个数字如果它比对应的下标大，那么前面比它大的也比它的下标大，，就这么找下去直到找到不合适的下标）</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
+<pre><code>3
+11111 22222
+33333 44444
+55555 66666
+7
+55555 44444 10000 88888 22222 11111 23333</code></pre><p>输出样例：</p>
+<pre><code>5
+10000 23333 44444 55555 88888</code></pre><p>分析：<br>定义一个情侣数组，男方存储女方的编号，女方存放男方的编号，这样就可以通过一个人找到另一个人，并判断另一个人是否到场。定义一个flag数组用于标记某个人是否到场，定义一个数组用于存放单生狗。</p>
+<p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 int cmp(const void *a,const void *b){
-    return *(int *)b-*(int *)a;
+return *(int *)a-*(int *)b;
 }
-int main(void){
+int main()
+{//测试点一是关于对象为0的情况
+    int n=0,m=0,x=0,time=0;
+    int pops[100000]={-1};/初始化数组，-1表示没有情侣，不能为0，如果为0，那么所有单身狗的情侣都是0.
+    int flag[100000]={0};
+    scanf(&quot;%d&quot;,&amp;n);
+    int n1,n2;
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d %d&quot;,&amp;n1,&amp;n2);
+        pops[n1]=n2;
+        pops[n2]=n1;
+    }
+    scanf(&quot;%d&quot;,&amp;m);
+    int result[m];
+    int res[m];
+    for(int i=0;i&lt;m;i++){
+        scanf(&quot;%d&quot;,&amp;x);
+        if(pops[x]!=-1){//此处如果将输入的每一个元对应的人都标记的话可能会导致下面去对应值时取到0的人头下标不为0可能会导致数据缺失。
+            flag[x]=1;//如果有情侣，才有必要标记到场。
+        }
+        res[i]=x;
+    }
+    for(int i=0;i&lt;m;i++){
+            x=res[i];
+        if(pops[x]==-1){//如果对应的人没有情侣
+                result[time]=x;
+                time++;
+        }else if(flag[x]+flag[pops[x]]!=2){//如果情侣的某一方到场二另一方没有到场，也为单身狗。
+                result[time]=x;
+                time++;
+        }else{
+
+        }
+    }
+    qsort(result,time,sizeof(int),cmp);//对单身狗进行排序
+    printf(&quot;%d\n&quot;,time);
+    for(int i=0;i&lt;time;i++){
+        printf(&quot;%05d&quot;,result[i]);
+        if(i!=time-1){
+            printf(&quot; &quot;);
+        }
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1064"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1064/"
+    >PTA-Basic-1064</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/07/PTA-Basic-1064/" class="article-date">
+  <time datetime="2019-10-07T12:42:02.000Z" itemprop="datePublished">2019-10-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>如果两个整数各位数字的和是一样的，则被称为是“朋友数”，而那个公共的和就是它们的“朋友证号”。例如 123 和 51 就是朋友数，因为 1+2+3 = 5+1 = 6，而 6 就是它们的朋友证号。给定一些整数，要求你统计一下它们中有多少个不同的朋友证号。</p>
+<p>输入格式：<br>输入第一行给出正整数 N。随后一行给出 N 个正整数，数字间以空格分隔。题目保证所有数字小于 10<br>​4<br>​​ 。</p>
+<p>输出格式：<br>首先第一行输出给定数字中不同的朋友证号的个数；随后一行按递增顺序输出这些朋友证号，数字间隔一个空格，且行末不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>8
+123 899 51 998 27 33 36 12</code></pre><p>输出样例：</p>
+<pre><code>4
+3 6 9 26</code></pre><p>分析：<br>因为题目说小于10^4所以所有朋友数最大为36，定义一个数组用下标表示朋友数，存储的数字代表是否出现此朋友数（0为没有出现其他为出现），遍历数组存储的数字依次输出下标。</p>
+<p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+int main()
+{
     int n=0;
     scanf(&quot;%d&quot;,&amp;n);
-    int nums[n];
-    int i=0;
-    for(i=0;i&lt;n;i++){
-        scanf(&quot;%d&quot;,&amp;nums[i]);
+    int m=0;
+    int friends[37]={0};
+    int time=0;
+    for(int i=0;i&lt;n;i++){
+        int total=0;
+        scanf(&quot;%d&quot;,&amp;m);
+        while(m!=0){
+            total+=m%10;
+            m=m/10;
+        }
+        if(friends[total]==0){
+            time++;
+        }
+        friends[total]++;
     }
-    qsort(nums,n,sizeof(int),cmp);//倒序排列
-    for(i=0;i&lt;n&amp;&amp;nums[i]&gt;(i+1);i++);//空语句
-    printf(&quot;%d&quot;,i);
+    printf(&quot;%d\n&quot;,time);
+    int i=0;
+    for(i=0;i&lt;37;i++){
+        if(friends[i]&gt;=1){
+            printf(&quot;%d&quot;,i);
+                if(time&gt;1){
+                printf(&quot;%c&quot;,&apos; &apos;);
+            }
+        time--;
+        }
+
+    }
     return 0;
 }</code></pre> 
       <!-- reward -->
@@ -448,7 +480,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/39/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/42/">42</a><span class="space">&hellip;</span><a class="page-number" href="/page/58/">58</a><a class="extend next" rel="next" href="/page/41/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/39/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="page-number current">40</span><a class="page-number" href="/page/41/">41</a><a class="page-number" href="/page/42/">42</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><a class="extend next" rel="next" href="/page/41/">下一页</a>
   </nav>
   
 </section>

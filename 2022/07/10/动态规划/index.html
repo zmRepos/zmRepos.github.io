@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,思考,代码,博客" />
+       
+      <meta name="description" content="勇攀技术绝壁" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>动态规划 |  codeFOF</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/ayer.png" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="codeFOF" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-动态规划"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  动态规划
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-date">
+  <time datetime="2022-07-10T14:34:50.000Z" itemprop="datePublished">2022-07-10</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">5.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">21 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​    <a id="more"></a></p>
+<p>!!!! 本文章为个人知识成果，转载请注明出处。</p>
+<h1 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h1><p>参考文献【<a href="https://blog.csdn.net/u013309870/article/details/75193592?ops_request_misc=%257B%2522request%255Fid%2522%253A%2522165753067816782388033559%2522%252C%2522scm%2522%253A%252220140713.130102334.pc%255Fall.%2522%257D&request_id=165753067816782388033559&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~first_rank_ecpm_v1~hot_rank-1-75193592-null-null.142^v32^down_rank,185^v2^control&utm_term=%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92&spm=1018.2226.3001.4187">算法-动态规划 Dynamic Programming–从菜鸟到老鸟</a>】</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p> 动态规划（英语：Dynamic programming，简称 DP） ，核心思想是记住并利用子问题的解来得出原问题的解。 通过把原问题分解为相对简单的子问题的方式求解复杂问题的方法。动态规划常常适用于有重叠子问题和最优子结构性质的问题。 </p>
+<p>而记住子问题的答案的方式有两种</p>
+<ul>
+<li>自顶向下的备忘录法：从原问题出发，在得出一个子问题的解答之后，先记录到备忘录中，在返回供原问题求解。</li>
+<li>自底向上：从最小的子问题出发求出其解，然后利用状态转移方程，求出上级问题的最优解。</li>
+</ul>
+<blockquote>
+<p>重叠子问题：原问题求解的过程中需要涉及多次重复子问题的求解而不是子问题衍生出无数的子问题，比如 <code>fibonacci(5)</code>求解过程中多次涉及<code>fibonacci(2)</code>问题的求解，且最终子问题到达<code>fibonacci(1)</code></p>
+<p>最优子结构性质：原问题的最优解中包含了子问题的最优解的性质。</p>
+</blockquote>
+<h2 id="动态规划演化由来（斐波那契数列为例）"><a href="#动态规划演化由来（斐波那契数列为例）" class="headerlink" title="动态规划演化由来（斐波那契数列为例）"></a>动态规划演化由来（斐波那契数列为例）</h2><p>斐波那契数列：0 1 1 2 3 5 8 13 … $a_n = a_{n-1} + a_{n-2}$。</p>
+<p>问题：求出fib(n)的值</p>
+<h3 id="无脑递归方式"><a href="#无脑递归方式" class="headerlink" title="无脑递归方式"></a>无脑递归方式</h3><p>那么利用递归求解的代码实现如下</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">0</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">if</span>(n==<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> fib( n-<span class="number">1</span>)+fib(n-<span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其求解流程如图</p>
+<p> <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/e7b6b6d25f9e63eef02f57488eee30d2.png" alt="这里写图片描述"> </p>
+<blockquote>
+<p>显然原问题的最优解，包含了子问题的最优解，且某个子问题的解被多次计算(导致时空效率低下)。这两条性质说明，这个问题可以用动态规划来解决。</p>
+</blockquote>
+<h3 id="备忘录法的动态规划"><a href="#备忘录法的动态规划" class="headerlink" title="备忘录法的动态规划"></a>备忘录法的动态规划</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Fibonacci</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">int</span> []Memo=<span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];		</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;=n;i++)</span><br><span class="line">        Memo[i]=-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> fib(n, Memo);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> []Memo)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//如果已经求出了fib（n）的值直接返回</span></span><br><span class="line">    <span class="keyword">if</span>(Memo[n]!=-<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> Memo[n];</span><br><span class="line">    <span class="comment">//否则将求出的值保存在Memo备忘录中			</span></span><br><span class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">2</span>)</span><br><span class="line">        Memo[n]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">        Memo[n]=fib( n-<span class="number">1</span>,Memo)+fib(n-<span class="number">2</span>,Memo);	</span><br><span class="line">    <span class="keyword">return</span> Memo[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="自底向上的动态规划"><a href="#自底向上的动态规划" class="headerlink" title="自底向上的动态规划"></a>自底向上的动态规划</h3><p>上面的备忘录法，虽然避免了大量的无效的子问题求解过程，但是还是要重复的用到子问题的解，虽然不用求了，那么为什么不反过来，先计算子问题然后直接利用子问题的解答，求出父问题的答案呢？比如按照顺序依次计算出 <code>fib（1），fib（2），fib（3）…,</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">fib</span><span class="params">(<span class="keyword">int</span> n)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n&lt;=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> n;</span><br><span class="line">    <span class="keyword">int</span> []Memo=<span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">    Memo[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    Memo[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)</span><br><span class="line">    &#123;</span><br><span class="line">        Memo[i]=Memo[i-<span class="number">1</span>]+Memo[i-<span class="number">2</span>];</span><br><span class="line">    &#125;		</span><br><span class="line">    <span class="keyword">return</span> Memo[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结：由于自顶向下的备忘录这种动态规划方法涉及了程序的递归，那么肯定会产生额外的开销，所以一般推荐使用自底向上的动态规划。</p>
+<h2 id="钢条切割问题"><a href="#钢条切割问题" class="headerlink" title="钢条切割问题"></a>钢条切割问题</h2><p>  Serling公司购买长钢条，将其切割为短钢条出售。假设切割工序没有成本，不同长度的钢条的售价如下： </p>
+<p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/v2-a2d0edf44393d61b06ea93b3fa2609b4_720w.png" alt="img"></p>
+<p>  那么钢条切割问题就是：给定一段长度为 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540569659.svg" alt="[公式]"> 英尺的钢条和一个价格表为 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation.svg" alt="[公式]"> ,求切割钢条方案，使得销售收益 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540569704.svg" alt="[公式]"> 最大（单位为元）。注意：如果长度为 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540569659.svg" alt="[公式]"> 英尺的钢条的价格 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation.svg" alt="[公式]"> 足够大，那么最优解就是不需要切割。 </p>
+<p>问题分析：考虑 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599649.svg" alt="[公式]"> = 4 的情况，那么有以下几种切割方式：</p>
+<p>1.切割为四段，长度为：1，1，1，1；总共卖4*1=4元。</p>
+<p>2.切割为三段，长度为：1，1，2；总共卖2<em>1+1</em>5=7元。</p>
+<p>3.切割为两段，长度为：1，3；总共卖1<em>1+1</em>8=9元。</p>
+<p>4.切割为两段，长度为：2，2；总共卖2*5=10元。</p>
+<p>5.不切割，长度为：4；总共卖1*9=9元。</p>
+<p>长度为 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599649.svg" alt="[公式]"> 的钢条，总共有 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599684.svg" alt="[公式]"> 种不同的切割方案，因为长度为 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599649.svg" alt="[公式]"> 的钢条，总共有 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599649.svg" alt="[公式]">-1 个缝隙，每个缝隙都可以选择切或不切，所以有 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599684.svg" alt="[公式]"> 种不同切割方案。所以随着 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599649.svg" alt="[公式]"> 增大，切割方案总数呈指数级上升，遍历是不现实的。在这里，很容易想到，当要分析长度为 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599649.svg" alt="[公式]"> 的钢条的最优解时，可以先将钢条切成两段。将长度为 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599649.svg" alt="[公式]"> 的钢条随意切割的方案是 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599684.svg" alt="[公式]"> 种，但是只切两段的方案只有 <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/equation-1657540599649.svg" alt="[公式]">-1 种，这样规避了指数级计算量。将切成的两段，分别再当作子问题去求解，这就是如下分治策略解法：</p>
+<h4 id="递归解法"><a href="#递归解法" class="headerlink" title="递归解法"></a>递归解法</h4><p>利用分治算法，由于最终切割的钢条有很多种情况，因此每次递归，取出最终结果的所有可能的切割的最大值，然后到底层最终在从底层返回到最终结果。</p>
+<p> <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/v2-8f01d48b606971496b207333534f15f9_720w.jpg" alt="img"> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solve1</span><span class="params">(<span class="keyword">int</span> values[], <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (n == <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> result = Integer.MIN_VALUE;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">    result = Math.max(result, values[i-<span class="number">1</span>] + solve1(values, n - i));</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">  System.out.println(solve1(<span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">10</span>,<span class="number">17</span>,<span class="number">17</span>,<span class="number">20</span>,<span class="number">24</span>,<span class="number">30</span>&#125;,<span class="number">4</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自顶向下的备忘录动态规划"><a href="#自顶向下的备忘录动态规划" class="headerlink" title="自顶向下的备忘录动态规划"></a>自顶向下的备忘录动态规划</h4><p>利用备忘录，记录中间计算过程中的子问题的解答，避免重复计算。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solve2</span><span class="params">(<span class="keyword">int</span>[] values, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] cutValue = <span class="keyword">new</span> <span class="keyword">int</span>[n + <span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; cutValue.length; i++) &#123;</span><br><span class="line">      cutValue[i] = Integer.MIN_VALUE;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> solve2_borrow(values,n,cutValue);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solve2_borrow</span><span class="params">(<span class="keyword">int</span>[] values, <span class="keyword">int</span> n, <span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (array[n] &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> array[n];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> tempValue;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>)&#123;</span><br><span class="line">      tempValue = <span class="number">0</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      tempValue = Integer.MIN_VALUE;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        tempValue = Math.max(tempValue, values[i-<span class="number">1</span>] + solve2_borrow(values, n-i,array));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    array[n] = tempValue;</span><br><span class="line">    <span class="keyword">return</span> tempValue;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="自底向上的动态规划-1"><a href="#自底向上的动态规划-1" class="headerlink" title="自底向上的动态规划"></a>自底向上的动态规划</h4><p>利用边界条件值结合转移方程，求出子问题的解，最终求出最终问题的解。</p>
+<p> <img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/99b691cfaa5ef5f5f459be4e3b886a0d.png" alt="这里写图片描述"> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">solve3</span><span class="params">(<span class="keyword">int</span>[] values, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span>[] r = <span class="keyword">new</span> <span class="keyword">int</span>[values.length+<span class="number">1</span>];</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= values.length; i++) &#123;</span><br><span class="line">    <span class="keyword">int</span> tempMax = Integer.MIN_VALUE;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= i; j++) &#123;</span><br><span class="line">      tempMax = Math.max(tempMax, values[j-<span class="number">1</span>] + r[i-j]);</span><br><span class="line">    &#125;</span><br><span class="line">    r[i] = tempMax;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> r[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="动态规划的解题模型"><a href="#动态规划的解题模型" class="headerlink" title="动态规划的解题模型"></a>动态规划的解题模型</h2><p>由于，自顶向下的备忘录式的动态规划算法，涉及算法的递归调用，因此有额外的时空开销，所以我们使用的dp算法一般都是自底向上的动态规划，这种动态规划算法涉及状态转移方程以及边界条件的考察。而根据转移方程的不同结构我们把动态规划能够求解的问题页划分成了不同的解题模型。</p>
+<h3 id="线性模型"><a href="#线性模型" class="headerlink" title="线性模型"></a>线性模型</h3><p>转移方程类似于 <code>f(n) = x f(n-1)</code>这种结构的问题的解题思路。</p>
+<p>例题1 钢条切割问题</p>
+<blockquote>
+<p>Serling公司购买长钢条，将其切割为短钢条出售。切割工序本身没有成本支出。公司管理层希望知道最佳的切割方案。假定我们知道Serling公司出售一段长为i英寸的钢条的价格为pi(i=1,2,…，单位为美元)。钢条的长度均为整英寸。图15-1给出了一个价格表的样例。</p>
+<p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/162025012825029.png" alt="img"></p>
+<p>钢条切割问题是这样的：给定一段长度为n英寸的钢条和一个价格表pi(i=1,2,…n)，求切割钢条方案，使得销售收益rn最大。注意，如果长度为n英寸的钢条的价格pn足够大，最优解可能就是完全不需要切割。</p>
+</blockquote>
+<p>分析：</p>
+<p>其状态转移方程大概为 f(n) = Max(values[1] + f(n - 1),values[2] + f(n-2), values[3] + f(n-3), …values[n-1] + f(1))。</p>
+<p>例题2 孩子过桥问题</p>
+<blockquote>
+<p>在一个夜黑风高的晚上，有n（n &lt;= 50）个小朋友在桥的这边，现在他们需要过桥，但是由于桥很窄，每次只允许不大于两人通过，他们只有一个手电筒，所以每次过桥的两个人需要把手电筒带回来，i号小朋友过桥的时间为T[i]，两个人过桥的总时间为二者中时间长者。问所有小朋友过桥的总时间最短是多少。</p>
+</blockquote>
+<p>分析：</p>
+<p>这题如果按照贪心算法的思路，就是选择过河速度最快的一个孩子，每次让他配一个孩子过河，过河之后，立即返回把手电筒带回来，得出来的不是最优解，因为如果这个孩子每次都返回，可能导致本来速度最慢的两个孩子的每个人都和他一起过河，反而耗时更长了，不如这两个速度最慢的孩子一起过河所造成的时间损耗最小。因此我们可以先将所有人按花费时间递增进行排序，假设前i个人过河花费的最少时间为opt[i]，那么考虑前i-1个人过河的情况，即河这边还有1个人，河那边有i-1个人，并且这时候手电筒肯定在对岸，所以opt[i] = opt[i-1] + a[1] + a[i]        (让花费时间最少的人把手电筒送过来，然后和第i个人一起过河)。如果河这边还有两个人，一个是第i号，另外一个无所谓，河那边有i-2个人，并且手电筒肯定在对岸，所以opt[i] = opt[i-2] + a[1] + a[i] + 2*a[2]    (让花费时间最少的人把电筒送过来，然后第i个人和另外一个人一起过河，由于花费时间最少的人在这边，所以下一次送手电筒过来的一定是花费次少的，送过来后花费最少的和花费次少的一起过河，解决问题)。</p>
+<p>由以上的分析过程中我们可以得出动态规划算法的状态转移方程： <em>opt[i] = min{opt[i-1] + a[1] + a[i] , opt[i-2] + a[1] + a[i] + 2</em>a[2] }</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 读入孩子的速率数组</span></span><br><span class="line">    <span class="keyword">int</span> [] childRate = <span class="keyword">new</span> <span class="keyword">int</span>[]&#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">10</span>&#125;;</span><br><span class="line">    <span class="comment">// 对其进行升序排序</span></span><br><span class="line">    Arrays.sort(childRate);</span><br><span class="line">    <span class="comment">// 处理边界条件然后依次按照自底向上的顺序对状态数组按照状态转移方程进行处理</span></span><br><span class="line">    <span class="keyword">int</span>[] time = <span class="keyword">new</span> <span class="keyword">int</span>[childRate.length];</span><br><span class="line">    time[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    time[<span class="number">1</span>] = childRate[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; childRate.length; i++) &#123;</span><br><span class="line">      time[i] = Math.min(</span><br><span class="line">          time[i-<span class="number">1</span>] + childRate[<span class="number">0</span>] + childRate[i],</span><br><span class="line">          time[i-<span class="number">2</span>] + childRate[<span class="number">0</span>] + childRate[i] + <span class="number">2</span> * childRate[<span class="number">1</span>]</span><br><span class="line">          );</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(time[childRate.length-<span class="number">1</span>]);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="区间模型"><a href="#区间模型" class="headerlink" title="区间模型"></a>区间模型</h3><p>例题3 最长公共子序列问题</p>
+<blockquote>
+<p>给定两个字符串str1和str2，输出两个字符串的最长公共子序列。如果最长公共子序列为空，则返回”-1”。目前给出的数据，仅仅会存在一个最长的公共子序列</p>
+<p>数据范围：$0 \le |str_1|,|str_2| \le 20000≤∣str_1∣,∣str_2∣≤2000$</p>
+<p>要求：空间复杂度 $O(n^2)$，时间复杂度 $O(n^2)$</p>
+</blockquote>
+<p>解题思路：</p>
+<p>这题属于矩阵模型的动态规划，这个问题由于具有最优子结构性质（原问题的解可以划分成子问题的解）、以及重叠子结构性质（子问题的解可能被多次重复利用），所以可以使用动态规划解决，具体解决步骤如下。</p>
+<ul>
+<li><p>step 1：优先检查特殊情况。</p>
+</li>
+<li><p>step 2：获取最长公共子序列的长度可以使用动态规划，我们以dp[i][j]dp[i][j]<em>dp</em>[<em>i</em>][<em>j</em>]表示在s1中以ii<em>i</em>结尾，s2中以jj<em>j</em>结尾的字符串的最长公共子序列长度。</p>
+</li>
+<li><p>step 3：遍历两个字符串的所有位置，开始状态转移：若是ii<em>i</em>位与jj<em>j</em>位的字符相等，则该问题可以变成1+dp[i−1][j−1]1+dp[i-1][j-1]1+<em>dp</em>[<em>i</em>−1][<em>j</em>−1]，即到此处为止最长公共子序列长度由前面的结果加1。</p>
+</li>
+<li><p>step 4：若是不相等，说明到此处为止的子串，最后一位不可能同时属于最长公共子序列，毕竟它们都不相同，因此我们考虑换成两个子问题，$dp[i][j−1]$或者$dp[i−1][j]$，我们取较大的一个就可以了，由此感觉可以用递归解决。</p>
+</li>
+<li><p>step 5：根据以上的过程得出一个状态转移方程</p>
+<p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657603453077.png" alt="1657603453077"></p>
+</li>
+<li><p>step 6：依据此方程，可知这是一个矩阵模型的动态规划问题，为了方便，我们把矩阵行和列都拓展一位，然后考虑边界条件（i==0与j==0）即二维矩阵的$dp[i][0]$或者$dp[0][j]$，显然由于我们拓展了一位，那么这些区域的初始值必须为0，这样才方便i==1或者j==j时的dp矩阵的下标处的值利用转移方程求出来。</p>
+</li>
+<li><p>step 7：最终求出矩阵所有值后，我们从矩阵末尾反推，如果$dp[i][j]$所涉及的s1和s2的两个字符相同，则直接放入结果子序列中；如果不相同，则找与当前$dp[i][j]$相同值得$dp[i-1][j]$或者$dp[i-1][j-1]$或者$dp[i][j-1]$，因为找到这些，说明当前$dp[i][j]$处的字符并不是最长公共子序列中的，所以需要向其他方向找。 </p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">LCS</span><span class="params">(String s1, String s2)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 处理无效输入问题</span></span><br><span class="line">    <span class="keyword">if</span> (s1.length() == <span class="number">0</span> || s2.length() == <span class="number">0</span>)</span><br><span class="line">      <span class="keyword">return</span> <span class="string">"-1"</span>;</span><br><span class="line">    <span class="comment">// 定义状态转移的二维模型,dp[i][j]，表示S1(0,i)、S2(0,j)的子串的最长公共子序列的长度。</span></span><br><span class="line">    <span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[s1.length() + <span class="number">1</span>][s2.length() + <span class="number">1</span>];</span><br><span class="line">    <span class="comment">// 处理边界情况</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= s1.length(); i++)</span><br><span class="line">      dp[i][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt;= s2.length(); j++)</span><br><span class="line">      dp[<span class="number">0</span>][j] = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 正式利用状态转移方程求解</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; dp.length; i++) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; dp[i].length; j++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (s1.charAt(i-<span class="number">1</span>) == s2.charAt(j-<span class="number">1</span>)) &#123;</span><br><span class="line">          dp[i][j] = dp[i - <span class="number">1</span>][j - <span class="number">1</span>] + <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          dp[i][j] = Math.max(dp[i - <span class="number">1</span>][j], dp[i][j - <span class="number">1</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    StringBuilder res = <span class="keyword">new</span> StringBuilder();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = s1.length(), j = s2.length(); dp[i][j] &gt;= <span class="number">1</span>; ) &#123;</span><br><span class="line">      <span class="keyword">if</span> (s1.charAt(i - <span class="number">1</span>) == s2.charAt(j - <span class="number">1</span>)) &#123;</span><br><span class="line">        res.append(s1.charAt(i - <span class="number">1</span>));</span><br><span class="line">        i--;</span><br><span class="line">        j--;</span><br><span class="line">      &#125; <span class="keyword">else</span> <span class="keyword">if</span> (dp[i - <span class="number">1</span>][j] &gt;= dp[i][j - <span class="number">1</span>]) &#123;</span><br><span class="line">        i--;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        j--;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    String finalResult = res.reverse().toString();</span><br><span class="line">    <span class="keyword">return</span> finalResult.length() &gt; <span class="number">0</span> ? finalResult : <span class="string">"-1"</span>;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="背包模型"><a href="#背包模型" class="headerlink" title="背包模型"></a>背包模型</h3><p>例题：01背包问题（01指的是，一个物品只能有被装入或者不被装入的两种情况，不存在装入了一半这种情况）</p>
+<blockquote>
+<p>有n件物品（<strong>每种物品都只有一件</strong>），w[i]表示物品的体积，v[i]表示物品的价值，现有一个容量为V的背包，</p>
+<p>应该如何选物品使得书包内装的物品的价值之和最大呢？</p>
+</blockquote>
+<p>分析：利用动态规划算法，将原问题拆解为子问题，如果最后一个物品不放入背包，则当前背包的总价值等于前n-1个物品以及背包容量为V的子问题；最后一个放入背包，则当前背包的总价值等于，前n-1个物品以及背包容量为V-wi的子问题。这样就得出了状态转移方程如下：$dp[i][V] = max(dp[i-1][V], dp[i-1][V-W_i] + v_i )$。那么还有另外一个问题，当前背包装了哪些物品呢？我们可以利用回溯，来求出背包中装了哪些物品。</p>
+<p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657628583621.png" alt="1657628583621"></p>
+<p>回溯： 从表的右下角，如果发现前n个物品的最佳组合的价值和前n-1个物品最佳组合的价值一样，则说明第n个物品并没有被装入，否则第n个物品被装入，然后拿着剩余容量到前n-1所在行的对应剩余容量所代表的列，重复如上判断过程知道编号为0，最终得出哪些物品被装入了背包。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">ZeroOnePack</span><span class="params">(<span class="keyword">int</span> V,<span class="keyword">int</span> N,<span class="keyword">int</span>[] weight,<span class="keyword">int</span>[] value)</span></span>&#123;</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//初始化动态规划数组</span></span><br><span class="line">		<span class="keyword">int</span>[][] dp = <span class="keyword">new</span> <span class="keyword">int</span>[N+<span class="number">1</span>][V+<span class="number">1</span>];</span><br><span class="line">		<span class="comment">//为了便于理解,将dp[i][0]和dp[0][j]均置为0，从1开始计算</span></span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;N+<span class="number">1</span>;i++)&#123;</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;V+<span class="number">1</span>;j++)&#123;</span><br><span class="line">				<span class="comment">//如果第i件物品的重量大于背包容量j,则不装入背包</span></span><br><span class="line">				<span class="comment">//由于weight和value数组下标都是从0开始,故注意第i个物品的重量为weight[i-1],价值为value[i-1]</span></span><br><span class="line">				<span class="keyword">if</span>(weight[i-<span class="number">1</span>] &gt; j)</span><br><span class="line">					dp[i][j] = dp[i-<span class="number">1</span>][j];</span><br><span class="line">				<span class="keyword">else</span></span><br><span class="line">					dp[i][j] = Math.max(dp[i-<span class="number">1</span>][j],dp[i-<span class="number">1</span>][j-weight[i-<span class="number">1</span>]]+value[i-<span class="number">1</span>]);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//则容量为V的背包能够装入物品的最大值为</span></span><br><span class="line">		<span class="keyword">int</span> maxValue = dp[N][V];</span><br><span class="line">		<span class="comment">//逆推找出装入背包的所有商品的编号</span></span><br><span class="line">		<span class="keyword">int</span> j=V;</span><br><span class="line">		String numStr=<span class="string">""</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=N;i&gt;<span class="number">0</span>;i--)&#123;</span><br><span class="line">			<span class="comment">//若果dp[i][j]&gt;dp[i-1][j],这说明第i件物品是放入背包的</span></span><br><span class="line">			<span class="keyword">if</span>(dp[i][j]&gt;dp[i-<span class="number">1</span>][j])&#123;</span><br><span class="line">				numStr = i+<span class="string">" "</span>+numStr;</span><br><span class="line">				j=j-weight[i-<span class="number">1</span>];</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span>(j==<span class="number">0</span>)</span><br><span class="line">				<span class="keyword">break</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> numStr;	</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="动态规划的常考问题总结"><a href="#动态规划的常考问题总结" class="headerlink" title="动态规划的常考问题总结"></a>动态规划的常考问题总结</h2><p>动态规划算法，难点在于看到相关问题是否能够想到使用动态规划，以及状态转移方程的求解。因此有必要总结动态规划算法常用于如下问题的解决（并不是一定能用）。</p>
+<ul>
+<li>计数问题 算法中一般涉及加加减减</li>
+</ul>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649511781328.png" alt="1649511781328" style="zoom:67%;">
+
+<ul>
+<li>求最大值、最小值 算法中一般涉及Math.min,Math.max</li>
+</ul>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649511772602.png" alt="1649511772602" style="zoom:67%;">
+
+<ul>
+<li>存在性问题 算法中一般涉及and or</li>
+</ul>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649511792136.png" alt="1649511792136" style="zoom:67%;">
+
+<h2 id="动态规划解题流程"><a href="#动态规划解题流程" class="headerlink" title="动态规划解题流程"></a>动态规划解题流程</h2><p>例题 1求最值动态规划</p>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649512519517.png" alt="1649512519517" style="zoom:50%;">
+
+
+
+<blockquote>
+<p>错误的直觉算法：尽量用大的硬币。导致777222.正确答案是75555。</p>
+</blockquote>
+<ol>
+<li><strong>确定状态：即确定题目中的自变量（根据最后一步的操作、和子问题想出状态是什么？）</strong></li>
+</ol>
+<blockquote>
+<p>最后一步操作是最优策略的$a_{k}$放入硬币组合中，和为27。从而化成子问题：27-$a_k$的最优硬币组合。</p>
+</blockquote>
+<ol start="2">
+<li><strong>确定状态转移方程：即原问题到子问题变化的方程</strong></li>
+</ol>
+<blockquote>
+<p>f[ 27 ] =1+f[ 27-$a_k$ ];其中$a_k $=2|5|7于是推导出如下状态转移方程</p>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649600103965.png" alt="1649600103965" style="zoom: 67%;">
+</blockquote>
+<ol start="3">
+<li><strong>初始条件和边界情况</strong></li>
+</ol>
+<blockquote>
+<p>初始条件：即状态转移方程算不出来的，但是需要我们定义的值。如f[0]我们需知f[-2]、f[-3]、f[-7]的值这些显然不可知，预设预设</p>
+<p>​    本题中为f[0]=0</p>
+<p>边界情况：转移方程需要考虑的x的边界</p>
+<p>​     本题中为：x-2 x-5 x-7小于0如何？</p>
+</blockquote>
+<ol start="4">
+<li><strong>计算顺序</strong></li>
+</ol>
+<blockquote>
+<p>确定了<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649601294665.png" alt="1649601294665" style="zoom:50%;"></p>
+<p>之后还需要确定计算顺序，原则是<strong>当计算到f[x]时f[x-2]、f[x-5]、f[x-7]都已经有值了</strong></p>
+</blockquote>
+<p>最终结果</p>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649601405465.png" alt="1649601405465" style="zoom:50%;">
+
+<p>动态规划一共进行27次循环、每次计算三种计算，一共27*3次，远远小于递归算法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">coinChange</span><span class="params">(<span class="keyword">int</span> []a,<span class="keyword">int</span> m)</span></span>&#123;</span><br><span class="line">    <span class="comment">//状态数组,长度为m+1</span></span><br><span class="line">    <span class="keyword">int</span> [] f = <span class="keyword">new</span> <span class="keyword">int</span>[m+<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//硬币枚数</span></span><br><span class="line">    <span class="keyword">int</span> n = a.length;</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    f[<span class="number">0</span>]=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        <span class="comment">//处理不在考虑之类的数值出的值</span></span><br><span class="line">        f[i]=Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="comment">//要考虑下标为负数以及f[i-a[i]]为最大值的情况（为最大值时，最大值+1会越界）</span></span><br><span class="line">            <span class="keyword">if</span> (i&gt;=a[j]&amp;&amp;f[i-a[j]]!=Integer.MAX_VALUE)&#123;</span><br><span class="line">                f[i]=Math.min(f[i],f[i-a[j]]+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回结果</span></span><br><span class="line">    <span class="keyword">return</span>  f[m]==Integer.MAX_VALUE?-<span class="number">1</span>:f[m];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例题2 机器人走路问题-计数型</p>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649604758708.png" alt="1649604758708" style="zoom:50%;">
+
+<ol>
+<li>确定状态</li>
+</ol>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649605369806.png" alt="1649605369806" style="zoom:33%;">
+
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649605240553.png" alt="1649605240553" style="zoom: 33%;">
+
+<ol start="2">
+<li><p>确定状态转移方程</p>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649605595890.png" alt="1649605595890" style="zoom:50%;">
+</li>
+<li><p>初始条件和边界情况</p>
+</li>
+</ol>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649605664631.png" alt="1649605664631" style="zoom:50%;">
+
+<ol start="4">
+<li>计算顺序</li>
+</ol>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649605870614.png" alt="1649605870614" style="zoom:50%;">
+
+<p>结果是f[ m-1] [n-1]。</p>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649605918172.png" alt="1649605918172" style="zoom:50%;">
+
+<p>算法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">uniquePaths</span><span class="params">(<span class="keyword">int</span> m,<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//开数组</span></span><br><span class="line">    <span class="keyword">int</span> [][] paths= <span class="keyword">new</span> <span class="keyword">int</span>[m][n];</span><br><span class="line">    <span class="comment">//初始化，初始化放到for循环中了</span></span><br><span class="line">    <span class="comment">//按照顺序进行计算</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i==<span class="number">0</span>||j==<span class="number">0</span>)&#123;</span><br><span class="line">                paths[i][j]=<span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                paths[i][j]=paths[i-<span class="number">1</span>][j]+paths[i][j-<span class="number">1</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回结果</span></span><br><span class="line">    <span class="keyword">return</span> paths[m-<span class="number">1</span>][n-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例题3 青蛙跳-可行性问题</p>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649607548832.png" alt="1649607548832" style="zoom:50%;">
+
+<ol>
+<li><p>确定状态</p>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649609042933.png" alt="1649609042933" style="zoom:50%;">
+
+</li>
+</ol>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649608514237.png" alt="1649608514237" style="zoom:50%;">
+
+<ol start="2">
+<li>转移方程</li>
+</ol>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649608558184.png" alt="1649608558184" style="zoom:50%;">
+
+<ol start="3">
+<li>初始值和边界情况</li>
+</ol>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649608746861.png" alt="1649608746861" style="zoom:50%;">
+
+<ol start="4">
+<li>计算顺序</li>
+</ol>
+<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1649608737903.png" alt="1649608737903" style="zoom:50%;">
+
+<p>算法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">canJump</span><span class="params">(<span class="keyword">int</span>[]a)</span></span>&#123;</span><br><span class="line">    <span class="comment">//数组</span></span><br><span class="line">    <span class="keyword">int</span> n = a.length;</span><br><span class="line">    <span class="keyword">boolean</span> [] canJump =  <span class="keyword">new</span> <span class="keyword">boolean</span>[n];</span><br><span class="line">    <span class="comment">//初始化</span></span><br><span class="line">    canJump[<span class="number">0</span>]=<span class="keyword">true</span>;</span><br><span class="line">    <span class="comment">//计算</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        canJump[i]=<span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (canJump[j]&amp;&amp;j+a[j]&gt;=i)&#123;</span><br><span class="line">                canJump[i]=<span class="keyword">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> canJump[n-<span class="number">1</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657463940594.png" alt="1657463940594"></p>
+<p>算法实现过程一般是：开数组、初始化、按顺序赋值、返回值。</p>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhuming-github.github.io/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/" rel="tag">other</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/2022/07/06/%E9%99%90%E6%B5%81%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">限流相关总结</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "6tOO9UzCCPwrAQMrQwFdo1c9-gzGzoHsz",
+    app_key: "7gv1YABDJKYutSvQVAL82lud",
+    path: window.location.pathname,
+    avatar: "robohash",
+    placeholder: "欢迎指点",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2022
+        <i class="ri-heart-fill heart_icon"></i> ZM
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1281098224&amp;web_id=1281098224'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/avatar.jpg" alt="codeFOF"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>支持一下~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+
+</html>

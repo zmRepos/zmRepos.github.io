@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,思考,代码,博客" />
+       
+      <meta name="description" content="勇攀技术绝壁" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>贪心算法 |  codeFOF</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/ayer.png" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="codeFOF" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-贪心算法"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  贪心算法
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2022-06-21T12:59:01.000Z" itemprop="datePublished">2022-06-21</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a> / <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">4.6k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">18 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​    <a id="more"></a></p>
+<p>!!!! 本文章为个人知识成果，转载请注明出处。</p>
+<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><p>依据选择的贪心策略，只注重局部最优解，以期望取得全局最优解。**</p>
+<p>有时局部最优可以推出全局最优，但是有时局部最优不可以推出全局最优，关键是如何看出局部最优能否推出全局最优，这种没有固定的套路，只能<strong>自己进行简单的推导，然后自己举反例证明贪心不行，如果举不出反例，则贪心算法的反例则证明此贪心算法可行</strong>。</p>
+<h2 id="贪心算法适用问题的特性"><a href="#贪心算法适用问题的特性" class="headerlink" title="贪心算法适用问题的特性"></a>贪心算法适用问题的特性</h2><ul>
+<li><p>最优子结构性质</p>
+</li>
+<li><p>贪心选择性质：所有问题的整体最优解，可以通过一系列的局部最优解的选择来达到</p>
+<blockquote>
+<p>首先假设一个该问题的最优解，然后假定该最优解的首元素不是贪心选择所需要的袁旭，证明将其首元素替换成贪心选择所需元素后的解，依然是最优解。然后适用数学归纳法证明每一个  </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="贪心算法求解步骤"><a href="#贪心算法求解步骤" class="headerlink" title="贪心算法求解步骤"></a>贪心算法求解步骤</h2><ol>
+<li>分析问题，设计数据找规律 ，找到合适的贪心策略</li>
+<li>证明使用此种贪心选择策略的贪心算法的可行性，证明方法如上。</li>
+<li>依据贪心策略，对每一个子问题求解出局部最优解</li>
+</ol>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="活动选择问题"><a href="#活动选择问题" class="headerlink" title="活动选择问题"></a>活动选择问题</h3><p><img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/1655820657493.png" alt="1655820657493"></p>
+<p>解决：</p>
+<ul>
+<li><p>选择合适的贪心策略（即贪心的点）：</p>
+<blockquote>
+<ol>
+<li><p>如果按照<strong>开始时间最早</strong>作为贪心策略。由于选择开始时间最早的事务，由于其结束时间不确定，因此无法保证后续剩余时间的最多的事务。如下图，如果你选择了最早开始的蓝色事务，那么下面的较晚开始的两个事务就无法选择，最终求出来的也不是最优解。</p>
+<p><img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/1655818217246.png" alt="1655818217246"></p>
+</li>
+<li><p>如果按照<strong>事务持续时间最少</strong>作为贪心标准。那么由于选择最少的事务的开始时间没法确定，那么导致浪费了大量的时间，所以这种策略也是不行的。</p>
+<p><img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/1655821088468.png" alt="1655821088468"></p>
+</li>
+<li><p>如果选择<strong>事务结束时间最早</strong>的事务，那么按照常理，事务结束时间越早，后续留出的时间越多，可以安排的事务也就越多，所以这种贪心策略是可以考虑的。</p>
+</li>
+</ol>
+</blockquote>
+</li>
+<li><p>证明选择事务结束时间最早的事务的贪心策略的可行性</p>
+<blockquote>
+<ul>
+<li>贪心选择性质证明：假设最终的一个最优解是A，A中的事务按照结束时间进行非递减排列，假设排序后的A的第一个事务是K。而我们通过贪心选择策略选择的第一个活动记为k。<ul>
+<li>如果事务K就是事务k，则最优解A就是以事务k开始的</li>
+<li>如果事务K不是事务k，那么由于事务k是按照事务结束时间求出的最小的事务，那么事务k的结束时间必然是在事务K结束时间的前面或者就是事务K的结束时间的，则证明事务k替换掉最优解中的事务K，也能够替换后的解A仍然是最优解，则证明了该问题具有贪心选择性质。</li>
+</ul>
+</li>
+<li>最优子结构性质证明（一个问题的最优解包含了其子问题的最优解）：由于A是最优解，所以在上一个性质的证明中，如果直接去除掉事务K即$A^`=A-{K}$，仍然是子问题：”<strong>去除掉事务K之后的活动安排</strong>“的最优解。则证明问题具有最优子结构性质。</li>
+</ul>
+</blockquote>
+</li>
+<li><p>解决问题</p>
+<blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HJM1</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Activity</span></span>&#123;</span><br><span class="line">    Time begin;</span><br><span class="line">    Time end;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Activity</span><span class="params">(Time begin,Time end)</span></span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.begin = begin;</span><br><span class="line">      <span class="keyword">this</span>.end = end;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> ToStringBuilder.reflectionToString(<span class="keyword">this</span>, ToStringStyle.SHORT_PREFIX_STYLE);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">// 创建活动数组</span></span><br><span class="line">Activity activitys[] = <span class="keyword">new</span> Activity[<span class="number">11</span>];</span><br><span class="line">activitys[<span class="number">0</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"01:00:00"</span>),Time.valueOf(<span class="string">"04:00:00"</span>));</span><br><span class="line">activitys[<span class="number">4</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"03:00:00"</span>),Time.valueOf(<span class="string">"05:00:00"</span>));</span><br><span class="line">activitys[<span class="number">2</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"00:00:00"</span>),Time.valueOf(<span class="string">"06:00:00"</span>));</span><br><span class="line">activitys[<span class="number">3</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"05:00:00"</span>),Time.valueOf(<span class="string">"07:00:00"</span>));</span><br><span class="line">activitys[<span class="number">1</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"03:00:00"</span>),Time.valueOf(<span class="string">"08:00:00"</span>));</span><br><span class="line">activitys[<span class="number">8</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"05:00:00"</span>),Time.valueOf(<span class="string">"09:00:00"</span>));</span><br><span class="line">activitys[<span class="number">6</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"06:00:00"</span>),Time.valueOf(<span class="string">"10:00:00"</span>));</span><br><span class="line">activitys[<span class="number">7</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"08:00:00"</span>),Time.valueOf(<span class="string">"11:00:00"</span>));</span><br><span class="line">activitys[<span class="number">5</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"08:00:00"</span>),Time.valueOf(<span class="string">"12:00:00"</span>));</span><br><span class="line">activitys[<span class="number">9</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"02:00:00"</span>),Time.valueOf(<span class="string">"13:00:00"</span>));</span><br><span class="line">activitys[<span class="number">10</span>] =  <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"12:00:00"</span>),Time.valueOf(<span class="string">"14:00:00"</span>));</span><br><span class="line"><span class="comment">// 对事务数组按照结束时间进行排序</span></span><br><span class="line">Arrays.sort(activitys, <span class="keyword">new</span> Comparator&lt;Activity&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Activity o1, Activity o2)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">return</span> o1.end.compareTo(o2.end);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="comment">// 利用贪心策略，进行问题求解，并记录一个最优解的结构</span></span><br><span class="line">List&lt;Activity&gt; resultActivitys = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">Activity preActivity = <span class="keyword">new</span> Activity(Time.valueOf(<span class="string">"00:00:00"</span>),Time.valueOf(<span class="string">"00:00:00"</span>));</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; activitys.length; i++) &#123;</span><br><span class="line">  <span class="keyword">if</span> (activitys[i].begin.compareTo(preActivity.end)&gt;=<span class="number">0</span>)&#123;</span><br><span class="line">    resultActivitys.add(activitys[i]);</span><br><span class="line">    preActivity = activitys[i];</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(resultActivitys);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">------求解出的这一天最多可以进行的活动列表如下</span><br><span class="line">[HJM1.Activity[begin=<span class="number">01</span>:<span class="number">00</span>:<span class="number">00</span>,end=<span class="number">04</span>:<span class="number">00</span>:<span class="number">00</span>], HJM1.Activity[begin=<span class="number">05</span>:<span class="number">00</span>:<span class="number">00</span>,end=<span class="number">07</span>:<span class="number">00</span>:<span class="number">00</span>], HJM1.Activity[begin=<span class="number">08</span>:<span class="number">00</span>:<span class="number">00</span>,end=<span class="number">11</span>:<span class="number">00</span>:<span class="number">00</span>], HJM1.Activity[begin=<span class="number">12</span>:<span class="number">00</span>:<span class="number">00</span>,end=<span class="number">14</span>:<span class="number">00</span>:<span class="number">00</span>]]</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<h3 id="国王游戏"><a href="#国王游戏" class="headerlink" title="国王游戏"></a>国王游戏</h3><p>题目:恰逢 H 国国庆，国王邀请 n 位大臣来玩一个有奖游戏。首先，他让每个大臣在左、右手上面分别写下一个整数，国王自己也在左、右手上各写一个整数。然后，让这 n 位大臣排成一排，国王站在队伍的最前面。排好队后，所有的大臣都会获得国王奖赏的若干金币，每位大臣获得的金币数分别是：排在该大臣前面的所有人的左手上的数的乘积除以他自己右手上的数，然后向下取整得到的结果。</p>
+<p>国王不希望某一个大臣获得特别多的奖赏，所以他想请你帮他重新安排一下队伍的顺序，使得获得奖赏最多的大臣，所获奖赏尽可能的少。注意，国王的位置始终在队伍的最前面。</p>
+<blockquote>
+<p>题意：国王希望这些大臣中拿到最多金币的大臣的金币数尽可能的少，从而减少总支出。</p>
+</blockquote>
+<p>【输入】</p>
+<blockquote>
+<p>第一行包含一个整数 n，表示大臣的人数。</p>
+<p>第二行包含两个整数 a和 b，之间用一个空格隔开，分别表示国王左手和右手上的整数。</p>
+<p>接下来 n 行，每行包含两个整数 a 和 b，之间用一个空格隔开，分别表示每个大臣左手和右手上的整数。</p>
+<p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;3</span><br><span class="line">&gt;1 1</span><br><span class="line">&gt;2 3</span><br><span class="line">&gt;7 4</span><br><span class="line">&gt;4 6</span><br></pre></td></tr></table></figure>
+
+
+</blockquote>
+<p>【输出】</p>
+<blockquote>
+<p> 一个整数，表示重新排列后的队伍中获奖赏最多的大臣所获得的金币数。 </p>
+</blockquote>
+<p>【输入输出样例说明】</p>
+<blockquote>
+<p>按 1、2、3 这样排列队伍，获得奖赏最多的大臣所获得金币数为 2；</p>
+<p>按 1、3、2 这样排列队伍，获得奖赏最多的大臣所获得金币数为 2；</p>
+<p>按 2、1、3 这样排列队伍，获得奖赏最多的大臣所获得金币数为 2；</p>
+<p>按 2、3、1这样排列队伍，获得奖赏最多的大臣所获得金币数为 9；</p>
+<p>按 3、1、2这样排列队伍，获得奖赏最多的大臣所获得金币数为 2；</p>
+<p>按 3、2、1 这样排列队伍，获得奖赏最多的大臣所获得金币数为 9。</p>
+<p>因此，奖赏最多的大臣最少获得 2个金币，答案输出 2。</p>
+</blockquote>
+<p>解决：</p>
+<ol>
+<li>使用样例数据找规律，推出合适的贪心策略</li>
+</ol>
+<blockquote>
+<p>就拿<img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/1655996542241.png" alt="1655996542241">举例，如果交换大臣1 和大臣2的位置，你会发现对大臣3的拿到                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        的金币数没影响；如果交换大臣2和大臣3的位置，你会发现，交换后的结果对大臣2拿的金币数没影响。由此我们推出一个结论：相邻两个大臣交换位置，对这两个大臣之外的人拿的金币数是没有影响的。那么相邻两个大臣交换了位置之后，对他们两人的影响如何呢？假设大臣i，左手数字是$a_i$，右手数字是$b_i$；大臣i+1，左手金币数是$a_{i+1}$，右手数字是$b_{i+1}$，那么原本第i个大臣拿的金币数是$m_i=p[i-1]/b_i$，第i+1个大臣拿的金币数是$m_{i+1}=p[i-1]<em>a_i/b_{i+1}$，那么这两个人的最大金币数是$MAX(p[i-1]/b_i，p[i-1]</em>a_i/b_{i+1} )$，同样的计算方法交换位置后的两人的最大金币数为$MAX(p[i-1]/b_{i+1}，p[i-1]<em>a_{i+1}/b_i )$，如果交换后的最大金币数大于交换前的最大金币数，可以推导出一个不等式$a_ib_i&lt;a_{i+1}b_{i+1}$，也就是说如果$a_ib_i&lt;a_{i+1}b_{i+1}$，那么这两个两个人交换位置后的拿的最大金币数变大了，所以这两个人排列的时候，左右手数字乘积排列在前会使得最终两人拿的最大的金币数变少。而且根据冒泡排序那种相邻两两交换的情况，任何两者的交换都可以由一系列的相邻交换组成，所以最终的排列按照*</em>左手右手乘积值升序排列即可** </p>
+</blockquote>
+<ol start="2">
+<li>证明贪心策略的正确性</li>
+</ol>
+<blockquote>
+<p>证明问题具有贪心选择性质</p>
+<p>​    如果最优解是A，那么如果事务A的排列的第一个大臣K， 根据贪心策略求出来的第一个大臣是k，如果K就是k，那么则最优解就是以k开始的，则此种情况下最优解具有贪心选择性；如果K不是k，如果用k替换掉K的位置，由于k的乘积是最小的，k加进来后大臣的排列组合中，由于第一个大臣为k，其余大臣仍然是在该种排列下的最大值，所以只需证明k替换K后第二位大臣也是取到该位置上的最小值即可。这点很容易证明。</p>
+<p>证明子问题的解结构具有最优解结构</p>
+<p>​        如果最优解是A，由于这种最优解是按照左手右手乘积升序排列的，所以去掉了最优解的排列的第一个大臣后，生下来的大臣的排列构成的子问题的最优解结构任然是A中剩余部分，则子问题也具有最优解结构。</p>
+</blockquote>
+<ol start="3">
+<li>编码</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TXSF02</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">solve</span><span class="params">(People[] peoples, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对这 num 个大臣按照左右手乘积大小，非递减排序</span></span><br><span class="line">    Arrays.sort(peoples, <span class="number">1</span>,num + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 求出最后一位大臣可以取得得金币数目</span></span><br><span class="line">    BigDecimal result = BigDecimal.valueOf(peoples[<span class="number">0</span>].a);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; num; i++) &#123;</span><br><span class="line">        result = result.multiply(BigDecimal.valueOf(peoples[i].a));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result.divide(BigDecimal.valueOf(peoples[num].b)).intValue();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="keyword">int</span> num = scanner.nextInt();</span><br><span class="line">    People[] peoples =<span class="keyword">new</span> People[num+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num+<span class="number">1</span>; i++) &#123;</span><br><span class="line">      peoples[i] = <span class="keyword">new</span> People();</span><br><span class="line">      peoples[i].a = scanner.nextInt();</span><br><span class="line">      peoples[i].b = scanner.nextInt();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="keyword">new</span> TXSF02().solve(peoples, num));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">People</span>&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(People o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a * <span class="keyword">this</span>.b - o.a * o.b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>》 这个题目的另一个难点是大树乘法，如果每个大臣的左手数字都是9999，那么最后相乘的位数就是$4*n$位数，其中n是大臣的个数。那么显然这个极容易超过int型数字的最大表示范围值，所以这种数字的计算要用BigDecimal进行。</p>
+<h3 id="钱币找零问题"><a href="#钱币找零问题" class="headerlink" title="钱币找零问题"></a>钱币找零问题</h3><p>问题描述</p>
+<blockquote>
+<p>假设1元、2元、5元、10元、20元、50元、100元的纸币分别有c0, c1, c2, c3, c4, c5, c6张。<br>现在要用这些钱来支付K元，至少要用多少张纸币？</p>
+<p>题目保证给出的零钱一定可以用这些纸币找零</p>
+</blockquote>
+<p>思路</p>
+<blockquote>
+<p>用贪心算法的思想，很显然，每一步尽可能用面值大的纸币即可. </p>
+<p>但是这种贪心算法只能解决，</p>
+</blockquote>
+<p>代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*人民币面额集合*/</span></span><br><span class="line">    <span class="keyword">int</span>[] values = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">100</span>&#125;;</span><br><span class="line">    <span class="comment">/*各种面额对应数量集合*/</span></span><br><span class="line">    <span class="keyword">int</span>[] counts = &#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span>[] counter = solve(values, counts, <span class="number">365</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; counts.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (counter[i] != <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.printf(<span class="string">"需要面额为%d的纸币%d张\n"</span>, values[i], counter[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] solve ( <span class="keyword">int</span>[] values, <span class="keyword">int</span>[] counts, <span class="keyword">int</span> sum)&#123;</span><br><span class="line">    <span class="keyword">int</span> []  result = <span class="keyword">new</span> <span class="keyword">int</span>[counts.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = values.length-<span class="number">1</span>; i &gt; -<span class="number">1</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">int</span> num = Math.min(sum/values[i], counts[i]);</span><br><span class="line">        counts[i] -= num;</span><br><span class="line">        sum = sum - num * values[i];</span><br><span class="line">        result[i] = num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="最长摇摆子序列"><a href="#最长摇摆子序列" class="headerlink" title="最长摇摆子序列"></a>最长摇摆子序列</h3><p>问题描述</p>
+<blockquote>
+<p>如果连续数字之间的差严格地在正数和负数之间交替，则数字序列称为摆动序列。第一个差（如果存在的话）可能是正数或负数。少于两个元素的序列也是摆动序列。</p>
+<p>例如， [1,7,4,9,2,5] 是一个摆动序列，因为差值 (6,-3,5,-7,3) 是正负交替出现的。相反, [1,4,7,2,5] 和 [1,7,4,5,5] 不是摆动序列，第一个序列是因为它的前两个差值都是正数，第二个序列是因为它的最后一个差值为零。</p>
+<p> 给定一个整数序列，返回作为摆动序列的最长子序列的长度。 通过从原始序列中删除一些（也可以不删除）元素来获得子序列，剩下的元素保持其原始顺序。 </p>
+</blockquote>
+<p>思路</p>
+<p>题目要求我们把给定的序列中的最长的摇摆子序列给求出来。例如 <img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20200811103747423.png" alt="img"></p>
+<p>求出最长摇摆子序列为：图中蓝色节点外的节点构成的集合。这种做法，是对于连续一段递增或者递减的原序列，我们保留其末尾值作为子序列的元素，属于贪心策略。此外，我们需要的仅仅是图中转折处的节点，这种结点处变化趋势改变了，也就是状态发生了变化，因而我们可以把图中的节点变化过程描述成如下的状态机，然后依据此状态机来做贪心选择以及最长的摇摆子序列生成。</p>
+<p> <img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20200811103630445.png" alt="img"></p>
+<p>即 设计了三种状态：</p>
+<p>BEGIN状态，为初始状态，BEGIN状态有三种转移方式：</p>
+<pre><code>1.  当前节点与前一个节点值相同，状态不变
+  2.  当前节点&gt;前一个节点值，状态变为UP
+  3.  当前节点&lt;前一个节点值，状态变为DOWN</code></pre><p>UP，有两种种状态转移方式</p>
+<ol>
+<li>当前节点值&gt;=前一个节点值，状态不变</li>
+<li>当前节点值&lt;前一个节点值，状态变为DOWN</li>
+</ol>
+<p>DOWN，有两种状态转移方式</p>
+<ol>
+<li>当前节点值&lt;=前一个节点值，状态不变</li>
+<li>当前节点值&gt;前一个节点值，状态变为UP</li>
+</ol>
+<p>我们仅仅在每种状态发生变化，且变化到其他状态时记录该节点，最终得出的就是最长摇摆子序列。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Integer&gt; <span class="title">solve</span><span class="params">(<span class="keyword">int</span> [] nodes)</span></span>&#123;</span><br><span class="line">    <span class="comment">// 定义三种状态</span></span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> BEGIN = <span class="number">0</span>, UP = <span class="number">1</span>, DOWN = <span class="number">2</span>;</span><br><span class="line">    <span class="comment">// 遍历每一个节点，进行变化状态演变过程，并在状态变化到其他状态时记录下该节点</span></span><br><span class="line">    List&lt;Integer&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">int</span> STATE = BEGIN;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; nodes.length; i++) &#123;</span><br><span class="line">        <span class="keyword">switch</span> (STATE)&#123;</span><br><span class="line">            <span class="keyword">case</span> BEGIN:</span><br><span class="line">                <span class="keyword">if</span> (nodes[i] &gt; nodes[i-<span class="number">1</span>]) &#123;</span><br><span class="line">                    STATE = UP;</span><br><span class="line">                    result.add(nodes[i-<span class="number">1</span>]);</span><br><span class="line">                &#125; <span class="keyword">else</span> <span class="keyword">if</span> (nodes[i] &lt; nodes[i-<span class="number">1</span>]) &#123;</span><br><span class="line">                    STATE = DOWN;</span><br><span class="line">                    result.add(nodes[i-<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> UP:</span><br><span class="line">                <span class="keyword">if</span> (nodes[i] &lt; nodes[i-<span class="number">1</span>]) &#123;</span><br><span class="line">                    STATE = DOWN;</span><br><span class="line">                    result.add(nodes[i-<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> DOWN:</span><br><span class="line">                <span class="keyword">if</span> (nodes[i] &gt; nodes[i-<span class="number">1</span>]) &#123;</span><br><span class="line">                    STATE = UP;</span><br><span class="line">                    result.add(nodes[i-<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 加入没有后面节点而无法统计的末尾节点</span></span><br><span class="line">    result.add(nodes[nodes.length-<span class="number">1</span>]);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>水果店卖水果</p>
+<p>问题描述</p>
+<blockquote>
+<p> 小王手里有点闲钱，想着做点卖水果的小买卖。给出两个数组m、n，用m[i]代表第i个水果的成本价，n[i]代表第i水果能卖出的价钱，假如现在有本钱k，试问最后最多能赚多少钱？ </p>
+<p> 说明：<br>1 每种水果只需买一次，只能卖一次<br>2 数组m、n大小不超过50<br>3 数组元素为正整数，不超过1000 </p>
+<p>输入描述：<br>1 数组m、n<br>2 本钱k<br>备注：<br>1 首行输入逗号分隔的数组m的元素值<br>2 第二行输入逗号分隔的数组n的元素值<br>3 第三行输入本钱</p>
+<p>输出描述：<br>最后的本金</p>
+</blockquote>
+<p>例子</p>
+<blockquote>
+<p>输入<br>    4,2,6,4<br>    5,3,8,7<br>    15<br>输出<br>    22 </p>
+<p> 说明<br>样例计算过程：<br>先买前3种水果，全部卖出，再买第4种水果，再卖出，最后本金变为22。 </p>
+</blockquote>
+<p>思路</p>
+<blockquote>
+<p>本题要求给你一个本金，你要用这本金尽可能的买更多的水果，从而使得最终的本金尽可能的多。每个水果只能买入卖出一次，所以每种水果能够給本金增加的数目都是固定的，所以按照成本升序，成本相同则价格降序对水果进行排序，每次买入一种水果后立刻卖出，获得收益到本金，方便买入后面更高成本的水果。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Fruit</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Fruit</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cost;</span><br><span class="line">    <span class="keyword">int</span> price;</span><br><span class="line">    <span class="keyword">boolean</span> hasBuyed  = <span class="keyword">false</span>;</span><br><span class="line">    BigDecimal gross_profit;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setPrice</span><span class="params">(<span class="keyword">int</span> price)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">this</span>.price = price;</span><br><span class="line">      <span class="keyword">this</span>.gross_profit = BigDecimal.valueOf((price - cost)*<span class="number">1.0</span>/cost);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 按照毛利升序排列，毛利相同，按照成本升序排列</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> o</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span></span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Fruit o)</span> </span>&#123;</span><br><span class="line">      <span class="keyword">if</span> (<span class="keyword">this</span>.cost == o.cost)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.price - o.price;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.cost - o.cost;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    String[] mStrs = scanner.nextLine().split(<span class="string">","</span>);</span><br><span class="line">    String[] nStrs = scanner.nextLine().split(<span class="string">","</span>);</span><br><span class="line">    <span class="keyword">int</span> principal = Integer.parseInt(scanner.nextLine());</span><br><span class="line">    Fruit fruits[] = <span class="keyword">new</span> Fruit[mStrs.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fruits.length; i++) &#123;</span><br><span class="line">      fruits[i] = <span class="keyword">new</span> Fruit();</span><br><span class="line">      fruits[i].cost = Integer.parseInt(mStrs[i]);</span><br><span class="line">      fruits[i].setPrice(Integer.parseInt(nStrs[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    Arrays.sort(fruits);</span><br><span class="line">    <span class="keyword">for</span> (Fruit fruit : fruits) &#123;</span><br><span class="line">        <span class="keyword">if</span> (principal &lt; fruit.cost) &#123;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          principal = principal + fruit.price - fruit.cost;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(principal);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhuming-github.github.io/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/other/" rel="tag">other</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/07/06/%E9%99%90%E6%B5%81%E7%9B%B8%E5%85%B3%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            限流相关总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/06/20/%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%AE%97%E6%B3%95%E4%BB%8B%E7%BB%8D/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">表达式算法介绍</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "6tOO9UzCCPwrAQMrQwFdo1c9-gzGzoHsz",
+    app_key: "7gv1YABDJKYutSvQVAL82lud",
+    path: window.location.pathname,
+    avatar: "robohash",
+    placeholder: "欢迎指点",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2022
+        <i class="ri-heart-fill heart_icon"></i> ZM
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1281098224&amp;web_id=1281098224'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/avatar.jpg" alt="codeFOF"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>支持一下~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+
+</html>
