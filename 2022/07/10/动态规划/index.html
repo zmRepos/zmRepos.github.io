@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">5.4k</span>
+            <span class="post-count">6.1k</span>
         </span>
     </span>
 
@@ -108,7 +108,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">22 分钟</span>
+            <span class="post-count">25 分钟</span>
         </span>
     </span>
 </div>
@@ -365,6 +365,82 @@ var _hmt = _hmt || [];
 <li>一定定义dp数组的时候，要把0位考虑成特殊位置，即下标从1开始而不是0。</li>
 <li>一般数组中所取得下标处都要判断数据是否合法。</li>
 <li>考虑原问题最后一步的行为时，确定自变量，因变量，如果因变量不是想要的dp数组，则把因变量也变为dp数组的一维。</li>
+<li>状态就是问题求解过程中子问题与原问题都涉及的东西，原问题的状态一般由子问题的状态通过运算获得，对于问题中涉及的变化的量，可以将其作为状态数组的一个维度。</li>
+</ul>
+<h2 id="习题练习记录"><a href="#习题练习记录" class="headerlink" title="习题练习记录"></a>习题练习记录</h2><ul>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986669957.png" alt="1657986669957"></p>
+<p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986703364.png" alt="1657986703364"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986726259.png" alt="1657986726259"></p>
+<p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986755264.png" alt="1657986755264"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986773320.png" alt="1657986773320"></p>
+<p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986804090.png" alt="1657986804090"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986830453.png" alt="1657986830453"></p>
+<p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986866275.png" alt="1657986866275"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986886423.png" alt="1657986886423"></p>
+<p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986905427.png" alt="1657986905427"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986935387.png" alt="1657986935387"></p>
+<p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657986979599.png" alt="1657986979599"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657987021249.png" alt="1657987021249"></p>
+</li>
+<li><p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657987057431.png" alt="1657987057431"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657987090831.png" alt="1657987090831"></p>
+<p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657987151958.png" alt="1657987151958"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657987187989.png" alt="1657987187989"></p>
+<p>状态转移方程：<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1657987229640.png" alt="1657987229640"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658019052743.png" alt="1658019052743"></p>
+<p>状态转移方程：dp[i]表示以i结尾的连续子数组的和，则 dp[i] = Math.max(dp[i-1]+array[i], array[i]); </p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658020108413.png" alt="1658020108413"></p>
+<p>$dp[i][j]$表示以i与j为两端的字符串是否是回文字符串，<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658020254140.png" alt="1658020254140"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658020989005.png" alt="1658020989005"></p>
+<p>$dp[i][j]$表示从i到j的最小编辑距离，则<img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658021028125.png" alt="1658021028125"></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658021429626.png" alt="1658021429626"></p>
+<p> <code>dp[i][j]</code>表示str前i个字符和pattern前j个字符是否匹配 ， 只要遍历到的两个字符相等，或是pattern串中为’.’即可匹配，即 <code>dp[i][j] = dp[i-1][j-1]</code>,如果遍历到的模式串的字符为<code>*</code>，则有如下情况</p>
+<ul>
+<li>pattern[j - 2] == ‘.’ || pattern[j - 2] == str[i - 1] =》 <code>dp[i][j] = dp[i-1][j] || dp[i][j−2] ​</code></li>
+<li>其他情况，则让模式串的<code>*</code>前面的字符出现0次，即<code>dp[i][j]=dp[i][j−2]</code></li>
+</ul>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658023208170.png" alt="1658023208170"></p>
+<p><code>dp[i]</code>表示以<code>a[i]</code>结尾的最长的括号子串的长度，则<code>a[i]=&#39;(&#39;</code>时，<code>dp[i] = 0</code>；<code>a[i] = &#39;)&#39;</code>时考虑如下两种情况</p>
+<ul>
+<li>子串形如：‘……()’，则 <code>dp[i] = dp[i-2] + 2</code></li>
+<li>子串形如：  ‘……))’ ，则<code>dp[i] = dp[i-1] + dp[i-dp[i-1]-2] + 2</code></li>
+</ul>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658024516305.png" alt="1658024516305"></p>
+<p><code>dp[i]表示偷到第i家的最大获利值，有两种情况，偷第i家和不偷第i家，则</code>dp[i]=max(dp[i−1],nums[i−1]+dp[i−2]) `。</p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658025629608.png" alt="1658025629608"></p>
+<p>与上题不同的是，这题的第一家和最后一家是相邻的，那么</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">rob</span> <span class="params">(<span class="keyword">int</span>[] nums)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//dp[i]表示长度为i的数组，最多能偷取多少钱</span></span><br><span class="line">        <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[nums.length + <span class="number">1</span>]; </span><br><span class="line">        <span class="comment">//选择偷了第一家</span></span><br><span class="line">        dp[<span class="number">1</span>] = nums[<span class="number">0</span>]; </span><br><span class="line">        <span class="comment">//最后一家不能偷</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; nums.length; i++) </span><br><span class="line">            <span class="comment">//对于每家可以选择偷或者不偷</span></span><br><span class="line">            dp[i] = Math.max(dp[i - <span class="number">1</span>], nums[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>]); </span><br><span class="line">        <span class="keyword">int</span> res = dp[nums.length - <span class="number">1</span>]; </span><br><span class="line">        <span class="comment">//清除dp数组，第二次循环</span></span><br><span class="line">        Arrays.fill(dp, <span class="number">0</span>); </span><br><span class="line">        <span class="comment">//不偷第一家</span></span><br><span class="line">        dp[<span class="number">1</span>] = <span class="number">0</span>; </span><br><span class="line">        <span class="comment">//可以偷最后一家</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= nums.length; i++) </span><br><span class="line">            <span class="comment">//对于每家可以选择偷或者不偷</span></span><br><span class="line">            dp[i] = Math.max(dp[i - <span class="number">1</span>], nums[i - <span class="number">1</span>] + dp[i - <span class="number">2</span>]); </span><br><span class="line">        <span class="comment">//选择最大值</span></span><br><span class="line">        <span class="keyword">return</span> Math.max(res, dp[nums.length]); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658026001098.png" alt="1658026001098"></p>
+<p>状态转移方程：<code>dp[i][0]</code>表示第i天手上不持股的获利值，<code>dp[i][1]</code>表示第i天手上持股的获利值。则</p>
+<p><code>dp[i][0] = Math.max(dp[i - 1][0], dp[i - 1][1] + prices[i]);</code> </p>
+<p><code>dp[i][1] = Math.max(dp[i - 1][1], -prices[i]);</code></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658026189019.png" alt="1658026189019"></p>
+<p>状态转移方程：</p>
+<p><code>dp[i][0]=max(dp[i−1][0],dp[i−1][1]+prices[i])</code></p>
+<p><code>dp[i][1]=max(dp[i−1][1],dp[i−1][0]−prices[i])</code></p>
+</li>
+<li><p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658026316307.png" alt="1658026316307"></p>
+<blockquote>
+<p><img src="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/1658026498436.png" alt="1658026498436"></p>
+</blockquote>
+</li>
 </ul>
  
       <!-- reward -->
