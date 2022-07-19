@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+  
+
+    <head>
+      <meta charset="utf-8" />
+       
+      <meta name="keywords" content="技术,思考,代码,博客" />
+       
+      <meta name="description" content="勇攀技术绝壁" />
+      
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>双指针算法 |  codeFOF</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/images/ayer.png" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?68df874fd78fd8f5cdv45fd470a49b12";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    <link rel="alternate" href="/atom.xml" title="codeFOF" type="application/atom+xml">
+</head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-双指针算法"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  双指针算法
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/07/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/" class="article-date">
+  <time datetime="2022-07-18T10:21:23.000Z" itemprop="datePublished">2022-07-18</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%90%8E%E7%AB%AF-%E5%9F%BA%E7%A1%80/">后端 - 基础</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.5k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">10 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>​    <a id="more"></a></p>
+<p>!!!! 本文章为个人知识成果，转载请注明出处。</p>
+<p>参考文章</p>
+<ul>
+<li>[双指针算法基本原理和实践 - huansky - 博客园 (cnblogs.com)](<a href="https://www.cnblogs.com/huansky/p/13508533.html#:~:text=双指针，指的是在遍历对象的过程中，不是普通的使用单个指针进行访问，而是使用两个相同方向（">https://www.cnblogs.com/huansky/p/13508533.html#:~:text=双指针，指的是在遍历对象的过程中，不是普通的使用单个指针进行访问，而是使用两个相同方向（</a> 快慢指针 ）或者相反方向（ 对撞指针 ）的指针进行扫描，从而达到相应的目的。.,换言之，双指针法充分使用了数组有序这一特征，从而在某些情况下能够简化一些运算。. 在 LeetCode 题库中，关于双指针的问题还是挺多的。. 双指针.) </li>
+</ul>
+<h2 id="双指针算法"><a href="#双指针算法" class="headerlink" title="双指针算法"></a>双指针算法</h2><p> 双指针，指的是在遍历对象的过程中，不是普通的使用单个指针进行访问，而是使用两个相同方向（<em>快慢指针</em>）或者相反方向（<em>对撞指针</em>）的指针进行扫描 。</p>
+<p>双指针根据指针的方向又可以分为：</p>
+<ol>
+<li>对撞指针</li>
+<li>快慢指针</li>
+</ol>
+<p>双指针算法常常用来结合滑动窗口等算法优化暴力解法。</p>
+<h3 id="对撞指针"><a href="#对撞指针" class="headerlink" title="对撞指针"></a>对撞指针</h3><p> 对撞指针是指在线性表遍历时，将指向最左侧的索引定义为<code>左指针(left)</code>，最右侧的定义为<code>右指针(right)</code>，然后从两头向中间进行遍历。 </p>
+<h4 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h4><ol>
+<li><h3 id="反转字符串"><a href="#反转字符串" class="headerlink" title="反转字符串"></a><a href="https://leetcode-cn.com/problems/reverse-string/">反转字符串</a></h3></li>
+</ol>
+<blockquote>
+<p>编写一个函数，其作用是将输入的字符串反转过来。输入字符串以字符数组 char[] 的形式给出。不要给另外的数组分配额外的空间，你必须原地修改输入数组、使用 O(1) 的额外空间解决这一问题。</p>
+<p>tip: 原地是指：算法开辟的空间必须是固定的，不允许随着输入规模的改动而改动。</p>
+<p>思路: 对撞指针，从两头分别读取并交换，直到撞起来。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">reverseString</span><span class="params">(<span class="keyword">char</span>[] s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (s.length == <span class="number">0</span> || s.length == <span class="number">1</span>) <span class="keyword">return</span> ;</span><br><span class="line">        <span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> right = s.length-<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span> (left &lt;right) &#123;</span><br><span class="line">            <span class="keyword">char</span> temp = s[left];</span><br><span class="line">            s[left++] = s[right];</span><br><span class="line">            s[right--] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+</blockquote>
+<p>2、盛水最多的容器</p>
+<blockquote>
+<p><img src="/2022/07/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/1658239496827.png" alt="1658239496827"></p>
+<p>思路：题目要求的是盛水最多的容器，显然也就是求构成的面积最大的两个数组高度。根据水桶定理，一个水桶，较短的一条边决定了最大的水量，那么直接用较短边的高度*两条边之间的距离就是这个桶所能盛放的最大的水的体积。所以我们定义两个指针，分别指向数组的两端，从两端向中间靠拢，每次移动就移动短的那条边，因为如果你移动长的那条边，那么加入新移动到的高度比原本短的更短，那么面积变小；如果新移动到的边比原本短的更高，那么面积也会变小，因此长度边短了，但是决定桶的容量的是短板的高度，而短板的高度不变，所以移动长边后的面积肯定是变小的。因此每次比较两条边之后，移动短的那条边。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span> <span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> maxArea = <span class="number">0</span>,tempArea=<span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> left = <span class="number">0</span>,right=height.length-<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">while</span> (left&lt;right)&#123;</span><br><span class="line">    tempArea = Math.min(height[left] , height[right]) * (right - left);</span><br><span class="line">    <span class="keyword">if</span> (height[left]&gt;=height[right])&#123;</span><br><span class="line">      right--;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      left++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (tempArea &gt; maxArea)&#123;</span><br><span class="line">      maxArea = tempArea;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> maxArea;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>3、接雨水问题</p>
+<p><img src="/2022/07/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/1658240889621.png" alt="1658240889621"></p>
+<blockquote>
+<p>思路：这题思路与上题类似。首先，桶中能盛放多少水有桶的两条边的较小的那条边决定，那么我们可以把数组的每个高度看成桶的边。对于任意两条边，我们可以移动短边，来计算如果这个桶中没有更高的突起的情况下的盛水量，如果有更高的突起，那么更高的突起和原本桶的更高的边构成一个新的桶，对于这个新的桶，也可以采用如上算法求出接水量。由此我们定义两个指针分别从数组的两端相向而行，同时当前正在接水的桶的最短边的长度，然后移动短边，移动过程中统计，当前接水的桶可以盛放的水量，当找到更高的边后，形成一个新的桶，重复如上操作。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">long</span> <span class="title">maxWater</span> <span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 类似于盛水最多的容器那题，定义两个指针，分别指向桶的两个边界</span></span><br><span class="line">  <span class="keyword">int</span> left = <span class="number">0</span>, right = arr.length-<span class="number">1</span>;</span><br><span class="line">  <span class="keyword">int</span> totalWaterVolume = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> minHeight = Math.min(arr[left],arr[right]);</span><br><span class="line">  <span class="keyword">while</span> (left&lt;right)&#123;</span><br><span class="line">    <span class="keyword">if</span> (arr[left] &lt;= arr[right]) &#123;</span><br><span class="line">      left++;</span><br><span class="line">      <span class="keyword">if</span> (arr[left] &gt;= minHeight) &#123;</span><br><span class="line">        minHeight = Math.min(arr[left],arr[right]);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        totalWaterVolume = totalWaterVolume + (minHeight-arr[left]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">      right--;</span><br><span class="line">      <span class="keyword">if</span> (arr[right] &gt;= minHeight) &#123;</span><br><span class="line">        minHeight = Math.min(arr[left],arr[right]);</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        totalWaterVolume = totalWaterVolume + (minHeight - arr[right]);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 低的边界那边先行，遇到比高的边界还高的或者一样的则移动高边界的指针。移动过程中统计桶盛水的多少。直到两个指针相遇。</span></span><br><span class="line">  <span class="keyword">return</span> totalWaterVolume;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="快慢指针"><a href="#快慢指针" class="headerlink" title="快慢指针"></a>快慢指针</h3><p> 两个指针从同一侧开始遍历数组，将这两个指针分别定义为<code>快指针（fast）</code>和<code>慢指针（slow）</code>，两个指针以不同的策略移动，直到两个指针的值相等（或其他特殊条件）为止，如 fast 每次增长两个，slow 每次增长一个。 可以用来判断链表是否为环等实际问题中。这里的快慢指针也可以同样的速率，但是起点不同的两个指针。</p>
+<h4 id="例题-1"><a href="#例题-1" class="headerlink" title="例题"></a>例题</h4><ol>
+<li><h3 id="判定链表中是否含有环"><a href="#判定链表中是否含有环" class="headerlink" title="判定链表中是否含有环"></a>判定链表中是否含有环</h3><blockquote>
+<p>单链表的特点是每个节点只知道下一个节点，所以一个指针的话无法判断链表中是否含有环的。</p>
+<p>如果链表中不包含环，那么这个指针最终会遇到空指针 null 表示链表到头了，这还好说，可以判断该链表不含环。 但是如果链表中含有环，那么这个指针就会陷入死循环，因为环形数组中没有 null 指针作为尾部节点。 </p>
+<p>思路： 用两个指针，一个每次前进两步，一个每次前进一步。如果不含有环，跑得快的那个指针最终会遇到 null，说明链表不含环；如果含有环，快指针最终会和慢指针相遇，说明链表含有环。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">hasCycle</span><span class="params">(ListNode head)</span> </span>&#123;</span><br><span class="line">    ListNode fast, slow;</span><br><span class="line">    fast = slow = head;</span><br><span class="line">    <span class="keyword">while</span>(fast != <span class="keyword">null</span> &amp;&amp; fast.next != <span class="keyword">null</span>) &#123;</span><br><span class="line">        fast = fast.next.next;</span><br><span class="line">        slow = slow.next;</span><br><span class="line">        <span class="keyword">if</span> (fast == slow)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="2">
+<li>最长无重复子数组</li>
+</ol>
+<blockquote>
+<p><img src="/2022/07/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/1658241872171.png" alt="1658241872171"></p>
+<p>思路：利用滑动窗口、哈希表（这里用位图代替）、双指针算法大杂烩进行解题。思路是，首先找出一个滑动窗口，这个滑动窗口内的数字都是不重复的，然后依次向后移动，如果新加入窗口的数字在位图中已经有了，也就是滑动窗口中已经有了，那么移动滑动窗口左端的指针，直到将已有的那个数字退出了滑动窗口。移动的过程中要注意修改位图中的记录。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxLength</span> <span class="params">(<span class="keyword">int</span>[] arr)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> left,right=left=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> maxlength = <span class="number">1</span>;</span><br><span class="line">    BitSet bits = <span class="keyword">new</span> BitSet();</span><br><span class="line">    <span class="keyword">while</span> (right&lt;arr.length)&#123;</span><br><span class="line">        <span class="keyword">if</span> (bits.get(arr[right]))&#123;</span><br><span class="line">            maxlength = Math.max(maxlength,right-left);</span><br><span class="line">            <span class="keyword">while</span> (arr[left]!=arr[right])&#123;</span><br><span class="line">                bits.clear(arr[left++]);</span><br><span class="line">            &#125;</span><br><span class="line">            bits.clear(arr[left++]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            bits.set(arr[right++]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    maxlength = Math.max(maxlength,right-left);</span><br><span class="line">    <span class="keyword">return</span> maxlength;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="3">
+<li>合并区间</li>
+</ol>
+<blockquote>
+<p><img src="/2022/07/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/1658242215971.png" alt="1658242215971"></p>
+<p>思路：首先题目没说输入的区间是有顺序的，那么我们就要将其顺序化，这里我们先按照区间开始值排序，相同的则按照区间结束值排序，都是按照升序排序。排完序之后，我们可以定义一个快指针，一个慢指针，快指针向后找区间，如果找到的区间开始值比已经合并后的区间的结束值小，那么说明这个区间和已经合并后的上个区间相交，就把该区间合并到上个区间中，同时改变区间的结束值；如果找到的区间的开始值，比上个区间的结束大，则说明已经没有区间和上个区间相交了。则慢指针指向放入当前找到的区间，并将其放入到合并后的区间列表中。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> ArrayList&lt;Interval&gt; <span class="title">merge</span><span class="params">(ArrayList&lt;Interval&gt; intervals)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对间隔数组进行排序</span></span><br><span class="line">    intervals.sort(<span class="keyword">new</span> Comparator&lt;Interval&gt;() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Interval o1, Interval o2)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (o1.start == o2.start) &#123;</span><br><span class="line">                <span class="keyword">return</span> o1.end - o2.end;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> o1.start - o2.start;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">// 双指针从头到尾遍历排序后的数组</span></span><br><span class="line">    <span class="keyword">int</span> latter = <span class="number">0</span>, former;</span><br><span class="line">    ArrayList&lt;Interval&gt; result = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="keyword">while</span> (latter &lt; intervals.size()) &#123;</span><br><span class="line">        former = latter;</span><br><span class="line">        <span class="keyword">int</span> maxEnd = intervals.get(former).end;</span><br><span class="line">        <span class="keyword">while</span> (former &lt; intervals.size() &amp;&amp; maxEnd &gt;= intervals.get(former).start) &#123;</span><br><span class="line">            <span class="keyword">if</span> (intervals.get(former).end &gt; maxEnd) &#123;</span><br><span class="line">                maxEnd = intervals.get(former).end;</span><br><span class="line">            &#125;</span><br><span class="line">            former++;</span><br><span class="line">        &#125;</span><br><span class="line">        result.add(<span class="keyword">new</span> Interval(intervals.get(latter).start, maxEnd));</span><br><span class="line">        latter = former;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<ol start="4">
+<li>最小覆盖子串</li>
+</ol>
+<blockquote>
+<p><img src="/2022/07/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/1658243625815.png" alt="1658243625815"></p>
+<p>思路：滑动窗口算法，结合快慢指针优化暴力解法。</p>
+<p>![](%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/20220719231215 00_00_00-00_01_13.gif)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//检查是否有小于0的</span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span>[] hash)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; hash.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (hash[i] &lt; <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">public</span> String <span class="title">minWindow</span> <span class="params">(String S, String T)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = S.length() + <span class="number">1</span>;</span><br><span class="line">    <span class="comment">//记录目标字符串T的字符个数</span></span><br><span class="line">    <span class="keyword">int</span>[] hash = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">128</span>];</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; T.length(); i++)</span><br><span class="line">    <span class="comment">//初始化哈希表都为负数，找的时候再加为正</span></span><br><span class="line">        hash[T.charAt(i)] -= <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> slow = <span class="number">0</span>, fast = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//记录左右区间</span></span><br><span class="line">    <span class="keyword">int</span> left = -<span class="number">1</span>, right = -<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(; fast &lt; S.length(); fast++)&#123;</span><br><span class="line">        <span class="keyword">char</span> c = S.charAt(fast);</span><br><span class="line">        <span class="comment">//目标字符匹配+1</span></span><br><span class="line">        hash[c]++;</span><br><span class="line">        <span class="comment">//没有小于0的说明都覆盖了，缩小窗口</span></span><br><span class="line">        <span class="keyword">while</span>(check(hash))&#123;</span><br><span class="line">            <span class="comment">//取最优解</span></span><br><span class="line">            <span class="keyword">if</span>(cnt &gt; fast - slow + <span class="number">1</span>)&#123; </span><br><span class="line">                cnt = fast - slow + <span class="number">1</span>;  </span><br><span class="line">                left = slow;</span><br><span class="line">                right = fast;</span><br><span class="line">            &#125;</span><br><span class="line">            c = S.charAt(slow);</span><br><span class="line">            <span class="comment">//缩小窗口的时候减1</span></span><br><span class="line">            hash[c]--;</span><br><span class="line">            <span class="comment">//窗口缩小</span></span><br><span class="line">            slow++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//找不到的情况</span></span><br><span class="line">    <span class="keyword">if</span>(left == -<span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">return</span> S.substring(left, right + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ol>
+ 
+      <!-- reward -->
+      
+      <div id="reword-out">
+        <div id="reward-btn">
+          打赏
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://zhuming-github.github.io/2022/07/18/%E5%8F%8C%E6%8C%87%E9%92%88%E7%AE%97%E6%B3%95/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2022/07/18/%E5%AD%A6%E4%B9%A0%E6%B3%95%E6%80%BB%E7%BB%93/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            学习法总结
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2022/07/10/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">动态规划</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.staticfile.org/valine/1.4.16/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "6tOO9UzCCPwrAQMrQwFdo1c9-gzGzoHsz",
+    app_key: "7gv1YABDJKYutSvQVAL82lud",
+    path: window.location.pathname,
+    avatar: "robohash",
+    placeholder: "欢迎指点",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2019-2022
+        <i class="ri-heart-fill heart_icon"></i> ZM
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></span>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1281098224&amp;web_id=1281098224'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/avatar.jpg" alt="codeFOF"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>支持一下~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+ 
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+ 
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+ 
+<script src="/js/dz.js"></script>
+ 
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    <div id="music">
+    
+    
+    
+    <iframe frameborder="no" border="1" marginwidth="0" marginheight="0" width="200" height="52"
+        src="//music.163.com/outchain/player?type=2&id=478507889&auto=0&height=32"></iframe>
+</div>
+
+<style>
+    #music {
+        position: fixed;
+        right: 15px;
+        bottom: 0;
+        z-index: 998;
+    }
+</style>
+    
+    
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/Epsilon2.1.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":80,"vOffset":-50},"mobile":{"show":false},"log":false,"tagMode":false});</script></body>
+
+</html>

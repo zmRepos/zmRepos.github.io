@@ -174,6 +174,194 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1062"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1062/"
+    >PTA-Basic-1062</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/07/PTA-Basic-1062/" class="article-date">
+  <time datetime="2019-10-07T12:41:33.000Z" itemprop="datePublished">2019-10-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>一个分数一般写成两个整数相除的形式：N/M，其中 M 不为0。最简分数是指分子和分母没有公约数的分数表示形式。</p>
+<p>现给定两个不相等的正分数 N<br>​1<br>​​ /M<br>​1<br>​​  和 N<br>​2<br>​​ /M<br>​2<br>​​ ，要求你按从小到大的顺序列出它们之间分母为 K 的最简分数。</p>
+<p>输入格式：</p>
+<p>输入在一行中按 N/M 的格式给出两个正分数，随后是一个正整数分母 K，其间以空格分隔。题目保证给出的所有整数都不超过 1000。</p>
+<p>输出格式：<br>在一行中按 N/M 的格式列出两个给定分数之间分母为 K 的所有最简分数，按从小到大的顺序，其间以 1 个空格分隔。行首尾不得有多余空格。题目保证至少有 1 个输出。</p>
+<p>输入样例：</p>
+<pre><code>7/18 13/20 12</code></pre><p>输出样例：</p>
+<pre><code>5/12 7/12</code></pre><p>分析:</p>
+<pre><code>此题不能使用浮点数的比较，而是使用分数的比较性质。
+求两个数字的最大公约数，如果存在就跳此数。</code></pre><p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+int check(int n,int m){//求最大公约数的最简单方法
+    if (m)//分母不为0
+                while ((n %= m) &amp;&amp; (m %= n)) ;
+        return n + m;
+}
+int main()
+{
+    int n1,m1,n2,m2,k,tmp;
+    scanf(&quot;%d/%d %d/%d %d&quot;,&amp;n1,&amp;m1,&amp;n2,&amp;m2,&amp;k);
+    if(n1*m2&gt;n2*m1){//如果输入的两个分数大小不为先大后小
+         tmp=n1;
+         n1=n2;
+         n2=tmp;
+         tmp=m1;
+         m1=m2;
+         m2=tmp;
+    }
+    int time=0;
+    tmp=0;
+    for(int i=n1*k/m1+1;i*m2&lt;n2*k;i++){//此处不加1可能会导致多输出一个不合适的结果。
+        if(check(i,k)==1){//之间没有公约数（除了一以外）
+            printf(&quot;%s%d/%d&quot;,time++?&quot; &quot;:&quot;&quot;,i,k);//从0开始计数为0不输出空格，其他输出。
+        }
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1061"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1061/"
+    >PTA-Basic-1061</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/07/PTA-Basic-1061/" class="article-date">
+  <time datetime="2019-10-07T12:41:23.000Z" itemprop="datePublished">2019-10-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>判断题的评判很简单，本题就要求你写个简单的程序帮助老师判题并统计学生们判断题的得分。</p>
+<p>输入格式：<br>输入在第一行给出两个不超过 100 的正整数 N 和 M，分别是学生人数和判断题数量。第二行给出 M 个不超过 5 的正整数，是每道题的满分值。第三行给出每道题对应的正确答案，0 代表“非”，1 代表“是”。随后 N 行，每行给出一个学生的解答。数字间均以空格分隔。</p>
+<p>输出格式：</p>
+<p>按照输入的顺序输出每个学生的得分，每个分数占一行。</p>
+<p>输入样例：</p>
+<pre><code>3 6
+2 1 3 3 4 5
+0 0 1 0 1 1
+0 1 1 0 0 1
+1 0 1 0 1 0
+1 1 0 0 1 1</code></pre><p>输出样例：</p>
+<pre><code>13
+11
+12</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int n=0,m=0;
+    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
+    int score[2][m];
+    int stu[n];
+    int k=0;
+    int x=0;
+    for(int i=0;i&lt;n+2;i++){
+            stu[x]=0;
+        for(int j=0;j&lt;m;j++){
+                scanf(&quot;%d&quot;,&amp;k);
+            if(i==0){
+            score[0][j]=k;
+        }else if(i==1){
+            score[1][j]=k;
+        }else{
+            if(k==score[1][j]){
+                stu[x]+=score[0][j];
+            }
+        }
+        }
+        if(i!=0&amp;&amp;i!=1){
+            x++;
+        }
+    }
+
+    for(int i=0;i&lt;x;i++){
+            printf(&quot;%d\n&quot;,stu[i]);
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1060"
   class="article article-type-post"
   itemscope
@@ -234,286 +422,6 @@ int main(void){
     printf(&quot;%d&quot;,i);
     return 0;
 }</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1059"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1059/"
-    >PTA-Basic-1059</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1059/" class="article-date">
-  <time datetime="2019-10-07T12:40:59.000Z" itemprop="datePublished">2019-10-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：<br>C 语言竞赛是浙江大学计算机学院主持的一个欢乐的竞赛。既然竞赛主旨是为了好玩，颁奖规则也就制定得很滑稽：</p>
-<p>0、冠军将赢得一份“神秘大奖”（比如很巨大的一本学生研究论文集……）。<br>1、排名为素数的学生将赢得最好的奖品 —— 小黄人玩偶！<br>2、其他人将得到巧克力。<br>给定比赛的最终排名以及一系列参赛者的 ID，你要给出这些参赛者应该获得的奖品。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​4<br>​​ ），是参赛者人数。随后 N 行给出最终排名，每行按排名顺序给出一位参赛者的 ID（4 位数字组成）。接下来给出一个正整数 K 以及 K 个需要查询的 ID。</p>
-<p>输出格式：<br>对每个要查询的 ID，在一行中输出 ID: 奖品，其中奖品或者是 Mystery Award（神秘大奖）、或者是 Minion（小黄人）、或者是 Chocolate（巧克力）。如果所查 ID 根本不在排名里，打印 Are you kidding?（耍我呢？）。如果该 ID 已经查过了（即奖品已经领过了），打印 ID: Checked（不能多吃多占）。</p>
-<p>输入样例：</p>
-<pre><code>6
-1111
-6666
-8888
-1234
-5555
-0001
-6
-8888
-0001
-1111
-2222
-8888
-2222</code></pre><p>输出样例：</p>
-<pre><code>8888: Minion
-0001: Chocolate
-1111: Mystery Award
-2222: Are you kidding?
-8888: Checked
-2222: Are you kidding?</code></pre><p>分析：题目要求根据输入的排名给出相应的奖品</p>
-<pre><code>冠军-----Mystery Award
-素数排名-----Minion
-其他--------Chocolate
-已经输入过一次的人-----Checked
-没有的人------Are you kidding?
-
-
-#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;string.h&gt;
-int pops[2][1000000000];//定义一个二维数组
-int isPrime(int n){//判断一个数是否是素数的函数第一行存储排名（从1开始不从0开始因为初始化数组是每个都是0）
-    if(n==2){
-        return 1;
-    }else{
-        if(n%2==0){
-            return 0;
-        }else{
-            for(int i=3;i&lt;sqrt(n+1);i+=2){
-                if(n%i==0){
-                    return 0;
-                }
-            }
-            return 1;
-        }
-    }
-}
-int main(void){
-    int n=0;
-    scanf(&quot;%d&quot;,&amp;n);
-    int m=0;
-    for(int i=1;i&lt;=n;i++){
-        scanf(&quot;%d&quot;,&amp;m);
-        pops[0][m]=i;//第一行存储排名，第二行存储查询的次数
-    }
-    scanf(&quot;%d&quot;,&amp;m);
-    int k=0;
-    for(int i=0;i&lt;m;i++){
-        scanf(&quot;%d&quot;,&amp;k);
-        printf(&quot;%04d: &quot;,k);
-        if(pops[0][k]==0){//如果输入的数字对应的排名是0就表示选手中没有这个人
-            printf(&quot;Are you kidding?&quot;);
-        }else if(pops[1][k]==0){//否则如果查询次数为0，即一次都没有看过此人
-            if(pops[0][k]==1){//如果排名为1
-            printf(&quot;Mystery Award&quot;);
-        }else if(isPrime(pops[0][k])){//如果排名是素数
-            printf(&quot;Minion&quot;);
-        }else{
-            printf(&quot;Chocolate&quot;);//其他
-        }
-        pops[1][k]++;//将此人的查询次数加1
-        }else{//下列就是查询次数超过1的输出
-            printf(&quot;Checked&quot;);
-        }
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1058"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1058/"
-    >PTA-Basic-1058</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1058/" class="article-date">
-  <time datetime="2019-10-07T12:40:40.000Z" itemprop="datePublished">2019-10-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>批改多选题是比较麻烦的事情，本题就请你写个程序帮助老师批改多选题，并且指出哪道题错的人最多。</p>
-<p>输入格式：<br>输入在第一行给出两个正整数 N（ ≤ 1000）和 M（≤ 100），分别是学生人数和多选题的个数。随后 M 行，每行顺次给出一道题的满分值（不超过 5 的正整数）、选项个数（不少于 2 且不超过 5 的正整数）、正确选项个数（不超过选项个数的正整数）、所有正确选项。注意每题的选项从小写英文字母 a 开始顺次排列。各项间以 1 个空格分隔。最后 N 行，每行给出一个学生的答题情况，其每题答案格式为 (选中的选项个数 选项1 ……)，按题目顺序给出。注意：题目保证学生的答题情况是合法的，即不存在选中的选项数超过实际选项数的情况。</p>
-<p>输出格式：<br>按照输入的顺序给出每个学生的得分，每个分数占一行。注意判题时只有选择全部正确才能得到该题的分数。最后一行输出错得最多的题目的错误次数和编号（题目按照输入的顺序从 1 开始编号）。如果有并列，则按编号递增顺序输出。数字间用空格分隔，行首尾不得有多余空格。如果所有题目都没有人错，则在最后一行输出 Too simple。</p>
-<p>输入样例：</p>
-<pre><code>3 4 
-3 4 2 a c
-2 5 1 b
-5 3 2 b c
-1 5 4 a b d e
-(2 a c) (2 b d) (2 a c) (3 a b e)
-(2 a c) (1 b) (2 a b) (4 a b d e)
-(2 b d) (1 e) (2 b c) (4 a b c d)</code></pre><p>输出样例：</p>
-<pre><code>6
-5
-2 
-2 3 4</code></pre><p>分析：</p>
-<p>定义一个非常大的数组存储所有可能的题目答案，定义一个非常大的数组存储每题的得分，定义一个非常大的数组存储每题出错的次数，定义一个非常大题目存储媒体正确答案的个数，定义一个非常大的学生数组。<br>在输入是就开始计算每一位学生的得分以及此题的出错次数。<br>最后输出每一位学生的分数，以及最高出错次数，和对应的题目（按升序排列）。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;stdlib.h&gt;
-#include&lt;string.h&gt;
-int timu[100][5]={0};//定义一个二维数组存储题目正确的答案初始化每个都是0（表示错误）
-int score[100]={0};//存储每一题目的得分
-int time[100]={0};//存储每个题目的出错次数
-int righttime[100]={0}; //存储每个题目标准答案的个数
-int stu[1001]={0};//存储每个学生的得分
-int main(void){
-    int n=0,m=0;
-    scanf(&quot;%d %d&quot;,&amp;n,&amp;m);//输入学生数，与题目数。
-    for(int i=0;i&lt;m;i++){
-        int x=0;
-        scanf(&quot;%d %*d %d&quot;,&amp;score[i],&amp;righttime[i]);//将每一个题目的分数存储到数组中去，并存储正确答案的个数以便下面计算答对的题目数是否为全部的正确数目
-        char ch;
-        while((ch=getchar())!=&apos;\n&apos;){//此处开始读取正确的选项。如果读到a就将timu数组的第0为赋值为1.
-            if(ch&lt;=&apos;e&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
-                int k=ch-&apos;a&apos;;
-                timu[i][k]=1;
-            }
-        }
-    }
-    int max=0; 
-    for(int i=0;i&lt;n;i++){
-        int t=0;
-        char ch;
-        int step0=0;//计算输入的选项的个数
-        int step1=0;//计算选对的个数
-        while((ch=getchar())!=&apos;\n&apos;){
-            if(ch==&apos;(&apos;){ //读到这个就代表开始了新的一个题目，要将选项数目，答对数目初始化为0.
-                step0=0;
-                step1=0;
-                continue;
-            }else if(ch==&apos; &apos;){
-                continue;
-            }else if(ch&lt;=&apos;5&apos;&amp;&amp;ch&gt;=&apos;0&apos;){
-                step0=ch-&apos;0&apos;; //计算选项数目
-            }else{
-                if(ch==&apos;)&apos;){//如果输入的选项都对但是总数不达标也不对。
-                    if(step0==step1&amp;&amp;step0==righttime[t]){//对的步数符合初始化步数 
-                        stu[i]+=score[t];//将分数加到第i为学生上去
-                    }else{//否则此题就出错了
-                        time[t]++;//这个题目的出错次数加1
-                        if(time[t]&gt;max){
-                            max=time[t];//如果比出错次数最大值大就交换值
-                        }
-                    }
-                    t++;//下一题 
-                }
-                if(ch&lt;=&apos;e&apos;&amp;&amp;ch&gt;=&apos;a&apos;){
-                    int k=ch-&apos;a&apos;;
-                    if(timu[t][k]){//输入的选项对应的数组下标有值表示输入的答案是正确的
-                        step1++;//对的步数加1 
-                    }
-                }
-            }
-        }
-    }
-    for(int i=0;i&lt;n;i++){
-        printf(&quot;%d\n&quot;,stu[i]);//输出每一位学生的得分
-    }
-    if(max&gt;0){//如果最大值不为0就要统计出错的题目
-    printf(&quot;%d&quot;,max);
-        for(int i=0;i&lt;m;i++){
-            if(time[i]==max){
-                printf(&quot; %d&quot;,i+1);
-            }
-        }
-    }else{//否则直接输出
-        printf(&quot;Too simple&quot;);
-    }
-    return 0;
-} </code></pre> 
       <!-- reward -->
       
     </div>

@@ -174,6 +174,140 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-二叉树的前序遍历"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/12/01/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/"
+    >二叉树的前序遍历</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/12/01/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/" class="article-date">
+  <time datetime="2020-12-01T14:33:39.000Z" itemprop="datePublished">2020-12-01</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%9F%BA%E7%A1%80/">基础</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>##二叉树的前序遍历</p>
+<p><img src="/2020/12/01/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86%5Ca.PNG" alt></p>
+<h2 id="递归（我使用）"><a href="#递归（我使用）" class="headerlink" title="递归（我使用）"></a>递归（我使用）</h2><p>这题就是简单的二叉树先序遍历算法的使用。先序遍历为DLR顺序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">		<span class="keyword">private</span> List&lt;Integer&gt; results= <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">	    <span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">preorderTraversal</span><span class="params">(TreeNode root)</span> </span>&#123;</span><br><span class="line">	        DLR(root);</span><br><span class="line">	        <span class="keyword">return</span> results;</span><br><span class="line">	    &#125;</span><br><span class="line">		<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">DLR</span><span class="params">(TreeNode root)</span></span>&#123;</span><br><span class="line">			<span class="keyword">if</span>(root==<span class="keyword">null</span>)&#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			results.add(root.val);</span><br><span class="line">			DLR(root.left);</span><br><span class="line">			DLR(root.right);			</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间复杂度：O(n):因为每个节点都被访问了一次，所以执行次数的量级为O(n)</p>
+<p>空间复杂度：O(n):因为<strong>递归算法的空间复杂度 = 每次递归的空间复杂度 * 递归深度</strong> ，所以空间复杂度最小为O($log_2  n$),最坏的情况下，树变成了链表，空间复杂度为O($n$)</p>
+<h2 id="迭代"><a href="#迭代" class="headerlink" title="迭代"></a>迭代</h2><p>利用栈将递归转化为迭代，</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LeetCode/" rel="tag">LeetCode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%88/" rel="tag">栈</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%A0%91/" rel="tag">树</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-Oracle密码过期"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/"
+    >Oracle密码过期</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/" class="article-date">
+  <time datetime="2020-11-27T14:31:50.000Z" itemprop="datePublished">2020-11-27</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a> / <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/DBMS/">DBMS</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <a id="more"></a>
+
+<p><img src="/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F%5COracle.PNG" alt="Oracle"></p>
+<p>原因：Oracle11G创建用户时缺省密码过期限制是180天（即6个月），如果超过180天用户密码未做修改则该用户无法登录</p>
+<p>解决：</p>
+<p>使用PL/SQL进入操作界面</p>
+<p>执行SQL语句如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> profile <span class="keyword">default</span> <span class="keyword">limit</span> password_life_time   <span class="keyword">unlimited</span>;</span><br><span class="line"><span class="keyword">commit</span>;</span><br></pre></td></tr></table></figure>
+
+<p>查看是否成功将密码的期限设置无限：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> dba_profiles <span class="keyword">where</span> profile=<span class="string">'DEFAULT'</span> <span class="keyword">and</span> resource_name=<span class="string">'PASSWORD_LIFE_TIME'</span>;</span><br></pre></td></tr></table></figure>
+
+<p>结果：</p>
+<p><img src="/2020/11/27/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F/Oracle%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F%5Cimage-20201030001317871.png" alt="image-20201030001317871"></p>
+<p>注意要修改用户密码：不然用户无法正常连接数据库</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> scott indentified <span class="keyword">by</span> xxxxxxx(xxxxxxxx为你的密码);</span><br></pre></td></tr></table></figure>
+
+<p>如果用户在修改密码后处于被锁定状态，执行以下SQL语句取消锁定状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">user</span> scott <span class="keyword">account</span> <span class="keyword">unlock</span></span><br></pre></td></tr></table></figure>
+
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Oracle/" rel="tag">Oracle</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-小程序中使用antv入门"
   class="article article-type-post"
   itemscope
@@ -220,120 +354,6 @@ var _hmt = _hmt || [];
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/antv/" rel="tag">antv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/" rel="tag">微信小程序</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-Node安装"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/08/27/Node%E5%AE%89%E8%A3%85/"
-    >Node安装</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/08/27/Node%E5%AE%89%E8%A3%85/" class="article-date">
-  <time datetime="2020-08-27T12:26:31.000Z" itemprop="datePublished">2020-08-27</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a> / <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/Node/">Node</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="Node与npm安装"><a href="#Node与npm安装" class="headerlink" title="Node与npm安装"></a>Node与npm安装</h1> 
-      <a class="article-more-link" href="/2020/08/27/Node%E5%AE%89%E8%A3%85/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Node/" rel="tag">Node</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-LeetCode-1544"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/08/23/LeetCode-1544/"
-    >LeetCode-1544</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2020/08/23/LeetCode-1544/" class="article-date">
-  <time datetime="2020-08-22T23:16:49.000Z" itemprop="datePublished">2020-08-23</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/LeetCode/">LeetCode</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h1 id="整理字符串"><a href="#整理字符串" class="headerlink" title="整理字符串"></a>整理字符串</h1> 
-      <a class="article-more-link" href="/2020/08/23/LeetCode-1544/"
-        >阅读更多...</a
-      >
-       
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li></ul>
 
     </footer>
   </div>

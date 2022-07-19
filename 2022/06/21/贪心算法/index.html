@@ -99,7 +99,7 @@ var _hmt = _hmt || [];
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">4.6k</span>
+            <span class="post-count">4.7k</span>
         </span>
     </span>
 
@@ -125,21 +125,21 @@ var _hmt = _hmt || [];
        
   <p>​    <a id="more"></a></p>
 <p>!!!! 本文章为个人知识成果，转载请注明出处。</p>
-<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><p>依据选择的贪心策略，只注重局部最优解，以期望取得全局最优解。**</p>
+<h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><h2 id="理论基础"><a href="#理论基础" class="headerlink" title="理论基础"></a>理论基础</h2><p>依据选择的贪心策略，只注重局部最优解，以期望取得全局最优解。</p>
 <p>有时局部最优可以推出全局最优，但是有时局部最优不可以推出全局最优，关键是如何看出局部最优能否推出全局最优，这种没有固定的套路，只能<strong>自己进行简单的推导，然后自己举反例证明贪心不行，如果举不出反例，则贪心算法的反例则证明此贪心算法可行</strong>。</p>
 <h2 id="贪心算法适用问题的特性"><a href="#贪心算法适用问题的特性" class="headerlink" title="贪心算法适用问题的特性"></a>贪心算法适用问题的特性</h2><ul>
-<li><p>最优子结构性质</p>
+<li><p>最优子结构性质：一个问题的最优解包含了其子问题的最优解</p>
 </li>
-<li><p>贪心选择性质：所有问题的整体最优解，可以通过一系列的局部最优解的选择来达到</p>
+<li><p>贪心选择性质：所有问题的整体最优解，可以通过一系列的局部最优解的选择来达成。</p>
 <blockquote>
-<p>首先假设一个该问题的最优解，然后假定该最优解的首元素不是贪心选择所需要的袁旭，证明将其首元素替换成贪心选择所需元素后的解，依然是最优解。然后适用数学归纳法证明每一个  </p>
+<p>首先假设一个该问题的最优解，然后假定该最优解的首元素不是贪心选择所需要的元素，证明将其首元素替换成贪心选择所需元素后的解，依然是最优解。然后使用数学归纳法证明每一个 。</p>
 </blockquote>
 </li>
 </ul>
 <h2 id="贪心算法求解步骤"><a href="#贪心算法求解步骤" class="headerlink" title="贪心算法求解步骤"></a>贪心算法求解步骤</h2><ol>
 <li>分析问题，设计数据找规律 ，找到合适的贪心策略</li>
 <li>证明使用此种贪心选择策略的贪心算法的可行性，证明方法如上。</li>
-<li>依据贪心策略，对每一个子问题求解出局部最优解</li>
+<li>依据贪心策略，对每一个子问题求解出局部最优解。</li>
 </ol>
 <h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><h3 id="活动选择问题"><a href="#活动选择问题" class="headerlink" title="活动选择问题"></a>活动选择问题</h3><p><img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/1655820657493.png" alt="1655820657493"></p>
 <p>解决：</p>
@@ -162,11 +162,11 @@ var _hmt = _hmt || [];
 <blockquote>
 <ul>
 <li>贪心选择性质证明：假设最终的一个最优解是A，A中的事务按照结束时间进行非递减排列，假设排序后的A的第一个事务是K。而我们通过贪心选择策略选择的第一个活动记为k。<ul>
-<li>如果事务K就是事务k，则最优解A就是以事务k开始的</li>
+<li>如果事务K就是事务k，则最优解A就是以事务k开始的。</li>
 <li>如果事务K不是事务k，那么由于事务k是按照事务结束时间求出的最小的事务，那么事务k的结束时间必然是在事务K结束时间的前面或者就是事务K的结束时间的，则证明事务k替换掉最优解中的事务K，也能够替换后的解A仍然是最优解，则证明了该问题具有贪心选择性质。</li>
 </ul>
 </li>
-<li>最优子结构性质证明（一个问题的最优解包含了其子问题的最优解）：由于A是最优解，所以在上一个性质的证明中，如果直接去除掉事务K即$A^`=A-{K}$，仍然是子问题：”<strong>去除掉事务K之后的活动安排</strong>“的最优解。则证明问题具有最优子结构性质。</li>
+<li>最优子结构性质证明：由于A是最优解，所以在上一个性质的证明中，如果直接去除掉事务K即$A^`=A-{K}$，仍然是子问题：”<strong>去除掉事务K之后的活动安排</strong>“的最优解。则证明问题具有最优子结构性质。</li>
 </ul>
 </blockquote>
 </li>
@@ -187,9 +187,7 @@ var _hmt = _hmt || [];
 <p>第二行包含两个整数 a和 b，之间用一个空格隔开，分别表示国王左手和右手上的整数。</p>
 <p>接下来 n 行，每行包含两个整数 a 和 b，之间用一个空格隔开，分别表示每个大臣左手和右手上的整数。</p>
 <p>如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;3</span><br><span class="line">&gt;1 1</span><br><span class="line">&gt;2 3</span><br><span class="line">&gt;7 4</span><br><span class="line">&gt;4 6</span><br></pre></td></tr></table></figure>
-
-
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="number">3</span></span><br><span class="line">&gt;<span class="number">1</span> <span class="number">1</span></span><br><span class="line">&gt;<span class="number">2</span> <span class="number">3</span></span><br><span class="line">&gt;<span class="number">7</span> <span class="number">4</span></span><br><span class="line">&gt;<span class="number">4</span> <span class="number">6</span></span><br></pre></td></tr></table></figure>
 </blockquote>
 <p>【输出】</p>
 <blockquote>
@@ -210,7 +208,7 @@ var _hmt = _hmt || [];
 <li>使用样例数据找规律，推出合适的贪心策略</li>
 </ol>
 <blockquote>
-<p>就拿<img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/1655996542241.png" alt="1655996542241">举例，如果交换大臣1 和大臣2的位置，你会发现对大臣3的拿到                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        的金币数没影响；如果交换大臣2和大臣3的位置，你会发现，交换后的结果对大臣2拿的金币数没影响。由此我们推出一个结论：相邻两个大臣交换位置，对这两个大臣之外的人拿的金币数是没有影响的。那么相邻两个大臣交换了位置之后，对他们两人的影响如何呢？假设大臣i，左手数字是$a_i$，右手数字是$b_i$；大臣i+1，左手金币数是$a_{i+1}$，右手数字是$b_{i+1}$，那么原本第i个大臣拿的金币数是$m_i=p[i-1]/b_i$，第i+1个大臣拿的金币数是$m_{i+1}=p[i-1]<em>a_i/b_{i+1}$，那么这两个人的最大金币数是$MAX(p[i-1]/b_i，p[i-1]</em>a_i/b_{i+1} )$，同样的计算方法交换位置后的两人的最大金币数为$MAX(p[i-1]/b_{i+1}，p[i-1]<em>a_{i+1}/b_i )$，如果交换后的最大金币数大于交换前的最大金币数，可以推导出一个不等式$a_ib_i&lt;a_{i+1}b_{i+1}$，也就是说如果$a_ib_i&lt;a_{i+1}b_{i+1}$，那么这两个两个人交换位置后的拿的最大金币数变大了，所以这两个人排列的时候，左右手数字乘积排列在前会使得最终两人拿的最大的金币数变少。而且根据冒泡排序那种相邻两两交换的情况，任何两者的交换都可以由一系列的相邻交换组成，所以最终的排列按照*</em>左手右手乘积值升序排列即可** </p>
+<p>就拿<img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/1655996542241.png" alt="1655996542241">举例，如果交换大臣1 和大臣2的位置，你会发现对大臣3的拿到                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        的金币数没影响；如果交换大臣2和大臣3的位置，你会发现，交换后的结果对大臣2拿的金币数没影响。由此我们推出一个结论：相邻两个大臣交换位置，对这两个大臣之外的人拿的金币数是没有影响的。那么相邻两个大臣交换了位置之后，对他们两人的影响如何呢？假设大臣i，左手数字是$a_i$，右手数字是$b_i$；大臣i+1，左手金币数是$a_{i+1}$，右手数字是$b_{i+1}$，那么原本第i个大臣拿的金币数是$m_i=p[i-1]/b_i$，第i+1个大臣拿的金币数是$m_{i+1}=p[i-1]<em>a_i/b_{i+1}$，那么这两个人的最大金币数是$MAX(p[i-1]/b_i，p[i-1]</em>a_i/b_{i+1} )$，同样的计算方法交换位置后的两人的最大金币数为$MAX(p[i-1]/b_{i+1}，p[i-1]<em>a_{i+1}/b_i )$，如果交换后的最大金币数大于交换前的最大金币数，可以推导出一个不等式$a_ib_i&lt;a_{i+1}b_{i+1}$，也就是说如果一开始，两个大臣，达成构成如下条件$a_ib_i&lt;a_{i+1}b_{i+1}$，那么这两个两个人交换位置后的拿的最大金币数变大了，所以这两个人排列的时候，左右手数字乘积小的人排列在前会使得最终两人拿的最大的金币数变少。而且根据冒泡排序那种相邻两两交换的情况，任何两者的交换都可以由一系列的相邻交换组成，所以最终的排列按照*</em>左手右手乘积值升序排列即可** </p>
 </blockquote>
 <ol start="2">
 <li>证明贪心策略的正确性</li>
@@ -226,7 +224,7 @@ var _hmt = _hmt || [];
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TXSF02</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">solve</span><span class="params">(People[] peoples, <span class="keyword">int</span> num)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 对这 num 个大臣按照左右手乘积大小，非递减排序</span></span><br><span class="line">    Arrays.sort(peoples, <span class="number">1</span>,num + <span class="number">1</span>);</span><br><span class="line">    <span class="comment">// 求出最后一位大臣可以取得得金币数目</span></span><br><span class="line">    BigDecimal result = BigDecimal.valueOf(peoples[<span class="number">0</span>].a);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; num; i++) &#123;</span><br><span class="line">        result = result.multiply(BigDecimal.valueOf(peoples[i].a));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result.divide(BigDecimal.valueOf(peoples[num].b)).intValue();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    Scanner scanner = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">    <span class="keyword">int</span> num = scanner.nextInt();</span><br><span class="line">    People[] peoples =<span class="keyword">new</span> People[num+<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; num+<span class="number">1</span>; i++) &#123;</span><br><span class="line">      peoples[i] = <span class="keyword">new</span> People();</span><br><span class="line">      peoples[i].a = scanner.nextInt();</span><br><span class="line">      peoples[i].b = scanner.nextInt();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="keyword">new</span> TXSF02().solve(peoples, num));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">People</span>&gt;</span>&#123;</span><br><span class="line">  <span class="keyword">int</span> a;</span><br><span class="line">  <span class="keyword">int</span> b;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(People o)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.a * <span class="keyword">this</span>.b - o.a * o.b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>》 这个题目的另一个难点是大树乘法，如果每个大臣的左手数字都是9999，那么最后相乘的位数就是$4*n$位数，其中n是大臣的个数。那么显然这个极容易超过int型数字的最大表示范围值，所以这种数字的计算要用BigDecimal进行。</p>
+<p>》 这个题目的另一个难点是大数乘法，如果每个大臣的左手数字都是9999，那么最后相乘的位数就是$4*n$位数，其中n是大臣的个数。那么显然这个极容易超过int型数字的最大表示范围值，所以这种数字的计算要用BigDecimal进行。</p>
 <h3 id="钱币找零问题"><a href="#钱币找零问题" class="headerlink" title="钱币找零问题"></a>钱币找零问题</h3><p>问题描述</p>
 <blockquote>
 <p>假设1元、2元、5元、10元、20元、50元、100元的纸币分别有c0, c1, c2, c3, c4, c5, c6张。<br>现在要用这些钱来支付K元，至少要用多少张纸币？</p>
@@ -235,7 +233,7 @@ var _hmt = _hmt || [];
 <p>思路</p>
 <blockquote>
 <p>用贪心算法的思想，很显然，每一步尽可能用面值大的纸币即可. </p>
-<p>但是这种贪心算法只能解决，</p>
+<p>但是这种贪心算法只能解决钱币之间存在倍数关系的钱币找零问题，没有倍数关系的可以通过动态规划解决。</p>
 </blockquote>
 <p>代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">/*人民币面额集合*/</span></span><br><span class="line">    <span class="keyword">int</span>[] values = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">5</span>, <span class="number">10</span>, <span class="number">20</span>, <span class="number">50</span>, <span class="number">100</span>&#125;;</span><br><span class="line">    <span class="comment">/*各种面额对应数量集合*/</span></span><br><span class="line">    <span class="keyword">int</span>[] counts = &#123;<span class="number">3</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>&#125;;</span><br><span class="line">    <span class="keyword">int</span>[] counter = solve(values, counts, <span class="number">365</span>);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; counts.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (counter[i] != <span class="number">0</span>) &#123;</span><br><span class="line">            System.out.printf(<span class="string">"需要面额为%d的纸币%d张\n"</span>, values[i], counter[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span>[] solve ( <span class="keyword">int</span>[] values, <span class="keyword">int</span>[] counts, <span class="keyword">int</span> sum)&#123;</span><br><span class="line">    <span class="keyword">int</span> []  result = <span class="keyword">new</span> <span class="keyword">int</span>[counts.length];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = values.length-<span class="number">1</span>; i &gt; -<span class="number">1</span>; i--) &#123;</span><br><span class="line">        <span class="keyword">int</span> num = Math.min(sum/values[i], counts[i]);</span><br><span class="line">        counts[i] -= num;</span><br><span class="line">        sum = sum - num * values[i];</span><br><span class="line">        result[i] = num;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -252,9 +250,12 @@ var _hmt = _hmt || [];
 <p> <img src="/2022/06/21/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/20200811103630445.png" alt="img"></p>
 <p>即 设计了三种状态：</p>
 <p>BEGIN状态，为初始状态，BEGIN状态有三种转移方式：</p>
-<pre><code>1.  当前节点与前一个节点值相同，状态不变
-  2.  当前节点&gt;前一个节点值，状态变为UP
-  3.  当前节点&lt;前一个节点值，状态变为DOWN</code></pre><p>UP，有两种种状态转移方式</p>
+<ol>
+<li>当前节点与前一个节点值相同，状态不变</li>
+<li>当前节点&gt;前一个节点值，状态变为UP</li>
+<li>当前节点&lt;前一个节点值，状态变为DOWN</li>
+</ol>
+<p>UP状态，有两种种状态转移方式</p>
 <ol>
 <li>当前节点值&gt;=前一个节点值，状态不变</li>
 <li>当前节点值&lt;前一个节点值，状态变为DOWN</li>
