@@ -174,6 +174,142 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1054"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/28/PTA-Basic-1054/"
+    >PTA-Basic-1054</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/28/PTA-Basic-1054/" class="article-date">
+  <time datetime="2019-09-28T14:28:50.000Z" itemprop="datePublished">2019-09-28</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>本题的基本要求非常简单：给定 N 个实数，计算它们的平均值。但复杂的是有些输入数据可能是非法的。一个“合法”的输入是 [−1000,1000] 区间内的实数，并且最多精确到小数点后 2 位。当你计算平均值的时候，不能把那些非法的数据算在内。</p>
+<p>输入格式：<br>输入第一行给出正整数 N（≤100）。随后一行给出 N 个实数，数字间以一个空格分隔。</p>
+<p>输出格式：<br>对每个非法输入，在一行中输出 ERROR: X is not a legal number，其中 X 是输入。最后在一行中输出结果：The average of K numbers is Y，其中 K 是合法输入的个数，Y 是它们的平均值，精确到小数点后 2 位。如果平均值无法计算，则用 Undefined 替换 Y。如果 K 为 1，则输出 The average of 1 number is Y。</p>
+<p>输入样例 1：</p>
+<pre><code>7
+5 -3.2 aaa 9999 2.3.4 7.123 2.35</code></pre><p>输出样例 1：</p>
+<pre><code>ERROR: aaa is not a legal number
+ERROR: 9999 is not a legal number
+ERROR: 2.3.4 is not a legal number
+ERROR: 7.123 is not a legal number
+The average of 3 numbers is 1.38</code></pre><p>输入样例 2：</p>
+<pre><code>2
+
+aaa -9999</code></pre><p>输出样例 2：</p>
+<pre><code>ERROR: aaa is not a legal number
+ERROR: -9999 is not a legal number
+The average of 0 numbers is Undefined</code></pre><p>分析：</p>
+<p>定义一个判断数字是否合法的函数（数字以数字或‘-’开头，不能只有‘-’，‘.’后面的数字长度不能大于2），注意如果输入数字中只有一个合法，不要不要用总和去除以1计算结果，而是直接输出The average of 1 number is ？。还有就是字符串赋值并不是想Java中的那样直接给就可以了，而是要调用函数复制。</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include&lt;stdlib.h&gt;
+int check(char* s);
+int main(void){
+    int n=0;
+    scanf(&quot;%d&quot;,&amp;n);
+    char str[n][10000];
+    char s[10000];
+    int i=0;
+    double sum=0;
+    int m=n;
+    while(n--){
+        scanf(&quot;%s&quot;,s);
+        if(check(s)){
+            sum+=atof(s);//函数atof将数字字符串转化为数字。
+        }else{
+            strcpy(str[i++],s);
+        }
+    }
+    m=m-i;
+    for(int k=0;k&lt;i;k++){
+        printf(&quot;ERROR: %s is not a legal number\n&quot;,str[k]); 
+    }
+    if(m&gt;1)
+    printf(&quot;The average of %d numbers is %.2lf\n&quot;,m,sum/m);
+    if(m==0)
+    printf(&quot;The average of 0 numbers is Undefined\n&quot;);
+    if(m==1)
+    printf(&quot;The average of 1 number is %.2lf&quot;,sum);
+    return 0;
+}
+int  check(char* s){
+    int sum=0;
+    int n=0;
+    for(int i=0;i&lt;strlen(s);i++){
+        if(i==0){
+            if(!(s[i]==&apos;-&apos;||(s[i]&lt;=&apos;9&apos;&amp;&amp;s[i]&gt;=&apos;0&apos;))){
+                return 0;
+            }else{
+                if(strlen(s)==1&amp;&amp;s[i]==&apos;-&apos;){
+                    return 0;
+                }
+            }
+        }else{
+            if(sum&gt;0){
+                n++;
+                if(n&gt;2){
+                    return 0;
+                }
+            }
+            if(s[i]==&apos;.&apos;){
+                sum++;
+                if(sum&gt;=2){
+                    return 0;
+                }
+            }
+        }
+    }
+    double res=atof(s);
+    if(res&gt;1000||res&lt;-1000){
+        return 0;
+    }
+    return 1;
+} </code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1053"
   class="article article-type-post"
   itemscope
@@ -404,95 +540,13 @@ int main()
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1051"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/27/PTA-Basic-1051/"
-    >PTA-Basic-1051</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/27/PTA-Basic-1051/" class="article-date">
-  <time datetime="2019-09-27T09:27:57.000Z" itemprop="datePublished">2019-09-27</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>复数可以写成 (A+Bi) 的常规形式，其中 A 是实部，B 是虚部，i 是虚数单位，满足 i<br>​2<br>​​ =−1；也可以写成极坐标下的指数形式 (R×e<br>​(Pi)<br>​​ )，其中 R 是复数模，P 是辐角，i 是虚数单位，其等价于三角形式 R(cos(P)+isin(P))。</p>
-<p>现给定两个复数的 R 和 P，要求输出两数乘积的常规形式。</p>
-<p>输入格式：<br>输入在一行中依次给出两个复数的 R<br>​1<br>​​ , P<br>​1<br>​​ , R<br>​2<br>​​ , P<br>​2<br>​​ ，数字间以空格分隔。</p>
-<p>输出格式：<br>在一行中按照 A+Bi 的格式输出两数乘积的常规形式，实部和虚部均保留 2 位小数。注意：如果 B 是负数，则应该写成 A-|B|i 的形式。</p>
-<p>输入样例：</p>
-<pre><code>2.3 3.5 5.2 0.4</code></pre><p>输出样例：</p>
-<pre><code>-8.68-8.23i</code></pre><p>思路：</p>
-<pre><code>将输入的复数模，与对应的叫反别转化为直角坐标下的实部与虚部。然后符合复数乘法即可。
-
-注意：双精度浮点数输入输出时用%lf，单精度用%f，不能混合用不然输入或输出的数据可能会出错。</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;math.h&gt;
-int main(){
-    double a1,a2,b1,b2;
-    double r1,r2,p1,p2;
-    scanf(&quot;%lf %lf %lf %lf&quot;,&amp;r1,&amp;p1,&amp;r2,&amp;p2);
-    a1=r1*cos(p1);
-    a2=r1*sin(p1);
-    b1=r2*cos(p2);
-    b2=r2*sin(p2);
-    double s1=a1*b1-a2*b2;
-    double s2=a1*b2+a2*b1;
-    if (fabs(s1) &lt; 0.001) s1 = 0;
-    if (fabs(s2) &lt; 0.001) s2 = 0;
-    if (s2 &gt;= 0)
-        printf(&quot;%.2f+%.2fi&quot;, s1, s2);
-    else
-        printf(&quot;%.2f%.2fi&quot;, s1, s2);
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/44/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="page-number current">45</span><a class="page-number" href="/page/46/">46</a><a class="page-number" href="/page/47/">47</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><a class="extend next" rel="next" href="/page/46/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/44/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/43/">43</a><a class="page-number" href="/page/44/">44</a><span class="page-number current">45</span><a class="page-number" href="/page/46/">46</a><a class="page-number" href="/page/47/">47</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/46/">下一页</a>
   </nav>
   
 </section>

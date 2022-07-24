@@ -174,6 +174,99 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1017"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/22/PTA-Basic-1017/"
+    >PTA-Basic-1017</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/22/PTA-Basic-1017/" class="article-date">
+  <time datetime="2019-09-22T13:46:56.000Z" itemprop="datePublished">2019-09-22</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>本题要求计算 A/B，其中 A 是不超过 1000 位的正整数，B 是 1 位正整数。你需要输出商数 Q 和余数 R，使得 A=B×Q+R 成立。</p>
+<p>输入格式：</p>
+<pre><code>输入在一行中依次给出 A 和 B，中间以 1 空格分隔。</code></pre><p>输出格式：</p>
+<pre><code>在一行中依次输出 Q 和 R，中间以 1 空格分隔。</code></pre><p>输入样例：</p>
+<pre><code>123456789050987654321 7</code></pre><p>输出样例：</p>
+<pre><code>17636684150141093474 3</code></pre><p>分析：<br>输入：除数为数字，而被除数因为输入的不超过1000位，所以只能用字符串来存储，也就是说这题不能用除法来计算了，只能用字符串模拟除法的原理。</p>
+<p>处理：</p>
+<pre><code>从高位到低位每一位对被除数取整，并用余数*10加上后一位继续此
+操作，并将整数存入结果的字符数组中去（注意如果第一个字符
+为‘0’就不存入结果数组中去，否则就加入到数组中去。）继续此操
+作，最后将‘\0’送入结果数组。</code></pre><p>输出：</p>
+<pre><code>如果结果数组长度为0说明整数部分为0，则输出 ‘0 余数’，不为
+0，就输出‘字符数组，余数’。</code></pre><p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+#include&lt;string.h&gt;
+int main(void){
+    int number2;
+    char number1[1000] ;
+    scanf(&quot;%s %d&quot;,number1,&amp;number2);
+    int n=0;//余数，初始值为0。
+    char result[1000];
+    int j=0;
+    int i=0;
+    while(i&lt;strlen(number1)){
+        n=n*10+number1[i]-&apos;0&apos;;//上一位的余数*10加上此位置的数值
+        if(j==0&amp;&amp;n/number2==0)
+            ;
+        else
+            result[j++]=n/number2+&apos;0&apos;;//务必要加上‘0’
+        n=n%number2;
+        i++;
+    }
+    result[j]=&apos;\0&apos;;//在数组的末尾加上&apos;\0&apos;,这样在输出的时候才会正常结束。
+    if(strlen(result)==0){
+        printf(&quot;%s %d&quot;,&quot;0&quot;,n);
+    } else{
+        printf(&quot;%s %d&quot;,result,n);
+}
+    return 0;
+    }</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1036"
   class="article article-type-post"
   itemscope
@@ -455,127 +548,13 @@ int main(void){
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1033"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/22/PTA-Basic-1033/"
-    >PTA-Basic-1033</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/22/PTA-Basic-1033/" class="article-date">
-  <time datetime="2019-09-22T12:38:37.000Z" itemprop="datePublished">2019-09-22</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>旧键盘上坏了几个键，于是在敲一段文字的时候，对应的字符就不会出现。现在给出应该输入的一段文字、以及坏掉的那些键，打出的结果文字会是怎样？</p>
-<p>输入格式：<br>输入在 2 行中分别给出坏掉的那些键、以及应该输入的文字。其中对应英文字母的坏键以大写给出；每段文字是不超过 10<br>^5<br>​​  个字符的串。可用的字符包括字母 [a-z, A-Z]、数字 0-9、以及下划线 _（代表空格）、,、.、-、+（代表上档键）。题目保证第 2 行输入的文字串非空。</p>
-<p>注意：如果上档键坏掉了，那么大写的英文字母无法被打出。</p>
-<p>输出格式：<br>在一行中输出能够被打出的结果文字。如果没有一个字符能被打出，则输出空行。</p>
-<p>输入样例：</p>
-<pre><code>7+IE.
-7_This_is_a_test.</code></pre><p>输出样例：</p>
-<pre><code>_hs_s_a_tst</code></pre><p>分析:</p>
-<pre><code>输入：第一行输入坏掉的字符（如果有字母则对应
-的字母不能出现，如果有下划线则不下划线，有加号大写字母甭能出现）</code></pre><hr>
-<pre><code>处理：
-先定义两个尽可能大的字符数组一个用来存储坏键，一个用来存储要输入的字符串。
-
-定义一个删除字符的函数，然后遍历第一个字符串分别在第二个字符串中删去相应的字符。
-
-输出：处理后的字符串如果字符串长度为0则输出空行。</code></pre><p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
-#include&lt;ctype.h&gt;
-char * Remove(char*a,char b){
-    char * src,*dst;
-    src=a;
-    dst=a;
-    while(*src!=&apos;\0&apos;){
-        *dst=*src;
-        src++;
-        if(*dst!=b){
-            dst++;
-        }
-    }
-    *dst=&apos;\0&apos;;
-    return a;
-}
-int main(void){
-    char a[110000]={},b[110000]={};
-    gets(a);
-    gets(b);
-    int i=0;
-    while(a[i]!=&apos;\0&apos;){
-                if(a[i]!=&apos;+&apos;){//shang dang jian mei hua
-                            if(a[i]&gt;=&apos;A&apos;&amp;&amp;a[i]&lt;=&apos;Z&apos;){
-                                Remove(b,tolower(a[i]));
-                                Remove(b,toupper(a[i]));
-                            }else{
-                                Remove(b,a[i]);
-                            }
-                }else{
-                    for(char j=&apos;A&apos;;j&lt;(&apos;Z&apos;+1);j++){
-                        Remove(b,j);
-                    }
-            }
-        i++;
-    }
-
-    if(strlen(b)!=0){
-        printf(&quot;%s&quot;,b);
-    }else{
-        printf(&quot;\n&quot;);
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/52/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><a class="extend next" rel="next" href="/page/54/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/52/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/51/">51</a><a class="page-number" href="/page/52/">52</a><span class="page-number current">53</span><a class="page-number" href="/page/54/">54</a><a class="page-number" href="/page/55/">55</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/54/">下一页</a>
   </nav>
   
 </section>

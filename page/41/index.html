@@ -174,6 +174,97 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1066"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/07/PTA-Basic-1066/"
+    >PTA-Basic-1066</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/07/PTA-Basic-1066/" class="article-date">
+  <time datetime="2019-10-07T12:42:25.000Z" itemprop="datePublished">2019-10-07</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：<br>图像过滤是把图像中不重要的像素都染成背景色，使得重要部分被凸显出来。现给定一幅黑白图像，要求你将灰度值位于某指定区间内的所有像素颜色都用一种指定的颜色替换。</p>
+<p>输入格式：<br>输入在第一行给出一幅图像的分辨率，即两个正整数 M 和 N（0&lt;M,N≤500），另外是待过滤的灰度值区间端点 A 和 B（0≤A&lt;B≤255）、以及指定的替换灰度值。随后 M 行，每行给出 N 个像素点的灰度值，其间以空格分隔。所有灰度值都在 [0, 255] 区间内。</p>
+<p>输出格式：<br>输出按要求过滤后的图像。即输出 M 行，每行 N 个像素灰度值，每个灰度值占 3 位（例如黑色要显示为 000），其间以一个空格分隔。行首尾不得有多余空格。</p>
+<p>输入样例：</p>
+<pre><code>3 5 100 150 0
+3 189 254 101 119
+150 233 151 99 100
+88 123 149 0 255</code></pre><p>输出样例：</p>
+<pre><code>003 189 254 000 000
+000 233 151 099 000
+088 000 000 000 255</code></pre><p>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+
+int main()
+{
+    int n=0,m=0,a=0,b=0,replace=0,h=0;
+    scanf(&quot;%d %d %d %d %d&quot;,&amp;m,&amp;n,&amp;a,&amp;b,&amp;replace);
+    int dlex[m][n];
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            scanf(&quot;%d&quot;,&amp;h);
+            if(h&lt;=b&amp;&amp;h&gt;=a){
+                h=replace;
+            }
+            dlex[i][j]=h;
+        }
+    }
+    for(int i=0;i&lt;m;i++){
+        for(int j=0;j&lt;n;j++){
+            printf(&quot;%03d&quot;,dlex[i][j]);
+            if(j!=n-1){
+                printf(&quot; &quot;);
+            }
+        }
+        printf(&quot;\n&quot;);
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1065"
   class="article article-type-post"
   itemscope
@@ -383,97 +474,13 @@ int main()
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1063"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/07/PTA-Basic-1063/"
-    >PTA-Basic-1063</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/07/PTA-Basic-1063/" class="article-date">
-  <time datetime="2019-10-07T12:41:52.000Z" itemprop="datePublished">2019-10-07</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>在数学中，矩阵的“谱半径”是指其特征值的模集合的上确界。换言之，对于给定的 n 个复数空间的特征值 { a<br>​1<br>​​ +b<br>​1<br>​​ i,⋯,a<br>​n<br>​​ +b<br>​n<br>​​ i }，它们的模为实部与虚部的平方和的开方，而“谱半径”就是最大模。</p>
-<p>现在给定一些复数空间的特征值，请你计算并输出这些特征值的谱半径。</p>
-<p>输入格式：<br>输入第一行给出正整数 N（≤ 10 000）是输入的特征值的个数。随后 N 行，每行给出 1 个特征值的实部和虚部，其间以空格分隔。注意：题目保证实部和虚部均为绝对值不超过 1000 的整数。</p>
-<p>输出格式：<br>在一行中输出谱半径，四舍五入保留小数点后 2 位。</p>
-<p>输入样例：</p>
-<pre><code>5
-0 1
-2 0
--1 0
-3 3
-0 -3</code></pre><p>输出样例：</p>
-<pre><code>4.24</code></pre><p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include&lt;math.h&gt;
-int main()
-{
-    int n=0;
-    double real=0,imag=0;
-    double max=0;
-    double sub=0;
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%lf %lf&quot;,&amp;real,&amp;imag);
-        sub=sqrt(real*real+imag*imag);
-        if(sub&gt;max){
-            max=sub;
-        }
-    }
-    printf(&quot;%.2f&quot;,max);
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/40/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="page-number" href="/page/40/">40</a><span class="page-number current">41</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><a class="extend next" rel="next" href="/page/42/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/40/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/39/">39</a><a class="page-number" href="/page/40/">40</a><span class="page-number current">41</span><a class="page-number" href="/page/42/">42</a><a class="page-number" href="/page/43/">43</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/42/">下一页</a>
   </nav>
   
 </section>

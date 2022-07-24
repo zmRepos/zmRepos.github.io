@@ -174,6 +174,150 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1079"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/11/PTA-Basic-1079/"
+    >PTA-Basic-1079</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/11/PTA-Basic-1079/" class="article-date">
+  <time datetime="2019-10-11T14:18:23.000Z" itemprop="datePublished">2019-10-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>给定一个 k+1 位的正整数 N，写成 a<br>​k<br>​​ ⋯a<br>​1<br>​​ a<br>​0<br>​​  的形式，其中对所有 i 有 0≤a<br>​i<br>​​ &lt;10 且 a<br>​k<br>​​ &gt;0。N 被称为一个回文数，当且仅当对所有 i 有 a<br>​i<br>​​ =a<br>​k−i<br>​​ 。零也被定义为一个回文数。</p>
+<p>非回文数也可以通过一系列操作变出回文数。首先将该数字逆转，再将逆转数与该数相加，如果和还不是一个回文数，就重复这个逆转再相加的操作，直到一个回文数出现。如果一个非回文数可以变出回文数，就称这个数为延迟的回文数。（定义翻译自 <a href="https://en.wikipedia.org/wiki/Palindromic_number">https://en.wikipedia.org/wiki/Palindromic_number</a> ）</p>
+<p>给定任意一个正整数，本题要求你找到其变出的那个回文数。</p>
+<p>输入格式：<br>输入在一行中给出一个不超过1000位的正整数。</p>
+<p>输出格式：<br>对给定的整数，一行一行输出其变出回文数的过程。每行格式如下</p>
+<p>A + B = C<br>其中 A 是原始的数字，B 是 A 的逆转数，C 是它们的和。A 从输入的整数开始。重复操作直到 C 在 10 步以内变成回文数，这时在一行中输出 C is a palindromic number.；或者如果 10 步都没能得到回文数，最后就在一行中输出 Not found in 10 iterations.。</p>
+<p>输入样例 1：</p>
+<pre><code>97152</code></pre><p>输出样例 1：</p>
+<pre><code>97152 + 25179 = 122331
+122331 + 133221 = 255552
+255552 is a palindromic number.</code></pre><p>输入样例 2：</p>
+<pre><code>196</code></pre><p>输出样例 2：</p>
+<pre><code>196 + 691 = 887
+887 + 788 = 1675
+1675 + 5761 = 7436
+7436 + 6347 = 13783
+13783 + 38731 = 52514
+52514 + 41525 = 94039
+94039 + 93049 = 187088
+187088 + 880781 = 1067869
+1067869 + 9687601 = 10755470
+10755470 + 07455701 = 18211171
+Not found in 10 iterations.</code></pre><p>分析：<br>定一个判断字符串是否回文字符串的函数，定义一个反转字符串的函数。<br>首先对输入的字符串判断是否是回文字符串，然后定义一个比它长1的字符数组，防止最高位进位，将当前字符串复制到另一个，然后用复制后的字符串与反转字符串相加。然后将结果输出，赋值给第一个字符串重复此操作，直到找到或达到10次。<br>代码：</p>
+<pre><code>#include &lt;stdio.h&gt;
+#include&lt;string.h&gt;
+#include &lt;stdlib.h&gt;//虽然题目说字符串的长度在0-1000之间但是他们相加后的长度就可能大于1000了所以要定义比1001大的
+int isReserve(char* s){//判断是否是回文字符串的函数。
+    int i=0;
+    int j=strlen(s)-1;
+    while(i&lt;j){
+        if(s[i]!=s[j]){
+            return 0;
+        }
+        i++;
+        j--;
+    }
+    return 1;
+}
+char * strrev(char *str){
+    int i=0,j=strlen(str)-1;//对源字符串直接操作，
+    char ch;
+    while(i&lt;j){
+        ch=str[j];
+        str[j]=str[i];
+        str[i]=ch;
+        i++;
+        j--;
+    }
+    return str;
+}
+int main()
+{
+    char str[1050];
+    gets(str);
+    int i=0;
+    for(;i&lt;10;i++){
+        if(isReserve(str)){
+            printf(&quot;%s is a palindromic number.&quot;,str);
+            break;
+        }else{
+            char strcopy[1050];//保留反转前的字符串
+            strcpy(strcopy,str);
+            strrev(str);//反转str中的字符串
+            printf(&quot;%s + %s = &quot;,strcopy,str);
+            char res[1050]={&apos;\0&apos;};//定义结果数组。
+            int k=0;
+            int max=strlen(str);
+            for(int j=0;j&lt;max;j++){//因为字符串是与反转字符串相加，唯一不同的就是如果最高位有进位，进位就存在右边了，此时需要反转一下。
+                int sum=0;
+                if(strcopy[j]){
+                    sum=sum+strcopy[j]-&apos;0&apos;;
+                }
+                if(str[j]){
+                    sum=sum+str[j]-&apos;0&apos;;
+                }
+                sum=sum+k;
+                res[j]=sum%10+&apos;0&apos;;
+                k=sum/10;
+                if(j==max-1&amp;&amp;k!=0){//如果高位有进位，就要存下他。
+                    res[j+1]=k+&apos;0&apos;;//
+                }
+            }
+            strrev(res);//反转结果数组
+            puts(res);//输出
+            strcpy(str,res);//将结果赋值给str继续操作。
+        }
+    }
+    if(i==10){
+        printf(&quot;Not found in 10 iterations.&quot;);
+    }
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1078"
   class="article article-type-post"
   itemscope
@@ -417,108 +561,13 @@ int main()
 </article>
 
     
-    <article
-  id="post-PTA-Basic-1076"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/09/PTA-Basic-1076/"
-    >PTA-Basic-1076</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/09/PTA-Basic-1076/" class="article-date">
-  <time datetime="2019-10-09T14:14:57.000Z" itemprop="datePublished">2019-10-09</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>下面是微博上流传的一张照片：“各位亲爱的同学们，鉴于大家有时需要使用 wifi，又怕耽误亲们的学习，现将 wifi 密码设置为下列数学题答案：A-1；B-2；C-3；D-4；请同学们自己作答，每两日一换。谢谢合作！！~”—— 老师们为了促进学生学习也是拼了…… 本题就要求你写程序把一系列题目的答案按照卷子上给出的对应关系翻译成 wifi 的密码。这里简单假设每道选择题都有 4 个选项，有且只有 1 个正确答案。</p>
-<p><img src="https://images.ptausercontent.com/7e56be3f-caba-45f1-b9cb-38a96d44de76.jpg" alt></p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤ 100），随后 N 行，每行按照 编号-答案 的格式给出一道题的 4 个选项，T 表示正确选项，F 表示错误选项。选项间用空格分隔。</p>
-<p>输出格式：<br>在一行中输出 wifi 密码。</p>
-<p>输入样例：</p>
-<pre><code>8
-A-T B-F C-F D-F
-C-T B-F A-F D-F
-A-F D-F C-F B-T
-B-T A-F C-F D-F
-B-F D-T A-F C-F
-A-T C-F B-F D-F
-D-T B-F C-F A-F
-C-T A-F B-F D-F</code></pre><p>输出样例：</p>
-<pre><code>13224143</code></pre><p>直接对每对字符判断因为输入的一个题目的答案只有一个所有直接判断并输出对应的数字。</p>
-<p>代码：</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-int main()
-{
-    int n=0;
-    scanf(&quot;%d&quot;,&amp;n);
-    char ch1,ch2;
-    getchar();//吸收换行符
-    for(int i=0;i&lt;n;i++){
-        for(int j=0;j&lt;4;j++){
-            scanf(&quot;%c-%c&quot;,&amp;ch1,&amp;ch2);
-            getchar();//吸收空格与换行符
-            if(ch2==&apos;T&apos;){
-                    int re=0;
-                switch(ch1){
-                    case &apos;A&apos;:re=1;break;
-                    case &apos;B&apos;:re=2;break;
-                    case &apos;C&apos;:re=3;break;
-                    case &apos;D&apos;:re=4;break;
-                }
-                printf(&quot;%d&quot;,re);
-            }
-        }
-    }
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/36/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="page-number current">37</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="space">&hellip;</span><a class="page-number" href="/page/60/">60</a><a class="extend next" rel="next" href="/page/38/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/36/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="page-number current">37</span><a class="page-number" href="/page/38/">38</a><a class="page-number" href="/page/39/">39</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/38/">下一页</a>
   </nav>
   
 </section>
