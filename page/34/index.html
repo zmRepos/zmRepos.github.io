@@ -174,7 +174,7 @@ var _hmt = _hmt || [];
     
     
     <article
-  id="post-PTA-Basic-1088"
+  id="post-PTA-Basic-1091"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -185,8 +185,8 @@ var _hmt = _hmt || [];
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1088/"
-    >PTA-Basic-1088</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1091/"
+    >PTA-Basic-1091</a> 
 </h2>
  
 
@@ -194,8 +194,8 @@ var _hmt = _hmt || [];
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1088/" class="article-date">
-  <time datetime="2019-10-16T13:29:51.000Z" itemprop="datePublished">2019-10-16</time>
+      <a href="/2019/10/16/PTA-Basic-1091/" class="article-date">
+  <time datetime="2019-10-16T13:30:08.000Z" itemprop="datePublished">2019-10-16</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
@@ -205,131 +205,48 @@ var _hmt = _hmt || [];
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>题目：<br>当自然数 n 依次取 1、2、3、……、N 时，算式 ⌊n/2⌋+⌊n/3⌋+⌊n/5⌋ 有多少个不同的值？（注：⌊x⌋ 为取整函数，表示不超过 x 的最大自然数，即 x 的整数部分。）</p>
-<p>输入格式：<br>输入给出一个正整数 N（2≤N≤10<br>​4<br>​​ ）。</p>
-<p>输出格式：<br>在一行中输出题面中算式取到的不同值的个数。</p>
+  <p>题目：<br>如果某个数 K 的平方乘以 N 以后，结果的末尾几位数等于 K，那么就称这个数为“N-自守数”。例如 3×92<br>​2<br>​​ =25392，而 25392 的末尾两位正好是 92，所以 92 是一个 3-自守数。</p>
+<p>本题就请你编写程序判断一个给定的数字是否关于某个 N 是 N-自守数。</p>
+<p>输入格式：<br>输入在第一行中给出正整数 M（≤20），随后一行给出 M 个待检测的、不超过 1000 的正整数。</p>
+<p>输出格式：<br>对每个需要检测的数字，如果它是 N-自守数就在一行中输出最小的 N 和 N*K^<br>​2<br>​​  的值，以一个空格隔开；否则输出 No。注意题目保证 N&lt;10。</p>
 <p>输入样例：</p>
-<pre><code>2017</code></pre><p>输出样例：</p>
-<pre><code>1480</code></pre><p>思路：利用此函数的递增性。<br>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int n;
-    int time=0;
-    int last=-1;//初始一个数为-1，因为n为任何正数，值都不可能为-1
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=1;i&lt;=n;i++){
-        int k=i/2+i/3+i/5;
-        if(k==last){//如果与上一个相同就跳过此次
-            continue;
-        }else{
-            time++;
-            last=k;
-        }
-    }
-    printf(&quot;%d&quot;,time);
-    return 0;
-}</code></pre> 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1087"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1087/"
-    >PTA-Basic-1087</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1087/" class="article-date">
-  <time datetime="2019-10-16T13:29:41.000Z" itemprop="datePublished">2019-10-16</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>子曰：“三人行，必有我师焉。择其善者而从之，其不善者而改之。”</p>
-<p>本题给定甲、乙、丙三个人的能力值关系为：甲的能力值确定是 2 位正整数；把甲的能力值的 2 个数字调换位置就是乙的能力值；甲乙两人能力差是丙的能力值的 X 倍；乙的能力值是丙的 Y 倍。请你指出谁比你强应“从之”，谁比你弱应“改之”。</p>
-<p>输入格式：<br>输入在一行中给出三个数，依次为：M（你自己的能力值）、X 和 Y。三个数字均为不超过 1000 的正整数。</p>
-<p>输出格式：<br>在一行中首先输出甲的能力值，随后依次输出甲、乙、丙三人与你的关系：如果其比你强，输出 Cong；平等则输出 Ping；比你弱则输出 Gai。其间以 1 个空格分隔，行首尾不得有多余空格。</p>
-<p>注意：如果解不唯一，则以甲的最大解为准进行判断；如果解不存在，则输出 No Solution。</p>
-<p>输入样例 1：</p>
-<pre><code>48 3 7</code></pre><p>输出样例 1：</p>
-<pre><code>48 Ping Cong Gai</code></pre><p>输入样例 2：</p>
-<pre><code>48 11 6</code></pre><p>输出样例 2：</p>
-<pre><code>No Solution</code></pre><p>分析：<br>输入的是自己的分数，x,y.<br>处理：从99到10假设甲的成绩，利用甲的成绩计算乙的成绩，看看这两个数是否符合条件，符合就计算丙的成绩，之后进行对比。</p>
+<pre><code>3
+92 5 233</code></pre><p>输出样例：</p>
+<pre><code>3 25392
+1 25
+No</code></pre><p>分析：题目说了保证n&lt;10，即在1-9之中找就可以了，定义一个判断是不是字守数的函数，然后对每个数字判断就可以了。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
 #include&lt;math.h&gt;
+int re(long value,long contains);
 int main(void){
-    int n,x,y;
-    scanf(&quot;%d %d %d&quot;,&amp;n,&amp;x,&amp;y);
-    int a=10,b=0;//甲乙成绩肯定是整数
-    double c=0;//丙的成绩不一定为整数。即（10-99）
-    for(a=99;a&gt;9;a--){//因为甲是两位数，又以甲的最大值为唯一答案，所以要倒序。
-        b=(a/10)+(a%10)*10;//利用甲的成绩计算乙的成绩
-        if(abs(a-b)*y==x*b){//如果符合此条件那么丙的成绩就可以算出来了。
-            c=abs(a-b)*1.0/x;//计算丙的成绩
-            printf(&quot;%d &quot;,a);//先输出a的成绩
-            if(a==n){//输出对比结果
-                printf(&quot;Ping &quot;);
-            }else if(a&gt;n){
-                printf(&quot;Cong &quot;);
-            }else{
-                printf(&quot;Gai &quot;);
+    int n;
+    int key;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d&quot;,&amp;key);
+        int k=1;
+        for(;k&lt;10;k++){
+            if(re(key*key*k,key)){
+                printf(&quot;%d %ld\n&quot;,k,key*key*k);
+                break;
             }
-            if(b==n){
-                printf(&quot;Ping &quot;);
-            }else if(b&gt;n){
-                printf(&quot;Cong &quot;);
-            }else{
-                printf(&quot;Gai &quot;);
-            }
-            if(c==n*1.0){//c的成绩可能为浮点数，所以左右多应该为浮点数
-                printf(&quot;Ping&quot;);
-            }else if(c&gt;n*1.0){
-                printf(&quot;Cong&quot;);
-            }else{
-                printf(&quot;Gai&quot;);
-            }
-            return 0;//找到即可退出程序。
+        }
+        if(k&gt;9){
+            printf(&quot;No\n&quot;);
         }
     }
-    printf(&quot;No Solution&quot;);
+}
+int re(long value,long contains){
+    int i=0;
+    long key=contains;
+    do{
+        i++;
+        key=key/10;
+    }while(key);
+    if((value-contains)%((int)pow(10,i))==0){
+        return 1;
+    }    
     return 0;
 }</code></pre> 
       <!-- reward -->
@@ -353,7 +270,7 @@ int main(void){
 
     
     <article
-  id="post-PTA-Basic-1086"
+  id="post-PTA-Basic-1090"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -364,8 +281,8 @@ int main(void){
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/2019/10/16/PTA-Basic-1086/"
-    >PTA-Basic-1086</a> 
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1090/"
+    >PTA-Basic-1090</a> 
 </h2>
  
 
@@ -373,8 +290,8 @@ int main(void){
     </header>
      
     <div class="article-meta">
-      <a href="/2019/10/16/PTA-Basic-1086/" class="article-date">
-  <time datetime="2019-10-16T13:29:31.000Z" itemprop="datePublished">2019-10-16</time>
+      <a href="/2019/10/16/PTA-Basic-1090/" class="article-date">
+  <time datetime="2019-10-16T13:30:03.000Z" itemprop="datePublished">2019-10-16</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
@@ -385,35 +302,206 @@ int main(void){
     <div class="article-entry" itemprop="articleBody">
        
   <p>题目：</p>
-<p>做作业的时候，邻座的小盆友问你：“五乘以七等于多少？”你应该不失礼貌地围笑着告诉他：“五十三。”本题就要求你，对任何一对给定的正整数，倒着输出它们的乘积。</p>
-<p><img src="https://images.ptausercontent.com/0c3a4497-27c3-45ea-9c8e-5a1ab2df48af.jpg" alt></p>
-<p>输入格式：<br>输入在第一行给出两个不超过 1000 的正整数 A 和 B，其间以空格分隔。</p>
-<p>输出格式：<br>在一行中倒着输出 A 和 B 的乘积。</p>
+<p>集装箱运输货物时，我们必须特别小心，不能把不相容的货物装在一只箱子里。比如氧化剂绝对不能跟易燃液体同箱，否则很容易造成爆炸。</p>
+<p>本题给定一张不相容物品的清单，需要你检查每一张集装箱货品清单，判断它们是否能装在同一只箱子里。</p>
+<p>输入格式：<br>输入第一行给出两个正整数：N (≤10<br>​4<br>​​ ) 是成对的不相容物品的对数；M (≤100) 是集装箱货品清单的单数。</p>
+<p>随后数据分两大块给出。第一块有 N 行，每行给出一对不相容的物品。第二块有 M 行，每行给出一箱货物的清单，格式如下：</p>
+<p>K G[1] G[2] … G[K]<br>其中 K (≤1000) 是物品件数，G[i] 是物品的编号。简单起见，每件物品用一个 5 位数的编号代表。两个数字之间用空格分隔。</p>
+<p>输出格式：<br>对每箱货物清单，判断是否可以安全运输。如果没有不相容物品，则在一行中输出 Yes，否则输出 No。</p>
 <p>输入样例：</p>
-<pre><code>5 7</code></pre><p>输出样例：</p>
-<pre><code>53</code></pre><p>分析：不超过1000，那么乘积就不会超过1000000，int足够了。计算乘积存入数组，对结果不断取余，不断存入数组，直到为0，最后倒着输出数组。</p>
+<pre><code>6 3
+20001 20002
+20003 20004
+20005 20006
+20003 20001
+20005 20004
+20004 20006
+4 00001 20004 00002 20003
+5 98823 20002 20003 20006 10010
+3 12345 67890 23333</code></pre><p>输出样例：</p>
+<pre><code>No
+Yes
+Yes</code></pre><p>分析：定义一个结构体，包含此物体的不能放在一起的物品的个数，与它不能放在一起的物体的数组。定义一个图，用于标记出现过的危险品，然后对后来的危险品，先在图中看看有没有出现过，有就遍历它之后的数组部分看看后面的部分有没有它的危险品。</p>
 <p>代码：</p>
 <pre><code>#include&lt;stdio.h&gt;
-#include&lt;string.h&gt;
+int contains(int key,int value);
+typedef struct danger{
+    int time;
+    int op[999];
+};
+int map[100000];//用于标记某个危险品是否出现过
+struct danger dangers[100000];
 int main(void){
     int n,m;
     scanf(&quot;%d %d&quot;,&amp;n,&amp;m);
-    int c=n*m;
-    int i=0;
-    int result[20];
-    int re=0;
-    if(c==0){//注意为0是，直接输，出有一个测试点对应这个。
-        printf(&quot;%d&quot;,c);
-        return 0;
+    int key,value;
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d %d&quot;,&amp;key,&amp;value);
+        if(map[key]==0)//此物品之前没有与它不能放在一起的物体
+            dangers[key].time=0;//将对应的下标置为0
+        if(map[value]==0)//同上
+            dangers[value].time=0;
+        dangers[key].op[dangers[key].time]=value;//此处为互相标记
+        dangers[key].time++;
+        dangers[value].op[dangers[value].time]=key;
+        dangers[value].time++;
+        map[key]=1;
+        map[value]=1;
     }
-    while(c!=0){
-        result[i++]=c%10; 
-        c=c/10;
+    for(int i=0;i&lt;m;i++){
+        int num=0;
+        scanf(&quot;%d&quot;,&amp;num);
+        int things[num];
+        int flag=0;
+        for(int j=0;j&lt;num;j++){//将某一行的危险品全部存入数组
+            scanf(&quot;%d&quot;,&amp;things[j]);
+        }
+        for(int j=0;j&lt;num;j++){//遍历数组查看有没有排斥的
+            if(map[things[j]]==0){//图中没有说明之前没有出现过
+                continue;
+            }else{//图中有说明之前出先过了，遍历它之后的部分看看有没有危险品
+                for(int index=j+1;index&lt;num;index++){
+                    if(contains(things[j],things[index])){//后面有危险品就标记一下，并跳出
+                        flag=1;
+                        break;
+                    }
+                }
+            }
+            if(flag){//如果标记过了
+                    printf(&quot;No\n&quot;);
+                    break;
+                }
+        }
+        if(!flag){
+            printf(&quot;Yes\n&quot;);
+        }
     }
-    for(int j=0;j&lt;i;j++){
-        re=re*10+result[j];
+    return 0;
+} 
+int contains(int key,int value){
+    for(int i=0;i&lt;dangers[key].time;i++){
+        if(dangers[key].op[i]==value){
+            return 1;
+        }
     }
-    printf(&quot;%d&quot;,re);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
+  id="post-PTA-Basic-1089"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/10/16/PTA-Basic-1089/"
+    >PTA-Basic-1089</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/10/16/PTA-Basic-1089/" class="article-date">
+  <time datetime="2019-10-16T13:29:56.000Z" itemprop="datePublished">2019-10-16</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>以下文字摘自《灵机一动·好玩的数学》：“狼人杀”游戏分为狼人、好人两大阵营。在一局“狼人杀”游戏中，1 号玩家说：“2 号是狼人”，2 号玩家说：“3 号是好人”，3 号玩家说：“4 号是狼人”，4 号玩家说：“5 号是好人”，5 号玩家说：“4 号是好人”。已知这 5 名玩家中有 2 人扮演狼人角色，有 2 人说的不是实话，有狼人撒谎但并不是所有狼人都在撒谎。扮演狼人角色的是哪两号玩家？</p>
+<p>本题是这个问题的升级版：已知 N 名玩家中有 2 人扮演狼人角色，有 2 人说的不是实话，有狼人撒谎但并不是所有狼人都在撒谎。要求你找出扮演狼人角色的是哪几号玩家？</p>
+<p>输入格式：<br>输入在第一行中给出一个正整数 N（5≤N≤100）。随后 N 行，第 i 行给出第 i 号玩家说的话（1≤i≤N），即一个玩家编号，用正号表示好人，负号表示狼人。</p>
+<p>输出格式：<br>如果有解，在一行中按递增顺序输出 2 个狼人的编号，其间以空格分隔，行首尾不得有多余空格。如果解不唯一，则输出最小序列解 —— 即对于两个序列 A=a[1],…,a[M] 和 B=b[1],…,b[M]，若存在 0≤k&lt;M 使得 a[i]=b[i] （i≤k），且 a[k+1]&lt;b[k+1]，则称序列 A 小于序列 B。若无解则输出 No Solution。</p>
+<p>输入样例 1：</p>
+<pre><code>5
+-2
++3
+-4
++5
++4</code></pre><p>输出样例 1：</p>
+<pre><code>1 4</code></pre><p>输入样例 2：</p>
+<pre><code>6
++6
++3
++1
+-5
+-2
++4</code></pre><p>输出样例 2（解不唯一）：</p>
+<pre><code>1 5</code></pre><p>输入样例 3：</p>
+<pre><code>5
+-2
+-3
+-4
+-5
+-1</code></pre><p>输出样例 3：</p>
+<pre><code>No Solution</code></pre><p>分析：<br>定义一个数组存储每个人说的话，定义一个身份数组存储每个人的身份初始为1，每个人都是村民。然后双重循环，假设第i与第j个人是狼人。之后在已经有狼人的情况下统计说谎的次数（此处题目的合格条件：村民中有一个说假话，狼人中有一个人说谎话）如果找到合格的输出终止程序，没找到输出No Solution。<br>注意：第i个说的可以是第任意个人，而不是顺序说下一个。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;//此题目中我们的两个数组都舍弃了一个空间为了方便思考
+#include&lt;math.h&gt;
+int main(void){
+    int n;
+    scanf(&quot;%d&quot;,&amp;n);
+    int a[n+1];
+    int b[n+1];
+    for(int i=1;i&lt;=n;i++){
+        scanf(&quot;%d&quot;,&amp;a[i]);
+        b[i]=1;//顺便初始化身份数组
+    }
+    for(int i=1;i&lt;=n;i++){
+        for(int j=i+1;j&lt;=n;j++){//假设i,j个人是狼人
+            b[i]=0;
+            b[j]=0;
+            int langtime=0;//狼人的说谎次数
+            int time=0;//好人的说谎次数
+            for(int x=1;x&lt;=n;x++){
+                if((a[x]&gt;0&amp;&amp;b[abs(a[x])]==0)||(a[x]&lt;0&amp;&amp;b[abs(a[x])]==1)){
+                    if(x==i||x==j)
+                        langtime++;
+                    else
+                        time++;
+                }
+            }
+            if(time==1&amp;&amp;langtime==1){//如果符合题目条件
+                printf(&quot;%d %d&quot;,i,j);
+                return 0;
+            }//否则还原身份数组
+            b[i]=1;
+            b[j]=1;
+
+        }
+    }
+    printf(&quot;No Solution&quot;);
     return 0;
 }</code></pre> 
       <!-- reward -->
@@ -442,7 +530,7 @@ int main(void){
   
   <nav class="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/33/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/61/">61</a><a class="extend next" rel="next" href="/page/35/">下一页</a>
+    <a class="extend prev" rel="prev" href="/page/33/">上一页</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/32/">32</a><a class="page-number" href="/page/33/">33</a><span class="page-number current">34</span><a class="page-number" href="/page/35/">35</a><a class="page-number" href="/page/36/">36</a><span class="space">&hellip;</span><a class="page-number" href="/page/62/">62</a><a class="extend next" rel="next" href="/page/35/">下一页</a>
   </nav>
   
 </section>
