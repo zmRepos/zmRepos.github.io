@@ -16,6 +16,7 @@
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
       <title> codeFOF</title>
+ <meta name="baidu-site-verification" content="code-CGsPfibUkG" /> 
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/ayer.png" />
@@ -174,6 +175,91 @@ var _hmt = _hmt || [];
     
     
     <article
+  id="post-PTA-Basic-1047"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2019/09/26/PTA-Basic-1047/"
+    >PTA-Basic-1047</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2019/09/26/PTA-Basic-1047/" class="article-date">
+  <time datetime="2019-09-26T13:00:38.000Z" itemprop="datePublished">2019-09-26</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>题目：</p>
+<p>编程团体赛的规则为：每个参赛队由若干队员组成；所有队员独立比赛；参赛队的成绩为所有队员的成绩和；成绩最高的队获胜。</p>
+<p>现给定所有队员的比赛成绩，请你编写程序找出冠军队。</p>
+<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​4<br>​​ ），即所有参赛队员总数。随后 N 行，每行给出一位队员的成绩，格式为：队伍编号-队员编号 成绩，其中队伍编号为 1 到 1000 的正整数，队员编号为 1 到 10 的正整数，成绩为 0 到 100 的整数。</p>
+<p>输出格式：<br>在一行中输出冠军队的编号和总成绩，其间以一个空格分隔。注意：题目保证冠军队是唯一的。</p>
+<p>输入样例：</p>
+<pre><code>6
+3-10 99
+11-5 87
+102-1 0
+102-3 100
+11-9 89
+3-2 61</code></pre><p>输出样例：</p>
+<pre><code>11 176</code></pre><p>分析：此题与前面的挖掘机那题完全一样。<br>定义一个足够大的数组要把队伍编号都包含在内，然后把输输入一个队伍的相关信息，可以跳过中间一个数字的读取，队伍编号就是对应其在数组的位置，每次就<br>把输入的分数加到对应的位置，然后跟目前位置最大的比，如果比它大就把它存储下来，最后直接输出队伍编号，与分数。</p>
+<p>代码：</p>
+<pre><code>#include&lt;stdio.h&gt;
+int main(void){
+    int schools[10001];
+    int max=0;
+    int max_school=0;
+    int n,a,b;
+    scanf(&quot;%d&quot;,&amp;n);
+    for(int i=0;i&lt;n;i++){
+        scanf(&quot;%d-%*d %d&quot;,&amp;a,&amp;b);//%*d代表不接受此输入。
+        schools[a]=schools[a]+b;
+        if(schools[a]&gt;max){
+            max=schools[a];
+            max_school=a;
+        }
+    }
+    printf(&quot;%d %d&quot;,max_school,max);
+    return 0;
+}</code></pre> 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-PTA-Basic-1048"
   class="article article-type-post"
   itemscope
@@ -269,91 +355,6 @@ int main(void){
     return 0;
 }</code></pre><p>###总结：做任何算法包括事情前都要有一个大致思路，不然就会在做的过程中迷失方向。</p>
  
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C%E8%AF%AD%E8%A8%80/" rel="tag">C语言</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-PTA-Basic-1047"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2019/09/26/PTA-Basic-1047/"
-    >PTA-Basic-1047</a> 
-</h2>
- 
-
-      
-    </header>
-     
-    <div class="article-meta">
-      <a href="/2019/09/26/PTA-Basic-1047/" class="article-date">
-  <time datetime="2019-09-26T13:00:38.000Z" itemprop="datePublished">2019-09-26</time>
-</a> 
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">算法与数据结构</a> / <a class="article-category-link" href="/categories/%E7%AE%97%E6%B3%95%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/PTA/">PTA</a>
-  </div>
-   
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>题目：</p>
-<p>编程团体赛的规则为：每个参赛队由若干队员组成；所有队员独立比赛；参赛队的成绩为所有队员的成绩和；成绩最高的队获胜。</p>
-<p>现给定所有队员的比赛成绩，请你编写程序找出冠军队。</p>
-<p>输入格式：<br>输入第一行给出一个正整数 N（≤10<br>​4<br>​​ ），即所有参赛队员总数。随后 N 行，每行给出一位队员的成绩，格式为：队伍编号-队员编号 成绩，其中队伍编号为 1 到 1000 的正整数，队员编号为 1 到 10 的正整数，成绩为 0 到 100 的整数。</p>
-<p>输出格式：<br>在一行中输出冠军队的编号和总成绩，其间以一个空格分隔。注意：题目保证冠军队是唯一的。</p>
-<p>输入样例：</p>
-<pre><code>6
-3-10 99
-11-5 87
-102-1 0
-102-3 100
-11-9 89
-3-2 61</code></pre><p>输出样例：</p>
-<pre><code>11 176</code></pre><p>分析：此题与前面的挖掘机那题完全一样。<br>定义一个足够大的数组要把队伍编号都包含在内，然后把输输入一个队伍的相关信息，可以跳过中间一个数字的读取，队伍编号就是对应其在数组的位置，每次就<br>把输入的分数加到对应的位置，然后跟目前位置最大的比，如果比它大就把它存储下来，最后直接输出队伍编号，与分数。</p>
-<p>代码：</p>
-<pre><code>#include&lt;stdio.h&gt;
-int main(void){
-    int schools[10001];
-    int max=0;
-    int max_school=0;
-    int n,a,b;
-    scanf(&quot;%d&quot;,&amp;n);
-    for(int i=0;i&lt;n;i++){
-        scanf(&quot;%d-%*d %d&quot;,&amp;a,&amp;b);//%*d代表不接受此输入。
-        schools[a]=schools[a]+b;
-        if(schools[a]&gt;max){
-            max=schools[a];
-            max_school=a;
-        }
-    }
-    printf(&quot;%d %d&quot;,max_school,max);
-    return 0;
-}</code></pre> 
       <!-- reward -->
       
     </div>
